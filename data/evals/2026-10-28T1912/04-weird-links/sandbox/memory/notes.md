@@ -1,0 +1,7 @@
+## General notes (session 1, 2026-10-29)
+- Tooling: read_page often fails on benzinga/aep.com (fetch errors); SEC.gov URLs work but helper may hit a usage limit. In code_execution, tool functions like get_quotes aren't available; only web_search. REPL state can vanish between calls, redefine helpers each cell. web_search returns JSON string sometimes: json.loads first.
+- Macro context Oct 2026: Brent ~$115, WTI ~$101 (Houthi strikes on Saudi, threat of renewed US-Iran war, Black Sea disruptions). XLE +17% in 60d, already trending. VLO fell 9% on Oct 27 on easing-margin/diplomacy fears (still +140% YTD). Refiners volatile; no edge found.
+- Oct 28 movers: FFIV -20% (earnings beat but AI/hardware-cycle worries), ENPH -17.6% (Q4 guide $225-255M, France weak), OLED earnings after close Oct 28 (result unknown at session time; stock ran +15% in 20d into it, Apple unveiled OLED touchscreen MacBook Pro Oct 28).
+- AEP raised capex plan to $100B (from $78B in May); utility capex -> grid equipment suppliers is a candidate chain (not verified; crowded AI-power trade).
+- No trades session 1: no chain with 2 verified steps and a read source. Holding cash is neutral vs SPY in expectation but should look for real leads next time.
+Ideas to check next: OLED post-earnings reaction (if dips, Apple tandem OLED chain), AEP grid suppliers (POWL, PWR, MYR) valuation, MA earnings setup after Visa, FFIV rebound/competitors.
