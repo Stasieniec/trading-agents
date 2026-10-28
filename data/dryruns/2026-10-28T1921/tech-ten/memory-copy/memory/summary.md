@@ -1,0 +1,3 @@
+Session 2026-10-29.
+
+First session. Portfolio 100% cash. Quotes are as of 2026-10-28 19:21 UTC, before GOOGL and MSFT Q3 results (after close Oct 28), and searches found no post-results coverage. I held cash rather than take a blind position into those results. Context: META fell 7.8% after its Oct 21 report on capex and a legal charge. AAPL reports next week, AMD in early Nov, NVDA in late Nov. Prices: NVDA 215, AMD 576, AVGO 351, GOOGL 325, MSFT 528, AMZN 254, META 612, TSLA 403, PLTR 194, AAPL 344, SPY 771. Next session: read the GOOGL/MSFT results and the market reaction, check the capex and AI-supplier read-through for NVDA, AVGO and AMD, then build positions if the evidence is clear. Also check AMZN and AAPL earnings dates.
