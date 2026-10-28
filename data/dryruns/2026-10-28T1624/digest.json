@@ -1,0 +1,517 @@
+{
+ "date": "2026-10-29",
+ "built_at": "2026-10-28T16:24:56.425744+00:00",
+ "previous_session": "2026-10-28",
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 770.8501,
+   "day_pct": 0.15462671829120644,
+   "week_pct": -0.28973340749460785
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 721.8,
+   "day_pct": 0.07625649913345356,
+   "week_pct": -0.46883618312191233
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 280.026,
+   "day_pct": -0.05496466557213253,
+   "week_pct": 1.2825520833333215
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 524.19,
+   "day_pct": 0.17390307292464158,
+   "week_pct": -0.6651506537805552
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 190.04,
+   "day_pct": 0.29025278378804753,
+   "week_pct": 0.7955871433117601
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 103.1,
+   "day_pct": -0.46340992469589004,
+   "week_pct": -5.386803707442422
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 114.84,
+   "day_pct": -0.528367258553486,
+   "week_pct": -0.5972474681900763
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 86.93,
+   "day_pct": -0.2524383247274775,
+   "week_pct": -0.2066352887154066
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 56.145,
+   "day_pct": 0.4742304939155284,
+   "week_pct": 0.18736616702357267
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 179.72,
+   "day_pct": 0.3013729210849414,
+   "week_pct": 0.4359003017771368
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 168.64,
+   "day_pct": 0.4287756074321081,
+   "week_pct": 0.19606678153405444
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 68.88,
+   "day_pct": 0.98226066559155,
+   "week_pct": 1.0563380281690016
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 51.55,
+   "day_pct": -0.4441869447663227,
+   "week_pct": 0.4481683554169891
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 42.84,
+   "day_pct": -0.02333722287047868,
+   "week_pct": 2.0000000000000018
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 42.03,
+   "day_pct": -0.9660697455230793,
+   "week_pct": -0.07132667617689714
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 81.255,
+   "day_pct": -0.45938993017272667,
+   "week_pct": 1.264955134596213
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 370.13,
+   "day_pct": -0.5775222950467285,
+   "week_pct": -2.3274838369177986
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 169.24,
+   "day_pct": 3.2706858677080897,
+   "week_pct": 5.907384230287849
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.1,
+   "day_pct": -0.06868131868131844,
+   "week_pct": 0.6224066390041472
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "GMAB",
+    "pct": 29.38,
+    "price": 57.795
+   },
+   {
+    "symbol": "AXGN",
+    "pct": 28.14,
+    "price": 48
+   },
+   {
+    "symbol": "KIDS",
+    "pct": 23.05,
+    "price": 29.31
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "BCAX",
+    "pct": -47.65,
+    "price": 9.15
+   },
+   {
+    "symbol": "OTLY",
+    "pct": -30.64,
+    "price": 8.1501
+   },
+   {
+    "symbol": "MTLS",
+    "pct": -23.43,
+    "price": 6.6
+   },
+   {
+    "symbol": "INBX",
+    "pct": -22.1,
+    "price": 74.52
+   },
+   {
+    "symbol": "FFIV",
+    "pct": -19.43,
+    "price": 370.11
+   },
+   {
+    "symbol": "RAPP",
+    "pct": -17.21,
+    "price": 22.8
+   },
+   {
+    "symbol": "SLS",
+    "pct": -17.01,
+    "price": 10.1
+   },
+   {
+    "symbol": "BBNX",
+    "pct": -16.48,
+    "price": 17.865
+   }
+  ],
+  "as_of": "2026-10-28T16:24:00.096268148Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "SPCX",
+   "volume": 57317351
+  },
+  {
+   "symbol": "NU",
+   "volume": 44539520
+  },
+  {
+   "symbol": "CCC",
+   "volume": 40186429
+  },
+  {
+   "symbol": "SOFI",
+   "volume": 38752984
+  },
+  {
+   "symbol": "NOK",
+   "volume": 35016819
+  },
+  {
+   "symbol": "BSX",
+   "volume": 33260532
+  },
+  {
+   "symbol": "INTC",
+   "volume": 32541519
+  },
+  {
+   "symbol": "NVDA",
+   "volume": 31856022
+  },
+  {
+   "symbol": "SKHY",
+   "volume": 30224265
+  },
+  {
+   "symbol": "AAL",
+   "volume": 26829364
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Amazon Q3 Earnings Preview: All Eyes on AWS After Posting Best Growth in Years in Q2",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:07:10Z",
+   "url": "https://www.benzinga.com/trading-ideas/previews/26/10/62663775/amazon-q3-earnings-preview-all-eyes-aws-after-posting-best-growth-years-q2",
+   "line": "Amazon stock is up in 2026, but has fallen from recent all-time highs. AWS is the key item to watch in Q3 results.",
+   "symbols": [
+    "AMZN"
+   ]
+  },
+  {
+   "title": "Microsoft And Google Face Monetization Test Amid Expected Fed Pause\u2014 Seagate And Oil Cloud AI Trade",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T15:25:17Z",
+   "url": "https://www.benzinga.com/opinion/26/10/62661723/microsoft-and-google-face-monetization-test-amid-expected-fed-pause-seagate-and-oil-cloud-ai-trade",
+   "line": "\n\n\n\nMarket Reaction To Tech Earnings\n\n\n\nPlease click here for a chart of SK Hynix stock (NASDAQ:SKHY).\n\n\n\nNote the following:\n\n\n\n\nThis article is about the big picture, not an individual stock.\u00a0 The chart of SKHY is",
+   "symbols": [
+    "AMZN",
+    "MSFT",
+    "NVDA",
+    "SKHY",
+    "META",
+    "AAPL"
+   ]
+  },
+  {
+   "title": "'Amazon cuts more jobs, in devices unit, after flurry of product rollouts' - Reuters",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T15:20:11Z",
+   "url": "https://www.benzinga.com/news/26/10/62661467/amazon-cuts-more-jobs-devices-unit-after-flurry-product-rollouts-reuters",
+   "line": "",
+   "symbols": [
+    "AMZN"
+   ]
+  },
+  {
+   "title": "Amazon Rolls Out Alexa+ In Japan",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T15:12:31Z",
+   "url": "https://www.benzinga.com/news/26/10/62661143/amazon-rolls-out-alexa-japan",
+   "line": "",
+   "symbols": [
+    "AMZN"
+   ]
+  },
+  {
+   "title": "United Launch Alliance To Send 40 Amazon Leo Satellites To Low Earth Orbit With Liftoff Targeted For Nov. 13",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T15:10:27Z",
+   "url": "https://www.benzinga.com/news/26/10/62661036/united-launch-alliance-send-40-amazon-leo-satellites-low-earth-orbit-liftoff-targeted-nov-13",
+   "line": "",
+   "symbols": [
+    "AMZN"
+   ]
+  },
+  {
+   "title": "iBusiness Funding Expands SBA Financing Access for Amazon Sellers",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T15:01:36Z",
+   "url": "https://www.prnewswire.com/news-releases/ibusiness-funding-expands-access-to-sba-financing-for-amazon-sellers--offered-through-amazon-seller-central-302921220.html",
+   "line": "iBusiness Funding has launched a new initiative to provide Amazon sellers with streamlined access to Small Business Administration (SBA) financing directly through Amazon Seller Central.",
+   "symbols": [
+    "AMZN"
+   ]
+  },
+  {
+   "title": "Amazon Unveils Three New Echo Devices Including 'Echo Time'",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T15:01:36Z",
+   "url": "https://www.cgmagonline.com/news/amazon-echo-reveals-3-new-devices-including-the-brands-first-echo-time/",
+   "line": "Amazon has announced three new Echo devices, including the brand's first alarm clock, the Echo Time, alongside an updated Echo Dot and a new Echo Studio with a built-in camera.",
+   "symbols": [
+    "AMZN"
+   ]
+  },
+  {
+   "title": "Michael Burry Finds a $537 Billion Hole in Anthropic\u2019s IPO Story",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T14:43:01Z",
+   "url": "https://www.benzinga.com/markets/ipos/26/10/62659397/michael-burry-finds-a-537-billion-hole-in-anthropics-ipo-story",
+   "line": "Michael Burry says Anthropic\u2019s IPO filing masks over $537B in compute commitments as growth slows and revenue per compute dollar declines.",
+   "symbols": [
+    "AMZN",
+    "MSFT",
+    "SPCX",
+    "GOOGL",
+    "AMD",
+    "GOOG"
+   ]
+  },
+  {
+   "title": "Bill Ackman\u2019s Test for a Great Stock: Should Be 'Enormously Valuable' Even if Markets Shut for 20 Years",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T13:50:57Z",
+   "url": "https://www.benzinga.com/markets/equities/26/10/62656252/bill-ackmans-test-for-a-great-stock-should-be-enormously-valuable-even-if-markets-shut-for-20-years",
+   "line": "Bill Ackman shares his 20-year test for great stocks, explaining how to find companies that can create lasting value for investors.",
+   "symbols": [
+    "AMZN",
+    "V",
+    "MSFT",
+    "META",
+    "MA",
+    "BN"
+   ]
+  },
+  {
+   "title": "Vertiv Stock Rallies 14% as Orders More Than Double: Bank of America Still Sees 55% Upside",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:16:30Z",
+   "url": "https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/10/62664199/vertiv-stock-rallies-orders-double-bank-of-america-upside",
+   "line": "Vertiv stock jumps 14% after its biggest revenue beat as a public company and orders more than doubled. Bank of America still sees over 50% upside.",
+   "symbols": [
+    "VRT"
+   ]
+  },
+  {
+   "title": "Analysts Adjust Price Targets for Public Storage",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T15:02:17Z",
+   "url": "https://www.marketscreener.com/news/rbc-raises-price-target-on-public-storage-to-323-from-318-keeps-sector-perform-rating-ce785cd2df8bff2c",
+   "line": "Evercore ISI and RBC Capital Markets updated their price targets for Public Storage on October 28, 2026.",
+   "symbols": [
+    "STX",
+    "PSA",
+    "APP"
+   ]
+  },
+  {
+   "title": "Analysts Adjust Price Targets for United Parcel Service Following Q3 Earnings",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T15:02:05Z",
+   "url": "https://www.marketscreener.com/news/citigroup-adjusts-price-target-on-united-parcel-service-to-131-from-122-ce785cd2da81f525",
+   "line": "Following the company's third-quarter earnings report and guidance increase, several financial institutions including Citigroup, Oppenheimer, UBS, and Evercore ISI have updated their price targets for United Parcel Servi",
+   "symbols": [
+    "UPS"
+   ]
+  },
+  {
+   "title": "Verisk Integrates Insurance Intelligence with Microsoft Copilot",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T15:01:38Z",
+   "url": "https://www.globenewswire.com/news-release/2026/10/28/3390153/0/en/verisk-brings-its-proprietary-insurance-intelligence-to-amazon-and-microsoft-ai-platforms-expands-offerings-within-claude.html",
+   "line": "Verisk has launched a new integration that brings its proprietary insurance intelligence into Microsoft Copilot workflows.",
+   "symbols": [
+    "MSFT"
+   ]
+  },
+  {
+   "title": "SpaceX Quarterly Filing Reveals High Revenue Concentration and AI Compute Growth",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T15:01:25Z",
+   "url": "https://www.moomoo.com/news/post/1002646563/hidden-gems-in-the-spacex-filing-soaring-compute-rates-and",
+   "line": "A recent quarterly 10-Q filing from SpaceX highlights significant revenue concentration from a single customer and substantial investment in AI infrastructure.",
+   "symbols": [
+    "SPCX"
+   ]
+  },
+  {
+   "title": "Coca-Cola FEMSA Reports Third Quarter 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T15:31:47Z",
+   "url": "https://www.globenewswire.com/news-release/2026/10/28/3390191/0/en/femsa-announces-third-quarter-2026-results.html",
+   "line": "Coca-Cola FEMSA reported strong third-quarter 2026 performance, with total revenues growing 10.9% and income from operations increasing 15.4% compared to the same period in 2025.",
+   "symbols": [
+    "RDWR",
+    "FMX"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "AMZN",
+   "stories": 6
+  },
+  {
+   "symbol": "VRT",
+   "stories": 4
+  },
+  {
+   "symbol": "V",
+   "stories": 4
+  },
+  {
+   "symbol": "GEV",
+   "stories": 4
+  },
+  {
+   "symbol": "BA",
+   "stories": 4
+  },
+  {
+   "symbol": "SHW",
+   "stories": 4
+  },
+  {
+   "symbol": "BKR",
+   "stories": 4
+  },
+  {
+   "symbol": "STX",
+   "stories": 3
+  },
+  {
+   "symbol": "LSTR",
+   "stories": 3
+  },
+  {
+   "symbol": "UPS",
+   "stories": 3
+  }
+ ],
+ "summary": "**Market Summary: Session of 2026-10-28**\n\nBroad U.S. equity indexes closed higher. SPY rose 0.15% to 770.85, DIA gained 0.17%, and QQQ added 0.08%, while IWM slipped 0.05%. Energy led sectors, with XLE up 0.98% and USO up 3.27%. Technology (XLK, +0.29%) and industrials (XLI, +0.43%) also advanced. Communication services (XLC, -0.46%) and real estate (XLRE, -0.97%) lagged. Gold fell 0.58%, long Treasuries (TLT) dropped 0.46%, and the dollar (UUP) eased 0.07%.\n\nTop eligible gainers were GMAB (+29.4%), AXGN (+28.1%) and KIDS (+23.1%). The largest decliners included BCAX (-47.6%) and OTLY (-30.6%). The most active names by volume were SPCX, NU, CCC, SOFI and NOK.\n\nAmazon (AMZN) was the most-mentioned ticker in news, with six stories tied to its upcoming Q3 earnings. Vertiv (VRT) rose 14% after reporting orders that more than doubled.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3586,
+   "output_tokens": 986,
+   "output_tokens_details": {
+    "thinking_tokens": 574
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0008516
+ }
+}
