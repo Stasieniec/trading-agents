@@ -1,0 +1,3 @@
+Session 2026-10-29.
+
+First session, no news access. Reviewed digest movers: FFIV -20.7% (earnings-style gap, closed at lows, heavy volume), GMAB +29% after a +100% 60d run (volume spikes 10/5, 10/23, 10/28), LSTR -17.6%. No edge visible from price alone; chasing the spike or catching the falling knife both looked poor risk/reward. Held 100% cash. Next session: check whether FFIV stabilizes or keeps falling and whether GMAB holds ~57 (post-gap drift test); look for stocks with multi-day confirmation after catalysts, plus related-industry comparisons via search_symbols.
