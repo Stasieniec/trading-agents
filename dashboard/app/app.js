@@ -130,6 +130,26 @@
   const MD_TAGS = ["p", "br", "strong", "em", "code", "pre", "ul", "ol", "li", "h1", "h2", "h3", "h4",
     "blockquote", "table", "thead", "tbody", "tr", "th", "td", "hr", "a"];
   let hookInstalled = false;
+  let mdParser = null;
+
+  function escapeHtml(t) {
+    return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  // Raw HTML in the markdown is shown as literal text and images as their alt text, so nothing
+  // the model wrote is ever parsed as markup. DOMPurify below is the second line, not the only one.
+  function markedInstance() {
+    if (!mdParser) {
+      mdParser = new window.marked.Marked({
+        async: false, gfm: true, breaks: false,
+        renderer: {
+          html: (token) => escapeHtml(token.text != null ? token.text : token.raw || ""),
+          image: (token) => escapeHtml(token.text || ""),
+        },
+      });
+    }
+    return mdParser;
+  }
 
   function markdown(src) {
     const box = el("div", { class: "prose" });
@@ -152,7 +172,7 @@
       });
       hookInstalled = true;
     }
-    const html = window.marked.parse(String(src), { async: false, gfm: true, breaks: false });
+    const html = markedInstance().parse(String(src));
     const frag = window.DOMPurify.sanitize(html, {
       ALLOWED_TAGS: MD_TAGS,
       ALLOWED_ATTR: ["href"],
@@ -181,8 +201,9 @@
 
   async function loadCore() {
     if (state.meta) return;
-    const [meta, equity, stats, comparison] = await Promise.all(
-      ["meta.json", "equity.json", "stats.json", "comparison.json"].map(getJSON));
+    // meta.json first: if it is missing, the rest are too, and one failed request is enough.
+    const meta = await getJSON("meta.json");
+    const [equity, stats, comparison] = await Promise.all(["equity.json", "stats.json", "comparison.json"].map(getJSON));
     Object.assign(state, { meta, equity, stats, comparison });
   }
 
@@ -250,7 +271,6 @@
     const step = Math.max(1, Math.ceil(n / max));
     const out = [];
     for (let i = 0; i < n; i += step) out.push(i);
-    if (n > 1 && out[out.length - 1] !== n - 1 && n - 1 - out[out.length - 1] >= step / 2) out.push(n - 1);
     return out;
   }
 
@@ -270,7 +290,7 @@
     const opts = {
       width: Math.max(260, container.clientWidth),
       height: heightFor(),
-      padding: [14, 14, 0, 2],
+      padding: [14, 22, 0, 2],
       scales: {
         x: { time: false, range: (u, mn, mx) => [mn, Math.max(mx, mn + 1)] },
         y: { range: cfg.yRange },
@@ -306,10 +326,13 @@
       cursor: {
         y: false,
         drag: { x: false, y: false, setScale: false },
-        points: { size: 9, width: 2, stroke: surface },
+        points: { size: 9, width: 2, stroke: () => surface, fill: (u, si) => (cfg.series[si - 1] || {}).color || muted },
       },
       legend: { live: true },
       hooks: {
+        // With the pointer away, the legend shows the latest day instead of blanks.
+        ready: [(u) => u.setLegend({ idx: xs.length - 1 })],
+        setCursor: [(u) => { if (u.cursor.idx == null) u.setLegend({ idx: xs.length - 1 }); }],
         draw: [
           (u) => {
             if (!cfg.markers || !cfg.markers.length) return;
@@ -422,10 +445,10 @@
     // Sessions
     const sess = el("div", { class: "health-item" }, el("h3", { text: "Sessions" }));
     if (!m.start_date) sess.append(el("p", { text: "The experiment has not started. Day one is the first trading day after the schedule is turned on." }));
-    else if (!h.last_expected_session) sess.append(el("p", { text: `Started ${fmtDate(m.start_date)}. No session was due yet.` }));
+    else if (!h.last_expected_session) sess.append(el("p", { text: `Day one is ${fmtDate(m.start_date)}. The check for missing sessions starts once its opening bell has passed.` }));
     else {
-      sess.append(el("p", null, h.stale ? statusMark("critical", "Behind") : statusMark("good", "Up to date"),
-        ` Newest ${h.newest_session ? fmtDate(h.newest_session) : "none"}, last due ${fmtDate(h.last_expected_session)}.`));
+      sess.append(el("p", null, h.stale ? statusMark("critical", "Behind.") : statusMark("good", "Up to date."),
+        ` Newest session ${h.newest_session ? fmtDate(h.newest_session) : "none"}; the last one due was ${fmtDate(h.last_expected_session)}.`));
     }
     if (m.last_marked) sess.append(el("p", { class: "muted", text: `Portfolios marked to the close of ${fmtDate(m.last_marked)}.` }));
     items.push(sess);
@@ -539,7 +562,7 @@
         el("td", { class: "num", text: has ? `${s.trades_closed ?? 0} / ${s.trades_open ?? 0}` : DASH }),
         el("td", { class: "num", text: has && isNum(s.turnover) ? `${s.turnover.toFixed(2)}×` : DASH }),
         el("td", { class: "num", text: has ? money(s.slippage_paid) : DASH }),
-        el("td", { class: "num", text: isNum(s.days_run) ? `${s.days_run} of ${plural(s.days || 0, "day")}` : DASH }),
+        el("td", { class: "num", text: isNum(s.days_run) ? (s.days ? `${s.days_run} of ${plural(s.days, "day")}` : String(s.days_run)) : DASH }),
         el("td", { class: "num", text: isNum(s.api_spend) ? money(s.api_spend, 2) : DASH })));
     }
     for (const b of benchList()) {
@@ -673,8 +696,8 @@
     main.append(chartSec);
     equityChart(chartSec);
 
-    main.append(section("results", "Results per agent",
-      el("div", { class: "results-layout" }, el("div", { class: "results-main" }, resultsTable(), resultsFootnotes()), evidenceNote())));
+    main.append(section("results", "Results per agent", resultsTable(),
+      el("div", { class: "results-layout" }, resultsFootnotes(), evidenceNote())));
     main.append(section("comparison", "Agents side by side", comparisonTable()));
     main.append(benchmarksSection());
     main.append(howSection());
@@ -800,7 +823,8 @@
       return el("tr", null,
         el("td", { text: fmtDate(o.session_date) }),
         el("th", { scope: "row", text: String(o.ticker) }),
-        el("td", { text: ACTION[o.action] || String(o.action || DASH) }),
+        el("td", null, ACTION[o.action] || String(o.action || DASH),
+          !state.meta.last_marked || o.session_date > state.meta.last_marked ? el("span", { class: "sub", text: "waiting for the open" }) : null),
         el("td", { class: "num", text: o.action === "set_weight" ? pctPlain(o.target_weight, 1) : DASH }),
         el("td", { class: "num", text: !close && isNum(o.stop_pct) ? `${MINUS}${o.stop_pct}%` : DASH }),
         el("td", { class: "num", text: !close && isNum(o.target_pct) ? `+${o.target_pct}%` : DASH }),
@@ -896,7 +920,7 @@
       tile("Total return", has ? pct(s.total_return) : DASH, has ? `SPY ${pct(s.spy_return)} over the same days` : "after the first close"),
       tile("Excess over SPY", has ? pts(s.excess_vs_spy) : DASH, rs ? `±2 SE: ${rs}` : null),
       tile("Over exposure-matched SPY", has ? pts(s.excess_vs_matched) : DASH, rm ? `±2 SE: ${rm}` : null),
-      tile("Sessions decided", isNum(s.days_run) ? String(s.days_run) : DASH, `of ${plural(s.days || 0, "trading day")} marked`),
+      tile("Sessions decided", isNum(s.days_run) ? String(s.days_run) : DASH, s.days ? `of ${plural(s.days, "trading day")} marked` : "no trading day marked yet"),
       tile("API spend", isNum(s.api_spend) ? money(s.api_spend, 2) : DASH, "all sessions so far")));
     main.append(el("p", { class: "brier" }, isNum(s.brier) && s.brier_n
       ? `Brier score of the stated probabilities: ${s.brier.toFixed(3)}, over ${plural(s.brier_n, "settled trade")}. 0 is perfect; saying 0.5 every time scores 0.250.`

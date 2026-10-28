@@ -288,7 +288,7 @@ class Sim:
                 n += 1
         if name == "open-quality" and k >= 11:
             self.hash[name] = "b7e1c0d94a21"  # prompt edited on day 12
-        summary = (f"Session {d.isoformat()}. Placed {len(orders)} orders. "
+        summary = (f"Placed {len(orders)} order{'' if len(orders) == 1 else 's'}. "
                    + ("Kept the rest in cash; nothing else cleared the bar. " if len(orders) < 2 else "")
                    + "Watching the **Thursday** CPI print and the rail volume report.")
         return "decided", ("some orders rejected after the resubmission" if rejected else ""), orders, rejected, summary
