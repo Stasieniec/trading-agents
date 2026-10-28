@@ -8,32 +8,52 @@ import uplotJs from "../vendor/uPlot.iife.min.js";
 import uplotCss from "../vendor/uPlot.min.css";
 import markedJs from "../vendor/marked.umd.js";
 import purifyJs from "../vendor/purify.min.js";
+import monoRegular from "../vendor/jetbrains-mono-400.woff2";
+import monoMedium from "../vendor/jetbrains-mono-500.woff2";
+import monoBold from "../vendor/jetbrains-mono-700.woff2";
+import interTight from "../vendor/inter-tight-800.woff2";
 
 const DEFAULT_DATA_BASE = "https://raw.githubusercontent.com/Stasieniec/trading-agents/main/site-data/";
 
 const JS = "text/javascript; charset=utf-8";
 const CSS = "text/css; charset=utf-8";
+const FONT = "font/woff2";
 const FILES = {
   "/app.js": [appJs, JS],
-  "/app.css": [appCss, CSS],
   "/favicon.svg": [favicon, "image/svg+xml"],
   "/vendor/uPlot.iife.min.js": [uplotJs, JS],
   "/vendor/uPlot.min.css": [uplotCss, CSS],
   "/vendor/marked.umd.js": [markedJs, JS],
   "/vendor/purify.min.js": [purifyJs, JS],
+  "/vendor/jetbrains-mono-400.woff2": [monoRegular, FONT],
+  "/vendor/jetbrains-mono-500.woff2": [monoMedium, FONT],
+  "/vendor/jetbrains-mono-700.woff2": [monoBold, FONT],
+  "/vendor/inter-tight-800.woff2": [interTight, FONT],
 };
 
 // A short content hash per file. The page links each file as ?v=<hash>, so a file can be cached for
 // a year and a deploy still reaches every browser within the page's own cache time.
-function hash(text) {
+function hash(body) {
   let h = 0x811c9dc5;
-  for (let i = 0; i < text.length; i++) {
-    h ^= text.charCodeAt(i);
-    h = Math.imul(h, 0x01000193);
+  if (typeof body === "string") {
+    for (let i = 0; i < body.length; i++) {
+      h ^= body.charCodeAt(i);
+      h = Math.imul(h, 0x01000193);
+    }
+  } else {
+    const bytes = new Uint8Array(body);
+    for (let i = 0; i < bytes.length; i++) {
+      h ^= bytes[i];
+      h = Math.imul(h, 0x01000193);
+    }
   }
   return (h >>> 0).toString(36);
 }
 const VERSIONS = Object.fromEntries(Object.entries(FILES).map(([path, [body]]) => [path, hash(body)]));
+// The stylesheet links the fonts by version too, so its own version is taken after filling those in.
+const APP_CSS = appCss.replace(/\{\{v:([^}]+)\}\}/g, (_, path) => VERSIONS[path] || "0");
+const APP_CSS_VERSION = hash(APP_CSS);
+VERSIONS["/app.css"] = APP_CSS_VERSION;
 
 function escapeAttr(s) {
   return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -61,6 +81,7 @@ function securityHeaders(dataOrigin) {
       "script-src 'self'",
       "style-src 'self'",
       "img-src 'self' data:",
+      "font-src 'self'",
       `connect-src 'self' ${dataOrigin}`,
       "base-uri 'none'",
       "form-action 'none'",
@@ -96,6 +117,10 @@ export default {
       body = renderPage(base);
       type = "text/html; charset=utf-8";
       cache = "public, max-age=300";
+    } else if (url.pathname === "/app.css") {
+      body = APP_CSS;
+      type = CSS;
+      cache = url.searchParams.get("v") === APP_CSS_VERSION ? "public, max-age=31536000, immutable" : "public, max-age=300";
     } else if (FILES[url.pathname]) {
       [body, type] = FILES[url.pathname];
       cache = url.searchParams.get("v") === VERSIONS[url.pathname]

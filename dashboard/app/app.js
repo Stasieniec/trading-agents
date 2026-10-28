@@ -11,19 +11,27 @@
   const DEFAULT_REPO = "Stasieniec/trading-agents";
   const MINUS = "−";
   const DASH = "–";
-  const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
-    "October", "November", "December"];
+  const MON = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  const WD = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-  // Colour follows the agent, everywhere. Unknown future agents take the next slots in order.
+  // Canvas needs real colours; the DOM uses the matching .ag-N classes from app.css.
   const AGENT_SLOTS = { "open-quality": 1, "tech-ten": 2, "weird-links": 3, "no-news": 4 };
-  const BENCH_STYLE = {
-    "bench:spy": { v: "--bench-1", dash: [6, 4] },
-    "bench:qqq": { v: "--bench-2", dash: [2, 3] },
-    "bench:tech-ten-ew": { v: "--bench-3", dash: [10, 3, 2, 3] },
-  };
+  const SLOT_COLORS = ["", "#FFB000", "#4FC3F7", "#FF6EC7", "#C9D1CC", "#3DDC84", "#B39DFF", "#FF8A3D", "#7FD1B9"];
+  const C = { ink: "#D7DED9", muted: "#6B7A72", hair: "#1E2622", hair2: "#141A17", zero: "#34433B", bench: "#56635C", bg: "#07090A" };
+  const BENCH_DASH = { "bench:spy": [1, 4], "bench:qqq": [4, 4], "bench:tech-ten-ew": [8, 4] };
+  const BENCH_SHORT = { "bench:spy": "SPY", "bench:qqq": "QQQ", "bench:tech-ten-ew": "TECH-10 EW" };
 
-  const state = { meta: null, equity: null, stats: null, comparison: null, agents: {}, error: null };
+  // NYSE weekday closures, from exchange_calendars XNYS (the calendar the harness uses), read
+  // 2026-10-28. It ends 2027-10-28; after that only weekends are skipped.
+  const HOLIDAYS = new Set(["2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25", "2026-06-19",
+    "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25", "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26",
+    "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06"]);
+
+  const state = { meta: null, equity: null, stats: null, comparison: null, agents: {} };
   let charts = [];
+  // Charts are drawn after their container is in the page, so it has a width.
+  let pending = [];
+  const later = (fn) => pending.push(fn);
 
   // ---------------------------------------------------------------------------------------------
   // DOM helpers
@@ -41,15 +49,16 @@
         } else node.setAttribute(k, String(v));
       }
     }
-    append(node, children);
-    return node;
-  }
-
-  function append(node, children) {
     for (const c of children.flat(Infinity)) {
       if (c == null || c === false) continue;
       node.append(c instanceof Node ? c : String(c));
     }
+    return node;
+  }
+
+  function svgEl(tag, attrs) {
+    const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const [k, v] of Object.entries(attrs || {})) node.setAttribute(k, String(v));
     return node;
   }
 
@@ -69,60 +78,91 @@
     return el("a", { href: safe, rel: "nofollow noopener noreferrer ugc", target: "_blank" }, ...children);
   }
 
-  function cssVar(name) {
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  }
-
-  function hexA(hex, a) {
-    const m = /^#?([0-9a-f]{6})$/i.exec(hex);
-    if (!m) return hex;
-    const n = parseInt(m[1], 16);
-    return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${a})`;
-  }
-
   // ---------------------------------------------------------------------------------------------
   // Formatting
 
   const isNum = (x) => typeof x === "number" && isFinite(x);
-
-  function signed(x, digits) {
-    const s = Math.abs(x).toFixed(digits);
-    if (Number(s) === 0) return (0).toFixed(digits);
+  function signed(x, d) {
+    const s = Math.abs(x).toFixed(d);
+    if (Number(s) === 0) return (0).toFixed(d);
     return (x < 0 ? MINUS : "+") + s;
   }
   const pct = (x, d = 1) => (isNum(x) ? signed(x * 100, d) + "%" : DASH);
   const pctPlain = (x, d = 0) => (isNum(x) ? (x * 100).toFixed(d).replace("-", MINUS) + "%" : DASH);
-  const pts = (x, d = 1) => (isNum(x) ? signed(x * 100, d) + " pts" : DASH);
+  const pts = (x, d = 1) => (isNum(x) ? signed(x * 100, d) : DASH);
+  const band = (se) => (isNum(se) ? `±${(2 * se * 100).toFixed(1)}` : "");
   function money(x, d = 0) {
     if (!isNum(x)) return DASH;
     const s = Math.abs(x).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
     return (x < 0 ? MINUS : "") + "$" + s;
   }
-  function range2se(x, se) {
-    if (!isNum(x) || !isNum(se)) return null;
-    return `${signed((x - 2 * se) * 100, 1)} to ${signed((x + 2 * se) * 100, 1)}`;
-  }
-  function fmtDate(iso) {
+  const dir = (x) => (isNum(x) && Number(x.toFixed(4)) > 0 ? "up" : isNum(x) && Number(x.toFixed(4)) < 0 ? "down" : "");
+  function parts(iso) {
     const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ""));
-    if (!m) return String(iso || DASH);
-    return `${Number(m[3])} ${MONTHS[Number(m[2]) - 1].slice(0, 3)} ${m[1]}`;
+    return m ? { y: Number(m[1]), m: Number(m[2]), d: Number(m[3]) } : null;
   }
-  function fmtShort(iso) {
-    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ""));
-    if (!m) return String(iso || "");
-    return `${MONTHS[Number(m[2]) - 1].slice(0, 3)} ${Number(m[3])}`;
-  }
+  const dShort = (iso) => { const p = parts(iso); return p ? `${p.d} ${MON[p.m - 1]}` : DASH; };
+  const dLong = (iso) => { const p = parts(iso); return p ? `${p.d} ${MON[p.m - 1]} ${p.y}` : DASH; };
   function fmtMonth(ym) {
     const m = /^(\d{4})-(\d{2})/.exec(String(ym || ""));
-    return m ? `${MONTHS[Number(m[2]) - 1]} ${m[1]}` : "this month";
+    return m ? `${MON[Number(m[2]) - 1]} ${m[1]}` : "";
   }
   function fmtStamp(iso) {
     const d = new Date(iso);
-    if (isNaN(d)) return String(iso || "");
+    if (isNaN(d)) return "";
     const p = (n) => String(n).padStart(2, "0");
-    return `${fmtDate(d.toISOString())}, ${p(d.getUTCHours())}:${p(d.getUTCMinutes())} UTC`;
+    return `${dLong(d.toISOString())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())} UTC`;
   }
-  const plural = (n, one, many) => `${n} ${n === 1 ? one : many || one + "s"}`;
+  const upper = (s) => String(s == null ? "" : s).toUpperCase();
+
+  // ---------------------------------------------------------------------------------------------
+  // Trading days
+
+  function isoOf(dt) {
+    return dt.toISOString().slice(0, 10);
+  }
+  function isTradingDay(iso) {
+    const p = parts(iso);
+    if (!p) return false;
+    const wd = new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay();
+    return wd !== 0 && wd !== 6 && !HOLIDAYS.has(iso);
+  }
+  function addDays(iso, n) {
+    const p = parts(iso);
+    return isoOf(new Date(Date.UTC(p.y, p.m - 1, p.d + n)));
+  }
+  function nextTradingDay(iso) {
+    let d = addDays(iso, 1);
+    for (let i = 0; i < 15 && !isTradingDay(d); i++) d = addDays(d, 1);
+    return d;
+  }
+  // Trading days after a, up to and including b.
+  function tradingDaysBetween(a, b) {
+    if (!parts(a) || !parts(b) || b <= a) return 0;
+    let n = 0;
+    for (let d = addDays(a, 1); d <= b && n < 400; d = addDays(d, 1)) if (isTradingDay(d)) n++;
+    return n;
+  }
+  function amsterdamNow() {
+    const f = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit",
+      day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    const o = Object.fromEntries(f.formatToParts(new Date()).map((x) => [x.type, x.value]));
+    return { date: `${o.year}-${o.month}-${o.day}`, time: `${o.hour}:${o.minute}` };
+  }
+  // Sessions run on trading days from 13:30 Amsterdam time, before the US open.
+  function nextSession() {
+    const m = state.meta;
+    if (!m.start_date) return null;
+    const now = amsterdamNow();
+    const newest = (m.health && m.health.newest_session) || "";
+    let d;
+    if (m.start_date > now.date) d = m.start_date;
+    else if (isTradingDay(now.date) && newest < now.date && now.time < "15:30") d = now.date;
+    else d = nextTradingDay(now.date);
+    const p = parts(d);
+    const wd = WD[new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay()];
+    return d === now.date ? "TODAY 13:30 AMS" : `${wd} ${dShort(d)} 13:30 AMS`;
+  }
 
   // ---------------------------------------------------------------------------------------------
   // Markdown, sanitised
@@ -155,7 +195,7 @@
     const box = el("div", { class: "prose" });
     if (!src || !String(src).trim()) return box;
     if (!window.marked || !window.DOMPurify) {
-      box.append(el("pre", { class: "plain", text: String(src) }));
+      box.append(el("pre", { text: String(src) }));
       return box;
     }
     if (!hookInstalled) {
@@ -172,15 +212,10 @@
       });
       hookInstalled = true;
     }
-    const html = markedInstance().parse(String(src));
-    const frag = window.DOMPurify.sanitize(html, {
-      ALLOWED_TAGS: MD_TAGS,
-      ALLOWED_ATTR: ["href"],
-      ALLOW_DATA_ATTR: false,
-      ALLOW_ARIA_ATTR: false,
+    const frag = window.DOMPurify.sanitize(markedInstance().parse(String(src)), {
+      ALLOWED_TAGS: MD_TAGS, ALLOWED_ATTR: ["href"], ALLOW_DATA_ATTR: false, ALLOW_ARIA_ATTR: false,
       RETURN_DOM_FRAGMENT: true,
     });
-    // A link that lost its href keeps only its words.
     for (const a of frag.querySelectorAll("a:not([href])")) a.replaceWith(document.createTextNode(a.textContent));
     box.append(frag);
     return box;
@@ -212,53 +247,32 @@
     return state.agents[name];
   }
 
+  async function loadAllAgents() {
+    await Promise.all(agentsList().map((a) => loadAgent(a.name).catch(() => null)));
+  }
+
   const agentsList = () => (state.meta && Array.isArray(state.meta.agents) ? state.meta.agents : []);
   const benchList = () => (state.meta && Array.isArray(state.meta.benchmarks) ? state.meta.benchmarks : []);
   const repo = () => (state.meta && typeof state.meta.repo === "string" ? state.meta.repo : DEFAULT_REPO);
   const repoUrl = (path) => `https://github.com/${repo()}${path || ""}`;
+  const statsOf = (n) => (state.stats && state.stats[n]) || {};
+  const daysMarked = () => statsOf("bench:spy").days || Math.max(0, ...agentsList().map((a) => statsOf(a.name).days || 0));
 
-  function labelOf(name) {
-    const a = agentsList().find((x) => x.name === name) || benchList().find((x) => x.name === name);
-    return a && a.label ? String(a.label) : String(name);
+  function slotOf(name) {
+    if (AGENT_SLOTS[name]) return AGENT_SLOTS[name];
+    const extra = agentsList().map((a) => a.name).filter((n) => !AGENT_SLOTS[n]);
+    return Math.min(8, 5 + Math.max(0, extra.indexOf(name)));
   }
+  const colorOf = (name) => (String(name).startsWith("bench:") ? C.bench : SLOT_COLORS[slotOf(name)]);
+  const agClass = (name) => (String(name).startsWith("bench:") ? "bench" : `ag-${slotOf(name)}`);
+  const shortName = (name) => BENCH_SHORT[name] || upper(String(name).replace(/^bench:/, ""));
 
-  function agentColor(name) {
-    let slot = AGENT_SLOTS[name];
-    if (!slot) {
-      const extra = agentsList().map((a) => a.name).filter((n) => !AGENT_SLOTS[n]);
-      slot = Math.min(8, 5 + Math.max(0, extra.indexOf(name)));
-    }
-    return cssVar(`--series-${slot}`);
-  }
-
-  function seriesStyle(name) {
-    if (BENCH_STYLE[name]) return { color: cssVar(BENCH_STYLE[name].v), dash: BENCH_STYLE[name].dash, width: 1.5 };
-    if (String(name).startsWith("bench:")) return { color: cssVar("--bench-2"), dash: [4, 4], width: 1.5 };
-    return { color: agentColor(name), dash: null, width: 2 };
-  }
-
-  function swatch(name, opts) {
-    const s = seriesStyle(name);
-    const node = el("span", { class: "swatch" + (s.dash ? " swatch-dash" : ""), "aria-hidden": "true" });
-    node.style.setProperty("--c", (opts && opts.color) || s.color);
-    return node;
+  function square(name) {
+    return el("span", { class: `sq ${agClass(name)}`, "aria-hidden": "true" });
   }
 
   // ---------------------------------------------------------------------------------------------
   // Charts (uPlot). x is the trading-day index; the first point is the starting cash.
-
-  function chartData(names, valuesFor) {
-    const eq = state.equity || {};
-    const dates = Array.isArray(eq.dates) ? eq.dates : [];
-    if (!dates.length) return null;
-    const labels = ["Start"].concat(dates);
-    const series = names.map((n) => {
-      const vals = valuesFor(n);
-      if (!vals) return null;
-      return { name: n, values: vals };
-    }).filter(Boolean);
-    return { labels, series };
-  }
 
   function rebased(values) {
     const start = isNum(state.equity && state.equity.start_cash) ? state.equity.start_cash : 100000;
@@ -266,106 +280,117 @@
     return [100].concat(values.map((v) => (isNum(v) ? (v / start) * 100 : null)));
   }
 
+  function chartLabels() {
+    const dates = state.equity && Array.isArray(state.equity.dates) ? state.equity.dates : [];
+    return dates.length ? ["START"].concat(dates) : null;
+  }
+
   function tickIndices(n, width) {
-    const max = Math.max(2, Math.floor(width / 76));
+    const max = Math.max(2, Math.floor(width / 70));
     const step = Math.max(1, Math.ceil(n / max));
     const out = [];
     for (let i = 0; i < n; i += step) out.push(i);
     return out;
   }
 
+  function yRangeAround100(u, min, max) {
+    const lo = Math.min(isNum(min) ? min : 100, 100);
+    const hi = Math.max(isNum(max) ? max : 100, 100);
+    const pad = Math.max((hi - lo) * 0.08, 0.5);
+    return [Math.floor(lo - pad), Math.ceil(hi + pad)];
+  }
+
+  // A legend that is also the hover readout: each key carries the value at the cursor, or at the
+  // latest day when the pointer is elsewhere.
+  function readout(labels, series, fmt) {
+    const day = el("span", { class: "ro-day" });
+    const vals = series.map(() => el("span", { class: "ro-val" }));
+    const box = el("div", { class: "readout" }, day, series.map((s, i) =>
+      el("span", { class: "ro-item" }, el("span", { class: `key ${s.dash ? (s.dash[0] > 2 ? "key-dash" : "key-dot") : ""} ${s.cls || ""}`, "aria-hidden": "true" }),
+        el("span", { class: `ro-name ${s.cls || ""}`, text: s.label }), vals[i])));
+    const set = (idx) => {
+      const i = idx == null ? labels.length - 1 : idx;
+      day.textContent = labels[i] === "START" ? "START" : dShort(labels[i]);
+      series.forEach((s, k) => { const v = s.values[i]; vals[k].textContent = isNum(v) ? fmt(v) : DASH; });
+    };
+    set(null);
+    return { box, set };
+  }
+
   function lineChart(container, cfg) {
-    // cfg: labels, series [{label, values, color, dash, width, fill}], height, fmt, axisFmt, yRange, markers
+    // cfg: labels, series [{label, values, color, dash, width, fill}], height [phone, desktop], fmt, yRange, markers, onCursor
     if (!window.uPlot) {
-      container.append(el("p", { class: "empty", text: "The chart library did not load." }));
+      container.append(el("p", { class: "empty", text: "CHART LIBRARY DID NOT LOAD" }));
       return null;
     }
-    const muted = cssVar("--text-muted");
-    const grid = cssVar("--grid");
-    const axis = cssVar("--axis");
-    const surface = cssVar("--surface");
-    const font = "12px system-ui, -apple-system, 'Segoe UI', sans-serif";
+    const font = "11px 'JetBrains Mono', ui-monospace, monospace";
     const xs = cfg.labels.map((_, i) => i);
     const heightFor = () => (container.clientWidth < 560 ? cfg.height[0] : cfg.height[1]);
     const opts = {
-      width: Math.max(260, container.clientWidth),
+      width: Math.max(240, container.clientWidth),
       height: heightFor(),
-      padding: [14, 22, 0, 2],
-      scales: {
-        x: { time: false, range: (u, mn, mx) => [mn, Math.max(mx, mn + 1)] },
-        y: { range: cfg.yRange },
-      },
-      series: [
-        { label: "Day", value: (u, v) => (v == null ? "" : cfg.labels[v] === "Start" ? "Start" : fmtDate(cfg.labels[v])) },
-        ...cfg.series.map((s) => ({
-          label: s.label,
-          stroke: s.color,
-          width: s.width || 2,
-          dash: s.dash || undefined,
-          fill: s.fill || undefined,
-          spanGaps: false,
-          points: { size: 7, width: 2, stroke: s.color, fill: surface },
-          value: (u, v) => (v == null ? DASH : cfg.fmt(v)),
-        })),
-      ],
+      padding: [10, 8, 0, 0],
+      legend: { show: false },
+      scales: { x: { time: false, range: (u, mn, mx) => [mn, Math.max(mx, mn + 1)] }, y: { range: cfg.yRange } },
+      series: [{}, ...cfg.series.map((s) => ({
+        stroke: s.color, width: s.width || 2, dash: s.dash || undefined, cap: s.dash ? "round" : "butt",
+        fill: s.fill || undefined, spanGaps: false, points: { show: false },
+      }))],
       axes: [
-        {
-          stroke: muted, font, gap: 6, size: 30,
-          grid: { show: false },
-          ticks: { stroke: axis, width: 1, size: 4 },
+        { stroke: C.muted, font, gap: 6, size: 26, grid: { show: false }, ticks: { show: false },
           splits: (u) => tickIndices(cfg.labels.length, u.width),
-          values: (u, splits) => splits.map((i) => (cfg.labels[i] === "Start" ? "Start" : fmtShort(cfg.labels[i]))),
-        },
-        {
-          stroke: muted, font, gap: 6, size: 46,
-          grid: { stroke: grid, width: 1 },
-          ticks: { show: false },
-          values: (u, splits) => splits.map(cfg.axisFmt || cfg.fmt),
-        },
+          values: (u, splits) => splits.map((i) => (cfg.labels[i] === "START" ? "START" : dShort(cfg.labels[i]))) },
+        { stroke: C.muted, font, gap: 8, size: 40, grid: { stroke: C.hair2, width: 1 }, ticks: { show: false },
+          incrs: cfg.incrs || [1, 2, 5, 10, 20, 25, 50, 100],
+          values: (u, splits) => splits.map(cfg.axisFmt || cfg.fmt) },
       ],
       cursor: {
-        y: false,
-        drag: { x: false, y: false, setScale: false },
-        points: { size: 9, width: 2, stroke: () => surface, fill: (u, si) => (cfg.series[si - 1] || {}).color || muted },
+        y: false, drag: { x: false, y: false, setScale: false },
+        points: { size: 8, width: 2, stroke: () => C.bg, fill: (u, si) => (cfg.series[si - 1] || {}).color || C.ink },
       },
-      legend: { live: true },
       hooks: {
-        // With the pointer away, the legend shows the latest day instead of blanks.
-        ready: [(u) => u.setLegend({ idx: xs.length - 1 })],
-        setCursor: [(u) => { if (u.cursor.idx == null) u.setLegend({ idx: xs.length - 1 }); }],
-        draw: [
-          (u) => {
-            if (!cfg.markers || !cfg.markers.length) return;
-            const ctx = u.ctx;
-            const r = window.uPlot.pxRatio || 1;
-            const top = u.bbox.top;
-            const bottom = u.bbox.top + u.bbox.height;
-            ctx.save();
-            ctx.font = `${11 * r}px system-ui, sans-serif`;
-            ctx.textBaseline = "top";
-            for (const m of cfg.markers) {
-              const x = Math.round(u.valToPos(m.idx, "x", true)) + 0.5;
-              ctx.strokeStyle = m.color;
-              ctx.lineWidth = 1 * r;
-              ctx.setLineDash([]);
-              ctx.beginPath();
-              ctx.moveTo(x, top);
-              ctx.lineTo(x, bottom);
-              ctx.stroke();
-              ctx.fillStyle = muted;
-              const w = ctx.measureText(m.text).width;
-              const tx = x + 4 * r + w > u.bbox.left + u.bbox.width ? x - 4 * r - w : x + 4 * r;
-              ctx.fillText(m.text, tx, top + 2 * r);
-            }
-            ctx.restore();
-          },
-        ],
+        setCursor: [(u) => cfg.onCursor && cfg.onCursor(u.cursor.idx)],
+        drawAxes: [(u) => {
+          if (cfg.baseline == null) return;
+          const ctx = u.ctx;
+          const y = Math.round(u.valToPos(cfg.baseline, "y", true)) + 0.5;
+          ctx.save();
+          ctx.strokeStyle = C.zero;
+          ctx.lineWidth = 1 * (window.uPlot.pxRatio || 1);
+          ctx.beginPath();
+          ctx.moveTo(u.bbox.left, y);
+          ctx.lineTo(u.bbox.left + u.bbox.width, y);
+          ctx.stroke();
+          ctx.restore();
+        }],
+        draw: [(u) => {
+          if (!cfg.markers || !cfg.markers.length) return;
+          const ctx = u.ctx;
+          const r = window.uPlot.pxRatio || 1;
+          ctx.save();
+          ctx.font = `${10 * r}px 'JetBrains Mono', monospace`;
+          ctx.textBaseline = "top";
+          for (const m of cfg.markers) {
+            const x = Math.round(u.valToPos(m.idx, "x", true)) + 0.5;
+            ctx.strokeStyle = m.color;
+            ctx.lineWidth = 1 * r;
+            ctx.setLineDash([2 * r, 3 * r]);
+            ctx.beginPath();
+            ctx.moveTo(x, u.bbox.top);
+            ctx.lineTo(x, u.bbox.top + u.bbox.height);
+            ctx.stroke();
+            ctx.fillStyle = m.color;
+            const w = ctx.measureText(m.text).width;
+            const tx = x + 4 * r + w > u.bbox.left + u.bbox.width ? x - 4 * r - w : x + 4 * r;
+            ctx.fillText(m.text, tx, u.bbox.top + 2 * r);
+          }
+          ctx.restore();
+        }],
       },
     };
-    const data = [xs, ...cfg.series.map((s) => s.values)];
-    const u = new window.uPlot(opts, data, container);
+    const u = new window.uPlot(opts, [xs, ...cfg.series.map((s) => s.values)], container);
     const ro = new ResizeObserver(() => {
-      const w = Math.max(260, container.clientWidth);
+      const w = Math.max(240, container.clientWidth);
       if (Math.abs(w - u.width) > 1) u.setSize({ width: w, height: heightFor() });
     });
     ro.observe(container);
@@ -373,30 +398,90 @@
     return u;
   }
 
-  function yRangeAround100(u, min, max) {
-    const lo = Math.min(isNum(min) ? min : 100, 100);
-    const hi = Math.max(isNum(max) ? max : 100, 100);
-    const pad = Math.max((hi - lo) * 0.08, 0.5);
-    return [Math.floor((lo - pad) * 2) / 2, Math.ceil((hi + pad) * 2) / 2];
+  function equityFigure(title, names, extra) {
+    // names: portfolio names in equity.series; extra: additional {label, values, color, dash, cls}
+    const eq = state.equity || {};
+    const labels = chartLabels();
+    const fig = el("figure", { class: "block figure" });
+    const head = el("div", { class: "fig-head" }, el("h2", null, title, el("span", { class: "h2-sub", text: " 100 = START" })));
+    fig.append(head);
+    if (!labels) {
+      fig.append(el("p", { class: "empty", text: "NO MARKED DAYS YET" }));
+      return fig;
+    }
+    const series = names.map((n) => {
+      const values = rebased((eq.series || {})[n]);
+      if (!values) return null;
+      const bench = String(n).startsWith("bench:");
+      return { label: shortName(n), values, color: colorOf(n), dash: bench ? BENCH_DASH[n] || [2, 4] : null,
+        width: n === "open-quality" && names.length > 3 ? 2.5 : bench ? 1.5 : 2, cls: agClass(n) };
+    }).filter(Boolean).concat(extra || []);
+    const ro = readout(labels, series, (v) => v.toFixed(1));
+    head.append(ro.box);
+    const markers = [];
+    const changes = eq.prompt_changes || {};
+    for (const n of names) {
+      for (const d of changes[n] || []) {
+        const idx = labels.indexOf(d);
+        if (idx > 0) markers.push({ idx, color: colorOf(n), text: "PROMPT EDIT" });
+      }
+    }
+    const box = el("div", { class: "chart" });
+    fig.append(box);
+    // Draw in z-order: benchmarks under agents, open-quality on top.
+    const order = series.map((s, i) => i).sort((a, b) => z(series[a]) - z(series[b]));
+    function z(s) { return s.dash ? 0 : s.cls === "ag-1" ? 2 : 1; }
+    later(() => lineChart(box, {
+      labels, height: [240, 320], series: order.map((i) => series[i]), fmt: (v) => v.toFixed(1),
+      axisFmt: (v) => String(Math.round(v)), yRange: yRangeAround100, baseline: 100, markers,
+      onCursor: (idx) => ro.set(idx),
+    }));
+    const edits = names.filter((n) => (changes[n] || []).length);
+    if (edits.length) {
+      fig.append(el("p", { class: "fig-note", text: "PROMPT EDIT: " + edits.map((n) => `${shortName(n)} ${changes[n].map(dShort).join(", ")}`).join(" · ") }));
+    }
+    return fig;
+  }
+
+  function sparkline(values, color) {
+    const W = 560, H = 120;
+    const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "none", "aria-hidden": "true", class: "spark" });
+    const pts = (values || []).map((v, i) => [i, v]).filter(([, v]) => isNum(v));
+    if (pts.length < 2) {
+      svg.append(svgEl("line", { x1: 0, y1: H / 2, x2: W, y2: H / 2, stroke: C.hair, "vector-effect": "non-scaling-stroke" }));
+      return svg;
+    }
+    const vs = pts.map(([, v]) => v).concat([100]);
+    const lo = Math.min(...vs), hi = Math.max(...vs);
+    const span = hi - lo || 1;
+    const n = values.length - 1 || 1;
+    const y = (v) => (H - 6 - ((v - lo) / span) * (H - 12)).toFixed(1);
+    svg.append(svgEl("line", { x1: 0, y1: y(100), x2: W, y2: y(100), stroke: C.hair, "vector-effect": "non-scaling-stroke" }));
+    svg.append(svgEl("polyline", { fill: "none", stroke: color, "stroke-width": 2, "vector-effect": "non-scaling-stroke",
+      points: pts.map(([i, v]) => `${((i / n) * W).toFixed(1)},${y(v)}`).join(" ") }));
+    return svg;
   }
 
   // ---------------------------------------------------------------------------------------------
   // Shared pieces
 
-  function section(id, title, ...children) {
-    return el("section", { class: "section", id }, el("h2", { text: title }), ...children);
+  function block(id, title, ...children) {
+    return el("section", { class: "block", id }, title ? el("h2", null, title) : null, ...children);
   }
-
-  function empty(text) {
-    return el("p", { class: "empty", text });
+  const empty = (text) => el("p", { class: "empty", text });
+  const scroll = (table, label) => el("div", { class: "scroll", role: "region", "aria-label": label, tabindex: "0" }, table);
+  function table(cls, head, rows, label) {
+    return scroll(el("table", { class: `grid-table ${cls || ""}` },
+      el("thead", null, el("tr", null, head.map(([h, num]) => el("th", { scope: "col", class: num ? "num" : null, text: h })))),
+      el("tbody", null, rows)), label);
   }
-
-  function tableScroll(table, label) {
-    return el("div", { class: "table-scroll", role: "region", "aria-label": label, tabindex: "0" }, table);
-  }
-
-  function statusMark(kind, label) {
-    return el("span", { class: `status status-${kind}` }, el("span", { class: "status-icon", "aria-hidden": "true" }), label);
+  const td = (text, cls) => el("td", { class: cls || null, text });
+  const num = (text, extra) => el("td", { class: `num ${extra || ""}`, text });
+  function more(rows, limit, render, label) {
+    const out = el("div");
+    out.append(render(rows.slice(0, limit)));
+    if (rows.length > limit) out.append(el("details", { class: "more" }, el("summary", { text: `${rows.length - limit} MORE` }), render(rows.slice(limit))));
+    return out;
   }
 
   function renderBanner() {
@@ -404,312 +489,263 @@
     box.replaceChildren();
     const h = state.meta && state.meta.health;
     if (!h || !h.stale) return;
-    const newest = h.newest_session;
-    const expected = h.last_expected_session;
-    const text = newest
-      ? `The newest agent session is from ${fmtDate(newest)}, and one was due on ${fmtDate(expected)}. ` +
-        "Until a new session runs, the agents place no orders."
-      : `No agent session has run yet, and the first was due on ${fmtDate(expected)}.`;
     box.append(el("div", { class: "banner", role: "alert" },
-      el("span", { class: "banner-icon", "aria-hidden": "true" }),
-      el("div", null, el("strong", { text: "Sessions are behind. " }), text)));
+      el("strong", { text: "■ STALE" }),
+      el("span", { text: h.newest_session ? `NEWEST SESSION ${dShort(h.newest_session)}` : "NO SESSION YET" }),
+      el("span", { text: `DUE ${dShort(h.last_expected_session)}` }),
+      el("a", { href: "#health", text: "HEALTH →" })));
   }
 
-  function renderNav(active) {
+  function renderMasthead(active) {
+    const m = state.meta;
+    const n = daysMarked();
+    document.getElementById("dayline").textContent = !m || !m.start_date ? "NOT STARTED"
+      : n ? `DAY ${n} · ${dShort(m.last_marked)}` : `DAY 1 · ${dShort(m.start_date)}`;
     const nav = document.getElementById("nav");
     nav.replaceChildren();
-    const link = (href, text, on, name) => el("a", { href, class: on ? "active" : null, "aria-current": on ? "page" : null },
-      name ? swatch(name) : null, text);
-    nav.append(link("#", "Overview", active === "overview"));
-    for (const a of agentsList()) nav.append(link(`#agent/${encodeURIComponent(a.name)}`, a.label || a.name, active === a.name, a.name));
-    nav.append(link("#how", "How this works", active === "how"));
-  }
-
-  function renderFooter() {
-    const p = document.getElementById("generated");
-    p.replaceChildren();
-    if (state.meta && state.meta.generated_at) {
-      p.append(`Data built ${fmtStamp(state.meta.generated_at)}. Data files: `,
-        el("a", { href: BASE, rel: "noopener noreferrer", text: BASE.replace(/^https?:\/\//, "") }), ".");
+    const first = agentsList()[0];
+    const items = [["#", "OVERVIEW", "overview"], [first ? `#agent/${encodeURIComponent(first.name)}` : "#", "AGENTS", "agent"],
+      ["#compare", "COMPARE", "compare"], ["#health", "HEALTH", "health"], ["#how", "METHOD", "how"]];
+    for (const [href, text, key] of items) {
+      nav.append(el("a", { href, class: active === key ? "active" : null, "aria-current": active === key ? "page" : null, text }));
     }
+    const g = document.getElementById("generated");
+    g.textContent = m && m.generated_at ? `BUILT ${fmtStamp(m.generated_at)}` : "";
   }
 
   // ---------------------------------------------------------------------------------------------
   // Overview
 
-  function healthStrip() {
+  function sessionsToday() {
     const m = state.meta;
     const h = m.health || {};
-    const items = [];
+    const N = agentsList().length;
+    if (!m.start_date) return el("span", { class: "muted", text: "NOT STARTED" });
+    if (!h.last_expected_session) return el("span", { text: "NONE DUE" });
+    const bad = new Set([...(h.missing || []), ...(h.failed || [])].filter((x) => x.date === h.last_expected_session).map((x) => x.agent));
+    const ok = N - bad.size;
+    return el("span", { class: ok === N && !h.stale ? "up" : "down", text: `${ok} / ${N} ●` });
+  }
 
-    // Sessions
-    const sess = el("div", { class: "health-item" }, el("h3", { text: "Sessions" }));
-    if (!m.start_date) sess.append(el("p", { text: "The experiment has not started. Day one is the first trading day after the schedule is turned on." }));
-    else if (!h.last_expected_session) sess.append(el("p", { text: `Day one is ${fmtDate(m.start_date)}. The check for missing sessions starts once its opening bell has passed.` }));
-    else {
-      sess.append(el("p", null, h.stale ? statusMark("critical", "Behind.") : statusMark("good", "Up to date."),
-        ` Newest session ${h.newest_session ? fmtDate(h.newest_session) : "none"}; the last one due was ${fmtDate(h.last_expected_session)}.`));
-    }
-    if (m.last_marked) sess.append(el("p", { class: "muted", text: `Portfolios marked to the close of ${fmtDate(m.last_marked)}.` }));
-    items.push(sess);
-
-    // Missing and failed
-    const mf = el("div", { class: "health-item" }, el("h3", { text: "Missing and failed sessions" }));
-    const missing = Array.isArray(h.missing) ? h.missing : [];
-    const failed = Array.isArray(h.failed) ? h.failed : [];
-    if (!missing.length && !failed.length) mf.append(el("p", { text: m.start_date ? "None." : "None yet." }));
-    if (missing.length) {
-      const byDate = new Map();
-      for (const x of missing) {
-        if (!byDate.has(x.date)) byDate.set(x.date, []);
-        byDate.get(x.date).push(labelOf(x.agent));
-      }
-      mf.append(el("p", { class: "list-label", text: `Missing (${missing.length})` }),
-        el("ul", { class: "plain-list" }, [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? 1 : -1)).map(([d, names]) =>
-          el("li", null, el("span", { class: "nowrap", text: fmtDate(d) }), ": ", names.join(", ")))));
-    }
-    if (failed.length) {
-      mf.append(el("p", { class: "list-label", text: `Failed (${failed.length})` }),
-        el("ul", { class: "plain-list" }, failed.slice().sort((a, b) => (a.date < b.date ? 1 : -1)).map((x) =>
-          el("li", null, el("span", { class: "nowrap", text: fmtDate(x.date) }), `: ${labelOf(x.agent)}`,
-            x.reason ? el("span", { class: "muted", text: ` (${x.reason})` }) : null))));
-    }
-    items.push(mf);
-
-    // Spend
+  function statusLine() {
+    const m = state.meta;
+    const h = m.health || {};
     const b = m.budget || {};
-    const sp = el("div", { class: "health-item" }, el("h3", { text: `API spend, ${fmtMonth(b.month)}` }));
-    if (isNum(b.cap) && b.cap > 0) {
-      const spent = isNum(b.spent) ? b.spent : 0;
-      const proj = isNum(b.projection) ? b.projection : spent;
-      sp.append(el("p", null, el("strong", { class: "big", text: money(spent, 2) }), ` of the ${money(b.cap, 0)} monthly cap`));
-      const meter = el("div", { class: "meter", role: "img",
-        "aria-label": `${money(spent, 2)} spent, ${money(proj, 2)} projected, cap ${money(b.cap, 0)}` });
-      const fill = el("span", { class: "meter-fill" + (spent >= b.cap ? " over" : "") });
-      fill.style.width = `${Math.min(100, (spent / b.cap) * 100)}%`;
-      const tick = el("span", { class: "meter-proj" + (proj > b.cap ? " over" : "") });
-      tick.style.left = `${Math.min(100, (proj / b.cap) * 100)}%`;
-      meter.append(fill, tick);
-      sp.append(meter);
-      sp.append(el("p", null, proj > b.cap ? statusMark("warning", "Above the cap") : null,
-        `${proj > b.cap ? " " : ""}Projected for the month at this pace: ${money(proj, 2)}.`));
-      sp.append(el("p", { class: "muted", text: "Sessions, dry runs and digest summaries, from the harness's own records. At the cap, sessions stop until the next month." }));
-    } else sp.append(el("p", { text: "No budget recorded." }));
-    items.push(sp);
-
-    return el("div", { class: "health" }, items);
+    const item = (label, ...value) => el("span", { class: "st-item" }, el("span", { class: "label", text: label }), " ", ...value);
+    const line = el("section", { class: "status-line", "aria-label": "Status" });
+    line.append(item("SESSIONS", sessionsToday()));
+    const missing = (h.missing || []).length, failed = (h.failed || []).length;
+    if (missing || failed) {
+      line.append(item("GAPS", el("a", { href: "#health", class: "down", text: [missing ? `${missing} MISSING` : "", failed ? `${failed} FAILED` : ""].filter(Boolean).join(" · ") })));
+    }
+    const next = nextSession();
+    if (next) line.append(item("NEXT", next));
+    if (isNum(b.cap)) {
+      line.append(item("SPEND", `${money(b.spent, 2)} / ${money(b.cap)}`,
+        isNum(b.projection) ? el("span", { class: b.projection > b.cap ? "warn" : "muted", text: ` PROJ ${money(b.projection, 0)}` }) : null));
+    }
+    line.append(item("MARKED", m.last_marked ? `${dShort(m.last_marked)} CLOSE` : "NOT YET"));
+    return line;
   }
 
-  function evidenceNote() {
-    const stats = state.stats || {};
-    const agents = agentsList();
-    const n = (stats["bench:spy"] && stats["bench:spy"].days) || Math.max(0, ...agents.map((a) => (stats[a.name] || {}).days || 0));
-    const box = el("aside", { class: "note" }, el("h3", { text: "What this much data can show" }));
-    if (!n) {
-      box.append(el("p", { text: "No trading day has been marked yet. The numbers start after the first close." }));
-      return box;
-    }
-    const ses = agents.map((a) => (stats[a.name] || {}).excess_vs_spy_se).filter(isNum).map((x) => 2 * x * 100).sort((a, b) => a - b);
-    if (!ses.length) {
-      box.append(el("p", { text: `${plural(n, "trading day")} so far. A range needs at least two days of returns, so nothing here can be told apart from luck yet.` }));
-    } else {
-      const mid = ses.length % 2 ? ses[(ses.length - 1) / 2] : (ses[ses.length / 2 - 1] + ses[ses.length / 2]) / 2;
-      box.append(el("p", { text:
-        `${plural(n, "trading day")} so far. Over that stretch, an excess return within about ±${mid.toFixed(1)} points of zero ` +
-        "cannot be told apart from luck. That figure is two standard errors of the daily excess returns, the median across the agents." }));
-      const clear = agents.filter((a) => {
-        const s = stats[a.name] || {};
-        return isNum(s.excess_vs_spy) && isNum(s.excess_vs_spy_se) && s.excess_vs_spy_se > 0 &&
-          Math.abs(s.excess_vs_spy) > 2 * s.excess_vs_spy_se;
-      });
-      if (!clear.length) box.append(el("p", { text: "Every agent's range against SPY still includes zero." }));
-      else {
-        box.append(el("p", { text:
-          `The range against SPY excludes zero for ${clear.map((a) => a.label || a.name).join(" and ")}. ` +
-          `With ${plural(n, "day")} and one run, that is a lead to keep watching; it would need to hold for months before it means much.` }));
+  function latestThesis(a) {
+    const orders = a && Array.isArray(a.orders) ? a.orders : [];
+    const o = orders.find((x) => x && x.action !== "close" && String(x.thesis || "").trim());
+    return o ? `${o.ticker}: ${String(o.thesis).replace(/\s+/g, " ")}` : null;
+  }
+
+  // Before the first close there are no stats; the book is still all cash, so 0.0%, shown muted.
+  function bigReturn(s, a) {
+    if ((s.days || 0) > 0) return el("div", { class: `big ${dir(s.total_return) === "down" ? "down" : ""}`, text: pct(s.total_return) });
+    const start = isNum(state.equity && state.equity.start_cash) ? state.equity.start_cash : 100000;
+    const r = a && isNum(a.equity) ? a.equity / start - 1 : null;
+    return el("div", { class: "big none", text: isNum(r) ? pctPlain(r, 1) : "0.0%" });
+  }
+
+  function agentColumn(meta) {
+    const name = meta.name;
+    const s = statsOf(name);
+    const a = state.agents[name];
+    const has = (s.days || 0) > 0;
+    const inv = (state.equity && state.equity.invested_fraction || {})[name];
+    const lastInv = Array.isArray(inv) ? [...inv].reverse().find(isNum) : null;
+    const row = (label, ...value) => el("div", { class: "kv" }, el("span", { class: "label", text: label }), el("span", null, ...value));
+    const quote = latestThesis(a);
+    return el("article", { class: "agent-col" },
+      el("a", { class: `agent-link ${agClass(name)}`, href: `#agent/${encodeURIComponent(name)}` }, square(name), `${upper(name)} →`),
+      bigReturn(s, a),
+      sparkline(rebased((state.equity && state.equity.series || {})[name]), colorOf(name)),
+      el("div", { class: "kvs" },
+        row("VS SPY", el("span", { class: dir(s.excess_vs_spy), text: has ? pts(s.excess_vs_spy) : DASH }), " ",
+          el("span", { class: "muted", text: has ? band(s.excess_vs_spy_se) : "" })),
+        row("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH),
+        row("MAX DD", has ? pct(s.max_drawdown) : DASH),
+        row("TRADES", has || s.trades_closed ? `${(s.trades_closed || 0) + (s.trades_open || 0)}` : DASH,
+          s.trades_open ? el("span", { class: "muted", text: ` · ${s.trades_open} OPEN` }) : null)),
+      el("div", { class: "quote", title: quote || "", text: `> ${quote || "NO TRADES YET"}` }));
+  }
+
+  function noiseNote() {
+    const n = daysMarked();
+    if (!n) return null;
+    const ses = agentsList().map((a) => statsOf(a.name).excess_vs_spy_se).filter(isNum).map((x) => 2 * x * 100).sort((x, y) => x - y);
+    const mid = ses.length ? ses[Math.floor((ses.length - 1) / 2)] : null;
+    return el("p", { class: "note-line", text:
+      `± = 2 SE · ${n} ${n === 1 ? "DAY" : "DAYS"} · 1 RUN PER AGENT · EXCESS INSIDE ± IS NOISE` + (mid != null ? ` · TYPICAL ±${mid.toFixed(1)} PTS` : "") });
+  }
+
+  function horizonCell(p) {
+    const lm = state.meta.last_marked;
+    if (!p.horizon_end) return td(DASH);
+    if (lm && p.horizon_end <= lm) return td("EXPIRED", "warn");
+    const n = lm ? tradingDaysBetween(lm, p.horizon_end) : null;
+    return td(n != null ? `${n}d` : dShort(p.horizon_end));
+  }
+
+  function positionsOverview() {
+    const rows = [];
+    for (const meta of agentsList()) {
+      const a = state.agents[meta.name];
+      for (const p of (a && Array.isArray(a.positions) ? a.positions : []).slice().sort((x, y) => (y.weight || 0) - (x.weight || 0))) {
+        rows.push(el("tr", null,
+          el("td", { class: "ticker", text: String(p.ticker) }),
+          el("td", { class: `${agClass(meta.name)} nowrap`, text: meta.name }),
+          num(pctPlain(p.weight, 1)),
+          num(pct(p.pnl_pct), dir(p.pnl_pct)),
+          horizonCell(p),
+          el("td", { class: "thesis", text: p.thesis ? String(p.thesis) : DASH })));
       }
     }
-    box.append(el("p", { text:
-      "Each agent is a single run. A gap between two agents can come from the particular trades one run happened to make, " +
-      "and the same prompt run again could land somewhere else. The range also treats days as independent, which flatters an " +
-      "agent that holds the same few stocks for weeks." }));
-    box.append(el("p", { class: "muted", text: "The range shrinks with the square root of the number of days: four times as many days halves it." }));
-    return box;
-  }
-
-  function cellRange(x, se) {
-    const r = range2se(x, se);
-    return el("td", { class: "num" }, el("span", { class: "v", text: pts(x) }),
-      el("span", { class: "sub", text: r ? `±2 SE: ${r}` : isNum(x) ? "range needs 2+ days" : "" }));
-  }
-
-  function resultsTable() {
-    const stats = state.stats || {};
-    const head = ["", "Total return", "Excess over SPY", "Excess over exposure-matched SPY", "Max drawdown",
-      "Average invested", "Trades closed / open", "Turnover", "Slippage paid", "Sessions decided", "API spend"];
-    const thead = el("thead", null, el("tr", null, head.map((h, i) => el("th", { scope: "col", class: i ? "num" : null, text: h }))));
-    const tbody = el("tbody");
-    for (const a of agentsList()) {
-      const s = stats[a.name] || {};
-      const has = (s.days || 0) > 0;
-      tbody.append(el("tr", null,
-        el("th", { scope: "row" }, el("a", { href: `#agent/${encodeURIComponent(a.name)}` }, swatch(a.name), a.label || a.name)),
-        el("td", { class: "num", text: has ? pct(s.total_return) : DASH }),
-        has ? cellRange(s.excess_vs_spy, s.excess_vs_spy_se) : el("td", { class: "num", text: DASH }),
-        has ? cellRange(s.excess_vs_matched, s.excess_vs_matched_se) : el("td", { class: "num", text: DASH }),
-        el("td", { class: "num", text: has ? pct(s.max_drawdown) : DASH }),
-        el("td", { class: "num", text: has ? pctPlain(s.avg_invested) : DASH }),
-        el("td", { class: "num", text: has ? `${s.trades_closed ?? 0} / ${s.trades_open ?? 0}` : DASH }),
-        el("td", { class: "num", text: has && isNum(s.turnover) ? `${s.turnover.toFixed(2)}×` : DASH }),
-        el("td", { class: "num", text: has ? money(s.slippage_paid) : DASH }),
-        el("td", { class: "num", text: isNum(s.days_run) ? (s.days ? `${s.days_run} of ${plural(s.days, "day")}` : String(s.days_run)) : DASH }),
-        el("td", { class: "num", text: isNum(s.api_spend) ? money(s.api_spend, 2) : DASH })));
-    }
-    for (const b of benchList()) {
-      const s = stats[b.name] || {};
-      const has = (s.days || 0) > 0;
-      const isSpy = b.name === "bench:spy";
-      tbody.append(el("tr", { class: "bench" },
-        el("th", { scope: "row" }, swatch(b.name), b.label || b.name),
-        el("td", { class: "num", text: has ? pct(s.total_return) : DASH }),
-        has && !isSpy ? cellRange(s.excess_vs_spy, s.excess_vs_spy_se) : el("td", { class: "num", text: DASH }),
-        el("td", { class: "num", text: DASH }),
-        el("td", { class: "num", text: has ? pct(s.max_drawdown) : DASH }),
-        el("td", { class: "num", text: has ? pctPlain(s.avg_invested) : DASH }),
-        el("td", { class: "num", text: DASH }),
-        el("td", { class: "num", text: has && isNum(s.turnover) ? `${s.turnover.toFixed(2)}×` : DASH }),
-        el("td", { class: "num", text: has ? money(s.slippage_paid) : DASH }),
-        el("td", { class: "num", text: DASH }),
-        el("td", { class: "num", text: DASH })));
-    }
-    return tableScroll(el("table", { class: "data results" }, thead, tbody), "Results per agent");
-  }
-
-  function resultsFootnotes() {
-    return el("dl", { class: "footnotes" },
-      el("dt", { text: "Excess" }), el("dd", { text: "The portfolio's cumulative return minus the comparison's over the same days, in percentage points. The range under it is plus or minus two standard errors, from the spread of the daily differences." }),
-      el("dt", { text: "Exposure-matched SPY" }), el("dd", { text: "Each day, the agent's invested fraction from the day before times SPY's return, the rest in cash. Beating it means the stock picks did better than simply being that much in the market." }),
-      el("dt", { text: "Max drawdown" }), el("dd", { text: "The largest fall from a previous high, starting from $100,000." }),
-      el("dt", { text: "Turnover" }), el("dd", { text: "Value bought and sold, divided by average equity." }),
-      el("dt", { text: "Slippage paid" }), el("dd", { text: "What the fill rule cost against the reference price, in dollars, stops and targets included." }),
-      el("dt", { text: "Sessions decided" }), el("dd", { text: "Sessions that ended with a decision, against trading days marked. Holds and failures are listed on each agent's page." }));
-  }
-
-  function equityChart(container) {
-    const eq = state.equity || {};
-    const names = agentsList().map((a) => a.name).concat(benchList().map((b) => b.name));
-    const d = chartData(names, (n) => rebased((eq.series || {})[n]));
-    if (!d) {
-      container.append(empty("Nothing to draw yet. The first point appears once the first trading day has closed and been marked."));
-      return;
-    }
-    const dates = d.labels;
-    const markers = [];
-    const changes = eq.prompt_changes || {};
-    for (const a of agentsList()) {
-      for (const day of changes[a.name] || []) {
-        const idx = dates.indexOf(day);
-        if (idx > 0) markers.push({ idx, color: agentColor(a.name), text: "prompt edit" });
-      }
-    }
-    const wrapper = el("div", { class: "chart" });
-    container.append(wrapper);
-    lineChart(wrapper, {
-      labels: dates,
-      height: [280, 360],
-      series: d.series.map((s) => ({ label: labelOf(s.name), values: s.values, ...seriesStyle(s.name) })),
-      fmt: (v) => v.toFixed(1),
-      axisFmt: (v) => (Number.isInteger(v) ? String(v) : v.toFixed(1)),
-      yRange: yRangeAround100,
-      markers,
-    });
-    const listed = agentsList().filter((a) => (changes[a.name] || []).length);
-    container.append(el("p", { class: "caption" },
-      "Value of each $100,000 portfolio, with 100 as the starting cash. Benchmarks are the dashed grey lines. Hover or tap for values on a day.",
-      listed.length ? " Prompt edits, marked with a thin vertical line: " +
-        listed.map((a) => `${a.label || a.name} on ${changes[a.name].map(fmtDate).join(", ")}`).join("; ") +
-        ". Numbers before and after an edit come from different prompts." : ""));
-  }
-
-  function comparisonTable() {
-    const pairs = (state.comparison && Array.isArray(state.comparison.pairs)) ? state.comparison.pairs : [];
-    if (!pairs.length) return empty("No pairs to compare yet.");
-    const tbody = el("tbody");
-    for (const p of pairs) {
-      tbody.append(el("tr", null,
-        el("th", { scope: "row" }, el("span", { class: "pair" }, swatch(p.a), labelOf(p.a)), el("span", { class: "pair-and", text: " and " }),
-          el("span", { class: "pair" }, swatch(p.b), labelOf(p.b))),
-        el("td", { class: "num", text: isNum(p.overlap) ? pctPlain(p.overlap) : DASH }),
-        el("td", { class: "num", text: isNum(p.correlation) ? signed(p.correlation, 2) : DASH })));
-    }
-    return el("div", null,
-      tableScroll(el("table", { class: "data compare" },
-        el("thead", null, el("tr", null, el("th", { scope: "col", text: "Pair" }),
-          el("th", { scope: "col", class: "num", text: "Holdings in common" }),
-          el("th", { scope: "col", class: "num", text: "Correlation of daily returns" }))), tbody), "Agents side by side"),
-      el("p", { class: "caption", text:
-        "Holdings in common: the share of equity both hold in the same stocks today, counting the smaller weight of each stock. " +
-        "Correlation: of the two daily return series, from 1 (move together) to −1 (move opposite). " +
-        "A dash means it is not defined yet: correlation needs five days of returns from both and a book that moves; overlap needs at least one of the two to hold something." }));
-  }
-
-  function benchmarksSection() {
-    return section("benchmarks", "Benchmarks",
-      el("ul", { class: "defs" },
-        el("li", null, el("strong", { text: "SPY buy and hold. " }), "The S&P 500 ETF, bought at the opening auction of day one with 0.10% slippage and held, dividends credited."),
-        el("li", null, el("strong", { text: "QQQ buy and hold. " }), "The Nasdaq-100 ETF, bought and held the same way."),
-        el("li", null, el("strong", { text: "Tech ten, equal weight. " }), "The ten stocks the Tech ten agent may trade, 10% each on day one, then held without rebalancing."),
-        el("li", null, el("strong", { text: "Exposure-matched SPY. " }), "One per agent: SPY's daily return times the agent's invested fraction from the day before, the rest in cash. It shows what being that much in the market would have done without picking stocks.")));
-  }
-
-  function howSection() {
-    const tt = Array.isArray(state.meta && state.meta.tech_ten) ? state.meta.tech_ten : [];
-    return section("how", "How this works",
-      el("ul", { class: "defs" },
-        el("li", { text: "Four Claude agents each start with $100,000 of paper money. Prices are real (Alpaca market data); the money and the fills are simulated by the project's own ledger." }),
-        el("li", { text: "Once a day, before the US open (from 13:30 Amsterdam time), each agent reads its own notes and a daily digest of market moves and headlines, researches, and submits orders. All agents use the same model, so the comparison is between strategies." }),
-        el("li", { text: "Orders fill at that day's opening auction price. Slippage per side by company size: 0.10% above $10B market cap, 0.25% from $2B to $10B, 0.50% from $300M to $2B. No commission." }),
-        el("li", { text: "Long only: no shorting, no leverage, no negative cash. The open-universe agents may buy US-listed stocks and ADRs priced at $5 or more with a market cap of at least $300M." }),
-        el("li", { text: "Every buy carries a stop, a target and a horizon. Code checks stops and targets against each day's low and high and exits there, or at the open if the price gapped through. When a horizon passes, the agent has to close the position or extend it with a fresh thesis." }),
-        el("li", { text: "The numbers on this page are rebuilt after each US close." + (tt.length ? ` The tech ten are ${tt.join(", ")}.` : "") })),
-      el("h3", { text: "The agents" }),
-      el("ul", { class: "defs" }, agentsList().map((a) =>
-        el("li", null, el("a", { href: `#agent/${encodeURIComponent(a.name)}` }, swatch(a.name), el("strong", { text: a.label || a.name })), `. ${a.description || ""}`))),
-      el("p", null, "Code, prompts, ledgers and every session log are public: ",
-        el("a", { href: repoUrl(""), rel: "noopener noreferrer", text: "the GitHub repository" }), ", and the full design with every decision behind it is in ",
-        el("a", { href: repoUrl("/blob/main/docs/PLAN.md"), rel: "noopener noreferrer", text: "docs/PLAN.md" }), "."));
+    if (!rows.length) return block("positions", "POSITIONS", empty(state.meta.last_marked ? "ALL CASH" : "NO POSITIONS YET"));
+    return block("positions", "POSITIONS", table("positions", [["TICKER"], ["AGENT"], ["WEIGHT", 1], ["P&L", 1], ["HORIZON"], ["THESIS"]], rows, "Positions"));
   }
 
   function renderOverview(main) {
+    main.append(statusLine());
+    main.append(el("section", { class: "agent-cols", "aria-label": "Agents" }, agentsList().map(agentColumn)));
+    const note = noiseNote();
+    if (note) main.lastChild.after(note);
+    main.append(equityFigure("EQUITY", agentsList().map((a) => a.name).concat(benchList().map((b) => b.name))));
+    main.append(positionsOverview());
+  }
+
+  // ---------------------------------------------------------------------------------------------
+  // Compare
+
+  function standings() {
+    const head = [["AGENT"], ["RETURN", 1], ["VS SPY", 1], ["± 2 SE", 1], ["VS MATCHED", 1], ["± 2 SE", 1], ["MAX DD", 1],
+      ["AVG INV", 1], ["TRADES", 1], ["TURNOVER", 1], ["SLIPPAGE", 1], ["SESSIONS", 1], ["API $", 1]];
+    const rows = [];
+    for (const name of agentsList().map((a) => a.name).concat(benchList().map((b) => b.name))) {
+      const s = statsOf(name);
+      const has = (s.days || 0) > 0;
+      const bench = name.startsWith("bench:");
+      const isSpy = name === "bench:spy";
+      rows.push(el("tr", { class: bench ? "bench-row" : null },
+        el("th", { scope: "row", class: agClass(name) }, square(name),
+          bench ? shortName(name) : el("a", { href: `#agent/${encodeURIComponent(name)}`, class: agClass(name), text: upper(name) })),
+        num(has ? pct(s.total_return) : DASH, has ? dir(s.total_return) : ""),
+        num(has && !isSpy ? pts(s.excess_vs_spy) : DASH, has && !isSpy ? dir(s.excess_vs_spy) : ""),
+        num(has && !isSpy ? band(s.excess_vs_spy_se) || DASH : DASH, "muted"),
+        num(has && !bench ? pts(s.excess_vs_matched) : DASH, has && !bench ? dir(s.excess_vs_matched) : ""),
+        num(has && !bench ? band(s.excess_vs_matched_se) || DASH : DASH, "muted"),
+        num(has ? pct(s.max_drawdown) : DASH),
+        num(has ? pctPlain(s.avg_invested) : DASH),
+        num(!bench && has ? `${s.trades_closed ?? 0} / ${s.trades_open ?? 0}` : DASH),
+        num(has && isNum(s.turnover) ? `${s.turnover.toFixed(2)}×` : DASH),
+        num(has ? money(s.slippage_paid) : DASH),
+        num(!bench && isNum(s.days_run) ? (s.days ? `${s.days_run} / ${s.days}` : String(s.days_run)) : DASH),
+        num(!bench && isNum(s.api_spend) ? money(s.api_spend, 2) : DASH)));
+    }
+    return block("standings", "STANDINGS", table("standings", head, rows, "Standings"),
+      el("p", { class: "note-line", text: "PTS = PERCENTAGE POINTS · ± = 2 SE · MATCHED = SPY × PRIOR-DAY INVESTED · TRADES CLOSED / OPEN · SESSIONS DECIDED / DAYS" }));
+  }
+
+  function pairsBlock() {
+    const pairs = state.comparison && Array.isArray(state.comparison.pairs) ? state.comparison.pairs : [];
+    if (!pairs.length) return block("pairs", "PAIRS", empty("NO PAIRS YET"));
+    const rows = pairs.map((p) => el("tr", null,
+      el("th", { scope: "row" }, el("span", { class: agClass(p.a) }, square(p.a), upper(p.a)), el("span", { class: "muted", text: " × " }),
+        el("span", { class: agClass(p.b) }, square(p.b), upper(p.b))),
+      num(isNum(p.overlap) ? pctPlain(p.overlap) : DASH),
+      num(isNum(p.correlation) ? signed(p.correlation, 2) : DASH)));
+    return block("pairs", "PAIRS", table("pairs", [["PAIR"], ["OVERLAP", 1], ["CORR", 1]], rows, "Pairs"),
+      el("p", { class: "note-line", text: "OVERLAP = SHARED WEIGHT TODAY · CORR = DAILY RETURNS, NEEDS 5+ DAYS AND A BOOK THAT MOVES" }));
+  }
+
+  function renderCompare(main) {
+    main.append(standings(), pairsBlock());
+  }
+
+  // ---------------------------------------------------------------------------------------------
+  // Health
+
+  function renderHealth(main) {
     const m = state.meta;
-    const n = (state.stats && state.stats["bench:spy"] && state.stats["bench:spy"].days) || 0;
-    const intro = m.start_date
-      ? `Day one was ${fmtDate(m.start_date)}. ${n ? `${plural(n, "trading day")} marked so far, the latest ${fmtDate(m.last_marked)}.` : "No trading day has closed yet."}`
-      : "The experiment has not started yet.";
-    main.append(
-      el("div", { class: "page-head" },
-        el("h1", { text: "Four Claude agents trading paper money" }),
-        el("p", { class: "lede", text: "Each agent has $100,000 of fake money and trades once a day before the US open, against real prices and a few plain benchmarks. " + intro })),
-      healthStrip());
+    const h = m.health || {};
+    const b = m.budget || {};
+    const cells = el("div", { class: "cells" });
+    const cell = (label, value, sub) => el("div", { class: "cell" }, el("div", { class: "label", text: label }), el("div", { class: "cell-value" }, value),
+      sub ? el("div", { class: "cell-sub" }, sub) : null);
+    cells.append(cell("SESSIONS", sessionsToday(), h.last_expected_session ? `DUE ${dShort(h.last_expected_session)} · NEWEST ${h.newest_session ? dShort(h.newest_session) : DASH}` : null));
+    cells.append(cell("NEXT", nextSession() || DASH, m.start_date ? `DAY ONE ${dShort(m.start_date)}` : null));
+    cells.append(cell("MARKED", m.last_marked ? `${dShort(m.last_marked)} CLOSE` : "NOT YET"));
+    if (isNum(b.cap) && b.cap > 0) {
+      const spent = isNum(b.spent) ? b.spent : 0;
+      const proj = isNum(b.projection) ? b.projection : spent;
+      const meter = el("div", { class: "meter", role: "img", "aria-label": `${money(spent, 2)} spent, ${money(proj, 2)} projected, cap ${money(b.cap)}` });
+      const fill = el("span", { class: "meter-fill" });
+      fill.style.width = `${Math.min(100, (spent / b.cap) * 100)}%`;
+      const tick = el("span", { class: `meter-proj ${proj > b.cap ? "over" : ""}` });
+      tick.style.left = `${Math.min(100, (proj / b.cap) * 100)}%`;
+      meter.append(fill, tick);
+      cells.append(cell(`SPEND ${fmtMonth(b.month)}`, el("span", null, money(spent, 2), el("span", { class: "muted", text: ` / ${money(b.cap)}` })),
+        el("span", null, meter, el("span", { class: proj > b.cap ? "warn" : "" , text: `PROJ ${money(proj, 2)}` }))));
+    }
+    cells.classList.add("cells-wide");
+    main.append(block("health-now", "HEALTH", cells));
+    const missing = (h.missing || []).slice().sort((x, y) => (x.date < y.date ? 1 : -1));
+    const failed = (h.failed || []).slice().sort((x, y) => (x.date < y.date ? 1 : -1));
+    main.append(block("missing", `MISSING ${missing.length}`, missing.length
+      ? table("gaps", [["DATE"], ["AGENT"]], missing.map((x) => el("tr", null, td(dLong(x.date)), td(x.agent, agClass(x.agent)))), "Missing sessions")
+      : empty("NONE")));
+    main.append(block("failed", `FAILED ${failed.length}`, failed.length
+      ? table("gaps", [["DATE"], ["AGENT"], ["REASON"]], failed.map((x) => el("tr", null, td(dLong(x.date)), td(x.agent, agClass(x.agent)), td(x.reason || DASH, "wrap"))), "Failed sessions")
+      : empty("NONE")));
+  }
 
-    const chartSec = section("equity", "Equity, rebased to 100");
-    main.append(chartSec);
-    equityChart(chartSec);
+  // ---------------------------------------------------------------------------------------------
+  // Method
 
-    main.append(section("results", "Results per agent", resultsTable(),
-      el("div", { class: "results-layout" }, resultsFootnotes(), evidenceNote())));
-    main.append(section("comparison", "Agents side by side", comparisonTable()));
-    main.append(benchmarksSection());
-    main.append(howSection());
+  function renderHow(main) {
+    const tt = Array.isArray(state.meta.tech_ten) ? state.meta.tech_ten : [];
+    const li = (...c) => el("li", null, ...c);
+    main.append(block("how", "METHOD", el("ul", { class: "terse" },
+      li("$100,000 PAPER MONEY PER AGENT · REAL PRICES (ALPACA)"),
+      li("ONE SESSION PER TRADING DAY, FROM 13:30 AMSTERDAM, BEFORE THE US OPEN"),
+      li("SAME MODEL FOR EVERY AGENT"),
+      li("FILLS AT THE OPENING AUCTION · NO COMMISSION"),
+      li("SLIPPAGE PER SIDE: 0.10% ABOVE $10B · 0.25% $2B–10B · 0.50% $300M–2B"),
+      li("LONG ONLY · NO LEVERAGE · NO NEGATIVE CASH"),
+      li("OPEN UNIVERSE: US STOCKS AND ADRS, PRICE ≥ $5, MARKET CAP ≥ $300M"),
+      li("EVERY BUY: STOP, TARGET, HORIZON · STOPS AND TARGETS ENFORCED BY CODE ON DAILY HIGH/LOW"),
+      li("PAST HORIZON: AGENT MUST CLOSE OR EXTEND WITH A NEW THESIS"),
+      tt.length ? li(`TECH TEN: ${tt.join(" ")}`) : null)));
+    main.append(block("benchmarks", "BENCHMARKS", el("ul", { class: "terse" },
+      li(el("span", { class: "label", text: "SPY " }), "BOUGHT DAY ONE AT THE OPEN, 0.10% SLIPPAGE, HELD, DIVIDENDS CREDITED"),
+      li(el("span", { class: "label", text: "QQQ " }), "SAME"),
+      li(el("span", { class: "label", text: "TECH-10 EW " }), "THE TEN, 10% EACH ON DAY ONE, NO REBALANCING"),
+      li(el("span", { class: "label", text: "MATCHED " }), "PER AGENT: SPY × PRIOR-DAY INVESTED FRACTION, REST CASH"))));
+    main.append(block("agents", "AGENTS", el("ul", { class: "terse" }, agentsList().map((a) =>
+      li(el("a", { href: `#agent/${encodeURIComponent(a.name)}`, class: agClass(a.name) }, square(a.name), upper(a.name)), el("span", { class: "muted", text: ` ${a.description || ""}` }))))));
+    main.append(block("links", "SOURCE", el("ul", { class: "terse" },
+      li(el("a", { href: repoUrl(""), rel: "noopener noreferrer", text: "GITHUB REPOSITORY" })),
+      li(el("a", { href: repoUrl("/blob/main/docs/PLAN.md"), rel: "noopener noreferrer", text: "DOCS/PLAN.MD" })),
+      li(el("a", { href: BASE.startsWith("https://") ? BASE : "#", rel: "noopener noreferrer", text: "RAW DATA FILES" })))));
   }
 
   // ---------------------------------------------------------------------------------------------
   // Agent page
-
-  function tile(label, value, sub) {
-    return el("div", { class: "tile" }, el("div", { class: "tile-label", text: label }), el("div", { class: "tile-value", text: value }),
-      sub ? el("div", { class: "tile-sub", text: sub }) : null);
-  }
 
   function sourceList(sources) {
     const list = (Array.isArray(sources) ? sources : []).map((s) => (typeof s === "string" ? { url: s } : s || {}));
@@ -720,13 +756,13 @@
       let item;
       if (safe) {
         const u = new URL(safe);
-        const host = u.hostname.replace(/^www\./, "");
         const rest = (u.pathname + u.search).replace(/\/$/, "");
-        item = el("li", null, extLink(safe, el("span", { class: "src-domain", text: host }), el("span", { class: "src-path", text: rest.length > 64 ? rest.slice(0, 63) + "…" : rest })));
+        item = el("li", null, extLink(safe, el("span", { class: "src-domain", text: u.hostname.replace(/^www\./, "") }),
+          el("span", { class: "src-path", text: rest.length > 60 ? rest.slice(0, 59) + "…" : rest })));
       } else {
-        item = el("li", null, el("span", { class: "src-domain", text: raw.slice(0, 120) || "(empty)" }), el("span", { class: "muted", text: " not linked: only https addresses are" }));
+        item = el("li", null, el("span", { class: "src-domain", text: raw.slice(0, 120) || "(EMPTY)" }), el("span", { class: "muted", text: " NOT LINKED (NOT HTTPS)" }));
       }
-      if (s.read) item.append(el("span", { class: "muted", text: " · read in the session" }));
+      if (s.read) item.append(el("span", { class: "muted", text: " · READ" }));
       if (s.answer) item.append(el("div", { class: "src-answer", text: String(s.answer) }));
       return item;
     }));
@@ -735,230 +771,193 @@
   function chainList(chain) {
     const steps = Array.isArray(chain) ? chain.filter((c) => c && String(c.step || "").trim()) : [];
     if (!steps.length) return null;
-    return el("ol", { class: "chain" }, steps.map((c) => el("li", null, String(c.step),
-      c.source_url ? el("div", { class: "chain-src" }, sourceList([c.source_url])) : null)));
+    return el("ol", { class: "chain" }, steps.map((c) => el("li", null, String(c.step), c.source_url ? sourceList([c.source_url]) : null)));
   }
 
-  function positionsBlock(a) {
+  function agentSwitcher(active) {
+    return el("nav", { class: "switcher", "aria-label": "Agents" }, agentsList().map((a) =>
+      el("a", { href: `#agent/${encodeURIComponent(a.name)}`, class: `${agClass(a.name)} ${a.name === active ? "active" : ""}`,
+        "aria-current": a.name === active ? "page" : null }, square(a.name), upper(a.name))));
+  }
+
+  function agentHead(name, a) {
+    const s = statsOf(name);
+    const has = (s.days || 0) > 0;
+    const cell = (label, value, cls, sub) => el("div", { class: "cell" }, el("div", { class: "label", text: label }),
+      el("div", { class: `cell-value ${cls || ""}`, text: value }), sub ? el("div", { class: "cell-sub", text: sub }) : null);
+    const inv = (state.equity && state.equity.invested_fraction || {})[name];
+    const lastInv = Array.isArray(inv) ? [...inv].reverse().find(isNum) : null;
+    return el("section", { class: "agent-head" },
+      el("h1", { class: `agent-title ${agClass(name)}` }, square(name), upper(name)),
+      el("p", { class: "desc", text: String(a.description || "") }),
+      el("div", { class: "hero" },
+        bigReturn(s, a),
+        el("div", { class: "cells" },
+          cell("EQUITY", money(a.equity)),
+          cell("CASH", money(a.cash)),
+          cell("VS SPY", has ? pts(s.excess_vs_spy) : DASH, dir(s.excess_vs_spy), has ? band(s.excess_vs_spy_se) : null),
+          cell("VS MATCHED", has ? pts(s.excess_vs_matched) : DASH, dir(s.excess_vs_matched), has ? band(s.excess_vs_matched_se) : null),
+          cell("MAX DD", has ? pct(s.max_drawdown) : DASH),
+          cell("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH, "", has ? `AVG ${pctPlain(s.avg_invested)}` : null),
+          cell("TRADES", has ? `${s.trades_closed ?? 0} / ${s.trades_open ?? 0}` : DASH, "", "CLOSED / OPEN"),
+          cell("TURNOVER", has && isNum(s.turnover) ? `${s.turnover.toFixed(2)}×` : DASH),
+          cell("SLIPPAGE", has ? money(s.slippage_paid) : DASH),
+          cell("SESSIONS", isNum(s.days_run) ? (s.days ? `${s.days_run} / ${s.days}` : String(s.days_run)) : DASH, "", "DECIDED / DAYS"),
+          cell("API $", isNum(s.api_spend) ? money(s.api_spend, 2) : DASH),
+          cell("BRIER", isNum(s.brier) && s.brier_n ? s.brier.toFixed(3) : DASH, "", s.brier_n ? `N=${s.brier_n} · 0.5 ALWAYS = 0.250` : "AFTER FIRST SETTLED TRADE"))),
+      has ? el("p", { class: "note-line", text: `± = 2 SE · ${s.days} ${s.days === 1 ? "DAY" : "DAYS"} · 1 RUN · INSIDE ± IS NOISE` }) : null);
+  }
+
+  function agentCharts(name) {
+    const eq = state.equity || {};
+    const matched = rebased((eq.exposure_matched || {})[name]);
+    const extra = matched ? [{ label: "MATCHED", values: matched, color: C.bench, dash: [8, 4], width: 1.5, cls: "bench" }] : [];
+    const out = [equityFigure("EQUITY", [name, "bench:spy"], extra)];
+    const inv = (eq.invested_fraction || {})[name];
+    const labels = chartLabels();
+    if (labels && Array.isArray(inv) && inv.length) {
+      const vals = [0].concat(inv.map((v) => (isNum(v) ? v * 100 : null)));
+      const fig = el("figure", { class: "block figure" });
+      const ro = readout(labels, [{ label: "INVESTED", values: vals, cls: agClass(name) }], (v) => `${v.toFixed(0)}%`);
+      fig.append(el("div", { class: "fig-head" }, el("h2", { text: "INVESTED" }), ro.box));
+      const box = el("div", { class: "chart chart-small" });
+      fig.append(box);
+      out.push(fig);
+      const c = colorOf(name);
+      const n = parseInt(c.slice(1), 16);
+      later(() => lineChart(box, { labels, height: [120, 140], series: [{ values: vals, color: c, width: 2, fill: `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},0.12)` }],
+        fmt: (v) => `${v.toFixed(0)}%`, yRange: () => [0, 100], onCursor: (idx) => ro.set(idx) }));
+    }
+    return out;
+  }
+
+  function positionsAgent(a) {
     const pos = Array.isArray(a.positions) ? a.positions : [];
-    if (!pos.length) return empty(state.meta.last_marked ? "No open positions. Everything is in cash." : "No positions yet.");
-    return el("div", { class: "cards" }, pos.map((p) => {
-      const last = p.last_close;
-      const stopDist = isNum(p.stop_price) && isNum(last) && last ? p.stop_price / last - 1 : null;
-      const tgtDist = isNum(p.target_price) && isNum(last) && last ? p.target_price / last - 1 : null;
-      const passed = p.horizon_end && state.meta.last_marked && p.horizon_end <= state.meta.last_marked;
-      const kv = (k, v, sub) => el("div", { class: "kv" }, el("dt", { text: k }), el("dd", null, v, sub ? el("span", { class: "sub", text: sub }) : null));
-      const card = el("article", { class: "card" },
-        el("header", { class: "card-head" }, el("h3", { text: String(p.ticker) }), el("span", { class: "muted", text: `${pctPlain(p.weight, 1)} of equity` })),
-        el("dl", { class: "kv-grid" },
-          kv("P&L", pct(p.pnl_pct), `${money(p.value)} now`),
-          kv("Stop", isNum(p.stop_price) ? money(p.stop_price, 2) : DASH, stopDist != null ? `${pct(stopDist)} from last close` : null),
-          kv("Target", isNum(p.target_price) ? money(p.target_price, 2) : DASH, tgtDist != null ? `${pct(tgtDist)} from last close` : null),
-          kv("Horizon ends", p.horizon_end ? fmtDate(p.horizon_end) : DASH, passed ? "passed, needs an answer" : null),
-          kv("Opened", fmtDate(p.opened), isNum(p.avg_cost) ? `average cost ${money(p.avg_cost, 2)}` : null)),
-        el("p", { class: "thesis", text: p.thesis ? String(p.thesis) : "No thesis recorded." }));
+    if (!pos.length) return block("positions", "POSITIONS", empty(state.meta.last_marked ? "ALL CASH" : "NO POSITIONS YET"));
+    const rows = pos.map((p) => {
+      const thesis = el("td", { class: "thesis" }, p.thesis ? String(p.thesis) : DASH);
       if (p.extensions && p.original_thesis && p.original_thesis !== p.thesis) {
-        card.append(el("div", { class: "original" },
-          el("p", { class: "list-label", text: `Extended ${plural(Number(p.extensions), "time")}. Original thesis, ${fmtDate(p.opened)}:` }),
-          el("p", { class: "thesis", text: String(p.original_thesis) })));
+        thesis.append(el("div", { class: "orig" }, el("span", { class: "label", text: `ORIGINAL ${dShort(p.opened)} · EXTENDED ${p.extensions}× ` }), String(p.original_thesis)));
       }
-      return card;
-    }));
+      return el("tr", null,
+        el("td", { class: "ticker", text: String(p.ticker) }),
+        num(pctPlain(p.weight, 1)),
+        num(pct(p.pnl_pct), dir(p.pnl_pct)),
+        num(isNum(p.stop_price) ? money(p.stop_price, 2) : DASH),
+        num(isNum(p.target_price) ? money(p.target_price, 2) : DASH),
+        horizonCell(p),
+        td(dShort(p.opened), "nowrap"),
+        thesis);
+    });
+    return block("positions", "POSITIONS", table("positions", [["TICKER"], ["WEIGHT", 1], ["P&L", 1], ["STOP", 1], ["TARGET", 1], ["HORIZON"], ["OPENED"], ["THESIS"]], rows, "Positions"));
   }
 
-  const EXIT = {
-    close: "closed by the agent",
-    set_weight: "sold down by the agent",
-  };
+  const EXIT = { close: "AGENT CLOSED", set_weight: "AGENT SOLD DOWN" };
 
   function tradesBlock(a) {
     const trades = Array.isArray(a.trades) ? a.trades : [];
-    if (!trades.length) {
-      const days = (state.stats[a.name] || {}).days || 0;
-      return empty(days ? `No trades in ${plural(days, "trading day")}.` : "No trades yet.");
-    }
-    const head = ["Ticker", "Opened", "Closed", "Return", "SPY", "Excess", "Exit", "Probability"];
-    const tbody = el("tbody");
-    for (const t of trades) {
-      const open = !t.closed;
-      tbody.append(el("tr", { class: "trade" },
-        el("th", { scope: "row", text: String(t.ticker) }),
-        el("td", { text: fmtDate(t.opened) }),
-        el("td", { text: open ? "still open" : fmtDate(t.closed) }),
-        el("td", { class: "num", text: open ? DASH : pct(t.return) }),
-        el("td", { class: "num", text: open ? DASH : pct(t.spy_return) }),
-        el("td", { class: "num", text: open ? DASH : pts(t.excess) }),
-        el("td", { text: open ? DASH : EXIT[t.exit_reason] || String(t.exit_reason || DASH) }),
-        el("td", { class: "num", text: isNum(t.probability) ? t.probability.toFixed(2) : DASH })));
-      const details = el("details", { class: "detail-body" }, el("summary", { text: "Thesis, sources" + (Array.isArray(t.causal_chain) && t.causal_chain.length ? ", causal chain" : "") }));
-      details.append(el("p", { class: "thesis", text: t.thesis ? String(t.thesis) : "No thesis recorded." }));
-      const facts = [];
-      if (isNum(t.horizon_days)) facts.push(`Horizon ${plural(t.horizon_days, "trading day")}${t.horizon_end ? `, ending ${fmtDate(t.horizon_end)}` : ""}`);
-      if (isNum(t.stop_pct) || isNum(t.target_pct)) facts.push(`stop ${isNum(t.stop_pct) ? t.stop_pct + "%" : DASH} below and target ${isNum(t.target_pct) ? t.target_pct + "%" : DASH} above the fill`);
-      if (isNum(t.dividends) && t.dividends > 0) facts.push(`dividends ${money(t.dividends, 2)}`);
-      if (facts.length) details.append(el("p", { class: "muted", text: facts.join("; ") + "." }));
-      if (Array.isArray(t.extensions) && t.extensions.length) {
-        details.append(el("p", { class: "list-label", text: "Extensions" }),
-          el("ul", { class: "plain-list" }, t.extensions.map((x) => el("li", null, el("span", { class: "nowrap", text: fmtDate(x.date) }), `: ${x.thesis || ""}`,
-            x.horizon_end ? el("span", { class: "muted", text: ` (new horizon ${fmtDate(x.horizon_end)})` }) : null))));
+    if (!trades.length) return block("trades", "TRADES", empty("NO TRADES"));
+    const head = [["TICKER"], ["OPENED"], ["CLOSED"], ["RETURN", 1], ["SPY", 1], ["EXCESS", 1], ["EXIT"], ["P", 1]];
+    const render = (list) => {
+      const rows = [];
+      for (const t of list) {
+        const open = !t.closed;
+        rows.push(el("tr", { class: "trade" },
+          el("td", { class: "ticker", text: String(t.ticker) }),
+          td(dShort(t.opened), "nowrap"),
+          td(open ? "OPEN" : dShort(t.closed), open ? "nowrap warn" : "nowrap"),
+          num(open ? DASH : pct(t.return), open ? "" : dir(t.return)),
+          num(open ? DASH : pct(t.spy_return), "muted"),
+          num(open ? DASH : pts(t.excess), open ? "" : dir(t.excess)),
+          td(open ? DASH : EXIT[t.exit_reason] || upper(t.exit_reason || DASH), "nowrap"),
+          num(isNum(t.probability) ? t.probability.toFixed(2) : DASH)));
+        const d = el("details", { class: "detail-body" }, el("summary", { text: "THESIS · SOURCES" + (Array.isArray(t.causal_chain) && t.causal_chain.length ? " · CHAIN" : "") }));
+        d.append(el("p", { class: "thesis", text: t.thesis ? String(t.thesis) : DASH }));
+        const facts = [];
+        if (isNum(t.horizon_days)) facts.push(`HORIZON ${t.horizon_days}d${t.horizon_end ? ` → ${dShort(t.horizon_end)}` : ""}`);
+        if (isNum(t.stop_pct)) facts.push(`STOP −${t.stop_pct}%`);
+        if (isNum(t.target_pct)) facts.push(`TARGET +${t.target_pct}%`);
+        if (isNum(t.dividends) && t.dividends > 0) facts.push(`DIVIDENDS ${money(t.dividends, 2)}`);
+        if (facts.length) d.append(el("p", { class: "label", text: facts.join(" · ") }));
+        if (Array.isArray(t.extensions) && t.extensions.length) {
+          d.append(el("p", { class: "label", text: "EXTENSIONS" }), el("ul", { class: "plain" }, t.extensions.map((x) =>
+            el("li", null, el("span", { class: "muted", text: `${dShort(x.date)} ` }), String(x.thesis || "")))));
+        }
+        d.append(el("p", { class: "label", text: "SOURCES" }), sourceList(t.sources) || el("p", { class: "muted", text: "NONE" }));
+        const ch = chainList(t.causal_chain);
+        if (ch) d.append(el("p", { class: "label", text: "CAUSAL CHAIN" }), ch);
+        rows.push(el("tr", { class: "detail" }, el("td", { colspan: String(head.length) }, d)));
       }
-      const src = sourceList(t.sources);
-      details.append(el("p", { class: "list-label", text: "Sources" }), src || el("p", { class: "muted", text: "None cited." }));
-      const ch = chainList(t.causal_chain);
-      if (ch) details.append(el("p", { class: "list-label", text: "Causal chain" }), ch);
-      tbody.append(el("tr", { class: "detail" }, el("td", { colspan: String(head.length) }, details)));
-    }
-    return tableScroll(el("table", { class: "data trades" },
-      el("thead", null, el("tr", null, head.map((h, i) => el("th", { scope: "col", class: i >= 3 && i !== 6 ? "num" : null, text: h })))), tbody), "Trade log");
+      return table("trades", head, rows, "Trades");
+    };
+    return block("trades", "TRADES", more(trades, 15, render));
   }
 
-  const ACTION = { set_weight: "set weight", close: "close", extend: "extend" };
+  const ACTION = { set_weight: "SET WEIGHT", close: "CLOSE", extend: "EXTEND" };
 
   function ordersBlock(a) {
     const orders = Array.isArray(a.orders) ? a.orders : [];
-    if (!orders.length) return empty("No orders yet.");
-    const head = ["Session", "Ticker", "Action", "Target weight", "Stop", "Target", "Horizon", "Probability"];
-    const row = (o) => {
-      const close = o.action === "close";
-      return el("tr", null,
-        el("td", { text: fmtDate(o.session_date) }),
-        el("th", { scope: "row", text: String(o.ticker) }),
-        el("td", null, ACTION[o.action] || String(o.action || DASH),
-          !state.meta.last_marked || o.session_date > state.meta.last_marked ? el("span", { class: "sub", text: "waiting for the open" }) : null),
-        el("td", { class: "num", text: o.action === "set_weight" ? pctPlain(o.target_weight, 1) : DASH }),
-        el("td", { class: "num", text: !close && isNum(o.stop_pct) ? `${MINUS}${o.stop_pct}%` : DASH }),
-        el("td", { class: "num", text: !close && isNum(o.target_pct) ? `+${o.target_pct}%` : DASH }),
-        el("td", { class: "num", text: !close && isNum(o.horizon_days) ? `${o.horizon_days} d` : DASH }),
-        el("td", { class: "num", text: !close && isNum(o.probability) ? o.probability.toFixed(2) : DASH }));
-    };
-    const table = (rows) => tableScroll(el("table", { class: "data orders" },
-      el("thead", null, el("tr", null, head.map((h, i) => el("th", { scope: "col", class: i >= 3 ? "num" : null, text: h })))),
-      el("tbody", null, rows.map(row))), "Recent orders");
-    const out = el("div", null, table(orders.slice(0, 12)));
-    if (orders.length > 12) out.append(el("details", { class: "more" }, el("summary", { text: `Show ${orders.length - 12} older orders` }), table(orders.slice(12))));
-    out.append(el("p", { class: "caption", text: "Orders fill at the opening auction of the session's day. Stop and target are percentages from the fill price; horizon is in trading days; probability is the agent's stated chance of beating SPY over the horizon." }));
-    return out;
+    if (!orders.length) return block("orders", "ORDERS", empty("NO ORDERS"));
+    const lm = state.meta.last_marked;
+    const render = (list) => table("orders", [["SESSION"], ["TICKER"], ["ACTION"], ["WEIGHT", 1], ["STOP", 1], ["TARGET", 1], ["HORIZON", 1], ["P", 1]],
+      list.map((o) => {
+        const close = o.action === "close";
+        return el("tr", null,
+          td(dShort(o.session_date), "nowrap"),
+          el("td", { class: "ticker-sm", text: String(o.ticker) }),
+          el("td", { class: "nowrap" }, ACTION[o.action] || upper(o.action), !lm || o.session_date > lm ? el("span", { class: "warn", text: " · PENDING" }) : null),
+          num(o.action === "set_weight" ? pctPlain(o.target_weight, 1) : DASH),
+          num(!close && isNum(o.stop_pct) ? `${MINUS}${o.stop_pct}%` : DASH),
+          num(!close && isNum(o.target_pct) ? `+${o.target_pct}%` : DASH),
+          num(!close && isNum(o.horizon_days) ? `${o.horizon_days}d` : DASH),
+          num(!close && isNum(o.probability) ? o.probability.toFixed(2) : DASH));
+      }), "Orders");
+    return block("orders", "ORDERS", more(orders, 12, render));
   }
 
   function sessionsBlock(a) {
     const sess = Array.isArray(a.sessions) ? a.sessions : [];
-    if (!sess.length) return empty("No sessions have run yet.");
-    const kind = { decided: "good", hold: "warning", failed: "critical" };
-    const row = (s) => {
-      const notes = [];
-      if (s.reason) notes.push(String(s.reason));
+    if (!sess.length) return block("sessions", "SESSIONS", empty("NO SESSIONS"));
+    const cls = { decided: "up", hold: "warn", failed: "down" };
+    const render = (list) => table("sessions", [["DATE"], ["STATUS"], ["ORDERS", 1], ["COST", 1], ["NOTE"], ["LOG"]], list.map((s) => {
       const rej = Array.isArray(s.rejected) ? s.rejected : [];
       return el("tr", null,
-        el("th", { scope: "row", text: fmtDate(s.date) }),
-        el("td", null, statusMark(kind[s.status] || "neutral", String(s.status || "unknown"))),
-        el("td", { class: "num", text: isNum(s.orders) ? String(s.orders) : DASH }),
-        el("td", { class: "num", text: isNum(s.cost) ? money(s.cost, 2) : DASH }),
-        el("td", { class: "wrap-cell" }, notes.join(" "), rej.length ? el("details", { class: "rejected" },
-          el("summary", { text: `${plural(rej.length, "order")} rejected` }), el("ul", { class: "plain-list" }, rej.map((r) => el("li", { text: String(r) })))) : null),
-        el("td", null, httpsHref(s.url) ? extLink(s.url, "files") : DASH));
-    };
-    const table = (rows) => tableScroll(el("table", { class: "data sessions" },
-      el("thead", null, el("tr", null, ["Date", "Status", "Orders", "Cost", "Note", "On GitHub"].map((h, i) =>
-        el("th", { scope: "col", class: i === 2 || i === 3 ? "num" : null, text: h })))),
-      el("tbody", null, rows.map(row))), "Sessions");
-    const out = el("div", null, table(sess.slice(0, 10)));
-    if (sess.length > 10) out.append(el("details", { class: "more" }, el("summary", { text: `Show ${sess.length - 10} older sessions` }), table(sess.slice(10))));
-    out.append(el("p", { class: "caption", text: "Decided: the agent submitted a decision, possibly with no orders. Hold: the session ended without one and nothing traded. Failed: an error stopped it. Each session folder holds the transcript, the decision and the token costs." }));
-    return out;
+        td(dShort(s.date), "nowrap"),
+        td(`● ${upper(s.status || "unknown")}`, `nowrap ${cls[s.status] || "muted"}`),
+        num(isNum(s.orders) ? String(s.orders) : DASH),
+        num(isNum(s.cost) ? money(s.cost, 2) : DASH),
+        el("td", { class: "wrap" }, s.reason ? String(s.reason) : "", rej.length ? el("details", { class: "rejected" },
+          el("summary", { text: `${rej.length} REJECTED` }), el("ul", { class: "plain" }, rej.map((r) => el("li", { text: String(r) })))) : null),
+        el("td", null, httpsHref(s.url) ? extLink(s.url, "GITHUB →") : DASH));
+    }), "Sessions");
+    return block("sessions", "SESSIONS", more(sess, 10, render));
   }
 
-  function mdBlock(src, emptyText) {
-    const box = markdown(src);
-    return box.childNodes.length ? box : empty(emptyText);
-  }
-
-  function agentCharts(container, name) {
-    const eq = state.equity || {};
-    const labels = chartData([name], () => [])?.labels;
-    if (!labels) {
-      container.append(empty("Nothing to draw yet. The first point appears once the first trading day has closed and been marked."));
-      return;
-    }
-    const ser = [];
-    const own = rebased((eq.series || {})[name]);
-    if (own) ser.push({ label: labelOf(name), values: own, ...seriesStyle(name) });
-    const spy = rebased((eq.series || {})["bench:spy"]);
-    if (spy) ser.push({ label: labelOf("bench:spy"), values: spy, ...seriesStyle("bench:spy") });
-    const matched = rebased((eq.exposure_matched || {})[name]);
-    if (matched) ser.push({ label: "Exposure-matched SPY", values: matched, ...seriesStyle("bench:tech-ten-ew"), color: cssVar("--bench-2") });
-    const markers = ((eq.prompt_changes || {})[name] || []).map((d) => ({ idx: labels.indexOf(d), color: agentColor(name), text: "prompt edit" })).filter((m) => m.idx > 0);
-    const w1 = el("div", { class: "chart" });
-    container.append(w1);
-    lineChart(w1, { labels, height: [240, 300], series: ser, fmt: (v) => v.toFixed(1),
-      axisFmt: (v) => (Number.isInteger(v) ? String(v) : v.toFixed(1)), yRange: yRangeAround100, markers });
-    container.append(el("p", { class: "caption", text: "Rebased to 100 at the starting cash. The exposure-matched line holds SPY in the same proportion the agent was invested the day before, and cash for the rest." +
-      (markers.length ? ` The thin vertical line marks a prompt edit on ${((eq.prompt_changes || {})[name] || []).map(fmtDate).join(", ")}.` : "") }));
-
-    const inv = (eq.invested_fraction || {})[name];
-    if (Array.isArray(inv) && inv.length) {
-      const vals = [0].concat(inv.map((v) => (isNum(v) ? v * 100 : null)));
-      container.append(el("h3", { text: "Share of equity invested, at each close" }));
-      const w2 = el("div", { class: "chart chart-small" });
-      container.append(w2);
-      const c = agentColor(name);
-      lineChart(w2, { labels, height: [140, 160], series: [{ label: "Invested", values: vals, color: c, width: 2, fill: hexA(c, 0.12) }],
-        fmt: (v) => `${v.toFixed(0)}%`, yRange: () => [0, 100], markers: [] });
-    }
-  }
+  const md = (src, emptyText) => { const b = markdown(src); return b.childNodes.length ? b : empty(emptyText); };
 
   function renderAgent(main, name, a) {
-    const s = state.stats[name] || {};
-    const has = (s.days || 0) > 0;
-    const rs = range2se(s.excess_vs_spy, s.excess_vs_spy_se);
-    const rm = range2se(s.excess_vs_matched, s.excess_vs_matched_se);
-    main.append(el("div", { class: "page-head" },
-      el("p", { class: "crumb" }, el("a", { href: "#", text: "Overview" })),
-      el("h1", { class: "agent-title" }, swatch(name), String(a.label || name)),
-      el("p", { class: "lede", text: String(a.description || "") })));
-    main.append(el("div", { class: "tiles" },
-      tile("Equity", money(a.equity), `${money(a.cash)} in cash`),
-      tile("Total return", has ? pct(s.total_return) : DASH, has ? `SPY ${pct(s.spy_return)} over the same days` : "after the first close"),
-      tile("Excess over SPY", has ? pts(s.excess_vs_spy) : DASH, rs ? `±2 SE: ${rs}` : null),
-      tile("Over exposure-matched SPY", has ? pts(s.excess_vs_matched) : DASH, rm ? `±2 SE: ${rm}` : null),
-      tile("Sessions decided", isNum(s.days_run) ? String(s.days_run) : DASH, s.days ? `of ${plural(s.days, "trading day")} marked` : "no trading day marked yet"),
-      tile("API spend", isNum(s.api_spend) ? money(s.api_spend, 2) : DASH, "all sessions so far")));
-    main.append(el("p", { class: "brier" }, isNum(s.brier) && s.brier_n
-      ? `Brier score of the stated probabilities: ${s.brier.toFixed(3)}, over ${plural(s.brier_n, "settled trade")}. 0 is perfect; saying 0.5 every time scores 0.250.`
-      : "A Brier score for the stated probabilities appears once a trade has settled."));
-
-    const chartSec = section("agent-equity", "Equity against SPY");
-    main.append(chartSec);
-    agentCharts(chartSec, name);
-
-    main.append(section("positions", "Current positions", positionsBlock(a)));
-    main.append(section("trades", "Trade log", tradesBlock(a)));
-    main.append(section("orders", "Recent orders", ordersBlock(a)));
-    main.append(section("sessions", "Sessions", sessionsBlock(a)));
-    main.append(el("div", { class: "prose-grid" },
-      section("summary", "Latest session summary", mdBlock(a.summary, "No session summary yet.")),
-      section("notes", "General notes", mdBlock(a.notes, "The agent has not written general notes yet."))));
+    main.append(agentSwitcher(name), agentHead(name, a));
+    main.append(...agentCharts(name));
+    main.append(positionsAgent(a), tradesBlock(a), ordersBlock(a), sessionsBlock(a));
+    main.append(el("div", { class: "two-col" },
+      block("summary", "LATEST SUMMARY", md(a.summary, "NONE YET")),
+      block("notes", "NOTES", md(a.notes, "NONE YET"))));
     const tickers = a.tickers && typeof a.tickers === "object" ? Object.entries(a.tickers) : [];
-    main.append(section("ticker-notes", "Ticker notes", tickers.length
-      ? el("div", { class: "ticker-notes" }, tickers.map(([t, src]) => el("details", { class: "note-file" },
-        el("summary", { text: String(t) }), mdBlock(src, "Empty file."))))
-      : empty("No ticker notes yet.")));
-    main.append(section("prompt", "Prompt",
-      el("details", { class: "note-file" }, el("summary", { text: "The agent's own prompt, on top of the shared system prompt" }), mdBlock(a.prompt, "No prompt file."))));
-    main.append(el("p", { class: "caption" }, "Notes, summaries and theses are written by the model and shown as written. ",
-      el("a", { href: repoUrl(`/tree/main/agents/${encodeURIComponent(name)}`), rel: "noopener noreferrer", text: "This agent's folder on GitHub" }), "."));
+    main.append(block("ticker-notes", "TICKER NOTES", tickers.length
+      ? el("div", { class: "files" }, tickers.map(([t, src]) => el("details", { class: "file" }, el("summary", { class: "ticker-sm", text: String(t) }), md(src, "EMPTY"))))
+      : empty("NONE YET")));
+    main.append(block("prompt", "PROMPT", el("details", { class: "file" }, el("summary", { text: "SHOW PROMPT" }), md(a.prompt, "NONE")),
+      el("p", { class: "note-line" }, el("a", { href: repoUrl(`/tree/main/agents/${encodeURIComponent(name)}`), rel: "noopener noreferrer", text: "AGENT FOLDER ON GITHUB →" }))));
   }
 
   // ---------------------------------------------------------------------------------------------
   // Router
 
   function errorView(main, e) {
-    main.append(el("div", { class: "page-head" }, el("h1", { text: "Four Claude agents trading paper money" })),
-      el("div", { class: "notice" },
-        el("p", null, el("strong", { text: e && e.status === 404 ? "The data files are not published yet. " : "The data could not be loaded. " }),
-          e && e.status === 404
-            ? "They appear after the first marking job runs, after a US close."
-            : "The data host may be unreachable; reloading in a minute usually helps."),
-        el("p", { class: "muted", text: `Looked in ${BASE}${e && e.message ? ` (${e.message})` : ""}.` })));
+    main.append(el("div", { class: "banner", role: "alert" },
+      el("strong", { text: e && e.status === 404 ? "■ NO DATA YET" : "■ DATA DID NOT LOAD" }),
+      el("span", { text: e && e.status === 404 ? "PUBLISHED AFTER THE FIRST MARKING JOB" : "RELOAD IN A MINUTE" })),
+      el("p", { class: "note-line", text: `${BASE}${e && e.message ? ` · ${e.message}` : ""}` }));
   }
 
   async function render() {
@@ -966,52 +965,55 @@
     const route = decodeURIComponent(location.hash.replace(/^#\/?/, ""));
     charts.forEach((c) => c.destroy());
     charts = [];
+    pending = [];
     try {
       await loadCore();
     } catch (e) {
       main.replaceChildren();
-      renderNav("overview");
+      renderMasthead("overview");
       errorView(main, e);
       return;
     }
     renderBanner();
-    renderFooter();
     const agentMatch = /^agent\/(.+)$/.exec(route);
     if (agentMatch) {
       const name = agentMatch[1];
-      const known = agentsList().find((a) => a.name === name);
-      renderNav(name);
-      main.replaceChildren(el("p", { class: "muted loading", text: "Loading agent." }));
-      let a = null;
-      let err = null;
-      if (known) {
-        try { a = await loadAgent(name); } catch (e) { err = e; }
-      }
+      const known = agentsList().find((x) => x.name === name);
+      renderMasthead("agent");
+      let a = null, err = null;
+      if (known) { try { a = await loadAgent(name); } catch (e) { err = e; } }
       main.replaceChildren();
       if (!known || !a) {
-        main.append(el("div", { class: "page-head" }, el("p", { class: "crumb" }, el("a", { href: "#", text: "Overview" })),
-          el("h1", { text: known ? String(known.label || name) : "No such agent" }),
-          el("p", { class: "empty", text: known ? `This agent's data file could not be loaded${err ? ` (${err.message})` : ""}.` : "There is no agent by that name." })));
+        main.append(agentSwitcher(name), empty(known ? `AGENT FILE DID NOT LOAD${err ? ` · ${err.message}` : ""}` : "NO SUCH AGENT"));
         return;
       }
-      document.title = `${a.label || name} · Trading agents`;
+      document.title = `${upper(name)} · Trading agents`;
       renderAgent(main, name, a);
+      flush();
       window.scrollTo(0, 0);
       return;
     }
-    document.title = "Trading agents";
-    renderNav(route === "how" ? "how" : "overview");
+    const page = ["compare", "health", "how"].includes(route) ? route : "overview";
+    document.title = page === "overview" ? "Trading agents" : `${upper(page === "how" ? "method" : page)} · Trading agents`;
+    renderMasthead(page);
+    if (page === "overview") await loadAllAgents();
     main.replaceChildren();
-    renderOverview(main);
-    if (route && route !== "how" && document.getElementById(route) == null) history.replaceState(null, "", "#");
-    const target = route && document.getElementById(route);
-    if (target) target.scrollIntoView();
-    else window.scrollTo(0, 0);
+    if (page === "compare") renderCompare(main);
+    else if (page === "health") renderHealth(main);
+    else if (page === "how") renderHow(main);
+    else renderOverview(main);
+    flush();
+    if (route && page === "overview") history.replaceState(null, "", "#");
+    window.scrollTo(0, 0);
+  }
+
+  function flush() {
+    const fns = pending;
+    pending = [];
+    fns.forEach((fn) => fn());
   }
 
   window.addEventListener("hashchange", render);
-  const scheme = window.matchMedia("(prefers-color-scheme: dark)");
-  if (scheme.addEventListener) scheme.addEventListener("change", render);
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", render);
   else render();
 })();

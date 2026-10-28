@@ -8,7 +8,7 @@ const path = require("path");
 const [url, outDir, prefix = "dashboard", ...routesArg] = process.argv.slice(2);
 const routes = routesArg.length ? routesArg : ["", "agent/weird-links"];
 const viewports = [{ name: "desktop", width: 1280, height: 900 }, { name: "phone", width: 390, height: 844 }];
-const schemes = ["light", "dark"];
+const schemes = (process.env.SCHEMES || "dark").split(",");
 
 (async () => {
   const browser = await chromium.launch();
@@ -29,7 +29,8 @@ const schemes = ["light", "dark"];
           document.addEventListener("securitypolicyviolation", (e) => window.__csp.push(`${e.violatedDirective} ${e.blockedURI}`));
         });
         await page.goto(url + (route ? `#${route}` : ""), { waitUntil: "networkidle" });
-        await page.waitForSelector(".section, .notice, .empty", { timeout: 10000 });
+        await page.waitForSelector(".block, .banner, .empty", { timeout: 10000 });
+        await page.evaluate(() => document.fonts.ready);
         await page.waitForTimeout(300);
         if (route.startsWith("agent/")) {
           await page.evaluate(() => {
@@ -41,7 +42,7 @@ const schemes = ["light", "dark"];
         const report = await page.evaluate(() => {
           const main = document.querySelector("main");
           const bad = [];
-          for (const sel of ["script", "img", "iframe", "form", "input", "style", "object", "embed", "svg"]) {
+          for (const sel of ["script", "img", "iframe", "form", "input", "style", "object", "embed", ".prose svg", "svg script", "svg foreignObject"]) {
             const n = main.querySelectorAll(sel).length;
             if (n) bad.push(`${n} <${sel}> in main`);
           }
@@ -64,10 +65,12 @@ const schemes = ["light", "dark"];
             hscroll: document.documentElement.scrollWidth - document.documentElement.clientWidth,
             bad,
             textHasScript: main.textContent.includes("<script>"),
+            fonts: ["13px 'JetBrains Mono'"].concat(main.querySelector(".big, .ticker, .ticker-sm") ? ["800 20px 'Inter Tight'"] : []).filter((f) => !document.fonts.check(f)),
           };
         });
         if (report.pwned) log.push(`script ran: ${report.pwned}`);
         if (report.csp.length) log.push(...report.csp.map((c) => `CSP violation: ${c}`));
+        if (report.fonts.length) log.push(`font not loaded: ${report.fonts.join(", ")}`);
         if (report.hscroll > 0) log.push(`page scrolls horizontally by ${report.hscroll}px`);
         log.push(...report.bad);
         const file = path.join(outDir, `${prefix}-${(route || "overview").replace(/\//g, "-")}-${vp.name}-${scheme}.png`);

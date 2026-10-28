@@ -7,10 +7,11 @@ compatibility_date = "2026-10-01"
 routes = [
   { pattern = "trading.swasilewski.com", custom_domain = true },
 ]
-# Everything under app/ and vendor/ is imported by src/index.js as a plain string and served as is.
+# Everything under app/ and vendor/ is imported by src/index.js as a plain string (fonts as bytes) and served as is.
 # Globs match the import path as written in src/index.js, hence the leading **/.
 rules = [
   { type = "Text", globs = ["**/app/*.html", "**/app/*.css", "**/app/*.js", "**/app/*.svg", "**/vendor/*.js", "**/vendor/*.css"], fallthrough = true },
+  { type = "Data", globs = ["**/vendor/*.woff2"], fallthrough = true },
 ]
 
 [vars]
