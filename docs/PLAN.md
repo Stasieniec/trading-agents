@@ -25,6 +25,8 @@ feasibility). Nothing is built yet.
 - Budget: $100 of API credits per month, refreshed monthly.
 - Starting capital $100,000 per agent, zero commission, slippage per side (see "Still to decide").
 - Trading days only. Monday's session reads the weekend's news.
+- No position size cap beyond long-only and no negative cash: the agent sizes its own bets.
+- Expired horizons never close automatically; the agent must close or re-justify each one.
 
 ## The agents
 
@@ -86,9 +88,11 @@ session job has several firings, off the top of the hour, and the script decides
   trading day from the fill day on: if the day's low reaches the stop, the position exits at the
   stop, or at the open if it gapped through. Same for the target on the high. If both are touched
   on the same day, the stop wins. Slippage applies to these exits too.
-- Each buy carries a horizon in trading days. When it passes, the agent is told at its next
-  session and must either close the position or write a fresh thesis with a new horizon. Code
-  does not force the exit. The original thesis and date stay visible next to every extension.
+- Each buy carries a horizon in trading days. When it passes, code does not close the position.
+  The agent's next session lists it as expired, and `submit_decision` is rejected until every
+  expired position has an explicit answer: close it, or extend it with a fresh thesis, horizon,
+  stop and target. So no position sits around unexamined. The original thesis and date stay
+  visible next to every extension, and the dashboard shows how often each agent extends.
 - A ticker with no bar on a trading day (halted) leaves its order unfilled and tells the agent.
   A delisting settles at the last price or merger terms.
 
@@ -343,6 +347,3 @@ Deferred until the basics run: a `research(question)` tool where Haiku runs its 
 - Slippage. A flat 10 basis points is fair for the tech ten but flatters small caps at the open,
   which is where weird-links will live. Proposed: by market cap at decision time, 10 bp above
   $10B, 25 bp from $2B to $10B, 50 bp from $300M to $2B. These numbers are a starting point.
-- Position size cap. Proposed: none beyond long-only and no negative cash, since "few quality
-  trades" may mean concentrated bets. The alternative is a maximum weight per position.
-- Whether an expired horizon should close the position automatically. Proposed: no.
