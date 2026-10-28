@@ -1,0 +1,461 @@
+{
+ "date": "2026-10-29",
+ "built_at": "2026-10-28T16:18:55.244812+00:00",
+ "previous_session": "2026-10-28",
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC": "ok",
+  "CNBC Markets": "ok",
+  "MarketWatch": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 771.15,
+   "day_pct": 0.19359197567756503,
+   "week_pct": -0.25094102885822034
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 722.05,
+   "day_pct": 0.11091854419409408,
+   "week_pct": -0.4343629343629418
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 279.97,
+   "day_pct": -0.07495181668926154,
+   "week_pct": 1.262297453703698
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 524.375,
+   "day_pct": 0.2092569943433764,
+   "week_pct": -0.6300928557892882
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 190.15,
+   "day_pct": 0.3483033405456748,
+   "week_pct": 0.8539302004879623
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 103.09,
+   "day_pct": -0.4730642981270461,
+   "week_pct": -5.395980545104151
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 114.89,
+   "day_pct": -0.48505846686878185,
+   "week_pct": -0.5539686661473198
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 86.89,
+   "day_pct": -0.29833620195066635,
+   "week_pct": -0.252554241763292
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 56.145,
+   "day_pct": 0.4742304939155284,
+   "week_pct": 0.18736616702357267
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 179.79,
+   "day_pct": 0.3404397812255766,
+   "week_pct": 0.47501955962891973
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 168.6783,
+   "day_pct": 0.4515840876607946,
+   "week_pct": 0.21882241102726407
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 68.91,
+   "day_pct": 1.0262424864389441,
+   "week_pct": 1.1003521126760507
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 51.59,
+   "day_pct": -0.36693704132869653,
+   "week_pct": 0.5261106780982239
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 42.835,
+   "day_pct": -0.03500583430572357,
+   "week_pct": 1.9880952380952444
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 42.015,
+   "day_pct": -1.001413760603198,
+   "week_pct": -0.10699001426534016
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 81.2,
+   "day_pct": -0.5267671199313928,
+   "week_pct": 1.1964107676969205
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 370.16,
+   "day_pct": -0.569463844418161,
+   "week_pct": -2.3195672252275923
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 169.31,
+   "day_pct": 3.3134000488162174,
+   "week_pct": 5.951188986232792
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.1001,
+   "day_pct": -0.0683379120879124,
+   "week_pct": 0.6227524204702517
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "GMAB",
+    "pct": 29.33,
+    "price": 57.77
+   },
+   {
+    "symbol": "AXGN",
+    "pct": 28.54,
+    "price": 48.15
+   },
+   {
+    "symbol": "KIDS",
+    "pct": 23.74,
+    "price": 29.475
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "BCAX",
+    "pct": -46.05,
+    "price": 9.43
+   },
+   {
+    "symbol": "OTLY",
+    "pct": -30.3,
+    "price": 8.19
+   },
+   {
+    "symbol": "MTLS",
+    "pct": -23.62,
+    "price": 6.584
+   },
+   {
+    "symbol": "INBX",
+    "pct": -20.11,
+    "price": 76.42
+   },
+   {
+    "symbol": "FFIV",
+    "pct": -19.4,
+    "price": 370.25
+   },
+   {
+    "symbol": "SLS",
+    "pct": -17.54,
+    "price": 10.035
+   },
+   {
+    "symbol": "RAPP",
+    "pct": -17.25,
+    "price": 22.79
+   },
+   {
+    "symbol": "BBNX",
+    "pct": -16.92,
+    "price": 17.77
+   }
+  ],
+  "as_of": "2026-10-28T16:18:00.104363808Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "SPCX",
+   "volume": 56898407
+  },
+  {
+   "symbol": "NU",
+   "volume": 43284453
+  },
+  {
+   "symbol": "CCC",
+   "volume": 40153063
+  },
+  {
+   "symbol": "SOFI",
+   "volume": 38234094
+  },
+  {
+   "symbol": "NOK",
+   "volume": 34444101
+  },
+  {
+   "symbol": "BSX",
+   "volume": 32467383
+  },
+  {
+   "symbol": "INTC",
+   "volume": 31938059
+  },
+  {
+   "symbol": "NVDA",
+   "volume": 31158736
+  },
+  {
+   "symbol": "SKHY",
+   "volume": 29775309
+  },
+  {
+   "symbol": "AAL",
+   "volume": 26031077
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Robinhood shares fall as crypto slump weighs on profits, offsetting gains in new businesses",
+   "sources": [
+    "CNBC",
+    "CNBC Markets"
+   ],
+   "time": "2026-10-28T14:50:02+00:00",
+   "url": "https://www.cnbc.com/2026/10/27/robinhood-hood-q3-2026-earnings.html",
+   "line": "Robinhood's third-quarter revenue met expectations, fueled by the company's expansion into options, predictions markets and other financial services.",
+   "symbols": []
+  },
+  {
+   "title": "MSG just spun off the Knicks and Rangers. How one analyst sees them trading",
+   "sources": [
+    "CNBC",
+    "CNBC Markets"
+   ],
+   "time": "2026-10-28T14:40:15+00:00",
+   "url": "https://www.cnbc.com/2026/10/28/msg-spun-off-the-knicks-and-rangers-how-an-analyst-sees-the-stocks-now.html",
+   "line": "The spinout will probably unlock value in MSG Rangers and MSG Knickerbockers, according to Guggenheim Securities.",
+   "symbols": []
+  },
+  {
+   "title": "Vertiv Stock Rallies 14% as Orders More Than Double: Bank of America Still Sees 55% Upside",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:16:30Z",
+   "url": "https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/10/62664199/vertiv-stock-rallies-orders-double-bank-of-america-upside",
+   "line": "Vertiv stock jumps 14% after its biggest revenue beat as a public company and orders more than doubled. Bank of America still sees over 50% upside.",
+   "symbols": [
+    "AIPO",
+    "VRT"
+   ]
+  },
+  {
+   "title": "Here's How Much $100 Invested In Home Depot 15 Years Ago Would Be Worth Today",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:15:36Z",
+   "url": "https://www.benzinga.com/news/26/10/62664176/here-s-how-much-100-invested-home-depot-15-years-ago-would-be-worth-today",
+   "line": "Home Depot (NYSE:HD) has outperformed the market over the past 15 years by 2.73% on an annualized basis producing an average annual return of 15.55%. Currently, Home Depot has a market capitalization of $317.76 billion.",
+   "symbols": [
+    "HD"
+   ]
+  },
+  {
+   "title": "Israeli bonds, shekel fall as election leaves Netanyahu and others short of majorities",
+   "sources": [
+    "CNBC"
+   ],
+   "time": "2026-10-28T16:14:29+00:00",
+   "url": "https://www.cnbc.com/2026/10/28/israel-election-netanyahu-trump-gaza-.html",
+   "line": "Exit polls show Prime Minister Benjamin Netanyahu's alliance and Gadi Eisenkot's opposition bloc both well off the numbers needed to form a governing majority.",
+   "symbols": []
+  },
+  {
+   "title": "ONEOK Q3 2026 Earnings Call Transcript",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:13:32Z",
+   "url": "https://www.benzinga.com/news/26/10/62664108/oneok-q3-2026-earnings-call-transcript",
+   "line": "ONEOK (NYSE:OKE) reported third-quarter financial results on Wednesday. The transcript from the company\u2019s third-quarter earnings call has been provided below.This transcript is brought to you by Benzinga APIs. For",
+   "symbols": [
+    "AAT",
+    "APAM",
+    "HIW",
+    "NI",
+    "OKE",
+    "ULCC"
+   ]
+  },
+  {
+   "title": "Bullish on Anthropic but don\u2019t want to wait until the IPO? Here\u2019s how you can invest today.",
+   "sources": [
+    "MarketWatch"
+   ],
+   "time": "2026-10-28T16:13:00+00:00",
+   "url": "https://www.marketwatch.com/story/bullish-on-anthropic-but-dont-want-to-wait-until-the-ipo-heres-how-you-can-invest-today-c5cb329e?mod=mw_rss_topstories",
+   "line": "ETFs and other funds currently available to ordinary investors offer exposure to Anthropic.",
+   "symbols": []
+  },
+  {
+   "title": "Vertiv Q3 Orders Surged 100% as Infrastructure Spending Fuels Growth",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:12:21Z",
+   "url": "https://www.benzinga.com/markets/earnings/26/10/62664061/vertiv-q3-orders-surged-100-as-infrastructure-spending-fuels-growth",
+   "line": "Vertiv shares rose after third-quarter adjusted EPS of $2.21 beat estimates, revenue climbed 61% to $4.313 billion, and full-year guidance increased.",
+   "symbols": [
+    "VRT"
+   ]
+  },
+  {
+   "title": "Barclays Maintains Overweight on Visteon, Lowers Price Target to $105",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:11:01Z",
+   "url": "https://www.benzinga.com/news/26/10/62664007/barclays-maintains-overweight-visteon-lowers-price-target-105",
+   "line": "",
+   "symbols": [
+    "BA",
+    "SFD",
+    "VC"
+   ]
+  },
+  {
+   "title": "Fed meeting live updates: No hike expected, but investors watching Warsh for what's next",
+   "sources": [
+    "CNBC"
+   ],
+   "time": "2026-10-28T16:10:51+00:00",
+   "url": "https://www.cnbc.com/2026/10/28/fed-meeting-today-live-updates.html",
+   "line": "Markets are pricing in less than a 10% chance that the FOMC follows up its quarter--point hike in September with another increase.",
+   "symbols": []
+  },
+  {
+   "title": "Stifel Maintains Hold on Essex Property Trust, Lowers Price Target to $285.5",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:10:21Z",
+   "url": "https://www.benzinga.com/news/26/10/62663985/stifel-maintains-hold-essex-property-trust-lowers-price-target-285-5",
+   "line": "",
+   "symbols": [
+    "ESS"
+   ]
+  },
+  {
+   "title": "Brinker International Q1 2027 Earnings Call Transcript",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:09:50Z",
+   "url": "https://www.benzinga.com/news/26/10/62663961/brinker-international-q1-2027-earnings-call-transcript",
+   "line": "Brinker International (NYSE:EAT) reported first-quarter financial results on Wednesday. The transcript from the company\u2019s first-quarter earnings call has been provided below.This transcript is brought to you by Benzinga",
+   "symbols": [
+    "EAT"
+   ]
+  },
+  {
+   "title": "Barclays Maintains Overweight on Visa, Raises Price Target to $440",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:08:57Z",
+   "url": "https://www.benzinga.com/news/26/10/62663858/barclays-maintains-overweight-visa-raises-price-target-440",
+   "line": "",
+   "symbols": [
+    "RCL",
+    "SLDE",
+    "V",
+    "VEEV"
+   ]
+  },
+  {
+   "title": "RBC Capital Maintains Outperform on Xylem, Lowers Price Target to $125",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T16:08:56Z",
+   "url": "https://www.benzinga.com/news/26/10/62663857/rbc-capital-maintains-outperform-xylem-lowers-price-target-125",
+   "line": "",
+   "symbols": [
+    "FFIV",
+    "RGEN",
+    "WHR",
+    "XYL"
+   ]
+  },
+  {
+   "title": "Trump is using tariffs as a 'tool for grift,' Raskin says in demand for donor records",
+   "sources": [
+    "CNBC"
+   ],
+   "time": "2026-10-28T16:07:17+00:00",
+   "url": "https://www.cnbc.com/2026/10/28/trump-tariffs-corruption-raskin.html",
+   "line": "Rep. Jamie Raskin wrote to President Trump in the final days of a midterm election cycle where government corruption has emerged as a top issue for voters.",
+   "symbols": []
+  }
+ ],
+ "summary": "**Market Summary: Session of 2026-10-28**\n\nU.S. broad indexes closed mostly higher. SPY rose 0.19% to 771.15, DIA gained 0.21%, and QQQ added 0.11%, while IWM slipped 0.07%. Energy led the sectors, with XLE up 1.03% and USO up 3.31%. Technology (XLK, +0.35%) and financials (XLF, +0.47%) also advanced. Communication services (XLC, -0.47%) and real estate (XLRE, -1.00%) lagged. Gold (GLD) fell 0.57%, long Treasuries (TLT) dropped 0.53%, and the dollar (UUP) was roughly flat. Among eligible stocks, GMAB (+29.3%), AXGN (+28.5%) and KIDS (+23.7%) led gainers, while BCAX (-46.0%) led decliners. Headlines centered on Vertiv, whose orders more than doubled and whose shares rose 14%, on Robinhood's quarterly results, and on the Federal Reserve meeting, where markets priced in less than a 10% chance of another hike. Israeli bonds and the shekel fell after an inconclusive election.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3174,
+   "output_tokens": 940,
+   "output_tokens_details": {
+    "thinking_tokens": 533
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0007874000000000001
+ }
+}
