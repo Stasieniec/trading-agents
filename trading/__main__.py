@@ -303,6 +303,35 @@ def cmd_check_sources(_args) -> None:
         log(f"auction shape check failed: {type(e).__name__}: {str(e)[:200] if isinstance(e, DataError) else ''}")
 
 
+def cmd_eval(args) -> None:
+    import anthropic
+
+    from . import digest as digest_mod
+    from . import evals, universe
+    from .alpaca import Alpaca
+
+    if os.environ.get("CLAUDE_API_KEY") and not os.environ.get("ANTHROPIC_API_KEY"):
+        os.environ["ANTHROPIC_API_KEY"] = os.environ["CLAUDE_API_KEY"]
+    alpaca = Alpaca()
+    client = anthropic.Anthropic(max_retries=3, timeout=300.0)
+    day, _ = next_open(now_utc())
+    try:
+        rows = universe.fetch_nasdaq()
+        universe.save(day, universe.build(rows, alpaca.assets()))
+    except Exception as e:
+        log(f"universe refresh failed ({type(e).__name__}), using the last snapshot")
+    uni = universe.Universe.load()
+    dig = digest_mod.load(day) or digest_mod.build(day, alpaca, uni, anthropic_client=None, log=log)
+    only = [x.strip() for x in args.only.split(",") if x.strip()] or None
+    report = evals.run(client, alpaca, uni, dig, log=log, only=only)
+    rel = (evals.EVAL_DIR / report["stamp"]).relative_to(ROOT).as_posix()
+    hits = scan_paths([ROOT / rel])
+    if hits:
+        sys.exit(f"key material found in eval output, not committing: {hits[:2]}")
+    commit([rel], f"evals: {report['passed']} of {report['checks']} checks passed, ${report['total_cost']:.2f}",
+           ["data/evals/"])
+
+
 def cmd_scan_outgoing(_args) -> None:
     diff = git("diff", "origin/main..HEAD", check=False)
     hits = scan_text(diff, exact=False)
@@ -326,10 +355,12 @@ def main() -> None:
     st = sub.add_parser("start")
     st.add_argument("date")
     sub.add_parser("scan-outgoing")
+    ev = sub.add_parser("eval")
+    ev.add_argument("--only", default="")
     args = p.parse_args()
     {"gate-session": cmd_gate_session, "session-day": cmd_session_day, "gate-mark": cmd_gate_mark,
      "mark": cmd_mark, "site": cmd_site, "check-sources": cmd_check_sources, "start": cmd_start,
-     "scan-outgoing": cmd_scan_outgoing}[args.cmd](args)
+     "scan-outgoing": cmd_scan_outgoing, "eval": cmd_eval}[args.cmd](args)
 
 
 if __name__ == "__main__":

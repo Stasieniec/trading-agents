@@ -1,0 +1,58 @@
+name: agent-evals
+
+# Manual: behaviour tests for the agents against the real model, in a sandbox. No orders are written.
+# Costs real API credits, roughly $0.10 to $0.50 per scenario. Report in data/evals/<stamp>/report.md.
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated scenario names, empty for all"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trading
+  cancel-in-progress: false
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -q --require-hashes -r requirements.txt
+      - name: Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Evals
+        env:
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          ALPACA_KEY: ${{ secrets.ALPACA_KEY }}
+          ALPACA_SECRET: ${{ secrets.ALPACA_SECRET }}
+          ONLY: ${{ inputs.only }}
+        run: python -m trading eval --only "$ONLY"
+      - name: Push
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          git fetch -q origin main
+          python -m trading scan-outgoing
+          for i in 1 2 3 4; do
+            if git pull -q --rebase origin main && git push -q "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" HEAD:main; then exit 0; fi
+            sleep $((i * 5))
+          done
+          exit 1

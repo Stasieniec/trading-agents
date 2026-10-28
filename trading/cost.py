@@ -34,7 +34,8 @@ def month_spend(today: date) -> float:
     prefix = today.strftime("%Y-%m")
     total = 0.0
     for p in list(AGENTS_DIR.glob(f"*/sessions/{prefix}-*/usage.json")) + \
-            list((DATA_DIR / "dryruns").glob(f"{prefix}-*/*/usage.json")):
+            list((DATA_DIR / "dryruns").glob(f"{prefix}-*/*/usage.json")) + \
+            list((DATA_DIR / "evals").glob(f"{prefix}-*/*/usage.json")):
         try:
             total += json.loads(p.read_text()).get("total_cost", 0.0)
         except (OSError, ValueError):
