@@ -26,9 +26,15 @@ ETFS = [
 ]
 RSS = [
     ("CNBC", "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114"),
-    ("CNBC Markets", "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069"),
+    ("CNBC", "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069"),
     ("MarketWatch", "https://feeds.content.dowjones.io/public/rss/mw_topstories"),
 ]
+# Routine wire items that crowd out actual news: analyst rating notes, transcripts, listicles.
+NOISE = re.compile(
+    r"\b(maintains|reiterates|initiates coverage|price target|earnings call transcript|invested in .* years ago|"
+    r"here's how much|options activity|unusual options|whale|what's going on with|shares are trading|"
+    r"stock is (up|down|trading)|movers|52-week|peering into|p/e ratio|short interest|"
+    r"insider (buying|selling)|dividend declared|declares .* dividend)\b", re.I)
 STOP = set("a an the of to in on for and or with at by from as is are be after before over new says amid its"
            " this that it will up down why how what who stocks stock market markets shares".split())
 
@@ -59,7 +65,9 @@ def _fetch_rss(name: str, url: str, since: datetime) -> list[dict]:
     return out
 
 
-def _cluster(items: list[dict], limit: int) -> list[dict]:
+def _cluster(items: list[dict], mentions: dict[str, int], limit: int, max_wire: int = 8) -> list[dict]:
+    """Merge near-duplicate titles, then rank by publishers carrying the story, news attention on its
+    tickers, and recency. Wire stories are capped so editorial top stories keep a place."""
     clusters: list[dict] = []
     for it in sorted(items, key=lambda x: x["time"], reverse=True):
         w = _words(it["title"])
@@ -73,11 +81,19 @@ def _cluster(items: list[dict], limit: int) -> list[dict]:
                 break
         else:
             clusters.append({**it, "words": w, "sources": {it["source"]}, "symbols": set(it.get("symbols") or [])})
-    clusters.sort(key=lambda c: (len(c["sources"]), c["time"]), reverse=True)
-    out = []
-    for c in clusters[:limit]:
+    for c in clusters:
+        c["attention"] = max((mentions.get(s, 0) for s in c["symbols"]), default=0)
+    clusters.sort(key=lambda c: (len(c["sources"]), min(c["attention"], 10), c["time"]), reverse=True)
+    out, wire = [], 0
+    for c in clusters:
+        is_wire = c["sources"] == {"benzinga"}
+        if is_wire and wire >= max_wire:
+            continue
+        wire += is_wire
         out.append({"title": c["title"], "sources": sorted(c["sources"]), "time": c["time"], "url": c["url"],
-                    "line": c["line"], "symbols": sorted(c["symbols"])[:6]})
+                    "line": c["line"], "symbols": sorted(c["symbols"], key=lambda s: -mentions.get(s, 0))[:6]})
+        if len(out) >= limit:
+            break
     return out
 
 
@@ -127,27 +143,39 @@ def build(day: date, alpaca: Alpaca, universe: Universe, anthropic_client=None, 
     _, prev_close = session_times(prev)
     since = min(prev_close - timedelta(hours=6), built_at - timedelta(hours=24))
     items = []
+    mentions: dict[str, int] = {}
     try:
-        for n in alpaca.news(since, built_at, limit=50):
-            items.append({"title": n.get("headline", ""), "source": n.get("source") or "Alpaca news",
+        for n in alpaca.news(since, built_at):
+            syms = [x for x in (n.get("symbols") or []) if eligible(x)]
+            # Stories tagged with many tickers are roundups; they say little about any one of them.
+            if len(n.get("symbols") or []) <= 4:
+                for x in syms:
+                    mentions[x] = mentions.get(x, 0) + 1
+            title = n.get("headline", "")
+            if NOISE.search(title):
+                continue
+            items.append({"title": title, "source": (n.get("source") or "alpaca").lower(),
                           "time": n.get("created_at", ""), "url": n.get("url", ""),
-                          "line": (n.get("summary") or "")[:220], "symbols": n.get("symbols") or []})
+                          "line": (n.get("summary") or "")[:220], "symbols": syms})
         status["Alpaca news"] = "ok"
     except DataError as e:
         status["Alpaca news"] = f"failed: {e}"
-    for name, url in RSS:
+    for i, (name, url) in enumerate(RSS, 1):
+        key = f"{name} feed {i}"
         try:
-            items += _fetch_rss(name, url, since)
-            status[name] = "ok"
+            items += [it for it in _fetch_rss(name, url, since) if not NOISE.search(it["title"])]
+            status[key] = "ok"
         except Exception as e:  # any feed failing is fine, the day goes on
-            status[name] = f"failed: {type(e).__name__}"
+            status[key] = f"failed: {type(e).__name__}"
     for it in items:
         it["title"] = redact(it["title"])
         it["line"] = redact(it["line"])
-    headlines = _cluster(items, 15)
+    headlines = _cluster(items, mentions, 15)
+    top_mentions = [{"symbol": k, "stories": v} for k, v in sorted(mentions.items(), key=lambda kv: -kv[1])[:10]]
 
     d = {"date": day.isoformat(), "built_at": built_at.isoformat(), "previous_session": prev.isoformat(),
          "sources": status, "etfs": etfs, "movers": movers, "most_actives": actives, "headlines": headlines,
+         "news_mentions": top_mentions,
          "summary": "", "usage": None}
     if anthropic_client is not None and (headlines or etfs):
         try:
@@ -187,6 +215,9 @@ def render(d: dict, news: bool, include_summary: bool = True) -> str:
         lines.append("\nMost active by volume, previous session, eligible only: " +
                      ", ".join(r["symbol"] for r in d["most_actives"]))
     if news:
+        if d.get("news_mentions"):
+            lines.append("\nMost mentioned eligible tickers in the last day's news (stories): " +
+                         ", ".join(f"{m['symbol']} {m['stories']}" for m in d["news_mentions"]))
         if include_summary and d.get("summary"):
             lines.append("\nMarket summary (written by a helper model from this digest):\n" + d["summary"])
         if d["headlines"]:

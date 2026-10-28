@@ -24,6 +24,9 @@ from .urls import norm
 from .validate import Context, validate
 
 
+RESEARCH_TOOLS = {"get_quotes", "get_history", "search_symbols", "read_page"}
+
+
 def system_prompt(agent: AgentConfig) -> str:
     shared = (PROMPTS_DIR / "system.md").read_text()
     own = (AGENTS_DIR / agent.name / "prompt.md").read_text()
@@ -145,8 +148,8 @@ class Session:
         self._write("user", text=first)
         messages: list[dict] = [{"role": "user", "content": first}]
         seen_urls = {norm(h["url"]) for h in (self.digest or {}).get("headlines", []) if h.get("url")} if self.agent.news else set()
-        soft_sent = turns_warned = nudged = False
-        attempts = 0
+        soft_sent = turns_warned = nudged = bounced = False
+        attempts = research_calls = 0
         for turn in range(1, MAX_TURNS + 1):
             remaining = (self.deadline - datetime.now(UTC)).total_seconds()
             if remaining < 60:
@@ -181,13 +184,23 @@ class Session:
                 messages.append({"role": "user", "content": "Call submit_decision now. An empty order list is fine."})
                 continue
 
+            research_calls += sum(1 for b in r.content if b.type == "server_tool_use")
             results = []
             submitted = None
             for u in uses:
+                if u.name == "submit_decision" and research_calls == 0 and not bounced:
+                    bounced = True
+                    self._write("bounce", reason="decision before any research")
+                    results.append({"type": "tool_result", "tool_use_id": u.id, "is_error": True,
+                                    "content": "Not accepted: you have not researched anything this session. "
+                                               "Investigate the leads with your tools first, then submit."})
+                    continue
                 if u.name == "submit_decision":
                     attempts += 1
                     submitted = (u, attempts)
                     continue
+                if u.name in RESEARCH_TOOLS:
+                    research_calls += 1
                 out, err = self.tools.run(u.name, u.input)
                 logged = "[price data omitted from the public log]" if u.name in ("get_quotes", "get_history") else out
                 self._write("tool", name=u.name, input=u.input, output=logged, is_error=err)

@@ -125,12 +125,19 @@ class Alpaca:
         uniq = {a.get("id") or f"{a['kind']}:{a.get('symbol')}:{a.get('ex_date')}": a for a in out}
         return list(uniq.values())
 
-    def news(self, start: datetime, end: datetime, limit: int = 50) -> list[dict]:
-        j = self._get(f"{DATA}/v1beta1/news", {
-            "start": start.strftime("%Y-%m-%dT%H:%M:%SZ"), "end": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "limit": limit, "sort": "desc", "include_content": "false",
-        })
-        return j.get("news", [])
+    def news(self, start: datetime, end: datetime, pages: int = 8) -> list[dict]:
+        """Up to pages x 50 stories in the window, newest first."""
+        params = {"start": start.strftime("%Y-%m-%dT%H:%M:%SZ"), "end": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                  "limit": 50, "sort": "desc", "include_content": "false"}
+        out = []
+        for _ in range(pages):
+            j = self._get(f"{DATA}/v1beta1/news", params)
+            out += j.get("news", [])
+            tok = j.get("next_page_token")
+            if not tok:
+                break
+            params["page_token"] = tok
+        return out
 
     def most_actives(self, top: int = 20) -> list[dict]:
         j = self._get(f"{DATA}/v1beta1/screener/stocks/most-actives", {"by": "volume", "top": top})

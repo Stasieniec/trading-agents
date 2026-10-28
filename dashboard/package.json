@@ -1,0 +1,20 @@
+{
+  "name": "trading-agents-dashboard",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker that serves the trading-agents dashboard. Vendored browser libraries live in vendor/ at the versions below.",
+  "scripts": {
+    "vendor": "node dev/vendor.mjs",
+    "mock": "../.venv/bin/python dev/make-mock.py",
+    "dev": "wrangler dev --local",
+    "test": "node dev/test-worker.mjs"
+  },
+  "dependencies": {
+    "dompurify": "3.4.17",
+    "marked": "18.1.1",
+    "uplot": "1.6.32"
+  },
+  "devDependencies": {
+    "wrangler": "4.150.0"
+  }
+}
