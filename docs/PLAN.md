@@ -287,8 +287,8 @@ https://raw.githubusercontent.com; base-uri 'none'; form-action 'none'; frame-an
 The model never sees a key, so a prompt injection has nothing to hand over. The work is making
 sure the harness never writes one anywhere.
 
-- Keys live only in GitHub Actions secrets: `CLAUDE_API_KEY` (exists), `ALPACA_API_KEY_ID` and
-  `ALPACA_API_SECRET_KEY` (to add, generated from the Alpaca paper account).
+- Keys live only in GitHub Actions secrets: `CLAUDE_API_KEY` (exists), `ALPACA_KEY` and
+  `ALPACA_SECRET` (added 2026-10-28).
 - Secrets go as environment variables only to the steps that call the APIs. Checkout uses
   `persist-credentials: false`; the GitHub token is given to the push step alone.
 - One `redact()` function replaces the exact value of every secret and is applied to every string

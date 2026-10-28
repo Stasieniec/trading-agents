@@ -1,0 +1,86 @@
+name: session
+
+# Agents run before the US open, from 13:30 Amsterdam. Several firings because GitHub cron can be
+# late or dropped; the gate step decides whether a firing does the work. See docs/PLAN.md.
+on:
+  schedule:
+    - cron: "37 11 * * 1-5"
+    - cron: "37 12 * * 1-5"
+    - cron: "52 12 * * 1-5"
+    - cron: "7 13 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: no orders, output goes to data/dryruns"
+        type: boolean
+        default: true
+      agents:
+        description: "Comma-separated agent names, empty for all four"
+        type: string
+        default: ""
+      hard_cap:
+        description: "Hard cost cap per session in USD"
+        type: string
+        default: "0.50"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trading
+  cancel-in-progress: false
+
+jobs:
+  session:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -q --require-hashes -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: universe-${{ github.run_id }}
+          restore-keys: universe-
+      - name: Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Gate
+        id: gate
+        if: github.event_name == 'schedule'
+        run: python -m trading gate-session
+      - name: Sessions
+        if: github.event_name == 'workflow_dispatch' || steps.gate.outputs.run == 'true'
+        env:
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          ALPACA_KEY: ${{ secrets.ALPACA_KEY }}
+          ALPACA_SECRET: ${{ secrets.ALPACA_SECRET }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          AGENT_LIST: ${{ inputs.agents }}
+          HARD_CAP: ${{ inputs.hard_cap || '2.0' }}
+        run: |
+          ARGS=()
+          if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          python -m trading session-day "${ARGS[@]}" --agents "$AGENT_LIST" --hard-cap "$HARD_CAP"
+      - name: Push
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          git fetch -q origin main
+          python -m trading scan-outgoing
+          for i in 1 2 3 4; do
+            if git pull -q --rebase origin main && git push -q "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" HEAD:main; then exit 0; fi
+            sleep $((i * 5))
+          done
+          exit 1

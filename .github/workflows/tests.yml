@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+    paths: ["trading/**", "tests/**", "requirements*.txt"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q --require-hashes -r requirements.txt -r requirements-dev.txt
+      - run: python -m pytest -q
