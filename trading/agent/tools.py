@@ -208,7 +208,7 @@ class ToolBox:
         else:
             raise ValueError(f"page reader unavailable ({type(last_err).__name__})")
         if not ok or answer.strip().startswith("FETCH FAILED"):
-            return f"Could not fetch {url}. Try another source."
+            return f"Could not fetch {url}. Try another source. (reader saw: {', '.join(self.last_fetch_debug)[:200]})"
         self.read_ok_urls.add(norm(url))
         self.read_answers[norm(url)] = {"url": url, "question": question, "answer": answer[:2000]}
         return answer
@@ -217,13 +217,20 @@ class ToolBox:
         messages = [{"role": "user", "content": prompt}]
         tools = [{"type": version, "name": "web_fetch", "max_uses": 2, "max_content_tokens": 12000}]
         fetched = False
+        self.last_fetch_debug = []
         for _ in range(4):
             r = self.client.messages.create(model=HELPER_MODEL, max_tokens=2000, tools=tools, messages=messages,
                                             output_config={"effort": HELPER_EFFORT})
             self.on_cost(HELPER_MODEL, r.usage, "read_page")
             for b in r.content:
-                if b.type == "web_fetch_tool_result" and getattr(b.content, "type", "") == "web_fetch_result":
+                kind = getattr(getattr(b, "content", None), "type", None)
+                err = getattr(getattr(b, "content", None), "error_code", None)
+                self.last_fetch_debug.append(f"{b.type}:{kind}:{err}" if b.type != "text" else "text")
+                if "fetch" in b.type and "result" in b.type and not err:
                     fetched = True
+            stu = getattr(r.usage, "server_tool_use", None)
+            if stu and getattr(stu, "web_fetch_requests", 0) and r.usage.input_tokens > 3000:
+                fetched = True  # page content came back even if it arrived through dynamic filtering
             if r.stop_reason == "pause_turn":
                 messages.append({"role": "assistant", "content": r.content})
                 continue

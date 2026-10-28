@@ -15,7 +15,7 @@ REPO = "Stasieniec/trading-agents"
 
 MODEL = "claude-sonnet-5-5"
 HELPER_MODEL = "claude-haiku-5-5"
-EFFORT = "medium"
+EFFORT = "high"
 HELPER_EFFORT = "low"
 
 # USD per million tokens, from platform.claude.com pricing, read 2026-10-28.

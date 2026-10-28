@@ -242,6 +242,8 @@ class Sim:
         if name == "tech-ten":
             if k in (1, 9, 16, 21):
                 picks = r.sample([t for t in TECH_TEN if t not in held], 2)
+                if k == 21 and "NVDA" not in held:
+                    picks = ["NVDA"] + [t for t in picks if t != "NVDA"][:1]  # overlaps open-quality
                 for t in picks:
                     wt = round(r.uniform(0.12, 0.2), 3)
                     if invested + wt > 0.95:
@@ -257,7 +259,7 @@ class Sim:
                 rejected.append("order 3 (TSM): you may only trade " + ", ".join(TECH_TEN))
         elif name == "open-quality":
             if k % 3 == 1 and invested < 0.6:
-                t = r.choice([x for x in ("LMT", "CCJ", "FCX", "UNP", "MP", "SMR", "NVDA", "AVGO") if x not in held])
+                t = r.choice([x for x in ("LMT", "CCJ", "FCX", "UNP", "MP", "SMR", "MSFT", "AVGO") if x not in held])
                 wt = round(r.uniform(0.12, 0.22), 3)
                 orders.append(self.order(name, d, n, "set_weight", t, wt, thesis=(
                     f"{TICKERS[t][4]}: a specific, verifiable catalyst reported overnight, and the stock moved less "
