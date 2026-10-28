@@ -1,0 +1,121 @@
+// The trading-agents dashboard Worker. Everything it serves is bundled into the script as text:
+// the page, the app script and stylesheet, and the vendored libraries. No storage, no secrets.
+import page from "../app/index.html";
+import appJs from "../app/app.js";
+import appCss from "../app/app.css";
+import favicon from "../app/favicon.svg";
+import uplotJs from "../vendor/uPlot.iife.min.js";
+import uplotCss from "../vendor/uPlot.min.css";
+import markedJs from "../vendor/marked.umd.js";
+import purifyJs from "../vendor/purify.min.js";
+
+const DEFAULT_DATA_BASE = "https://raw.githubusercontent.com/Stasieniec/trading-agents/main/site-data/";
+
+const JS = "text/javascript; charset=utf-8";
+const CSS = "text/css; charset=utf-8";
+const FILES = {
+  "/app.js": [appJs, JS],
+  "/app.css": [appCss, CSS],
+  "/favicon.svg": [favicon, "image/svg+xml"],
+  "/vendor/uPlot.iife.min.js": [uplotJs, JS],
+  "/vendor/uPlot.min.css": [uplotCss, CSS],
+  "/vendor/marked.umd.js": [markedJs, JS],
+  "/vendor/purify.min.js": [purifyJs, JS],
+};
+
+// A short content hash per file. The page links each file as ?v=<hash>, so a file can be cached for
+// a year and a deploy still reaches every browser within the page's own cache time.
+function hash(text) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(36);
+}
+const VERSIONS = Object.fromEntries(Object.entries(FILES).map(([path, [body]]) => [path, hash(body)]));
+
+function escapeAttr(s) {
+  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// DATA_BASE is configuration, but it still goes through URL parsing before it reaches the page or
+// the CSP. Only http(s) is accepted; anything else falls back to the default.
+function dataBase(env) {
+  try {
+    const u = new URL(env.DATA_BASE || DEFAULT_DATA_BASE);
+    if (u.protocol !== "https:" && u.protocol !== "http:") throw new Error("bad scheme");
+    if (!u.pathname.endsWith("/")) u.pathname += "/";
+    u.search = "";
+    u.hash = "";
+    return u;
+  } catch {
+    return new URL(DEFAULT_DATA_BASE);
+  }
+}
+
+function securityHeaders(dataOrigin) {
+  return {
+    "Content-Security-Policy": [
+      "default-src 'none'",
+      "script-src 'self'",
+      "style-src 'self'",
+      "img-src 'self' data:",
+      `connect-src 'self' ${dataOrigin}`,
+      "base-uri 'none'",
+      "form-action 'none'",
+      "frame-ancestors 'none'",
+    ].join("; "),
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "no-referrer",
+  };
+}
+
+function renderPage(base) {
+  return page
+    .replaceAll("{{DATA_BASE}}", escapeAttr(base.href))
+    .replace(/\{\{v:([^}]+)\}\}/g, (_, path) => VERSIONS[path] || "0");
+}
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const base = dataBase(env);
+    const headers = securityHeaders(base.origin);
+    const method = request.method;
+
+    if (method !== "GET" && method !== "HEAD") {
+      return new Response("Method not allowed\n", {
+        status: 405,
+        headers: { ...headers, Allow: "GET, HEAD", "Content-Type": "text/plain; charset=utf-8" },
+      });
+    }
+
+    let body, type, cache, status = 200;
+    if (url.pathname === "/" || url.pathname === "/index.html") {
+      body = renderPage(base);
+      type = "text/html; charset=utf-8";
+      cache = "public, max-age=300";
+    } else if (FILES[url.pathname]) {
+      [body, type] = FILES[url.pathname];
+      cache = url.searchParams.get("v") === VERSIONS[url.pathname]
+        ? "public, max-age=31536000, immutable"
+        : "public, max-age=300";
+    } else if (url.pathname === "/robots.txt") {
+      body = "User-agent: *\nAllow: /\n";
+      type = "text/plain; charset=utf-8";
+      cache = "public, max-age=86400";
+    } else if (url.pathname === "/favicon.ico") {
+      return new Response(null, { status: 301, headers: { ...headers, Location: "/favicon.svg" } });
+    } else {
+      body = "Not found\n";
+      type = "text/plain; charset=utf-8";
+      cache = "public, max-age=60";
+      status = 404;
+    }
+    return new Response(method === "HEAD" ? null : body, {
+      status,
+      headers: { ...headers, "Content-Type": type, "Cache-Control": cache },
+    });
+  },
+};

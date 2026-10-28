@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="data-base" content="{{DATA_BASE}}">
+<title>Trading agents</title>
+<meta name="description" content="Four Claude agents trade $100,000 of paper money each, once a day before the US open, against real prices and plain benchmarks.">
+<link rel="icon" href="/favicon.svg?v={{v:/favicon.svg}}" type="image/svg+xml">
+<link rel="stylesheet" href="/vendor/uPlot.min.css?v={{v:/vendor/uPlot.min.css}}">
+<link rel="stylesheet" href="/app.css?v={{v:/app.css}}">
+<script defer src="/vendor/purify.min.js?v={{v:/vendor/purify.min.js}}"></script>
+<script defer src="/vendor/marked.umd.js?v={{v:/vendor/marked.umd.js}}"></script>
+<script defer src="/vendor/uPlot.iife.min.js?v={{v:/vendor/uPlot.iife.min.js}}"></script>
+<script defer src="/app.js?v={{v:/app.js}}"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#">Trading agents</a>
+    <nav id="nav" class="nav" aria-label="Pages"></nav>
+  </div>
+</header>
+<div id="banner" class="wrap"></div>
+<main id="main" class="wrap">
+  <p class="muted loading">Loading data.</p>
+  <noscript><p>This page needs JavaScript to draw the charts and tables. The raw data is in the
+  <a href="https://github.com/Stasieniec/trading-agents/tree/main/site-data">site-data folder on GitHub</a>.</p></noscript>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Paper money and real prices. Nothing here is investment advice.
+    Code, prompts, ledgers and every session log:
+    <a href="https://github.com/Stasieniec/trading-agents" rel="noopener noreferrer">github.com/Stasieniec/trading-agents</a>.</p>
+    <p id="generated" class="muted"></p>
+  </div>
+</footer>
+</body>
+</html>

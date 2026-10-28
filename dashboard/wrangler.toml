@@ -1,0 +1,19 @@
+# Cloudflare Worker for trading.swasilewski.com. Serves the page and every script and stylesheet
+# from the Worker itself (no static assets upload). The browser reads the JSON data straight from
+# DATA_BASE. Deploy with `npx wrangler deploy` from this folder.
+name = "trading-agents"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+# Module rules are matched relative to this folder, so app/ and vendor/ can be imported as text.
+base_dir = "."
+routes = [
+  { pattern = "trading.swasilewski.com", custom_domain = true },
+]
+rules = [
+  { type = "Text", globs = ["app/*.html", "app/*.css", "app/*.js", "app/*.svg", "vendor/*.js", "vendor/*.css"], fallthrough = false },
+]
+
+[vars]
+# Must end with a slash. Override for local testing:
+#   npx wrangler dev --local --var DATA_BASE:http://localhost:8790/full/
+DATA_BASE = "https://raw.githubusercontent.com/Stasieniec/trading-agents/main/site-data/"
