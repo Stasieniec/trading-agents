@@ -1,0 +1,512 @@
+{
+ "date": "2026-10-29",
+ "built_at": "2026-10-28T19:21:03.221883+00:00",
+ "previous_session": "2026-10-28",
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 770.9,
+   "day_pct": 0.1611101005638771,
+   "week_pct": -0.28327879030902725
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 723.2,
+   "day_pct": 0.2703639514731515,
+   "week_pct": -0.27578599007170856
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 279.82,
+   "day_pct": -0.12848882861018485,
+   "week_pct": 1.2080439814814659
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 523.7,
+   "day_pct": 0.08026295673446704,
+   "week_pct": -0.7580064430547706
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 190.55,
+   "day_pct": 0.5593962742097114,
+   "week_pct": 1.0660867720377665
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 103.0,
+   "day_pct": -0.5599536590075282,
+   "week_pct": -5.478572084059829
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 114.9,
+   "day_pct": -0.47639670853183436,
+   "week_pct": -0.5453129057387707
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 86.745,
+   "day_pct": -0.46471600688468007,
+   "week_pct": -0.4190104465618072
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 56.005,
+   "day_pct": 0.2236936292054459,
+   "week_pct": -0.062455389007842754
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 179.6,
+   "day_pct": 0.23440116084383344,
+   "week_pct": 0.36883871688833114
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 168.43,
+   "day_pct": 0.3037160552644247,
+   "week_pct": 0.0712970114669309
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 68.675,
+   "day_pct": 0.6817182231344532,
+   "week_pct": 0.7555751173708991
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 51.52,
+   "day_pct": -0.5021243723445257,
+   "week_pct": 0.3897116134060852
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 42.51,
+   "day_pct": -0.7934655775962751,
+   "week_pct": 1.214285714285701
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 41.96,
+   "day_pct": -1.1310084825636113,
+   "week_pct": -0.2377555872563053
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 80.83,
+   "day_pct": -0.9800318510351569,
+   "week_pct": 0.7352941176470562
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 371.26,
+   "day_pct": -0.27398732137100534,
+   "week_pct": -2.029291463253724
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 168.1975,
+   "day_pct": 2.6345496704905935,
+   "week_pct": 5.25500625782227
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.0468,
+   "day_pct": -0.2513736263736299,
+   "week_pct": 0.4384508990318059
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "KIDS",
+    "pct": 31.61,
+    "price": 31.35
+   },
+   {
+    "symbol": "AXGN",
+    "pct": 31.18,
+    "price": 49.14
+   },
+   {
+    "symbol": "GMAB",
+    "pct": 29.19,
+    "price": 57.71
+   },
+   {
+    "symbol": "REPL",
+    "pct": 23.14,
+    "price": 16.07
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "BCAX",
+    "pct": -45.17,
+    "price": 9.585
+   },
+   {
+    "symbol": "OTLY",
+    "pct": -29.96,
+    "price": 8.23
+   },
+   {
+    "symbol": "INBX",
+    "pct": -26.52,
+    "price": 70.29
+   },
+   {
+    "symbol": "MTLS",
+    "pct": -22.8,
+    "price": 6.655
+   },
+   {
+    "symbol": "FFIV",
+    "pct": -20.54,
+    "price": 365.02
+   },
+   {
+    "symbol": "BUUU",
+    "pct": -19.51,
+    "price": 5.24
+   },
+   {
+    "symbol": "RAPP",
+    "pct": -19.14,
+    "price": 22.27
+   },
+   {
+    "symbol": "LSTR",
+    "pct": -17.59,
+    "price": 139.1
+   }
+  ],
+  "as_of": "2026-10-28T19:21:00.194696932Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "SPCX",
+   "volume": 81064225
+  },
+  {
+   "symbol": "NU",
+   "volume": 71440439
+  },
+  {
+   "symbol": "SOFI",
+   "volume": 60866639
+  },
+  {
+   "symbol": "INTC",
+   "volume": 58889411
+  },
+  {
+   "symbol": "NOK",
+   "volume": 58396453
+  },
+  {
+   "symbol": "NVDA",
+   "volume": 57930212
+  },
+  {
+   "symbol": "ORCL",
+   "volume": 56553072
+  },
+  {
+   "symbol": "AAL",
+   "volume": 54539641
+  },
+  {
+   "symbol": "BSX",
+   "volume": 50901016
+  },
+  {
+   "symbol": "CRWV",
+   "volume": 46541799
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Analysts Adjust Price Targets for Enphase Energy",
+   "sources": [
+    "benzinga",
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T18:02:43Z",
+   "url": "https://www.marketscreener.com/news/bmo-cuts-price-target-on-enphase-energy-to-25-from-28-keeps-market-perform-rating-ce785cd2df8cfe21",
+   "line": "Multiple financial institutions, including BMO, Morgan Stanley, RBC, and Deutsche Bank, have revised their price targets for Enphase Energy following recent market developments.",
+   "symbols": [
+    "ENPH",
+    "HUBB"
+   ]
+  },
+  {
+   "title": "Analysts Adjust Price Targets for Visa Following Earnings Report",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T19:01:58Z",
+   "url": "https://www.marketscreener.com/news/oppenheimer-adjusts-price-target-on-visa-to-440-from-403-maintains-outperform-rating-ce785cd2df8ef123",
+   "line": "Following Visa's fourth-quarter earnings release, several financial institutions, including Oppenheimer and Morgan Stanley, updated their price targets for the company's stock.",
+   "symbols": [
+    "V"
+   ]
+  },
+  {
+   "title": "Oracle Hosts 2026 Investor Day to Outline Strategic Growth",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T19:01:50Z",
+   "url": "https://www.prnewswire.com/news-releases/oracle-investor-day-2026-accelerating-value-creation-302922564.html",
+   "line": "Oracle held its 2026 Investor Day, focusing on long-term value creation and updated financial targets.",
+   "symbols": [
+    "ORCL"
+   ]
+  },
+  {
+   "title": "Apple Stock Dips: What's Going On?",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T19:01:47Z",
+   "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62670433/apple-stock-dips-whats-going-on",
+   "line": "Apple shares are slipping Wednesday. The company unveiled its first touchscreen MacBook Pro, with earnings due next week.",
+   "symbols": [
+    "AAPL"
+   ]
+  },
+  {
+   "title": "Oracle CFO Says Capital Needs To Complete Current Investment Cycle Have Been Set At $20 Bln, Split Evenly Between Debt And Equity; Says Company May Begin Executing $20B Financing Plan As Early As Calendar 2026",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T18:48:05Z",
+   "url": "https://www.benzinga.com/news/26/10/62669908/oracle-cfo-says-capital-needs-complete-current-investment-cycle-have-been-set-20-bln-split-evenly-be",
+   "line": "",
+   "symbols": [
+    "ORCL"
+   ]
+  },
+  {
+   "title": "Analyst Signals Favorable Earnings Setup for Mastercard After Visa's Results",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T18:48:02Z",
+   "url": "https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/10/62669907/analyst-signals-favorable-earnings-setup-for-mastercard-after-visas-results",
+   "line": "JPMorgan sees a favorable earnings setup for Mastercard as Visa results signal strong spending and international payment growth.",
+   "symbols": [
+    "V",
+    "MA"
+   ]
+  },
+  {
+   "title": "Oracle Targets $30B+ Free Cash Flow In FY29; Reaffirms FY27 Outlook: $90 B+ Revenue, $8.1 Non-Gaap EPS; To Limit Additional Capital Raises To $20B Through FY30; Expects Capital Expenses To Decrease In FY29 Supporting $30B+ Free Cash Flow; To Self-fund Growth Beginning FY29; Net Debt To Adj EBITDA Below 3.5x In FY29",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T18:30:34Z",
+   "url": "https://www.benzinga.com/news/26/10/62669191/oracle-targets-30b-free-cash-flow-fy29-reaffirms-fy27-outlook-90-b-revenue-8-1-non-gaap-eps-limit-ad",
+   "line": "",
+   "symbols": [
+    "ORCL"
+   ]
+  },
+  {
+   "title": "Oracle Sets FY30 Outlook: $225B+ Revenue, 40%+ Non-Gaap Operating Margin, $21+ Non-Gaap EPS",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T18:29:11Z",
+   "url": "https://www.benzinga.com/news/26/10/62669142/oracle-sets-fy30-outlook-225b-revenue-40-non-gaap-operating-margin-21-non-gaap-eps",
+   "line": "",
+   "symbols": [
+    "ORCL"
+   ]
+  },
+  {
+   "title": "American Electric Power CEO Sees Once-In-A-Generation Opportunity in Electricity Demand",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T18:03:18Z",
+   "url": "https://www.benzinga.com/markets/earnings/26/10/62668264/american-electric-power-ceo-sees-once-in-a-generation-opportunity-in-electricity-demand",
+   "line": "AEP stock slips despite strong Q3 earnings, a $100 billion spending plan and booming electricity demand from AI data centers.",
+   "symbols": [
+    "GOOGL",
+    "GOOG",
+    "AMZN",
+    "AEP"
+   ]
+  },
+  {
+   "title": "Visa Increases Quarterly Cash Dividend by 16%",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T18:01:38Z",
+   "url": "https://www.baystreet.ca/stockstowatch/24291/Mid-Week-Hot-Stocks-Include-Visa-NXP-and-Robinhood",
+   "line": "Visa's board of directors approved a 16% increase in the company's quarterly cash dividend to $0.78 per share.",
+   "symbols": [
+    "V"
+   ]
+  },
+  {
+   "title": "Apple Announces Redesigned MacBook Pro with Touchscreen and OLED Display",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T18:01:33Z",
+   "url": "https://appleosophy.com/wire/zod8kwv/",
+   "line": "Apple has unveiled new 14-inch and 16-inch MacBook Pro models featuring the company's first touchscreen interface and tandem OLED display technology.",
+   "symbols": [
+    "AAPL"
+   ]
+  },
+  {
+   "title": "Steve Eisman Says Anthropic Left Q3 Figures Out of IPO Filing on Purpose: 'Very Intentional'",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T17:36:38Z",
+   "url": "https://www.benzinga.com/markets/prediction-markets/26/10/62667278/eisman-anthropic-ipo",
+   "line": "Steve Eisman says Anthropic intentionally omitted third-quarter figures from its IPO filing as revenue growth and AI efficiency slowed.",
+   "symbols": [
+    "GOOGL",
+    "AMZN",
+    "AVGO"
+   ]
+  },
+  {
+   "title": "Alphabet\u2019s $514 Billion Google Cloud Backlog, AI Spending Put 2027 Growth in Focus, Says Analyst",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-28T17:35:47Z",
+   "url": "https://www.benzinga.com/markets/tech/26/10/62667232/alphabets-514-billion-google-cloud-backlog-ai-spending-put-2027-growth-in-focus-says-analyst",
+   "line": "Alphabet stock rises as Wall Street forecasts a 90% jump in Google Cloud revenue to $29.1B and a massive $514B backlog ramp ahead of Q3 earnings.",
+   "symbols": [
+    "GOOGL"
+   ]
+  },
+  {
+   "title": "Royalties Inc. Announces Participation in Munich Mining Conference",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T18:02:19Z",
+   "url": "https://www.newswire.ca/news-releases/royalties-inc-invites-shareholders-and-investors-to-attend-the-munich-mining-conference-november-6-7-2026-842474636.html",
+   "line": "Royalties Inc. announced that its Chairman and CEO, Tim Gallagher, will present at the upcoming Munich Mining Conference on November 6-7, 2026.",
+   "symbols": [
+    "OR"
+   ]
+  },
+  {
+   "title": "Boeing Releases 2026 World Air Cargo Forecast",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-28T18:01:57Z",
+   "url": "https://www.prnewswire.com/news-releases/boeing-global-freighter-fleet-to-exceed-4-000-airplanes-as-air-cargo-traffic-doubles-by-2045--302921696.html",
+   "line": "Boeing projects that global air cargo traffic will double over the next 20 years, requiring nearly 3,000 new and converted freighters.",
+   "symbols": [
+    "BA"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "V",
+   "stories": 4
+  },
+  {
+   "symbol": "ORCL",
+   "stories": 4
+  },
+  {
+   "symbol": "AAPL",
+   "stories": 4
+  },
+  {
+   "symbol": "ENPH",
+   "stories": 4
+  },
+  {
+   "symbol": "GOOGL",
+   "stories": 4
+  },
+  {
+   "symbol": "ITRI",
+   "stories": 3
+  },
+  {
+   "symbol": "BA",
+   "stories": 3
+  },
+  {
+   "symbol": "OR",
+   "stories": 3
+  },
+  {
+   "symbol": "TNL",
+   "stories": 2
+  },
+  {
+   "symbol": "CEG",
+   "stories": 2
+  }
+ ],
+ "summary": "**Market Summary: Session of 2026-10-28**\n\nU.S. equities finished mixed. SPY rose 0.16% and QQQ gained 0.27%, while IWM fell 0.13% and DIA rose 0.08%. Technology led sector gains (XLK +0.56%), and energy (XLE +0.68%) also advanced. Utilities (-0.79%), real estate (-1.13%), and communication services (-0.56%) lagged. Long Treasuries (TLT) fell 0.98%, gold (GLD) slipped 0.27%, and oil (USO) rose 2.63%. The dollar index (UUP) eased 0.25%.\n\nTop eligible gainers were KIDS (+31.6%) and AXGN (+31.2%). The largest decline was BCAX (-45.2%). The most active names by volume included SPCX, NU, SOFI, and INTC.\n\nOracle led news coverage. Its Investor Day outlined free cash flow targets above $30 billion for FY29 and a FY30 revenue outlook of $225 billion or more. Visa reported fourth-quarter results and raised its quarterly dividend 16% to $0.78. Apple unveiled redesigned MacBook Pro models with touchscreen and OLED displays. Several firms adjusted price targets for Enphase and Visa.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3635,
+   "output_tokens": 1027,
+   "output_tokens_details": {
+    "thinking_tokens": 585
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.000877
+ }
+}
