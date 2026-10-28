@@ -111,11 +111,15 @@ class ToolBox:
     def _allowed(self, t: str) -> bool:
         return self.agent.universe != "tech-ten" or t in TECH_TEN or t in ("SPY", "QQQ")
 
+    def _completed(self, bars: dict) -> dict:
+        """Only finished sessions: a bar dated today (pre-market prints) is not a close."""
+        return {t: [b for b in bl if b["date"] < self.day.isoformat()] for t, bl in bars.items()}
+
     def t_get_quotes(self, tickers: list[str]) -> str:
         tickers = [t.strip().upper().replace("/", ".") for t in tickers][:20]
         if not tickers:
             raise ValueError("no tickers given")
-        bars = self.alpaca.daily_bars(tickers, self.day - timedelta(days=10), self.day, adjustment="split")
+        bars = self._completed(self.alpaca.daily_bars(tickers, self.day - timedelta(days=10), self.day, adjustment="split"))
         trades = self.alpaca.latest_trades(tickers)
         lines = ["ticker | last close (date) | change vs prior close | latest IEX trade (time UTC)"]
         for t in tickers:
@@ -133,7 +137,8 @@ class ToolBox:
     def t_get_history(self, ticker: str, days: int) -> str:
         t = ticker.strip().upper().replace("/", ".")
         days = max(5, min(int(days), 365))
-        bl = self.alpaca.daily_bars([t], self.day - timedelta(days=days), self.day, adjustment="split").get(t) or []
+        bl = self._completed(self.alpaca.daily_bars([t], self.day - timedelta(days=days), self.day,
+                                                    adjustment="split")).get(t) or []
         if not bl:
             return f"no history for {t}"
         c = [float(b["c"]) for b in bl]
@@ -222,8 +227,12 @@ class ToolBox:
         fetched = False
         self.last_fetch_debug = []
         for _ in range(4):
-            r = self.client.messages.create(model=HELPER_MODEL, max_tokens=2000, tools=tools, messages=messages,
-                                            output_config={"effort": HELPER_EFFORT})
+            left = (self.deadline - datetime.now(timezone.utc)).total_seconds() if self.deadline else 600
+            if left < 90:
+                break
+            r = self.client.with_options(timeout=min(120.0, left - 60), max_retries=1).messages.create(
+                model=HELPER_MODEL, max_tokens=2000, tools=tools, messages=messages,
+                output_config={"effort": HELPER_EFFORT})
             self.on_cost(HELPER_MODEL, r.usage, "read_page")
             for b in r.content:
                 kind = getattr(getattr(b, "content", None), "type", None)

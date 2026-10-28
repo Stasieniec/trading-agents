@@ -143,8 +143,8 @@ def cmd_session_day(args) -> None:
             if market.run(upto, alpaca, log=log):
                 site.write_records()
                 commit(["data/benchmarks", "agents"], f"mark: catch up to {upto}", ["data/benchmarks/", "agents/"])
-        except DataError as e:
-            log(f"catch-up marking failed: {e}")
+        except Exception as e:  # a marking bug must not stop the sessions
+            log(f"catch-up marking failed: {type(e).__name__}: {e}")
 
     # 2. Universe and digest, frozen before any agent runs.
     try:
@@ -207,8 +207,12 @@ def cmd_session_day(args) -> None:
             else:
                 out = AGENTS_DIR / n / "sessions" / day.isoformat()
                 memory_dir = None
-            s = Session(cfg, day, deadline, dig, uni, out, client=client, alpaca=Alpaca(), dry_run=dry,
-                        hard_cap=args.hard_cap, memory_dir=memory_dir, log=log)
+            try:
+                s = Session(cfg, day, deadline, dig, uni, out, client=client, alpaca=Alpaca(), dry_run=dry,
+                            hard_cap=args.hard_cap, memory_dir=memory_dir, log=log)
+            except Exception as e:
+                log(f"{n}: could not start ({type(e).__name__}: {e})")
+                continue
             jobs[pool.submit(s.run)] = (n, out)
         for fut in as_completed(jobs):
             n, out = jobs[fut]

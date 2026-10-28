@@ -293,3 +293,28 @@ def test_failed_sessions_are_retried_by_the_gate(tmp_path, monkeypatch):
     assert not cli.session_done("no-news", DAY)
     (p / "decision.json").write_text(json.dumps({"status": "hold"}))
     assert cli.session_done("no-news", DAY)
+
+
+def test_two_submissions_in_one_turn_get_a_result_each(agents_dir):
+    res, client, _ = run(agents_dir, [
+        msg("tool_use", tool("get_quotes", {"tickers": ["BIG"]})),
+        msg("tool_use", tool("submit_decision", {"orders": [order("PNY")], "session_summary": "a"}, "t2"),
+            tool("submit_decision", {"orders": [], "session_summary": "b"}, "t3")),
+        msg("tool_use", tool("submit_decision", {"orders": [], "session_summary": "c"}, "t4")),
+    ])
+    answered = {r["tool_use_id"] for r in client.requests[2][-1]["content"]}
+    assert answered == {"t2", "t3"} and res["status"] == "decided"
+
+
+def test_bars_dated_today_are_not_closes(agents_dir):
+    class Today(FakeAlpaca):
+        def daily_bars(self, symbols, start, end, adjustment="raw"):
+            out = super().daily_bars(symbols, start, end, adjustment)
+            for s in out:
+                out[s].append({"date": DAY.isoformat(), "t": "x", "o": 1.0, "h": 1.0, "l": 1.0, "c": 1.0, "v": 1})
+            return out
+    from trading.agent.tools import ToolBox
+    from trading.ledger import State
+    tb = ToolBox(AGENTS["no-news"], DAY, Today(), UNI, None, State(), {}, None, lambda *a: None, print)
+    out, err = tb.run("get_quotes", {"tickers": ["BIG"]})
+    assert not err and "101.00 (2026-10-31)" in out

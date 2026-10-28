@@ -57,7 +57,7 @@ Benchmarks, computed by code at no API cost:
 All times Amsterdam unless stated. GitHub cron is UTC and can run late or get dropped, so the
 session job has several firings, off the top of the hour, and the script decides whether to act.
 
-1. **Session job, cron 11:37, 12:37, 12:52 and 13:07 UTC on weekdays, plus manual dispatch.**
+1. **Session job, cron 11:37, 12:32, 12:37, 12:44, 12:52 and 13:07 UTC on weekdays, plus manual dispatch.**
    A firing proceeds only if: today is an NYSE trading day (Alpaca calendar), the Amsterdam time is
    past 13:30, the next open (Alpaca clock) is at least 30 minutes away, and today's session has
    not already run. That leaves two or three usable firings every day of the year, including the

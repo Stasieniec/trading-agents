@@ -212,6 +212,10 @@ class Session:
                                     "content": "Not accepted: you have not researched anything this session. "
                                                "Investigate the leads with your tools first, then submit."})
                     continue
+                if u.name == "submit_decision" and submitted:
+                    results.append({"type": "tool_result", "tool_use_id": u.id, "is_error": True,
+                                    "content": "Only one submit_decision per turn; this one was ignored."})
+                    continue
                 if u.name == "submit_decision":
                     attempts += 1
                     submitted = (u, attempts)

@@ -26,7 +26,9 @@ def gate(monkeypatch, tmp_path, when: str, done=False, start=date(2026, 10, 29))
 @pytest.mark.parametrize("when,expect", [
     # 29 Oct 2026: Amsterdam on winter time, New York still on summer time, open 13:30 UTC
     ("2026-10-29T11:37:00", "false"),   # 12:37 Amsterdam, too early
+    ("2026-10-29T12:32:00", "true"),
     ("2026-10-29T12:37:00", "true"),
+    ("2026-10-29T12:44:00", "true"),
     ("2026-10-29T12:52:00", "true"),
     ("2026-10-29T13:07:00", "false"),   # 23 minutes to the open
     # December: both on winter time, open 14:30 UTC
@@ -66,6 +68,9 @@ class HaikuFake:
 
     @property
     def messages(self):
+        return self
+
+    def with_options(self, **kw):
         return self
 
     def create(self, **kw):

@@ -5,7 +5,9 @@ name: session
 on:
   schedule:
     - cron: "37 11 * * 1-5"
+    - cron: "32 12 * * 1-5"
     - cron: "37 12 * * 1-5"
+    - cron: "44 12 * * 1-5"
     - cron: "52 12 * * 1-5"
     - cron: "7 13 * * 1-5"
   workflow_dispatch:
@@ -83,6 +85,7 @@ jobs:
           git fetch -q origin main
           python -m trading scan-outgoing
           for i in 1 2 3 4; do
+            git rebase --abort 2>/dev/null || true
             if git pull -q --rebase origin main && git push -q "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" HEAD:main; then exit 0; fi
             sleep $((i * 5))
           done
