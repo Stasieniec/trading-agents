@@ -113,8 +113,8 @@ more than cloud sessions. Every source except Alpaca is optional: if it fails, t
 and the day goes on.
 
 Licensing: free tiers are for personal, non-display use. The public repo and dashboard publish
-derived numbers (portfolio values, fills, P&L) and headline titles with links. Raw price tables
-and article text never go into git. Price history lives in `actions/cache`. A compact list of each
+derived numbers (portfolio values, fills, P&L) and headline titles with links. Article text never goes into git, and neither do price histories; the ledger does record the
+close of each held position and SPY's daily open and close, which the books need. Price history lives in `actions/cache`. A compact list of each
 day's eligible tickers with their market-cap bucket is committed, so the random-picks band can be
 drawn point-in-time.
 
@@ -307,7 +307,7 @@ sure the harness never writes one anywhere.
   passed through files or environment variables.
 - Workflows trigger only on `schedule` and `workflow_dispatch`. No pull request triggers.
 - Workflow `permissions` default to read; only the jobs that commit get `contents: write`.
-- Only first-party actions, pinned to commit SHAs. Python dependencies locked with hashes.
+- Only first-party actions, pinned by major version tag. Python dependencies locked with hashes.
 - No Actions artifacts: on a public repo anyone signed in to GitHub can download them.
 - Anthropic is a GitHub secret scanning partner: a leaked `sk-ant-` key found in a public repo is
   reported and deactivated automatically, and the owner gets an email.

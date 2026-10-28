@@ -69,6 +69,7 @@ class Session:
         self.memory = Memory(mem_root, records_dir=AGENTS_DIR / agent.name / "records")
         self.tools = ToolBox(agent, day, self.alpaca, universe, self.memory, self.state, self.closes,
                              self.client, self._add_cost, self.log)
+        self.tools.deadline = self.deadline
 
     def _add_cost(self, model: str, usage, what: str) -> None:
         c = call_cost(model, usage)
@@ -90,24 +91,36 @@ class Session:
         parts = [
             f"Today is {self.day:%A %Y-%m-%d}. The time is {datetime.now(UTC):%H:%M} UTC, before the US open. "
             f"Orders you submit fill at today's opening auction.",
-            "## Your portfolio\n" + portfolio_text(self.state, self.closes, self.day),
+            _data("your portfolio (numbers by code, theses written by you earlier)",
+                  portfolio_text(self.state, self.closes, self.day)),
         ]
         if expired:
             parts.append("Positions past their horizon, which need a close, extend or set_weight order today: "
                          + ", ".join(sorted(expired)))
+        cancelled = self._cancelled_since_last()
+        if cancelled:
+            parts.append("## Orders from earlier sessions that did not fill (written by code)\n" + cancelled)
         settled = self._settled_since_last()
         if settled:
             parts.append("## Trades settled since your last session (written by code)\n" + settled)
         if a.universe == "tech-ten":
             parts.append("Your universe: " + ", ".join(TECH_TEN) + ".")
-        parts.append(f'<data source="your summary from the last session">\n{summary}\n</data>')
-        parts.append(f'<data source="your general notes">\n{notes}\n</data>')
-        parts.append(f'<data source="index of your ticker notes">\n{mem.index()}\n</data>')
+        parts.append(_data("your summary from the last session", summary))
+        parts.append(_data("your general notes", notes))
+        parts.append(_data("index of your ticker notes", mem.index()))
         if self.digest:
-            parts.append(f'<data source="today\'s digest">\n{render(self.digest, news=a.news)}\n</data>')
+            parts.append(_data("today's digest", render(self.digest, news=a.news)))
         else:
             parts.append("Today's digest could not be built. Work from your tools.")
         return "\n\n".join(parts)
+
+    def _cancelled_since_last(self) -> str:
+        from ..ledger import read_jsonl
+        prev = sorted(p.name for p in (AGENTS_DIR / self.agent.name / "sessions").glob("*") if p.name < self.day.isoformat())
+        since = prev[-1] if prev else ""
+        rows = [e for e in read_jsonl(AGENTS_DIR / self.agent.name / "ledger" / "events.jsonl")
+                if e["type"] == "cancel" and e["date"] >= since]
+        return "\n".join(f"- {e['ticker']} ({e['date']}): {e['reason']}" for e in rows)
 
     def _settled_since_last(self) -> str:
         recs = AGENTS_DIR / self.agent.name / "records"
@@ -158,7 +171,8 @@ class Session:
             if self.cost >= self.hard_cap:
                 result["reason"] = f"hard cost cap ${self.hard_cap:.2f} reached"
                 return
-            r = self.client.with_options(timeout=min(300.0, remaining)).messages.create(
+            retries = 3 if remaining > 360 else 0
+            r = self.client.with_options(timeout=min(300.0, remaining), max_retries=retries).messages.create(
                 model=MODEL, max_tokens=16000, system=system, tools=tools, messages=messages,
                 thinking={"type": "adaptive", "display": "summarized"},
                 output_config={"effort": EFFORT}, cache_control={"type": "ephemeral"})
@@ -166,6 +180,9 @@ class Session:
             self._write("assistant", turn=turn, stop_reason=r.stop_reason, cost=self.cost,
                         content=[_clean_block(b) for b in r.content], usage=r.usage.model_dump())
             messages.append({"role": "assistant", "content": r.content})
+            if datetime.now(UTC) > self.deadline:
+                result["reason"] = "the model answered after the deadline before the open"
+                return
             for b in r.content:
                 if b.type == "web_search_tool_result" and isinstance(b.content, list):
                     seen_urls |= {norm(x.url) for x in b.content if getattr(x, "url", None)}
@@ -247,17 +264,26 @@ class Session:
                            "decided_at": datetime.now(UTC).isoformat(), "prompt_hash": result["prompt_hash"],
                            "sources": srcs})
         result["orders"] = orders
-        summary = result.get("summary") or ""
-        if result["status"] != "decided":
-            summary = (f"The harness wrote this summary: the session on {day} ended without a decision "
-                       f"({result['reason'] or result['status']}). Nothing traded; all positions held.\n\n" + summary)
-        self.memory.write_summary(f"Session {day}.\n\n{summary}")
+        if result["status"] == "decided":
+            self.memory.write_summary(f"Session {day}.\n\n{result.get('summary') or ''}")
+        else:
+            prev = (self.memory.dir / "summary.md").read_text() if (self.memory.dir / "summary.md").exists() else ""
+            self.memory.write_summary(
+                f"The harness wrote this: the session on {day} ended without a decision "
+                f"({result['reason'] or result['status']}). Nothing traded; all positions held. "
+                f"Your previous summary follows.\n\n{prev}")
         (self.out / "decision.json").write_text(redact(json.dumps(result, indent=1, default=str)))
         (self.out / "usage.json").write_text(json.dumps({"total_cost": self.cost, "calls": self.calls,
                                                          "prompt_hash": result["prompt_hash"]}, indent=1, default=str))
         if not self.dry_run and orders:
             append_jsonl(AGENTS_DIR / self.agent.name / "ledger" / "orders.jsonl", orders)
         self.log(f"{result['status']}: {len(orders)} orders, ${self.cost:.3f}, {result.get('reason', '')}")
+
+
+def _data(source: str, text: str) -> str:
+    """Wrap untrusted text in a data block it cannot close or open from inside."""
+    safe = text.replace("<data", "&lt;data").replace("</data", "&lt;/data")
+    return f'<data source="{source}">\n{safe}\n</data>'
 
 
 def _headline_text(digest: dict | None) -> str:

@@ -23,6 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          ref: main
           persist-credentials: false
       - uses: actions/setup-python@v6
         with:
@@ -48,6 +49,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
+          # Anything left uncommitted was refused or half-written: drop it so the rebase can run.
+          git checkout -q -- . && git clean -fdq -- agents data site-data
           git fetch -q origin main
           python -m trading scan-outgoing
           for i in 1 2 3 4; do

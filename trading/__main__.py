@@ -74,7 +74,14 @@ def experiment_start() -> date | None:
 
 
 def session_done(name: str, day: date) -> bool:
-    return (AGENTS_DIR / name / "sessions" / day.isoformat() / "decision.json").exists()
+    """A session counts as done unless it failed, so a later firing retries a failed one."""
+    p = AGENTS_DIR / name / "sessions" / day.isoformat() / "decision.json"
+    if not p.exists():
+        return False
+    try:
+        return json.loads(p.read_text()).get("status") != "failed"
+    except ValueError:
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -239,8 +246,12 @@ def cmd_mark(_args) -> None:
     if upto and market.run(upto, log=log):
         site.write_records()
         commit(["data/benchmarks", "agents"], f"mark: {upto}", ["data/benchmarks/", "agents/"])
-    site.build()
-    commit(["site-data"], f"site: after marking {upto}", ["site-data/"])
+    try:
+        site.build()
+        commit(["site-data"], f"site: after marking {upto}", ["site-data/"])
+    except Exception as e:  # the books are committed; a site bug must not strand them
+        log(f"site build failed: {type(e).__name__}: {e}")
+        raise
 
 
 def cmd_site(_args) -> None:

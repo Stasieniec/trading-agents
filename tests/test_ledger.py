@@ -134,3 +134,16 @@ def test_benchmark_orders_without_plan():
                      "slippage_bp": 10}], D1, {"SPY": 500.0}, {})
     assert s.positions["SPY"].stop_price is None
     assert exit_events(s, D2, {"SPY": {"o": 1, "h": 1, "l": 1, "c": 1}}) == []
+
+
+def test_actions_dated_before_or_on_the_buy_are_not_applied():
+    s = State()
+    fill_orders(s, [order(1, "AAA", w=0.5)], D2, {"AAA": 25.0}, {})  # bought on the split's ex-date
+    q, stop = s.positions["AAA"].qty, s.positions["AAA"].stop_price
+    cash = s.cash
+    acts = [{"kind": "forward_splits", "id": "s1", "symbol": "AAA", "old_rate": 1, "new_rate": 4, "ex_date": "2026-11-03"},
+            {"kind": "cash_dividends", "id": "d1", "symbol": "AAA", "rate": 1.0, "ex_date": "2026-11-02"}]
+    ev = corporate_action_events(s, acts, date(2026, 11, 4))
+    assert [e["type"] for e in ev] == ["noop_action", "noop_action"]
+    assert s.positions["AAA"].qty == q and s.positions["AAA"].stop_price == stop and s.cash == cash
+    assert corporate_action_events(s, acts, date(2026, 11, 5)) == []

@@ -89,6 +89,8 @@ def apply_event(s: State, e: dict) -> None:
                 del s.positions[t]
         if e.get("order_id"):
             s.done_orders.add(e["order_id"])
+        if abs(s.cash) < 1e-6:
+            s.cash = 0.0  # float dust from sizing to exactly the available cash
     elif k == "plan":
         p = s.positions.get(t)
         if p:
@@ -160,6 +162,13 @@ def corporate_action_events(s: State, actions: list[dict], day: date) -> list[di
         kind = a["kind"]
         sym = a.get("symbol") or a.get("acquiree_symbol") or a.get("old_symbol")
         held = s.positions.get(sym) if sym else None
+        if held and when <= held.opened:
+            # Bought on or after the ex-date: the fill price already reflects it, and no dividend is due.
+            ev = {"type": "noop_action", "action_id": aid, "date": d, "ticker": sym, "kind": kind,
+                  "note": "position opened on or after the ex-date"}
+            apply_event(s, ev)
+            out.append(ev)
+            continue
         if kind in ("forward_splits", "reverse_splits", "unit_splits"):
             if held and a.get("old_rate") and a.get("new_rate"):
                 ratio = float(a["new_rate"]) / float(a["old_rate"])

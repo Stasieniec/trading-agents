@@ -4,7 +4,7 @@ import csv
 import json
 from datetime import date, timedelta
 
-from .alpaca import Alpaca, bar_is_sane
+from .alpaca import Alpaca, DataError, bar_is_sane
 from .config import (AGENTS, AGENTS_DIR, BENCHMARK_SLIPPAGE_BP, BENCHMARKS, DATA_DIR,
                      EXPERIMENT_FILE)
 from .ledger import (State, append_jsonl, apply_event, corporate_action_events, exit_events,
@@ -89,8 +89,14 @@ def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
 
     first, last = days[0], days[-1]
     bars = alpaca.daily_bars(sorted(symbols), previous_trading_day(first), last, adjustment="raw")
-    auctions = alpaca.opening_auctions(sorted(order_syms), first, last) if order_syms else {}
-    actions = alpaca.corporate_actions(sorted(symbols), first - timedelta(days=10), last + timedelta(days=1))
+    try:
+        auctions = alpaca.opening_auctions(sorted(order_syms), first, last) if order_syms else {}
+    except DataError as e:
+        log(f"marking: opening auctions unavailable, filling at the bar open: {e}")
+        auctions = {}
+    # Wide window: the endpoint may date entries by processing rather than ex-date. Only actions
+    # with an ex-date on or before the day being marked are applied.
+    actions = alpaca.corporate_actions(sorted(symbols), first - timedelta(days=10), last + timedelta(days=45))
     by_day: dict[str, dict[str, dict]] = {}
     rejected = 0
     for sym, bl in bars.items():

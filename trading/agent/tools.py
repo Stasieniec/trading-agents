@@ -1,7 +1,7 @@
 """Tool definitions and implementations. Every result is a string, trimmed before it is first sent."""
 
 import json
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 import anthropic
 
@@ -91,6 +91,7 @@ class ToolBox:
         self.read_ok_urls: set[str] = set()
         self.read_answers: dict[str, dict] = {}
         self.read_calls = 0
+        self.deadline = None
 
     def run(self, name: str, args: dict) -> tuple[str, bool]:
         try:
@@ -187,6 +188,8 @@ class ToolBox:
     # --- reading the web through a cheap helper
 
     def t_read_page(self, url: str, question: str) -> str:
+        if self.deadline and (self.deadline - datetime.now(timezone.utc)).total_seconds() < 120:
+            raise ValueError("too close to the deadline before the open to read more pages; submit now")
         if self.read_calls >= READ_PAGE_MAX_CALLS:
             raise ValueError(f"read_page limit of {READ_PAGE_MAX_CALLS} reached this session")
         if not url.startswith(("http://", "https://")):
