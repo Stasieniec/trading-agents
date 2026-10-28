@@ -7,8 +7,8 @@ benchmarks.
 Hypothesis under test: from recent news, an LLM agent can make trading decisions that profit over
 days or weeks.
 
-Status: revised 2026-10-28 after three independent reviews (experiment validity, security,
-feasibility). Nothing is built yet.
+Status: built 2026-10-28, live from Thursday 2026-10-29. Revised before the build after three
+independent reviews (experiment validity, security, feasibility).
 
 ## Decisions already made
 
@@ -182,7 +182,9 @@ submits, the day is a hold and the harness writes the summary itself with the re
 
 Loop details: handle `pause_turn` from server tools; keep history append-only (tool results are
 trimmed before they are first sent, never afterwards, so the cache and thinking blocks stay valid);
-set `effort` explicitly rather than relying on Sonnet's default of `high`.
+effort `high` for the agents and `low` for the Haiku helpers. Dry runs at `medium` produced
+sessions of one or two tool calls. A decision submitted before any research tool has been used is
+bounced once, after the first dry runs showed agents deciding on turn one.
 
 ### Memory
 
