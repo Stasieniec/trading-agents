@@ -169,6 +169,7 @@ class Session:
             for b in r.content:
                 if b.type == "web_search_tool_result" and isinstance(b.content, list):
                     seen_urls |= {norm(x.url) for x in b.content if getattr(x, "url", None)}
+            research_calls += sum(1 for b in r.content if b.type == "server_tool_use")
 
             if r.stop_reason == "refusal":
                 result["reason"] = "model declined the request"
@@ -184,7 +185,6 @@ class Session:
                 messages.append({"role": "user", "content": "Call submit_decision now. An empty order list is fine."})
                 continue
 
-            research_calls += sum(1 for b in r.content if b.type == "server_tool_use")
             results = []
             submitted = None
             for u in uses:
