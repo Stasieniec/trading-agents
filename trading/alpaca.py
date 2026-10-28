@@ -91,10 +91,12 @@ class Alpaca:
     def opening_auctions(self, symbols: list[str], start: date, end: date) -> dict[str, dict[str, float]]:
         """Official opening auction price per symbol per date, where Alpaca has one."""
         out: dict[str, dict[str, float]] = {}
+        latest = datetime.now(UTC) - timedelta(minutes=16)
+        end_ts = min(datetime(end.year, end.month, end.day, 23, 59, tzinfo=UTC), latest)
         for chunk in self._chunks(symbols):
             res = self._paged(f"{DATA}/v2/stocks/auctions", {
                 "symbols": ",".join(chunk), "start": start.isoformat(),
-                "end": (end + timedelta(days=1)).isoformat(), "feed": "sip", "limit": 10000,
+                "end": end_ts.strftime("%Y-%m-%dT%H:%M:%SZ"), "feed": "sip", "limit": 10000,
             }, "auctions")
             for sym, days in res.items():
                 for day in days:

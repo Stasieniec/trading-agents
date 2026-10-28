@@ -281,15 +281,26 @@ def cmd_check_sources(_args) -> None:
             log(f"{name}: ok, {fn()} items")
         except Exception as e:
             log(f"{name}: FAILED {type(e).__name__}: {str(e)[:200] if isinstance(e, DataError) else ''}")
-    # The shape of one auction and one corporate action, with no prices, to confirm the parser.
+    # The shape of the auction data, with no prices, to confirm the parser.
     try:
+        end = (now_utc() - timedelta(minutes=20)).strftime("%Y-%m-%dT%H:%M:%SZ")
         j = a._get("https://data.alpaca.markets/v2/stocks/auctions",
-                   {"symbols": "SPY", "start": (today - timedelta(days=5)).isoformat(), "feed": "sip"})
-        day0 = next(iter((j.get("auctions") or {}).get("SPY", [])), {})
-        log(f"auction keys: {sorted(day0)}, open print keys: {sorted((day0.get('o') or [{}])[0])}, "
-            f"conditions: {sorted({str(p.get('c')) for p in day0.get('o') or []})}")
+                   {"symbols": "SPY,NVDA", "start": (today - timedelta(days=6)).isoformat(), "end": end, "feed": "sip"})
+        for sym, days in (j.get("auctions") or {}).items():
+            for d in days:
+                o = d.get("o") or []
+                log(f"auction {sym} {d.get('d', '')[:10]}: {len(o)} open prints, keys "
+                    f"{sorted(o[0]) if o else []}, conditions {sorted({str(p.get('c')) for p in o})}, "
+                    f"exchanges {sorted({str(p.get('x')) for p in o})}")
+        parsed = a.opening_auctions(["SPY", "NVDA"], today - timedelta(days=6), today)
+        bars = a.daily_bars(["SPY", "NVDA"], today - timedelta(days=6), today)
+        for sym in ("SPY", "NVDA"):
+            for b in bars.get(sym, []):
+                ap = parsed.get(sym, {}).get(b["date"])
+                if ap:
+                    log(f"{sym} {b['date']}: auction open differs from bar open by {abs(ap / float(b['o']) - 1) * 1e4:.1f} bp")
     except Exception as e:
-        log(f"auction shape check failed: {type(e).__name__}")
+        log(f"auction shape check failed: {type(e).__name__}: {str(e)[:200] if isinstance(e, DataError) else ''}")
 
 
 def cmd_scan_outgoing(_args) -> None:
