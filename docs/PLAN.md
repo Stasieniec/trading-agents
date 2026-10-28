@@ -23,7 +23,10 @@ feasibility). Nothing is built yet.
 - The tech-ten agent's list: NVDA, AAPL, MSFT, GOOGL, AMZN, META, TSLA, AVGO, AMD, PLTR.
 - Repo and dashboard are public.
 - Budget: $100 of API credits per month, refreshed monthly.
-- Starting capital $100,000 per agent, zero commission, slippage per side (see "Still to decide").
+- Starting capital $100,000 per agent, zero commission. Slippage per side by market cap at
+  decision time: 10 bp above $10B, 25 bp from $2B to $10B, 50 bp from $300M to $2B. Applied to
+  every fill, stop and target exits included.
+- Cost caps: soft $0.90 and hard $2.00 per session, $95 per month across everything.
 - Trading days only. Monday's session reads the weekend's news.
 - No position size cap beyond long-only and no negative cash: the agent sizes its own bets.
 - Expired horizons never close automatically; the agent must close or re-justify each one.
@@ -226,9 +229,12 @@ $35 to $75 a month. The dry run measures the real figure.
 - Per-session cost counted after every model response. At the soft cap the harness tells the
   agent to submit now; at the hard cap the session stops and the day becomes a hold.
 - Spend per session is in each `usage.json`. Before a session starts, the harness sums the month's
-  files; at the monthly cap, sessions are skipped and the dashboard says so.
+  files, dry runs included; at $95, sessions are skipped until the next month and the dashboard
+  says so. The harness only sees its own spend, so the Console workspace limit is what makes $95
+  hold if the key is ever used elsewhere. At the hard cap of $2.00, four agents could in theory
+  hit $95 before month end; the dashboard shows the projection so that is visible early.
 - Also capped: 40 model turns, 25 minutes, and the deadline three minutes before the open.
-- A Console spend limit on the key's workspace as the last line, set by Stas.
+- A Console spend limit of $95 a month on the key's workspace, set by Stas.
 
 ## Running it
 
@@ -339,11 +345,3 @@ What Stas sets by hand:
 
 Deferred until the basics run: a `research(question)` tool where Haiku runs its own search loop
 (overlaps `web_search` plus `read_page`), Reddit and Yahoo trending in the digest.
-
-## Still to decide
-
-- Cost caps. Proposed: soft $0.75 and hard $1.00 per session, monthly stop at $80 (leaving room
-  for development and the Playground).
-- Slippage. A flat 10 basis points is fair for the tech ten but flatters small caps at the open,
-  which is where weird-links will live. Proposed: by market cap at decision time, 10 bp above
-  $10B, 25 bp from $2B to $10B, 50 bp from $300M to $2B. These numbers are a starting point.
