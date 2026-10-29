@@ -1,0 +1,10 @@
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-01", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "AAPL"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-02", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "AMD"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-03", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "AMZN"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-04", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "AVGO"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-05", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "GOOGL"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-06", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "META"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-07", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "MSFT"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-08", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "NVDA"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-09", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "PLTR"}
+{"action": "set_weight", "fill_at": "after:2026-10-29T14:16:27Z", "id": "tech-ten-ew-2026-10-29-10", "session_date": "2026-10-29", "slippage_bp": 10, "target_weight": 0.1, "ticker": "TSLA"}

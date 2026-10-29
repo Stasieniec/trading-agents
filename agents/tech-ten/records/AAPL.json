@@ -1,0 +1,32 @@
+{
+ "ticker": "AAPL",
+ "trades": [
+  {
+   "ticker": "AAPL",
+   "opened": "2026-10-29",
+   "bought_value": 8000.0,
+   "bought_qty": 22.827134306383687,
+   "sold_value": 0.0,
+   "dividends": 0.0,
+   "thesis": "Capex-light stock that is up about 2% today while the AI-capex names fall, so it works as a hedge inside the basket. Earnings are expected around Nov 2, which adds event risk, so I am keeping the size moderate.",
+   "extensions": [],
+   "order_id": "tech-ten-2026-10-29-05",
+   "at": "after:2026-10-29T14:15:52Z",
+   "horizon_end": "2026-11-19",
+   "probability": 0.5,
+   "horizon_days": 15,
+   "sources": [
+    {
+     "answer": "PAGE DATE: October 25, 2026\n\n**Report dates and expectations (per the page):**\n\n- **Microsoft (MSFT), fiscal Q1 2027:** Wed Oct 28, 2026, after the close. Consensus EPS $4.71 and revenue $90.63B. Microsoft's July guide was revenue $89.85B to $90.95B, Azure growth \"approximately 45% in constant currency,\" and capex \"over $50 billion including the lease reclassification impact.\" The page's main watch item is Azure growth against that 45% guide.\n- **Alphabet (GOOGL), Q3 2026:** Wed Oct 28, 2026, call at 4:30 p.m. ET, with the release posted ahead of the call. Consensus EPS $3.03 and revenue $127.",
+     "read": true,
+     "url": "https://sentisense.ai/blog/big-tech-earnings-this-week/"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 7,
+   "target_pct": 10,
+   "closed": null,
+   "open_qty": 22.827134306383687
+  }
+ ]
+}

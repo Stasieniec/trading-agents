@@ -1,0 +1,32 @@
+{
+ "ticker": "PLTR",
+ "trades": [
+  {
+   "ticker": "PLTR",
+   "opened": "2026-10-29",
+   "bought_value": 5000.0,
+   "bought_qty": 25.579991780637044,
+   "sold_value": 0.0,
+   "dividends": 0.0,
+   "thesis": "Small starter position. It is down only about 1% on a day when the AI complex sold off, and it carries software-multiple risk (NOW -24%, FTNT -20% today). Keep it small until I see how the sector reacts.",
+   "extensions": [],
+   "order_id": "tech-ten-2026-10-29-06",
+   "at": "after:2026-10-29T14:15:52Z",
+   "horizon_end": "2026-11-19",
+   "probability": 0.48,
+   "horizon_days": 15,
+   "sources": [
+    {
+     "answer": "PAGE DATE: October 25, 2026\n\n**Report dates and expectations (per the page):**\n\n- **Microsoft (MSFT), fiscal Q1 2027:** Wed Oct 28, 2026, after the close. Consensus EPS $4.71 and revenue $90.63B. Microsoft's July guide was revenue $89.85B to $90.95B, Azure growth \"approximately 45% in constant currency,\" and capex \"over $50 billion including the lease reclassification impact.\" The page's main watch item is Azure growth against that 45% guide.\n- **Alphabet (GOOGL), Q3 2026:** Wed Oct 28, 2026, call at 4:30 p.m. ET, with the release posted ahead of the call. Consensus EPS $3.03 and revenue $127.",
+     "read": true,
+     "url": "https://sentisense.ai/blog/big-tech-earnings-this-week/"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 10,
+   "target_pct": 15,
+   "closed": null,
+   "open_qty": 25.579991780637044
+  }
+ ]
+}

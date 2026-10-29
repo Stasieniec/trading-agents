@@ -1,0 +1,26 @@
+{
+ "ticker": "GKOS",
+ "trades": [
+  {
+   "ticker": "GKOS",
+   "opened": "2026-10-29",
+   "bought_value": 8000.0,
+   "bought_qty": 35.00047294389066,
+   "sold_value": 0.0,
+   "dividends": 0.0,
+   "thesis": "Post-earnings gap of about +25% to a new high (227 vs prior 192 range top) on heavy volume. Post-earnings drift tends to continue after big upside surprises. The July gap held and drifted higher for weeks. Price/volume only, no news access.",
+   "extensions": [],
+   "order_id": "no-news-2026-10-29-01",
+   "at": "after:2026-10-29T14:13:48Z",
+   "horizon_end": "2026-11-19",
+   "probability": 0.55,
+   "horizon_days": 15,
+   "sources": [],
+   "causal_chain": [],
+   "stop_pct": 9,
+   "target_pct": 18,
+   "closed": null,
+   "open_qty": 35.00047294389066
+  }
+ ]
+}
