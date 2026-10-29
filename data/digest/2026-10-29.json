@@ -1,0 +1,532 @@
+{
+ "date": "2026-10-29",
+ "built_at": "2026-10-29T14:13:16.234847+00:00",
+ "previous_session": "2026-10-28",
+ "intraday": true,
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 772.31,
+   "day_pct": 0.3443078762050744,
+   "week_pct": -0.10089381572651046
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 725.61,
+   "day_pct": 0.6045060658578905,
+   "week_pct": 0.05653612796470142
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 281.29,
+   "day_pct": 0.39617388821473476,
+   "week_pct": 1.739728009259256
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 524.68,
+   "day_pct": 0.2675431891148161,
+   "week_pct": -0.5722948645063619
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 191.0,
+   "day_pct": 0.7968758245817664,
+   "week_pct": 1.304762915031299
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 103.14,
+   "day_pct": -0.42479243097123254,
+   "week_pct": -5.350096356795442
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 115.33,
+   "day_pct": -0.10394110004331436,
+   "week_pct": -0.17311520817103743
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 86.84,
+   "day_pct": -0.3557085484796385,
+   "week_pct": -0.309952933073121
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 56.13,
+   "day_pct": 0.44738725841086957,
+   "week_pct": 0.1605995717344877
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 179.72,
+   "day_pct": 0.3013729210849414,
+   "week_pct": 0.4359003017771368
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 168.49,
+   "day_pct": 0.3394473558837596,
+   "week_pct": 0.10694551720040746
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 68.45,
+   "day_pct": 0.3518545667790862,
+   "week_pct": 0.425469483568075
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 51.86,
+   "day_pct": 0.15449980687523013,
+   "week_pct": 1.0522213561964033
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 42.49,
+   "day_pct": -0.8401400233372214,
+   "week_pct": 1.1666666666666714
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 42.13,
+   "day_pct": -0.730442978322321,
+   "week_pct": 0.16642891107940816
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 80.99,
+   "day_pct": -0.7840254808281322,
+   "week_pct": 0.9346959122632059
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 373.51,
+   "day_pct": 0.33039647577093323,
+   "week_pct": -1.4355455864889843
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 166.57,
+   "day_pct": 1.6414449597266234,
+   "week_pct": 4.23654568210261
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.06,
+   "day_pct": -0.20604395604396641,
+   "week_pct": 0.48409405255878113
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "ADT",
+    "pct": 33.99,
+    "price": 9.9284
+   },
+   {
+    "symbol": "PRCH",
+    "pct": 25.92,
+    "price": 20.5246
+   },
+   {
+    "symbol": "GKOS",
+    "pct": 25.29,
+    "price": 227.31
+   },
+   {
+    "symbol": "TDOC",
+    "pct": 23.76,
+    "price": 8.515
+   },
+   {
+    "symbol": "MAX",
+    "pct": 22.87,
+    "price": 14.4
+   },
+   {
+    "symbol": "CLMB",
+    "pct": 21.58,
+    "price": 40.28
+   },
+   {
+    "symbol": "CROX",
+    "pct": 21.36,
+    "price": 145.25
+   },
+   {
+    "symbol": "BHC",
+    "pct": 20.88,
+    "price": 8.365
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "IOVA",
+    "pct": -31.13,
+    "price": 10.1999
+   },
+   {
+    "symbol": "NOW",
+    "pct": -24.3,
+    "price": 113.6429
+   },
+   {
+    "symbol": "TWI",
+    "pct": -23.72,
+    "price": 5.05
+   },
+   {
+    "symbol": "FTNT",
+    "pct": -20.43,
+    "price": 138.5145
+   },
+   {
+    "symbol": "SFM",
+    "pct": -18.4,
+    "price": 50.595
+   }
+  ],
+  "as_of": "2026-10-29T14:13:00.106297113Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "GOOGL",
+   "volume": 44953396
+  },
+  {
+   "symbol": "GOOG",
+   "volume": 30669463
+  },
+  {
+   "symbol": "ADT",
+   "volume": 26162903
+  },
+  {
+   "symbol": "IOVA",
+   "volume": 22784785
+  },
+  {
+   "symbol": "NOW",
+   "volume": 19985408
+  },
+  {
+   "symbol": "NOK",
+   "volume": 19266158
+  },
+  {
+   "symbol": "NCLH",
+   "volume": 18750105
+  },
+  {
+   "symbol": "INTC",
+   "volume": 17833522
+  },
+  {
+   "symbol": "SPCX",
+   "volume": 17825473
+  },
+  {
+   "symbol": "AMZN",
+   "volume": 16886917
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Watching Microsoft; Hearing Investor Business Daily SwingTrader Buys Stock",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-29T13:52:54Z",
+   "url": "https://www.benzinga.com/quote/MSFT",
+   "line": "",
+   "symbols": [
+    "MSFT"
+   ]
+  },
+  {
+   "title": "IANS Launches Practitioner-Validated Cybersecurity Intelligence in Microsoft Copilot",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-29T13:31:26Z",
+   "url": "https://www.prnewswire.com/news-releases/ians-launches-practitioner-validated-cybersecurity-intelligence-in-microsoft-copilot-302923246.html",
+   "line": "IANS Research has integrated its practitioner-validated cybersecurity intelligence into Microsoft Copilot to assist security teams.",
+   "symbols": [
+    "MSFT"
+   ]
+  },
+  {
+   "title": "Microsoft Goes Jumbo: $25 Billion Bond Sale in the Works",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-29T13:29:25Z",
+   "url": "https://www.benzinga.com/markets/tech/26/10/62696205/microsoft-goes-jumbo-25-billion-bond-sale-in-the-works",
+   "line": "Microsoft plans at least $25B in bonds, its first debt sale since 2017, to fund capital needs as AI-driven spending surges.",
+   "symbols": [
+    "MSFT",
+    "GOOGL",
+    "ORCL",
+    "JNJ",
+    "META",
+    "GOOG"
+   ]
+  },
+  {
+   "title": "Huntington Ingalls, Crocs, Carvana, Insmed And Other Big Stocks Moving Higher On Thursday",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-29T14:05:29Z",
+   "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62699146/huntington-ingalls-crocs-carvana-insmed-and-other-big-stocks-moving-higher-on-thursday",
+   "line": "Stocks rallied on strong earnings and raised guidance, led by Huntington Ingalls, Porch, Teladoc and Crocs, despite the Dow falling 150 points.",
+   "symbols": [
+    "CMG",
+    "GKOS",
+    "CROX",
+    "FTAI",
+    "PRCH",
+    "FCN"
+   ]
+  },
+  {
+   "title": "Merck Exec Says Growth Will Be Partially Offset By More Than $2B Of Headwinds From Generic Competition And LOE; It Now Expects To Raise Forecast Of $70B In Revenue Mid-2030s From New Growth Drivers",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-29T14:04:17Z",
+   "url": "https://www.benzinga.com/news/26/10/62699054/merck-exec-says-growth-will-be-partially-offset-more-2b-headwinds-generic-competition-and-loe-it-now",
+   "line": "",
+   "symbols": [
+    "MRK"
+   ]
+  },
+  {
+   "title": "Analysts Adjust Price Targets for ICON Public Limited Company Following Q3 Earnings",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-29T14:01:59Z",
+   "url": "https://www.marketscreener.com/news/deutsche-bank-adjusts-icon-price-target-to-250-from-200-maintains-buy-rating-ce785fdad98ff72d",
+   "line": "Following the company's Q3 2026 earnings call, multiple financial institutions including Deutsche Bank, RBC, and Truist Securities have updated their price targets for ICON.",
+   "symbols": [
+    "GKOS",
+    "ICLR"
+   ]
+  },
+  {
+   "title": "Trane Technologies Reports Strong Third-Quarter 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-29T14:01:46Z",
+   "url": "https://www.moomoo.com/news/post/1002806719/press-release-trane-technologies-reports-strong-third-quarter-results-raises",
+   "line": "Trane Technologies reported Q3 2026 results featuring revenue of $6.76 billion and adjusted EPS of $4.86, both exceeding analyst expectations, while raising its full-year revenue guidance.",
+   "symbols": [
+    "HSY",
+    "LAUR",
+    "WTW",
+    "NSP",
+    "ATI",
+    "AVY"
+   ]
+  },
+  {
+   "title": "High Gas Prices Are Hurting Candy Shopping, Hershey Warns",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-29T14:00:08Z",
+   "url": "https://www.benzinga.com/markets/earnings/26/10/62698680/high-gas-prices-are-hurting-candy-shopping-hershey-warns",
+   "line": "Hershey beats Q3 earnings estimates, but stock slips as cautious consumer spending narrows its 2026 organic sales outlook.",
+   "symbols": [
+    "HSY"
+   ]
+  },
+  {
+   "title": "Nasdaq Dips Over 400 Points; Alphabet Shares Tumble After Downbeat Q3 Results",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-29T13:42:09Z",
+   "url": "https://www.benzinga.com/markets/market-summary/26/10/62697318/nasdaq-dips-over-400-points-alphabet-shares-tumble-after-downbeat-q3-results",
+   "line": "U.S. stocks fell, led by a 400-point Nasdaq drop as Alphabet plunged 13% on weak results; healthcare rose while communication services sank.",
+   "symbols": [
+    "GOOGL",
+    "GOOG"
+   ]
+  },
+  {
+   "title": "AI's Power Hunger Sends Caterpillar Orders Soaring \u2014 Tariffs Spoil the Party",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-29T13:39:20Z",
+   "url": "https://www.benzinga.com/markets/earnings/26/10/62696996/ais-power-hunger-sends-caterpillar-orders-soaring-tariffs-spoil-the-party",
+   "line": "Caterpillar (CAT) drops despite Q3 earnings beat as rising 2026 tariff costs and margin pressure worry investors.",
+   "symbols": [
+    "CAT"
+   ]
+  },
+  {
+   "title": "Hilton Grand Vacations Inc. Reports Q3 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-29T13:32:46Z",
+   "url": "https://www.marketscreener.com/news/earnings-flash-hgv-hilton-grand-vacations-inc-reports-q3-revenue-1-96b-vs-factset-est-of-1-39-ce785cd3d08ff124",
+   "line": "Hilton Grand Vacations Inc. reported third-quarter 2026 revenue of $1.96 billion and adjusted earnings per share of $4.03, both exceeding analyst expectations.",
+   "symbols": [
+    "HGV"
+   ]
+  },
+  {
+   "title": "Laureate Education Reaffirms Full-Year 2026 Outlook",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-29T13:32:33Z",
+   "url": "https://www.finanzen.ch/nachrichten/aktien/laureate-education-reaffirms-fy26-outlook-update-1036685069",
+   "line": "Alongside its third-quarter financial results, Laureate Education, Inc. reaffirmed its previously issued adjusted earnings and revenue guidance for the full-year 2026.",
+   "symbols": [
+    "LAUR"
+   ]
+  },
+  {
+   "title": "Merck Exec Says It Expects Moderate Top-Line Growth In 2027",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-29T13:31:52Z",
+   "url": "https://www.benzinga.com/news/26/10/62696327/merck-exec-says-it-expects-moderate-top-line-growth-2027",
+   "line": "",
+   "symbols": [
+    "MRK"
+   ]
+  },
+  {
+   "title": "Merck Opens New Asia-Pacific Bioprocessing Production Center in South Korea",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-29T13:31:45Z",
+   "url": "https://www.globenewswire.com/news-release/2026/10/29/3391213/0/en/merck-opens-300-million-asia-pacific-bioprocessing-production-center-in-daejeon-south-korea.html",
+   "line": "Merck has officially opened a new \u20ac300 million bioprocessing production center in Daejeon, South Korea, marking its largest Life Science investment in the Asia-Pacific region.",
+   "symbols": [
+    "MRK"
+   ]
+  },
+  {
+   "title": "Midea Group Reports Q3 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-29T14:02:02Z",
+   "url": "https://ch.marketscreener.com/boerse-nachrichten/midea-steigert-zurechenbaren-gewinn-im-3-quartal-umsatz-ruecklaeufig-ce785cd3d088f124",
+   "line": "Midea Group announced its third-quarter 2026 financial results, showing an increase in attributable profit despite a decline in revenue.",
+   "symbols": [
+    "APG",
+    "FTI",
+    "H",
+    "TW",
+    "TRN",
+    "GVA"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "MSFT",
+   "stories": 4
+  },
+  {
+   "symbol": "PB",
+   "stories": 3
+  },
+  {
+   "symbol": "GKOS",
+   "stories": 3
+  },
+  {
+   "symbol": "MRK",
+   "stories": 3
+  },
+  {
+   "symbol": "HGV",
+   "stories": 3
+  },
+  {
+   "symbol": "HSY",
+   "stories": 3
+  },
+  {
+   "symbol": "PSX",
+   "stories": 3
+  },
+  {
+   "symbol": "CHRW",
+   "stories": 3
+  },
+  {
+   "symbol": "CAT",
+   "stories": 3
+  },
+  {
+   "symbol": "GOOGL",
+   "stories": 3
+  }
+ ],
+ "summary": "**Market summary: session of 2026-10-28**\n\nU.S. equities finished higher in the prior session. SPY rose 0.34%, QQQ 0.60%, IWM 0.40%, and DIA 0.27%. Technology led (XLK +0.80%), while communication services (XLC -0.42%) and utilities (XLU -0.84%) lagged. Health care (XLV +0.30%) and financials (XLF +0.45%) posted modest gains. Long Treasuries (TLT) fell 0.78%, the dollar ETF (UUP) slipped 0.21%, and oil (USO) rose 1.64%. Gold (GLD) gained 0.33%.\n\nThe day-of-publication movers reflect intraday trading on 2026-10-29 and are not closing figures. Reported moves include Alphabet, down about 13% after weak Q3 results, and gains in Porch, Teladoc, and Crocs. Microsoft was the most-mentioned ticker in news, including a reported plan for at least $25 billion in bonds, its first debt sale since 2017. Merck, Hershey, and Caterpillar also drew coverage tied to earnings and outlook commentary.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3620,
+   "output_tokens": 1116,
+   "output_tokens_details": {
+    "thinking_tokens": 724
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.00092
+ }
+}
