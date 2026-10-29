@@ -1,0 +1,1 @@
+Session 2026-10-30: no news access. AAPL horizon expired; steady uptrend, low vol (0.9%/day), extended. Big gaps seen (NOW -27%, SFM -23%, ALNY -25%, CROX +26%, GKOS +34%) - no edge identified without news; skipped. Idea: post-earnings-drift check on gappers in later sessions.

@@ -1,0 +1,3 @@
+Session 2026-10-30.
+
+First session. Researched the AI-capex selloff: GOOGL -12.6% on Oct 29 (search revenue miss, negative FCF, cloud +103%), AMZN -7% after hours (AWS +39% but EPS/revenue miss, FCF negative), INTC -18% after hours (PC TAM -12%), which dragged AMD (-4% AH) and AVGO (-2.5% AH). Macro: Fed hawkish hold, inflation elevated, oil crunch. No clear edge: gaps are already in after-hours prices, and article fetches mostly failed, so I couldn't verify AMZN details. Held 100% cash. Next session: check the Friday open moves for GOOGL/AMZN/AMD/AVGO/NVDA, find AMD's earnings date, and consider a dip-buy in AMZN (AWS acceleration) or GOOGL if the selloff overshoots, or a short in AMD if PC weakness spreads. Notes saved with tooling tips.
