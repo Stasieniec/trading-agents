@@ -167,6 +167,7 @@ def build() -> None:
             last = s["prompt_hash"] or last
         prompt_changes[name] = ch
 
+    write_holdings(books, now)
     (SITE_DIR / "equity.json").write_text(json.dumps({
         "dates": dates, "start_cash": START_CASH,
         "series": {k: aligned(v) for k, v in series.items()},
@@ -183,6 +184,30 @@ def build() -> None:
         "health": health,
         "digest_dates": sorted(p.stem for p in (DATA_DIR / "digest").glob("*.json"))[-30:],
     }, default=str))
+
+
+def write_holdings(books: dict, now) -> None:
+    """What each portfolio holds right now, for the dashboard's live values during the session."""
+    day = now.astimezone(NY).date().isoformat()
+    out, symbols = {}, set()
+    for name, (events, _) in books.items():
+        st = replay(events)
+        marks = [e for e in events if e["type"] == "mark"]
+        last = marks[-1] if marks else None
+        since = None
+        for e in events:
+            if e["type"] == "fill" and e["date"] == day and str(e.get("at", "")).startswith("after:"):
+                t = e["at"][6:]
+                since = max(since or t, t)
+        out[name] = {"cash": round(st.cash, 6), "positions": {t: p.qty for t, p in sorted(st.positions.items())},
+                     "basis": last["equity"] if last and last["date"] < day else (marks[-2]["equity"] if len(marks) > 1
+                              and last["date"] == day else START_CASH),
+                     "basis_label": (f"close {last['date']}" if last and last["date"] < day else
+                                     f"close {marks[-2]['date']}" if len(marks) > 1 else "start"),
+                     "since": since}
+        symbols |= set(st.positions)
+    (SITE_DIR / "holdings.json").write_text(json.dumps({
+        "generated_at": now.isoformat(), "trading_day": day, "portfolios": out, "symbols": sorted(symbols)}))
 
 
 def _month_end(d: date) -> date:

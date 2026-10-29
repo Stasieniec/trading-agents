@@ -78,6 +78,9 @@ def test_two_days_with_a_split(repo):
     stats = json.loads((repo / "site-data" / "stats.json").read_text())
     assert stats["open-quality"]["days"] == 2
     assert stats["open-quality"]["trades_open"] == 1
+    h = json.loads((repo / "site-data" / "holdings.json").read_text())
+    assert "SPLT" in h["portfolios"]["open-quality"]["positions"] and "SPY" in h["symbols"]
+    assert set(h["portfolios"]) >= {"open-quality", "bench:spy"}
 
 
 class OpenBelowClose(FakeAlpaca):
