@@ -155,17 +155,27 @@ export default {
     }
     const job = SCHEDULE[event.cron];
     if (!job) return;
-    const r = await fetch(`https://api.github.com/repos/Stasieniec/trading-agents/actions/workflows/${job.workflow}/dispatches`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-        "User-Agent": "trading-agents-scheduler",
-      },
-      body: JSON.stringify({ ref: "main", inputs: job.inputs }),
-    });
-    console.log(event.cron, job.workflow, r.status);
+    // The connection to GitHub sometimes times out (a 522 was seen on 29 Oct), so retry a few times.
+    for (const wait of [0, 5000, 20000, 60000]) {
+      if (wait) await new Promise((r) => setTimeout(r, wait));
+      try {
+        const r = await fetch(`https://api.github.com/repos/Stasieniec/trading-agents/actions/workflows/${job.workflow}/dispatches`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "trading-agents-scheduler",
+          },
+          body: JSON.stringify({ ref: "main", inputs: job.inputs }),
+        });
+        console.log(event.cron, job.workflow, r.status);
+        if (r.status === 204) return;
+        if (r.status >= 400 && r.status < 500) return; // a bad token or input will not fix itself
+      } catch (e) {
+        console.log(event.cron, job.workflow, "fetch failed", String(e).slice(0, 120));
+      }
+    }
   },
 };
 
