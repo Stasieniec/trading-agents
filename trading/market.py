@@ -2,7 +2,7 @@
 
 import csv
 import json
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 from .alpaca import Alpaca, DataError, bar_is_sane
 from .config import (AGENTS, AGENTS_DIR, BENCHMARK_SLIPPAGE_BP, BENCHMARKS, DATA_DIR,
@@ -123,8 +123,9 @@ def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
             new = []
             new += corporate_action_events(st, actions, day)
             day_orders = [o for o in orders if o["session_date"] == ds]
-            todays = [o for o in day_orders if o.get("fill_at", "open") != "close"]
+            todays = [o for o in day_orders if o.get("fill_at", "open") == "open"]
             at_close = [o for o in day_orders if o.get("fill_at") == "close"]
+            intraday = [o for o in day_orders if str(o.get("fill_at", "")).startswith("after:")]
             stale = [o for o in orders if o["session_date"] < ds and o["id"] not in st.done_orders]
             for o in stale:
                 ev = {"type": "cancel", "order_id": o["id"], "date": ds, "ticker": o["ticker"],
@@ -144,6 +145,14 @@ def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
                     opens.setdefault(t, float(today[t]["o"]))
             new += fill_orders(st, todays, day, opens, closes)
             new += exit_events(st, day, today)
+            by_moment: dict[str, list] = {}
+            for o in intraday:
+                by_moment.setdefault(o["fill_at"][6:], []).append(o)
+            for moment, group in sorted(by_moment.items()):
+                # Filled at the first minute after the decision: a price nobody had seen. Stops start tomorrow.
+                px = alpaca.first_minute_open(sorted({o["ticker"] for o in group} | set(st.positions)),
+                                              datetime.fromisoformat(moment.replace("Z", "+00:00")))
+                new += fill_orders(st, group, day, px, closes)
             for t, b in today.items():
                 closes[t] = float(b["c"])
             if at_close:

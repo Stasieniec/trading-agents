@@ -105,6 +105,24 @@ class Alpaca:
                         out.setdefault(sym, {})[day["d"][:10]] = price
         return out
 
+    def first_minute_open(self, symbols: list[str], after: datetime) -> dict[str, float]:
+        """Open of the first one-minute SIP bar starting at or after a moment, per symbol."""
+        start = after.replace(second=0, microsecond=0)
+        if start < after:
+            start += timedelta(minutes=1)
+        out: dict[str, float] = {}
+        for chunk in self._chunks(symbols):
+            res = self._paged(f"{DATA}/v2/stocks/bars", {
+                "symbols": ",".join(chunk), "timeframe": "1Min", "feed": "sip", "adjustment": "raw",
+                "start": start.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "end": (start + timedelta(minutes=30)).strftime("%Y-%m-%dT%H:%M:%SZ"), "limit": 10000,
+            }, "bars")
+            for sym, bars in res.items():
+                bars = sorted(bars, key=lambda b: b["t"])
+                if bars:
+                    out[sym] = float(bars[0]["o"])
+        return out
+
     def corporate_actions(self, symbols: list[str], start: date, end: date) -> list[dict]:
         """Flattened corporate actions, each with 'kind' and 'id'."""
         if not symbols:

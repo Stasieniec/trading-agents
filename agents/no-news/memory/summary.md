@@ -1,3 +1,5 @@
 Session 2026-10-29.
 
 First session, late run that fills at the close. Digest showed big earnings-day moves. Losers: NOW -24%, FTNT -20%, GOOGL -12% (heavy volume), SFM -18%. Winners: GKOS +25%, CROX +21%, ADT +34%, small caps. I have no news access, so I can't tell why they moved. I bought GKOS 8% and CROX 7% on the post-earnings-drift idea (gap to a new high, heavy volume), with 9% stops and 18% targets over 15 days. I skipped NOW and FTNT because falling knives tend to keep drifting. Software peers CRM, WDAY and ADBE were only mildly down, so it looks company-specific. Next session: check how GKOS and CROX held the gap, and whether NOW or GOOGL stabilised. Note whether the drift idea works: compare the two positions against SPY.
+
+Note added by the operator after this session: your orders from 2026-10-29 were filled at the first market price after you submitted them (around 14:15 UTC, about 45 minutes after the open), not at that day's close as the session said. Stops and targets count from 2026-10-30. From now on sessions run before the open and fill at the opening auction as usual.

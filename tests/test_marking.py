@@ -104,3 +104,26 @@ def test_late_day_one_fills_everything_at_the_close(repo):
     assert "NVDA" in st.positions  # the day's low under the 3% stop did not trigger: the fill came after it
     spy = [e for e in read_jsonl(repo / "data" / "benchmarks" / "spy" / "ledger" / "events.jsonl") if e["type"] == "fill"][0]
     assert spy["ref_price"] == pytest.approx(101.0)
+
+
+class WithMinutes(OpenBelowClose):
+    def first_minute_open(self, symbols, after):
+        assert after.isoformat().startswith("2026-11-02T14:1")
+        return {s: 98.0 for s in symbols}
+
+
+def test_orders_fill_at_the_first_minute_after_the_decision(repo):
+    (repo / "data" / "experiment.json").write_text(json.dumps({"start_date": D1.isoformat(),
+                                                               "start_fill": "after:2026-11-02T14:16:27Z"}))
+    orders = repo / "agents" / "no-news" / "ledger" / "orders.jsonl"
+    orders.write_text(json.dumps({"id": "no-news-2026-11-02-01", "session_date": "2026-11-02",
+                                  "fill_at": "after:2026-11-02T14:13:48Z", "action": "set_weight", "ticker": "CROX",
+                                  "target_weight": 0.07, "stop_pct": 1, "target_pct": 18, "horizon_days": 15,
+                                  "thesis": "t", "probability": 0.53, "slippage_bp": 25, "sources": []}) + "\n")
+    market.run(D1, WithMinutes(), log=lambda m: None)
+    ev = read_jsonl(repo / "agents" / "no-news" / "ledger" / "events.jsonl")
+    fill = [e for e in ev if e["type"] == "fill"][0]
+    assert fill["ref_price"] == 98.0 and fill["at"].startswith("after:")
+    assert "CROX" in replay(ev).positions  # the day's low under the 1% stop did not trigger on the fill day
+    spy = [e for e in read_jsonl(repo / "data" / "benchmarks" / "spy" / "ledger" / "events.jsonl") if e["type"] == "fill"][0]
+    assert spy["ref_price"] == 98.0
