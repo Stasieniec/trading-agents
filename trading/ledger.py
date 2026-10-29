@@ -289,7 +289,7 @@ def fill_orders(s: State, orders: list[dict], day: date, opens: dict[str, float]
             continue
         emit({"type": "fill", "order_id": o["id"], "date": d, "ticker": t, "side": "buy", "qty": qty,
               "price": px, "ref_price": p0, "slippage_bp": bp, "reason": "set_weight",
-              "scaled": round(scale, 6)})
+              "scaled": round(scale, 6), "at": o.get("fill_at", "open")})
         plans.append((o, p0))
 
     for o, p0 in plans:

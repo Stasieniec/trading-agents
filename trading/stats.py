@@ -52,7 +52,7 @@ def round_trips(events: list[dict], orders: list[dict], spy: dict[str, tuple[flo
             if qty[t] <= 1e-9:
                 open_[t] = {"ticker": t, "opened": e["date"], "bought_value": 0.0, "bought_qty": 0.0,
                             "sold_value": 0.0, "dividends": 0.0, "thesis": "", "extensions": [],
-                            "order_id": e["order_id"]}
+                            "order_id": e["order_id"], "at": e.get("at", "open")}
             open_[t]["bought_value"] += e["qty"] * e["price"]
             open_[t]["bought_qty"] += e["qty"]
             qty[t] += e["qty"]
@@ -71,16 +71,16 @@ def round_trips(events: list[dict], orders: list[dict], spy: dict[str, tuple[flo
     return done + list(open_.values())
 
 
-def _spy_return(spy, start: str, end: str) -> float | None:
+def _spy_return(spy, start: str, end: str, at: str = "open") -> float | None:
     if start not in spy or end not in spy:
         return None
-    return spy[end][1] / spy[start][0] - 1
+    return spy[end][1] / spy[start][1 if at == "close" else 0] - 1
 
 
 def _finish(tr: dict, spy) -> dict:
     ret = (tr["sold_value"] + tr["dividends"]) / tr["bought_value"] - 1 if tr["bought_value"] else 0.0
     tr["return"] = ret
-    tr["spy_return"] = _spy_return(spy, tr["opened"], tr["closed"])
+    tr["spy_return"] = _spy_return(spy, tr["opened"], tr["closed"], tr.get("at", "open"))
     tr["excess"] = ret - tr["spy_return"] if tr["spy_return"] is not None else None
     tr["beat_spy"] = tr["excess"] > 0 if tr["excess"] is not None else None
     return tr

@@ -33,12 +33,14 @@ def portfolio_dirs() -> dict[str, object]:
 
 
 def ensure_benchmark_orders(start: date) -> None:
+    fill_at = experiment().get("start_fill", "open")
     for name, b in BENCHMARKS.items():
         p = BENCH_DIR / name / "ledger" / "orders.jsonl"
         if p.exists():
             continue
         rows = [{"id": f"{name}-{start.isoformat()}-{i:02d}", "session_date": start.isoformat(), "ticker": t,
-                 "action": "set_weight", "target_weight": w, "slippage_bp": BENCHMARK_SLIPPAGE_BP}
+                 "action": "set_weight", "target_weight": w, "slippage_bp": BENCHMARK_SLIPPAGE_BP,
+                 "fill_at": fill_at}
                 for i, (t, w) in enumerate(sorted(b["weights"].items()), 1)]
         append_jsonl(p, rows)
 
@@ -120,7 +122,9 @@ def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
                 continue
             new = []
             new += corporate_action_events(st, actions, day)
-            todays = [o for o in orders if o["session_date"] == ds]
+            day_orders = [o for o in orders if o["session_date"] == ds]
+            todays = [o for o in day_orders if o.get("fill_at", "open") != "close"]
+            at_close = [o for o in day_orders if o.get("fill_at") == "close"]
             stale = [o for o in orders if o["session_date"] < ds and o["id"] not in st.done_orders]
             for o in stale:
                 ev = {"type": "cancel", "order_id": o["id"], "date": ds, "ticker": o["ticker"],
@@ -142,6 +146,10 @@ def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
             new += exit_events(st, day, today)
             for t, b in today.items():
                 closes[t] = float(b["c"])
+            if at_close:
+                # Orders decided during the session fill at that day's close, which nobody had seen.
+                close_px = {t: float(b["c"]) for t, b in today.items()}
+                new += fill_orders(st, at_close, day, close_px, closes)
             new.append(mark_event(st, day, closes))
             append_jsonl(d / "events.jsonl", new)
         log(f"marking: {ds} done")

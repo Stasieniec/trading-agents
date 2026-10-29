@@ -1,3 +1,5 @@
 {
- "start_date": "2026-10-30"
+ "start_date": "2026-10-29",
+ "start_fill": "close",
+ "note": "Day one started late: GitHub's scheduler did not fire on 2026-10-29, so the sessions ran by hand during the session and every portfolio, benchmarks included, was bought at that day's close."
 }

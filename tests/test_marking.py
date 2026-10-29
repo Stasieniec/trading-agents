@@ -78,3 +78,29 @@ def test_two_days_with_a_split(repo):
     stats = json.loads((repo / "site-data" / "stats.json").read_text())
     assert stats["open-quality"]["days"] == 2
     assert stats["open-quality"]["trades_open"] == 1
+
+
+class OpenBelowClose(FakeAlpaca):
+    def daily_bars(self, symbols, start, end, adjustment="raw"):
+        out = super().daily_bars(symbols, start, end, adjustment)
+        for bars in out.values():
+            for b in bars:
+                b["o"] = b["c"] * 0.95
+                b["l"] = b["c"] * 0.94
+        return out
+
+
+def test_late_day_one_fills_everything_at_the_close(repo):
+    (repo / "data" / "experiment.json").write_text(json.dumps({"start_date": D1.isoformat(), "start_fill": "close"}))
+    orders = repo / "agents" / "tech-ten" / "ledger" / "orders.jsonl"
+    orders.write_text(json.dumps({"id": "tech-ten-2026-11-02-01", "session_date": "2026-11-02", "fill_at": "close",
+                                  "action": "set_weight", "ticker": "NVDA", "target_weight": 0.5, "stop_pct": 3,
+                                  "target_pct": 50, "horizon_days": 5, "thesis": "t", "probability": 0.6,
+                                  "slippage_bp": 10, "sources": []}) + "\n")
+    market.run(D1, OpenBelowClose(), log=lambda m: None)
+    fill = [e for e in read_jsonl(repo / "agents" / "tech-ten" / "ledger" / "events.jsonl") if e["type"] == "fill"][0]
+    assert fill["ref_price"] == pytest.approx(101.0) and fill["at"] == "close"  # the close, not the 95.95 open
+    st = replay(read_jsonl(repo / "agents" / "tech-ten" / "ledger" / "events.jsonl"))
+    assert "NVDA" in st.positions  # the day's low under the 3% stop did not trigger: the fill came after it
+    spy = [e for e in read_jsonl(repo / "data" / "benchmarks" / "spy" / "ledger" / "events.jsonl") if e["type"] == "fill"][0]
+    assert spy["ref_price"] == pytest.approx(101.0)

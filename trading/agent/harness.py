@@ -50,10 +50,11 @@ class Session:
     def __init__(self, agent: AgentConfig, day: date, deadline: datetime, digest: dict | None,
                  universe: Universe, out_dir: Path, client: anthropic.Anthropic | None = None,
                  alpaca: Alpaca | None = None, dry_run: bool = False, hard_cap: float = HARD_CAP_USD,
-                 memory_dir: Path | None = None, log=print):
+                 memory_dir: Path | None = None, log=print, fill_at: str = "open"):
         self.agent, self.day, self.digest, self.universe = agent, day, digest, universe
         self.out = out_dir
         self.dry_run = dry_run
+        self.fill_at = fill_at
         self.hard_cap = hard_cap
         self.soft_cap = min(SOFT_CAP_USD, hard_cap * 0.6)
         self.deadline = min(deadline, datetime.now(UTC) + timedelta(minutes=MAX_SESSION_MINUTES))
@@ -89,8 +90,12 @@ class Session:
         notes = mem.read("notes") if (mem.dir / "notes.md").exists() else "(no general notes yet)"
         expired = expired_positions(self.state, self.day)
         parts = [
-            f"Today is {self.day:%A %Y-%m-%d}. The time is {datetime.now(UTC):%H:%M} UTC, before the US open. "
-            f"Orders you submit fill at today's opening auction.",
+            (f"Today is {self.day:%A %Y-%m-%d}. The time is {datetime.now(UTC):%H:%M} UTC, before the US open. "
+             f"Orders you submit fill at today's opening auction." if self.fill_at == "open" else
+             f"Today is {self.day:%A %Y-%m-%d}. The time is {datetime.now(UTC):%H:%M} UTC and the US market is "
+             f"already open: this session runs late, as an exception. Orders you submit fill at today's closing "
+             f"price, which you cannot see yet, instead of the opening auction. Stops and targets start "
+             f"counting from tomorrow. Latest IEX trades from get_quotes are from today's session."),
             _data("your portfolio (numbers by code, theses written by you earlier)",
                   portfolio_text(self.state, self.closes, self.day)),
         ]
@@ -264,7 +269,7 @@ class Session:
             for s in o.get("sources") or []:
                 a = self.tools.read_answers.get(norm(s))
                 srcs.append({"url": s, "read": bool(a), "answer": a["answer"][:600] if a else ""})
-            orders.append({**o, "id": f"{self.agent.name}-{day}-{i:02d}", "session_date": day,
+            orders.append({**o, "id": f"{self.agent.name}-{day}-{i:02d}", "session_date": day, "fill_at": self.fill_at,
                            "decided_at": datetime.now(UTC).isoformat(), "prompt_hash": result["prompt_hash"],
                            "sources": srcs})
         result["orders"] = orders

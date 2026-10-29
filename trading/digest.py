@@ -173,7 +173,9 @@ def build(day: date, alpaca: Alpaca, universe: Universe, anthropic_client=None, 
     headlines = _cluster(items, mentions, 15)
     top_mentions = [{"symbol": k, "stories": v} for k, v in sorted(mentions.items(), key=lambda kv: -kv[1])[:10]]
 
+    intraday = built_at > session_times(day)[0]
     d = {"date": day.isoformat(), "built_at": built_at.isoformat(), "previous_session": prev.isoformat(),
+         "intraday": intraday,
          "sources": status, "etfs": etfs, "movers": movers, "most_actives": actives, "headlines": headlines,
          "news_mentions": top_mentions,
          "summary": "", "usage": None}
@@ -209,10 +211,11 @@ def render(d: dict, news: bool, include_summary: bool = True) -> str:
     for side, label in (("gainers", "Top gainers"), ("losers", "Top losers")):
         rows = d["movers"].get(side) or []
         if rows:
-            lines.append(f"\n{label}, previous session, eligible stocks only:")
+            when = "today so far" if d.get("intraday") else "previous session"
+            lines.append(f"\n{label}, {when}, eligible stocks only:")
             lines.append(", ".join(f"{r['symbol']} {r['pct']:+.1f}%" if r.get("pct") is not None else r["symbol"] for r in rows))
     if d["most_actives"]:
-        lines.append("\nMost active by volume, previous session, eligible only: " +
+        lines.append(f"\nMost active by volume, {'today so far' if d.get('intraday') else 'previous session'}, eligible only: " +
                      ", ".join(r["symbol"] for r in d["most_actives"]))
     if news:
         if d.get("news_mentions"):

@@ -22,7 +22,7 @@ from zoneinfo import ZoneInfo
 from .config import (AGENTS, AGENTS_DIR, DATA_DIR, DEADLINE_BEFORE_OPEN_MIN, EXPERIMENT_FILE, LOCAL_START, LOCAL_TZ,
                      MIN_LEAD_BEFORE_OPEN_MIN, MONTHLY_CAP_USD, ROOT)
 from .secrets import scan_paths, scan_text
-from .timeutil import UTC, is_trading_day, last_closed_day, next_open, now_utc, session_times
+from .timeutil import NY, UTC, is_trading_day, last_closed_day, next_open, now_utc, session_times
 
 
 def log(msg: str) -> None:
@@ -125,7 +125,20 @@ def cmd_session_day(args) -> None:
     now = now_utc()
     day, open_at = next_open(now)
     dry = args.dry_run
-    if dry:
+    fill_at = "open"
+    if args.intraday:
+        # A late session while the market is open: orders fill at today's close, which nobody has seen.
+        today = now.astimezone(NY).date()
+        if not is_trading_day(today):
+            log(f"{today} is not a trading day")
+            return
+        o, c = session_times(today)
+        if not (o < now < c - timedelta(minutes=45)):
+            log("an intraday session needs the market open and at least 45 minutes to the close")
+            return
+        day, fill_at = today, "close"
+        deadline = min(now + timedelta(minutes=25), c - timedelta(minutes=20))
+    elif dry:
         deadline = now + timedelta(minutes=25)
     else:
         deadline = open_at - timedelta(minutes=DEADLINE_BEFORE_OPEN_MIN)
@@ -209,7 +222,7 @@ def cmd_session_day(args) -> None:
                 memory_dir = None
             try:
                 s = Session(cfg, day, deadline, dig, uni, out, client=client, alpaca=Alpaca(), dry_run=dry,
-                            hard_cap=args.hard_cap, memory_dir=memory_dir, log=log)
+                            hard_cap=args.hard_cap, memory_dir=memory_dir, log=log, fill_at=fill_at)
             except Exception as e:
                 log(f"{n}: could not start ({type(e).__name__}: {e})")
                 continue
@@ -363,6 +376,7 @@ def main() -> None:
     s.add_argument("--dry-run", action="store_true")
     s.add_argument("--agents", default="")
     s.add_argument("--hard-cap", type=float, default=2.0)
+    s.add_argument("--intraday", action="store_true")
     sub.add_parser("gate-mark")
     sub.add_parser("mark")
     sub.add_parser("site")
