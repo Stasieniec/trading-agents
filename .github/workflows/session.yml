@@ -28,10 +28,6 @@ on:
         description: "Apply the schedule gate (used by the Cloudflare trigger)"
         type: boolean
         default: false
-      intraday:
-        description: "Late session while the market is open: orders fill at today's close"
-        type: boolean
-        default: false
 
 permissions:
   contents: read
@@ -78,11 +74,9 @@ jobs:
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
           AGENT_LIST: ${{ inputs.agents }}
           HARD_CAP: ${{ inputs.hard_cap || '2.0' }}
-          INTRADAY: ${{ github.event_name == 'workflow_dispatch' && inputs.intraday }}
         run: |
           ARGS=()
           if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
-          if [ "$INTRADAY" = "true" ]; then ARGS+=(--intraday); fi
           python -m trading session-day "${ARGS[@]}" --agents "$AGENT_LIST" --hard-cap "$HARD_CAP"
       - name: Push
         if: always()

@@ -19,8 +19,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from .config import (AGENTS, AGENTS_DIR, DATA_DIR, DEADLINE_BEFORE_OPEN_MIN, EXPERIMENT_FILE, LOCAL_START, LOCAL_TZ,
-                     MIN_LEAD_BEFORE_OPEN_MIN, MONTHLY_CAP_USD, ROOT)
+from .config import (AGENTS, AGENTS_DIR, DATA_DIR, EXPERIMENT_FILE, LAST_SESSION_BEFORE_CLOSE_MIN, LOCAL_START,
+                     LOCAL_TZ, MONTHLY_CAP_USD, ROOT)
 from .secrets import scan_paths, scan_text
 from .timeutil import NY, UTC, is_trading_day, last_closed_day, next_open, now_utc, session_times
 
@@ -87,23 +87,32 @@ def session_done(name: str, day: date) -> bool:
 # ---------------------------------------------------------------------------
 
 
+def session_day(now: datetime) -> date:
+    """Today while a session can still run (a trading day, before the last hour), else the next one."""
+    today = now.astimezone(ZoneInfo("America/New_York")).date()
+    if is_trading_day(today):
+        _, close_at = session_times(today)
+        if now < close_at - timedelta(minutes=LAST_SESSION_BEFORE_CLOSE_MIN):
+            return today
+    day, _ = next_open(now)
+    return day
+
+
 def cmd_gate_session(_args) -> None:
     now = now_utc()
     local = now.astimezone(ZoneInfo(LOCAL_TZ))
-    day, open_at = next_open(now)
+    today = now.astimezone(ZoneInfo("America/New_York")).date()
+    day = session_day(now)
     reasons = []
     start = experiment_start()
     if not start:
         reasons.append("experiment has no start date yet")
     elif day < start:
         reasons.append(f"experiment starts {start}")
-    if day != now.astimezone(ZoneInfo("America/New_York")).date():
-        reasons.append(f"next open is {day}, not today")
+    if day != today:
+        reasons.append(f"no session left today; the next one is {day}")
     if (local.hour, local.minute) < LOCAL_START:
         reasons.append(f"Amsterdam time {local:%H:%M} is before {LOCAL_START[0]}:{LOCAL_START[1]:02d}")
-    lead = (open_at - now).total_seconds() / 60
-    if lead < MIN_LEAD_BEFORE_OPEN_MIN:
-        reasons.append(f"only {lead:.0f} minutes to the open")
     if all(session_done(n, day) for n in AGENTS):
         reasons.append("today's sessions already ran")
     for r in reasons:
@@ -123,28 +132,12 @@ def cmd_session_day(args) -> None:
     if os.environ.get("CLAUDE_API_KEY") and not os.environ.get("ANTHROPIC_API_KEY"):
         os.environ["ANTHROPIC_API_KEY"] = os.environ["CLAUDE_API_KEY"]
     now = now_utc()
-    day, open_at = next_open(now)
     dry = args.dry_run
-    fill_at = "open"
-    if args.intraday:
-        # A late session while the market is open: orders fill at today's close, which nobody has seen.
-        today = now.astimezone(NY).date()
-        if not is_trading_day(today):
-            log(f"{today} is not a trading day")
-            return
-        o, c = session_times(today)
-        if not (o < now < c - timedelta(minutes=45)):
-            log("an intraday session needs the market open and at least 45 minutes to the close")
-            return
-        day, fill_at = today, "close"
-        deadline = min(now + timedelta(minutes=25), c - timedelta(minutes=20))
-    elif dry:
-        deadline = now + timedelta(minutes=25)
-    else:
-        deadline = open_at - timedelta(minutes=DEADLINE_BEFORE_OPEN_MIN)
-        if (open_at - now).total_seconds() / 60 < MIN_LEAD_BEFORE_OPEN_MIN:
-            log("too close to the open, not starting")
-            return
+    day = session_day(now)
+    _, close_at = session_times(day)
+    # Decide as soon as possible; orders fill at the opening auction or, after the open, at the first
+    # minute after each decision. No session runs in the last hour before the close.
+    deadline = min(now + timedelta(minutes=25), close_at - timedelta(minutes=30))
     names = [n for n in (args.agents.split(",") if args.agents else AGENTS) if n in AGENTS]
     alpaca = Alpaca()
     client = anthropic.Anthropic(max_retries=3, timeout=300.0)
@@ -222,7 +215,7 @@ def cmd_session_day(args) -> None:
                 memory_dir = None
             try:
                 s = Session(cfg, day, deadline, dig, uni, out, client=client, alpaca=Alpaca(), dry_run=dry,
-                            hard_cap=args.hard_cap, memory_dir=memory_dir, log=log, fill_at=fill_at)
+                            hard_cap=args.hard_cap, memory_dir=memory_dir, log=log)
             except Exception as e:
                 log(f"{n}: could not start ({type(e).__name__}: {e})")
                 continue
@@ -269,6 +262,15 @@ def cmd_mark(_args) -> None:
     except Exception as e:  # the books are committed; a site bug must not strand them
         log(f"site build failed: {type(e).__name__}: {e}")
         raise
+
+
+def cmd_fill(_args) -> None:
+    from . import market, site
+    if market.fill_today(now_utc(), log=log):
+        site.write_records()
+        commit(["data/benchmarks", "agents"], f"fills: {now_utc():%Y-%m-%d %H:%M} UTC", ["data/benchmarks/", "agents/"])
+        site.build()
+        commit(["site-data"], "site: after fills", ["site-data/"])
 
 
 def cmd_site(_args) -> None:
@@ -376,9 +378,9 @@ def main() -> None:
     s.add_argument("--dry-run", action="store_true")
     s.add_argument("--agents", default="")
     s.add_argument("--hard-cap", type=float, default=2.0)
-    s.add_argument("--intraday", action="store_true")
     sub.add_parser("gate-mark")
     sub.add_parser("mark")
+    sub.add_parser("fill")
     sub.add_parser("site")
     sub.add_parser("check-sources")
     st = sub.add_parser("start")
@@ -388,7 +390,7 @@ def main() -> None:
     ev.add_argument("--only", default="")
     args = p.parse_args()
     {"gate-session": cmd_gate_session, "session-day": cmd_session_day, "gate-mark": cmd_gate_mark,
-     "mark": cmd_mark, "site": cmd_site, "check-sources": cmd_check_sources, "start": cmd_start,
+     "mark": cmd_mark, "fill": cmd_fill, "site": cmd_site, "check-sources": cmd_check_sources, "start": cmd_start,
      "scan-outgoing": cmd_scan_outgoing, "eval": cmd_eval}[args.cmd](args)
 
 

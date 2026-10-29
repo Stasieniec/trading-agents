@@ -165,6 +165,70 @@ def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
     return days
 
 
+def fill_today(now: datetime, alpaca: Alpaca | None = None, log=print) -> bool:
+    """Book today's fills during the session, as soon as the prices exist (the free plan hides the last
+    15 minutes). The evening pass then only adds exits and the close. Safe to run any number of times."""
+    from .timeutil import NY, UTC, is_trading_day, session_times
+
+    day = now.astimezone(NY).date()
+    start = start_date()
+    if not start or day < start or not is_trading_day(day):
+        log("fill pass: not a trading day of the experiment")
+        return False
+    open_at, _ = session_times(day)
+    ready = now - timedelta(minutes=16)
+    if ready < open_at:
+        log("fill pass: the open is not in the data yet")
+        return False
+    ensure_benchmark_orders(start)
+    ds = day.isoformat()
+    alpaca = alpaca or Alpaca()
+    books, symbols, wanted = {}, set(), {}
+    for name, d in portfolio_dirs().items():
+        events = read_jsonl(d / "events.jsonl")
+        st = replay(events)
+        if st.last_marked and st.last_marked >= ds:
+            continue
+        pending = []
+        for o in read_jsonl(d / "orders.jsonl"):
+            if o["session_date"] != ds or o["id"] in st.done_orders:
+                continue
+            at = o.get("fill_at", "open")
+            if at == "open" or (at.startswith("after:") and
+                                datetime.fromisoformat(at[6:].replace("Z", "+00:00")) <= ready):
+                pending.append(o)
+        if pending:
+            books[name] = (d, st, pending, last_known_closes(events))
+            symbols |= set(st.positions) | {o["ticker"] for o in pending}
+    if not books:
+        log("fill pass: nothing to fill")
+        return False
+    try:
+        auctions = alpaca.opening_auctions(sorted(symbols), day, day)
+    except DataError as e:
+        log(f"fill pass: opening auctions unavailable: {e}")
+        auctions = {}
+    first_minute = alpaca.first_minute_open(sorted(symbols), open_at)
+    opens = {t: (auctions.get(t) or {}).get(ds) or first_minute.get(t) for t in symbols}
+    opens = {t: v for t, v in opens.items() if v}
+    actions = alpaca.corporate_actions(sorted(symbols), day - timedelta(days=10), day + timedelta(days=45))
+    for name, (d, st, pending, closes) in books.items():
+        new = corporate_action_events(st, actions, day)
+        at_open = [o for o in pending if o.get("fill_at", "open") == "open"]
+        new += fill_orders(st, at_open, day, opens, closes)
+        groups: dict[str, list] = {}
+        for o in pending:
+            if o.get("fill_at", "open").startswith("after:"):
+                groups.setdefault(o["fill_at"][6:], []).append(o)
+        for moment, group in sorted(groups.items()):
+            px = alpaca.first_minute_open(sorted({o["ticker"] for o in group} | set(st.positions)),
+                                          datetime.fromisoformat(moment.replace("Z", "+00:00")))
+            new += fill_orders(st, group, day, px, closes)
+        append_jsonl(d / "events.jsonl", new)
+        log(f"fill pass: {name}, {sum(1 for e in new if e['type'] == 'fill')} fills")
+    return True
+
+
 def _append_spy(ds: str, bar: dict) -> None:
     SPY_DAILY.parent.mkdir(parents=True, exist_ok=True)
     rows = {}

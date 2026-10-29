@@ -29,6 +29,7 @@ class Position:
     order_id: str = ""
     extensions: int = 0
     slippage_bp: int = 10
+    exits_from: str = ""  # first day stops and targets apply; later than the fill day for intraday fills
 
     @property
     def avg_cost(self) -> float:
@@ -104,6 +105,7 @@ def apply_event(s: State, e: dict) -> None:
             p.thesis = e["thesis"]
             p.order_id = e["order_id"]
             p.slippage_bp = e.get("slippage_bp", p.slippage_bp)
+            p.exits_from = e.get("exits_from", e["date"])
         s.done_orders.add(e["order_id"])
     elif k == "cancel":
         s.done_orders.add(e["order_id"])
@@ -302,7 +304,9 @@ def fill_orders(s: State, orders: list[dict], day: date, opens: dict[str, float]
               "target_price": p0 * (1 + float(o["target_pct"]) / 100) if has_plan else None,
               "horizon_end": add_trading_days(day, int(o["horizon_days"])).isoformat() if has_plan else None,
               "thesis": o.get("thesis", ""), "slippage_bp": o.get("slippage_bp", 10),
-              "extension": o["action"] == "extend"})
+              "extension": o["action"] == "extend",
+              # Filled after the open: the day's earlier highs and lows happened before the position existed.
+              "exits_from": d if o.get("fill_at", "open") == "open" else add_trading_days(day, 1).isoformat()})
     for o in todo:
         if o["id"] not in s.done_orders:
             emit({"type": "cancel", "order_id": o["id"], "date": d, "ticker": o["ticker"], "reason": "not executed"})
@@ -315,7 +319,7 @@ def exit_events(s: State, day: date, bars: dict[str, dict]) -> list[dict]:
     out = []
     for t, p in list(s.positions.items()):
         b = bars.get(t)
-        if not b or (p.stop_price is None and p.target_price is None):
+        if not b or (p.stop_price is None and p.target_price is None) or (p.exits_from and p.exits_from > d):
             continue
         o, h, lo = float(b["o"]), float(b["h"]), float(b["l"])
         level, reason = None, None

@@ -127,3 +127,41 @@ def test_orders_fill_at_the_first_minute_after_the_decision(repo):
     assert "CROX" in replay(ev).positions  # the day's low under the 1% stop did not trigger on the fill day
     spy = [e for e in read_jsonl(repo / "data" / "benchmarks" / "spy" / "ledger" / "events.jsonl") if e["type"] == "fill"][0]
     assert spy["ref_price"] == 98.0
+
+
+class Live(WithMinutes):
+    def opening_auctions(self, symbols, start, end):
+        return {s: {"2026-11-02": 97.0} for s in symbols}
+
+    def first_minute_open(self, symbols, after):
+        return {s: 97.5 if after.hour == 14 and after.minute == 30 else 98.0 for s in symbols}
+
+
+def test_fill_pass_books_fills_during_the_day_and_the_evening_does_not_redo_them(repo):
+    from datetime import datetime, timezone
+    orders = repo / "agents" / "tech-ten" / "ledger" / "orders.jsonl"
+    rows = [{"id": "tech-ten-2026-11-02-01", "session_date": "2026-11-02", "fill_at": "open", "action": "set_weight",
+             "ticker": "NVDA", "target_weight": 0.5, "stop_pct": 1, "target_pct": 50, "horizon_days": 5,
+             "thesis": "t", "probability": 0.6, "slippage_bp": 10, "sources": []},
+            {"id": "tech-ten-2026-11-02-02", "session_date": "2026-11-02", "fill_at": "after:2026-11-02T16:00:00Z",
+             "action": "set_weight", "ticker": "AMD", "target_weight": 0.2, "stop_pct": 1, "target_pct": 50,
+             "horizon_days": 5, "thesis": "t", "probability": 0.6, "slippage_bp": 10, "sources": []}]
+    orders.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    at = lambda h, m: datetime(2026, 11, 2, h, m, tzinfo=timezone.utc)
+    assert not market.fill_today(at(14, 40), Live(), log=lambda m: None)  # open 14:30 UTC: not in the data yet
+    assert market.fill_today(at(14, 50), Live(), log=lambda m: None)
+    ev = read_jsonl(repo / "agents" / "tech-ten" / "ledger" / "events.jsonl")
+    assert [e["ticker"] for e in ev if e["type"] == "fill"] == ["NVDA"]  # AMD's decision time is still ahead
+    assert [e for e in ev if e["type"] == "fill"][0]["ref_price"] == 97.0  # the opening auction
+    assert market.fill_today(at(16, 20), Live(), log=lambda m: None)
+    ev = read_jsonl(repo / "agents" / "tech-ten" / "ledger" / "events.jsonl")
+    assert [e["ticker"] for e in ev if e["type"] == "fill"] == ["NVDA", "AMD"]
+    assert not market.fill_today(at(16, 40), Live(), log=lambda m: None)  # nothing left
+    market.run(D1, Live(), log=lambda m: None)
+    ev = read_jsonl(repo / "agents" / "tech-ten" / "ledger" / "events.jsonl")
+    fills = [e for e in ev if e["type"] == "fill"]
+    st = replay(ev)
+    assert "AMD" in st.positions  # bought after the open: today's low under its 1% stop does not count
+    assert "NVDA" not in st.positions  # bought at the open: the day's low of 94.9 hit its 1% stop
+    assert [e["ticker"] for e in fills].count("NVDA") == 2 and [e["ticker"] for e in fills].count("AMD") == 1
+    assert [e for e in ev if e["type"] == "mark"][-1]["date"] == "2026-11-02"

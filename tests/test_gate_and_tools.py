@@ -30,14 +30,16 @@ def gate(monkeypatch, tmp_path, when: str, done=False, start=date(2026, 10, 29))
     ("2026-10-29T12:37:00", "true"),
     ("2026-10-29T12:44:00", "true"),
     ("2026-10-29T12:52:00", "true"),
-    ("2026-10-29T13:07:00", "false"),   # 23 minutes to the open
+    ("2026-10-29T13:07:00", "true"),    # 23 minutes to the open: runs, fills after the open if late
+    ("2026-10-29T15:00:00", "true"),    # during the session: a late run still trades
+    ("2026-10-29T19:05:00", "false"),   # less than an hour to the close
     # December: both on winter time, open 14:30 UTC
     ("2026-12-01T11:37:00", "false"),
     ("2026-12-01T12:37:00", "true"),
     ("2026-12-01T13:07:00", "true"),
     # June: both on summer time, open 13:30 UTC, 11:37 UTC is 13:37 Amsterdam
     ("2027-06-15T11:37:00", "true"),
-    ("2027-06-15T13:07:00", "false"),
+    ("2027-06-15T13:07:00", "true"),
     # March mismatch week: New York on summer time, Amsterdam not yet
     ("2027-03-16T12:37:00", "true"),
     # no session on a weekend or a holiday

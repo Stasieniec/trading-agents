@@ -318,3 +318,21 @@ def test_bars_dated_today_are_not_closes(agents_dir):
     tb = ToolBox(AGENTS["no-news"], DAY, Today(), UNI, None, State(), {}, None, lambda *a: None, print)
     out, err = tb.run("get_quotes", {"tickers": ["BIG"]})
     assert not err and "101.00 (2026-10-31)" in out
+
+
+def test_fill_rule_follows_the_decision_time(agents_dir):
+    # A session day still in the future: decided before its open, so it fills at the opening auction.
+    res, _, _ = run(agents_dir, [
+        msg("tool_use", tool("get_quotes", {"tickers": ["BIG"]})),
+        msg("tool_use", tool("submit_decision", {"orders": [order()], "session_summary": "x"}, "t2"))])
+    assert res["orders"][0]["fill_at"] == "open"
+    # A day whose open has passed: the first minute after the decision.
+    past = date(2026, 10, 28)
+    client = FakeClient([msg("tool_use", tool("get_quotes", {"tickers": ["BIG"]})),
+                         msg("tool_use", tool("submit_decision", {"orders": [order()], "session_summary": "x"}, "t2"))])
+    s = Session(AGENTS["no-news"], past, datetime.now(timezone.utc) + timedelta(minutes=20), None, UNI,
+                agents_dir / "no-news" / "sessions" / past.isoformat(), client=client, alpaca=FakeAlpaca(),
+                log=lambda m: None)
+    res = s.run()
+    assert res["orders"][0]["fill_at"].startswith("after:2026-")
+    assert "running late" in json.dumps(client.requests[0])

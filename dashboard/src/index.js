@@ -180,10 +180,13 @@ export default {
 };
 
 const SESSION = { workflow: "session.yml", inputs: { dry_run: "false", gated: "true", hard_cap: "2.0" } };
-const MARK = { workflow: "mark.yml", inputs: {} };
+const FILL = { workflow: "mark.yml", inputs: { mode: "fill" } };
+const MARK = { workflow: "mark.yml", inputs: { mode: "close" } };
+// UTC. Sessions before the open, a late-session safety net (the gate skips it if today already ran),
+// fill passes every hour of the session, and the evening marking after the close plus the data delay.
 const SCHEDULE = {
-  "32 12 * * 1-5": SESSION,
-  "44 12 * * 1-5": SESSION,
-  "50 21 * * 1-5": MARK,
-  "20 23 * * 1-5": MARK,
+  "32,44 12 * * 1-5": SESSION,
+  "40 13,15 * * 1-5": SESSION,
+  "50 13-19 * * 1-5": FILL,
+  "20 22,23 * * 1-5": MARK,
 };

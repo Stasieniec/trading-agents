@@ -16,7 +16,7 @@ from ..digest import render
 from ..ledger import append_jsonl
 from ..market import state_for
 from ..secrets import redact
-from ..timeutil import UTC
+from ..timeutil import UTC, session_times
 from ..universe import Universe
 from .memory import Memory
 from .tools import ToolBox, definitions, expired_positions, portfolio_text
@@ -50,11 +50,10 @@ class Session:
     def __init__(self, agent: AgentConfig, day: date, deadline: datetime, digest: dict | None,
                  universe: Universe, out_dir: Path, client: anthropic.Anthropic | None = None,
                  alpaca: Alpaca | None = None, dry_run: bool = False, hard_cap: float = HARD_CAP_USD,
-                 memory_dir: Path | None = None, log=print, fill_at: str = "open"):
+                 memory_dir: Path | None = None, log=print):
         self.agent, self.day, self.digest, self.universe = agent, day, digest, universe
         self.out = out_dir
         self.dry_run = dry_run
-        self.fill_at = fill_at
         self.hard_cap = hard_cap
         self.soft_cap = min(SOFT_CAP_USD, hard_cap * 0.6)
         self.deadline = min(deadline, datetime.now(UTC) + timedelta(minutes=MAX_SESSION_MINUTES))
@@ -90,12 +89,7 @@ class Session:
         notes = mem.read("notes") if (mem.dir / "notes.md").exists() else "(no general notes yet)"
         expired = expired_positions(self.state, self.day)
         parts = [
-            (f"Today is {self.day:%A %Y-%m-%d}. The time is {datetime.now(UTC):%H:%M} UTC, before the US open. "
-             f"Orders you submit fill at today's opening auction." if self.fill_at == "open" else
-             f"Today is {self.day:%A %Y-%m-%d}. The time is {datetime.now(UTC):%H:%M} UTC and the US market is "
-             f"already open: this session runs late, as an exception. Orders you submit fill at today's closing "
-             f"price, which you cannot see yet, instead of the opening auction. Stops and targets start "
-             f"counting from tomorrow. Latest IEX trades from get_quotes are from today's session."),
+            self._timing_line(),
             _data("your portfolio (numbers by code, theses written by you earlier)",
                   portfolio_text(self.state, self.closes, self.day)),
         ]
@@ -126,6 +120,16 @@ class Session:
         rows = [e for e in read_jsonl(AGENTS_DIR / self.agent.name / "ledger" / "events.jsonl")
                 if e["type"] == "cancel" and e["date"] >= since]
         return "\n".join(f"- {e['ticker']} ({e['date']}): {e['reason']}" for e in rows)
+
+    def _timing_line(self) -> str:
+        now = datetime.now(UTC)
+        open_at, close_at = session_times(self.day)
+        when = (f"before the US open ({open_at:%H:%M} UTC)" if now < open_at else
+                f"during the US session, which opened at {open_at:%H:%M} UTC; this session is running late")
+        return (f"Today is {self.day:%A %Y-%m-%d}. The time is {now:%H:%M} UTC, {when}. Orders fill as soon as "
+                f"possible after you submit them: at the opening auction if you submit before the open, "
+                f"otherwise at the first market price after you submit. Stops and targets on a position bought "
+                f"after the open start counting the next trading day.")
 
     def _settled_since_last(self) -> str:
         recs = AGENTS_DIR / self.agent.name / "records"
@@ -263,13 +267,18 @@ class Session:
 
     def _finish(self, result: dict) -> None:
         day = self.day.isoformat()
+        decided = datetime.now(UTC)
+        open_at, _ = session_times(self.day)
+        # As soon as possible after the decision: the opening auction, or the first minute after it.
+        fill_at = "open" if decided < open_at else "after:" + decided.strftime("%Y-%m-%dT%H:%M:%SZ")
+        result["fill_at"] = fill_at
         orders = []
         for i, o in enumerate(result.get("orders", []), 1):
             srcs = []
             for s in o.get("sources") or []:
                 a = self.tools.read_answers.get(norm(s))
                 srcs.append({"url": s, "read": bool(a), "answer": a["answer"][:600] if a else ""})
-            orders.append({**o, "id": f"{self.agent.name}-{day}-{i:02d}", "session_date": day, "fill_at": self.fill_at,
+            orders.append({**o, "id": f"{self.agent.name}-{day}-{i:02d}", "session_date": day, "fill_at": fill_at,
                            "decided_at": datetime.now(UTC).isoformat(), "prompt_hash": result["prompt_hash"],
                            "sources": srcs})
         result["orders"] = orders

@@ -52,6 +52,17 @@ Benchmarks, computed by code at no API cost:
   same market-cap bucket of that day's eligible universe (tech-ten draws from the ten), repeat
   1,000 times, and show the 5th to 95th percentile and where the agent ranks.
 
+## Fill rule (since 2026-10-29)
+
+Orders fill as soon as possible after the agent submits them: at the opening auction if it submits
+before the open, otherwise at the open of the first one-minute bar after its decision. Either way the
+price did not exist when the agent decided. Stops and targets on a position bought after the open
+start the next trading day. Fills are booked during the session by an hourly fill pass, as soon as
+Alpaca's 15-minute delay allows; the evening marking adds exits, corporate actions and the close.
+Sessions may run any time from 13:30 Amsterdam until an hour before the close. The scheduled
+triggers come from Cloudflare crons on the dashboard Worker, because GitHub's scheduler fired hours
+late or not at all on the first days; GitHub's own crons stay as a backup.
+
 ## Daily timeline
 
 All times Amsterdam unless stated. GitHub cron is UTC and can run late or get dropped, so the

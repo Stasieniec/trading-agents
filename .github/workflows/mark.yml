@@ -6,6 +6,12 @@ on:
     - cron: "47 21 * * 1-5"
     - cron: "17 23 * * 1-5"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "close: the evening marking; fill: book today's fills during the session"
+        type: choice
+        options: [close, fill]
+        default: close
 
 permissions:
   contents: read
@@ -34,11 +40,18 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Fill
+        if: inputs.mode == 'fill'
+        env:
+          ALPACA_KEY: ${{ secrets.ALPACA_KEY }}
+          ALPACA_SECRET: ${{ secrets.ALPACA_SECRET }}
+        run: python -m trading fill
       - name: Gate
         id: gate
+        if: inputs.mode != 'fill'
         run: python -m trading gate-mark
       - name: Mark
-        if: steps.gate.outputs.run == 'true' || github.event_name == 'workflow_dispatch'
+        if: inputs.mode != 'fill' && (steps.gate.outputs.run == 'true' || github.event_name == 'workflow_dispatch')
         env:
           ALPACA_KEY: ${{ secrets.ALPACA_KEY }}
           ALPACA_SECRET: ${{ secrets.ALPACA_SECRET }}
