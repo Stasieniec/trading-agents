@@ -15,7 +15,11 @@ agents/<name>.json, for these scenarios:
          session job "dies" on the last day so the stale banner shows. Notes and theses carry
          hostile markup for the sanitiser test.
   day1   The first morning: sessions have run and orders are waiting, nothing is marked yet.
+  live   Mid-session on 2026-10-28: today's orders filled at the open, weird-links' later in the
+         day, nothing marked yet. With _alpaca.json for the mock Alpaca server in serve-mock.mjs.
   empty  No experiment start date at all.
+
+Every scenario gets holdings.json from the real builder; full and live also get _alpaca.json.
 """
 
 import argparse
@@ -394,6 +398,45 @@ def scenario_full(out: Path):
         sim.notes()
         # The session job never ran on 2026-10-28; the dashboard is built that evening.
         build(root, datetime(2026, 10, 28, 21, 50, tzinfo=UTC), out)
+        alpaca_seed(out, "2026-10-28", sim, None, days[-1])
+
+
+def alpaca_seed(out: Path, day: str, sim: "Sim", d_prices: date | None, last_marked: date | None):
+    """Opening and closing prices the mock Alpaca server walks between for the live day (dev only)."""
+    syms = {}
+    for t in TICKERS:
+        if d_prices is not None:
+            b = sim.mk.bars[d_prices.isoformat()][t]
+            syms[t] = {"o": b["o"], "c": b["c"]}
+        elif last_marked is not None:
+            c = sim.mk.closes(last_marked)[t]
+            syms[t] = {"o": c, "c": c * (1.004 if TICKERS[t][3] > 1 else 0.998)}
+    write(out / "_alpaca.json", json.dumps({"day": day, "symbols": syms}))
+
+
+def scenario_live(out: Path):
+    """Mid-session on 2026-10-28: sessions ran, orders filled at the open, weird-links filled later."""
+    end = date(2026, 10, 28)
+    days = trading_days(end - timedelta(days=45), end)[-26:]
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        scaffold(root, days[0])
+        sim = Sim(root, days)
+        for k, d in enumerate(days[:-1]):
+            todays = sim.run_sessions(k, d)
+            sim.mark(k, d, todays)
+        k, d = len(days) - 1, days[-1]
+        todays = sim.run_sessions(k, d)
+        opens, prev = sim.mk.opens(d), sim.mk.closes(days[-2])
+        for name, st in sim.states.items():
+            orders = [] if name.startswith("bench:") else todays.get(name, [])
+            if name == "weird-links":
+                orders = [{**o, "fill_at": "after:2026-10-28T15:05:00Z"} for o in orders]
+            ev = ledger.fill_orders(st, orders, d, opens, prev)
+            ledger.append_jsonl(sim.ledger_dir(name) / "events.jsonl", ev)
+        sim.notes()
+        build(root, datetime(2026, 10, 28, 17, 30, tzinfo=UTC), out)
+        alpaca_seed(out, d.isoformat(), sim, d, None)
 
 
 def scenario_day1(out: Path):
@@ -417,7 +460,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", type=Path, default=HERE / "mock")
     a = ap.parse_args()
-    for name, fn in (("full", scenario_full), ("day1", scenario_day1), ("empty", scenario_empty)):
+    for name, fn in (("full", scenario_full), ("live", scenario_live), ("day1", scenario_day1), ("empty", scenario_empty)):
         fn(a.out / name)
         print(f"wrote {a.out / name}")
 
