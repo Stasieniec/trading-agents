@@ -104,6 +104,10 @@ main {
   min-width: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .label,
 .muted {
   color: var(--muted);
@@ -246,11 +250,15 @@ main {
 .status-line {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 40px;
+  gap: 8px 32px;
   border-top: 1px solid var(--hair);
   padding-top: 12px;
   font-size: 12px;
   letter-spacing: 0.06em;
+}
+
+.st-item:empty {
+  display: none;
 }
 
 .status-line a {
@@ -377,6 +385,51 @@ main > .note-line {
 
 .kv:last-child {
   border-bottom: 0;
+}
+
+.live-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  min-height: 22px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.live-row:empty {
+  display: none;
+}
+
+.live-value {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.live-basis,
+.marked-label {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.marked-label {
+  margin-bottom: -6px;
+}
+
+.bench-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin-top: -28px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bench-strip:empty {
+  display: none;
 }
 
 .quote {

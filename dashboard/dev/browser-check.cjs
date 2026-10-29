@@ -2,6 +2,7 @@
 // console errors, CSP violations, dialogs, page-level horizontal scroll and unsafe markup.
 //   node dev/browser-check.cjs <page-url> <screenshot-dir> [prefix] [route ...]
 // Example: node dev/browser-check.cjs http://localhost:8787/ /tmp/shots dashboard "" agent/weird-links
+// CLOCK=2026-10-28T17:30:00Z pins the page's clock (for market-hours checks); SETTLE=ms waits longer.
 const { chromium } = require("playwright");
 const path = require("path");
 
@@ -24,14 +25,15 @@ const schemes = (process.env.SCHEMES || "dark").split(",");
         page.on("console", (m) => { if (["error", "warning"].includes(m.type())) log.push(`console.${m.type()}: ${m.text()}`); });
         page.on("pageerror", (e) => log.push(`pageerror: ${e.message}`));
         page.on("dialog", async (d) => { log.push(`dialog: ${d.message()}`); await d.dismiss(); });
+        if (process.env.CLOCK) await page.clock.install({ time: new Date(process.env.CLOCK) });
         await page.addInitScript(() => {
           window.__csp = [];
           document.addEventListener("securitypolicyviolation", (e) => window.__csp.push(`${e.violatedDirective} ${e.blockedURI}`));
         });
         await page.goto(url + (route ? `#${route}` : ""), { waitUntil: "networkidle" });
-        await page.waitForSelector(".block, .banner, .empty", { timeout: 10000 });
+        await page.waitForSelector(".block:not([hidden]), .banner, .empty", { timeout: 10000 });
         await page.evaluate(() => document.fonts.ready);
-        await page.waitForTimeout(300);
+        await page.waitForTimeout(Number(process.env.SETTLE || 300));
         if (route.startsWith("agent/")) {
           await page.evaluate(() => {
             const d = document.querySelector("tr.detail details");

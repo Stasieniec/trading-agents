@@ -26,8 +26,9 @@
   const HOLIDAYS = new Set(["2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25", "2026-06-19",
     "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25", "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26",
     "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06"]);
+  const EARLY_CLOSES = new Set(["2026-11-27", "2026-12-24"]); // 13:00 New York; same lists as src/calendar.js
 
-  const state = { meta: null, equity: null, stats: null, comparison: null, agents: {} };
+  const state = { meta: null, equity: null, stats: null, comparison: null, holdings: null, agents: {} };
   let charts = [];
   // Charts are drawn after their container is in the page, so it has a width.
   let pending = [];
@@ -239,7 +240,9 @@
     // meta.json first: if it is missing, the rest are too, and one failed request is enough.
     const meta = await getJSON("meta.json");
     const [equity, stats, comparison] = await Promise.all(["equity.json", "stats.json", "comparison.json"].map(getJSON));
-    Object.assign(state, { meta, equity, stats, comparison });
+    // holdings.json drives the live values; without it the page shows marked numbers only.
+    const holdings = await getJSON("holdings.json").catch(() => null);
+    Object.assign(state, { meta, equity, stats, comparison, holdings: holdings && holdings.portfolios ? holdings : null });
   }
 
   async function loadAgent(name) {
@@ -514,6 +517,405 @@
   }
 
   // ---------------------------------------------------------------------------------------------
+  // Live values during the US session. holdings.json says what each portfolio holds; the Worker's
+  // /api/live and /api/intraday give IEX prices for exactly those symbols. Marked numbers (since
+  // start, vs SPY) stay as they are; live numbers are labelled LIVE and measured against basis.
+
+  const LIVE_MS = 15000;
+  const INTRA_MS = 60000;
+  const live = { configured: null, error: null, prices: {}, latest: null, intraday: null, lastLive: 0, lastIntra: 0, busy: false };
+  let liveSlots = [];
+  let liveTimer = null;
+
+  function nyNow() {
+    const f = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit",
+      day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    const o = Object.fromEntries(f.formatToParts(new Date()).map((x) => [x.type, x.value]));
+    return { date: `${o.year}-${o.month}-${o.day}`, time: `${o.hour}:${o.minute}` };
+  }
+  function marketOpen() {
+    const n = nyNow();
+    return isTradingDay(n.date) && n.time >= "09:30" && n.time < (EARLY_CLOSES.has(n.date) ? "13:00" : "16:00");
+  }
+  const nyFmt = new Intl.DateTimeFormat("en-GB", { timeZone: "America/New_York", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+  const nyClock = (ms) => nyFmt.format(new Date(ms));
+
+  // A function that repaints one live element; it runs now and after every poll.
+  function liveSlot(fn) {
+    liveSlots.push(fn);
+    try { fn(); } catch { /* a slot must never break the page */ }
+  }
+  function paintLive() {
+    for (const fn of liveSlots) {
+      try { fn(); } catch { /* ignore */ }
+    }
+  }
+
+  function barPrice(sym) {
+    const b = live.intraday && live.intraday.bars && live.intraday.bars[sym];
+    return Array.isArray(b) && b.length ? b[b.length - 1][1] : null;
+  }
+  function closePrice(sym) {
+    for (const a of Object.values(state.agents)) {
+      const p = a && Array.isArray(a.positions) && a.positions.find((x) => x.ticker === sym);
+      if (p && isNum(p.last_close)) return p.last_close;
+    }
+    return null;
+  }
+  // Latest trade, else the latest 5-minute bar, else the last marked close.
+  function priceOf(sym) {
+    const p = live.prices[sym];
+    if (p && isNum(p.price)) return p.price;
+    const b = barPrice(sym);
+    return isNum(b) ? b : closePrice(sym);
+  }
+  const portfolio = (name) => (state.holdings && state.holdings.portfolios && state.holdings.portfolios[name]) || null;
+  const hasLive = () => live.configured === true && (Object.keys(live.prices).length > 0 || !!live.intraday);
+
+  function liveValue(name) {
+    const h = portfolio(name);
+    if (!h || !isNum(h.cash)) return null;
+    let v = h.cash;
+    for (const [sym, qty] of Object.entries(h.positions || {})) {
+      const px = priceOf(sym);
+      if (!isNum(px) || !isNum(qty)) return null;
+      v += qty * px;
+    }
+    return v;
+  }
+  function liveChange(name) {
+    const h = portfolio(name);
+    const v = liveValue(name);
+    if (!h || !isNum(v) || !isNum(h.basis) || !h.basis) return null;
+    return { value: v, diff: v - h.basis, pct: v / h.basis - 1 };
+  }
+  function basisLabel(name) {
+    const h = portfolio(name);
+    const m = h && /^close (\d{4}-\d{2}-\d{2})$/.exec(String(h.basis_label || ""));
+    return m ? `VS ${dShort(m[1])} CLOSE` : "VS START";
+  }
+  const signedMoney = (x) => (isNum(x) ? (x < 0 ? MINUS : "+") + money(Math.abs(x)) : DASH);
+
+  async function fetchApi(path) {
+    const r = await fetch(path, { cache: "no-store", credentials: "omit" });
+    if (!r.ok) await r.text().catch(() => ""); // read it, so the request completes
+    if (r.status === 503) {
+      live.configured = false;
+      return null;
+    }
+    if (!r.ok) {
+      live.error = r.status;
+      return null;
+    }
+    live.configured = true;
+    live.error = null;
+    return r.json();
+  }
+
+  async function pollLive(force) {
+    if (!state.holdings || live.configured === false || live.busy) return;
+    live.busy = true;
+    const now = Date.now();
+    try {
+      if (force || now - live.lastLive >= LIVE_MS - 500) {
+        live.lastLive = now;
+        const j = await fetchApi("/api/live");
+        if (j && j.prices && typeof j.prices === "object") {
+          for (const [sym, p] of Object.entries(j.prices)) {
+            const t = Date.parse(p && p.time);
+            if (p && isNum(p.price) && isFinite(t)) {
+              live.prices[sym] = { price: p.price, t };
+              if (!live.latest || t > live.latest) live.latest = t;
+            }
+          }
+        }
+      }
+      if (live.configured && (force || now - live.lastIntra >= INTRA_MS - 500)) {
+        live.lastIntra = now;
+        const j = await fetchApi("/api/intraday");
+        if (j && j.bars && typeof j.bars === "object") live.intraday = j;
+      }
+    } catch {
+      live.error = "network";
+    } finally {
+      live.busy = false;
+    }
+    paintLive();
+  }
+
+  // Polls only while the market is open and the tab is visible. Outside hours one poll shows the
+  // last prices, then it stops.
+  function scheduleLive() {
+    clearTimeout(liveTimer);
+    if (live.configured === false || !state.holdings || document.hidden || !marketOpen()) return;
+    liveTimer = setTimeout(async () => {
+      await pollLive(false);
+      scheduleLive();
+    }, LIVE_MS);
+  }
+
+  async function startLive() {
+    if (!state.holdings || live.configured === false) return;
+    if (!live.lastLive) await pollLive(true);
+    else if (marketOpen() && Date.now() - live.lastLive >= LIVE_MS) await pollLive(false);
+    scheduleLive();
+  }
+
+  document.addEventListener("visibilitychange", async () => {
+    if (document.hidden) {
+      clearTimeout(liveTimer);
+    } else if (state.holdings && marketOpen()) {
+      await pollLive(false);
+      scheduleLive();
+    }
+  });
+
+  // Status item: LIVE ● 13:29 NY while polling, CLOSED · LAST 16:00 NY after hours.
+  function liveStatus() {
+    const box = el("span", { class: "st-item" });
+    liveSlot(() => {
+      box.replaceChildren();
+      if (!state.holdings || live.configured === false) return;
+      const open = marketOpen();
+      const t = live.latest ? `${nyClock(live.latest)} NY` : DASH;
+      if (live.error && !hasLive()) box.append(el("span", { class: "label", text: "LIVE" }), " ", el("span", { class: "down", text: "UNAVAILABLE" }));
+      else if (open) box.append(el("span", { class: "label", text: "LIVE" }), " ", el("span", { class: "up", text: "●" }), ` ${t}`);
+      else box.append(el("span", { class: "label", text: "LIVE" }), " ", el("span", { class: "muted", text: "CLOSED" }), live.latest ? ` · LAST ${t}` : "");
+    });
+    return box;
+  }
+
+  // Live value and today's change, for an agent column or an agent page.
+  function liveRow(name) {
+    const row = el("div", { class: "live-row" });
+    liveSlot(() => {
+      row.replaceChildren();
+      const c = hasLive() ? liveChange(name) : null;
+      if (!portfolio(name) || live.configured === false) return;
+      row.append(el("span", { class: "label", text: "LIVE" }),
+        el("span", { class: "live-value", text: c ? money(c.value) : DASH }),
+        el("span", { class: `live-change ${c ? dir(c.pct) : ""}`, text: c ? `${signedMoney(c.diff)} ${pct(c.pct, 2)}` : "" }),
+        el("span", { class: "live-basis", text: basisLabel(name) }));
+    });
+    return row;
+  }
+
+  function benchStrip() {
+    const line = el("p", { class: "bench-strip" });
+    liveSlot(() => {
+      line.replaceChildren();
+      if (!hasLive()) return;
+      line.append(el("span", { class: "label", text: "BENCHMARKS LIVE" }));
+      for (const b of benchList()) {
+        const c = liveChange(b.name);
+        line.append(el("span", { class: "bs-item" }, el("span", { class: "muted", text: `${shortName(b.name)} ` }),
+          el("span", { class: c ? dir(c.pct) : "", text: c ? pct(c.pct, 2) : DASH })));
+      }
+    });
+    return line;
+  }
+
+  // Cells for the positions tables: live price and P&L against average cost.
+  function livePriceCells(ticker, avgCost) {
+    const price = el("td", { class: "num" });
+    const pnl = el("td", { class: "num" });
+    liveSlot(() => {
+      const p = hasLive() ? live.prices[ticker] : null;
+      const px = p ? p.price : hasLive() ? priceOf(ticker) : null;
+      price.textContent = isNum(px) ? money(px, 2) : DASH;
+      const r = isNum(px) && isNum(avgCost) && avgCost ? px / avgCost - 1 : null;
+      pnl.textContent = isNum(r) ? pct(r) : DASH;
+      pnl.className = `num ${dir(r)}`;
+    });
+    return [price, pnl];
+  }
+
+  // Standings cells: live value and today's change against basis.
+  function liveCells(name) {
+    const v = el("td", { class: "num" });
+    const c = el("td", { class: "num" });
+    liveSlot(() => {
+      const ch = hasLive() ? liveChange(name) : null;
+      v.textContent = ch ? money(ch.value) : DASH;
+      c.textContent = ch ? pct(ch.pct, 2) : DASH;
+      c.className = `num ${ch ? dir(ch.pct) : ""}`;
+    });
+    return [v, c];
+  }
+
+  // Today's curve for every portfolio, rebased to 100 where each one's curve starts: the open, or
+  // the moment today's holdings were complete if that came later.
+  function todaySeries(names) {
+    const j = live.intraday;
+    const openMs = j && Date.parse(j.open);
+    if (!j || !isFinite(openMs)) return null;
+    const bars = j.bars || {};
+    const ts = new Set();
+    for (const list of Object.values(bars)) for (const [t] of list) ts.add(t + 300); // bar end
+    const lastBarEnd = Math.max(0, ...ts);
+    // The latest trade extends the curve past the last finished 5-minute bar.
+    if (live.latest && live.latest / 1000 > lastBarEnd) ts.add(Math.floor(live.latest / 1000));
+    const xs = [...ts].filter((t) => t * 1000 >= openMs).sort((a, b) => a - b);
+    if (!xs.length) return null;
+    const priceAt = (sym, t) => {
+      if (t > lastBarEnd && live.prices[sym]) return live.prices[sym].price;
+      const list = bars[sym];
+      if (!Array.isArray(list) || !list.length) return priceOf(sym);
+      let v = list[0][1];
+      for (const [bt, c] of list) {
+        if (bt + 300 <= t) v = c;
+        else break;
+      }
+      return v;
+    };
+    const series = names.map((name) => {
+      const h = portfolio(name);
+      if (!h) return null;
+      const since = h.since ? Date.parse(h.since) : NaN;
+      const start = Math.max(openMs, isFinite(since) ? since : openMs) / 1000;
+      let base = null;
+      const values = xs.map((t) => {
+        if (t < start) return null;
+        let v = h.cash;
+        for (const [sym, qty] of Object.entries(h.positions || {})) {
+          const px = priceAt(sym, t);
+          if (!isNum(px)) return null;
+          v += qty * px;
+        }
+        if (base == null) base = v;
+        return base ? (v / base) * 100 : null;
+      });
+      return { name, values };
+    }).filter(Boolean);
+    return { xs, open: openMs, series };
+  }
+
+  function todayFigure() {
+    const fig = el("figure", { class: "block figure today" });
+    const names = agentsList().map((a) => a.name).concat(benchList().map((b) => b.name));
+    const head = el("div", { class: "fig-head" }, el("h2", null, "TODAY", el("span", { class: "h2-sub", text: " 100 = CURVE START · LIVE" })));
+    const box = el("div", { class: "chart" });
+    const note = el("p", { class: "fig-note" });
+    fig.append(head, box, note);
+    let chart = null, ro = null, defs = null;
+    liveSlot(() => {
+      if (!hasLive() || !live.intraday) {
+        fig.hidden = !(live.configured === true);
+        if (!chart) note.textContent = live.configured === true ? "NO PRICES FOR TODAY YET" : "";
+        return;
+      }
+      const d = todaySeries(names);
+      if (!d || !d.series.length) {
+        note.textContent = "NO PRICES FOR TODAY YET";
+        return;
+      }
+      fig.hidden = false;
+      const late = d.series.filter((s) => { const h = portfolio(s.name); return h && h.since && Date.parse(h.since) > d.open; });
+      note.textContent = late.length ? "LATER START: " + late.map((s) => `${shortName(s.name)} ${nyClock(Date.parse(portfolio(s.name).since))}`).join(" · ") + " NY" : "";
+      if (!defs) {
+        defs = d.series.map((s) => {
+          const bench = String(s.name).startsWith("bench:");
+          return { name: s.name, label: shortName(s.name), values: s.values, color: colorOf(s.name), dash: bench ? BENCH_DASH[s.name] || [2, 4] : null,
+            width: s.name === "open-quality" ? 2.5 : bench ? 1.5 : 2, cls: agClass(s.name) };
+        });
+      } else {
+        for (const def of defs) def.values = (d.series.find((s) => s.name === def.name) || { values: d.xs.map(() => null) }).values;
+      }
+      const labelAt = (i) => (d.xs[i] ? `${nyClock(d.xs[i] * 1000)} NY` : DASH);
+      if (!ro) {
+        ro = readoutWith(defs, (v) => v.toFixed(2), labelAt);
+        head.append(ro.box);
+      }
+      ro.relabel(labelAt, d.xs.length);
+      const data = [d.xs, ...defs.map((s) => s.values)];
+      if (chart) {
+        chart.setData(data);
+        ro.set(null);
+        return;
+      }
+      const closeMs = d.open + (EARLY_CLOSES.has(String(live.intraday.trading_day)) ? 3.5 : 6.5) * 3600e3;
+      chart = timeChart(box, { data, series: defs, open: d.open / 1000, close: closeMs / 1000, onCursor: (idx) => ro.set(idx) });
+    });
+    return fig;
+  }
+
+  // Readout whose labels come from a function, for the time axis.
+  function readoutWith(series, fmt, labelAt) {
+    const day = el("span", { class: "ro-day" });
+    const vals = series.map(() => el("span", { class: "ro-val" }));
+    const box = el("div", { class: "readout" }, day, series.map((s, i) =>
+      el("span", { class: "ro-item" }, el("span", { class: `key ${s.dash ? (s.dash[0] > 2 ? "key-dash" : "key-dot") : ""} ${s.cls || ""}`, "aria-hidden": "true" }),
+        el("span", { class: `ro-name ${s.cls || ""}`, text: s.label }), vals[i])));
+    let at = labelAt, n = 0;
+    const set = (idx) => {
+      const i = idx == null ? n - 1 : idx;
+      day.textContent = at(i);
+      series.forEach((s, k) => { const v = s.values[i]; vals[k].textContent = isNum(v) ? fmt(v) : DASH; });
+    };
+    return { box, set, relabel: (fn, len) => { at = fn; n = len; set(null); } };
+  }
+
+  function timeChart(container, cfg) {
+    if (!window.uPlot) return null;
+    const font = "11px 'JetBrains Mono', ui-monospace, monospace";
+    const heightFor = () => (container.clientWidth < 560 ? 220 : 280);
+    // New York hours fall on whole UTC hours, so hourly ticks are multiples of 3600 s.
+    const hourSplits = (u, axisIdx, min, max) => {
+      const step = u.width < 420 ? 7200 : 3600;
+      const out = [];
+      for (let t = Math.ceil(min / 3600) * 3600; t <= max; t += step) out.push(t);
+      return out;
+    };
+    const opts = {
+      width: Math.max(240, container.clientWidth),
+      height: heightFor(),
+      padding: [10, 24, 0, 0],
+      legend: { show: false },
+      scales: {
+        x: { time: false, range: () => [cfg.open, cfg.close] },
+        y: { range: (u, min, max) => {
+          const lo = Math.min(isNum(min) ? min : 100, 100), hi = Math.max(isNum(max) ? max : 100, 100);
+          const pad = Math.max((hi - lo) * 0.1, 0.1);
+          return [lo - pad, hi + pad];
+        } },
+      },
+      series: [{}, ...cfg.series.map((s) => ({ stroke: s.color, width: s.width || 2, dash: s.dash || undefined,
+        cap: s.dash ? "round" : "butt", spanGaps: false, points: { show: false } }))],
+      axes: [
+        { stroke: C.muted, font, gap: 6, size: 26, grid: { show: false }, ticks: { show: false },
+          splits: hourSplits, values: (u, splits) => splits.map((t) => nyClock(t * 1000)) },
+        { stroke: C.muted, font, gap: 8, size: 48, grid: { stroke: C.hair2, width: 1 }, ticks: { show: false },
+          incrs: [0.1, 0.2, 0.5, 1, 2, 5, 10, 20], values: (u, splits) => splits.map((v) => v.toFixed(Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1)) },
+      ],
+      cursor: { y: false, drag: { x: false, y: false, setScale: false },
+        points: { size: 8, width: 2, stroke: () => C.bg, fill: (u, si) => (cfg.series[si - 1] || {}).color || C.ink } },
+      hooks: {
+        setCursor: [(u) => cfg.onCursor && cfg.onCursor(u.cursor.idx)],
+        drawAxes: [(u) => {
+          const ctx = u.ctx;
+          const y = Math.round(u.valToPos(100, "y", true)) + 0.5;
+          ctx.save();
+          ctx.strokeStyle = C.zero;
+          ctx.lineWidth = window.uPlot.pxRatio || 1;
+          ctx.beginPath();
+          ctx.moveTo(u.bbox.left, y);
+          ctx.lineTo(u.bbox.left + u.bbox.width, y);
+          ctx.stroke();
+          ctx.restore();
+        }],
+      },
+    };
+    const u = new window.uPlot(opts, cfg.data, container);
+    const obs = new ResizeObserver(() => {
+      const w = Math.max(240, container.clientWidth);
+      if (Math.abs(w - u.width) > 1) u.setSize({ width: w, height: heightFor() });
+    });
+    obs.observe(container);
+    charts.push({ destroy: () => { obs.disconnect(); u.destroy(); } });
+    return u;
+  }
+
+  // ---------------------------------------------------------------------------------------------
   // Overview
 
   function sessionsToday() {
@@ -533,6 +935,7 @@
     const b = m.budget || {};
     const item = (label, ...value) => el("span", { class: "st-item" }, el("span", { class: "label", text: label }), " ", ...value);
     const line = el("section", { class: "status-line", "aria-label": "Status" });
+    line.append(liveStatus());
     line.append(item("SESSIONS", sessionsToday()));
     const missing = (h.missing || []).length, failed = (h.failed || []).length;
     if (missing || failed) {
@@ -573,6 +976,8 @@
     const quote = latestThesis(a);
     return el("article", { class: "agent-col" },
       el("a", { class: `agent-link ${agClass(name)}`, href: `#agent/${encodeURIComponent(name)}` }, square(name), `${upper(name)} →`),
+      liveRow(name),
+      el("div", { class: "marked-label", text: state.meta.last_marked ? `SINCE START · ${dShort(state.meta.last_marked)} CLOSE` : "SINCE START" }),
       bigReturn(s, a),
       sparkline(rebased((state.equity && state.equity.series || {})[name]), colorOf(name)),
       el("div", { class: "kvs" },
@@ -612,19 +1017,21 @@
           el("td", { class: `${agClass(meta.name)} nowrap`, text: meta.name }),
           num(pctPlain(p.weight, 1)),
           num(pct(p.pnl_pct), dir(p.pnl_pct)),
+          ...livePriceCells(String(p.ticker), p.avg_cost),
           horizonCell(p),
           el("td", { class: "thesis", text: p.thesis ? String(p.thesis) : DASH })));
       }
     }
     if (!rows.length) return block("positions", "POSITIONS", empty(state.meta.last_marked ? "ALL CASH" : "NO POSITIONS YET"));
-    return block("positions", "POSITIONS", table("positions", [["TICKER"], ["AGENT"], ["WEIGHT", 1], ["P&L", 1], ["HORIZON"], ["THESIS"]], rows, "Positions"));
+    return block("positions", "POSITIONS", table("positions", [["TICKER"], ["AGENT"], ["WEIGHT", 1], ["P&L CLOSE", 1], ["LIVE", 1], ["P&L LIVE", 1], ["HORIZON"], ["THESIS"]], rows, "Positions"));
   }
 
   function renderOverview(main) {
     main.append(statusLine());
     main.append(el("section", { class: "agent-cols", "aria-label": "Agents" }, agentsList().map(agentColumn)));
     const note = noiseNote();
-    if (note) main.lastChild.after(note);
+    if (note) main.append(note);
+    if (state.holdings) main.append(benchStrip(), todayFigure());
     main.append(equityFigure("EQUITY", agentsList().map((a) => a.name).concat(benchList().map((b) => b.name))));
     main.append(positionsOverview());
   }
@@ -633,7 +1040,7 @@
   // Compare
 
   function standings() {
-    const head = [["AGENT"], ["RETURN", 1], ["VS SPY", 1], ["± 2 SE", 1], ["VS MATCHED", 1], ["± 2 SE", 1], ["MAX DD", 1],
+    const head = [["AGENT"], ["LIVE", 1], ["TODAY", 1], ["RETURN", 1], ["VS SPY", 1], ["± 2 SE", 1], ["VS MATCHED", 1], ["± 2 SE", 1], ["MAX DD", 1],
       ["AVG INV", 1], ["TRADES", 1], ["TURNOVER", 1], ["SLIPPAGE", 1], ["SESSIONS", 1], ["API $", 1]];
     const rows = [];
     for (const name of agentsList().map((a) => a.name).concat(benchList().map((b) => b.name))) {
@@ -644,6 +1051,7 @@
       rows.push(el("tr", { class: bench ? "bench-row" : null },
         el("th", { scope: "row", class: agClass(name) }, square(name),
           bench ? shortName(name) : el("a", { href: `#agent/${encodeURIComponent(name)}`, class: agClass(name), text: upper(name) })),
+        ...liveCells(name),
         num(has ? pct(s.total_return) : DASH, has ? dir(s.total_return) : ""),
         num(has && !isSpy ? pts(s.excess_vs_spy) : DASH, has && !isSpy ? dir(s.excess_vs_spy) : ""),
         num(has && !isSpy ? band(s.excess_vs_spy_se) || DASH : DASH, "muted"),
@@ -658,7 +1066,7 @@
         num(!bench && isNum(s.api_spend) ? money(s.api_spend, 2) : DASH)));
     }
     return block("standings", "STANDINGS", table("standings", head, rows, "Standings"),
-      el("p", { class: "note-line", text: "PTS = PERCENTAGE POINTS · ± = 2 SE · MATCHED = SPY × PRIOR-DAY INVESTED · TRADES CLOSED / OPEN · SESSIONS DECIDED / DAYS" }));
+      el("p", { class: "note-line", text: "LIVE = NOW · TODAY = VS LAST CLOSE · RETURN ONWARD = MARKED AT CLOSE · PTS = PERCENTAGE POINTS · ± = 2 SE · MATCHED = SPY × PRIOR-DAY INVESTED · TRADES CLOSED / OPEN · SESSIONS DECIDED / DAYS" }));
   }
 
   function pairsBlock() {
@@ -674,6 +1082,7 @@
   }
 
   function renderCompare(main) {
+    if (state.holdings) main.append(el("section", { class: "status-line", "aria-label": "Status" }, liveStatus()));
     main.append(standings(), pairsBlock());
   }
 
@@ -790,6 +1199,8 @@
     return el("section", { class: "agent-head" },
       el("h1", { class: `agent-title ${agClass(name)}` }, square(name), upper(name)),
       el("p", { class: "desc", text: String(a.description || "") }),
+      liveRow(name),
+      el("div", { class: "marked-label", text: state.meta.last_marked ? `SINCE START · ${dShort(state.meta.last_marked)} CLOSE` : "SINCE START" }),
       el("div", { class: "hero" },
         bigReturn(s, a),
         el("div", { class: "cells" },
@@ -843,13 +1254,14 @@
         el("td", { class: "ticker", text: String(p.ticker) }),
         num(pctPlain(p.weight, 1)),
         num(pct(p.pnl_pct), dir(p.pnl_pct)),
+        ...livePriceCells(String(p.ticker), p.avg_cost),
         num(isNum(p.stop_price) ? money(p.stop_price, 2) : DASH),
         num(isNum(p.target_price) ? money(p.target_price, 2) : DASH),
         horizonCell(p),
         td(dShort(p.opened), "nowrap"),
         thesis);
     });
-    return block("positions", "POSITIONS", table("positions", [["TICKER"], ["WEIGHT", 1], ["P&L", 1], ["STOP", 1], ["TARGET", 1], ["HORIZON"], ["OPENED"], ["THESIS"]], rows, "Positions"));
+    return block("positions", "POSITIONS", table("positions", [["TICKER"], ["WEIGHT", 1], ["P&L CLOSE", 1], ["LIVE", 1], ["P&L LIVE", 1], ["STOP", 1], ["TARGET", 1], ["HORIZON"], ["OPENED"], ["THESIS"]], rows, "Positions"));
   }
 
   const EXIT = { close: "AGENT CLOSED", set_weight: "AGENT SOLD DOWN" };
@@ -966,6 +1378,8 @@
     charts.forEach((c) => c.destroy());
     charts = [];
     pending = [];
+    liveSlots = [];
+    clearTimeout(liveTimer);
     try {
       await loadCore();
     } catch (e) {
@@ -990,6 +1404,7 @@
       document.title = `${upper(name)} · Trading agents`;
       renderAgent(main, name, a);
       flush();
+      startLive();
       window.scrollTo(0, 0);
       return;
     }
@@ -1003,6 +1418,7 @@
     else if (page === "how") renderHow(main);
     else renderOverview(main);
     flush();
+    if (page === "overview" || page === "compare") startLive();
     if (route && page === "overview") history.replaceState(null, "", "#");
     window.scrollTo(0, 0);
   }

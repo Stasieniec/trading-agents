@@ -9,7 +9,7 @@
 // The mock Alpaca walks each symbol from the day's open to its close (dev/mock/<scenario>/_alpaca.json)
 // with a small wiggle, up to --now. It insists on the two APCA headers, answers 403 with the key in
 // the body when the key is "bad" (to check the Worker never passes that on), and pages bar results
-// 40 at a time so pagination is exercised. GET /__log lists the Alpaca requests it has seen.
+// 200 at a time so pagination is exercised. GET /__log lists the Alpaca requests it has seen.
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import { join, normalize, dirname } from "node:path";
@@ -80,10 +80,10 @@ async function alpaca(req, res, scenario, path, q) {
       }
     }
     const offset = Number(q.get("page_token") || 0);
-    const page = rows.slice(offset, offset + 40);
+    const page = rows.slice(offset, offset + 200);
     const bars = {};
     for (const [s, b] of page) (bars[s] = bars[s] || []).push(b);
-    return send(200, { bars, next_page_token: offset + 40 < rows.length ? String(offset + 40) : null });
+    return send(200, { bars, next_page_token: offset + 200 < rows.length ? String(offset + 200) : null });
   }
   return send(404, { message: "not mocked" });
 }
