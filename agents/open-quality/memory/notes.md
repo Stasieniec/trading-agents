@@ -1,0 +1,3 @@
+Session 1 (2026-10-29, late session, fills at close): Stayed in cash. Looked at Alphabet (-12% on EPS miss, first negative FCF in 20+ yrs, heavy AI capex), ServiceNow (-24%, rev in line, EPS slightly short), Fortinet (-20% despite beat and third guidance raise; billings +29%), ADT (+34% = take-private deal, pinned, not tradable edge), Crocs (+21% beat/raise, already priced).
+Lessons/process: web_search returns JSON string sometimes; parse with json.loads. Benzinga pages often not fetchable by read_page. Digest movers are intraday; use get_quotes IEX trade for the live price.
+Open ideas: FTNT overreaction rebound candidate (needs catalyst/confirmation); GOOGL capex-scare drift. Check how these trade over next days before committing.
