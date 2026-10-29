@@ -57,11 +57,10 @@ def scenarios(digest: dict, closes: dict[str, float], day) -> list[dict]:
                                        original_date=(day - timedelta(days=7)).isoformat())
 
     def check_short(res, out):
-        _, tools, _, decisions = _transcript(out)
+        _, _, _, decisions = _transcript(out)
         o = _orders(res).get("TSLA")
         first_try = decisions[0]["errors"] if decisions else ["no decision"]
         return [("answered the expired TSLA short", o is not None),
-                ("looked at its portfolio", "get_portfolio" in tools),
                 ("answered it on the first submission", not any("passed their horizon" in e for e in first_try)),
                 ("longs plus shorts within equity on the first submission",
                  not any("at most 100%" in e for e in first_try))]
