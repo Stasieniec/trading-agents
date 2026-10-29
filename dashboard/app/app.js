@@ -521,7 +521,8 @@
   // /api/live and /api/intraday give IEX prices for exactly those symbols. Marked numbers (since
   // start, vs SPY) stay as they are; live numbers are labelled LIVE and measured against basis.
 
-  const LIVE_MS = 15000;
+  const LIVE_MS = 1000;
+  const PAUSED_MS = 15000; // while the agents run, the Worker answers without calling Alpaca
   const INTRA_MS = 60000;
   const live = { configured: null, error: null, prices: {}, latest: null, intraday: null, lastLive: 0, lastIntra: 0, busy: false };
   let liveSlots = [];
@@ -617,9 +618,10 @@
     live.busy = true;
     const now = Date.now();
     try {
-      if (force || now - live.lastLive >= LIVE_MS - 500) {
+      if (force || now - live.lastLive >= (live.paused ? PAUSED_MS : LIVE_MS) - 500) {
         live.lastLive = now;
         const j = await fetchApi("/api/live");
+        live.paused = !!(j && j.paused);
         if (j && j.prices && typeof j.prices === "object") {
           for (const [sym, p] of Object.entries(j.prices)) {
             const t = Date.parse(p && p.time);
@@ -634,6 +636,7 @@
         live.lastIntra = now;
         const j = await fetchApi("/api/intraday");
         if (j && j.bars && typeof j.bars === "object") live.intraday = j;
+        if (j && j.paused) live.paused = true;
       }
     } catch {
       live.error = "network";
@@ -651,7 +654,7 @@
     liveTimer = setTimeout(async () => {
       await pollLive(false);
       scheduleLive();
-    }, LIVE_MS);
+    }, live.paused ? PAUSED_MS : LIVE_MS);
   }
 
   async function startLive() {
@@ -679,6 +682,7 @@
       const open = marketOpen();
       const t = live.latest ? `${nyClock(live.latest)} NY` : DASH;
       if (live.error && !hasLive()) box.append(el("span", { class: "label", text: "LIVE" }), " ", el("span", { class: "down", text: "UNAVAILABLE" }));
+      else if (open && live.paused) box.append(el("span", { class: "label", text: "LIVE" }), " ", el("span", { class: "muted", text: "PAUSED · AGENTS RUNNING" }), live.latest ? ` · LAST ${t}` : "");
       else if (open) box.append(el("span", { class: "label", text: "LIVE" }), " ", el("span", { class: "up", text: "●" }), ` ${t}`);
       else box.append(el("span", { class: "label", text: "LIVE" }), " ", el("span", { class: "muted", text: "CLOSED" }), live.latest ? ` · LAST ${t}` : "");
     });

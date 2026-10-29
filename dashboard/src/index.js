@@ -103,7 +103,8 @@ function securityHeaders(dataOrigin) {
 const ALPACA_DEFAULT = "https://data.alpaca.markets";
 const SYMBOL = /^[A-Z][A-Z0-9.-]{0,9}$/;
 const MAX_SYMBOLS = 300;
-const API_TTL = { "/api/live": 15, "/api/intraday": 60 };
+const API_TTL = { "/api/live": 1, "/api/intraday": 60 };
+const PAUSED_TTL = 15;
 
 class PublicError extends Error {
   constructor(status, message, upstream) {
@@ -218,6 +219,37 @@ function jsonResponse(status, body, headers, cache) {
   });
 }
 
+// The agents share the Alpaca rate limit with this page, so while any of their workflows runs
+// (sessions, fill passes, marking, evals) the page makes no Alpaca calls at all. If GitHub cannot be
+// asked, assume they are running: the agents come first.
+async function agentsRunning(env, ctx) {
+  const key = new Request("https://trading.swasilewski.com/__internal/agents-running", { method: "GET" });
+  const cache = caches.default;
+  const hit = await cache.match(key);
+  if (hit) return (await hit.text()) === "1";
+  let running = true;
+  if (env.GITHUB_DISPATCH_TOKEN) {
+    try {
+      const headers = {
+        Authorization: `Bearer ${env.GITHUB_DISPATCH_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "trading-agents-dashboard",
+      };
+      const base = "https://api.github.com/repos/Stasieniec/trading-agents/actions/runs?per_page=10&status=";
+      const [a, b] = await Promise.all([fetch(base + "in_progress", { headers }), fetch(base + "queued", { headers })]);
+      if (a.ok && b.ok) {
+        const runs = [...((await a.json()).workflow_runs || []), ...((await b.json()).workflow_runs || [])];
+        running = runs.some((r) => ["session", "mark", "agent-evals"].includes(r.name));
+      }
+    } catch {
+      running = true;
+    }
+  }
+  ctx.waitUntil(cache.put(key, new Response(running ? "1" : "0", { headers: { "Cache-Control": "public, max-age=10" } })));
+  return running;
+}
+
 // One Alpaca call per TTL for everyone: the answer, errors included, is kept in the edge cache.
 async function api(request, env, ctx, base, headers, path) {
   if (!env.ALPACA_KEY || !env.ALPACA_SECRET) {
@@ -226,6 +258,10 @@ async function api(request, env, ctx, base, headers, path) {
   const key = new Request(new URL(path, request.url).href, { method: "GET" });
   const cache = caches.default;
   let resp = await cache.match(key);
+  if (!resp && (await agentsRunning(env, ctx))) {
+    resp = jsonResponse(200, { paused: true, reason: "agents running" }, headers, `public, max-age=${PAUSED_TTL}`);
+    ctx.waitUntil(cache.put(key, resp.clone()));
+  }
   if (!resp) {
     let status = 200, body;
     try {
