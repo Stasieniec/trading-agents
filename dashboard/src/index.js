@@ -143,4 +143,37 @@ export default {
       headers: { ...headers, "Content-Type": type, "Cache-Control": cache },
     });
   },
+
+  // GitHub's own cron fires hours late or not at all, so these Cloudflare crons start the workflows.
+  // The session workflow runs its usual gate (trading day, 13:30 Amsterdam, 30 minutes before the
+  // open, not already done), so an extra or early trigger does nothing.
+  async scheduled(event, env, ctx) {
+    const token = env.GITHUB_DISPATCH_TOKEN;
+    if (!token) {
+      console.log("GITHUB_DISPATCH_TOKEN not set; skipping", event.cron);
+      return;
+    }
+    const job = SCHEDULE[event.cron];
+    if (!job) return;
+    const r = await fetch(`https://api.github.com/repos/Stasieniec/trading-agents/actions/workflows/${job.workflow}/dispatches`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "trading-agents-scheduler",
+      },
+      body: JSON.stringify({ ref: "main", inputs: job.inputs }),
+    });
+    console.log(event.cron, job.workflow, r.status);
+  },
+};
+
+const SESSION = { workflow: "session.yml", inputs: { dry_run: "false", gated: "true", hard_cap: "2.0" } };
+const MARK = { workflow: "mark.yml", inputs: {} };
+const SCHEDULE = {
+  "32 12 * * 1-5": SESSION,
+  "44 12 * * 1-5": SESSION,
+  "50 21 * * 1-5": MARK,
+  "20 23 * * 1-5": MARK,
 };

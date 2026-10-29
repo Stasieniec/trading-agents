@@ -14,6 +14,10 @@ rules = [
   { type = "Data", globs = ["**/vendor/*.woff2"], fallthrough = true },
 ]
 
+# Starts the GitHub workflows; see scheduled() in src/index.js. UTC.
+[triggers]
+crons = ["32 12 * * 1-5", "44 12 * * 1-5", "50 21 * * 1-5", "20 23 * * 1-5"]
+
 [vars]
 # Must end with a slash. Override for local testing:
 #   npx wrangler dev --local --var DATA_BASE:http://localhost:8790/full/

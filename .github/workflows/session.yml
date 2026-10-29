@@ -24,6 +24,10 @@ on:
         description: "Hard cost cap per session in USD"
         type: string
         default: "0.50"
+      gated:
+        description: "Apply the schedule gate (used by the Cloudflare trigger)"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -59,10 +63,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Gate
         id: gate
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.gated
         run: python -m trading gate-session
       - name: Sessions
-        if: github.event_name == 'workflow_dispatch' || steps.gate.outputs.run == 'true'
+        if: (github.event_name == 'workflow_dispatch' && !inputs.gated) || steps.gate.outputs.run == 'true'
         env:
           CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
           ALPACA_KEY: ${{ secrets.ALPACA_KEY }}
