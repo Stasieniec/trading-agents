@@ -3,6 +3,8 @@
 from datetime import date, datetime, timezone
 from types import SimpleNamespace
 
+import json
+
 import pytest
 
 import trading.__main__ as cli
@@ -145,3 +147,27 @@ def test_price_only_digest_has_no_headlines():
     assert "SECRET HEADLINE" not in price_only and "summary text" not in price_only and "news" not in price_only.lower()
     assert "AAA" in price_only and "SPY" in price_only
     assert "SECRET HEADLINE" in digest.render(d, news=True)
+
+
+def test_read_page_falls_back_to_the_news_feed_text(tmp_path, monkeypatch):
+    monkeypatch.setattr(digest, "ARTICLE_DIR", tmp_path)
+    digest.save_articles(date(2026, 11, 2), {"https://benzinga.com/news/1": "<p>Vertiv orders more than doubled.</p>"})
+    failed = O(type="web_fetch_tool_result", content=O(type="web_fetch_tool_result_error", error_code="url_not_accessible"))
+    answer = O(type="text", text="PAGE DATE: 28 Oct 2026\nOrders doubled.")
+
+    class TwoStep(HaikuFake):
+        def create(self, **kw):
+            self.calls += 1
+            if "<page>" in json.dumps(kw["messages"]):
+                assert "Vertiv orders more than doubled." in kw["messages"][0]["content"]
+                return O(stop_reason="end_turn", content=[answer], usage=self._u())
+            return O(stop_reason="end_turn", content=[failed, O(type="text", text="FETCH FAILED")], usage=self._u())
+
+        def _u(self):
+            return O(input_tokens=900, output_tokens=50, cache_read_input_tokens=0, cache_creation_input_tokens=0,
+                     server_tool_use=O(web_fetch_requests=1, web_search_requests=0))
+
+    tb, costs = toolbox(TwoStep([]))
+    out, err = tb.run("read_page", {"url": "https://www.benzinga.com/news/1", "question": "why?"})
+    assert not err and "Orders doubled" in out and "https://benzinga.com/news/1" in tb.read_ok_urls
+    assert costs == ["read_page"] * 2  # the failed fetch and the answer from the feed text

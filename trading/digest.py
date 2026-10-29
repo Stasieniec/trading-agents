@@ -9,13 +9,15 @@ import feedparser
 import httpx
 
 from .alpaca import Alpaca, DataError
-from .config import DATA_DIR, HELPER_EFFORT, HELPER_MODEL
+from .agent.urls import norm
+from .config import CACHE_DIR, DATA_DIR, HELPER_EFFORT, HELPER_MODEL
 from .cost import call_cost
 from .secrets import redact
 from .timeutil import UTC, previous_trading_day, session_times, trading_days
 from .universe import Universe
 
 DIGEST_DIR = DATA_DIR / "digest"
+ARTICLE_DIR = CACHE_DIR / "articles"
 
 ETFS = [
     ("SPY", "S&P 500"), ("QQQ", "Nasdaq 100"), ("IWM", "Russell 2000"), ("DIA", "Dow 30"),
@@ -144,8 +146,11 @@ def build(day: date, alpaca: Alpaca, universe: Universe, anthropic_client=None, 
     since = min(prev_close - timedelta(hours=6), built_at - timedelta(hours=24))
     items = []
     mentions: dict[str, int] = {}
+    articles: dict[str, str] = {}
     try:
-        for n in alpaca.news(since, built_at):
+        for n in alpaca.news(since, built_at, include_content=True):
+            if n.get("url") and n.get("content"):
+                articles[norm(n["url"])] = n["content"]
             syms = [x for x in (n.get("symbols") or []) if eligible(x)]
             # Stories tagged with many tickers are roundups; they say little about any one of them.
             if len(n.get("symbols") or []) <= 4:
@@ -160,6 +165,7 @@ def build(day: date, alpaca: Alpaca, universe: Universe, anthropic_client=None, 
         status["Alpaca news"] = "ok"
     except DataError as e:
         status["Alpaca news"] = f"failed: {e}"
+    save_articles(day, articles)
     for i, (name, url) in enumerate(RSS, 1):
         key = f"{name} feed {i}"
         try:
@@ -232,6 +238,25 @@ def render(d: dict, news: bool, include_summary: bool = True) -> str:
     if failed:
         lines.append("\nSources that failed today: " + ", ".join(failed))
     return "\n".join(lines)
+
+
+def save_articles(day: date, articles: dict[str, str]) -> None:
+    """Full text of the day's Alpaca news stories, for the page reader. Local cache only, never in git."""
+    ARTICLE_DIR.mkdir(parents=True, exist_ok=True)
+    (ARTICLE_DIR / f"{day.isoformat()}.json").write_text(json.dumps(articles))
+
+
+def article_text(url: str) -> str:
+    """Plain text of a cached Alpaca news story by its URL, or empty."""
+    key = norm(url)
+    for p in sorted(ARTICLE_DIR.glob("*.json"), reverse=True)[:5]:
+        try:
+            html = json.loads(p.read_text()).get(key)
+        except (OSError, ValueError):
+            continue
+        if html:
+            return " ".join(re.sub(r"<[^>]+>", " ", html).split())
+    return ""
 
 
 def save(d: dict) -> None:

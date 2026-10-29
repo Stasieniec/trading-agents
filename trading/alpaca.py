@@ -143,10 +143,10 @@ class Alpaca:
         uniq = {a.get("id") or f"{a['kind']}:{a.get('symbol')}:{a.get('ex_date')}": a for a in out}
         return list(uniq.values())
 
-    def news(self, start: datetime, end: datetime, pages: int = 8) -> list[dict]:
+    def news(self, start: datetime, end: datetime, pages: int = 8, include_content: bool = False) -> list[dict]:
         """Up to pages x 50 stories in the window, newest first."""
         params = {"start": start.strftime("%Y-%m-%dT%H:%M:%SZ"), "end": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                  "limit": 50, "sort": "desc", "include_content": "false"}
+                  "limit": 50, "sort": "desc", "include_content": "true" if include_content else "false"}
         out = []
         for _ in range(pages):
             j = self._get(f"{DATA}/v1beta1/news", params)
