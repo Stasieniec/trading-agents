@@ -1,0 +1,94 @@
+{
+ "total_cost": 0.058703099999999994,
+ "calls": [
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.014973,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 5122
+    },
+    "cache_creation_input_tokens": 5122,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 4,
+    "output_tokens": 216,
+    "output_tokens_details": {
+     "thinking_tokens": 48
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0125587,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 2649
+    },
+    "cache_creation_input_tokens": 2649,
+    "cache_read_input_tokens": 5122,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 542,
+    "output_tokens_details": {
+     "thinking_tokens": 333
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0118786,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 3167
+    },
+    "cache_creation_input_tokens": 3167,
+    "cache_read_input_tokens": 7771,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 318,
+    "output_tokens_details": {
+     "thinking_tokens": 174
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0192928,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 3118
+    },
+    "cache_creation_input_tokens": 3118,
+    "cache_read_input_tokens": 10938,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 1040,
+    "output_tokens_details": {
+     "thinking_tokens": 336
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  }
+ ],
+ "prompt_hash": "dab7d81efc11"
+}
