@@ -7,8 +7,8 @@ from datetime import date, datetime, timedelta
 from .alpaca import Alpaca, DataError, bar_is_sane
 from .config import (AGENTS, AGENTS_DIR, BENCHMARK_SLIPPAGE_BP, BENCHMARKS, DATA_DIR,
                      EXPERIMENT_FILE)
-from .ledger import (State, append_jsonl, apply_event, corporate_action_events, exit_events,
-                     fill_orders, mark_event, read_jsonl, replay)
+from .ledger import (State, append_jsonl, apply_event, borrow_fee_events, corporate_action_events,
+                     exit_events, fill_orders, mark_event, read_jsonl, replay)
 from .timeutil import previous_trading_day, trading_days
 
 BENCH_DIR = DATA_DIR / "benchmarks"
@@ -159,6 +159,7 @@ def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
                 # Orders decided during the session fill at that day's close, which nobody had seen.
                 close_px = {t: float(b["c"]) for t, b in today.items()}
                 new += fill_orders(st, at_close, day, close_px, closes)
+            new += borrow_fee_events(st, day, closes)
             new.append(mark_event(st, day, closes))
             append_jsonl(d / "events.jsonl", new)
         log(f"marking: {ds} done")

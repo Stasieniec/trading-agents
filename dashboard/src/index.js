@@ -223,6 +223,7 @@ function jsonResponse(status, body, headers, cache) {
 // (sessions, fill passes, marking, evals) the page makes no Alpaca calls at all. If GitHub cannot be
 // asked, assume they are running: the agents come first.
 async function agentsRunning(env, ctx) {
+  if (env.DEV_ASSUME_IDLE === "1") return false; // local development only: never set in wrangler.toml
   const key = new Request("https://trading.swasilewski.com/__internal/agents-running", { method: "GET" });
   const cache = caches.default;
   const hit = await cache.match(key);

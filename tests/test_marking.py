@@ -168,3 +168,29 @@ def test_fill_pass_books_fills_during_the_day_and_the_evening_does_not_redo_them
     assert "NVDA" not in st.positions  # bought at the open: the day's low of 94.9 hit its 1% stop
     assert [e["ticker"] for e in fills].count("NVDA") == 2 and [e["ticker"] for e in fills].count("AMD") == 1
     assert [e for e in ev if e["type"] == "mark"][-1]["date"] == "2026-11-02"
+
+
+def test_a_short_over_two_days_pays_its_fee_and_shows_on_the_site(repo):
+    orders = repo / "agents" / "tech-ten" / "ledger" / "orders.jsonl"
+    orders.write_text(json.dumps({"id": "tech-ten-2026-11-02-01", "session_date": "2026-11-02",
+                                  "action": "set_weight", "ticker": "NVDA", "target_weight": -0.4,
+                                  "stop_pct": 10, "target_pct": 20, "horizon_days": 5, "thesis": "t",
+                                  "probability": 0.55, "slippage_bp": 10, "sources": []}) + "\n")
+    assert market.run(D2, FakeAlpaca(), log=lambda m: None) == [D1, D2]
+    ev = read_jsonl(repo / "agents" / "tech-ten" / "ledger" / "events.jsonl")
+    st = replay(ev)
+    p = st.positions["NVDA"]
+    assert p.short and p.stop_price == pytest.approx(101 * 1.1)  # a 2% rise on day two stays under the stop
+    fees = [e for e in ev if e["type"] == "borrow_fee"]
+    assert [f["date"] for f in fees] == ["2026-11-02", "2026-11-03"]
+    q = -p.qty
+    marks = [e for e in ev if e["type"] == "mark"]
+    fee_total = sum(f["amount"] for f in fees)
+    assert marks[-1]["equity"] == pytest.approx(100_000 + q * 101 * 0.999 - q * 103 - fee_total)
+    assert marks[-1]["invested"] == pytest.approx(-q * 103) and marks[-1]["gross"] == pytest.approx(q * 103)
+    site.build()
+    a = json.loads((repo / "site-data" / "agents" / "tech-ten.json").read_text())
+    (pos,) = a["positions"]
+    assert pos["side"] == "short" and pos["weight"] < 0 and pos["pnl_pct"] < 0
+    h = json.loads((repo / "site-data" / "holdings.json").read_text())
+    assert h["portfolios"]["tech-ten"]["positions"]["NVDA"] < 0

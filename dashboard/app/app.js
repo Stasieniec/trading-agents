@@ -724,14 +724,14 @@
   }
 
   // Cells for the positions tables: live price and P&L against average cost.
-  function livePriceCells(ticker, avgCost) {
+  function livePriceCells(ticker, avgCost, short) {
     const price = el("td", { class: "num" });
     const pnl = el("td", { class: "num" });
     liveSlot(() => {
       const p = hasLive() ? live.prices[ticker] : null;
       const px = p ? p.price : hasLive() ? priceOf(ticker) : null;
       price.textContent = isNum(px) ? money(px, 2) : DASH;
-      const r = isNum(px) && isNum(avgCost) && avgCost ? px / avgCost - 1 : null;
+      const r = isNum(px) && isNum(avgCost) && avgCost ? (short ? (avgCost - px) / avgCost : px / avgCost - 1) : null;
       pnl.textContent = isNum(r) ? pct(r) : DASH;
       pnl.className = `num ${dir(r)}`;
     });
@@ -973,13 +973,24 @@
     return el("div", { class: "big none", text: isNum(r) ? pctPlain(r, 1) : "0.0%" });
   }
 
+  // Longs plus shorts as a share of equity, and the net (shorts negative). The same before any short.
+  function exposure(name) {
+    const eq = state.equity || {};
+    const last = (xs) => (Array.isArray(xs) ? [...xs].reverse().find(isNum) : null);
+    const net = last((eq.invested_fraction || {})[name]);
+    const g = last((eq.gross_fraction || {})[name]);
+    return { gross: isNum(g) ? g : net, net };
+  }
+  const gross = (s) => (isNum(s.avg_gross) ? s.avg_gross : s.avg_invested);
+  const netNote = (g, n) => (isNum(g) && isNum(n) && Math.abs(g - n) > 1e-6
+    ? el("span", { class: "muted", text: ` · NET ${pctPlain(n)}` }) : null);
+
   function agentColumn(meta) {
     const name = meta.name;
     const s = statsOf(name);
     const a = state.agents[name];
     const has = (s.days || 0) > 0;
-    const inv = (state.equity && state.equity.invested_fraction || {})[name];
-    const lastInv = Array.isArray(inv) ? [...inv].reverse().find(isNum) : null;
+    const { gross: lastInv, net: lastNet } = exposure(name);
     const row = (label, ...value) => el("div", { class: "kv" }, el("span", { class: "label", text: label }), el("span", null, ...value));
     const quote = latestThesis(a);
     return el("article", { class: "agent-col" },
@@ -991,7 +1002,7 @@
       el("div", { class: "kvs" },
         row("VS SPY", el("span", { class: dir(s.excess_vs_spy), text: has ? pts(s.excess_vs_spy) : DASH }), " ",
           el("span", { class: "muted", text: has ? band(s.excess_vs_spy_se) : "" })),
-        row("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH),
+        row("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH, netNote(lastInv, lastNet)),
         row("MAX DD", has ? pct(s.max_drawdown) : DASH),
         row("TRADES", has || s.trades_closed ? `${(s.trades_closed || 0) + (s.trades_open || 0)}` : DASH,
           s.trades_open ? el("span", { class: "muted", text: ` · ${s.trades_open} OPEN` }) : null)),
@@ -1015,17 +1026,20 @@
     return td(n != null ? `${n}d` : dShort(p.horizon_end));
   }
 
+  const tickerCell = (t, side) => el("td", { class: "ticker" }, String(t),
+    side === "short" ? el("span", { class: "side-tag", text: "SHORT" }) : null);
+
   function positionsOverview() {
     const rows = [];
     for (const meta of agentsList()) {
       const a = state.agents[meta.name];
-      for (const p of (a && Array.isArray(a.positions) ? a.positions : []).slice().sort((x, y) => (y.weight || 0) - (x.weight || 0))) {
+      for (const p of (a && Array.isArray(a.positions) ? a.positions : []).slice().sort((x, y) => Math.abs(y.weight || 0) - Math.abs(x.weight || 0))) {
         rows.push(el("tr", null,
-          el("td", { class: "ticker", text: String(p.ticker) }),
+          tickerCell(p.ticker, p.side),
           el("td", { class: `${agClass(meta.name)} nowrap`, text: meta.name }),
           num(pctPlain(p.weight, 1)),
           num(pct(p.pnl_pct), dir(p.pnl_pct)),
-          ...livePriceCells(String(p.ticker), p.avg_cost),
+          ...livePriceCells(String(p.ticker), p.avg_cost, p.side === "short"),
           horizonCell(p),
           el("td", { class: "thesis", text: p.thesis ? String(p.thesis) : DASH })));
       }
@@ -1066,7 +1080,7 @@
         num(has && !bench ? pts(s.excess_vs_matched) : DASH, has && !bench ? dir(s.excess_vs_matched) : ""),
         num(has && !bench ? band(s.excess_vs_matched_se) || DASH : DASH, "muted"),
         num(has ? pct(s.max_drawdown) : DASH),
-        num(has ? pctPlain(s.avg_invested) : DASH),
+        num(has ? pctPlain(gross(s)) : DASH),
         num(!bench && has ? `${s.trades_closed ?? 0} / ${s.trades_open ?? 0}` : DASH),
         num(has && isNum(s.turnover) ? `${s.turnover.toFixed(2)}×` : DASH),
         num(has ? money(s.slippage_paid) : DASH),
@@ -1202,8 +1216,8 @@
     const has = (s.days || 0) > 0;
     const cell = (label, value, cls, sub) => el("div", { class: "cell" }, el("div", { class: "label", text: label }),
       el("div", { class: `cell-value ${cls || ""}`, text: value }), sub ? el("div", { class: "cell-sub", text: sub }) : null);
-    const inv = (state.equity && state.equity.invested_fraction || {})[name];
-    const lastInv = Array.isArray(inv) ? [...inv].reverse().find(isNum) : null;
+    const { gross: lastInv, net: lastNet } = exposure(name);
+    const netSub = isNum(lastNet) && isNum(lastInv) && Math.abs(lastNet - lastInv) > 1e-6 ? `NET ${pctPlain(lastNet)} · ` : "";
     return el("section", { class: "agent-head" },
       el("h1", { class: `agent-title ${agClass(name)}` }, square(name), upper(name)),
       el("p", { class: "desc", text: String(a.description || "") }),
@@ -1217,7 +1231,7 @@
           cell("VS SPY", has ? pts(s.excess_vs_spy) : DASH, dir(s.excess_vs_spy), has ? band(s.excess_vs_spy_se) : null),
           cell("VS MATCHED", has ? pts(s.excess_vs_matched) : DASH, dir(s.excess_vs_matched), has ? band(s.excess_vs_matched_se) : null),
           cell("MAX DD", has ? pct(s.max_drawdown) : DASH),
-          cell("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH, "", has ? `AVG ${pctPlain(s.avg_invested)}` : null),
+          cell("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH, "", has ? `${netSub}AVG ${pctPlain(gross(s))}` : null),
           cell("TRADES", has ? `${s.trades_closed ?? 0} / ${s.trades_open ?? 0}` : DASH, "", "CLOSED / OPEN"),
           cell("TURNOVER", has && isNum(s.turnover) ? `${s.turnover.toFixed(2)}×` : DASH),
           cell("SLIPPAGE", has ? money(s.slippage_paid) : DASH),
@@ -1232,7 +1246,7 @@
     const matched = rebased((eq.exposure_matched || {})[name]);
     const extra = matched ? [{ label: "MATCHED", values: matched, color: C.bench, dash: [8, 4], width: 1.5, cls: "bench" }] : [];
     const out = [equityFigure("EQUITY", [name, "bench:spy"], extra)];
-    const inv = (eq.invested_fraction || {})[name];
+    const inv = (eq.gross_fraction || eq.invested_fraction || {})[name];
     const labels = chartLabels();
     if (labels && Array.isArray(inv) && inv.length) {
       const vals = [0].concat(inv.map((v) => (isNum(v) ? v * 100 : null)));
@@ -1259,10 +1273,10 @@
         thesis.append(el("div", { class: "orig" }, el("span", { class: "label", text: `ORIGINAL ${dShort(p.opened)} · EXTENDED ${p.extensions}× ` }), String(p.original_thesis)));
       }
       return el("tr", null,
-        el("td", { class: "ticker", text: String(p.ticker) }),
+        tickerCell(p.ticker, p.side),
         num(pctPlain(p.weight, 1)),
         num(pct(p.pnl_pct), dir(p.pnl_pct)),
-        ...livePriceCells(String(p.ticker), p.avg_cost),
+        ...livePriceCells(String(p.ticker), p.avg_cost, p.side === "short"),
         num(isNum(p.stop_price) ? money(p.stop_price, 2) : DASH),
         num(isNum(p.target_price) ? money(p.target_price, 2) : DASH),
         horizonCell(p),
@@ -1273,6 +1287,7 @@
   }
 
   const EXIT = { close: "AGENT CLOSED", set_weight: "AGENT SOLD DOWN" };
+  const EXIT_SHORT = { close: "AGENT COVERED", set_weight: "AGENT COVERED" };
 
   function tradesBlock(a) {
     const trades = Array.isArray(a.trades) ? a.trades : [];
@@ -1283,21 +1298,24 @@
       for (const t of list) {
         const open = !t.closed;
         rows.push(el("tr", { class: "trade" },
-          el("td", { class: "ticker", text: String(t.ticker) }),
+          tickerCell(t.ticker, t.side),
           td(dShort(t.opened), "nowrap"),
           td(open ? "OPEN" : dShort(t.closed), open ? "nowrap warn" : "nowrap"),
           num(open ? DASH : pct(t.return), open ? "" : dir(t.return)),
           num(open ? DASH : pct(t.spy_return), "muted"),
           num(open ? DASH : pts(t.excess), open ? "" : dir(t.excess)),
-          td(open ? DASH : EXIT[t.exit_reason] || upper(t.exit_reason || DASH), "nowrap"),
+          td(open ? DASH : (t.side === "short" ? EXIT_SHORT : EXIT)[t.exit_reason] || upper(t.exit_reason || DASH), "nowrap"),
           num(isNum(t.probability) ? t.probability.toFixed(2) : DASH)));
         const d = el("details", { class: "detail-body" }, el("summary", { text: "THESIS · SOURCES" + (Array.isArray(t.causal_chain) && t.causal_chain.length ? " · CHAIN" : "") }));
         d.append(el("p", { class: "thesis", text: t.thesis ? String(t.thesis) : DASH }));
         const facts = [];
         if (isNum(t.horizon_days)) facts.push(`HORIZON ${t.horizon_days}d${t.horizon_end ? ` → ${dShort(t.horizon_end)}` : ""}`);
-        if (isNum(t.stop_pct)) facts.push(`STOP −${t.stop_pct}%`);
-        if (isNum(t.target_pct)) facts.push(`TARGET +${t.target_pct}%`);
+        const short = t.side === "short";
+        if (isNum(t.stop_pct)) facts.push(`STOP ${short ? "+" : "−"}${t.stop_pct}%`);
+        if (isNum(t.target_pct)) facts.push(`TARGET ${short ? "−" : "+"}${t.target_pct}%`);
         if (isNum(t.dividends) && t.dividends > 0) facts.push(`DIVIDENDS ${money(t.dividends, 2)}`);
+        if (isNum(t.dividends) && t.dividends < 0) facts.push(`DIVIDENDS PAID ${money(-t.dividends, 2)}`);
+        if (isNum(t.fees) && t.fees > 0) facts.push(`BORROW FEES ${money(t.fees, 2)}`);
         if (facts.length) d.append(el("p", { class: "label", text: facts.join(" · ") }));
         if (Array.isArray(t.extensions) && t.extensions.length) {
           d.append(el("p", { class: "label", text: "EXTENSIONS" }), el("ul", { class: "plain" }, t.extensions.map((x) =>

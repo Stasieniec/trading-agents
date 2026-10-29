@@ -47,6 +47,11 @@ MIN_TRADE_USD = 100.0  # smaller rebalances are skipped as dust
 SLIPPAGE_BUCKETS = [(10e9, "large", 10), (2e9, "mid", 25), (MIN_MARKET_CAP, "small", 50)]
 BENCHMARK_SLIPPAGE_BP = 10
 
+# Shorts (from 2026-10-30): no leverage (longs plus shorts at most 100% of equity), easy-to-borrow
+# stocks only, and a borrow fee on the short value held overnight, counted per calendar day.
+BORROW_FEE_ANNUAL = 0.005
+BORROW_FEE_DAY_COUNT = 360
+
 TECH_TEN = ["NVDA", "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "AVGO", "AMD", "PLTR"]
 BENCHMARKS = {
     "spy": {"label": "SPY buy and hold", "weights": {"SPY": 1.0}},

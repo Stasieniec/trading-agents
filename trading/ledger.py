@@ -10,15 +10,15 @@ from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
-from .config import MIN_TRADE_USD, START_CASH
+from .config import BORROW_FEE_ANNUAL, BORROW_FEE_DAY_COUNT, MIN_TRADE_USD, START_CASH
 from .timeutil import add_trading_days
 
 
 @dataclass
 class Position:
     ticker: str
-    qty: float
-    cost: float  # total cost basis, including slippage
+    qty: float  # negative for a short
+    cost: float  # total cost basis, including slippage; negative for a short (minus the proceeds)
     opened: str
     stop_price: float | None = None
     target_price: float | None = None
@@ -35,6 +35,16 @@ class Position:
     def avg_cost(self) -> float:
         return self.cost / self.qty if self.qty else 0.0
 
+    @property
+    def short(self) -> bool:
+        return self.qty < 0
+
+    def pnl_pct(self, price: float) -> float:
+        """Gain on the position at this price, as a fraction of its cost: positive when a short's price falls."""
+        if not self.avg_cost:
+            return 0.0
+        return (self.avg_cost - price) / self.avg_cost if self.short else price / self.avg_cost - 1
+
 
 @dataclass
 class State:
@@ -48,6 +58,9 @@ class State:
 
     def equity(self, prices: dict[str, float]) -> float:
         return self.cash + sum(p.qty * prices.get(t, p.avg_cost) for t, p in self.positions.items())
+
+    def gross(self, prices: dict[str, float]) -> float:
+        return sum(abs(p.qty) * prices.get(t, p.avg_cost) for t, p in self.positions.items())
 
 
 def read_jsonl(path: Path) -> list[dict]:
@@ -69,25 +82,28 @@ def apply_event(s: State, e: dict) -> None:
     t = e.get("ticker")
     k = e["type"]
     if k == "fill":
-        value = e["qty"] * e["price"]
-        s.slippage_paid += abs(e["qty"] * (e["price"] - e["ref_price"]))
-        s.traded_value += value
-        if e["side"] == "buy":
-            s.cash -= value
-            p = s.positions.get(t)
-            if p:
-                p.qty += e["qty"]
-                p.cost += value
-            else:
-                s.positions[t] = Position(t, e["qty"], value, e["date"], original_date=e["date"])
-        else:
-            p = s.positions[t]
-            s.cash += value
-            frac = e["qty"] / p.qty if p.qty else 1.0
-            p.cost -= p.cost * frac
-            p.qty -= e["qty"]
-            if p.qty <= 1e-9:
+        px = e["price"]
+        signed = e["qty"] if e["side"] == "buy" else -e["qty"]
+        s.slippage_paid += abs(e["qty"] * (px - e["ref_price"]))
+        s.traded_value += e["qty"] * px
+        s.cash -= signed * px
+        p = s.positions.get(t)
+        if p and (p.qty > 0) != (signed > 0):
+            # Reduces the position. Anything beyond its size opens the other side.
+            used = min(abs(signed), abs(p.qty))
+            p.cost -= p.cost * used / abs(p.qty)
+            p.qty += used if signed > 0 else -used
+            rest = abs(signed) - used
+            if abs(p.qty) <= 1e-9:
                 del s.positions[t]
+                p = None
+            signed = (rest if signed > 0 else -rest) if rest > 1e-9 else 0.0
+        if signed:
+            if p:
+                p.qty += signed
+                p.cost += signed * px
+            else:
+                s.positions[t] = Position(t, signed, signed * px, e["date"], original_date=e["date"])
         if e.get("order_id"):
             s.done_orders.add(e["order_id"])
         if abs(s.cash) < 1e-6:
@@ -120,8 +136,10 @@ def apply_event(s: State, e: dict) -> None:
                 p.target_price /= r
         s.applied_actions.add(e["action_id"])
     elif k == "dividend":
-        s.cash += e["amount"]
+        s.cash += e["amount"]  # negative for a short, which owes the dividend
         s.applied_actions.add(e["action_id"])
+    elif k == "borrow_fee":
+        s.cash -= e["amount"]
     elif k == "rename":
         p = s.positions.pop(e["old"], None)
         if p:
@@ -212,10 +230,13 @@ def corporate_action_events(s: State, actions: list[dict], day: date) -> list[di
 
 def fill_orders(s: State, orders: list[dict], day: date, opens: dict[str, float],
                 prev_close: dict[str, float]) -> list[dict]:
-    """Fill one day's orders at the open. Sizes from equity marked at that open.
+    """Fill one day's orders at the given prices. Sizes from equity marked at those prices.
 
     orders: the day's orders, any action. opens: fill reference price per ticker (opening
-    auction, else bar open). prev_close: fallback for valuing holdings with no open today.
+    auction, else bar open, or the first minute after the decision). prev_close: fallback for
+    valuing holdings with no price here. A negative target weight is a short. Trades that shrink a
+    position go first; trades that grow one are scaled together so longs plus shorts stay within
+    equity, which also keeps cash from going negative.
     """
     d = day.isoformat()
     out: list[dict] = []
@@ -230,13 +251,15 @@ def fill_orders(s: State, orders: list[dict], day: date, opens: dict[str, float]
     def ref(t):
         return opens.get(t)
 
-    # Equity at the open, before any of today's trades.
-    marks = {t: opens.get(t) or prev_close.get(t) or p.avg_cost for t, p in s.positions.items()}
-    equity = s.equity(marks)
+    def marks():
+        return {t: opens.get(t) or prev_close.get(t) or p.avg_cost for t, p in s.positions.items()}
+
+    # Equity before any of today's trades.
+    equity = s.equity(marks())
 
     plans: list[tuple[dict, float]] = []
-    sells: list[tuple[dict, float]] = []
-    buys: list[tuple[dict, float]] = []
+    shrink: list[tuple[dict, float]] = []  # signed share change toward zero
+    grow: list[tuple[dict, float]] = []  # signed share change away from zero
     for o in todo:
         t = o["ticker"]
         price = ref(t)
@@ -245,10 +268,10 @@ def fill_orders(s: State, orders: list[dict], day: date, opens: dict[str, float]
                   "reason": "no opening price (halted or not trading)"})
             continue
         held = s.positions.get(t)
-        cur_qty = held.qty if held else 0.0
+        cur = held.qty if held else 0.0
         if o["action"] == "close":
-            if cur_qty > 0:
-                sells.append((o, cur_qty))
+            if cur:
+                shrink.append((o, -cur))
             else:
                 emit({"type": "cancel", "order_id": o["id"], "date": d, "ticker": t, "reason": "nothing to close"})
         elif o["action"] == "extend":
@@ -257,51 +280,64 @@ def fill_orders(s: State, orders: list[dict], day: date, opens: dict[str, float]
             else:
                 emit({"type": "cancel", "order_id": o["id"], "date": d, "ticker": t, "reason": "no position to extend"})
         else:  # set_weight
-            target_value = float(o["target_weight"]) * equity
-            diff = target_value - cur_qty * price
-            if abs(diff) < MIN_TRADE_USD:
+            want = float(o["target_weight"]) * equity / price
+            if abs(want - cur) * price < MIN_TRADE_USD:
                 if held:
                     plans.append((o, price))
                 else:
                     emit({"type": "cancel", "order_id": o["id"], "date": d, "ticker": t, "reason": "trade too small"})
-            elif diff < 0:
-                sells.append((o, min(cur_qty, -diff / price)))
+            elif cur and (want > 0) != (cur > 0):
+                shrink.append((o, -cur))  # flip: close the old side, then open the new one
+                grow.append((o, want))
+            elif abs(want) < abs(cur):
+                shrink.append((o, want - cur))
             else:
-                buys.append((o, diff))
+                grow.append((o, want - cur))
 
-    for o, qty in sells:
+    def fill(o, q, value=None, scale=None):
         t = o["ticker"]
         p0 = ref(t)
         bp = o.get("slippage_bp", 10)
-        emit({"type": "fill", "order_id": o["id"], "date": d, "ticker": t, "side": "sell", "qty": qty,
-              "price": p0 * (1 - bp / 1e4), "ref_price": p0, "slippage_bp": bp, "reason": o["action"]})
-        if o["action"] == "set_weight" and t in s.positions:
-            plans.append((o, p0))
+        side = "buy" if q > 0 else "sell"
+        px = p0 * (1 + bp / 1e4) if q > 0 else p0 * (1 - bp / 1e4)
+        # Sized net of slippage on both sides, so longs plus shorts end within equity after costs.
+        qty = abs(q) if value is None else value * scale / (p0 * (1 + bp / 1e4))
+        ev = {"type": "fill", "order_id": o["id"], "date": d, "ticker": t, "side": side, "qty": qty,
+              "price": px, "ref_price": p0, "slippage_bp": bp, "reason": o["action"],
+              "at": o.get("fill_at", "open")}
+        if scale is not None:
+            ev["scaled"] = round(scale, 6)
+        return ev
 
-    want = sum(v for _, v in buys)
-    scale = min(1.0, s.cash / want) if want > 0 else 1.0
-    for o, value in buys:
-        t = o["ticker"]
-        p0 = ref(t)
-        bp = o.get("slippage_bp", 10)
-        px = p0 * (1 + bp / 1e4)
-        qty = value * scale / px
-        if qty * px < MIN_TRADE_USD:
-            emit({"type": "cancel", "order_id": o["id"], "date": d, "ticker": t, "reason": "not enough cash"})
+    for o, q in shrink:
+        emit(fill(o, q))
+        if o["action"] == "set_weight" and o["ticker"] in s.positions and not any(g is o for g, _ in grow):
+            plans.append((o, ref(o["ticker"])))
+
+    m = marks()
+    room = max(0.0, s.equity(m) - s.gross(m))
+    want = sum(abs(q) * ref(o["ticker"]) for o, q in grow)
+    scale = min(1.0, room / want) if want > 0 else 1.0
+    for o, q in grow:
+        value = abs(q) * ref(o["ticker"])
+        ev = fill(o, q, value, scale)
+        if ev["qty"] * ev["price"] < MIN_TRADE_USD:
+            emit({"type": "cancel", "order_id": o["id"], "date": d, "ticker": o["ticker"],
+                  "reason": "not enough cash" if q > 0 else "no room left within 100% of equity"})
             continue
-        emit({"type": "fill", "order_id": o["id"], "date": d, "ticker": t, "side": "buy", "qty": qty,
-              "price": px, "ref_price": p0, "slippage_bp": bp, "reason": "set_weight",
-              "scaled": round(scale, 6), "at": o.get("fill_at", "open")})
-        plans.append((o, p0))
+        emit(ev)
+        plans.append((o, ref(o["ticker"])))
 
     for o, p0 in plans:
         t = o["ticker"]
-        if t not in s.positions:
+        p = s.positions.get(t)
+        if not p:
             continue
         has_plan = o.get("stop_pct") is not None  # benchmarks carry no plan
+        sign = -1 if p.short else 1  # a short's stop sits above the fill and its target below
         emit({"type": "plan", "order_id": o["id"], "date": d, "ticker": t,
-              "stop_price": p0 * (1 - float(o["stop_pct"]) / 100) if has_plan else None,
-              "target_price": p0 * (1 + float(o["target_pct"]) / 100) if has_plan else None,
+              "stop_price": p0 * (1 - sign * float(o["stop_pct"]) / 100) if has_plan else None,
+              "target_price": p0 * (1 + sign * float(o["target_pct"]) / 100) if has_plan else None,
               "horizon_end": add_trading_days(day, int(o["horizon_days"])).isoformat() if has_plan else None,
               "thesis": o.get("thesis", ""), "slippage_bp": o.get("slippage_bp", 10),
               "extension": o["action"] == "extend",
@@ -314,7 +350,10 @@ def fill_orders(s: State, orders: list[dict], day: date, opens: dict[str, float]
 
 
 def exit_events(s: State, day: date, bars: dict[str, dict]) -> list[dict]:
-    """Stops and targets against the day's bar. Stop wins when both are touched."""
+    """Stops and targets against the day's bar. Stop wins when both are touched.
+
+    A long stops out when the price falls to its stop; a short when it rises to its stop. Targets
+    work the other way round."""
     d = day.isoformat()
     out = []
     for t, p in list(s.positions.items()):
@@ -322,20 +361,47 @@ def exit_events(s: State, day: date, bars: dict[str, dict]) -> list[dict]:
         if not b or (p.stop_price is None and p.target_price is None) or (p.exits_from and p.exits_from > d):
             continue
         o, h, lo = float(b["o"]), float(b["h"]), float(b["l"])
+        if p.short:
+            hit_stop_open = p.stop_price is not None and o >= p.stop_price
+            hit_stop = p.stop_price is not None and h >= p.stop_price
+            hit_target_open = p.target_price is not None and o <= p.target_price
+            hit_target = p.target_price is not None and lo <= p.target_price
+        else:
+            hit_stop_open = p.stop_price is not None and o <= p.stop_price
+            hit_stop = p.stop_price is not None and lo <= p.stop_price
+            hit_target_open = p.target_price is not None and o >= p.target_price
+            hit_target = p.target_price is not None and h >= p.target_price
         level, reason = None, None
-        if p.stop_price is not None and o <= p.stop_price:
+        if hit_stop_open:
             level, reason = o, "stop (gapped through at the open)"
-        elif p.stop_price is not None and lo <= p.stop_price:
+        elif hit_stop:
             level, reason = p.stop_price, "stop"
-        elif p.target_price is not None and o >= p.target_price:
+        elif hit_target_open:
             level, reason = o, "target (gapped through at the open)"
-        elif p.target_price is not None and h >= p.target_price:
+        elif hit_target:
             level, reason = p.target_price, "target"
         if level is None:
             continue
         bp = p.slippage_bp
-        ev = {"type": "fill", "order_id": "", "date": d, "ticker": t, "side": "sell", "qty": p.qty,
-              "price": level * (1 - bp / 1e4), "ref_price": level, "slippage_bp": bp, "reason": reason}
+        ev = {"type": "fill", "order_id": "", "date": d, "ticker": t, "side": "buy" if p.short else "sell",
+              "qty": abs(p.qty), "price": level * (1 + bp / 1e4) if p.short else level * (1 - bp / 1e4),
+              "ref_price": level, "slippage_bp": bp, "reason": reason}
+        apply_event(s, ev)
+        out.append(ev)
+    return out
+
+
+def borrow_fee_events(s: State, day: date, closes: dict[str, float]) -> list[dict]:
+    """The fee for holding each short overnight, on its value at the close, for every calendar day until
+    the next session (a Friday short pays for the weekend). Positions covered the same day pay nothing."""
+    out = []
+    nights = (add_trading_days(day, 1) - day).days
+    for t, p in sorted(s.positions.items()):
+        if not p.short:
+            continue
+        value = -p.qty * closes.get(t, p.avg_cost)
+        ev = {"type": "borrow_fee", "date": day.isoformat(), "ticker": t, "value": value, "days": nights,
+              "rate": BORROW_FEE_ANNUAL, "amount": value * BORROW_FEE_ANNUAL * nights / BORROW_FEE_DAY_COUNT}
         apply_event(s, ev)
         out.append(ev)
     return out
@@ -343,8 +409,9 @@ def exit_events(s: State, day: date, bars: dict[str, dict]) -> list[dict]:
 
 def mark_event(s: State, day: date, closes: dict[str, float]) -> dict:
     prices = {t: closes.get(t, p.avg_cost) for t, p in s.positions.items()}
-    invested = sum(p.qty * prices[t] for t, p in s.positions.items())
+    invested = sum(p.qty * prices[t] for t, p in s.positions.items())  # net: shorts count negative
     ev = {"type": "mark", "date": day.isoformat(), "cash": s.cash, "invested": invested,
+          "gross": sum(abs(p.qty) * prices[t] for t, p in s.positions.items()),
           "equity": s.cash + invested,
           "prices": {t: prices[t] for t in sorted(prices)},
           "qty": {t: p.qty for t, p in sorted(s.positions.items())}}

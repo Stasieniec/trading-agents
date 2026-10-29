@@ -28,15 +28,21 @@ def _obj(props: dict, required: list[str] | None = None) -> dict:
 S = {"type": "string"}
 ORDER = _obj({
     "action": {"type": "string", "enum": ["set_weight", "close", "extend"],
-               "description": "set_weight opens, adds to or trims a position to a target weight of equity; close "
-                              "sells all of it; extend keeps the shares and replaces thesis, horizon, stop and target."},
+               "description": "set_weight opens, adds to, trims or flips a position to a target weight of equity; "
+                              "close exits all of it (sells a long, buys back a short); extend keeps the shares and "
+                              "replaces thesis, horizon, stop and target."},
     "ticker": S,
-    "target_weight": {"type": "number", "description": "Fraction of total equity, 0 to 1. Ignored for close and extend."},
+    "target_weight": {"type": "number", "description": "Fraction of total equity, -1 to 1: positive is long, negative "
+                                                     "is short. Ignored for close and extend."},
     "thesis": {"type": "string", "description": "Why, in two to four sentences. Empty for close."},
     "horizon_days": {"type": "integer", "description": "Trading days until you expect the thesis to play out."},
-    "stop_pct": {"type": "number", "description": "Exit if the price falls this many percent below the fill price."},
-    "target_pct": {"type": "number", "description": "Exit if the price rises this many percent above the fill price."},
-    "probability": {"type": "number", "description": "Your probability that this position beats SPY over the horizon. Scored."},
+    "stop_pct": {"type": "number", "description": "Exit if the price moves this many percent against you from the fill "
+                                                "price: below it for a long, above it for a short."},
+    "target_pct": {"type": "number", "description": "Exit if the price moves this many percent in your favour: above "
+                                                  "the fill for a long, below it for a short (under 100)."},
+    "probability": {"type": "number", "description": "Your probability that this position beats SPY over the horizon: "
+                                                   "for a long, the stock returns more than SPY; for a short, it "
+                                                   "returns less. Scored."},
     "sources": {"type": "array", "items": S, "description": "URLs behind the thesis."},
     "causal_chain": {"type": "array", "items": _obj({"step": S, "source_url": S}),
                      "description": "Event to mechanism to company. Required by the weird-links agent, else empty."},
@@ -52,7 +58,8 @@ def definitions(agent: AgentConfig) -> list[dict]:
                                                 "The last 60 days are daily, older days weekly.",
          "input_schema": _obj({"ticker": S, "days": {"type": "integer", "description": "Calendar days back, max 365"}})},
         {"name": "search_symbols", "description": "Search today's US listings by name, symbol, sector or industry. "
-                                                   "Shows market cap and whether the stock is eligible. Empty strings mean any.",
+                                                   "Shows market cap, whether the stock is eligible, and whether it "
+                                                   "can be shorted. Empty strings mean any.",
          "input_schema": _obj({"query": S, "sector": S, "industry": S})},
         {"name": "get_portfolio", "description": "Cash, positions with thesis, stop, target and horizon, and expired horizons.",
          "input_schema": _obj({})},
@@ -165,12 +172,14 @@ class ToolBox:
             hits = [h for h in hits if h["symbol"] in TECH_TEN]
         if not hits:
             return "no matches"
-        lines = [f"universe as of {self.universe.as_of}. symbol | name | sector / industry | market cap | price | eligible"]
+        lines = [f"universe as of {self.universe.as_of}. symbol | name | sector / industry | market cap | price | "
+                 "eligible | shortable"]
         for h in hits:
             mc = f"${h['market_cap'] / 1e9:.1f}B" if h.get("market_cap") else "n/a"
             px = f"{h['price']:.2f}" if h.get("price") else "n/a"
             el = "yes" if h["eligible"] else "no: " + "; ".join(h["reasons"])
-            lines.append(f"{h['symbol']} | {h['name'][:50]} | {h['sector']} / {h['industry'][:40]} | {mc} | {px} | {el}")
+            sh = "yes" if h.get("shortable") else "no"
+            lines.append(f"{h['symbol']} | {h['name'][:50]} | {h['sector']} / {h['industry'][:40]} | {mc} | {px} | {el} | {sh}")
         return "\n".join(lines)
 
     # --- portfolio and memory
@@ -275,16 +284,19 @@ class ToolBox:
 def portfolio_text(state: State, closes: dict[str, float], day: date) -> str:
     prices = {t: closes.get(t, p.avg_cost) for t, p in state.positions.items()}
     eq = state.equity(prices)
-    lines = [f"Equity ${eq:,.0f} at the last close, cash ${state.cash:,.0f} ({state.cash / eq:.1%})."]
+    gross = state.gross(prices)
+    lines = [f"Equity ${eq:,.0f} at the last close, cash ${state.cash:,.0f} ({state.cash / eq:.1%}). "
+             f"Longs plus shorts: {gross / eq:.1%} of equity (the limit is 100%)."]
     if not state.positions:
         lines.append("No positions.")
     for t, p in sorted(state.positions.items()):
         px = prices[t]
         val = p.qty * px
         expired = p.horizon_end and p.horizon_end <= day.isoformat()
+        what = f"SHORT {-p.qty:.4f} shares, avg sale price" if p.short else f"{p.qty:.4f} shares, avg cost"
         lines.append(
-            f"- {t}: {p.qty:.4f} shares, avg cost {p.avg_cost:.2f}, last close {px:.2f}, value ${val:,.0f} "
-            f"({val / eq:.1%}), P&L {(px / p.avg_cost - 1) * 100:+.1f}%. Stop {_f(p.stop_price)}, target "
+            f"- {t}: {what} {p.avg_cost:.2f}, last close {px:.2f}, value {'-' if val < 0 else ''}${abs(val):,.0f} "
+            f"({val / eq:.1%}), P&L {p.pnl_pct(px) * 100:+.1f}%. Stop {_f(p.stop_price)}, target "
             f"{_f(p.target_price)}, horizon ends {p.horizon_end}{' (EXPIRED: close, extend or resize today)' if expired else ''}. "
             f"Opened {p.original_date}. Thesis: {p.thesis}"
             + (f" Original thesis: {p.original_thesis}" if p.extensions else ""))

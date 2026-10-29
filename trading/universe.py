@@ -75,7 +75,10 @@ def build(nasdaq_rows: list[dict], alpaca_assets: list[dict] | None) -> list[dic
         if r["market_cap"] is None or r["market_cap"] < MIN_MARKET_CAP:
             reasons.append("market cap under $300M")
         bucket, _ = slippage_for_market_cap(r["market_cap"])
-        out.append({**r, "eligible": not reasons, "reasons": reasons, "bucket": bucket})
+        a = (tradable or {}).get(r["symbol"]) or {}
+        # Shorts need Alpaca to say the stock is both shortable and easy to borrow.
+        out.append({**r, "eligible": not reasons, "reasons": reasons, "bucket": bucket,
+                    "shortable": bool(a.get("shortable") and a.get("easy_to_borrow"))})
     return out
 
 
@@ -85,10 +88,10 @@ def save(day: date, universe: list[dict]) -> None:
     COMPACT_DIR.mkdir(parents=True, exist_ok=True)
     with open(COMPACT_DIR / f"{day.isoformat()}.csv", "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["symbol", "bucket"])
+        w.writerow(["symbol", "bucket", "shortable"])
         for r in sorted(universe, key=lambda r: r["symbol"]):
             if r["eligible"]:
-                w.writerow([r["symbol"], r["bucket"]])
+                w.writerow([r["symbol"], r["bucket"], int(bool(r.get("shortable")))])
 
 
 class Universe:
@@ -111,7 +114,7 @@ class Universe:
             for r in csv.DictReader(f):
                 rows.append({"symbol": r["symbol"], "name": "", "price": None, "market_cap": None,
                              "sector": "", "industry": "", "eligible": True, "reasons": [],
-                             "bucket": r["bucket"]})
+                             "bucket": r["bucket"], "shortable": r.get("shortable") == "1"})
         return cls(rows, files[-1].stem)
 
     def get(self, symbol: str) -> dict | None:

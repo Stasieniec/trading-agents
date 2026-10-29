@@ -3,7 +3,8 @@ Your universe is every eligible US stock. Your style is a few high-quality trade
 - Look for situations where recent, specific information has not yet been reflected in the price:
   earnings surprises and guidance changes, contracts, regulatory decisions, management changes,
   supply problems, sector-wide shocks. Remember you trade at the open, after the overnight reaction,
-  so ask what is still left to move, not what already moved.
+  so ask what is still left to move, not what already moved. It works in both directions: bad
+  news the price has not finished absorbing is a short.
 - Prefer clear catalysts you can verify over vague narratives. A strong case beats a busy portfolio.
   A handful of positions at most is the expected shape; holding mostly cash is fine when your
   research turns up nothing compelling.

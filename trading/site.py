@@ -66,7 +66,7 @@ def build() -> None:
         m = {s["date"]: s["equity"] for s in ser}
         return [m.get(d) for d in dates]
 
-    stats, matched, invested, agents_meta = {}, {}, {}, []
+    stats, matched, invested, gross, agents_meta = {}, {}, {}, {}, []
     for name, cfg in AGENTS.items():
         ev, orders = books[name]
         st = replay(ev)
@@ -79,15 +79,17 @@ def build() -> None:
         matched[name] = [m.get(d) for d in dates]
         f = {s["date"]: v for s, v in zip(series[name], sm.pop("invested_fraction", []))}
         invested[name] = [f.get(d) for d in dates]
+        g = {s["date"]: v for s, v in zip(series[name], sm.pop("gross_fraction", []))}
+        gross[name] = [g.get(d) for d in dates]
         stats[name] = sm
         agents_meta.append({"name": name, "label": cfg.label, "description": cfg.description})
 
         closes = last_known_closes(ev)
         prices = {t: closes.get(t, p.avg_cost) for t, p in st.positions.items()}
         eq = st.equity(prices)
-        positions = [{"ticker": t, "qty": p.qty, "avg_cost": p.avg_cost, "last_close": prices[t],
-                      "value": p.qty * prices[t], "weight": p.qty * prices[t] / eq if eq else 0,
-                      "pnl_pct": prices[t] / p.avg_cost - 1 if p.avg_cost else 0,
+        positions = [{"ticker": t, "side": "short" if p.short else "long", "qty": p.qty, "avg_cost": p.avg_cost,
+                      "last_close": prices[t], "value": p.qty * prices[t],
+                      "weight": p.qty * prices[t] / eq if eq else 0, "pnl_pct": p.pnl_pct(prices[t]),
                       "stop_price": p.stop_price, "target_price": p.target_price, "horizon_end": p.horizon_end,
                       "opened": p.original_date, "thesis": p.thesis, "original_thesis": p.original_thesis,
                       "extensions": p.extensions} for t, p in sorted(st.positions.items())]
@@ -113,6 +115,7 @@ def build() -> None:
                                         st.slippage_paid)
         stats[f"bench:{b}"].pop("matched_curve", None)
         stats[f"bench:{b}"].pop("invested_fraction", None)
+        stats[f"bench:{b}"].pop("gross_fraction", None)
 
     # Agents side by side: holdings overlap today and correlation of daily returns.
     weights = {}
@@ -171,7 +174,8 @@ def build() -> None:
     (SITE_DIR / "equity.json").write_text(json.dumps({
         "dates": dates, "start_cash": START_CASH,
         "series": {k: aligned(v) for k, v in series.items()},
-        "exposure_matched": matched, "invested_fraction": invested, "prompt_changes": prompt_changes}))
+        "exposure_matched": matched, "invested_fraction": invested, "gross_fraction": gross,
+        "prompt_changes": prompt_changes}))
     (SITE_DIR / "stats.json").write_text(json.dumps(stats, default=str))
     (SITE_DIR / "comparison.json").write_text(json.dumps({"pairs": pairs}))
     (SITE_DIR / "meta.json").write_text(json.dumps({

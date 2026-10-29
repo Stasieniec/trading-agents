@@ -17,7 +17,8 @@ independent reviews (experiment validity, security, feasibility).
   answers. Same model everywhere, so the comparison measures the strategy rather than the model.
 - Agents run before the US open, from 13:30 Amsterdam time, and their orders fill at that day's
   opening auction.
-- Long-only, no leverage, no shorting.
+- Long-only on the first two days. Shorts allowed from Friday 2026-10-30, still without leverage
+  (see "Shorts" below).
 - Open-universe agents may buy US-listed common stocks and ADRs only, price at least $5 and market
   cap at least $300M at decision time.
 - The tech-ten agent's list: NVDA, AAPL, MSFT, GOOGL, AMZN, META, TSLA, AVGO, AMD, PLTR.
@@ -28,7 +29,7 @@ independent reviews (experiment validity, security, feasibility).
   every fill, stop and target exits included.
 - Cost caps: soft $0.90 and hard $2.00 per session, $95 per month across everything.
 - Trading days only. Monday's session reads the weekend's news.
-- No position size cap beyond long-only and no negative cash: the agent sizes its own bets.
+- No position size cap beyond the no-leverage rule: the agent sizes its own bets.
 - Expired horizons never close automatically; the agent must close or re-justify each one.
 
 ## The agents
@@ -63,6 +64,32 @@ Sessions may run any time from 13:30 Amsterdam until an hour before the close. T
 triggers come from Cloudflare crons on the dashboard Worker, because GitHub's scheduler fired hours
 late or not at all on the first days; GitHub's own crons stay as a backup.
 
+## Shorts (since 2026-10-30)
+
+Stas added shorting after the first day, so bearish reads can be acted on instead of only holding
+cash. All four agents have it, no-news included, so the control stays a control.
+
+- A short is a negative target weight: -0.2 is a short worth 20% of equity. A set_weight order can
+  flip a long to a short; the ledger closes the long first and opens the short as a new position.
+- No leverage: the value of all longs plus the value of all shorts must be at most equity, checked
+  by the validator at decision prices and again when sizing fills, net of slippage. Short sale
+  proceeds go to cash, so cash never goes negative under this rule.
+- Only stocks Alpaca's asset list marks as both shortable and easy to borrow, refreshed with the
+  universe before every session. That keeps out the hard-to-borrow names where a squeeze is likely.
+- Borrow fee: 0.5% a year on the short's value at the close, for every calendar night it is held
+  until the next session (360-day year, so a Friday short pays three nights). A short covered the
+  same day pays nothing. Booked as a `borrow_fee` event at each evening mark.
+- A short pays any dividend that goes ex while it is open. Splits rescale it like a long.
+- Stops sit above the fill and targets below it. The stop triggers on the day's high (or the open if
+  it gapped through), the target on the low; the stop still wins when both are touched. A short's
+  target must be under 100%.
+- Scoring: a long beats SPY when its stock returns more than SPY. A short beats SPY when its stock
+  returns less than SPY, which is the short's return plus SPY's over the same days. The agent's
+  probability is about that, and the Brier score uses it.
+- The dashboard's "invested" is longs plus shorts. The net figure (shorts negative) shows next to it
+  when they differ, and the exposure-matched line uses the net, so a balanced long-short book is
+  compared with mostly cash.
+
 ## Daily timeline
 
 All times Amsterdam unless stated. GitHub cron is UTC and can run late or get dropped, so the
@@ -95,8 +122,8 @@ session job has several firings, off the top of the hour, and the script decides
 ### Order and exit rules
 
 - An order names a ticker and a target weight. Holdings an agent does not name keep their share
-  count; only named tickers trade. The validator checks the whole resulting book: weights sum to
-  at most 1, no negative cash. An empty order list is a normal outcome and the prompt says so.
+  count; only named tickers trade. The validator checks the whole resulting book: absolute weights
+  (longs and shorts) sum to at most 1. An empty order list is a normal outcome and the prompt says so.
 - Stops and targets are percentages from the fill price (for example stop 8% below, target 15%
   above), so a gap at the open can never produce a same-bar round trip. Code checks them every
   trading day from the fill day on: if the day's low reaches the stop, the position exits at the

@@ -6,9 +6,10 @@ customers, competitors, substitutes, regions, commodities, logistics, weather, r
 odd dependency nobody has priced. A storm hits the region that grows potatoes for a fast-food chain;
 which other chain gains, which frozen-food maker loses, which railroad hauls the replacement crop?
 
-- Every buy needs a causal chain of at least two steps from the event to the company you buy, each
-  step with a source where possible. Code rejects a buy whose ticker or company name appears in
-  today's digest headlines, so the link has to be one you found.
+- Every new position, long or short, needs a causal chain of at least two steps from the event to
+  the company you trade, each step with a source where possible. Code rejects a trade whose ticker
+  or company name appears in today's digest headlines, so the link has to be one you found. The
+  losers at the end of a chain are as fair game as the winners: short them.
 - Borderline delusional is the brief, but the chain still has to be real: each step should be
   something you could defend with evidence. Write down the step most likely to be wrong.
 - Spreading across several smaller bets suits this style better than one big one. Small companies

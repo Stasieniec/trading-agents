@@ -65,7 +65,12 @@ def validate(orders: list[dict], ctx: Context) -> tuple[list[dict], list[str]]:
             if t not in TECH_TEN:
                 errors.append(f"{where}: you may only trade {', '.join(TECH_TEN)}")
                 continue
-        increasing = action == "set_weight" and float(o.get("target_weight") or 0) > weights.get(t, 0.0) + 1e-9
+        w_new = o.get("target_weight") if isinstance(o.get("target_weight"), (int, float)) else 0.0
+        w_old = weights.get(t, 0.0)
+        # Opens, adds to or flips a position: the same evidence rules apply to a long and a short.
+        increasing = action == "set_weight" and w_new != 0 and (
+            abs(w_new) > abs(w_old) + 1e-9 or (w_old != 0 and (w_new > 0) != (w_old > 0)))
+        shorting = increasing and w_new < 0
         if increasing and ctx.agent.universe == "open":
             if not row:
                 errors.append(f"{where}: {t} is not a US listing in today's universe. Check the symbol with search_symbols.")
@@ -73,6 +78,9 @@ def validate(orders: list[dict], ctx: Context) -> tuple[list[dict], list[str]]:
             if not row["eligible"]:
                 errors.append(f"{where}: {t} is not eligible today: {'; '.join(row['reasons'])}")
                 continue
+        if shorting and not (row and row.get("shortable")):
+            errors.append(f"{where}: {t} cannot be shorted: Alpaca does not list it as shortable and easy to borrow")
+            continue
         if row and row.get("market_cap"):
             _, bp = slippage_for_market_cap(row["market_cap"])
         elif held:
@@ -91,10 +99,14 @@ def validate(orders: list[dict], ctx: Context) -> tuple[list[dict], list[str]]:
         problems = []
         if action == "set_weight":
             w = o.get("target_weight")
-            if not isinstance(w, (int, float)) or not 0 < w <= 1:
-                problems.append("target_weight must be above 0 and at most 1 (use close to sell everything)")
+            if not isinstance(w, (int, float)) or not -1 <= w <= 1 or w == 0:
+                problems.append("target_weight must be from -1 to 1 and not 0: positive is long, negative is short "
+                                "(use close to exit completely)")
+        short_after = (w_new < 0) if action == "set_weight" else (held and st.positions[t].short)
         for k, lo, hi, label in (("stop_pct", 0, 100, "stop_pct must be between 0 and 100"),
-                                 ("target_pct", 0, 10_000, "target_pct must be above 0"),
+                                 ("target_pct", 0, 100 if short_after else 10_000,
+                                  "target_pct must be between 0 and 100 for a short (a price cannot fall below zero)"
+                                  if short_after else "target_pct must be above 0"),
                                  ("probability", -1e-9, 1 + 1e-9, "probability must be between 0 and 1")):
             v = o.get(k)
             if not isinstance(v, (int, float)) or not lo < v < hi:
@@ -116,7 +128,7 @@ def validate(orders: list[dict], ctx: Context) -> tuple[list[dict], list[str]]:
         if ctx.agent.causal_chain and increasing:
             chain = o.get("causal_chain") or []
             if len(chain) < 2 or any(not str(c.get("step", "")).strip() for c in chain):
-                problems.append("weird-links buys need a causal chain of at least two steps")
+                problems.append("weird-links positions need a causal chain of at least two steps")
             if ctx.headline_text:
                 names = [t] + ([company_core(row["name"])] if row and row.get("name") else [])
                 for n in names:
@@ -135,10 +147,10 @@ def validate(orders: list[dict], ctx: Context) -> tuple[list[dict], list[str]]:
         if action == "set_weight":
             weights[t] = float(o["target_weight"])
 
-    total = sum(weights.values())
+    total = sum(abs(w) for w in weights.values())
     if total > 1.0 + 1e-6:
-        errors.append(f"the resulting book would be {total:.1%} invested; weights of all holdings, named or not, "
-                      "must sum to at most 100%")
+        errors.append(f"longs plus shorts would come to {total:.1%} of equity; the absolute weights of all "
+                      "holdings, named or not, must sum to at most 100% (no leverage)")
         ok = [o for o in ok if o["action"] != "set_weight"]
     answered = {o["ticker"] for o in ok}
     missing = sorted(ctx.expired - answered)

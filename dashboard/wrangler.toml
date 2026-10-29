@@ -25,3 +25,4 @@ DATA_BASE = "https://raw.githubusercontent.com/Stasieniec/trading-agents/main/si
 # Live prices (/api/live, /api/intraday) need two secrets, set with `npx wrangler secret put`:
 # ALPACA_KEY and ALPACA_SECRET. Without them the endpoints answer 503. For the dev mock:
 #   --var ALPACA_DATA_BASE:http://localhost:8790/alpaca/live --var ALPACA_KEY:dev --var ALPACA_SECRET:dev
+#   --var DEV_ASSUME_IDLE:1   (skip the GitHub check that pauses live prices while the agents run)

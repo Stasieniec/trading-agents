@@ -242,7 +242,7 @@ class Sim:
                 closed.add(t)  # stays in held, so this session cannot buy it back
             n += 1
 
-        invested = sum(v for t, v in w.items() if t in held and t not in closed)
+        invested = sum(abs(v) for t, v in w.items() if t in held and t not in closed)
         if name == "tech-ten":
             if k in (1, 9, 16, 21):
                 picks = r.sample([t for t in TECH_TEN if t not in held], 2)
@@ -259,6 +259,13 @@ class Sim:
                         stop=7.0, target=12.0, p=round(r.uniform(0.5, 0.68), 2),
                         sources=[NEWS[6][0], "https://www.cnbc.com/2026/10/09/megacap-earnings-preview.html"]))
                     n += 1
+            if k in (3, 13, 22) and invested < 0.85:
+                t = r.choice([x for x in TECH_TEN if x not in held])
+                orders.append(self.order(name, d, n, "set_weight", t, -0.1, thesis=(
+                    f"Short {t}: guidance cut overnight and the pre-market move is smaller than the revision. "
+                    "Covering if it reclaims the prior high."), h=6, stop=6.0 if k < 22 else 40.0, target=10.0, p=0.53,
+                    sources=[NEWS[6][0]]))
+                n += 1
             if k == 12:
                 rejected.append("order 3 (TSM): you may only trade " + ", ".join(TECH_TEN))
         elif name == "open-quality":
@@ -340,6 +347,7 @@ class Sim:
                 orders = todays.get(name, [])
             ev += ledger.fill_orders(st, orders, d, opens, prev)
             ev += ledger.exit_events(st, d, bars)
+            ev += ledger.borrow_fee_events(st, d, closes)
             ev.append(ledger.mark_event(st, d, closes))
             ledger.append_jsonl(self.ledger_dir(name) / "events.jsonl", ev)
         spy = bars["SPY"]

@@ -12,13 +12,13 @@ from trading.universe import Universe
 
 ROWS = [
     {"symbol": "BIG", "name": "Big Corp Common Stock", "price": 100, "market_cap": 50e9, "sector": "Tech",
-     "industry": "Software", "eligible": True, "reasons": [], "bucket": "large"},
+     "industry": "Software", "eligible": True, "reasons": [], "bucket": "large", "shortable": True},
     {"symbol": "SML", "name": "Small Potato Farms Inc.", "price": 20, "market_cap": 800e6, "sector": "Food",
-     "industry": "Farming", "eligible": True, "reasons": [], "bucket": "small"},
+     "industry": "Farming", "eligible": True, "reasons": [], "bucket": "small", "shortable": False},
     {"symbol": "PNY", "name": "Penny Co", "price": 2, "market_cap": 50e6, "sector": "X", "industry": "Y",
      "eligible": False, "reasons": ["price under $5"], "bucket": "small"},
     {"symbol": "NVDA", "name": "NVIDIA Corporation Common Stock", "price": 180, "market_cap": 4e12, "sector": "Tech",
-     "industry": "Chips", "eligible": True, "reasons": [], "bucket": "large"},
+     "industry": "Chips", "eligible": True, "reasons": [], "bucket": "large", "shortable": True},
 ]
 URL = "https://example.com/story"
 
@@ -70,7 +70,63 @@ def test_tech_ten_only():
 
 def test_weights_over_one_rejected():
     ok, err = validate([buy("BIG", w=0.7), buy("SML", w=0.5)], ctx())
-    assert not ok and any("invested" in e for e in err)
+    assert not ok and any("at most 100%" in e for e in err)
+
+
+def test_short_needs_an_easy_to_borrow_stock():
+    ok, err = validate([buy("BIG", w=-0.2, stop_pct=10, target_pct=20), buy("SML", w=-0.1)], ctx())
+    assert [o["ticker"] for o in ok] == ["BIG"]
+    assert len(err) == 1 and "cannot be shorted" in err[0]
+
+
+def test_short_needs_sources_like_a_buy():
+    ok, err = validate([buy("BIG", w=-0.2, sources=["https://other.com/x"])], ctx())
+    assert not ok and "read_page" in err[0]
+
+
+def test_short_target_cannot_pass_zero():
+    ok, err = validate([buy("BIG", w=-0.2, target_pct=120)], ctx())
+    assert not ok and "below zero" in err[0]
+    ok, err = validate([buy("BIG", w=0.2, target_pct=120)], ctx())
+    assert ok and not err
+
+
+def test_gross_exposure_capped_at_equity():
+    ok, err = validate([buy("BIG", w=0.6), buy("NVDA", w=-0.5)], ctx())
+    assert not [o for o in ok if o["action"] == "set_weight"] and any("at most 100%" in e for e in err)
+    ok, err = validate([buy("BIG", w=0.5), buy("NVDA", w=-0.5)], ctx())
+    assert len(ok) == 2 and not err
+
+
+def test_zero_weight_rejected():
+    ok, err = validate([buy("BIG", w=0)], ctx())
+    assert not ok and "not 0" in err[0]
+
+
+def test_tech_ten_can_short_its_ten():
+    ok, err = validate([buy("NVDA", w=-0.3)], ctx("tech-ten"))
+    assert ok and not err
+
+
+def test_flipping_a_long_to_a_short_counts_as_a_new_position():
+    s = State()
+    fill_orders(s, [{"id": "x", "ticker": "SML", "action": "set_weight", "target_weight": 0.1, "stop_pct": 5,
+                     "target_pct": 5, "horizon_days": 5, "thesis": "t", "slippage_bp": 50}],
+                date(2026, 11, 2), {"SML": 20.0}, {})
+    c = ctx(state=s, closes={"SML": 20.0})
+    ok, err = validate([buy("SML", w=-0.05)], c)  # smaller in size, but a short, and SML is hard to borrow
+    assert not ok and "cannot be shorted" in err[0]
+    ok, err = validate([buy("SML", w=0.05, sources=[])], c)  # trimming a long needs no fresh source
+    assert ok and not err
+
+
+def test_weird_links_shorts_need_chains_too():
+    chain = [{"step": "storm hits farms", "source_url": URL}, {"step": "supply drops", "source_url": URL}]
+    c = ctx("weird-links", headline_text="nothing relevant")
+    ok, err = validate([buy("BIG", w=-0.1, causal_chain=chain[:1])], c)
+    assert not ok and "causal chain" in err[0]
+    ok, err = validate([buy("BIG", w=-0.1, causal_chain=chain)], c)
+    assert ok and not err
 
 
 def test_weird_links_rejects_headline_names_and_short_chains():
@@ -114,3 +170,19 @@ def test_memory_caps_and_log_trim(tmp_path: Path):
     text = (tmp_path / "agent" / "memory" / "tickers" / "ABC.md").read_text()
     assert "entry 19" in text and "entry 4" not in text
     assert (tmp_path / "agent" / "memory" / "tickers" / "archive" / "ABC.md").exists()
+
+
+def test_universe_marks_shortable_only_when_easy_to_borrow():
+    from trading.universe import build
+
+    rows = [{"symbol": s, "name": f"{s} Inc", "price": 50.0, "market_cap": 5e9, "sector": "", "industry": "",
+             "country": "", "pct_change": 0} for s in ("EZ", "HTB", "NOS")]
+    assets = [{"symbol": "EZ", "tradable": True, "status": "active", "exchange": "NASDAQ", "shortable": True,
+               "easy_to_borrow": True},
+              {"symbol": "HTB", "tradable": True, "status": "active", "exchange": "NYSE", "shortable": True,
+               "easy_to_borrow": False},
+              {"symbol": "NOS", "tradable": True, "status": "active", "exchange": "NYSE", "shortable": False,
+               "easy_to_borrow": False}]
+    out = {r["symbol"]: r["shortable"] for r in build(rows, assets)}
+    assert out == {"EZ": True, "HTB": False, "NOS": False}
+    assert all(not r["shortable"] for r in build(rows, None))
