@@ -688,12 +688,16 @@
   // Live value and today's change, for an agent column or an agent page.
   function liveRow(name) {
     const row = el("div", { class: "live-row" });
+    let prev = null;
     liveSlot(() => {
       row.replaceChildren();
       const c = hasLive() ? liveChange(name) : null;
       if (!portfolio(name) || live.configured === false) return;
+      // Cents, so the number visibly moves with each trade; a short flash shows which way.
+      const tick = c && prev !== null && Math.abs(c.value - prev) >= 0.005 ? (c.value > prev ? " tick-up" : " tick-down") : "";
+      if (c) prev = c.value;
       row.append(el("span", { class: "label", text: "LIVE" }),
-        el("span", { class: "live-value", text: c ? money(c.value) : DASH }),
+        el("span", { class: "live-value" + tick, text: c ? "$" + c.value.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : DASH }),
         el("span", { class: `live-change ${c ? dir(c.pct) : ""}`, text: c ? `${signedMoney(c.diff)} ${pct(c.pct, 2)}` : "" }),
         el("span", { class: "live-basis", text: basisLabel(name) }));
     });

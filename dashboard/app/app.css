@@ -407,6 +407,28 @@ main > .note-line {
   font-weight: 500;
 }
 
+.live-value.tick-up {
+  animation: tick-up 0.8s ease-out;
+}
+
+.live-value.tick-down {
+  animation: tick-down 0.8s ease-out;
+}
+
+@keyframes tick-up {
+  from { color: #3DDC84; }
+  to { color: var(--white); }
+}
+
+@keyframes tick-down {
+  from { color: #FF6B5E; }
+  to { color: var(--white); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-value.tick-up, .live-value.tick-down { animation: none; }
+}
+
 .live-basis,
 .marked-label {
   color: var(--muted);
