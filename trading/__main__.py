@@ -298,6 +298,8 @@ def cmd_check_sources(_args) -> None:
         "auctions": lambda: sum(len(v) for v in a.opening_auctions(["SPY", "NVDA"], today - timedelta(days=7), today).values()),
         "corporate actions": lambda: len(a.corporate_actions(["AAPL", "NVDA", "MSFT"], today - timedelta(days=200), today)),
         "news": lambda: len(a.news(now_utc() - timedelta(days=1), now_utc())),
+        "news with article text": lambda: sum(1 for n in a.news(now_utc() - timedelta(hours=6), now_utc(), pages=1,
+                                                                include_content=True) if n.get("content")),
         "most actives": lambda: len(a.most_actives()),
         "movers": lambda: len(a.movers().get("gainers", [])),
         "latest trades": lambda: len(a.latest_trades(["SPY", "AAPL"])),
