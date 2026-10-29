@@ -1,0 +1,366 @@
+{
+ "total_cost": 0.2905995,
+ "calls": [
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.039403,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 14062
+    },
+    "cache_creation_input_tokens": 14062,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 4,
+    "output_tokens": 424,
+    "output_tokens_details": {
+     "thinking_tokens": 153
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "what": "read_page",
+   "cost": 0.0017352000000000001,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 15042,
+    "output_tokens": 462,
+    "output_tokens_details": {
+     "thinking_tokens": 79
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 2,
+     "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.1108362,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 3954
+    },
+    "cache_creation_input_tokens": 3954,
+    "cache_read_input_tokens": 79412,
+    "inference_geo": "global",
+    "input_tokens": 10,
+    "output_tokens": 1299,
+    "output_tokens_details": {
+     "thinking_tokens": 222
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 0,
+     "web_search_requests": 8
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "what": "read_page",
+   "cost": 0.003306,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 27105,
+    "output_tokens": 1191,
+    "output_tokens_details": {
+     "thinking_tokens": 254
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 2,
+     "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "what": "read_page",
+   "cost": 0.0018086,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 15766,
+    "output_tokens": 464,
+    "output_tokens_details": {
+     "thinking_tokens": 99
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 2,
+     "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.017366299999999998,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 2286
+    },
+    "cache_creation_input_tokens": 2286,
+    "cache_read_input_tokens": 37233,
+    "inference_geo": "global",
+    "input_tokens": 4,
+    "output_tokens": 792,
+    "output_tokens_details": {
+     "thinking_tokens": 492
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 0,
+     "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0124667,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 1041
+    },
+    "cache_creation_input_tokens": 1041,
+    "cache_read_input_tokens": 20302,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 783,
+    "output_tokens_details": {
+     "thinking_tokens": 644
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0112658,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 1471
+    },
+    "cache_creation_input_tokens": 1471,
+    "cache_read_input_tokens": 21343,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 545,
+    "output_tokens_details": {
+     "thinking_tokens": 276
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "what": "read_page",
+   "cost": 0.0010865,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 9815,
+    "output_tokens": 210,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 1,
+     "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.029388900000000003,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 2175
+    },
+    "cache_creation_input_tokens": 2175,
+    "cache_read_input_tokens": 70394,
+    "inference_geo": "global",
+    "input_tokens": 6,
+    "output_tokens": 690,
+    "output_tokens_details": {
+     "thinking_tokens": 282
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 0,
+     "web_search_requests": 1
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "what": "read_page",
+   "cost": 0.002275,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 20640,
+    "output_tokens": 422,
+    "output_tokens_details": {
+     "thinking_tokens": 122
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 1,
+     "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0062778999999999995,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 554
+    },
+    "cache_creation_input_tokens": 554,
+    "cache_read_input_tokens": 24989,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 239,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "what": "read_page",
+   "cost": 0.0017463000000000001,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 15138,
+    "output_tokens": 465,
+    "output_tokens_details": {
+     "thinking_tokens": 83
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 2,
+     "web_search_requests": 0
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0408558,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 4730
+    },
+    "cache_creation_input_tokens": 4730,
+    "cache_read_input_tokens": 53828,
+    "inference_geo": "global",
+    "input_tokens": 4,
+    "output_tokens": 1364,
+    "output_tokens_details": {
+     "thinking_tokens": 731
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 0,
+     "web_search_requests": 1
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.010781299999999999,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 804
+    },
+    "cache_creation_input_tokens": 804,
+    "cache_read_input_tokens": 30273,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 574,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  }
+ ],
+ "prompt_hash": "a1e347bdf8a5"
+}
