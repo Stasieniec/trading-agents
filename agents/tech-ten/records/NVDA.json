@@ -3,11 +3,13 @@
  "trades": [
   {
    "ticker": "NVDA",
+   "side": "long",
    "opened": "2026-10-29",
    "bought_value": 12000.0,
-   "bought_qty": 56.32140938694851,
    "sold_value": 0.0,
+   "entry_qty": 56.32140938694851,
    "dividends": 0.0,
+   "fees": 0.0,
    "thesis": "Hyperscaler capex is going up in 2027 (Alphabet, Microsoft both signalling), which is the key demand driver. Today's dip is a funding-worry reaction to Alphabet's negative FCF, not a cut in spending plans.",
    "extensions": [],
    "order_id": "tech-ten-2026-10-29-02",

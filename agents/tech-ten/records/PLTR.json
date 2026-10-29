@@ -3,11 +3,13 @@
  "trades": [
   {
    "ticker": "PLTR",
+   "side": "long",
    "opened": "2026-10-29",
    "bought_value": 5000.0,
-   "bought_qty": 25.579991780637044,
    "sold_value": 0.0,
+   "entry_qty": 25.579991780637044,
    "dividends": 0.0,
+   "fees": 0.0,
    "thesis": "Small starter position. It is down only about 1% on a day when the AI complex sold off, and it carries software-multiple risk (NOW -24%, FTNT -20% today). Keep it small until I see how the sector reacts.",
    "extensions": [],
    "order_id": "tech-ten-2026-10-29-06",

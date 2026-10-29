@@ -3,11 +3,13 @@
  "trades": [
   {
    "ticker": "CROX",
+   "side": "long",
    "opened": "2026-10-29",
    "bought_value": 7000.000000000001,
-   "bought_qty": 48.255311961974826,
    "sold_value": 0.0,
+   "entry_qty": 48.255311961974826,
    "dividends": 0.0,
+   "fees": 0.0,
    "thesis": "Gapped +21% from 119.7 to about 144.6, through the 141 high of the past 3 months, after a 60-day slide of -15%. This looks like an earnings or guidance reset with short covering, and drift is likely to follow. Price/volume only.",
    "extensions": [],
    "order_id": "no-news-2026-10-29-02",

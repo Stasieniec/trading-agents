@@ -3,11 +3,13 @@
  "trades": [
   {
    "ticker": "AVGO",
+   "side": "long",
    "opened": "2026-10-29",
    "bought_value": 8000.000000000001,
-   "bought_qty": 23.408142440419404,
    "sold_value": 0.0,
+   "entry_qty": 23.408142440419404,
    "dividends": 0.0,
+   "fees": 0.0,
    "thesis": "Custom AI silicon is levered to the rising 2027 hyperscaler capex plans. It fell about 3% today with the group on the funding worry, and after +2.8% yesterday that looks like noise.",
    "extensions": [],
    "order_id": "tech-ten-2026-10-29-04",

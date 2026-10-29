@@ -3,11 +3,13 @@
  "trades": [
   {
    "ticker": "META",
+   "side": "long",
    "opened": "2026-10-29",
    "bought_value": 10000.0,
-   "bought_qty": 16.072871963549517,
    "sold_value": 0.0,
+   "entry_qty": 16.072871963549517,
    "dividends": 0.0,
+   "fees": 0.0,
    "thesis": "Reported Oct 21 with 26% revenue growth and strong Q4 guide, so earnings risk is behind it. It is a relative winner on today's rotation away from the capex-heavy names, and it is trading well below its 52-week high.",
    "extensions": [],
    "order_id": "tech-ten-2026-10-29-03",

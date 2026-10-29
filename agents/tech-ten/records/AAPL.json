@@ -3,11 +3,13 @@
  "trades": [
   {
    "ticker": "AAPL",
+   "side": "long",
    "opened": "2026-10-29",
    "bought_value": 8000.0,
-   "bought_qty": 22.827134306383687,
    "sold_value": 0.0,
+   "entry_qty": 22.827134306383687,
    "dividends": 0.0,
+   "fees": 0.0,
    "thesis": "Capex-light stock that is up about 2% today while the AI-capex names fall, so it works as a hedge inside the basket. Earnings are expected around Nov 2, which adds event risk, so I am keeping the size moderate.",
    "extensions": [],
    "order_id": "tech-ten-2026-10-29-05",
