@@ -16,7 +16,8 @@ rules = [
 
 # Starts the GitHub workflows; see scheduled() in src/index.js. UTC.
 [triggers]
-crons = ["32,44 12 * * 1-5", "40 13,15 * * 1-5", "50 13-19 * * 1-5", "20 22,23 * * 1-5"]
+# Day names, not numbers: Cloudflare counts 1 = Sunday, so "1-5" skipped every Friday (found 2026-10-30).
+crons = ["32,44 12 * * MON-FRI", "40 13,15 * * MON-FRI", "50 13-19 * * MON-FRI", "20 22,23 * * MON-FRI"]
 
 [vars]
 # Must end with a slash. Override for local testing:

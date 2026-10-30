@@ -341,8 +341,11 @@ export default {
       console.log("GITHUB_DISPATCH_TOKEN not set; skipping", event.cron);
       return;
     }
-    const job = SCHEDULE[event.cron];
-    if (!job) return;
+    const job = jobFor(event.cron);
+    if (!job) {
+      console.log("no job for cron", event.cron);
+      return;
+    }
     // The connection to GitHub sometimes times out (a 522 was seen on 29 Oct), so retry a few times.
     for (const wait of [0, 5000, 20000, 60000]) {
       if (wait) await new Promise((r) => setTimeout(r, wait));
@@ -373,8 +376,15 @@ const MARK = { workflow: "mark.yml", inputs: { mode: "close" } };
 // UTC. Sessions before the open, a late-session safety net (the gate skips it if today already ran),
 // fill passes every hour of the session, and the evening marking after the close plus the data delay.
 const SCHEDULE = {
-  "32,44 12 * * 1-5": SESSION,
-  "40 13,15 * * 1-5": SESSION,
-  "50 13-19 * * 1-5": FILL,
-  "20 22,23 * * 1-5": MARK,
+  "32,44 12 * * MON-FRI": SESSION,
+  "40 13,15 * * MON-FRI": SESSION,
+  "50 13-19 * * MON-FRI": FILL,
+  "20 22,23 * * MON-FRI": MARK,
+};
+// Matched on the minute and hour fields only, so the lookup survives Cloudflare reformatting the
+// day-of-week field (MON-FRI, mon-fri or 2-6).
+const jobFor = (cron) => {
+  const key = String(cron || "").trim().split(/\s+/).slice(0, 2).join(" ");
+  const hit = Object.entries(SCHEDULE).find(([c]) => c.split(" ").slice(0, 2).join(" ") === key);
+  return hit ? hit[1] : null;
 };
