@@ -497,6 +497,8 @@
     try { fn(); } catch { /* a slot must never break the page */ }
   }
   function paintLive() {
+    // While the agents run, the numbers that follow live prices are greyed out and held still.
+    document.body.classList.toggle("live-paused", !!live.paused && marketOpen());
     for (const fn of liveSlots) {
       try { fn(); } catch { /* ignore */ }
     }
@@ -632,6 +634,17 @@
     return box;
   }
 
+  // Shown only while the agents run: the page has stopped asking for prices so it cannot get in their way.
+  function pausedBar() {
+    const bar = el("p", { class: "paused-bar", role: "status" });
+    liveSlot(() => {
+      const on = !!live.paused && marketOpen();
+      bar.hidden = !on;
+      bar.textContent = on ? `AGENTS TRADING · LIVE PRICES PAUSED${live.latest ? ` · VALUES AS OF ${nyClock(live.latest)} NY` : ""}` : "";
+    });
+    return bar;
+  }
+
   const startCash = () => (isNum(state.equity && state.equity.start_cash) ? state.equity.start_cash : 100000);
 
   // What a portfolio is worth now: cash plus positions at live prices while they exist, else at the
@@ -649,7 +662,7 @@
 
   // Value, return since start (big), today's change, and the gap to the S&P 500 over the same time.
   function headline(name) {
-    const box = el("div", { class: "headline" });
+    const box = el("div", { class: "headline live" });
     let prev = null;
     liveSlot(() => {
       const v = valueNow(name);
@@ -671,7 +684,7 @@
     const span = el("span");
     liveSlot(() => {
       const x = sinceStart(name) - sinceStart("bench:spy");
-      span.className = dir(x);
+      span.className = `live ${dir(x)}`;
       span.textContent = pct(x);
     });
     return span;
@@ -679,28 +692,28 @@
 
   // Cells for the positions tables: live price and P&L against average cost.
   function livePriceCells(ticker, avgCost, short) {
-    const price = el("td", { class: "num" });
-    const pnl = el("td", { class: "num" });
+    const price = el("td", { class: "num live" });
+    const pnl = el("td", { class: "num live" });
     liveSlot(() => {
       const p = hasLive() ? live.prices[ticker] : null;
       const px = p ? p.price : hasLive() ? priceOf(ticker) : null;
       price.textContent = isNum(px) ? money(px, 2) : DASH;
       const r = isNum(px) && isNum(avgCost) && avgCost ? (short ? (avgCost - px) / avgCost : px / avgCost - 1) : null;
       pnl.textContent = isNum(r) ? pct(r) : DASH;
-      pnl.className = `num ${dir(r)}`;
+      pnl.className = `num live ${dir(r)}`;
     });
     return [price, pnl];
   }
 
   // Standings cells: live value and today's change against basis.
   function liveCells(name) {
-    const v = el("td", { class: "num" });
-    const c = el("td", { class: "num" });
+    const v = el("td", { class: "num live" });
+    const c = el("td", { class: "num live" });
     liveSlot(() => {
       const ch = hasLive() ? liveChange(name) : null;
       v.textContent = ch ? money(ch.value) : DASH;
       c.textContent = ch ? pct(ch.pct, 2) : DASH;
-      c.className = `num ${ch ? dir(ch.pct) : ""}`;
+      c.className = `num live ${ch ? dir(ch.pct) : ""}`;
     });
     return [v, c];
   }
@@ -792,9 +805,9 @@
     if (!RANGES.some(([k]) => k === range)) range = "day";
     const buttons = RANGES.map(([k, label]) => el("button", { type: "button", class: "seg-btn", "data-range": k, text: label }));
     const seg = el("div", { class: "seg", role: "group", "aria-label": "Period" }, buttons);
-    const roSlot = el("div", { class: "ro-slot" });
+    const roSlot = el("div", { class: "ro-slot live" });
     const head = el("div", { class: "fig-head" }, el("h2", null, "PERFORMANCE", el("span", { class: "h2-sub", text: " % CHANGE" })), seg);
-    const box = el("div", { class: "chart" });
+    const box = el("div", { class: "chart live" });
     const note = el("p", { class: "fig-note" });
     fig.append(head, roSlot, box, note);
     let chart = null, entry = null, defs = null, ro = null, shown = null, labels = null;
@@ -822,7 +835,7 @@
       if (range === "day") {
         const d = hasLive() ? daySeries(names) : null;
         if (!d || !d.series.length) {
-          if (!chart) note.textContent = live.configured === false ? "NO LIVE PRICES" : "NO PRICES FOR TODAY YET";
+          if (!chart) note.textContent = live.configured === false ? "NO LIVE PRICES" : live.paused ? "PAUSED WHILE THE AGENTS TRADE" : "NO PRICES FOR TODAY YET";
           return;
         }
         note.textContent = "0 = PREVIOUS CLOSE";
@@ -1058,7 +1071,7 @@
   }
 
   function renderOverview(main) {
-    main.append(statusLine());
+    main.append(statusLine(), pausedBar());
     main.append(el("section", { class: "agent-cols", "aria-label": "Agents" }, agentsList().map(agentColumn)));
     main.append(perfFigure(agentsList().map((a) => a.name).concat(benchList().map((b) => b.name))));
     main.append(positionsOverview());
@@ -1376,7 +1389,7 @@
   const md = (src, emptyText) => { const b = markdown(src); return b.childNodes.length ? b : empty(emptyText); };
 
   function renderAgent(main, name, a) {
-    main.append(agentSwitcher(name), agentHead(name, a));
+    main.append(agentSwitcher(name), pausedBar(), agentHead(name, a));
     main.append(...agentCharts(name));
     main.append(positionsAgent(a), tradesBlock(a), ordersBlock(a), sessionsBlock(a));
     main.append(el("div", { class: "two-col" },

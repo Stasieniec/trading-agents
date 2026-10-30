@@ -104,7 +104,9 @@ const ALPACA_DEFAULT = "https://data.alpaca.markets";
 const SYMBOL = /^[A-Z][A-Z0-9.-]{0,9}$/;
 const MAX_SYMBOLS = 300;
 const API_TTL = { "/api/live": 1, "/api/intraday": 60 };
-const PAUSED_TTL = 15;
+const PAUSED_TTL = 15; // how long a "paused" answer is cached at the edge (the page polls every 15 s then)
+const PAUSED_RECHECK_MS = 5000; // how long the price hub trusts a "paused" answer before asking again
+const DISPATCH_PAUSE_S = 180; // a scheduled agent run pauses prices at once, before GitHub lists it
 
 class PublicError extends Error {
   constructor(status, message, upstream) {
@@ -222,36 +224,89 @@ function jsonResponse(status, body, headers, cache) {
 // The agents share the Alpaca rate limit with this page, so while any of their workflows runs
 // (sessions, fill passes, marking, evals) the page makes no Alpaca calls at all. If GitHub cannot be
 // asked, assume they are running: the agents come first.
-async function agentsRunning(env, ctx) {
+async function agentsRunning(env) {
   if (env.DEV_ASSUME_IDLE === "1") return false; // local development only: never set in wrangler.toml
-  const key = new Request("https://trading.swasilewski.com/__internal/agents-running", { method: "GET" });
-  const cache = caches.default;
-  const hit = await cache.match(key);
-  if (hit) return (await hit.text()) === "1";
-  let running = true;
-  if (env.GITHUB_DISPATCH_TOKEN) {
-    try {
-      const headers = {
-        Authorization: `Bearer ${env.GITHUB_DISPATCH_TOKEN}`,
-        Accept: "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-        "User-Agent": "trading-agents-dashboard",
-      };
-      const base = "https://api.github.com/repos/Stasieniec/trading-agents/actions/runs?per_page=10&status=";
-      const [a, b] = await Promise.all([fetch(base + "in_progress", { headers }), fetch(base + "queued", { headers })]);
-      if (a.ok && b.ok) {
-        const runs = [...((await a.json()).workflow_runs || []), ...((await b.json()).workflow_runs || [])];
-        running = runs.some((r) => ["session", "mark", "agent-evals"].includes(r.name));
-      }
-    } catch {
-      running = true;
-    }
+  if (!env.GITHUB_DISPATCH_TOKEN) return true;
+  try {
+    const headers = {
+      Authorization: `Bearer ${env.GITHUB_DISPATCH_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      "User-Agent": "trading-agents-dashboard",
+    };
+    const base = "https://api.github.com/repos/Stasieniec/trading-agents/actions/runs?per_page=10&status=";
+    const [a, b] = await Promise.all([fetch(base + "in_progress", { headers }), fetch(base + "queued", { headers })]);
+    if (!a.ok || !b.ok) return true;
+    const runs = [...((await a.json()).workflow_runs || []), ...((await b.json()).workflow_runs || [])];
+    return runs.some((r) => ["session", "mark", "agent-evals"].includes(r.name));
+  } catch {
+    return true;
   }
-  ctx.waitUntil(cache.put(key, new Response(running ? "1" : "0", { headers: { "Cache-Control": "public, max-age=10" } })));
-  return running;
 }
 
-// One Alpaca call per TTL for everyone: the answer, errors included, is kept in the edge cache.
+// One price hub for the whole world: a single Durable Object keeps the latest answer for each
+// endpoint and calls Alpaca at most once per TTL however many people are watching, from wherever.
+// Requests that arrive while a call is in flight wait for that call instead of starting another.
+export class PriceHub {
+  constructor(state, env) {
+    this.env = env;
+    this.memo = {};
+    this.inflight = {};
+    this.running = null;
+    this.pauseUntil = 0;
+  }
+
+  async fetch(request) {
+    const url = new URL(request.url);
+    if (url.pathname === "/pause") {
+      const s = Math.max(0, Math.min(600, Number(url.searchParams.get("s")) || 0));
+      this.pauseUntil = Math.max(this.pauseUntil, Date.now() + s * 1000);
+      this.memo = {};
+      return new Response("ok");
+    }
+    const path = url.pathname;
+    if (!API_TTL[path]) return new Response("not found", { status: 404 });
+    const m = this.memo[path];
+    let r = m && Date.now() < m.until ? m : null;
+    if (!r) {
+      if (!this.inflight[path]) this.inflight[path] = this.refresh(path).finally(() => { delete this.inflight[path]; });
+      r = await this.inflight[path];
+    }
+    return Response.json({ status: r.status, body: r.body, ttl: r.ttl });
+  }
+
+  async isRunning() {
+    if (Date.now() < this.pauseUntil) return true;
+    if (this.running && Date.now() - this.running.at < 10000) return this.running.value;
+    const value = await agentsRunning(this.env);
+    this.running = { at: Date.now(), value };
+    return value;
+  }
+
+  async refresh(path) {
+    const now = Date.now();
+    let r;
+    if (await this.isRunning()) {
+      r = { status: 200, body: { paused: true, reason: "agents running" }, ttl: PAUSED_TTL, until: now + PAUSED_RECHECK_MS };
+    } else {
+      let status = 200, body;
+      try {
+        body = await (path === "/api/live" ? apiLive : apiIntraday)(this.env, dataBase(this.env));
+      } catch (e) {
+        status = e instanceof PublicError ? e.status : 502;
+        body = { error: e instanceof PublicError ? e.message : "live prices unavailable" };
+        if (e instanceof PublicError && e.upstream) body.upstream_status = e.upstream;
+      }
+      r = { status, body, ttl: API_TTL[path], until: Date.now() + API_TTL[path] * 1000 };
+    }
+    this.memo[path] = r;
+    return r;
+  }
+}
+
+const hub = (env) => env.PRICES.get(env.PRICES.idFromName("prices"));
+
+// The edge cache answers repeat requests in each data centre; a miss asks the one price hub.
 async function api(request, env, ctx, base, headers, path) {
   if (!env.ALPACA_KEY || !env.ALPACA_SECRET) {
     return jsonResponse(503, { error: "live prices not configured" }, headers, "no-store");
@@ -259,20 +314,13 @@ async function api(request, env, ctx, base, headers, path) {
   const key = new Request(new URL(path, request.url).href, { method: "GET" });
   const cache = caches.default;
   let resp = await cache.match(key);
-  if (!resp && (await agentsRunning(env, ctx))) {
-    resp = jsonResponse(200, { paused: true, reason: "agents running" }, headers, `public, max-age=${PAUSED_TTL}`);
-    ctx.waitUntil(cache.put(key, resp.clone()));
-  }
   if (!resp) {
-    let status = 200, body;
+    let status = 502, body = { error: "live prices unavailable" }, ttl = 1;
     try {
-      body = await (path === "/api/live" ? apiLive : apiIntraday)(env, base);
-    } catch (e) {
-      status = e instanceof PublicError ? e.status : 502;
-      body = { error: e instanceof PublicError ? e.message : "live prices unavailable" };
-      if (e instanceof PublicError && e.upstream) body.upstream_status = e.upstream;
-    }
-    resp = jsonResponse(status, body, headers, `public, max-age=${API_TTL[path]}`);
+      const j = await (await hub(env).fetch(`https://hub${path}`)).json();
+      ({ status, body, ttl } = j);
+    } catch { /* keep the generic error */ }
+    resp = jsonResponse(status, body, headers, `public, max-age=${ttl}`);
     ctx.waitUntil(cache.put(key, resp.clone()));
   }
   return request.method === "HEAD" ? new Response(null, resp) : resp;
@@ -345,6 +393,12 @@ export default {
     if (!job) {
       console.log("no job for cron", event.cron);
       return;
+    }
+    // Stop live prices before the run exists, so the page cannot touch Alpaca while it starts.
+    try {
+      await hub(env).fetch(`https://hub/pause?s=${DISPATCH_PAUSE_S}`);
+    } catch (e) {
+      console.log("could not pause prices", String(e).slice(0, 120));
     }
     // The connection to GitHub sometimes times out (a 522 was seen on 29 Oct), so retry a few times.
     for (const wait of [0, 5000, 20000, 60000]) {

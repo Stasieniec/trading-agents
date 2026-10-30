@@ -465,6 +465,32 @@ main > .note-line {
   outline-offset: 2px;
 }
 
+/* Agents trading: live numbers greyed out and still */
+
+.paused-bar {
+  border: 1px solid var(--hair);
+  border-left: 3px solid var(--muted);
+  padding: 10px 14px;
+  color: var(--ink-2);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.paused-bar[hidden] {
+  display: none;
+}
+
+body.live-paused .live {
+  opacity: 0.35;
+  filter: grayscale(1);
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+body.live-paused .live .tick-up,
+body.live-paused .live .tick-down {
+  animation: none;
+}
+
 .ro-slot:empty {
   display: none;
 }
