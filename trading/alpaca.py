@@ -110,12 +110,16 @@ class Alpaca:
         start = after.replace(second=0, microsecond=0)
         if start < after:
             start += timedelta(minutes=1)
+        # The free plan refuses SIP data from the last 15 minutes, so the window stops short of it.
+        end = min(start + timedelta(minutes=30), datetime.now(UTC) - timedelta(minutes=16))
         out: dict[str, float] = {}
+        if end <= start:
+            return out
         for chunk in self._chunks(symbols):
             res = self._paged(f"{DATA}/v2/stocks/bars", {
                 "symbols": ",".join(chunk), "timeframe": "1Min", "feed": "sip", "adjustment": "raw",
                 "start": start.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "end": (start + timedelta(minutes=30)).strftime("%Y-%m-%dT%H:%M:%SZ"), "limit": 10000,
+                "end": end.strftime("%Y-%m-%dT%H:%M:%SZ"), "limit": 10000,
             }, "bars")
             for sym, bars in res.items():
                 bars = sorted(bars, key=lambda b: b["t"])

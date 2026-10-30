@@ -194,3 +194,22 @@ def test_a_short_over_two_days_pays_its_fee_and_shows_on_the_site(repo):
     assert pos["side"] == "short" and pos["weight"] < 0 and pos["pnl_pct"] < 0
     h = json.loads((repo / "site-data" / "holdings.json").read_text())
     assert h["portfolios"]["tech-ten"]["positions"]["NVDA"] < 0
+
+
+def test_first_minute_query_stays_out_of_the_last_15_minutes(monkeypatch):
+    from datetime import datetime, timedelta
+
+    import trading.alpaca as alpaca_mod
+    from trading.timeutil import UTC
+
+    seen = []
+    a = alpaca_mod.Alpaca.__new__(alpaca_mod.Alpaca)
+    monkeypatch.setattr(a, "_chunks", lambda syms, n=None: [syms], raising=False)
+    monkeypatch.setattr(a, "_paged", lambda url, params, key: seen.append(params) or {"X": [{"t": params["start"], "o": 1.0}]},
+                        raising=False)
+    now = datetime.now(UTC)
+    out = a.first_minute_open(["X"], now - timedelta(minutes=20))
+    end = datetime.fromisoformat(seen[0]["end"].replace("Z", "+00:00"))
+    assert end <= now - timedelta(minutes=15) and out == {"X": 1.0}
+    seen.clear()
+    assert a.first_minute_open(["X"], now - timedelta(minutes=5)) == {} and not seen  # too recent to ask for
