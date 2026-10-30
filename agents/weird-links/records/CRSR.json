@@ -1,0 +1,52 @@
+{
+ "ticker": "CRSR",
+ "trades": [
+  {
+   "ticker": "CRSR",
+   "side": "short",
+   "opened": "2026-10-30",
+   "bought_value": 0.0,
+   "sold_value": 2970.1492537313434,
+   "entry_qty": 225.62922349702734,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Intel guided PC market to decline into 2H27 (Client Computing missed by ~$0.7B); Corsair (PC components/peripherals) reports Q3 on Nov 5 and sector sympathy (HPQ -10% premarket) has not hit CRSR yet, which closed flat/up. Expect cautious guide or sympathy selling into earnings. Weakest link: DRAM-kit price inflation may lift Corsair revenue and offset PC unit weakness.",
+   "extensions": [],
+   "order_id": "weird-links-2026-10-30-01",
+   "at": "open",
+   "horizon_end": "2026-11-06",
+   "probability": 0.52,
+   "horizon_days": 5,
+   "sources": [
+    {
+     "answer": "PAGE DATE: 29/10/2026 (published 9:02 PM; the article's metadata lists the same date, 2026-10-29)\n\nPer the page, Intel said it expects the PC market to decline into the second half of 2027. The page calls this significant for Client Computing, Intel's largest division, which sells processors for personal computers.\n\nOn causes, the page gives none. It does not explain why the PC market is expected to shrink.\n\nOn client segment weakness, the page reports that Client Computing revenue was about $8.1 billion in Q3, against expectations of roughly $8.8 billion, so it missed estimates. It also says ",
+     "read": true,
+     "url": "https://investinglive.com/stocks/intel-shares-tumble-around-15-the-narrative-is-weak-q4-guidance-overshadows-q3-profit-beat/"
+    },
+    {
+     "answer": "PAGE DATE: October 14, 2026\n\nCorsair Gaming (Nasdaq: CRSR) will release its third quarter 2026 results and financial outlook after the Nasdaq close on Thursday, November 5, 2026. Management will host a conference call to discuss the results at 2:00 p.m. Pacific Time that same day.\n\nThe page also says:\n- **Webcast:** The call will be accessible on Corsair's Investor Relations website at ir.corsair.com.\n- **Dial-in:** 1-877-407-0784 (USA) or 1-201-689-8560 (International), conference ID 13762265.\n- **Replay:** Available about 3 hours after the live call ends on the Investor Relations website, or",
+     "read": true,
+     "url": "https://finance.yahoo.com/markets/stocks/articles/corsair-gaming-report-third-quarter-110000078.html"
+    }
+   ],
+   "causal_chain": [
+    {
+     "source_url": "https://investinglive.com/stocks/intel-shares-tumble-around-15-the-narrative-is-weak-q4-guidance-overshadows-q3-profit-beat/",
+     "step": "Intel Q3 (Oct 29): Client Computing revenue $8.1B vs $8.8B expected; says PC market declines into 2H 2027; stock -20%"
+    },
+    {
+     "source_url": "https://finance.yahoo.com/markets/stocks/articles/corsair-gaming-report-third-quarter-110000078.html",
+     "step": "Weak PC unit outlook lowers demand for PC components/peripherals; PC OEM HPQ already -10% premarket while Corsair (cap $1.5B) did not react"
+    },
+    {
+     "source_url": "https://finance.yahoo.com/markets/stocks/articles/corsair-gaming-report-third-quarter-110000078.html",
+     "step": "Corsair reports Q3 and outlook after close Nov 5, a catalyst where PC-demand caution could drive the stock down"
+    }
+   ],
+   "stop_pct": 9,
+   "target_pct": 10,
+   "closed": null,
+   "open_qty": -225.62922349702734
+  }
+ ]
+}
