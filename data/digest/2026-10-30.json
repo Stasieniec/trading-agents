@@ -1,0 +1,515 @@
+{
+ "date": "2026-10-30",
+ "built_at": "2026-10-30T12:52:28.493562+00:00",
+ "previous_session": "2026-10-29",
+ "intraday": false,
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 769.36,
+   "day_pct": -0.3819709702062579,
+   "week_pct": 0.7068432902246125
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 715.34,
+   "day_pct": -1.415360868786264,
+   "week_pct": 1.5430039604241497
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 284.01,
+   "day_pct": 0.9669735859788808,
+   "week_pct": 2.6529800845772833
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 522.73,
+   "day_pct": -0.3716551040634175,
+   "week_pct": -0.9774763681827614
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 188.74,
+   "day_pct": -1.1832460732984273,
+   "week_pct": 3.5099265109136857
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 101.21,
+   "day_pct": -1.8712429707194222,
+   "week_pct": -5.781046360081932
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 116.2,
+   "day_pct": 0.7543570623428364,
+   "week_pct": 1.0346926354229957
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 88.18,
+   "day_pct": 1.543067710732382,
+   "week_pct": -2.0113345927325166
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 56.94,
+   "day_pct": 1.4430785676109004,
+   "week_pct": 0.5119152691968276
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 184.04,
+   "day_pct": 2.403739149788553,
+   "week_pct": 1.5113072255929394
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 170.13,
+   "day_pct": 0.9733515342156718,
+   "week_pct": 2.0392250944641033
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 68.71,
+   "day_pct": 0.3798392987582,
+   "week_pct": 1.6871392629865367
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 52.53,
+   "day_pct": 1.2919398380254465,
+   "week_pct": 1.6250725478816008
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 43.14,
+   "day_pct": 1.5297717109908238,
+   "week_pct": 0.6298110566830051
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 43.06,
+   "day_pct": 2.2074531212912474,
+   "week_pct": 1.2699905926622845
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 81.49,
+   "day_pct": 0.6173601679219765,
+   "week_pct": -0.305847810129678
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 368.57,
+   "day_pct": -1.3225884179807745,
+   "week_pct": -0.11653116531165075
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 168.19,
+   "day_pct": 0.9725640871705687,
+   "week_pct": 3.4951695280290407
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.04,
+   "day_pct": -0.06882312456985007,
+   "week_pct": 0.48442906574395206
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "KPLT",
+    "pct": 37.58,
+    "price": 12.52
+   },
+   {
+    "symbol": "GKOS",
+    "pct": 33.65,
+    "price": 242.48
+   },
+   {
+    "symbol": "ADT",
+    "pct": 33.2,
+    "price": 9.87
+   },
+   {
+    "symbol": "BHC",
+    "pct": 28.76,
+    "price": 8.91
+   },
+   {
+    "symbol": "PRCH",
+    "pct": 28.16,
+    "price": 20.89
+   },
+   {
+    "symbol": "TDOC",
+    "pct": 26.89,
+    "price": 8.73
+   },
+   {
+    "symbol": "CLMB",
+    "pct": 26.29,
+    "price": 41.84
+   },
+   {
+    "symbol": "CROX",
+    "pct": 25.54,
+    "price": 150.26
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "IOVA",
+    "pct": -35.45,
+    "price": 9.56
+   },
+   {
+    "symbol": "NOW",
+    "pct": -26.95,
+    "price": 109.67
+   },
+   {
+    "symbol": "ALNY",
+    "pct": -25.13,
+    "price": 174
+   },
+   {
+    "symbol": "SFM",
+    "pct": -22.58,
+    "price": 48
+   }
+  ],
+  "as_of": "2026-10-29T23:59:00.06722024Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "ADT",
+   "volume": 163905270
+  },
+  {
+   "symbol": "GOOGL",
+   "volume": 140218432
+  },
+  {
+   "symbol": "INTC",
+   "volume": 134083886
+  },
+  {
+   "symbol": "NOK",
+   "volume": 112754059
+  },
+  {
+   "symbol": "GOOG",
+   "volume": 93311334
+  },
+  {
+   "symbol": "AMZN",
+   "volume": 85396443
+  },
+  {
+   "symbol": "NU",
+   "volume": 80210131
+  },
+  {
+   "symbol": "NVDA",
+   "volume": 78208257
+  },
+  {
+   "symbol": "NOW",
+   "volume": 76438652
+  },
+  {
+   "symbol": "F",
+   "volume": 70856227
+  }
+ ],
+ "headlines": [
+  {
+   "title": "CIBC Appoints Bill Morneau as Chair of the Board",
+   "sources": [
+    "benzinga",
+    "fiscal.ai"
+   ],
+   "time": "2026-10-30T11:31:51Z",
+   "url": "https://es.tradingview.com/news/tradingview:219b3a9183f5e:0/",
+   "line": "Canadian Imperial Bank of Commerce has announced the appointment of Bill Morneau as Chair of the Board, effective January 1, 2027.",
+   "symbols": [
+    "CM"
+   ]
+  },
+  {
+   "title": "iRadimed Q3 Adj. EPS $0.55, Inline, Sales $24.203M Beat $23.467M Estimate",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-30T12:44:00Z",
+   "url": "https://www.benzinga.com/news/earnings/26/10/62736252/iradimed-q3-adj-eps-0-55-inline-sales-24-203m-beat-23-467m-estimate",
+   "line": "",
+   "symbols": [
+    "IRMD"
+   ]
+  },
+  {
+   "title": "Stock Market Today: Dow Jones, S&P 500, Nasdaq 100 Futures Trade Mixed as AMZN, INTC Slide After Q3 Earnings\u2014DELL, LLY, AZN in Focus (UPDATED)",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-30T12:43:13Z",
+   "url": "https://www.benzinga.com/markets/equities/26/10/62729872/stock-market-today-dow-jones-sp-500-futures-trade-mixed-as-amzn-intc-slide-after-q3-earnings-dell-lly-azn-in-focus",
+   "line": "U.S. stock were mixed on Friday, as the Dow Jones, S&amp;P 500, and Nasdaq 100 index futures moved in different direction.",
+   "symbols": [
+    "INTC",
+    "AMZN",
+    "AZN",
+    "LLY",
+    "DELL"
+   ]
+  },
+  {
+   "title": "These Analysts Cut Their Forecasts On Allegro Microsystems After Q2 Results",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-30T12:39:29Z",
+   "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/10/62736080/these-analysts-cut-their-forecasts-on-allegro-microsystems-after-q2-results",
+   "line": "Allegro beats Q2 estimates, guides Q3 EPS at $0.25-$0.29 and sales at $278M-$288M; analysts cut price targets despite strong demand.",
+   "symbols": [
+    "ALGM"
+   ]
+  },
+  {
+   "title": "Binance's $6.3 Billion Hack Could Be Coinbase's Chance to Win Over Crypto Investors",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-30T12:34:49Z",
+   "url": "https://www.benzinga.com/crypto/26/10/62735847/binance-hack-coinbase-stock",
+   "line": "Binance&#39;s $6.3 billion hack puts crypto investor trust to the test. Could Coinbase gain customers and market share?",
+   "symbols": [
+    "COIN"
+   ]
+  },
+  {
+   "title": "iRadimed Narrows FY2026 GAAP EPS Guidance from $1.90-$2.05 to $1.90-$1.94 vs $1.94 Est",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-30T12:33:44Z",
+   "url": "https://www.benzinga.com/news/26/10/62735647/iradimed-narrows-fy2026-gaap-eps-guidance-1-90-2-05-1-90-1-94-vs-1-94-est",
+   "line": "",
+   "symbols": [
+    "IRMD"
+   ]
+  },
+  {
+   "title": "iRadimed Lowers FY2026 Adj EPS Guidance from $2.09-$2.24 to $2.07-$2.11 vs $2.11 Est; Narrows FY2026 Sales Guidance from $91.000M-$96.000M to $91.600M-$93.100M vs $92.133M Est",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-30T12:33:24Z",
+   "url": "https://www.benzinga.com/news/26/10/62735621/iradimed-lowers-fy2026-adj-eps-guidance-2-09-2-24-2-07-2-11-vs-2-11-est-narrows-fy2026-sales-guidanc",
+   "line": "",
+   "symbols": [
+    "IRMD"
+   ]
+  },
+  {
+   "title": "iRadimed Sees Q4 GAAP EPS $0.53-$0.57 vs $0.58 Est",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-30T12:32:31Z",
+   "url": "https://www.benzinga.com/news/26/10/62735531/iradimed-sees-q4-gaap-eps-0-53-0-57-vs-0-58-est",
+   "line": "",
+   "symbols": [
+    "IRMD"
+   ]
+  },
+  {
+   "title": "iRadimed Sees Q4 Adj EPS $0.57-$0.61 vs $0.63 Est; Sees Sales $25.000M-$26.500M vs $26.233M Est",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-10-30T12:32:21Z",
+   "url": "https://www.benzinga.com/news/26/10/62735516/iradimed-sees-q4-adj-eps-0-57-0-61-vs-0-63-est-sees-sales-25-000m-26-500m-vs-26-233m-est",
+   "line": "",
+   "symbols": [
+    "IRMD"
+   ]
+  },
+  {
+   "title": "Banco de Chile Reports Third Quarter 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-30T12:32:16Z",
+   "url": "https://www.marketscreener.com/news/banco-de-chile-q3-earnings-fall-operating-revenue-rises-ce785fdbdd8bfe24",
+   "line": "Banco de Chile announced its financial results for the third quarter of 2026, reporting a decline in net income due to higher credit costs and expenses.",
+   "symbols": [
+    "ABBV",
+    "BSAC",
+    "SXT",
+    "GD",
+    "AN",
+    "OMF"
+   ]
+  },
+  {
+   "title": "Allegro MicroSystems Announces Webinar on Robotic Actuator Signal Chain",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-30T11:33:18Z",
+   "url": "https://www.openpr.com/news/categories2-4-Energy-Environment.html",
+   "line": "Allegro MicroSystems has scheduled a technical webinar titled 'Optimizing the Robotic Actuator Signal Chain' for November 17, 2026.",
+   "symbols": [
+    "ALGM"
+   ]
+  },
+  {
+   "title": "MIKROE Integrates Allegro MicroSystems Hall-Effect Sensor into New Development Board",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-30T11:33:18Z",
+   "url": "https://timestech.in/mikroe-launches-uni-hall-3-click-for-precision-magnetic-sensing/",
+   "line": "MIKROE has released the 'UNI Hall 3 Click' board, which features Allegro MicroSystems' A31015KEWALT-47SN nanopower linear Hall-effect sensor.",
+   "symbols": [
+    "ALGM"
+   ]
+  },
+  {
+   "title": "JPMorgan and Mizuho Adjust Price Targets for Coinbase Global",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-30T11:32:11Z",
+   "url": "https://www.fidelity.com/news/article/default/202610300612MIDNIGHTUSEQUITY_A3739958",
+   "line": "Analysts at JPMorgan and Mizuho updated their price targets for Coinbase Global, Inc. on October 30, 2026.",
+   "symbols": [
+    "COIN"
+   ]
+  },
+  {
+   "title": "Dominion Energy Reports Q3 2026 Earnings and Updates Full-Year Guidance",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-30T12:02:19Z",
+   "url": "https://www.marketscreener.com/news/earnings-flash-d-dominion-energy-inc-posts-q3-adjusted-eps-1-28-per-share-vs-factset-est-of--ce785fdbdd88f121",
+   "line": "Dominion Energy exceeded third-quarter 2026 earnings and revenue expectations and provided an updated outlook for its full-year operating EPS.",
+   "symbols": [
+    "D"
+   ]
+  },
+  {
+   "title": "ExxonMobil Increases Dividend and Announces $20 Billion Buyback Plan for 2027",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-10-30T11:32:51Z",
+   "url": "https://www.morningstar.com/news/dow-jones/202610304469/exxonmobil-raises-dividend-by-39-sets-20-billion-2027-buyback-plan",
+   "line": "ExxonMobil raised its quarterly dividend by 3.9% and unveiled a $20 billion share repurchase program for the upcoming year.",
+   "symbols": [
+    "XOM"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "IRMD",
+   "stories": 5
+  },
+  {
+   "symbol": "ALGM",
+   "stories": 5
+  },
+  {
+   "symbol": "INTC",
+   "stories": 5
+  },
+  {
+   "symbol": "COIN",
+   "stories": 5
+  },
+  {
+   "symbol": "ABBV",
+   "stories": 5
+  },
+  {
+   "symbol": "AMZN",
+   "stories": 4
+  },
+  {
+   "symbol": "RDDT",
+   "stories": 4
+  },
+  {
+   "symbol": "FSLR",
+   "stories": 4
+  },
+  {
+   "symbol": "XOM",
+   "stories": 4
+  },
+  {
+   "symbol": "D",
+   "stories": 4
+  }
+ ],
+ "summary": "**Market Summary: Session of October 29, 2026**\n\nU.S. broad indexes closed mixed. The S&P 500 (SPY) fell 0.38%, the Nasdaq 100 (QQQ) dropped 1.42%, the Dow (DIA) slipped 0.37%, and the Russell 2000 (IWM) rose 0.97%. Health care (XLV, +2.40%) and real estate (XLRE, +2.21%) led sector gains, while communication services (XLC, -1.87%) and technology (XLK, -1.18%) lagged. Gold (GLD) fell 1.32%, long Treasuries (TLT) gained 0.62%, and oil (USO) rose 0.97%. Among single stocks, KPLT (+37.6%) led gainers, while IOVA (-35.5%) and NOW (-26.9%) led losers.\n\nHeadlines this morning cover iRadimed's Q3 sales beat alongside narrowed full-year guidance, reports that Intel and Amazon shares slid after their Q3 earnings, ExxonMobil's 3.9% dividend increase and $20 billion 2027 buyback plan, and a Q3 profit decline at Banco de Chile.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3558,
+   "output_tokens": 1252,
+   "output_tokens_details": {
+    "thinking_tokens": 846
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0009818
+ }
+}
