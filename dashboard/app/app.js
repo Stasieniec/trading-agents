@@ -18,8 +18,7 @@
   const AGENT_SLOTS = { "open-quality": 1, "tech-ten": 2, "weird-links": 3, "no-news": 4 };
   const SLOT_COLORS = ["", "#FFB000", "#4FC3F7", "#FF6EC7", "#C9D1CC", "#3DDC84", "#B39DFF", "#FF8A3D", "#7FD1B9"];
   const C = { ink: "#D7DED9", muted: "#6B7A72", hair: "#1E2622", hair2: "#141A17", zero: "#34433B", bench: "#56635C", bg: "#07090A" };
-  const BENCH_DASH = { "bench:spy": [1, 4], "bench:qqq": [4, 4], "bench:tech-ten-ew": [8, 4] };
-  const BENCH_SHORT = { "bench:spy": "SPY", "bench:qqq": "QQQ", "bench:tech-ten-ew": "TECH-10 EW" };
+  const BENCH_SHORT = { "bench:spy": "S&P 500", "bench:qqq": "QQQ", "bench:tech-ten-ew": "TECH-10 EW" };
 
   // NYSE weekday closures, from exchange_calendars XNYS (the calendar the harness uses), read
   // 2026-10-28. It ends 2027-10-28; after that only weekends are skipped.
@@ -90,7 +89,6 @@
   }
   const pct = (x, d = 1) => (isNum(x) ? signed(x * 100, d) + "%" : DASH);
   const pctPlain = (x, d = 0) => (isNum(x) ? (x * 100).toFixed(d).replace("-", MINUS) + "%" : DASH);
-  const pts = (x, d = 1) => (isNum(x) ? signed(x * 100, d) : DASH);
   const band = (se) => (isNum(se) ? `±${(2 * se * 100).toFixed(1)}` : "");
   function money(x, d = 0) {
     if (!isNum(x)) return DASH;
@@ -255,7 +253,9 @@
   }
 
   const agentsList = () => (state.meta && Array.isArray(state.meta.agents) ? state.meta.agents : []);
-  const benchList = () => (state.meta && Array.isArray(state.meta.benchmarks) ? state.meta.benchmarks : []);
+  // The page shows one benchmark, the S&P 500 (SPY). QQQ and the tech-ten basket are still computed.
+  const benchList = () => (state.meta && Array.isArray(state.meta.benchmarks) ? state.meta.benchmarks : [])
+    .filter((b) => b.name === "bench:spy");
   const repo = () => (state.meta && typeof state.meta.repo === "string" ? state.meta.repo : DEFAULT_REPO);
   const repoUrl = (path) => `https://github.com/${repo()}${path || ""}`;
   const statsOf = (n) => (state.stats && state.stats[n]) || {};
@@ -283,6 +283,8 @@
     return [100].concat(values.map((v) => (isNum(v) ? (v / start) * 100 : null)));
   }
 
+  const labelText = (l) => (l === "START" || l === "NOW" ? l : dShort(l));
+
   function chartLabels() {
     const dates = state.equity && Array.isArray(state.equity.dates) ? state.equity.dates : [];
     return dates.length ? ["START"].concat(dates) : null;
@@ -296,13 +298,6 @@
     return out;
   }
 
-  function yRangeAround100(u, min, max) {
-    const lo = Math.min(isNum(min) ? min : 100, 100);
-    const hi = Math.max(isNum(max) ? max : 100, 100);
-    const pad = Math.max((hi - lo) * 0.08, 0.5);
-    return [Math.floor(lo - pad), Math.ceil(hi + pad)];
-  }
-
   // A legend that is also the hover readout: each key carries the value at the cursor, or at the
   // latest day when the pointer is elsewhere.
   function readout(labels, series, fmt) {
@@ -313,7 +308,7 @@
         el("span", { class: `ro-name ${s.cls || ""}`, text: s.label }), vals[i])));
     const set = (idx) => {
       const i = idx == null ? labels.length - 1 : idx;
-      day.textContent = labels[i] === "START" ? "START" : dShort(labels[i]);
+      day.textContent = labelText(labels[i]);
       series.forEach((s, k) => { const v = s.values[i]; vals[k].textContent = isNum(v) ? fmt(v) : DASH; });
     };
     set(null);
@@ -342,7 +337,7 @@
       axes: [
         { stroke: C.muted, font, gap: 6, size: 26, grid: { show: false }, ticks: { show: false },
           splits: (u) => tickIndices(cfg.labels.length, u.width),
-          values: (u, splits) => splits.map((i) => (cfg.labels[i] === "START" ? "START" : dShort(cfg.labels[i]))) },
+          values: (u, splits) => splits.map((i) => labelText(cfg.labels[i])) },
         { stroke: C.muted, font, gap: 8, size: 40, grid: { stroke: C.hair2, width: 1 }, ticks: { show: false },
           incrs: cfg.incrs || [1, 2, 5, 10, 20, 25, 50, 100],
           values: (u, splits) => splits.map(cfg.axisFmt || cfg.fmt) },
@@ -399,51 +394,6 @@
     ro.observe(container);
     charts.push({ destroy: () => { ro.disconnect(); u.destroy(); } });
     return u;
-  }
-
-  function equityFigure(title, names, extra) {
-    // names: portfolio names in equity.series; extra: additional {label, values, color, dash, cls}
-    const eq = state.equity || {};
-    const labels = chartLabels();
-    const fig = el("figure", { class: "block figure" });
-    const head = el("div", { class: "fig-head" }, el("h2", null, title, el("span", { class: "h2-sub", text: " 100 = START" })));
-    fig.append(head);
-    if (!labels) {
-      fig.append(el("p", { class: "empty", text: "NO MARKED DAYS YET" }));
-      return fig;
-    }
-    const series = names.map((n) => {
-      const values = rebased((eq.series || {})[n]);
-      if (!values) return null;
-      const bench = String(n).startsWith("bench:");
-      return { label: shortName(n), values, color: colorOf(n), dash: bench ? BENCH_DASH[n] || [2, 4] : null,
-        width: n === "open-quality" && names.length > 3 ? 2.5 : bench ? 1.5 : 2, cls: agClass(n) };
-    }).filter(Boolean).concat(extra || []);
-    const ro = readout(labels, series, (v) => v.toFixed(1));
-    head.append(ro.box);
-    const markers = [];
-    const changes = eq.prompt_changes || {};
-    for (const n of names) {
-      for (const d of changes[n] || []) {
-        const idx = labels.indexOf(d);
-        if (idx > 0) markers.push({ idx, color: colorOf(n), text: "PROMPT EDIT" });
-      }
-    }
-    const box = el("div", { class: "chart" });
-    fig.append(box);
-    // Draw in z-order: benchmarks under agents, open-quality on top.
-    const order = series.map((s, i) => i).sort((a, b) => z(series[a]) - z(series[b]));
-    function z(s) { return s.dash ? 0 : s.cls === "ag-1" ? 2 : 1; }
-    later(() => lineChart(box, {
-      labels, height: [240, 320], series: order.map((i) => series[i]), fmt: (v) => v.toFixed(1),
-      axisFmt: (v) => String(Math.round(v)), yRange: yRangeAround100, baseline: 100, markers,
-      onCursor: (idx) => ro.set(idx),
-    }));
-    const edits = names.filter((n) => (changes[n] || []).length);
-    if (edits.length) {
-      fig.append(el("p", { class: "fig-note", text: "PROMPT EDIT: " + edits.map((n) => `${shortName(n)} ${changes[n].map(dShort).join(", ")}`).join(" · ") }));
-    }
-    return fig;
   }
 
   function sparkline(values, color) {
@@ -590,13 +540,6 @@
     if (!h || !isNum(v) || !isNum(h.basis) || !h.basis) return null;
     return { value: v, diff: v - h.basis, pct: v / h.basis - 1 };
   }
-  function basisLabel(name) {
-    const h = portfolio(name);
-    const m = h && /^close (\d{4}-\d{2}-\d{2})$/.exec(String(h.basis_label || ""));
-    return m ? `VS ${dShort(m[1])} CLOSE` : "VS START";
-  }
-  const signedMoney = (x) => (isNum(x) ? (x < 0 ? MINUS : "+") + money(Math.abs(x)) : DASH);
-
   async function fetchApi(path) {
     const r = await fetch(path, { cache: "no-store", credentials: "omit" });
     if (!r.ok) await r.text().catch(() => ""); // read it, so the request completes
@@ -689,38 +632,49 @@
     return box;
   }
 
-  // Live value and today's change, for an agent column or an agent page.
-  function liveRow(name) {
-    const row = el("div", { class: "live-row" });
+  const startCash = () => (isNum(state.equity && state.equity.start_cash) ? state.equity.start_cash : 100000);
+
+  // What a portfolio is worth now: cash plus positions at live prices while they exist, else at the
+  // last close. Every percentage in a headline comes from this one number.
+  function valueNow(name) {
+    const lv = hasLive() ? liveValue(name) : null;
+    if (isNum(lv)) return { value: lv, live: true };
+    const ser = ((state.equity && state.equity.series) || {})[name];
+    const last = Array.isArray(ser) ? [...ser].reverse().find(isNum) : null;
+    if (isNum(last)) return { value: last, live: false };
+    const a = state.agents[name];
+    return { value: a && isNum(a.equity) ? a.equity : startCash(), live: false };
+  }
+  const sinceStart = (name) => valueNow(name).value / startCash() - 1;
+
+  // Value, return since start (big), today's change, and the gap to the S&P 500 over the same time.
+  function headline(name) {
+    const box = el("div", { class: "headline" });
     let prev = null;
     liveSlot(() => {
-      row.replaceChildren();
-      const c = hasLive() ? liveChange(name) : null;
-      if (!portfolio(name) || live.configured === false) return;
-      // Cents, so the number visibly moves with each trade; a short flash shows which way.
-      const tick = c && prev !== null && Math.abs(c.value - prev) >= 0.005 ? (c.value > prev ? " tick-up" : " tick-down") : "";
-      if (c) prev = c.value;
-      row.append(el("span", { class: "label", text: "LIVE" }),
-        el("span", { class: "live-value" + tick, text: c ? "$" + c.value.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : DASH }),
-        el("span", { class: `live-change ${c ? dir(c.pct) : ""}`, text: c ? `${signedMoney(c.diff)} ${pct(c.pct, 2)}` : "" }),
-        el("span", { class: "live-basis", text: basisLabel(name) }));
+      const v = valueNow(name);
+      const r = sinceStart(name);
+      const today = v.live ? liveChange(name) : null;
+      const tick = v.live && prev !== null && Math.abs(v.value - prev) >= 0.005 ? (v.value > prev ? " tick-up" : " tick-down") : "";
+      prev = v.value;
+      box.replaceChildren(
+        el("div", { class: "hl-value" + tick, text: "$" + v.value.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) }),
+        el("div", { class: `big ${dir(r) === "down" ? "down" : ""}`, text: pct(r) }),
+        el("div", { class: "hl-sub" }, el("span", { class: "label", text: "SINCE START" }),
+          today ? el("span", null, el("span", { class: "label", text: " · TODAY " }), el("span", { class: dir(today.pct), text: pct(today.pct, 2) })) : null));
     });
-    return row;
+    return box;
   }
 
-  function benchStrip() {
-    const line = el("p", { class: "bench-strip" });
+  // The agent's return since start minus the S&P 500's over the same days, live while prices are.
+  function vsSp500(name) {
+    const span = el("span");
     liveSlot(() => {
-      line.replaceChildren();
-      if (!hasLive()) return;
-      line.append(el("span", { class: "label", text: "BENCHMARKS LIVE" }));
-      for (const b of benchList()) {
-        const c = liveChange(b.name);
-        line.append(el("span", { class: "bs-item" }, el("span", { class: "muted", text: `${shortName(b.name)} ` }),
-          el("span", { class: c ? dir(c.pct) : "", text: c ? pct(c.pct, 2) : DASH })));
-      }
+      const x = sinceStart(name) - sinceStart("bench:spy");
+      span.className = dir(x);
+      span.textContent = pct(x);
     });
-    return line;
+    return span;
   }
 
   // Cells for the positions tables: live price and P&L against average cost.
@@ -751,9 +705,19 @@
     return [v, c];
   }
 
-  // Today's curve for every portfolio, rebased to 100 where each one's curve starts: the open, or
-  // the moment today's holdings were complete if that came later.
-  function todaySeries(names) {
+  // Percent change on the y axis, 0 = the start of the chosen period.
+  const PCT_INCRS = [0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50];
+  function yRangeAround0(u, min, max) {
+    const lo = Math.min(isNum(min) ? min : 0, 0), hi = Math.max(isNum(max) ? max : 0, 0);
+    const pad = Math.max((hi - lo) * 0.1, 0.1);
+    return [lo - pad, hi + pad];
+  }
+  const pctAxis = (v) => (Math.abs(v) < 1e-9 ? "0%" : (v > 0 ? "+" : MINUS) + Math.abs(v).toFixed(Math.abs(v - Math.round(v)) < 1e-9 ? 0 : Math.abs(v * 10 - Math.round(v * 10)) < 1e-9 ? 1 : 2) + "%");
+  const pctVal = (v) => (isNum(v) ? signed(v, 2) + "%" : DASH);
+
+  // DAY: every portfolio's change since the previous close, through today, so it matches the TODAY
+  // figure in the headlines. A portfolio whose holdings were completed during the day starts there.
+  function daySeries(names) {
     const j = live.intraday;
     const openMs = j && Date.parse(j.open);
     if (!j || !isFinite(openMs)) return null;
@@ -778,10 +742,9 @@
     };
     const series = names.map((name) => {
       const h = portfolio(name);
-      if (!h) return null;
+      if (!h || !isNum(h.basis) || !h.basis) return null;
       const since = h.since ? Date.parse(h.since) : NaN;
       const start = Math.max(openMs, isFinite(since) ? since : openMs) / 1000;
-      let base = null;
       const values = xs.map((t) => {
         if (t < start) return null;
         let v = h.cash;
@@ -790,60 +753,130 @@
           if (!isNum(px)) return null;
           v += qty * px;
         }
-        if (base == null) base = v;
-        return base ? (v / base) * 100 : null;
+        return (v / h.basis - 1) * 100;
       });
       return { name, values };
     }).filter(Boolean);
     return { xs, open: openMs, series };
   }
 
-  function todayFigure() {
-    const fig = el("figure", { class: "block figure today" });
-    const names = agentsList().map((a) => a.name).concat(benchList().map((b) => b.name));
-    const head = el("div", { class: "fig-head" }, el("h2", null, "TODAY", el("span", { class: "h2-sub", text: " 100 = CURVE START · LIVE" })));
+  // WEEK, MONTH, ALL: daily closes, plus a NOW point while live prices are newer than the last close.
+  function dailySeries(names, days) {
+    const eq = state.equity || {};
+    const dates = Array.isArray(eq.dates) ? eq.dates : [];
+    const labels = ["START"].concat(dates);
+    const raw = {};
+    for (const n of names) raw[n] = [startCash()].concat(dates.map((_, i) => ((eq.series || {})[n] || [])[i]));
+    const today = live.intraday && live.intraday.trading_day;
+    if (hasLive() && today && (!dates.length || today > dates[dates.length - 1])) {
+      labels.push("NOW");
+      for (const n of names) raw[n].push(liveValue(n));
+    }
+    const from = days ? Math.max(0, labels.length - 1 - days) : 0;
+    const out = { labels: labels.slice(from), series: [] };
+    for (const n of names) {
+      const vs = raw[n].slice(from);
+      const base = vs.find(isNum);
+      out.series.push({ name: n, values: vs.map((v) => (isNum(v) && base ? (v / base - 1) * 100 : null)) });
+    }
+    return out;
+  }
+
+  const RANGES = [["day", "DAY"], ["week", "WEEK"], ["month", "MONTH"], ["all", "ALL"]];
+  const RANGE_DAYS = { week: 5, month: 21, all: null };
+
+  function perfFigure(names) {
+    const fig = el("figure", { class: "block figure perf" });
+    let range = "day";
+    try { range = localStorage.getItem("perf-range") || "day"; } catch { /* storage blocked */ }
+    if (!RANGES.some(([k]) => k === range)) range = "day";
+    const buttons = RANGES.map(([k, label]) => el("button", { type: "button", class: "seg-btn", "data-range": k, text: label }));
+    const seg = el("div", { class: "seg", role: "group", "aria-label": "Period" }, buttons);
+    const roSlot = el("div", { class: "ro-slot" });
+    const head = el("div", { class: "fig-head" }, el("h2", null, "PERFORMANCE", el("span", { class: "h2-sub", text: " % CHANGE" })), seg);
     const box = el("div", { class: "chart" });
     const note = el("p", { class: "fig-note" });
-    fig.append(head, box, note);
-    let chart = null, ro = null, defs = null;
-    liveSlot(() => {
-      if (!hasLive() || !live.intraday) {
-        fig.hidden = !(live.configured === true);
-        if (!chart) note.textContent = live.configured === true ? "NO PRICES FOR TODAY YET" : "";
+    fig.append(head, roSlot, box, note);
+    let chart = null, entry = null, defs = null, ro = null, shown = null, labels = null;
+
+    const defsFor = (list) => list.map((s) => {
+      const bench = String(s.name).startsWith("bench:");
+      return { name: s.name, label: shortName(s.name), values: s.values, color: colorOf(s.name), dash: bench ? [2, 4] : null,
+        width: bench ? 1.5 : 2, cls: agClass(s.name) };
+    });
+    function reset() {
+      if (entry) {
+        entry.destroy();
+        const i = charts.indexOf(entry);
+        if (i >= 0) charts.splice(i, 1);
+      }
+      chart = entry = defs = ro = labels = null;
+      box.replaceChildren();
+      roSlot.replaceChildren();
+      note.textContent = "";
+    }
+    function paint() {
+      for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset.range === range));
+      if (shown !== range) reset();
+      shown = range;
+      if (range === "day") {
+        const d = hasLive() ? daySeries(names) : null;
+        if (!d || !d.series.length) {
+          if (!chart) note.textContent = live.configured === false ? "NO LIVE PRICES" : "NO PRICES FOR TODAY YET";
+          return;
+        }
+        note.textContent = "0 = PREVIOUS CLOSE";
+        const late = d.series.filter((s) => { const h = portfolio(s.name); return h && h.since && Date.parse(h.since) > d.open; });
+        if (late.length) note.textContent += " · STARTED LATER: " + late.map((s) => `${shortName(s.name)} ${nyClock(Date.parse(portfolio(s.name).since))} NY`).join(" · ");
+        if (!defs) defs = defsFor(d.series);
+        else for (const def of defs) def.values = (d.series.find((s) => s.name === def.name) || { values: d.xs.map(() => null) }).values;
+        const labelAt = (i) => (d.xs[i] ? `${nyClock(d.xs[i] * 1000)} NY` : DASH);
+        if (!ro) {
+          ro = readoutWith(defs, pctVal, labelAt);
+          roSlot.append(ro.box);
+        }
+        ro.relabel(labelAt, d.xs.length);
+        const data = [d.xs, ...defs.map((s) => s.values)];
+        if (chart) {
+          chart.setData(data);
+          ro.set(null);
+          return;
+        }
+        const closeMs = d.open + (EARLY_CLOSES.has(String(live.intraday.trading_day)) ? 3.5 : 6.5) * 3600e3;
+        chart = timeChart(box, { data, series: defs, open: d.open / 1000, close: closeMs / 1000, onCursor: (idx) => ro.set(idx) });
+        entry = charts[charts.length - 1];
         return;
       }
-      const d = todaySeries(names);
-      if (!d || !d.series.length) {
-        note.textContent = "NO PRICES FOR TODAY YET";
+      const d = dailySeries(names, RANGE_DAYS[range]);
+      if (d.labels.length < 2) {
+        if (!chart) note.textContent = "NO CLOSES YET";
         return;
       }
-      fig.hidden = false;
-      const late = d.series.filter((s) => { const h = portfolio(s.name); return h && h.since && Date.parse(h.since) > d.open; });
-      note.textContent = late.length ? "LATER START: " + late.map((s) => `${shortName(s.name)} ${nyClock(Date.parse(portfolio(s.name).since))}`).join(" · ") + " NY" : "";
-      if (!defs) {
-        defs = d.series.map((s) => {
-          const bench = String(s.name).startsWith("bench:");
-          return { name: s.name, label: shortName(s.name), values: s.values, color: colorOf(s.name), dash: bench ? BENCH_DASH[s.name] || [2, 4] : null,
-            width: s.name === "open-quality" ? 2.5 : bench ? 1.5 : 2, cls: agClass(s.name) };
-        });
-      } else {
-        for (const def of defs) def.values = (d.series.find((s) => s.name === def.name) || { values: d.xs.map(() => null) }).values;
-      }
-      const labelAt = (i) => (d.xs[i] ? `${nyClock(d.xs[i] * 1000)} NY` : DASH);
-      if (!ro) {
-        ro = readoutWith(defs, (v) => v.toFixed(2), labelAt);
-        head.append(ro.box);
-      }
-      ro.relabel(labelAt, d.xs.length);
-      const data = [d.xs, ...defs.map((s) => s.values)];
-      if (chart) {
-        chart.setData(data);
+      note.textContent = `0 = ${labelText(d.labels[0])}${d.labels[0] === "START" ? "" : " CLOSE"}${d.labels.includes("NOW") ? " · NOW IS LIVE" : ""}`;
+      if (chart && labels && labels.length === d.labels.length) {
+        for (const def of defs) def.values = (d.series.find((s) => s.name === def.name) || {}).values;
+        chart.setData([d.labels.map((_, i) => i), ...defs.map((s) => s.values)]);
         ro.set(null);
         return;
       }
-      const closeMs = d.open + (EARLY_CLOSES.has(String(live.intraday.trading_day)) ? 3.5 : 6.5) * 3600e3;
-      chart = timeChart(box, { data, series: defs, open: d.open / 1000, close: closeMs / 1000, onCursor: (idx) => ro.set(idx) });
+      if (chart) reset();
+      labels = d.labels;
+      defs = defsFor(d.series);
+      ro = readout(labels, defs, pctVal);
+      roSlot.append(ro.box);
+      chart = lineChart(box, { labels, height: [240, 300], series: defs, fmt: pctVal, axisFmt: pctAxis, incrs: PCT_INCRS,
+        yRange: yRangeAround0, baseline: 0, onCursor: (idx) => ro.set(idx) });
+      entry = charts[charts.length - 1];
+    }
+    seg.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-range]");
+      if (!b || b.dataset.range === range) return;
+      range = b.dataset.range;
+      try { localStorage.setItem("perf-range", range); } catch { /* storage blocked */ }
+      paint();
     });
+    // The chart needs its container laid out first, then follows the live prices.
+    later(() => liveSlot(paint));
     return fig;
   }
 
@@ -881,11 +914,7 @@
       legend: { show: false },
       scales: {
         x: { time: false, range: () => [cfg.open, cfg.close] },
-        y: { range: (u, min, max) => {
-          const lo = Math.min(isNum(min) ? min : 100, 100), hi = Math.max(isNum(max) ? max : 100, 100);
-          const pad = Math.max((hi - lo) * 0.1, 0.1);
-          return [lo - pad, hi + pad];
-        } },
+        y: { range: yRangeAround0 },
       },
       series: [{}, ...cfg.series.map((s) => ({ stroke: s.color, width: s.width || 2, dash: s.dash || undefined,
         cap: s.dash ? "round" : "butt", spanGaps: false, points: { show: false } }))],
@@ -893,7 +922,7 @@
         { stroke: C.muted, font, gap: 6, size: 26, grid: { show: false }, ticks: { show: false },
           splits: hourSplits, values: (u, splits) => splits.map((t) => nyClock(t * 1000)) },
         { stroke: C.muted, font, gap: 8, size: 48, grid: { stroke: C.hair2, width: 1 }, ticks: { show: false },
-          incrs: [0.1, 0.2, 0.5, 1, 2, 5, 10, 20], values: (u, splits) => splits.map((v) => v.toFixed(Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1)) },
+          incrs: PCT_INCRS, values: (u, splits) => splits.map(pctAxis) },
       ],
       cursor: { y: false, drag: { x: false, y: false, setScale: false },
         points: { size: 8, width: 2, stroke: () => C.bg, fill: (u, si) => (cfg.series[si - 1] || {}).color || C.ink } },
@@ -901,7 +930,7 @@
         setCursor: [(u) => cfg.onCursor && cfg.onCursor(u.cursor.idx)],
         drawAxes: [(u) => {
           const ctx = u.ctx;
-          const y = Math.round(u.valToPos(100, "y", true)) + 0.5;
+          const y = Math.round(u.valToPos(0, "y", true)) + 0.5;
           ctx.save();
           ctx.strokeStyle = C.zero;
           ctx.lineWidth = window.uPlot.pxRatio || 1;
@@ -965,14 +994,6 @@
     return o ? `${o.ticker}: ${String(o.thesis).replace(/\s+/g, " ")}` : null;
   }
 
-  // Before the first close there are no stats; the book is still all cash, so 0.0%, shown muted.
-  function bigReturn(s, a) {
-    if ((s.days || 0) > 0) return el("div", { class: `big ${dir(s.total_return) === "down" ? "down" : ""}`, text: pct(s.total_return) });
-    const start = isNum(state.equity && state.equity.start_cash) ? state.equity.start_cash : 100000;
-    const r = a && isNum(a.equity) ? a.equity / start - 1 : null;
-    return el("div", { class: "big none", text: isNum(r) ? pctPlain(r, 1) : "0.0%" });
-  }
-
   // Longs plus shorts as a share of equity, and the net (shorts negative). The same before any short.
   function exposure(name) {
     const eq = state.equity || {};
@@ -995,27 +1016,15 @@
     const quote = latestThesis(a);
     return el("article", { class: "agent-col" },
       el("a", { class: `agent-link ${agClass(name)}`, href: `#agent/${encodeURIComponent(name)}` }, square(name), `${upper(name)} →`),
-      liveRow(name),
-      el("div", { class: "marked-label", text: state.meta.last_marked ? `SINCE START · ${dShort(state.meta.last_marked)} CLOSE` : "SINCE START" }),
-      bigReturn(s, a),
+      headline(name),
       sparkline(rebased((state.equity && state.equity.series || {})[name]), colorOf(name)),
       el("div", { class: "kvs" },
-        row("VS SPY", el("span", { class: dir(s.excess_vs_spy), text: has ? pts(s.excess_vs_spy) : DASH }), " ",
-          el("span", { class: "muted", text: has ? band(s.excess_vs_spy_se) : "" })),
+        row("VS S&P 500", vsSp500(name)),
         row("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH, netNote(lastInv, lastNet)),
-        row("MAX DD", has ? pct(s.max_drawdown) : DASH),
+        row("WORST DROP", has ? pct(s.max_drawdown) : DASH),
         row("TRADES", has || s.trades_closed ? `${(s.trades_closed || 0) + (s.trades_open || 0)}` : DASH,
           s.trades_open ? el("span", { class: "muted", text: ` · ${s.trades_open} OPEN` }) : null)),
       el("div", { class: "quote", title: quote || "", text: `> ${quote || "NO TRADES YET"}` }));
-  }
-
-  function noiseNote() {
-    const n = daysMarked();
-    if (!n) return null;
-    const ses = agentsList().map((a) => statsOf(a.name).excess_vs_spy_se).filter(isNum).map((x) => 2 * x * 100).sort((x, y) => x - y);
-    const mid = ses.length ? ses[Math.floor((ses.length - 1) / 2)] : null;
-    return el("p", { class: "note-line", text:
-      `± = 2 SE · ${n} ${n === 1 ? "DAY" : "DAYS"} · 1 RUN PER AGENT · EXCESS INSIDE ± IS NOISE` + (mid != null ? ` · TYPICAL ±${mid.toFixed(1)} PTS` : "") });
   }
 
   function horizonCell(p) {
@@ -1051,10 +1060,7 @@
   function renderOverview(main) {
     main.append(statusLine());
     main.append(el("section", { class: "agent-cols", "aria-label": "Agents" }, agentsList().map(agentColumn)));
-    const note = noiseNote();
-    if (note) main.append(note);
-    if (state.holdings) main.append(benchStrip(), todayFigure());
-    main.append(equityFigure("EQUITY", agentsList().map((a) => a.name).concat(benchList().map((b) => b.name))));
+    main.append(perfFigure(agentsList().map((a) => a.name).concat(benchList().map((b) => b.name))));
     main.append(positionsOverview());
   }
 
@@ -1062,7 +1068,7 @@
   // Compare
 
   function standings() {
-    const head = [["AGENT"], ["LIVE", 1], ["TODAY", 1], ["RETURN", 1], ["VS SPY", 1], ["± 2 SE", 1], ["VS MATCHED", 1], ["± 2 SE", 1], ["MAX DD", 1],
+    const head = [["AGENT"], ["VALUE", 1], ["TODAY", 1], ["RETURN", 1], ["VS S&P 500", 1], ["±", 1], ["VS MATCHED", 1], ["±", 1], ["WORST DROP", 1],
       ["AVG INV", 1], ["TRADES", 1], ["TURNOVER", 1], ["SLIPPAGE", 1], ["SESSIONS", 1], ["API $", 1]];
     const rows = [];
     for (const name of agentsList().map((a) => a.name).concat(benchList().map((b) => b.name))) {
@@ -1075,9 +1081,9 @@
           bench ? shortName(name) : el("a", { href: `#agent/${encodeURIComponent(name)}`, class: agClass(name), text: upper(name) })),
         ...liveCells(name),
         num(has ? pct(s.total_return) : DASH, has ? dir(s.total_return) : ""),
-        num(has && !isSpy ? pts(s.excess_vs_spy) : DASH, has && !isSpy ? dir(s.excess_vs_spy) : ""),
+        num(has && !isSpy ? pct(s.excess_vs_spy) : DASH, has && !isSpy ? dir(s.excess_vs_spy) : ""),
         num(has && !isSpy ? band(s.excess_vs_spy_se) || DASH : DASH, "muted"),
-        num(has && !bench ? pts(s.excess_vs_matched) : DASH, has && !bench ? dir(s.excess_vs_matched) : ""),
+        num(has && !bench ? pct(s.excess_vs_matched) : DASH, has && !bench ? dir(s.excess_vs_matched) : ""),
         num(has && !bench ? band(s.excess_vs_matched_se) || DASH : DASH, "muted"),
         num(has ? pct(s.max_drawdown) : DASH),
         num(has ? pctPlain(gross(s)) : DASH),
@@ -1088,7 +1094,7 @@
         num(!bench && isNum(s.api_spend) ? money(s.api_spend, 2) : DASH)));
     }
     return block("standings", "STANDINGS", table("standings", head, rows, "Standings"),
-      el("p", { class: "note-line", text: "LIVE = NOW · TODAY = VS LAST CLOSE · RETURN ONWARD = MARKED AT CLOSE · PTS = PERCENTAGE POINTS · ± = 2 SE · MATCHED = SPY × PRIOR-DAY INVESTED · TRADES CLOSED / OPEN · SESSIONS DECIDED / DAYS" }));
+      el("p", { class: "note-line", text: "VALUE AND TODAY ARE LIVE · RETURN ONWARD AT THE LAST CLOSE · ± = HOW FAR LUCK ALONE COULD MOVE IT · MATCHED = THE S&P 500 AT THE AGENT'S INVESTED SHARE · WORST DROP = BIGGEST FALL FROM A HIGH · TRADES CLOSED / OPEN · SESSIONS DECIDED / DAYS" }));
   }
 
   function pairsBlock() {
@@ -1155,18 +1161,17 @@
       li("$100,000 PAPER MONEY PER AGENT · REAL PRICES (ALPACA)"),
       li("ONE SESSION PER TRADING DAY, FROM 13:30 AMSTERDAM, BEFORE THE US OPEN"),
       li("SAME MODEL FOR EVERY AGENT"),
-      li("FILLS AT THE OPENING AUCTION · NO COMMISSION"),
+      li("FILLS AT THE OPEN, OR THE FIRST MINUTE AFTER A LATE DECISION · NO COMMISSION"),
       li("SLIPPAGE PER SIDE: 0.10% ABOVE $10B · 0.25% $2B–10B · 0.50% $300M–2B"),
-      li("LONG ONLY · NO LEVERAGE · NO NEGATIVE CASH"),
+      li("LONG AND SHORT · NO LEVERAGE: LONGS PLUS SHORTS AT MOST 100% OF VALUE"),
+      li("SHORTS: EASY-TO-BORROW STOCKS ONLY · 0.5% A YEAR BORROW FEE · SHORTS PAY DIVIDENDS"),
       li("OPEN UNIVERSE: US STOCKS AND ADRS, PRICE ≥ $5, MARKET CAP ≥ $300M"),
-      li("EVERY BUY: STOP, TARGET, HORIZON · STOPS AND TARGETS ENFORCED BY CODE ON DAILY HIGH/LOW"),
+      li("EVERY POSITION: STOP, TARGET, HORIZON · ENFORCED BY CODE ON THE DAILY HIGH AND LOW"),
       li("PAST HORIZON: AGENT MUST CLOSE OR EXTEND WITH A NEW THESIS"),
       tt.length ? li(`TECH TEN: ${tt.join(" ")}`) : null)));
     main.append(block("benchmarks", "BENCHMARKS", el("ul", { class: "terse" },
-      li(el("span", { class: "label", text: "SPY " }), "BOUGHT DAY ONE AT THE OPEN, 0.10% SLIPPAGE, HELD, DIVIDENDS CREDITED"),
-      li(el("span", { class: "label", text: "QQQ " }), "SAME"),
-      li(el("span", { class: "label", text: "TECH-10 EW " }), "THE TEN, 10% EACH ON DAY ONE, NO REBALANCING"),
-      li(el("span", { class: "label", text: "MATCHED " }), "PER AGENT: SPY × PRIOR-DAY INVESTED FRACTION, REST CASH"))));
+      li(el("span", { class: "label", text: "S&P 500 " }), "$100,000 IN SPY ON DAY ONE, HELD, DIVIDENDS CREDITED"),
+      li(el("span", { class: "label", text: "MATCHED " }), "PER AGENT: THE S&P 500 AT THE SHARE THE AGENT HAD INVESTED THE DAY BEFORE, REST CASH"))));
     main.append(block("agents", "AGENTS", el("ul", { class: "terse" }, agentsList().map((a) =>
       li(el("a", { href: `#agent/${encodeURIComponent(a.name)}`, class: agClass(a.name) }, square(a.name), upper(a.name)), el("span", { class: "muted", text: ` ${a.description || ""}` }))))));
     main.append(block("links", "SOURCE", el("ul", { class: "terse" },
@@ -1218,19 +1223,18 @@
       el("div", { class: `cell-value ${cls || ""}`, text: value }), sub ? el("div", { class: "cell-sub", text: sub }) : null);
     const { gross: lastInv, net: lastNet } = exposure(name);
     const netSub = isNum(lastNet) && isNum(lastInv) && Math.abs(lastNet - lastInv) > 1e-6 ? `NET ${pctPlain(lastNet)} · ` : "";
+    const vs = el("div", { class: "cell" }, el("div", { class: "label", text: "VS S&P 500" }),
+      el("div", { class: "cell-value" }, vsSp500(name)), has ? el("div", { class: "cell-sub", text: band(s.excess_vs_spy_se) }) : null);
     return el("section", { class: "agent-head" },
       el("h1", { class: `agent-title ${agClass(name)}` }, square(name), upper(name)),
       el("p", { class: "desc", text: String(a.description || "") }),
-      liveRow(name),
-      el("div", { class: "marked-label", text: state.meta.last_marked ? `SINCE START · ${dShort(state.meta.last_marked)} CLOSE` : "SINCE START" }),
       el("div", { class: "hero" },
-        bigReturn(s, a),
+        headline(name),
         el("div", { class: "cells" },
-          cell("EQUITY", money(a.equity)),
           cell("CASH", money(a.cash)),
-          cell("VS SPY", has ? pts(s.excess_vs_spy) : DASH, dir(s.excess_vs_spy), has ? band(s.excess_vs_spy_se) : null),
-          cell("VS MATCHED", has ? pts(s.excess_vs_matched) : DASH, dir(s.excess_vs_matched), has ? band(s.excess_vs_matched_se) : null),
-          cell("MAX DD", has ? pct(s.max_drawdown) : DASH),
+          vs,
+          cell("VS MATCHED", has ? pct(s.excess_vs_matched) : DASH, dir(s.excess_vs_matched), has ? band(s.excess_vs_matched_se) : null),
+          cell("WORST DROP", has ? pct(s.max_drawdown) : DASH, "", "BIGGEST FALL FROM A HIGH"),
           cell("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH, "", has ? `${netSub}AVG ${pctPlain(gross(s))}` : null),
           cell("TRADES", has ? `${s.trades_closed ?? 0} / ${s.trades_open ?? 0}` : DASH, "", "CLOSED / OPEN"),
           cell("TURNOVER", has && isNum(s.turnover) ? `${s.turnover.toFixed(2)}×` : DASH),
@@ -1238,14 +1242,12 @@
           cell("SESSIONS", isNum(s.days_run) ? (s.days ? `${s.days_run} / ${s.days}` : String(s.days_run)) : DASH, "", "DECIDED / DAYS"),
           cell("API $", isNum(s.api_spend) ? money(s.api_spend, 2) : DASH),
           cell("BRIER", isNum(s.brier) && s.brier_n ? s.brier.toFixed(3) : DASH, "", s.brier_n ? `N=${s.brier_n} · 0.5 ALWAYS = 0.250` : "AFTER FIRST SETTLED TRADE"))),
-      has ? el("p", { class: "note-line", text: `± = 2 SE · ${s.days} ${s.days === 1 ? "DAY" : "DAYS"} · 1 RUN · INSIDE ± IS NOISE` }) : null);
+      has ? el("p", { class: "note-line", text: `± = HOW FAR LUCK ALONE COULD PLAUSIBLY MOVE IT AFTER ${s.days} ${s.days === 1 ? "DAY" : "DAYS"} · CASH AND INVESTED ARE AT THE LAST CLOSE` }) : null);
   }
 
   function agentCharts(name) {
     const eq = state.equity || {};
-    const matched = rebased((eq.exposure_matched || {})[name]);
-    const extra = matched ? [{ label: "MATCHED", values: matched, color: C.bench, dash: [8, 4], width: 1.5, cls: "bench" }] : [];
-    const out = [equityFigure("EQUITY", [name, "bench:spy"], extra)];
+    const out = [perfFigure([name, "bench:spy"])];
     const inv = (eq.gross_fraction || eq.invested_fraction || {})[name];
     const labels = chartLabels();
     if (labels && Array.isArray(inv) && inv.length) {
@@ -1303,7 +1305,7 @@
           td(open ? "OPEN" : dShort(t.closed), open ? "nowrap warn" : "nowrap"),
           num(open ? DASH : pct(t.return), open ? "" : dir(t.return)),
           num(open ? DASH : pct(t.spy_return), "muted"),
-          num(open ? DASH : pts(t.excess), open ? "" : dir(t.excess)),
+          num(open ? DASH : pct(t.excess), open ? "" : dir(t.excess)),
           td(open ? DASH : (t.side === "short" ? EXIT_SHORT : EXIT)[t.exit_reason] || upper(t.exit_reason || DASH), "nowrap"),
           num(isNum(t.probability) ? t.probability.toFixed(2) : DASH)));
         const d = el("details", { class: "detail-body" }, el("summary", { text: "THESIS · SOURCES" + (Array.isArray(t.causal_chain) && t.causal_chain.length ? " · CHAIN" : "") }));
