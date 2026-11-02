@@ -3,3 +3,4 @@
 {"action_id": "2f18deca-9def-4e0b-b7cf-56f8a76612eb", "date": "2026-10-29", "kind": "cash_dividends", "note": "position opened on or after the ex-date", "ticker": "SPY", "type": "noop_action"}
 {"cash": 0.0, "date": "2026-10-29", "equity": 99959.86585920259, "gross": 99959.86585920259, "invested": 99959.86585920259, "prices": {"SPY": 769.36}, "qty": {"SPY": 129.92599804929108}, "type": "mark"}
 {"cash": 0.0, "date": "2026-10-30", "equity": 98187.67524581026, "gross": 98187.67524581026, "invested": 98187.67524581026, "prices": {"SPY": 755.72}, "qty": {"SPY": 129.92599804929108}, "type": "mark"}
+{"cash": 0.0, "date": "2026-11-02", "equity": 97717.34313287183, "gross": 97717.34313287183, "invested": 97717.34313287183, "prices": {"SPY": 752.1}, "qty": {"SPY": 129.92599804929108}, "type": "mark"}

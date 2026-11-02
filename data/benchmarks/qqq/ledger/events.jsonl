@@ -2,3 +2,4 @@
 {"date": "2026-10-29", "exits_from": "2026-10-30", "extension": false, "horizon_end": null, "order_id": "qqq-2026-10-29-01", "slippage_bp": 10, "stop_price": null, "target_price": null, "thesis": "", "ticker": "QQQ", "type": "plan"}
 {"cash": 0.0, "date": "2026-10-29", "equity": 99874.96850198104, "gross": 99874.96850198104, "invested": 99874.96850198104, "prices": {"QQQ": 715.34}, "qty": {"QQQ": 139.61887843819866}, "type": "mark"}
 {"cash": 0.0, "date": "2026-10-30", "equity": 96405.43937279179, "gross": 96405.43937279179, "invested": 96405.43937279179, "prices": {"QQQ": 690.49}, "qty": {"QQQ": 139.61887843819866}, "type": "mark"}
+{"cash": 0.0, "date": "2026-11-02", "equity": 95093.02191547274, "gross": 95093.02191547274, "invested": 95093.02191547274, "prices": {"QQQ": 681.09}, "qty": {"QQQ": 139.61887843819866}, "type": "mark"}
