@@ -1,0 +1,499 @@
+{
+ "date": "2026-11-02",
+ "built_at": "2026-11-02T12:33:24.400841+00:00",
+ "previous_session": "2026-10-30",
+ "intraday": false,
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 755.72,
+   "day_pct": -1.7729021524383937,
+   "week_pct": -0.5592326012868964
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 690.49,
+   "day_pct": -3.4738725640953927,
+   "week_pct": -1.9747302668938094
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 279.33,
+   "day_pct": -1.647829301785153,
+   "week_pct": 1.2982774252039864
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 517.13,
+   "day_pct": -1.0712987584412637,
+   "week_pct": -0.8132420354067138
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 179.51,
+   "day_pct": -4.8903253152485,
+   "week_pct": -2.030235223489607
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 99.9,
+   "day_pct": -1.2943385041003785,
+   "week_pct": -5.3170315609894825
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 115.38,
+   "day_pct": -0.7056798623063743,
+   "week_pct": 2.0159151193633873
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 89.42,
+   "day_pct": 1.4062145611249743,
+   "week_pct": 1.3142986630410025
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 56.51,
+   "day_pct": -0.7551808921671954,
+   "week_pct": 1.0912343470482977
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 184.87,
+   "day_pct": 0.45098891545316544,
+   "week_pct": 3.1180276662204465
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 167.4,
+   "day_pct": -1.6046552636219347,
+   "week_pct": 1.6887376989430214
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 70.02,
+   "day_pct": 1.906563818949203,
+   "week_pct": 0.9952401557767221
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 52.74,
+   "day_pct": 0.3997715591090856,
+   "week_pct": 2.786981095303065
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 43.43,
+   "day_pct": 0.6722299490032446,
+   "week_pct": 2.044172932330812
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 43.17,
+   "day_pct": 0.2554575011611604,
+   "week_pct": 1.4094432699083947
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 81.84,
+   "day_pct": 0.42950055221500083,
+   "week_pct": 0.6147037128104271
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 355.78,
+   "day_pct": -3.4701684890251605,
+   "week_pct": -2.9540929052671916
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 168.83,
+   "day_pct": 0.38052202865808127,
+   "week_pct": -0.4129062702766362
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.0,
+   "day_pct": -0.13774104683195176,
+   "week_pct": 0.13812154696133394
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "GDYN",
+    "pct": 40.78,
+    "price": 13.36
+   },
+   {
+    "symbol": "FMC",
+    "pct": 30.53,
+    "price": 6.2
+   },
+   {
+    "symbol": "ULH",
+    "pct": 29.68,
+    "price": 22.59
+   },
+   {
+    "symbol": "OSPN",
+    "pct": 27.34,
+    "price": 25.66
+   },
+   {
+    "symbol": "ACCO",
+    "pct": 26.15,
+    "price": 5.5
+   },
+   {
+    "symbol": "CDNA",
+    "pct": 22.22,
+    "price": 87.41
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "ATEC",
+    "pct": -38.08,
+    "price": 7.04
+   },
+   {
+    "symbol": "RDDT",
+    "pct": -29.22,
+    "price": 91.73
+   },
+   {
+    "symbol": "INTC",
+    "pct": -28.58,
+    "price": 65.76
+   }
+  ],
+  "as_of": "2026-10-30T23:59:00.052230498Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "INTC",
+   "volume": 455785027
+  },
+  {
+   "symbol": "NVDA",
+   "volume": 169307323
+  },
+  {
+   "symbol": "SPCX",
+   "volume": 122756518
+  },
+  {
+   "symbol": "AMZN",
+   "volume": 105323173
+  },
+  {
+   "symbol": "NOK",
+   "volume": 97866851
+  },
+  {
+   "symbol": "NU",
+   "volume": 92980651
+  },
+  {
+   "symbol": "AAPL",
+   "volume": 68993665
+  },
+  {
+   "symbol": "GOOGL",
+   "volume": 66163913
+  },
+  {
+   "symbol": "SOFI",
+   "volume": 64308851
+  },
+  {
+   "symbol": "RIVN",
+   "volume": 62703458
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Merck to Present New Data from Its Oral HIV Portfolio at HIV Glasgow 2026",
+   "sources": [
+    "benzinga",
+    "fiscal.ai"
+   ],
+   "time": "2026-11-02T12:32:02Z",
+   "url": "https://www.businesswire.com/newsroom/industry/health/pharmaceutical",
+   "line": "Merck & Co., Inc. announced it will present new Phase 3 subgroup analyses and patient-reported outcomes for its investigational once-weekly oral HIV combination therapy at the HIV Glasgow 2026 conference.",
+   "symbols": [
+    "MRK"
+   ]
+  },
+  {
+   "title": "Xcel Energy to Issue $2 Billion in Convertible Senior Notes Due 2027",
+   "sources": [
+    "benzinga",
+    "fiscal.ai"
+   ],
+   "time": "2026-11-02T12:32:57Z",
+   "url": "https://www.moomoo.com/hans/news/post/1003186420",
+   "line": "Xcel Energy has announced plans to issue $2 billion in convertible senior notes maturing in 2027.",
+   "symbols": [
+    "XEL"
+   ]
+  },
+  {
+   "title": "Broadridge to Bring On-Chain Governance and Digital Transfer Agency to NYSE Tokenized Securities Platform",
+   "sources": [
+    "benzinga",
+    "fiscal.ai"
+   ],
+   "time": "2026-11-02T12:31:53Z",
+   "url": "https://www.prnewswire.com/news-releases/business-technology-latest-news/computer-software-list/",
+   "line": "Broadridge Financial Solutions has announced plans to integrate its on-chain shareholder governance and digital transfer agency services with the New York Stock Exchange's tokenized securities platform.",
+   "symbols": [
+    "BR",
+    "ICE"
+   ]
+  },
+  {
+   "title": "Brookfield Asset Management and CPP Investments Complete Acquisition of LXP Industrial Trust",
+   "sources": [
+    "benzinga",
+    "fiscal.ai"
+   ],
+   "time": "2026-11-02T12:32:36Z",
+   "url": "https://www.globenewswire.com/news-release/2026/11/02/3392956/0/en/brookfield-and-cpp-investments-complete-acquisition-of-lxp-industrial-trust.html",
+   "line": "Brookfield Asset Management and CPP Investments have finalized their $5.2 billion all-cash acquisition of LXP Industrial Trust, resulting in LXP becoming a privately held company.",
+   "symbols": [
+    "BAM"
+   ]
+  },
+  {
+   "title": "Cipher Digital Reports Third Quarter 2026 Financial Results and Business Update",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-02T12:32:38Z",
+   "url": "https://www.moomoo.com/hans/news/post/1003185931/press-release-cipher-digital-provides-third-quarter-2026-business-update",
+   "line": "Cipher Digital announced its Q3 2026 financial results, highlighting the commencement of its first HPC lease revenue and significant expansions to its data center pipeline.",
+   "symbols": [
+    "MAR",
+    "AXSM",
+    "TEM",
+    "CIFR",
+    "L"
+   ]
+  },
+  {
+   "title": "Cipher Digital Q3 Net Income $31.6M, Driven By $127.2M Warrant Revaluation Gain",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-02T12:28:15Z",
+   "url": "https://www.benzinga.com/quote/CIFR",
+   "line": "",
+   "symbols": [
+    "CIFR"
+   ]
+  },
+  {
+   "title": "Cipher Digital Q3 Adj. EBITDA Loss $10.0M vs Profit $40.8M Y/Y",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-02T12:28:05Z",
+   "url": "https://www.benzinga.com/quote/CIFR",
+   "line": "",
+   "symbols": [
+    "CIFR"
+   ]
+  },
+  {
+   "title": "Cipher Digital Q3 Bitcoin Mining Revenue $20.8M vs $71.7M Y/Y",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-02T12:27:54Z",
+   "url": "https://www.benzinga.com/quote/CIFR",
+   "line": "",
+   "symbols": [
+    "CIFR"
+   ]
+  },
+  {
+   "title": "Cipher Digital Acquires 70 MW Horizon Site In Texas; Energization Expected 2029",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-02T12:27:43Z",
+   "url": "https://www.benzinga.com/quote/CIFR",
+   "line": "",
+   "symbols": [
+    "CIFR"
+   ]
+  },
+  {
+   "title": "Cipher Digital Development Pipeline Totals ~5.9 GW; In Talks With Tenants For 270 MW Available In 2027",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-02T12:27:31Z",
+   "url": "https://www.benzinga.com/quote/CIFR",
+   "line": "",
+   "symbols": [
+    "CIFR"
+   ]
+  },
+  {
+   "title": "Cipher Digital Begins Gas Pipelines To Support Up To 2.5 GW Of On-Site Power",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-02T12:27:18Z",
+   "url": "https://www.benzinga.com/quote/CIFR",
+   "line": "",
+   "symbols": [
+    "CIFR"
+   ]
+  },
+  {
+   "title": "Cipher Digital Gets ERCOT Conditional Base Load Classification For 1 GW At Colchis Site",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-02T12:27:04Z",
+   "url": "https://www.benzinga.com/quote/CIFR",
+   "line": "",
+   "symbols": [
+    "CIFR"
+   ]
+  },
+  {
+   "title": "Cipher Digital Records First HPC Lease Revenue Of $5.9M In Q3",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-02T12:26:53Z",
+   "url": "https://www.benzinga.com/quote/CIFR",
+   "line": "",
+   "symbols": [
+    "CIFR"
+   ]
+  },
+  {
+   "title": "Tesla Reports October Vehicle Registration Growth in Nordic Markets",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-02T11:32:00Z",
+   "url": "https://www.marketscreener.com/news/tesla-registrations-rise-across-northern-europe-in-october-ce785fd8d188f32d",
+   "line": "Tesla saw significant year-over-year increases in passenger vehicle registrations across Denmark, Sweden, and Norway during October.",
+   "symbols": [
+    "TSLA"
+   ]
+  },
+  {
+   "title": "S&P Global Poland Manufacturing PMI Data for October 2026",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-02T12:32:05Z",
+   "url": "https://www.tradingview.com/news/te_news:597193:0-poland-manufacturing-activity-returns-to-expansion/",
+   "line": "Poland's S&P Global Manufacturing PMI rose to 50 in October 2026, returning to the expansion threshold after seventeen months of contraction.",
+   "symbols": [
+    "SPGI"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "MAR",
+   "stories": 15
+  },
+  {
+   "symbol": "CHH",
+   "stories": 15
+  },
+  {
+   "symbol": "AXSM",
+   "stories": 12
+  },
+  {
+   "symbol": "TEM",
+   "stories": 11
+  },
+  {
+   "symbol": "ETR",
+   "stories": 11
+  },
+  {
+   "symbol": "CIFR",
+   "stories": 10
+  },
+  {
+   "symbol": "TSEM",
+   "stories": 10
+  },
+  {
+   "symbol": "TSLA",
+   "stories": 5
+  },
+  {
+   "symbol": "COIN",
+   "stories": 4
+  },
+  {
+   "symbol": "SPGI",
+   "stories": 4
+  }
+ ],
+ "summary": "**Market Summary: Session of 2026-10-30 (Digest Dated 2026-11-02)**\n\nU.S. equities fell in the prior session. The S&P 500 (SPY) declined 1.77%, the Nasdaq 100 (QQQ) fell 3.47%, the Dow (DIA) slipped 1.07%, and the Russell 2000 (IWM) lost 1.65%. Technology (XLK) led sector losses at -4.89%. Staples (XLP, +1.41%) and energy (XLE, +1.91%) were the strongest sectors, with health care (XLV, +0.45%) and utilities (XLU, +0.67%) also higher. Gold (GLD) fell 3.47%, while long Treasuries (TLT) rose 0.43%. Among eligible stocks, GDYN (+40.8%) led gainers and ATEC (-38.1%) led losers. Intel (INTC) fell 28.6% and ranked among the most active names by volume. In news, Cipher Digital reported Q3 2026 results, including first HPC lease revenue of $5.9M. Brookfield Asset Management and CPP Investments completed their $5.2 billion acquisition of LXP Industrial Trust.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2845,
+   "output_tokens": 908,
+   "output_tokens_details": {
+    "thinking_tokens": 498
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0007385
+ }
+}
