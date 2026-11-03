@@ -5,7 +5,7 @@
    "ticker": "CRSR",
    "side": "short",
    "opened": "2026-10-30",
-   "bought_value": 0.0,
+   "bought_value": 2755.1020408163263,
    "sold_value": 2970.1492537313434,
    "entry_qty": 225.62922349702734,
    "dividends": 0.0,
@@ -45,8 +45,12 @@
    ],
    "stop_pct": 9,
    "target_pct": 10,
-   "closed": null,
-   "open_qty": -225.62922349702734
+   "closed": "2026-11-03",
+   "exit_reason": "close",
+   "return": 0.07235007657756333,
+   "spy_return": null,
+   "excess": null,
+   "beat_spy": null
   }
  ]
 }

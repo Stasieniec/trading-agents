@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "Small starter position. It is down only about 1% on a day when the AI complex sold off, and it carries software-multiple risk (NOW -24%, FTNT -20% today). Keep it small until I see how the sector reacts.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-03",
+     "thesis": "Q3 beat: rev $2.31B vs 2.18B, Q4 guide ~$2.65B vs ~2.46B consensus, FY guide raised. Stock -3% after hours only on US commercial TCV slowdown and valuation. Premarket gap would breach the old 175.7 stop on noise; widen the stop and keep the small size.",
+     "horizon_end": "2026-11-24"
+    }
+   ],
    "order_id": "tech-ten-2026-10-29-06",
    "at": "after:2026-10-29T14:15:52Z",
-   "horizon_end": "2026-11-19",
+   "horizon_end": "2026-11-24",
    "probability": 0.48,
    "horizon_days": 15,
    "sources": [

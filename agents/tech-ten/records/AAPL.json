@@ -6,7 +6,7 @@
    "side": "long",
    "opened": "2026-10-29",
    "bought_value": 8000.0,
-   "sold_value": 0.0,
+   "sold_value": 7423.600135262185,
    "entry_qty": 22.827134306383687,
    "dividends": 0.0,
    "fees": 0.0,
@@ -27,8 +27,12 @@
    "causal_chain": [],
    "stop_pct": 7,
    "target_pct": 10,
-   "closed": null,
-   "open_qty": 22.827134306383687
+   "closed": "2026-11-03",
+   "exit_reason": "close",
+   "return": -0.07204998309222688,
+   "spy_return": null,
+   "excess": null,
+   "beat_spy": null
   }
  ]
 }
