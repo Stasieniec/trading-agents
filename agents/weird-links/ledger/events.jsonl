@@ -6,3 +6,4 @@
 {"amount": 0.03823161842588519, "date": "2026-11-02", "days": 1, "rate": 0.005, "ticker": "CRSR", "type": "borrow_fee", "value": 2752.6765266637335}
 {"cash": 102969.99256677058, "date": "2026-11-02", "equity": 100217.31604010685, "gross": 2752.6765266637335, "invested": -2752.6765266637335, "prices": {"CRSR": 12.2}, "qty": {"CRSR": -225.62922349702734}, "type": "mark"}
 {"at": "open", "date": "2026-11-03", "order_id": "weird-links-2026-11-03-01", "price": 12.210749999999999, "qty": 225.62922349702734, "reason": "close", "ref_price": 12.15, "side": "buy", "slippage_bp": 50, "ticker": "CRSR", "type": "fill"}
+{"cash": 100214.89052595425, "date": "2026-11-03", "equity": 100214.89052595425, "gross": 0, "invested": 0, "prices": {}, "qty": {}, "type": "mark"}
