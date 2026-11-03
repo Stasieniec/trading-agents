@@ -1,0 +1,495 @@
+{
+ "date": "2026-11-03",
+ "built_at": "2026-11-03T12:33:25.660186+00:00",
+ "previous_session": "2026-11-02",
+ "intraday": false,
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 752.1,
+   "day_pct": -0.47901339120308695,
+   "week_pct": -1.7338019519970715
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 681.09,
+   "day_pct": -1.3613520833031578,
+   "week_pct": -4.368155012636898
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 279.14,
+   "day_pct": -0.06801990477213193,
+   "week_pct": 0.7762013069063878
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 519.34,
+   "day_pct": 0.4273586912381777,
+   "week_pct": -0.6941124729908044
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 174.22,
+   "day_pct": -2.9469110355968997,
+   "week_pct": -6.494203520824382
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 100.26,
+   "day_pct": 0.3603603603603567,
+   "week_pct": -3.4569090033702343
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 118.16,
+   "day_pct": 2.40942971052176,
+   "week_pct": 3.4132679852966863
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 90.83,
+   "day_pct": 1.5768284500111696,
+   "week_pct": 3.2628467485220636
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 57.56,
+   "day_pct": 1.8580782162449294,
+   "week_pct": 2.7490182077829273
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 184.6,
+   "day_pct": -0.14604857467409582,
+   "week_pct": 2.967425256581868
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 169.71,
+   "day_pct": 1.3799283154121822,
+   "week_pct": 1.6471011020603665
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 67.25,
+   "day_pct": -3.9560125678377522,
+   "week_pct": -3.4319356691556613
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 53.67,
+   "day_pct": 1.7633674630261664,
+   "week_pct": 4.456987154534842
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 43.67,
+   "day_pct": 0.5526134008749795,
+   "week_pct": 2.6321974148061145
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 43.64,
+   "day_pct": 1.088719017836448,
+   "week_pct": 1.9626168224299079
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 81.73,
+   "day_pct": -0.13440860215053752,
+   "week_pct": 0.06121449559255421
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 361.65,
+   "day_pct": 1.6498960031480214,
+   "week_pct": -1.677450927083901
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 156.87,
+   "day_pct": -7.084049043416463,
+   "week_pct": -5.63075257173794
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 28.96,
+   "day_pct": -0.13793103448275223,
+   "week_pct": -0.17235436056532993
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "PERI",
+    "pct": 31.15,
+    "price": 11.41
+   },
+   {
+    "symbol": "ULH",
+    "pct": 26.34,
+    "price": 28.54
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "DRUG",
+    "pct": -52.35,
+    "price": 26.2
+   },
+   {
+    "symbol": "XMAX",
+    "pct": -37.49,
+    "price": 4.01
+   },
+   {
+    "symbol": "OFRM",
+    "pct": -37.15,
+    "price": 9.44
+   },
+   {
+    "symbol": "CMPS",
+    "pct": -27.31,
+    "price": 8.41
+   },
+   {
+    "symbol": "PGEN",
+    "pct": -25.94,
+    "price": 5.14
+   },
+   {
+    "symbol": "SGML",
+    "pct": -25.57,
+    "price": 5.21
+   }
+  ],
+  "as_of": "2026-11-03T00:59:00.066862579Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "INTC",
+   "volume": 230897751
+  },
+  {
+   "symbol": "NVDA",
+   "volume": 120083697
+  },
+  {
+   "symbol": "SPCX",
+   "volume": 91086402
+  },
+  {
+   "symbol": "AAL",
+   "volume": 84204836
+  },
+  {
+   "symbol": "NU",
+   "volume": 69006435
+  },
+  {
+   "symbol": "RIVN",
+   "volume": 65312897
+  },
+  {
+   "symbol": "AAPL",
+   "volume": 64963447
+  },
+  {
+   "symbol": "MRVL",
+   "volume": 61516517
+  },
+  {
+   "symbol": "NOK",
+   "volume": 60476377
+  },
+  {
+   "symbol": "ORCL",
+   "volume": 58773376
+  }
+ ],
+ "headlines": [
+  {
+   "title": "PTC Therapeutics Authorizes $500 Million Share Repurchase Program",
+   "sources": [
+    "benzinga",
+    "fiscal.ai"
+   ],
+   "time": "2026-11-03T12:32:41Z",
+   "url": "https://es.tradingview.com/news/tradingview:67ea7bb274c91:0/",
+   "line": "PTC Therapeutics, Inc. has announced the authorization of a new share repurchase program allowing the company to buy back up to $500 million of its outstanding common stock.",
+   "symbols": [
+    "PTCT"
+   ]
+  },
+  {
+   "title": "CorVel Reports Fiscal Second Quarter 2027 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-03T12:32:57Z",
+   "url": "https://www.marketscreener.com/news/earnings-flash-crvl-corvel-reports-q2-revenue-267-1m-ce785fd9d08bfe2d",
+   "line": "CorVel Corporation announced its financial results for the second quarter of fiscal year 2027, reporting quarterly revenue of $267.1 million.",
+   "symbols": [
+    "BR",
+    "HLNE",
+    "DT",
+    "CRVL"
+   ]
+  },
+  {
+   "title": "TransAlta Reports Third Quarter 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-03T12:32:56Z",
+   "url": "https://www.marketscreener.com/news/transalta-swings-to-q3-adjusted-earnings-revenue-falls-ce785fd9d08ef42c",
+   "line": "TransAlta Corporation reported its third-quarter 2026 financial results, posting adjusted earnings per share of CA$0.18, which exceeded the FactSet consensus estimate of CA$0.08.",
+   "symbols": [
+    "MPC",
+    "PJT",
+    "PFE",
+    "FISV",
+    "RRX",
+    "SHC"
+   ]
+  },
+  {
+   "title": "CVR Energy to Acquire Two Refineries and Midstream Assets from Marathon Petroleum for $4.2 Billion",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-03T12:32:34Z",
+   "url": "https://www.prnewswire.com/news-releases/marathon-petroleum-corp-to-divest-minnesota-and-north-dakota-refineries--mplx-lp-to-divest-related-midstream-assets-302927304.html",
+   "line": "CVR Energy, Inc. has entered into a definitive agreement to purchase two refineries and related midstream assets from Marathon Petroleum and MPLX LP for a total purchase price of $4.2 billion.",
+   "symbols": [
+    "MPC",
+    "CVI"
+   ]
+  },
+  {
+   "title": "Pfizer Appoints Cecile Guegan as Chief Financial Officer",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-03T12:32:15Z",
+   "url": "https://www.businesswire.com/newsroom/industry/health/pharmaceutical",
+   "line": "Pfizer Inc. has appointed Cecile Guegan as its permanent Chief Financial Officer and Executive Vice President, effective November 1, 2026.",
+   "symbols": [
+    "PFE"
+   ]
+  },
+  {
+   "title": "Aptiv Q3 Includes $56M Non-Cash Intangible Asset Impairment",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-03T12:25:40Z",
+   "url": "https://www.benzinga.com/quote/APTV",
+   "line": "",
+   "symbols": [
+    "APTV"
+   ]
+  },
+  {
+   "title": "Aptiv Repurchased 4.7M Shares For $233M In Q3; $1.6B Remaining Authorisation",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-03T12:25:29Z",
+   "url": "https://www.benzinga.com/quote/APTV",
+   "line": "",
+   "symbols": [
+    "APTV"
+   ]
+  },
+  {
+   "title": "Aptiv Q3 Free Cash Flow $194M",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-03T12:25:19Z",
+   "url": "https://www.benzinga.com/quote/APTV",
+   "line": "",
+   "symbols": [
+    "APTV"
+   ]
+  },
+  {
+   "title": "Aptiv Q3 Adjusted Revenue Up 2%; North America Up 5%, Asia Pacific Up 5%, EMEA Down 5%",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-03T12:25:09Z",
+   "url": "https://www.benzinga.com/quote/APTV",
+   "line": "",
+   "symbols": [
+    "APTV"
+   ]
+  },
+  {
+   "title": "Aptiv Q3 Adj. EBITDA $567M Vs $598M YoY; Margin 17.7% Vs 19.1%",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-03T12:24:57Z",
+   "url": "https://www.benzinga.com/quote/APTV",
+   "line": "",
+   "symbols": [
+    "APTV"
+   ]
+  },
+  {
+   "title": "Aptiv Sees Q4 Adj. EBITDA $582M-$642M, Margin 19.4%",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-03T12:24:46Z",
+   "url": "https://www.benzinga.com/quote/APTV",
+   "line": "",
+   "symbols": [
+    "APTV"
+   ]
+  },
+  {
+   "title": "Aptiv Sees FY26 Free Cash Flow $625M-$675M; Operating Cash Flow $1.154B-$1.204B",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-03T12:24:36Z",
+   "url": "https://www.benzinga.com/quote/APTV",
+   "line": "",
+   "symbols": [
+    "APTV"
+   ]
+  },
+  {
+   "title": "Aptiv Sees FY26 Adj. EBITDA $2.31B-$2.37B, Margin 18.4%",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-03T12:24:22Z",
+   "url": "https://www.benzinga.com/quote/APTV",
+   "line": "",
+   "symbols": [
+    "APTV"
+   ]
+  },
+  {
+   "title": "Apollo Global Management Pledges $9.6 Billion in Debt Financing for Thrive's Acquisition of ADT",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-03T12:32:40Z",
+   "url": "https://www.moomoo.com/hans/news/post/1003316027/market-chatter-apollo-provides-9-6-billion-of-debt-commitments",
+   "line": "Apollo Global Management has reportedly committed approximately $9.6 billion in debt financing to support the acquisition of ADT by Thrive Holdings.",
+   "symbols": [
+    "ADT"
+   ]
+  },
+  {
+   "title": "Rhythm Pharmaceuticals Amends Bivamelagon Licensing Agreement and Secures $750 Million Financing",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-03T12:32:40Z",
+   "url": "https://www.moomoo.com/hant/news/post/1003309057/rhythm-amends-bivamelagon-royalty-structure-secures-750-million-in-financing",
+   "line": "Rhythm Pharmaceuticals has modified its licensing agreement with LG Chem for the experimental obesity drug bivamelagon and arranged a $750 million term-loan facility with KKR and Blackstone.",
+   "symbols": [
+    "RYTM"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "MPC",
+   "stories": 17
+  },
+  {
+   "symbol": "HGTY",
+   "stories": 13
+  },
+  {
+   "symbol": "PJT",
+   "stories": 12
+  },
+  {
+   "symbol": "AME",
+   "stories": 12
+  },
+  {
+   "symbol": "PFE",
+   "stories": 11
+  },
+  {
+   "symbol": "FISV",
+   "stories": 11
+  },
+  {
+   "symbol": "APTV",
+   "stories": 11
+  },
+  {
+   "symbol": "BR",
+   "stories": 10
+  },
+  {
+   "symbol": "YUM",
+   "stories": 10
+  },
+  {
+   "symbol": "KNF",
+   "stories": 10
+  }
+ ],
+ "summary": "**Market summary for the session of 2026-11-02**\n\nU.S. equity indexes were mixed. The S&P 500 (SPY) fell 0.48% and the Nasdaq 100 (QQQ) fell 1.36%, while the Dow (DIA) rose 0.43%. Technology (XLK, -2.95%) and energy (XLE, -3.96%) led the decliners, and oil (USO) dropped 7.08%. Consumer discretionary (XLY, +2.41%), financials (XLF, +1.86%), and staples (XLP, +1.58%) led gainers. Gold (GLD) rose 1.65%, and the U.S. dollar (UUP) eased 0.14%.\n\nAmong eligible stocks, PERI (+31.1%) and ULH (+26.3%) led gainers. DRUG (-52.4%) led losers. Intel and Nvidia had the highest volume.\n\nRecent company news includes PTC Therapeutics' authorization of a $500 million buyback, CVR Energy's agreement to buy two refineries and midstream assets from Marathon Petroleum for $4.2 billion, and Aptiv's third-quarter results, which showed adjusted EBITDA of $567 million versus $598 million a year earlier. Headlines are timestamped the morning of 2026-11-03 and are not necessarily tied to the prior session.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2905,
+   "output_tokens": 740,
+   "output_tokens_details": {
+    "thinking_tokens": 286
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0006605
+ }
+}
