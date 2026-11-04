@@ -120,7 +120,7 @@ def validate(orders: list[dict], ctx: Context) -> tuple[list[dict], list[str]]:
         if ctx.agent.news and increasing:
             srcs = [norm(u) for u in o.get("sources") or [] if str(u).strip()]
             if not any(u in ctx.read_ok_urls for u in srcs):
-                problems.append("cite at least one URL you read successfully with read_page this session")
+                problems.append("cite at least one URL you read this session, with read_page or from a web search")
             unknown = [u for u in srcs if u not in ctx.read_ok_urls and u not in ctx.seen_urls]
             if unknown:
                 problems.append("these sources never appeared in this session's search results, digest or read_page: "

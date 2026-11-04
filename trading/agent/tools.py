@@ -297,7 +297,7 @@ class ToolBox:
         tools = [{"type": version, "name": "web_fetch", "max_uses": 2, "max_content_tokens": 12000}]
         fetched = False
         self.last_fetch_debug = []
-        for _ in range(4):
+        for _ in range(8):  # a fetch inside code execution can take several pause_turn rounds
             left = (self.deadline - datetime.now(timezone.utc)).total_seconds() if self.deadline else 600
             if left < 90:
                 break

@@ -209,6 +209,7 @@ class Session:
         self._write("user", text=first)
         messages: list[dict] = [{"role": "user", "content": first}]
         seen_urls = {norm(h["url"]) for h in (self.digest or {}).get("headlines", []) if h.get("url")} if self.agent.news else set()
+        searched_urls: set[str] = set()  # pages a web search returned this session, content included
         soft_sent = turns_warned = nudged = bounced = False
         attempts = research_calls = 0
         for turn in range(1, MAX_TURNS + 1):
@@ -233,7 +234,9 @@ class Session:
                 return
             for b in r.content:
                 if b.type == "web_search_tool_result" and isinstance(b.content, list):
-                    seen_urls |= {norm(x.url) for x in b.content if getattr(x, "url", None)}
+                    found = {norm(x.url) for x in b.content if getattr(x, "url", None)}
+                    seen_urls |= found
+                    searched_urls |= found
             research_calls += sum(1 for b in r.content if b.type == "server_tool_use")
 
             if r.stop_reason == "refusal":
@@ -279,7 +282,7 @@ class Session:
                 u, n = submitted
                 ctx = Context(agent=self.agent, universe=self.universe, state=self.state, closes=self.closes,
                               session_date=self.day.isoformat(), expired=expired_positions(self.state, self.day),
-                              read_ok_urls=self.tools.read_ok_urls, seen_urls=seen_urls,
+                              read_ok_urls=self.tools.read_ok_urls | searched_urls, seen_urls=seen_urls,
                               headline_text=_headline_text(self.digest), headline_symbols=_headline_symbols(self.digest))
                 orders = list(u.input.get("orders") or [])
                 ok, errors = validate(orders, ctx)

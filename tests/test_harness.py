@@ -412,3 +412,15 @@ def test_feedback_is_saved_with_the_decision(agents_dir):
         msg("tool_use", tool("submit_decision", {"orders": [], "session_summary": "x",
                                                  "feedback": "No way to see options volume."}, "t2"))])
     assert json.loads((out / "decision.json").read_text())["feedback"] == "No way to see options volume."
+
+
+def test_a_page_from_a_web_search_counts_as_a_source(agents_dir):
+    search = O(type="web_search_tool_result", tool_use_id="s1",
+               content=[O(type="web_search_result", url="https://www.reuters.com/markets/big-corp-wins-contract",
+                          title="Big Corp wins contract", page_age="1 hour")])
+    used = O(type="server_tool_use", id="s1", name="web_search", input={"query": "big corp"})
+    res, _, _ = run(agents_dir, [
+        msg("tool_use", used, search, tool("get_quotes", {"tickers": ["BIG"]})),
+        msg("tool_use", tool("submit_decision", {"orders": [order(sources=["https://reuters.com/markets/big-corp-wins-contract"])],
+                                                 "session_summary": "x", "feedback": ""}, "t2"))], agent="open-quality")
+    assert res["status"] == "decided" and [o["ticker"] for o in res["orders"]] == ["BIG"] and not res["rejected"]
