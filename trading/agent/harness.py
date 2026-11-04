@@ -69,7 +69,7 @@ class Session:
         self.memory = Memory(mem_root, records_dir=AGENTS_DIR / agent.name / "records")
         self.tools = ToolBox(agent, day, self.alpaca, universe, self.memory, self.state, self.closes,
                              self.client, self._add_cost, self.log,
-                             screen=(digest or {}).get("screen") if agent.screen else None)
+                             screen=(digest or {}).get("screen"))
         self.tools.deadline = self.deadline
 
     def _add_cost(self, model: str, usage, what: str) -> None:

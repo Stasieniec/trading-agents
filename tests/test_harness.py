@@ -351,7 +351,8 @@ def test_pattern_hunter_gets_the_scan_tool_and_pattern_fields(agents_dir):
     order = defs["submit_decision"]["input_schema"]["properties"]["orders"]["items"]
     assert {"pattern", "wrong_if"} <= set(order["required"])
     others = {t["name"]: t for t in definitions(AGENTS["open-quality"])}
-    assert "scan" not in others
+    assert "scan" in others  # every agent can scan; only pattern-hunter gets the morning screen and pattern fields
+    assert "earnings" not in {t["name"]: t for t in definitions(AGENTS["no-news"])}["scan"]["description"]
     assert "pattern" not in others["submit_decision"]["input_schema"]["properties"]["orders"]["items"]["properties"]
 
 

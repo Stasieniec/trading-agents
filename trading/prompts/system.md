@@ -65,8 +65,9 @@ past opinions, not facts: re-check them against current evidence instead of defe
 
 1. Read your summary, notes and the digest. Check your open positions against fresh prices and,
    where you have web access, fresh news.
-2. Pick the leads worth checking and research them properly: price history, the company itself
-   (search_symbols), and the sources behind the story. Follow a thread until you can say what the
+2. Pick the leads worth checking and research them properly: price history, scan (how unusual a
+   move was for that stock and its industry), the company itself (search_symbols), and the sources
+   behind the story. Follow a thread until you can say what the
    market has and has not priced in.
 3. Decide. Write down what you learned in your notes, then submit.
 

@@ -148,7 +148,7 @@
     const o = Object.fromEntries(f.formatToParts(new Date()).map((x) => [x.type, x.value]));
     return { date: `${o.year}-${o.month}-${o.day}`, time: `${o.hour}:${o.minute}` };
   }
-  // Sessions run on trading days from 13:30 Amsterdam time, before the US open.
+  // Sessions run on trading days from 14:30 Amsterdam time, before the US open.
   function nextSession() {
     const m = state.meta;
     if (!m.start_date) return null;
@@ -160,7 +160,7 @@
     else d = nextTradingDay(now.date);
     const p = parts(d);
     const wd = WD[new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay()];
-    return d === now.date ? "TODAY 13:30 AMS" : `${wd} ${dShort(d)} 13:30 AMS`;
+    return d === now.date ? "TODAY 14:30 AMS" : `${wd} ${dShort(d)} 14:30 AMS`;
   }
 
   // ---------------------------------------------------------------------------------------------
@@ -1192,7 +1192,7 @@
     const li = (...c) => el("li", null, ...c);
     main.append(block("how", "METHOD", el("ul", { class: "terse" },
       li("$100,000 PAPER MONEY PER AGENT · REAL PRICES (ALPACA)"),
-      li("ONE SESSION PER TRADING DAY, FROM 13:30 AMSTERDAM, BEFORE THE US OPEN"),
+      li("ONE SESSION PER TRADING DAY, FROM 14:30 AMSTERDAM, BEFORE THE US OPEN"),
       li("SAME MODEL FOR EVERY AGENT"),
       li("FILLS AT THE OPEN, OR THE FIRST MINUTE AFTER A LATE DECISION · NO COMMISSION"),
       li("SLIPPAGE PER SIDE: 0.10% ABOVE $10B · 0.25% $2B–10B · 0.50% $300M–2B"),

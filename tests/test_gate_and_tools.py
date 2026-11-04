@@ -27,26 +27,25 @@ def gate(monkeypatch, tmp_path, when: str, done=False, start=date(2026, 10, 29))
 
 @pytest.mark.parametrize("when,expect", [
     # 29 Oct 2026: Amsterdam on winter time, New York still on summer time, open 13:30 UTC
-    ("2026-10-29T11:37:00", "false"),   # 12:37 Amsterdam, too early
-    ("2026-10-29T12:32:00", "true"),
-    ("2026-10-29T12:37:00", "true"),
-    ("2026-10-29T12:44:00", "true"),
-    ("2026-10-29T12:52:00", "true"),
-    ("2026-10-29T13:07:00", "true"),    # 23 minutes to the open: runs, fills after the open if late
+    ("2026-10-29T12:37:00", "false"),   # 13:37 Amsterdam, before 14:30
+    ("2026-10-29T13:32:00", "true"),    # 14:32 Amsterdam: runs, fills just after the open in this week
     ("2026-10-29T15:00:00", "true"),    # during the session: a late run still trades
     ("2026-10-29T19:05:00", "false"),   # less than an hour to the close
-    # December: both on winter time, open 14:30 UTC
-    ("2026-12-01T11:37:00", "false"),
-    ("2026-12-01T12:37:00", "true"),
-    ("2026-12-01T13:07:00", "true"),
-    # June: both on summer time, open 13:30 UTC, 11:37 UTC is 13:37 Amsterdam
-    ("2027-06-15T11:37:00", "true"),
-    ("2027-06-15T13:07:00", "true"),
+    # December: both on winter time, open 14:30 UTC, sessions from 13:30 UTC (08:30 New York)
+    ("2026-12-01T12:32:00", "false"),
+    ("2026-12-01T13:32:00", "true"),
+    ("2026-12-01T13:44:00", "true"),
+    ("2026-12-01T14:07:00", "true"),
+    # June: both on summer time, open 13:30 UTC, sessions from 12:30 UTC
+    ("2027-06-15T11:37:00", "false"),
+    ("2027-06-15T12:32:00", "true"),
+    ("2027-06-15T12:44:00", "true"),
     # March mismatch week: New York on summer time, Amsterdam not yet
-    ("2027-03-16T12:37:00", "true"),
+    ("2027-03-16T12:37:00", "false"),
+    ("2027-03-16T13:32:00", "true"),
     # no session on a weekend or a holiday
-    ("2026-10-31T12:37:00", "false"),
-    ("2026-11-26T12:37:00", "false"),   # Thanksgiving
+    ("2026-10-31T13:37:00", "false"),
+    ("2026-11-26T13:37:00", "false"),   # Thanksgiving
 ])
 def test_gate_timing(monkeypatch, tmp_path, when, expect):
     assert gate(monkeypatch, tmp_path, when)["run"] == expect

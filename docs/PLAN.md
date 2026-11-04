@@ -15,7 +15,7 @@ independent reviews (experiment validity, security, feasibility).
 - Fake money only. Our own ledger keeps the books; real prices come from Alpaca's free market data.
 - All agents use Sonnet 5.5, with Haiku 5.5 as a helper that reads web pages and returns short
   answers. Same model everywhere, so the comparison measures the strategy rather than the model.
-- Agents run before the US open, from 13:30 Amsterdam time, and their orders fill at that day's
+- Agents run before the US open, from 14:30 Amsterdam time (13:30 until 5 Nov 2026), and their orders fill at that day's
   opening auction.
 - Long-only on the first two days. Shorts allowed from Friday 2026-10-30, still without leverage
   (see "Shorts" below).
@@ -61,7 +61,7 @@ before the open, otherwise at the open of the first one-minute bar after its dec
 price did not exist when the agent decided. Stops and targets on a position bought after the open
 start the next trading day. Fills are booked during the session by an hourly fill pass, as soon as
 Alpaca's 15-minute delay allows; the evening marking adds exits, corporate actions and the close.
-Sessions may run any time from 13:30 Amsterdam until an hour before the close. The scheduled
+Sessions may run any time from 14:30 Amsterdam until an hour before the close. The scheduled
 triggers come from Cloudflare crons on the dashboard Worker, because GitHub's scheduler fired hours
 late or not at all on the first days; GitHub's own crons stay as a backup.
 
@@ -113,7 +113,7 @@ session job has several firings, off the top of the hour, and the script decides
 
 1. **Session job, cron 11:37, 12:32, 12:37, 12:44, 12:52 and 13:07 UTC on weekdays, plus manual dispatch.**
    A firing proceeds only if: today is an NYSE trading day (Alpaca calendar), the Amsterdam time is
-   past 13:30, the next open (Alpaca clock) is at least 30 minutes away, and today's session has
+   past 14:30, the next open (Alpaca clock) is at least 30 minutes away, and today's session has
    not already run. That leaves two or three usable firings every day of the year, including the
    DST-mismatch weeks. Each agent session has a hard deadline three minutes before the open; a
    session that hits it becomes a hold. So nothing ever needs an intraday fill. The job then:

@@ -86,11 +86,11 @@ def definitions(agent: AgentConfig) -> list[dict]:
                                                        "Empty string leaves that part unchanged.",
          "input_schema": _obj({"ticker": S, "current_view": S, "log_entry": S})},
     ]
-    if agent.screen:
-        tools.append({"name": "scan", "description": "The screen's row for any tickers (up to 20): the move in standard "
-                                                     "deviations and against its industry, volume ratio, gap, close in "
-                                                     "range, run-up, 52-week distance, pre-market, stories and earnings.",
-                      "input_schema": _obj({"tickers": {"type": "array", "items": S}})})
+    tools.append({"name": "scan", "description": "Numbers on the last session's move for any tickers (up to 20): the move "
+                                                 "in the stock's own standard deviations and against its industry, volume "
+                                                 "against average, gap, close in range, run-up, 52-week distance, "
+                                                 "pre-market" + (", news stories and earnings dates." if agent.news else "."),
+                  "input_schema": _obj({"tickers": {"type": "array", "items": S}})})
     if agent.news:
         tools.append({"name": "read_page",
                       "description": "A helper model fetches the page and answers your question in under 300 words, "
@@ -217,7 +217,7 @@ class ToolBox:
         rows = scan(self.universe, self.alpaca, self.day, tickers, self.screen)
         if not rows:
             raise ValueError("no tickers given")
-        return render(rows)
+        return render(rows, news=self.agent.news)
 
     # --- portfolio and memory
 

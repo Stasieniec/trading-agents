@@ -381,7 +381,7 @@ export default {
   },
 
   // GitHub's own cron fires hours late or not at all, so these Cloudflare crons start the workflows.
-  // The session workflow runs its usual gate (trading day, 13:30 Amsterdam, 30 minutes before the
+  // The session workflow runs its usual gate (trading day, 14:30 Amsterdam, 30 minutes before the
   // open, not already done), so an extra or early trigger does nothing.
   async scheduled(event, env, ctx) {
     const token = env.GITHUB_DISPATCH_TOKEN;
@@ -430,8 +430,9 @@ const MARK = { workflow: "mark.yml", inputs: { mode: "close" } };
 // UTC. Sessions before the open, a late-session safety net (the gate skips it if today already ran),
 // fill passes every hour of the session, and the evening marking after the close plus the data delay.
 const SCHEDULE = {
-  "32,44 12 * * MON-FRI": SESSION,
-  "40 13,15 * * MON-FRI": SESSION,
+  // 14:30 Amsterdam is 13:30 UTC in winter and 12:30 UTC in summer; the gate skips the early hour in winter.
+  "32,44 12,13 * * MON-FRI": SESSION,
+  "40 14,16 * * MON-FRI": SESSION,
   "50 13-19 * * MON-FRI": FILL,
   "20 22,23 * * MON-FRI": MARK,
 };

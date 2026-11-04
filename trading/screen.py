@@ -201,10 +201,12 @@ def _f(x, fmt="{:+.1f}") -> str:
     return fmt.format(x) if isinstance(x, (int, float)) else "n/a"
 
 
-def render(rows: list[dict]) -> str:
+def render(rows: list[dict], news: bool = True) -> str:
+    """The table. Without news (the no-news agent) the stories and earnings columns are left out."""
     if not rows:
         return "no rows"
-    lines = [COLUMNS]
+    cols = COLUMNS if news else COLUMNS.rsplit(" | stories | earnings", 1)[0]
+    lines = [cols]
     for r in rows:
         if r.get("missing"):
             lines.append(f"{r['ticker']} | not enough history")
@@ -216,8 +218,10 @@ def render(rows: list[dict]) -> str:
             r["ticker"] + short, cap, (r.get("industry") or "")[:28], f"{r['close']:.2f} ({r['date']})",
             _f(r["r1"]), _f(r["z"]), _f(r.get("vs_industry")), _f(r["vol_x"], "{:.1f}"), _f(r["gap"]),
             _f(r["range_pos"], "{:.2f}"), _f(r["r5"]), _f(r["r20"]), _f(r["from_high"]), _f(r["from_low"]),
-            f"{r['streak']:+d}", pre, str(r.get("stories", 0)), "; ".join(r.get("earnings") or []) or "none"]))
-    lines.append(NOTE)
+            f"{r['streak']:+d}", pre] + ([str(r.get("stories", 0)), "; ".join(r.get("earnings") or []) or "none"]
+                                          if news else [])))
+    note = NOTE if news else NOTE.split(" stories:", 1)[0]
+    lines.append(note)
     return "\n".join(lines)
 
 

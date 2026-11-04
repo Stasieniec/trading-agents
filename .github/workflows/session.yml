@@ -1,15 +1,15 @@
 name: session
 
-# Agents run before the US open, from 13:30 Amsterdam. Several firings because GitHub cron can be
+# Agents run before the US open, from 14:30 Amsterdam. Several firings because GitHub cron can be
 # late or dropped; the gate step decides whether a firing does the work. See docs/PLAN.md.
 on:
   schedule:
-    - cron: "37 11 * * 1-5"
-    - cron: "32 12 * * 1-5"
     - cron: "37 12 * * 1-5"
-    - cron: "44 12 * * 1-5"
-    - cron: "52 12 * * 1-5"
-    - cron: "7 13 * * 1-5"
+    - cron: "32 13 * * 1-5"
+    - cron: "37 13 * * 1-5"
+    - cron: "44 13 * * 1-5"
+    - cron: "52 13 * * 1-5"
+    - cron: "7 14 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
