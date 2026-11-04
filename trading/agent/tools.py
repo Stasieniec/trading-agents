@@ -57,10 +57,15 @@ PATTERN_ORDER = _obj({**ORDER_PROPS,
 })
 
 
+FEEDBACK = ("For the person running the experiment, not for you: anything that held you back this session. A tool "
+            "or data you needed and did not have, a tool that failed or misled you, a rule that stopped a trade you "
+            "believe in, or a change to your instructions you would make. Be specific. Empty if nothing.")
+
+
 def definitions(agent: AgentConfig) -> list[dict]:
     tools = [
-        {"name": "get_quotes", "description": "Latest full-market daily closes and the latest IEX trade, with its timestamp. "
-                                               "Pre-market the IEX trade is usually from yesterday.",
+        {"name": "get_quotes", "description": "Latest full-market daily closes, today's pre-market price from all venues "
+                                               "(up to about 16 minutes ago) and the latest IEX trade.",
          "input_schema": _obj({"tickers": {"type": "array", "items": S, "description": "Up to 20 symbols"}})},
         {"name": "get_history", "description": "Split-adjusted daily bars, oldest first, plus returns and volatility. "
                                                 "The last 60 days are daily, older days weekly.",
@@ -96,7 +101,8 @@ def definitions(agent: AgentConfig) -> list[dict]:
                   "description": "End the session with your orders (an empty list holds everything) and a summary for "
                                  "tomorrow's session. Call exactly once.",
                   "input_schema": _obj({"orders": {"type": "array", "items": PATTERN_ORDER if agent.screen else ORDER},
-                                        "session_summary": S})})
+                                        "session_summary": S,
+                                        "feedback": {"type": "string", "description": FEEDBACK}})})
     for t in tools:
         t["strict"] = True
     if agent.news:
@@ -144,7 +150,12 @@ class ToolBox:
             raise ValueError("no tickers given")
         bars = self._completed(self.alpaca.daily_bars(tickers, self.day - timedelta(days=10), self.day, adjustment="split"))
         trades = self.alpaca.latest_trades(tickers)
-        lines = ["ticker | last close (date) | change vs prior close | latest IEX trade (time UTC)"]
+        try:
+            pre = self.alpaca.premarket(tickers, self.day)  # all venues; IEX alone has no trades before 08:00 New York
+        except Exception:  # quotes still work without it
+            pre = {}
+        lines = ["ticker | last close (date) | change vs prior close | pre-market today vs last close (time UTC, "
+                 "shares) | latest IEX trade (time UTC)"]
         for t in tickers:
             bl = bars.get(t) or []
             if not bl:
@@ -154,7 +165,10 @@ class ToolBox:
             chg = f"{(c / float(bl[-2]['c']) - 1) * 100:+.2f}%" if len(bl) > 1 else "n/a"
             tr = trades.get(t)
             iex = f"{tr['p']:.2f} ({tr['t'][:16]})" if tr else "none"
-            lines.append(f"{t} | {c:.2f} ({bl[-1]['date']}) | {chg} | {iex}")
+            p = pre.get(t)
+            pm = (f"{p['price']:.2f} {(p['price'] / c - 1) * 100:+.2f}% ({p['time'][11:16]}, {int(p['volume']):,})"
+                  if p else "none yet")
+            lines.append(f"{t} | {c:.2f} ({bl[-1]['date']}) | {chg} | {pm} | {iex}")
         return "\n".join(lines)
 
     def t_get_history(self, ticker: str, days: int) -> str:
@@ -247,7 +261,11 @@ class ToolBox:
                 continue
         else:
             raise ValueError(f"page reader unavailable ({type(last_err).__name__})")
-        if not ok or answer.strip().startswith("FETCH FAILED"):
+        lines = [x for x in answer.strip().splitlines() if x.strip()]
+        answered = len(lines) >= 2 and lines[0].upper().startswith("PAGE DATE")  # the date line, then content
+        if not ok or not answered or answer.strip().startswith("FETCH FAILED"):
+            self.log(f"read_page: no answer from the page reader for {url[:120]} "
+                     f"(fetch ran: {ok}; blocks: {', '.join(getattr(self, 'last_fetch_debug', [])[:12])})")
             from ..digest import article_text
             text = article_text(url)  # Benzinga stories that block fetchers come with Alpaca's news feed
             if not text:
@@ -294,8 +312,10 @@ class ToolBox:
                 if "fetch" in b.type and "result" in b.type and not err:
                     fetched = True
             stu = getattr(r.usage, "server_tool_use", None)
-            if stu and getattr(stu, "web_fetch_requests", 0) and r.usage.input_tokens > 3000:
-                fetched = True  # page content came back even if it arrived through dynamic filtering
+            if stu and getattr(stu, "web_fetch_requests", 0):
+                # The page may come back filtered inside code execution, and partly from the cache, so the
+                # input token count says little. Whether the read worked is judged from the answer below.
+                fetched = True
             if r.stop_reason == "pause_turn":
                 messages.append({"role": "assistant", "content": r.content})
                 continue

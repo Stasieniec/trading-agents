@@ -315,6 +315,7 @@ def test_bars_dated_today_are_not_closes(agents_dir):
             return out
     from trading.agent.tools import ToolBox
     from trading.ledger import State
+    from trading.ledger import State
     tb = ToolBox(AGENTS["no-news"], DAY, Today(), UNI, None, State(), {}, None, lambda *a: None, print)
     out, err = tb.run("get_quotes", {"tickers": ["BIG"]})
     assert not err and "101.00 (2026-10-31)" in out
@@ -390,3 +391,24 @@ def test_pattern_record_groups_trades_by_name():
     assert rec["no-news fade"]["closed"] == 2 and rec["no-news fade"]["open"] == 1
     assert rec["no-news fade"]["beat_spy"] == 1 and rec["no-news fade"]["mean_excess"] == pytest.approx(0.01)
     assert rec["earnings drift"]["closed"] == 1 and len(rec) == 2
+
+
+def test_quotes_show_the_pre_market_price_from_all_venues(agents_dir):
+    from trading.agent.tools import ToolBox
+    from trading.ledger import State
+
+    class Pre(FakeAlpaca):
+        def premarket(self, symbols, day):
+            return {"BIG": {"price": 105.05, "time": "2026-11-02T12:40:00Z", "volume": 52000.0}}
+
+    tb = ToolBox(AGENTS["no-news"], DAY, Pre(), UNI, None, State(), {}, None, lambda *a: None, print)
+    out, err = tb.run("get_quotes", {"tickers": ["BIG"]})
+    assert not err and "105.05" in out and "12:40" in out and "52,000" in out
+
+
+def test_feedback_is_saved_with_the_decision(agents_dir):
+    res, _, out = run(agents_dir, [
+        msg("tool_use", tool("get_quotes", {"tickers": ["BIG"]})),
+        msg("tool_use", tool("submit_decision", {"orders": [], "session_summary": "x",
+                                                 "feedback": "No way to see options volume."}, "t2"))])
+    assert json.loads((out / "decision.json").read_text())["feedback"] == "No way to see options volume."

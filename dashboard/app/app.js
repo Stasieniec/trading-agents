@@ -1400,7 +1400,8 @@
         num(isNum(s.orders) ? String(s.orders) : DASH),
         num(isNum(s.cost) ? money(s.cost, 2) : DASH),
         el("td", { class: "wrap" }, s.reason ? String(s.reason) : "", rej.length ? el("details", { class: "rejected" },
-          el("summary", { text: `${rej.length} REJECTED` }), el("ul", { class: "plain" }, rej.map((r) => el("li", { text: String(r) })))) : null),
+          el("summary", { text: `${rej.length} REJECTED` }), el("ul", { class: "plain" }, rej.map((r) => el("li", { text: String(r) })))) : null,
+          s.feedback ? el("details", { class: "rejected" }, el("summary", { text: "FEEDBACK" }), el("p", { text: String(s.feedback) })) : null),
         el("td", null, httpsHref(s.url) ? extLink(s.url, "GITHUB →") : DASH));
     }), "Sessions");
     return block("sessions", "SESSIONS", more(sess, 10, render));

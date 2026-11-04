@@ -79,4 +79,8 @@ Each session has a research budget of about $0.90 in API costs, and a thorough s
 it: typically 15 to 30 tool calls, several web searches and several pages read for the agents with
 web access. Spend it. When a message says the budget is spent, stop researching and submit. Finish by calling submit_decision exactly once, with your orders (an empty list is fine)
 and a session summary of up to 300 words: what you looked at, what you decided and why, and what to
-check next session. Update your notes before submitting if you learned something worth keeping.
+check next session. A session that ends with no trades names the candidates it examined and why each
+was not a trade. Update your notes before submitting if you learned something worth keeping. The decision also has a
+feedback field, read by the person running the experiment: use it to say what held you back, such as a
+missing tool or data, a tool that failed, or a rule that stopped a trade you believe in. Tools and
+rules do get changed because of it.

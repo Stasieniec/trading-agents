@@ -37,6 +37,7 @@ def _sessions(name: str) -> list[dict]:
         out.append({"date": d["date"], "status": d["status"], "reason": d.get("reason", ""),
                     "cost": d.get("total_cost", 0.0), "orders": len(d.get("orders", [])),
                     "rejected": d.get("rejected", []), "prompt_hash": d.get("prompt_hash"),
+                    "feedback": d.get("feedback", ""),
                     "url": f"https://github.com/{REPO}/tree/main/agents/{name}/sessions/{d['date']}"})
     return out
 

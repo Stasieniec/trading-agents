@@ -35,7 +35,7 @@ MAX_SESSION_MINUTES = 25
 LAST_SESSION_BEFORE_CLOSE_MIN = 60
 LOCAL_TZ = "Europe/Amsterdam"
 LOCAL_START = (13, 30)
-WEB_SEARCH_MAX_USES = 8
+WEB_SEARCH_MAX_USES = 20  # per API request; searches run from code count too, and a crashed script repeats them
 READ_PAGE_MAX_CALLS = 10
 
 START_CASH = 100_000.0

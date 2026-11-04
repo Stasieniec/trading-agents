@@ -155,11 +155,19 @@ def build(universe, alpaca: Alpaca, day: date, mentions: dict[str, int], log=pri
     ind = industry_moves(universe, moves)
     earnings = {s: v for s, v in fetch_earnings(day, log).items() if s in universe.rows}
 
-    def adj_z(s):  # the move net of its industry, in the stock's own standard deviations
+    def score(s):
+        """How unusual the move is, counted only when it stands out both against the stock's own volatility
+        and against its industry, in the same direction. A stock pinned by a takeover (tiny volatility) or
+        one that merely moved with its industry scores little."""
         q = moves[s]
-        return (q["r1"] - ind.get(s, 0.0)) / q["sd"] if q["sd"] else 0.0
+        if not q["sd"]:
+            return 0.0
+        z, adj = q["r1"] / q["sd"], (q["r1"] - ind.get(s, 0.0)) / q["sd"]
+        if (z > 0) != (adj > 0):
+            return 0.0
+        return (1 if z > 0 else -1) * min(abs(z), abs(adj))
 
-    ranked = sorted(moves, key=adj_z)
+    ranked = sorted(moves, key=score)
     pick = ranked[-per_side:][::-1] + ranked[:per_side]
     for s in sorted(moves, key=lambda s: -(moves[s]["vol_x"] or 0)):
         if len(pick) >= 2 * per_side + by_volume:

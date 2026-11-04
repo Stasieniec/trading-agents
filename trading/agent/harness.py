@@ -287,6 +287,7 @@ class Session:
                 if not errors or n >= 2:
                     result.update(status="decided", orders=ok, rejected=errors,
                                   summary=str(u.input.get("session_summary", "")),
+                                  feedback=str(u.input.get("feedback", "")).strip()[:1500],
                                   reason="" if not errors else "some orders rejected after the resubmission")
                     return
                 results.append({"type": "tool_result", "tool_use_id": u.id, "is_error": True,

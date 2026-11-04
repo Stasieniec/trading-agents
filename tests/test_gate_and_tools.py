@@ -171,3 +171,19 @@ def test_read_page_falls_back_to_the_news_feed_text(tmp_path, monkeypatch):
     out, err = tb.run("read_page", {"url": "https://www.benzinga.com/news/1", "question": "why?"})
     assert not err and "Orders doubled" in out and "https://benzinga.com/news/1" in tb.read_ok_urls
     assert costs == ["read_page"] * 2  # the failed fetch and the answer from the feed text
+
+
+def test_read_page_counts_a_filtered_fetch_with_few_input_tokens():
+    # The 2026 fetch tool filters the page inside code execution: no fetch-result block, little input.
+    code = O(type="code_execution_tool_result", content=O(type="code_execution_result", error_code=None))
+    tb, _ = toolbox(HaikuFake([code, O(type="text", text="PAGE DATE: 3 Nov 2026\nRevenue fell 12%.")], inp=900))
+    out, err = tb.run("read_page", {"url": "https://www.cnbc.com/x", "question": "what?"})
+    assert not err and "Revenue fell" in out and "https://cnbc.com/x" in tb.read_ok_urls
+
+
+def test_read_page_without_a_page_date_line_is_not_trusted(monkeypatch):
+    import trading.digest as digest
+    monkeypatch.setattr(digest, "article_text", lambda url: "")
+    tb, _ = toolbox(HaikuFake([O(type="text", text="I think the company is doing well.")], inp=900))
+    out, err = tb.run("read_page", {"url": "https://www.cnbc.com/y", "question": "what?"})
+    assert "Could not" in out and not tb.read_ok_urls
