@@ -1,0 +1,1 @@
+Session 1 (2026-11-05): web_search from code_execution has a small use limit (~2 calls) — use sparingly; read_page works. Pattern 'bad-news drift': short large-cap idiosyncratic earnings crashes with close near low (UNM). Passed on DOX: guidance cut due to T-Mobile dispute, premarket -39% but closed -28%. Check next session how UNM and DOX moved.

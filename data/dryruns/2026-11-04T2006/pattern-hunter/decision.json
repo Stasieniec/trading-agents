@@ -1,0 +1,41 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-05",
+ "dry_run": true,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "UNM",
+   "target_weight": -0.05,
+   "thesis": "Q3 group disability profit fell 60% with benefit ratio 67% vs 48%; stock fell 19% on 3.5x volume closing near the low while life/health peers rose. Bad-news post-earnings drift and estimate cuts should follow.",
+   "horizon_days": 10,
+   "stop_pct": 9,
+   "target_pct": 12,
+   "probability": 0.52,
+   "sources": [
+    {
+     "url": "https://www.sec.gov/Archives/edgar/data/0000005513/000000551326000085/unm09302026exhibit991.htm",
+     "read": true,
+     "answer": "PAGE DATE: November 3, 2026 (dateline on the press release; the page is Unum Group's Exhibit 99.1 Q3 2026 earnings release)\n\n**Key results (Q3 2026):** Unum reported a net loss of $419.7 million ($2.65 per diluted share), versus net income of $39.7 million ($0.23) in Q3 2025. After-tax adjusted operating income was $349.0 million ($2.20 per diluted share), down from $479.4 million ($2.81) a year earlier. Premium growth was 4.7% on a constant-currency basis. Book value per share was $68.90, and holding company liquidity was $1.4 billion.\n\n**Group disability:** Segment adjusted operating income "
+    }
+   ],
+   "causal_chain": [],
+   "pattern": "bad-news drift",
+   "wrong_if": "UNM rebounds above ~80 as dip buyers treat the disability claims spike as temporary.",
+   "slippage_bp": 10,
+   "id": "pattern-hunter-2026-11-05-01",
+   "session_date": "2026-11-05",
+   "fill_at": "open",
+   "decided_at": "2026-11-04T20:10:45.507893+00:00",
+   "prompt_hash": "03096b10ca92"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "03096b10ca92",
+ "summary": "First session. Examined screen: DOX (-28%, guidance cut over T-Mobile dispute; bounced from -39% premarket, cheap, binary; passed), UNM (Q3 group disability profit -60%, net loss; shorted 5%, peers up so idiosyncratic), NRIX (-38% no news found; passed), DUOL/KD/YOU/TREE/OPRT (big gap-ups on earnings, poor entry at open; passed). Market context: SPY +1.7%, XLK -7.5% over 5d, oil -8%. Web search from code is limited to ~2 calls; read_page works. Next: check UNM short, DOX continuation/bounce, and look for reversal candidates among no-news moves.",
+ "total_cost": 0.23790440000000004,
+ "seconds": 116,
+ "fill_at": "open"
+}
