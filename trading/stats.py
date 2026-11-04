@@ -142,9 +142,12 @@ def summarize(series: list[dict], spy_series: list[dict], start_cash: float, tra
         return {"days": 0}
     vals = [s["equity"] for s in series]
     spy = {s["date"]: s["equity"] for s in spy_series}
-    # Day-one return counts from the starting cash, since trades fill at that day's open.
+    # Day-one return counts from the starting cash, since trades fill at that day's open. SPY counts
+    # from its close the day before, which is its own start for agents there from the first day.
+    before = [s["equity"] for s in spy_series if s["date"] < series[0]["date"]]
     eq = [{"date": "start", "equity": start_cash}] + series
-    sp = [{"date": "start", "equity": start_cash}] + [{"date": s["date"], "equity": spy.get(s["date"])} for s in series]
+    sp = [{"date": "start", "equity": before[-1] if before else start_cash}] + [
+        {"date": s["date"], "equity": spy.get(s["date"])} for s in series]
     r = daily_returns(eq)
     rs = [b["equity"] / a["equity"] - 1 if a["equity"] and b["equity"] else 0.0 for a, b in zip(sp, sp[1:])]
     invested = [s["invested"] / s["equity"] if s["equity"] else 0.0 for s in series]

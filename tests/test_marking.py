@@ -213,3 +213,27 @@ def test_first_minute_query_stays_out_of_the_last_15_minutes(monkeypatch):
     assert end <= now - timedelta(minutes=15) and out == {"X": 1.0}
     seen.clear()
     assert a.first_minute_open(["X"], now - timedelta(minutes=5)) == {} and not seen  # too recent to ask for
+
+
+def test_an_agent_that_joins_later_starts_on_its_own_day(repo, monkeypatch):
+    from trading import config
+
+    monkeypatch.setitem(config.AGENTS, "late", config.AgentConfig("late", "Late", "joins on day two", news=False,
+                                                                  universe="open", start=D2.isoformat()))
+    (repo / "agents" / "late" / "ledger").mkdir(parents=True)
+    assert market.run(D1, FakeAlpaca(), log=lambda m: None) == [D1]
+    assert read_jsonl(repo / "agents" / "late" / "ledger" / "events.jsonl") == []
+    assert market.days_to_mark(D1) == []  # nothing is missing before its first day
+    assert market.run(D2, FakeAlpaca(), log=lambda m: None) == [D2]
+    marks = [e for e in read_jsonl(repo / "agents" / "late" / "ledger" / "events.jsonl") if e["type"] == "mark"]
+    assert [m["date"] for m in marks] == ["2026-11-03"]
+    site.build()
+    stats = json.loads((repo / "site-data" / "stats.json").read_text())
+    # All cash for a day on which SPY rose 101 -> 103: it trails SPY by SPY's move that day only.
+    assert stats["late"]["days"] == 1
+    assert stats["late"]["spy_return"] == pytest.approx(103 / 101 - 1, rel=1e-3)
+    eq = json.loads((repo / "site-data" / "equity.json").read_text())
+    assert eq["series"]["late"] == [100_000.0, 100_000.0]  # its start, then its first close
+    meta = json.loads((repo / "site-data" / "meta.json").read_text())
+    assert {a["name"]: a["start"] for a in meta["agents"]}["late"] == "2026-11-03"
+    assert not [m for m in meta["health"]["missing"] if m["agent"] == "late" and m["date"] < "2026-11-03"]

@@ -5,7 +5,7 @@ import json
 from datetime import date, datetime, timedelta
 
 from .alpaca import Alpaca, DataError, bar_is_sane
-from .config import (AGENTS, AGENTS_DIR, BENCHMARK_SLIPPAGE_BP, BENCHMARKS, DATA_DIR,
+from .config import (AGENTS, AGENTS_DIR, BENCHMARK_SLIPPAGE_BP, BENCHMARKS, DATA_DIR, agent_start,
                      EXPERIMENT_FILE)
 from .ledger import (State, append_jsonl, apply_event, borrow_fee_events, corporate_action_events,
                      exit_events, fill_orders, mark_event, read_jsonl, replay)
@@ -57,14 +57,13 @@ def days_to_mark(upto: date) -> list[date]:
     start = start_date()
     if not start or upto < start:
         return []
-    marked = []
-    for d in portfolio_dirs().values():
+    # Each portfolio needs marking from the day after its last mark, or from its own first day.
+    need = []
+    for name, d in portfolio_dirs().items():
         st = replay(read_jsonl(d / "events.jsonl"))
-        marked.append(st.last_marked)
-    earliest_missing = start
-    if all(marked):
-        earliest_missing = date.fromisoformat(min(marked)) + timedelta(days=1)
-    return trading_days(earliest_missing, upto)
+        first = date.fromisoformat(agent_start(name, start.isoformat()))
+        need.append(date.fromisoformat(st.last_marked) + timedelta(days=1) if st.last_marked else first)
+    return trading_days(min(need), upto)
 
 
 def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
@@ -120,6 +119,8 @@ def run(upto: date, alpaca: Alpaca | None = None, log=print) -> list[date]:
         for name, (d, st, orders, closes) in books.items():
             if st.last_marked and st.last_marked >= ds:
                 continue
+            if ds < agent_start(name, start.isoformat()):
+                continue  # joined the experiment later
             new = []
             new += corporate_action_events(st, actions, day)
             day_orders = [o for o in orders if o["session_date"] == ds]

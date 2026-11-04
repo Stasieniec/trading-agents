@@ -277,10 +277,17 @@
   // ---------------------------------------------------------------------------------------------
   // Charts (uPlot). x is the trading-day index; the first point is the starting cash.
 
-  function rebased(values) {
+  // An agent that joined after day one: its series begins at the close before its own first day,
+  // so it has no point at the experiment's START.
+  function joinedLater(name) {
+    const a = agentsList().find((x) => x.name === name);
+    return !!(a && a.start && state.meta.start_date && a.start > state.meta.start_date);
+  }
+
+  function rebased(values, name) {
     const start = isNum(state.equity && state.equity.start_cash) ? state.equity.start_cash : 100000;
     if (!Array.isArray(values)) return null;
-    return [100].concat(values.map((v) => (isNum(v) ? (v / start) * 100 : null)));
+    return [name && joinedLater(name) ? null : 100].concat(values.map((v) => (isNum(v) ? (v / start) * 100 : null)));
   }
 
   const labelText = (l) => (l === "START" || l === "NOW" ? l : dShort(l));
@@ -680,10 +687,23 @@
   }
 
   // The agent's return since start minus the S&P 500's over the same days, live while prices are.
+  // The S&P 500 over the same days as the agent: from day one, or from the close before a late start.
+  function spySince(name) {
+    if (!joinedLater(name)) return sinceStart("bench:spy");
+    const eq = state.equity || {};
+    const dates = Array.isArray(eq.dates) ? eq.dates : [];
+    const own = ((eq.series || {})[name] || []);
+    const spy = ((eq.series || {})["bench:spy"] || []);
+    let i = own.findIndex(isNum);
+    if (i < 0) i = dates.length - 1; // no close of its own yet: its first day is today
+    const base = spy[i];
+    return isNum(base) && base ? valueNow("bench:spy").value / base - 1 : 0;
+  }
+
   function vsSp500(name) {
     const span = el("span");
     liveSlot(() => {
-      const x = sinceStart(name) - sinceStart("bench:spy");
+      const x = sinceStart(name) - spySince(name);
       span.className = `live ${dir(x)}`;
       span.textContent = pct(x);
     });
@@ -779,7 +799,7 @@
     const dates = Array.isArray(eq.dates) ? eq.dates : [];
     const labels = ["START"].concat(dates);
     const raw = {};
-    for (const n of names) raw[n] = [startCash()].concat(dates.map((_, i) => ((eq.series || {})[n] || [])[i]));
+    for (const n of names) raw[n] = [joinedLater(n) ? null : startCash()].concat(dates.map((_, i) => ((eq.series || {})[n] || [])[i]));
     const today = live.intraday && live.intraday.trading_day;
     if (hasLive() && today && (!dates.length || today > dates[dates.length - 1])) {
       labels.push("NOW");
@@ -1030,7 +1050,7 @@
     return el("article", { class: "agent-col" },
       el("a", { class: `agent-link ${agClass(name)}`, href: `#agent/${encodeURIComponent(name)}` }, square(name), `${upper(name)} →`),
       headline(name),
-      sparkline(rebased((state.equity && state.equity.series || {})[name]), colorOf(name)),
+      sparkline(rebased((state.equity && state.equity.series || {})[name], name), colorOf(name)),
       el("div", { class: "kvs" },
         row("VS S&P 500", vsSp500(name)),
         row("INVESTED", isNum(lastInv) ? pctPlain(lastInv) : DASH, netNote(lastInv, lastNet)),

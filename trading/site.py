@@ -3,7 +3,7 @@
 import json
 from datetime import date
 
-from .config import (AGENTS, AGENTS_DIR, BENCHMARKS, DATA_DIR, MONTHLY_CAP_USD, REPO, SITE_DIR, START_CASH,
+from .config import (AGENTS, AGENTS_DIR, BENCHMARKS, DATA_DIR, MONTHLY_CAP_USD, REPO, SITE_DIR, START_CASH, agent_start,
                      TECH_TEN)
 from .cost import month_spend
 from .ledger import read_jsonl, replay
@@ -64,7 +64,12 @@ def build() -> None:
 
     def aligned(ser):
         m = {s["date"]: s["equity"] for s in ser}
-        return [m.get(d) for d in dates]
+        out = [m.get(d) for d in dates]
+        # An agent that joined later starts from its cash at the close before its first day.
+        first = next((i for i, v in enumerate(out) if v is not None), None)
+        if first:
+            out[first - 1] = START_CASH
+        return out
 
     stats, matched, invested, gross, agents_meta = {}, {}, {}, {}, []
     for name, cfg in AGENTS.items():
@@ -82,7 +87,8 @@ def build() -> None:
         g = {s["date"]: v for s, v in zip(series[name], sm.pop("gross_fraction", []))}
         gross[name] = [g.get(d) for d in dates]
         stats[name] = sm
-        agents_meta.append({"name": name, "label": cfg.label, "description": cfg.description})
+        agents_meta.append({"name": name, "label": cfg.label, "description": cfg.description,
+                            "start": agent_start(name, start.isoformat() if start else None)})
 
         closes = last_known_closes(ev)
         prices = {t: closes.get(t, p.avg_cost) for t, p in st.positions.items()}
@@ -145,7 +151,8 @@ def build() -> None:
                 last_expected = d
         for name in AGENTS:
             have = {s["date"]: s for s in _sessions(name)}
-            for d in trading_days(start, last_expected) if last_expected else []:
+            own = date.fromisoformat(agent_start(name, start.isoformat()))
+            for d in trading_days(own, last_expected) if last_expected else []:
                 s = have.get(d.isoformat())
                 if not s:
                     health["missing"].append({"agent": name, "date": d.isoformat()})

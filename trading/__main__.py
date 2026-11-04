@@ -113,7 +113,7 @@ def cmd_gate_session(_args) -> None:
         reasons.append(f"no session left today; the next one is {day}")
     if (local.hour, local.minute) < LOCAL_START:
         reasons.append(f"Amsterdam time {local:%H:%M} is before {LOCAL_START[0]}:{LOCAL_START[1]:02d}")
-    if all(session_done(n, day) for n in AGENTS):
+    if all(session_done(n, day) for n in AGENTS if (AGENTS[n].start or "") <= day.isoformat()):
         reasons.append("today's sessions already ran")
     for r in reasons:
         log(f"gate: {r}")
@@ -138,7 +138,8 @@ def cmd_session_day(args) -> None:
     # Decide as soon as possible; orders fill at the opening auction or, after the open, at the first
     # minute after each decision. No session runs in the last hour before the close.
     deadline = min(now + timedelta(minutes=25), close_at - timedelta(minutes=30))
-    names = [n for n in (args.agents.split(",") if args.agents else AGENTS) if n in AGENTS]
+    names = [n for n in (args.agents.split(",") if args.agents else AGENTS)
+             if n in AGENTS and (AGENTS[n].start or "") <= day.isoformat()]
     alpaca = Alpaca()
     client = anthropic.Anthropic(max_retries=3, timeout=300.0)
 

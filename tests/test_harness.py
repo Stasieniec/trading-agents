@@ -322,9 +322,14 @@ def test_bars_dated_today_are_not_closes(agents_dir):
 
 def test_fill_rule_follows_the_decision_time(agents_dir):
     # A session day still in the future: decided before its open, so it fills at the opening auction.
-    res, _, _ = run(agents_dir, [
-        msg("tool_use", tool("get_quotes", {"tickers": ["BIG"]})),
-        msg("tool_use", tool("submit_decision", {"orders": [order()], "session_summary": "x"}, "t2"))])
+    from trading.timeutil import next_open
+    future, _ = next_open(datetime.now(timezone.utc) + timedelta(days=7))
+    client = FakeClient([msg("tool_use", tool("get_quotes", {"tickers": ["BIG"]})),
+                         msg("tool_use", tool("submit_decision", {"orders": [order()], "session_summary": "x"}, "t2"))])
+    s = Session(AGENTS["no-news"], future, datetime.now(timezone.utc) + timedelta(minutes=20), None, UNI,
+                agents_dir / "no-news" / "sessions" / future.isoformat(), client=client, alpaca=FakeAlpaca(),
+                log=lambda m: None)
+    res = s.run()
     assert res["orders"][0]["fill_at"] == "open"
     # A day whose open has passed: the first minute after the decision.
     past = date(2026, 10, 28)

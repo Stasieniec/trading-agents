@@ -72,6 +72,7 @@ class AgentConfig:
     universe: str  # "open" or "tech-ten"
     causal_chain: bool = False  # weird-links: must explain the chain, ticker not in headlines
     tools: tuple = field(default=())
+    start: str = ""  # first trading day for an agent added later; empty means the experiment's start
 
 
 AGENTS = {
@@ -92,6 +93,13 @@ AGENTS = {
         "Same prompt as open universe, but no headlines and no web. Prices, movers and memory only.",
         news=False, universe="open"),
 }
+
+
+def agent_start(name: str, experiment_start: str | None) -> str | None:
+    """First day an agent or benchmark trades: its own start if it joined later, else the experiment's."""
+    cfg = AGENTS.get(name)
+    own = cfg.start if cfg else ""
+    return max(own, experiment_start or "") if own else experiment_start
 
 
 def slippage_for_market_cap(market_cap: float | None) -> tuple[str, int]:
