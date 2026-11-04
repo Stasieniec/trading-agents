@@ -73,6 +73,7 @@ class AgentConfig:
     causal_chain: bool = False  # weird-links: must explain the chain, ticker not in headlines
     tools: tuple = field(default=())
     start: str = ""  # first trading day for an agent added later; empty means the experiment's start
+    screen: bool = False  # gets the morning screen of sudden moves, the scan tool and pattern records
 
 
 AGENTS = {
@@ -92,6 +93,11 @@ AGENTS = {
         "no-news", "No news",
         "Same prompt as open universe, but no headlines and no web. Prices, movers and memory only.",
         news=False, universe="open"),
+    "pattern-hunter": AgentConfig(
+        "pattern-hunter", "Pattern hunter",
+        "Any eligible US stock, long or short. Aggressively trades sudden moves and recurring patterns from a "
+        "morning screen of the most unusual moves, with news to tell overreactions from real information.",
+        news=True, universe="open", screen=True, start="2026-11-05"),
 }
 
 

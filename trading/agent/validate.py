@@ -125,6 +125,10 @@ def validate(orders: list[dict], ctx: Context) -> tuple[list[dict], list[str]]:
             if unknown:
                 problems.append("these sources never appeared in this session's search results, digest or read_page: "
                                 + ", ".join(unknown[:3]))
+        if ctx.agent.screen and increasing:
+            for k, label in (("pattern", "name the pattern"), ("wrong_if", "say what would prove it wrong (wrong_if)")):
+                if not str(o.get(k, "")).strip():
+                    problems.append(label)
         if ctx.agent.causal_chain and increasing:
             chain = o.get("causal_chain") or []
             if len(chain) < 2 or any(not str(c.get("step", "")).strip() for c in chain):

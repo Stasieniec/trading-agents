@@ -10,7 +10,7 @@ import httpx
 
 from .alpaca import Alpaca, DataError
 from .agent.urls import norm
-from .config import CACHE_DIR, DATA_DIR, HELPER_EFFORT, HELPER_MODEL
+from .config import AGENTS, CACHE_DIR, DATA_DIR, HELPER_EFFORT, HELPER_MODEL
 from .cost import call_cost
 from .secrets import redact
 from .timeutil import UTC, previous_trading_day, session_times, trading_days
@@ -179,11 +179,22 @@ def build(day: date, alpaca: Alpaca, universe: Universe, anthropic_client=None, 
     headlines = _cluster(items, mentions, 15)
     top_mentions = [{"symbol": k, "stories": v} for k, v in sorted(mentions.items(), key=lambda kv: -kv[1])[:10]]
 
+    # The screen of sudden moves, only when an agent uses it: it measures every eligible stock.
+    screen = None
+    if any(a.screen for a in AGENTS.values()):
+        try:
+            from .screen import build as build_screen
+            screen = build_screen(universe, alpaca, day, mentions, log=log)
+            status["screen"] = "ok"
+        except Exception as e:  # the other agents do not need it
+            status["screen"] = f"failed: {type(e).__name__}"
+            log(f"screen failed: {type(e).__name__}: {e}")
+
     intraday = built_at > session_times(day)[0]
     d = {"date": day.isoformat(), "built_at": built_at.isoformat(), "previous_session": prev.isoformat(),
          "intraday": intraday,
          "sources": status, "etfs": etfs, "movers": movers, "most_actives": actives, "headlines": headlines,
-         "news_mentions": top_mentions,
+         "news_mentions": top_mentions, "screen": screen,
          "summary": "", "usage": None}
     if anthropic_client is not None and (headlines or etfs):
         try:

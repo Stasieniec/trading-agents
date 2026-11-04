@@ -26,7 +26,7 @@ def _obj(props: dict, required: list[str] | None = None) -> dict:
 
 
 S = {"type": "string"}
-ORDER = _obj({
+ORDER_PROPS = {
     "action": {"type": "string", "enum": ["set_weight", "close", "extend"],
                "description": "set_weight opens, adds to, trims or flips a position to a target weight of equity; "
                               "close exits all of it (sells a long, buys back a short); extend keeps the shares and "
@@ -46,6 +46,14 @@ ORDER = _obj({
     "sources": {"type": "array", "items": S, "description": "URLs behind the thesis."},
     "causal_chain": {"type": "array", "items": _obj({"step": S, "source_url": S}),
                      "description": "Event to mechanism to company. Required by the weird-links agent, else empty."},
+}
+ORDER = _obj(ORDER_PROPS)
+# Agents that trade the screen also name the pattern and what would prove them wrong, so code can
+# score each pattern over time.
+PATTERN_ORDER = _obj({**ORDER_PROPS,
+    "pattern": {"type": "string", "description": "Short name of the pattern this trade exploits. Reuse the same "
+                                                 "name each time you trade the same idea. Empty for close."},
+    "wrong_if": {"type": "string", "description": "What would show the trade is wrong, in one sentence. Empty for close."},
 })
 
 
@@ -73,6 +81,11 @@ def definitions(agent: AgentConfig) -> list[dict]:
                                                        "Empty string leaves that part unchanged.",
          "input_schema": _obj({"ticker": S, "current_view": S, "log_entry": S})},
     ]
+    if agent.screen:
+        tools.append({"name": "scan", "description": "The screen's row for any tickers (up to 20): the move in standard "
+                                                     "deviations and against its industry, volume ratio, gap, close in "
+                                                     "range, run-up, 52-week distance, pre-market, stories and earnings.",
+                      "input_schema": _obj({"tickers": {"type": "array", "items": S}})})
     if agent.news:
         tools.append({"name": "read_page",
                       "description": "A helper model fetches the page and answers your question in under 300 words, "
@@ -82,7 +95,8 @@ def definitions(agent: AgentConfig) -> list[dict]:
     tools.append({"name": "submit_decision",
                   "description": "End the session with your orders (an empty list holds everything) and a summary for "
                                  "tomorrow's session. Call exactly once.",
-                  "input_schema": _obj({"orders": {"type": "array", "items": ORDER}, "session_summary": S})})
+                  "input_schema": _obj({"orders": {"type": "array", "items": PATTERN_ORDER if agent.screen else ORDER},
+                                        "session_summary": S})})
     for t in tools:
         t["strict"] = True
     if agent.news:
@@ -92,13 +106,15 @@ def definitions(agent: AgentConfig) -> list[dict]:
 
 class ToolBox:
     def __init__(self, agent: AgentConfig, day: date, alpaca: Alpaca, universe: Universe, memory: Memory,
-                 state: State, closes: dict[str, float], client: anthropic.Anthropic, on_cost, log):
+                 state: State, closes: dict[str, float], client: anthropic.Anthropic, on_cost, log,
+                 screen: dict | None = None):
         self.agent, self.day, self.alpaca, self.universe, self.memory = agent, day, alpaca, universe, memory
         self.state, self.closes, self.client, self.on_cost, self.log = state, closes, client, on_cost, log
         self.read_ok_urls: set[str] = set()
         self.read_answers: dict[str, dict] = {}
         self.read_calls = 0
         self.deadline = None
+        self.screen = screen
 
     def run(self, name: str, args: dict) -> tuple[str, bool]:
         try:
@@ -181,6 +197,13 @@ class ToolBox:
             sh = "yes" if h.get("shortable") else "no"
             lines.append(f"{h['symbol']} | {h['name'][:50]} | {h['sector']} / {h['industry'][:40]} | {mc} | {px} | {el} | {sh}")
         return "\n".join(lines)
+
+    def t_scan(self, tickers: list[str]) -> str:
+        from ..screen import render, scan
+        rows = scan(self.universe, self.alpaca, self.day, tickers, self.screen)
+        if not rows:
+            raise ValueError("no tickers given")
+        return render(rows)
 
     # --- portfolio and memory
 

@@ -186,3 +186,11 @@ def test_universe_marks_shortable_only_when_easy_to_borrow():
     out = {r["symbol"]: r["shortable"] for r in build(rows, assets)}
     assert out == {"EZ": True, "HTB": False, "NOS": False}
     assert all(not r["shortable"] for r in build(rows, None))
+
+
+def test_pattern_hunter_orders_name_a_pattern_and_a_way_to_be_wrong():
+    ok, err = validate([buy("BIG", w=-0.2)], ctx("pattern-hunter"))
+    assert not ok and "name the pattern" in err[0] and "wrong_if" in err[0]
+    ok, err = validate([buy("BIG", w=-0.2, pattern="no-news spike fade", wrong_if="a filing explains the jump")],
+                       ctx("pattern-hunter"))
+    assert ok and not err

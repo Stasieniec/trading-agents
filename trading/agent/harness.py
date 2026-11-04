@@ -24,7 +24,7 @@ from .urls import norm
 from .validate import Context, validate
 
 
-RESEARCH_TOOLS = {"get_quotes", "get_history", "search_symbols", "read_page"}
+RESEARCH_TOOLS = {"get_quotes", "get_history", "search_symbols", "read_page", "scan"}
 
 
 def system_prompt(agent: AgentConfig) -> str:
@@ -68,7 +68,8 @@ class Session:
         mem_root = memory_dir or (AGENTS_DIR / agent.name)
         self.memory = Memory(mem_root, records_dir=AGENTS_DIR / agent.name / "records")
         self.tools = ToolBox(agent, day, self.alpaca, universe, self.memory, self.state, self.closes,
-                             self.client, self._add_cost, self.log)
+                             self.client, self._add_cost, self.log,
+                             screen=(digest or {}).get("screen") if agent.screen else None)
         self.tools.deadline = self.deadline
 
     def _add_cost(self, model: str, usage, what: str) -> None:
@@ -111,7 +112,45 @@ class Session:
             parts.append(_data("today's digest", render(self.digest, news=a.news)))
         else:
             parts.append("Today's digest could not be built. Work from your tools.")
+        if a.screen:
+            parts += self._screen_parts()
         return "\n\n".join(parts)
+
+    def _screen_parts(self) -> list[str]:
+        """The screen, how each named pattern has done, and how earlier screens played out."""
+        from ..digest import load as load_digest
+        from ..ledger import read_jsonl
+        from ..market import spy_series
+        from ..screen import outcomes
+        from ..screen import render as render_screen
+        from ..stats import pattern_record, round_trips
+
+        out = []
+        sc = (self.digest or {}).get("screen")
+        if sc and sc.get("rows"):
+            out.append(_data(f"today's screen: the most unusual moves of the last session among {sc.get('measured')} "
+                             "eligible stocks (numbers by code)", render_screen(sc["rows"])))
+        else:
+            out.append("Today's screen could not be built. Use the scan tool on the movers and most-actives.")
+        led = AGENTS_DIR / self.agent.name / "ledger"
+        trips = round_trips(read_jsonl(led / "events.jsonl"), read_jsonl(led / "orders.jsonl"), spy_series())
+        rec = pattern_record(trips)
+        if rec:
+            lines = ["pattern | closed | beat SPY | mean return | mean vs SPY | open"]
+            for r in rec:
+                f = lambda x: f"{x * 100:+.2f}%" if x is not None else "n/a"  # noqa: E731
+                lines.append(f"{r['pattern']} | {r['closed']} | {r['beat_spy']} | {f(r['mean_return'])} | "
+                             f"{f(r['mean_excess'])} | {r['open']}")
+            out.append("## Your patterns so far (written by code from your trades)\n" + "\n".join(lines))
+        else:
+            out.append("## Your patterns so far (written by code)\nNo trades yet.")
+        try:
+            o = outcomes(self.day, self.alpaca, load_digest)
+            if o:
+                out.append("## How earlier screens played out (written by code)\n" + o)
+        except Exception as e:  # a hint, never a reason to fail the session
+            self.log(f"screen outcomes unavailable: {type(e).__name__}")
+        return out
 
     def _cancelled_since_last(self) -> str:
         from ..ledger import read_jsonl

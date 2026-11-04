@@ -341,3 +341,52 @@ def test_fill_rule_follows_the_decision_time(agents_dir):
     res = s.run()
     assert res["orders"][0]["fill_at"].startswith("after:2026-")
     assert "running late" in json.dumps(client.requests[0])
+
+
+def test_pattern_hunter_gets_the_scan_tool_and_pattern_fields(agents_dir):
+    from trading.agent.tools import definitions
+    defs = {t["name"]: t for t in definitions(AGENTS["pattern-hunter"])}
+    assert "scan" in defs and "web_search" in defs
+    order = defs["submit_decision"]["input_schema"]["properties"]["orders"]["items"]
+    assert {"pattern", "wrong_if"} <= set(order["required"])
+    others = {t["name"]: t for t in definitions(AGENTS["open-quality"])}
+    assert "scan" not in others
+    assert "pattern" not in others["submit_decision"]["input_schema"]["properties"]["orders"]["items"]["properties"]
+
+
+def test_pattern_hunter_sees_the_screen_and_its_pattern_record(agents_dir, monkeypatch):
+    import trading.screen as sc
+    monkeypatch.setattr(sc, "outcomes", lambda day, alpaca, load: "screen of | rows\n2026-11-04 | 3")
+    digest = json.loads((ROOT / "data" / "digest" / "2026-11-04.json").read_text())
+    digest.update({"screen": {"measured": 3095, "rows": [{"ticker": "BIG", "market_cap": 5e10, "industry": "Software",
+                                                    "shortable": True, "date": "2026-10-30", "close": 100.0,
+                                                    "r1": 9.0, "z": 4.2, "vs_industry": 8.1, "vol_x": 1.3,
+                                                    "gap": 6.0, "range_pos": 0.9, "r5": 1.0, "r20": 2.0,
+                                                    "from_high": -1.0, "from_low": 40.0, "streak": 1,
+                                                    "pre": None, "pre_volume": None, "stories": 0,
+                                                    "earnings": []}]}})
+    out = agents_dir / "pattern-hunter" / "sessions" / DAY.isoformat()
+    s = Session(AGENTS["pattern-hunter"], DAY, datetime.now(timezone.utc) + timedelta(minutes=20), digest, UNI, out,
+                client=FakeClient([]), alpaca=FakeAlpaca(), log=lambda m: None)
+    first = s.first_message()
+    assert "today's screen" in first and "BIG | $50.0B | Software" in first and "+4.2" in first
+    assert "Your patterns so far" in first and "No trades yet" in first
+    assert "How earlier screens played out" in first
+    # Other agents never see the screen.
+    s2 = Session(AGENTS["open-quality"], DAY, datetime.now(timezone.utc) + timedelta(minutes=20), digest, UNI,
+                 agents_dir / "open-quality" / "sessions" / DAY.isoformat(), client=FakeClient([]),
+                 alpaca=FakeAlpaca(), log=lambda m: None)
+    assert "today's screen" not in s2.first_message()
+
+
+def test_pattern_record_groups_trades_by_name():
+    from trading.stats import pattern_record
+    trades = [{"pattern": "no-news fade", "closed": "d", "return": 0.04, "excess": 0.03},
+              {"pattern": "No-news fade ", "closed": "d", "return": -0.02, "excess": -0.01},
+              {"pattern": "no-news fade", "closed": None},
+              {"pattern": "earnings drift", "closed": "d", "return": 0.01, "excess": 0.02},
+              {"closed": "d", "return": 0.5}]
+    rec = {r["pattern"].lower().strip(): r for r in pattern_record(trades)}
+    assert rec["no-news fade"]["closed"] == 2 and rec["no-news fade"]["open"] == 1
+    assert rec["no-news fade"]["beat_spy"] == 1 and rec["no-news fade"]["mean_excess"] == pytest.approx(0.01)
+    assert rec["earnings drift"]["closed"] == 1 and len(rec) == 2

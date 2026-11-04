@@ -51,6 +51,8 @@ def round_trips(events: list[dict], orders: list[dict], spy: dict[str, tuple[flo
                 tr.update(thesis=e["thesis"], probability=o.get("probability"), horizon_days=o.get("horizon_days"),
                           sources=o.get("sources", []), causal_chain=o.get("causal_chain", []),
                           stop_pct=o.get("stop_pct"), target_pct=o.get("target_pct"))
+                if o.get("pattern"):
+                    tr.update(pattern=o["pattern"].strip(), wrong_if=o.get("wrong_if", ""))
             continue
         if e["type"] == "settle" and t in open_:
             tr = open_[t]
@@ -117,6 +119,31 @@ def _finish(tr: dict, spy) -> dict:
         tr["excess"] = ret - tr["spy_return"]
     tr["beat_spy"] = tr["excess"] > 0 if tr["excess"] is not None else None
     return tr
+
+
+def pattern_record(trades: list[dict]) -> list[dict]:
+    """Per pattern name: trades closed, how many beat SPY, mean return and mean excess, trades open."""
+    by: dict[str, dict] = {}
+    for t in trades:
+        name = (t.get("pattern") or "").strip()
+        if not name:
+            continue
+        key = name.lower()
+        r = by.setdefault(key, {"pattern": name, "closed": 0, "open": 0, "beat": 0, "ret": [], "excess": []})
+        if not t.get("closed"):
+            r["open"] += 1
+            continue
+        r["closed"] += 1
+        r["ret"].append(t.get("return") or 0.0)
+        if t.get("excess") is not None:
+            r["excess"].append(t["excess"])
+            r["beat"] += 1 if t["excess"] > 0 else 0
+    out = []
+    for r in by.values():
+        out.append({"pattern": r["pattern"], "closed": r["closed"], "open": r["open"], "beat_spy": r["beat"],
+                    "mean_return": sum(r["ret"]) / len(r["ret"]) if r["ret"] else None,
+                    "mean_excess": sum(r["excess"]) / len(r["excess"]) if r["excess"] else None})
+    return sorted(out, key=lambda r: (-(r["closed"] + r["open"]), r["pattern"]))
 
 
 def daily_returns(series: list[dict]) -> list[float]:

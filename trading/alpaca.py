@@ -127,6 +127,29 @@ class Alpaca:
                     out[sym] = float(bars[0]["o"])
         return out
 
+    def premarket(self, symbols: list[str], day: date) -> dict[str, dict]:
+        """Latest pre-market price and volume so far today, from SIP one-minute bars (which include
+        extended hours) between 04:00 New York and 16 minutes ago."""
+        from .timeutil import NY
+        start = datetime(day.year, day.month, day.day, 4, 0, tzinfo=NY).astimezone(UTC)
+        open_at = datetime(day.year, day.month, day.day, 9, 30, tzinfo=NY).astimezone(UTC)
+        end = min(open_at, datetime.now(UTC) - timedelta(minutes=16))
+        out: dict[str, dict] = {}
+        if end <= start:
+            return out
+        for chunk in self._chunks(symbols):
+            res = self._paged(f"{DATA}/v2/stocks/bars", {
+                "symbols": ",".join(chunk), "timeframe": "1Min", "feed": "sip", "adjustment": "raw",
+                "start": start.strftime("%Y-%m-%dT%H:%M:%SZ"), "end": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "limit": 10000,
+            }, "bars")
+            for sym, bars in res.items():
+                if bars:
+                    bars = sorted(bars, key=lambda b: b["t"])
+                    out[sym] = {"price": float(bars[-1]["c"]), "time": bars[-1]["t"],
+                                "volume": sum(float(b.get("v") or 0) for b in bars)}
+        return out
+
     def corporate_actions(self, symbols: list[str], start: date, end: date) -> list[dict]:
         """Flattened corporate actions, each with 'kind' and 'id'."""
         if not symbols:

@@ -15,7 +15,7 @@
   const WD = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   // Canvas needs real colours; the DOM uses the matching .ag-N classes from app.css.
-  const AGENT_SLOTS = { "open-quality": 1, "tech-ten": 2, "weird-links": 3, "no-news": 4 };
+  const AGENT_SLOTS = { "open-quality": 1, "tech-ten": 2, "weird-links": 3, "no-news": 4, "pattern-hunter": 7 };
   const SLOT_COLORS = ["", "#FFB000", "#4FC3F7", "#FF6EC7", "#C9D1CC", "#3DDC84", "#B39DFF", "#FF8A3D", "#7FD1B9"];
   const C = { ink: "#D7DED9", muted: "#6B7A72", hair: "#1E2622", hair2: "#141A17", zero: "#34433B", bench: "#56635C", bg: "#07090A" };
   const BENCH_SHORT = { "bench:spy": "S&P 500", "bench:qqq": "QQQ", "bench:tech-ten-ew": "TECH-10 EW" };
