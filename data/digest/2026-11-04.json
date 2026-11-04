@@ -1,0 +1,478 @@
+{
+ "date": "2026-11-04",
+ "built_at": "2026-11-04T12:33:21.001255+00:00",
+ "previous_session": "2026-11-03",
+ "intraday": false,
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 754.35,
+   "day_pct": 0.29916234543279074,
+   "week_pct": -1.9891900319621625
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 685.28,
+   "day_pct": 0.615190356634221,
+   "week_pct": -4.987175043327563
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 279.79,
+   "day_pct": 0.23285806405388687,
+   "week_pct": -0.13919623099435396
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 517.06,
+   "day_pct": -0.43901875457312833,
+   "week_pct": -1.1886561687815322
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 176.51,
+   "day_pct": 1.314430030995295,
+   "week_pct": -6.849965697398286
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 101.44,
+   "day_pct": 1.176939956114098,
+   "week_pct": -2.06603591426916
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 117.33,
+   "day_pct": -0.7024373730534883,
+   "week_pct": 1.6284105673451732
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 88.95,
+   "day_pct": -2.069800726632165,
+   "week_pct": 2.06540447504302
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 57.19,
+   "day_pct": -0.642807505211962,
+   "week_pct": 2.3443092340730054
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 184.02,
+   "day_pct": -0.31419284940410463,
+   "week_pct": 2.70119432972431
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 171.32,
+   "day_pct": 0.9486771551470152,
+   "week_pct": 2.02477370176275
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 66.68,
+   "day_pct": -0.8475836431226624,
+   "week_pct": -2.243072863216522
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 52.59,
+   "day_pct": -2.012297372833982,
+   "week_pct": 1.5643105446118133
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 43.42,
+   "day_pct": -0.5724753835585017,
+   "week_pct": 1.3302217036172737
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 43.67,
+   "day_pct": 0.0687442713107167,
+   "week_pct": 2.8982092365692935
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 81.11,
+   "day_pct": -0.7585953750153029,
+   "week_pct": -0.6370207031728525
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 359.26,
+   "day_pct": -0.6608599474630106,
+   "week_pct": -3.497367572794663
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 158.17,
+   "day_pct": 0.8287116720851584,
+   "week_pct": -3.4842567732487284
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.01,
+   "day_pct": 0.17265193370166187,
+   "week_pct": -0.3777472527472514
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "BUUU",
+    "pct": 28.35,
+    "price": 7.38
+   },
+   {
+    "symbol": "AEHR",
+    "pct": 26.5,
+    "price": 65.11
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "SUPN",
+    "pct": -32.85,
+    "price": 28.15
+   },
+   {
+    "symbol": "STVN",
+    "pct": -28.57,
+    "price": 14.1
+   }
+  ],
+  "as_of": "2026-11-04T00:59:00.069878739Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "INTC",
+   "volume": 149063188
+  },
+  {
+   "symbol": "NU",
+   "volume": 93031404
+  },
+  {
+   "symbol": "NVDA",
+   "volume": 92665719
+  },
+  {
+   "symbol": "ORCL",
+   "volume": 84557121
+  },
+  {
+   "symbol": "SPCX",
+   "volume": 73307607
+  },
+  {
+   "symbol": "RKT",
+   "volume": 71889657
+  },
+  {
+   "symbol": "CIFR",
+   "volume": 68065015
+  },
+  {
+   "symbol": "SMCI",
+   "volume": 64765469
+  },
+  {
+   "symbol": "AAPL",
+   "volume": 63326910
+  },
+  {
+   "symbol": "AAL",
+   "volume": 55789742
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Uber Technologies, Inc. Reports Q3 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-04T12:31:46Z",
+   "url": "https://www.tradingview.com/news/urn:summary_document_report:quartr.com:3960055:0-uber-gross-bookings-grew-20-as-profitability-expanded-and-autonomous-deployment-scaled/",
+   "line": "Uber Technologies, Inc. announced its third-quarter 2026 financial results, highlighting a 20% increase in gross bookings and expanded profitability.",
+   "symbols": [
+    "UBER"
+   ]
+  },
+  {
+   "title": "Live On CNBC, Uber CEO Khosrowshahi Says We Have Committed About $10B For Autonomous Vehicles Going Forward",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-04T12:26:00Z",
+   "url": "https://www.benzinga.com/news/26/11/62859982/live-cnbc-uber-ceo-khosrowshahi-says-we-have-committed-about-10b-autonomous-vehicles-going-forward",
+   "line": "",
+   "symbols": [
+    "UBER"
+   ]
+  },
+  {
+   "title": "Uber Repurchased $750M Of Shares In Q3",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-04T12:25:35Z",
+   "url": "https://www.benzinga.com/quote/UBER",
+   "line": "",
+   "symbols": [
+    "UBER"
+   ]
+  },
+  {
+   "title": "Uber Expects About 700 Fully Driverless Vehicles On Platform By Year-End, Over 2,000 In 2027",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-04T12:25:24Z",
+   "url": "https://www.benzinga.com/quote/UBER",
+   "line": "",
+   "symbols": [
+    "UBER"
+   ]
+  },
+  {
+   "title": "Uber Q3 Adj EBITDA $2.96B vs $2.26B YoY; Free Cash Flow $2.5B",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-04T12:25:12Z",
+   "url": "https://www.benzinga.com/quote/UBER",
+   "line": "",
+   "symbols": [
+    "UBER"
+   ]
+  },
+  {
+   "title": "Uber Q3 Monthly Active Platform Consumers 215M vs 189M YoY",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-04T12:24:59Z",
+   "url": "https://www.benzinga.com/quote/UBER",
+   "line": "",
+   "symbols": [
+    "UBER"
+   ]
+  },
+  {
+   "title": "Uber Q3 Gross Bookings $59.8B, Up 20% YoY; Trips 4.1B, Up 16%",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-04T12:24:42Z",
+   "url": "https://www.benzinga.com/quote/UBER",
+   "line": "",
+   "symbols": [
+    "UBER"
+   ]
+  },
+  {
+   "title": "Uber Sees Q4 Gross Bookings $63.25B-$65.25B; Adj EPS $0.95-$0.99; Adj EBITDA $3.13B-$3.23B",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-04T12:24:30Z",
+   "url": "https://www.benzinga.com/quote/UBER",
+   "line": "",
+   "symbols": [
+    "UBER"
+   ]
+  },
+  {
+   "title": "Uber Expect To Scale Autonomous Deployments Significantly, Deploying 2K+ Fully Driverless Vehicles By The End Of 2027, Roughly Half In The U.S. And Half Internationally",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-04T12:07:21Z",
+   "url": "https://www.benzinga.com/news/26/11/62859033/uber-expect-scale-autonomous-deployments-significantly-deploying-2k-fully-driverless-vehicles-end-20",
+   "line": "",
+   "symbols": [
+    "UBER",
+    "TSLA",
+    "LYFT"
+   ]
+  },
+  {
+   "title": "Marriott Vacations Worldwide Reports Third Quarter 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-04T12:32:46Z",
+   "url": "https://www.businesswire.com/newsroom/subject/earnings",
+   "line": "Marriott Vacations Worldwide Corporation announced its financial results for the third quarter of 2026, highlighting significant growth in contract sales and development profit.",
+   "symbols": [
+    "GFS",
+    "BRKR",
+    "TRMB",
+    "MCD",
+    "KHC",
+    "TKR"
+   ]
+  },
+  {
+   "title": "Avient Corporation Reports Third Quarter 2026 Financial Results and Raises Full-Year Guidance",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-04T12:32:47Z",
+   "url": "https://es.tradingview.com/news/tradingview:f50fe137888e9:0/",
+   "line": "Avient Corporation announced its third quarter 2026 financial results, reporting revenue of $891 million and adjusted EPS of $0.86, while raising its full-year adjusted EPS guidance to a range of $3.22\u2013$3.32.",
+   "symbols": [
+    "CVS",
+    "MTRN",
+    "RPRX",
+    "Q",
+    "RAL",
+    "AVNT"
+   ]
+  },
+  {
+   "title": "CVS Health Announces Plan to Separate into Two Independent Companies",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-04T12:31:46Z",
+   "url": "https://www.morningstar.com/news/marketwatch/20261104108/cvs-health-plans-to-split-in-two-heres-what-is-driving-the-massive-healthcare-breakup",
+   "line": "CVS Health plans to split its business into two separate publicly traded companies by 2028, with one entity focusing on health insurance and pharmacy benefits and the other on retail pharmacy operations.",
+   "symbols": [
+    "CVS"
+   ]
+  },
+  {
+   "title": "Kraft Heinz to Divest North American Coffee Business",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-04T12:31:59Z",
+   "url": "https://www.finanzen.ch/nachrichten/aktien/kraft-heinz-boosts-fy26-outlook;-to-divest-north-america-coffee-business-update-1036714195",
+   "line": "Alongside its third-quarter earnings report, The Kraft Heinz Company announced plans to divest its North American coffee business.",
+   "symbols": [
+    "KHC"
+   ]
+  },
+  {
+   "title": "CLEAR Announces Third Quarter 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-04T12:32:41Z",
+   "url": "https://www.prnewswire.com/news-releases/clear-announces-third-quarter-2026-financial-results-302928702.html",
+   "line": "Clear Secure, Inc. reported strong third-quarter 2026 financial results, exceeding revenue expectations, and announced an increase to its share repurchase program alongside a quarterly cash dividend.",
+   "symbols": [
+    "CRL",
+    "YOU"
+   ]
+  },
+  {
+   "title": "OPENLANE Reports Third Quarter Financial Results and Increases Share Repurchase Authorization",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-04T12:32:39Z",
+   "url": "https://es.tradingview.com/news/tradingview:7c5b26fb007b2:0/",
+   "line": "OPENLANE, Inc. announced its third-quarter financial results, highlighting a 13% revenue increase and a 38% rise in digital marketplace GMV, alongside a $150 million expansion of its share repurchase program.",
+   "symbols": [
+    "OPLN"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "UBER",
+   "stories": 11
+  },
+  {
+   "symbol": "GFS",
+   "stories": 9
+  },
+  {
+   "symbol": "EMR",
+   "stories": 9
+  },
+  {
+   "symbol": "CVS",
+   "stories": 8
+  },
+  {
+   "symbol": "BRKR",
+   "stories": 7
+  },
+  {
+   "symbol": "CVE",
+   "stories": 7
+  },
+  {
+   "symbol": "DDOG",
+   "stories": 7
+  },
+  {
+   "symbol": "TRMB",
+   "stories": 6
+  },
+  {
+   "symbol": "MCD",
+   "stories": 6
+  },
+  {
+   "symbol": "COR",
+   "stories": 6
+  }
+ ],
+ "summary": "**Market summary, 2026-11-04 (previous session: 2026-11-03)**\n\nThe S&P 500 (SPY) rose 0.30% to 754.35, though it is down 1.99% over five days. The Nasdaq 100 (QQQ) gained 0.62%, while the Dow (DIA) fell 0.44%. Technology (XLK) led sectors with a 1.31% gain. Staples (XLP) fell 2.07% and materials (XLB) dropped 2.01%. Industrials (XLI) rose 0.95%. Gold (GLD) fell 0.66% and long Treasuries (TLT) fell 0.76%. Oil (USO) rose 0.83%, and the US dollar (UUP) edged up 0.17%.\n\nTop eligible gainers were BUUU (+28.4%) and AEHR (+26.5%). Top losers were SUPN (-32.9%) and STVN (-28.6%). Uber (UBER) was the most-mentioned ticker in news. It reported Q3 2026 gross bookings of $59.8B, up 20% year over year, and guided Q4 gross bookings to $63.25B\u2013$65.25B. CVS Health announced plans to split into two public companies by 2028. Avient raised its full-year adjusted EPS guidance.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2983,
+   "output_tokens": 966,
+   "output_tokens_details": {
+    "thinking_tokens": 536
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0007813
+ }
+}
