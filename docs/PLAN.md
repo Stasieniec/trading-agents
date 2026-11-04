@@ -40,6 +40,7 @@ independent reviews (experiment validity, security, feasibility).
 | `agents/tech-ten/` | Same tools and digest, but may only hold the ten stocks above. |
 | `agents/weird-links/` | Open universe. Hunts second-order effects: connects events across sources to a stock the news does not mention. Every buy carries a written causal chain with a source per link, and code rejects a buy whose ticker or company name appears in that day's digest headlines. |
 | `agents/no-news/` | Same prompt as open-quality, but no headlines, no web search, no page reading. It gets the price-only part of the digest (index and sector moves, top movers, most-actives) so it can still discover tickers the same way, plus prices, history, symbol search and its own memory. If it does as well as open-quality, the news is not what is driving results. |
+| `agents/pattern-hunter/` | Added 2026-11-05, with its own $100,000 from that day. Open universe, long or short, news and web. One goal: exploit sudden moves and recurring patterns aggressively. Gets a morning screen of the most unusual moves among all eligible stocks (see "The screen" below) and a scan tool for any ticker. Every new position names its pattern and what would prove it wrong; code keeps a record per pattern and shows how earlier screen rows moved afterwards. |
 
 Benchmarks, computed by code at no API cost:
 
@@ -89,6 +90,21 @@ cash. All four agents have it, no-news included, so the control stays a control.
 - The dashboard's "invested" is longs plus shorts. The net figure (shorts negative) shows next to it
   when they differ, and the exposure-matched line uses the net, so a balanced long-short book is
   compared with mostly cash.
+
+## The screen (since 2026-11-05, pattern-hunter only)
+
+Built with the digest before any agent runs. Every eligible stock's last session is measured: the move
+in units of its daily volatility over the 60 sessions before, and net of the median move in its
+industry (its sector when the industry has fewer than five stocks). The 10 most unusual moves up and
+down by that industry-adjusted measure, the 5 heaviest-volume moves and up to 5 companies reporting
+earnings that morning get full rows: volume against the 20-day average, the gap, where the close sat
+in the day's range, the 5- and 20-day run-up before, distance from the 52-week high and low, the
+streak of up or down closes, the pre-market price and volume from SIP minute bars, news stories
+naming the stock, and earnings dates from Nasdaq's public calendar. The prompt summarises the
+research behind it: no-news moves have tended to reverse, news-backed and heavy-volume moves to
+continue, and fills at the open favour fading over chasing. Agents added later get sessions, marks and
+health checks only from their own start, and their comparison with the S&P 500 counts from the close
+before it.
 
 ## Daily timeline
 
