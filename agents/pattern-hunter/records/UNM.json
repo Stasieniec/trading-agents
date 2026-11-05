@@ -1,0 +1,36 @@
+{
+ "ticker": "UNM",
+ "trades": [
+  {
+   "ticker": "UNM",
+   "side": "short",
+   "opened": "2026-11-05",
+   "bought_value": 0.0,
+   "sold_value": 4990.00999000999,
+   "entry_qty": 66.7870703971787,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Q3 GAAP net loss with large charge and ~$360M revenue shortfall; stock -18% on 6x volume, closed in lower quarter of range. Bad-news drift with estimate cuts likely; Barclays still overweight though so some bounce risk.",
+   "extensions": [],
+   "order_id": "pattern-hunter-2026-11-05-02",
+   "at": "open",
+   "horizon_end": "2026-11-19",
+   "probability": 0.52,
+   "horizon_days": 10,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://ng.investing.com/news/stock-market-news/why-is-unum-stock-crashing-today-93CH-2783822"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 10,
+   "target_pct": 12,
+   "pattern": "news gap-down drift",
+   "wrong_if": "Charge proves one-off and analysts defend the stock, driving a retrace above ~$82.",
+   "closed": null,
+   "open_qty": -66.7870703971787
+  }
+ ]
+}
