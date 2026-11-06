@@ -33,6 +33,40 @@
    "spy_return": -0.04655367525592158,
    "excess": -0.04526450656226011,
    "beat_spy": false
+  },
+  {
+   "ticker": "NVDA",
+   "side": "long",
+   "opened": "2026-11-06",
+   "bought_value": 6740.468978046258,
+   "sold_value": 0.0,
+   "entry_qty": 35.2330224089758,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Nov 5 was a policy/positioning flush (Nasdaq -5.5%, NVDA -9.3% to a close at the day's low on 2.9x volume) with no cut to AI capex plans or NVDA fundamentals. Premarket rebound of about 4% suggests dip-buying, and the stock is 25% off its high. Small size because the Fed hike/oil macro and data-center regulation fears can keep pressure on.",
+   "extensions": [],
+   "order_id": "tech-ten-2026-11-06-01",
+   "at": "open",
+   "horizon_end": "2026-11-20",
+   "probability": 0.55,
+   "horizon_days": 10,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://invezz.com/news/2026/11/06/nvidia-amd-and-intel-stocks-rebound-sharply-is-wall-streets-ai-panic-easing/"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.cnbc.com/2026/11/05/stock-market-selloff-ai-fears.html"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 9,
+   "target_pct": 16,
+   "closed": null,
+   "open_qty": 35.2330224089758
   }
  ]
 }

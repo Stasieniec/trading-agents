@@ -1,0 +1,41 @@
+{
+ "ticker": "ECPG",
+ "trades": [
+  {
+   "ticker": "ECPG",
+   "side": "long",
+   "opened": "2026-11-06",
+   "bought_value": 4009.9080576511533,
+   "sold_value": 0.0,
+   "entry_qty": 33.08169950321577,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Exceptional Q3 (record-high stock, favorable purchasing conditions) with +26% gap on 3.3x volume, closed at 0.97 of range while SPY fell 4.4% that day. Information-backed up-moves tend to drift as estimates rise; relative strength in a crash.",
+   "extensions": [],
+   "order_id": "pattern-hunter-2026-11-06-01",
+   "at": "open",
+   "horizon_end": "2026-11-18",
+   "probability": 0.55,
+   "horizon_days": 8,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.sec.gov/Archives/edgar/data/0001084961/000108496126000069/exhibit991ecpgq32026earnin.htm"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.marketscreener.com/news/encore-capital-group-inc-reports-earnings-results-for-the-third-quarter-and-nine-months-ended-sept-ce785fdcd989f520"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 12,
+   "target_pct": 15,
+   "pattern": "news gap-up drift",
+   "wrong_if": "The stock gives back the gap within days, closing below ~115, showing the earnings pop was overdone.",
+   "closed": null,
+   "open_qty": 33.08169950321577
+  }
+ ]
+}
