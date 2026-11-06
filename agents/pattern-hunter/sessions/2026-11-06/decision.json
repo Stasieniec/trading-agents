@@ -1,0 +1,47 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-06",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "ECPG",
+   "target_weight": 0.04,
+   "thesis": "Exceptional Q3 (record-high stock, favorable purchasing conditions) with +26% gap on 3.3x volume, closed at 0.97 of range while SPY fell 4.4% that day. Information-backed up-moves tend to drift as estimates rise; relative strength in a crash.",
+   "horizon_days": 8,
+   "stop_pct": 12,
+   "target_pct": 15,
+   "probability": 0.55,
+   "sources": [
+    {
+     "url": "https://www.sec.gov/Archives/edgar/data/0001084961/000108496126000069/exhibit991ecpgq32026earnin.htm",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://www.marketscreener.com/news/encore-capital-group-inc-reports-earnings-results-for-the-third-quarter-and-nine-months-ended-sept-ce785fdcd989f520",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "pattern": "news gap-up drift",
+   "wrong_if": "The stock gives back the gap within days, closing below ~115, showing the earnings pop was overdone.",
+   "slippage_bp": 25,
+   "id": "pattern-hunter-2026-11-06-01",
+   "session_date": "2026-11-06",
+   "fill_at": "open",
+   "decided_at": "2026-11-06T13:35:14.285158+00:00",
+   "prompt_hash": "ded1ee50b51a"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "ded1ee50b51a",
+ "summary": "Session 2026-11-06. Market crashed on 11-05 (SPY -4.4%, QQQ -6.5%, XLK -8%); pre-market is rebounding (QQQ +1.6%, SPY +0.2%). Held FIS and UNM shorts (pre-market flat, small gains, horizon 11-19). Examined screen rows: ECPG (+26%, record earnings, closed at high) was the one trade: long 4%, pattern 'news gap-up drift'. Passed on APP (+31% earnings, large, tech crash, mixed), EPAM/ADMA/ARDT/XERS/DLX (earnings pops, small caps with higher slippage or already faded pre-market), AEHL (not shortable, microcap). Passed shorting LOPE/STRA/BROS/TRIP/VCYT/CSV: all earnings-driven -17% to -54% drops, but shorting after big drops into a rebounding market is risky, and no clear info edge. Next session: check FIS/UNM/ECPG vs SPY; watch whether the market rebound continues (shorts could be squeezed); consider fading no-news moves; consider LOPE/STRA if the education sector drops further with news.",
+ "feedback": "",
+ "total_cost": 0.1287238,
+ "seconds": 44,
+ "fill_at": "open"
+}
