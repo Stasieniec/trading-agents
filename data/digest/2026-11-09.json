@@ -1,0 +1,7618 @@
+{
+ "date": "2026-11-09",
+ "built_at": "2026-11-09T13:33:11.086279+00:00",
+ "previous_session": "2026-11-06",
+ "intraday": false,
+ "sources": {
+  "index moves": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok",
+  "screen": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 735.29,
+   "day_pct": 0.3124147339699901,
+   "week_pct": -2.703382205049498
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 656.1,
+   "day_pct": 1.3986554362104942,
+   "week_pct": -4.980521079233591
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 273.67,
+   "day_pct": 0.992693187689131,
+   "week_pct": -2.0262771632119647
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 512.22,
+   "day_pct": -0.3986232912672194,
+   "week_pct": -0.9494711194477201
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 164.74,
+   "day_pct": 1.4533809582460977,
+   "week_pct": -8.227953874435956
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 104.79,
+   "day_pct": 0.43128234617597627,
+   "week_pct": 4.894894894894897
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 117.58,
+   "day_pct": -0.05100306018360756,
+   "week_pct": 1.9067429363841315
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 90.08,
+   "day_pct": -1.2821917808219174,
+   "week_pct": 0.7380899127711782
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 57.16,
+   "day_pct": -0.5913043478260938,
+   "week_pct": 1.150238895770661
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 184.8,
+   "day_pct": -0.05948839976204212,
+   "week_pct": -0.037864445285873405
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 162.67,
+   "day_pct": 0.12309964916599192,
+   "week_pct": -2.82556750298687
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 61.62,
+   "day_pct": -0.016225864027263892,
+   "week_pct": -11.996572407883466
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 51.95,
+   "day_pct": -0.7261609019682647,
+   "week_pct": -1.4979142965491077
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 43.13,
+   "day_pct": -0.39260969976904203,
+   "week_pct": -0.6907667510937077
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 44.0,
+   "day_pct": -0.6772009029345272,
+   "week_pct": 1.9226314570303327
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 81.92,
+   "day_pct": -0.012205541315768453,
+   "week_pct": 0.09775171065493637
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 372.52,
+   "day_pct": -0.7909664704785824,
+   "week_pct": 4.705154870987682
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 148.41,
+   "day_pct": 0.13494366102151378,
+   "week_pct": -12.095006811585629
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.13,
+   "day_pct": 0.7261410788381717,
+   "week_pct": 0.44827586206896974
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "OBX",
+    "pct": 44.43,
+    "price": 13.865
+   },
+   {
+    "symbol": "KRMN",
+    "pct": 42.13,
+    "price": 45.61
+   },
+   {
+    "symbol": "GIBO",
+    "pct": 38.86,
+    "price": 175.35
+   },
+   {
+    "symbol": "FLY",
+    "pct": 36.8,
+    "price": 20.76
+   }
+  ],
+  "losers": [
+   {
+    "symbol": "PRAA",
+    "pct": -36.73,
+    "price": 12.92
+   },
+   {
+    "symbol": "KRT",
+    "pct": -34.8,
+    "price": 33.54
+   },
+   {
+    "symbol": "NRDS",
+    "pct": -30.97,
+    "price": 7.89
+   },
+   {
+    "symbol": "IRTC",
+    "pct": -30.7,
+    "price": 90.22
+   },
+   {
+    "symbol": "KRUS",
+    "pct": -26.14,
+    "price": 27.38
+   },
+   {
+    "symbol": "KOP",
+    "pct": -24.39,
+    "price": 29.97
+   }
+  ],
+  "as_of": "2026-11-07T00:59:00.05893082Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "NVDA",
+   "volume": 181023768
+  },
+  {
+   "symbol": "INTC",
+   "volume": 174393594
+  },
+  {
+   "symbol": "SPCX",
+   "volume": 115678706
+  },
+  {
+   "symbol": "IREN",
+   "volume": 112965919
+  },
+  {
+   "symbol": "WULF",
+   "volume": 106079418
+  },
+  {
+   "symbol": "CIFR",
+   "volume": 81810327
+  },
+  {
+   "symbol": "DKNG",
+   "volume": 69946723
+  },
+  {
+   "symbol": "CRWV",
+   "volume": 59442512
+  },
+  {
+   "symbol": "NU",
+   "volume": 58382395
+  },
+  {
+   "symbol": "AAL",
+   "volume": 52433008
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Keybanc Downgrades Zillow Group to Sector Weight",
+   "sources": [
+    "benzinga",
+    "fiscal.ai"
+   ],
+   "time": "2026-11-09T12:39:18Z",
+   "url": "https://www.benzinga.com/news/26/11/63028227/keybanc-downgrades-zillow-group-sector-weight",
+   "line": "",
+   "symbols": [
+    "ZG",
+    "Z"
+   ]
+  },
+  {
+   "title": "Uniti Group Raises FY2026 Sales Guidance from $3.630B-$3.680B to $3.665B-$3.695B vs $3.662B Est",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-09T12:35:57Z",
+   "url": "https://www.benzinga.com/news/26/11/63028148/uniti-group-raises-fy2026-sales-guidance-3-630b-3-680b-3-665b-3-695b-vs-3-662b-est",
+   "line": "",
+   "symbols": [
+    "UNIT"
+   ]
+  },
+  {
+   "title": "Uniti Shareholders\u2019 Equity Turns Negative At $(79.5)M vs $380.4M At Dec 31; Debt $11.3B",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-09T12:34:07Z",
+   "url": "https://www.benzinga.com/quote/UNIT",
+   "line": "",
+   "symbols": [
+    "UNIT"
+   ]
+  },
+  {
+   "title": "Uniti Q3 Fiber Infrastructure New Bookings MRR ~$1.9M, Up 20% Y/Y",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-09T12:33:54Z",
+   "url": "https://www.benzinga.com/quote/UNIT",
+   "line": "",
+   "symbols": [
+    "UNIT"
+   ]
+  },
+  {
+   "title": "Uniti Q3 Kinetic Consumer Fiber Net Adds ~46,000, A Record; Kinetic Consumer Fiber Revenue Up 22% Y/Y",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-09T12:33:43Z",
+   "url": "https://www.benzinga.com/quote/UNIT",
+   "line": "",
+   "symbols": [
+    "UNIT"
+   ]
+  },
+  {
+   "title": "Uniti Q3 Net Loss $244.5M vs Net Income $1.609B Prior, Which Included $1.685B One-Off Merger Gain",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-09T12:33:31Z",
+   "url": "https://www.benzinga.com/quote/UNIT",
+   "line": "",
+   "symbols": [
+    "UNIT"
+   ]
+  },
+  {
+   "title": "Uniti Q3 Adj. EBITDA $289.3M vs $327.8M Prior, Down 12%",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-09T12:33:20Z",
+   "url": "https://www.benzinga.com/quote/UNIT",
+   "line": "",
+   "symbols": [
+    "UNIT"
+   ]
+  },
+  {
+   "title": "Uniti Sees FY26 Revenue $3.665B-$3.695B, Adj. EBITDA $1.46B-$1.49B",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-09T12:33:08Z",
+   "url": "https://www.benzinga.com/quote/UNIT",
+   "line": "",
+   "symbols": [
+    "UNIT"
+   ]
+  },
+  {
+   "title": "Uniti Group Q3 EPS $(1.03) Misses $(0.59) Estimate, Sales $848.100M Miss $867.001M Estimate",
+   "sources": [
+    "benzinga"
+   ],
+   "time": "2026-11-09T12:32:34Z",
+   "url": "https://www.benzinga.com/quote/UNIT",
+   "line": "",
+   "symbols": [
+    "UNIT"
+   ]
+  },
+  {
+   "title": "ImmunityBio and Rafa Laboratories Receive Israeli Ministry of Health Approval for ANKTIVA Plus BCG",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-09T12:32:04Z",
+   "url": "https://www.businesswire.com/newsroom/industry/health/oncology",
+   "line": "ImmunityBio and Rafa Laboratories announced that the Israeli Ministry of Health has approved ANKTIVA in combination with BCG for the treatment of patients with BCG-unresponsive non-muscle invasive bladder cancer with car",
+   "symbols": [
+    "IBRX"
+   ]
+  },
+  {
+   "title": "Dropbox Announces $1 Billion Convertible Senior Notes Offering",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-09T12:32:39Z",
+   "url": "https://www.finanzen.ch/nachrichten/aktien/dropbox-to-offer-$1-bln-convertible-sr-notes-1036736725",
+   "line": "Dropbox, Inc. has announced its intention to offer $1 billion in convertible senior notes due in 2031.",
+   "symbols": [
+    "AKAM",
+    "DBX"
+   ]
+  },
+  {
+   "title": "Allstate Canada Launches New Home Services Breakdown and Pest Removal Package",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-09T13:02:43Z",
+   "url": "https://www.globenewswire.com/news-release/2026/11/09/3398173/0/en/unexpected-costs-are-the-biggest-surprise-for-canadian-homeowners.html",
+   "line": "Allstate Insurance Company of Canada has introduced a new insurance package designed to cover unexpected household repair and pest removal costs.",
+   "symbols": [
+    "ALL"
+   ]
+  },
+  {
+   "title": "Kaspi.kz Announces Extraordinary General Meeting of Shareholders",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-09T13:02:38Z",
+   "url": "https://www.manilatimes.net/globenewswire",
+   "line": "The Board of Directors of JSC Kaspi.kz has scheduled an Extraordinary General Meeting of Shareholders for December 9, 2026.",
+   "symbols": [
+    "KSPI"
+   ]
+  },
+  {
+   "title": "Kaspi.kz Reports Q3 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-09T13:02:38Z",
+   "url": "https://www.marketscreener.com/news/earnings-flash-kspi-kaspi-kz-posts-q3-net-income-281b-kazakhstani-tenge-vs-factset-est-of-285-35-ce785fd3dd8af420",
+   "line": "Kaspi.kz announced its third-quarter 2026 financial results, reporting net income of 281 billion Kazakhstani Tenge and revenue of 1.10 trillion Kazakhstani Tenge.",
+   "symbols": [
+    "KSPI",
+    "TS",
+    "FRVO",
+    "VIA"
+   ]
+  },
+  {
+   "title": "GEA Group Reports Third Quarter 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-09T13:02:30Z",
+   "url": "https://www.finanzen.ch/nachrichten/aktien/anlagenbauer-gea-wachst-weniger-stark-als-erwartet-ausblick-bestatigt-1036736064",
+   "line": "GEA Group announced its third-quarter 2026 results, highlighting a substantial increase in order intake and improved profitability, while confirming its full-year outlook.",
+   "symbols": [
+    "TNGX",
+    "SGI",
+    "KKR",
+    "AMG",
+    "KGS",
+    "WTTR"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "UNIT",
+   "stories": 8
+  },
+  {
+   "symbol": "IBRX",
+   "stories": 4
+  },
+  {
+   "symbol": "AKAM",
+   "stories": 3
+  },
+  {
+   "symbol": "MTD",
+   "stories": 3
+  },
+  {
+   "symbol": "DVN",
+   "stories": 2
+  },
+  {
+   "symbol": "HUM",
+   "stories": 2
+  },
+  {
+   "symbol": "UBER",
+   "stories": 2
+  },
+  {
+   "symbol": "AMD",
+   "stories": 2
+  },
+  {
+   "symbol": "IAM",
+   "stories": 2
+  },
+  {
+   "symbol": "DCTH",
+   "stories": 2
+  }
+ ],
+ "screen": {
+  "day": "2026-11-09",
+  "measured": 3077,
+  "built_at": "2026-11-09T13:33:44.874473+00:00",
+  "rows": [
+   {
+    "ticker": "FLGT",
+    "market_cap": 663271860.0,
+    "industry": "Medical Specialities",
+    "shortable": true,
+    "vs_industry": 26.874632740307014,
+    "pre": 1.095197978096052,
+    "pre_volume": 451.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 27.224008574490878,
+    "sd": 2.637712408716849,
+    "z": 10.32106778757369,
+    "vol_x": 4.033603192520113,
+    "close": 23.74,
+    "gap": 9.699892818863876,
+    "range_pos": 0.9738717339667451,
+    "r5": -13.929889298892984,
+    "r20": -10.374639769452454,
+    "from_high": -23.518041237113408,
+    "from_low": 76.37444279346208,
+    "streak": 1
+   },
+   {
+    "ticker": "TMDX",
+    "market_cap": 3064917836.0,
+    "industry": "Biotechnology: Electromedical & Electrotherapeutic Apparatus",
+    "shortable": true,
+    "vs_industry": 28.071037941992728,
+    "pre": -0.24932003626473298,
+    "pre_volume": 3882.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 27.921136561322115,
+    "sd": 2.9256267797961684,
+    "z": 9.543642666296419,
+    "vol_x": 4.0347636140377094,
+    "close": 88.24,
+    "gap": 14.692664540446486,
+    "range_pos": 0.9836614997905314,
+    "r5": 2.7711561382598227,
+    "r20": -12.683544303797467,
+    "from_high": -43.435897435897445,
+    "from_low": 46.809749604858155,
+    "streak": 1
+   },
+   {
+    "ticker": "KRMN",
+    "market_cap": 6051489107.0,
+    "industry": "Military/Government/Technical",
+    "shortable": true,
+    "vs_industry": 38.966688043556054,
+    "pre": -0.46042534531901547,
+    "pre_volume": 11815.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 42.13150514178869,
+    "sd": 4.565256969632929,
+    "z": 9.228725879405708,
+    "vol_x": 3.081965478888288,
+    "close": 45.61,
+    "gap": 11.872857588033646,
+    "range_pos": 0.9752559726962458,
+    "r5": -23.02710482130006,
+    "r20": 1.262227832123708,
+    "from_high": -61.47153235343807,
+    "from_low": 55.45330606680299,
+    "streak": 1
+   },
+   {
+    "ticker": "IBEX",
+    "market_cap": 660291707.0,
+    "industry": "EDP Services",
+    "shortable": true,
+    "vs_industry": 15.74509337559472,
+    "pre": 0.9693053311793154,
+    "pre_volume": 201.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 15.162790697674433,
+    "sd": 1.8997776324082443,
+    "z": 7.981350258584418,
+    "vol_x": 4.572601585302092,
+    "close": 49.52,
+    "gap": 4.348837209302325,
+    "range_pos": 0.9558998808104889,
+    "r5": -5.181918412348407,
+    "r20": -3.1531531531531543,
+    "from_high": -0.7416315894968828,
+    "from_low": 90.90208172706244,
+    "streak": 1
+   },
+   {
+    "ticker": "SLVM",
+    "market_cap": 1568939189.0,
+    "industry": "Paper",
+    "shortable": true,
+    "vs_industry": 17.815151257278806,
+    "pre": null,
+    "pre_volume": null,
+    "stories": 0,
+    "earnings": [
+     "2026-11-06 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 19.080737828847916,
+    "sd": 2.2871047179016326,
+    "z": 8.342747789158542,
+    "vol_x": 2.5899304294205097,
+    "close": 39.38,
+    "gap": 14.575143634714237,
+    "range_pos": 0.6550387596899234,
+    "r5": 2.3205445544554504,
+    "r20": 1.2863705972435024,
+    "from_high": -30.66901408450703,
+    "from_low": 29.53947368421055,
+    "streak": 1
+   },
+   {
+    "ticker": "FROG",
+    "market_cap": 12450966385.0,
+    "industry": "Computer Software: Prepackaged Software",
+    "shortable": true,
+    "vs_industry": 35.657936162065425,
+    "pre": 1.3216478510596152,
+    "pre_volume": 899.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 35.3256499597963,
+    "sd": 4.606618329098095,
+    "z": 7.668455998765698,
+    "vol_x": 3.409772060505364,
+    "close": 100.98,
+    "gap": 27.29831144465289,
+    "range_pos": 0.9053000900425374,
+    "r5": -24.496610340989577,
+    "r20": -23.269922879177372,
+    "from_high": -4.519486610224299,
+    "from_low": 196.56387665198244,
+    "streak": 1
+   },
+   {
+    "ticker": "FLY",
+    "market_cap": 3475320430.0,
+    "industry": "Military/Government/Technical",
+    "shortable": true,
+    "vs_industry": 33.639136773266536,
+    "pre": 0.19267822736031004,
+    "pre_volume": 314216.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-10 after close"
+    ],
+    "date": "2026-11-06",
+    "r1": 36.803953871499175,
+    "sd": 4.578470304978909,
+    "z": 8.038482597883467,
+    "vol_x": 4.7105601123886265,
+    "close": 20.76,
+    "gap": 12.718286655683686,
+    "range_pos": 0.9738270308123252,
+    "r5": -23.62858580775038,
+    "r20": -26.58442186744073,
+    "from_high": -66.60768859578575,
+    "from_low": 43.71754932502596,
+    "streak": 1
+   },
+   {
+    "ticker": "EVC",
+    "market_cap": 831056187.0,
+    "industry": "Broadcasting",
+    "shortable": true,
+    "vs_industry": 20.861632577559337,
+    "pre": 0.7786429365962189,
+    "pre_volume": 2691.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 19.866666666666678,
+    "sd": 2.7303389147713344,
+    "z": 7.276263968251907,
+    "vol_x": 2.2321096855137,
+    "close": 8.99,
+    "gap": -7.466666666666666,
+    "range_pos": 0.9557522123893807,
+    "r5": 19.61722488038278,
+    "r20": 10.619469026548668,
+    "from_high": -34.57059679767104,
+    "from_low": 277.73109243697485,
+    "streak": 5
+   },
+   {
+    "ticker": "CCSI",
+    "market_cap": 790720384.0,
+    "industry": "Computer Software: Prepackaged Software",
+    "shortable": true,
+    "vs_industry": 18.648710660728124,
+    "pre": null,
+    "pre_volume": null,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 18.316424458459004,
+    "sd": 2.6978639993781126,
+    "z": 6.789231948934839,
+    "vol_x": 3.077024194527242,
+    "close": 43.15,
+    "gap": 11.79051275020566,
+    "range_pos": 0.9276546091015164,
+    "r5": -3.236932873441223,
+    "r20": -0.4096122337520436,
+    "from_high": -0.7132995858260549,
+    "from_low": 113.61386138613861,
+    "streak": 1
+   },
+   {
+    "ticker": "LASR",
+    "market_cap": 2193381290.0,
+    "industry": "Semiconductors",
+    "shortable": true,
+    "vs_industry": 23.257365814558664,
+    "pre": 0.9994739610731163,
+    "pre_volume": 1838.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": 29.584185412406285,
+    "sd": 3.65223886193708,
+    "z": 8.100287667580258,
+    "vol_x": 2.542932362235645,
+    "close": 38.02,
+    "gap": 25.71574642126788,
+    "range_pos": 0.8547008547008552,
+    "r5": -24.788515765188414,
+    "r20": -23.41425215348474,
+    "from_high": -56.27372052903967,
+    "from_low": 35.54367201426025,
+    "streak": 1
+   },
+   {
+    "ticker": "KRT",
+    "market_cap": 668509922.0,
+    "industry": "Plastic Products",
+    "shortable": true,
+    "vs_industry": -34.433523981110845,
+    "pre": 1.6696481812760844,
+    "pre_volume": 290.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -34.79782270606532,
+    "sd": 1.6329167645720126,
+    "z": -21.310224416237055,
+    "vol_x": 4.472803087042043,
+    "close": 33.54,
+    "gap": -18.312597200622072,
+    "range_pos": 0.04648705758055974,
+    "r5": -5.4237911380768615,
+    "r20": -4.386617100371748,
+    "from_high": -40.172739175261405,
+    "from_low": 62.73574606624908,
+    "streak": -2
+   },
+   {
+    "ticker": "PRAA",
+    "market_cap": 486412238.0,
+    "industry": "Finance Companies",
+    "shortable": true,
+    "vs_industry": -37.06184425004158,
+    "pre": 0.6625386996903959,
+    "pre_volume": 1978.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -36.728697355533804,
+    "sd": 2.2333550251203462,
+    "z": -16.445525651952558,
+    "vol_x": 4.616069952445979,
+    "close": 12.92,
+    "gap": -21.49853085210578,
+    "range_pos": 0.047892720306513405,
+    "r5": 1.8962075848303561,
+    "r20": 0.49212598425196763,
+    "from_high": -42.705099778270515,
+    "from_low": 26.04878048780488,
+    "streak": -1
+   },
+   {
+    "ticker": "KOP",
+    "market_cap": 565644999.0,
+    "industry": "Forest Products",
+    "shortable": true,
+    "vs_industry": -22.214962814126743,
+    "pre": null,
+    "pre_volume": null,
+    "stories": 0,
+    "earnings": [
+     "2026-11-06 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -24.394550958627647,
+    "sd": 1.909508108815021,
+    "z": -12.775306292763595,
+    "vol_x": 2.4905613465940952,
+    "close": 29.97,
+    "gap": -25.668516649848637,
+    "range_pos": 0.4680761544125378,
+    "r5": -5.303392259913997,
+    "r20": -10.397830018083187,
+    "from_high": -43.45283018867925,
+    "from_low": 19.87999999999999,
+    "streak": -2
+   },
+   {
+    "ticker": "IRTC",
+    "market_cap": 3033029132.0,
+    "industry": "Medical/Dental Instruments",
+    "shortable": true,
+    "vs_industry": -29.911337439046136,
+    "pre": 0.5098647749944618,
+    "pre_volume": 224.0,
+    "stories": 1,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -30.70128274060988,
+    "sd": 2.666543315451099,
+    "z": -11.51351360494069,
+    "vol_x": 10.267126191080033,
+    "close": 90.22,
+    "gap": -15.235425147860814,
+    "range_pos": 0.14709193245778615,
+    "r5": 1.8701095461658879,
+    "r20": 26.890838206627677,
+    "from_high": -53.12516236296565,
+    "from_low": 4.54229432213209,
+    "streak": -2
+   },
+   {
+    "ticker": "NRDS",
+    "market_cap": 500200523.0,
+    "industry": "EDP Services",
+    "shortable": true,
+    "vs_industry": -30.38882593100359,
+    "pre": 1.2674271229404344,
+    "pre_volume": 3512.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -30.97112860892388,
+    "sd": 2.8988731219132458,
+    "z": -10.6838510367377,
+    "vol_x": 3.9293060685764867,
+    "close": 7.89,
+    "gap": -30.796150481189844,
+    "range_pos": 0.144148475814982,
+    "r5": 0.7048458149779835,
+    "r20": 16.7517875383044,
+    "from_high": -51.416256157635466,
+    "from_low": 7.639836289222379,
+    "streak": -2
+   },
+   {
+    "ticker": "ICFI",
+    "market_cap": 1429654814.0,
+    "industry": "Professional Services",
+    "shortable": true,
+    "vs_industry": -14.06854366033214,
+    "pre": null,
+    "pre_volume": null,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -16.460473893898076,
+    "sd": 1.499170850234075,
+    "z": -10.979718483272269,
+    "vol_x": 2.4041307716691804,
+    "close": 79.68,
+    "gap": -15.60075487523589,
+    "range_pos": 0.22274509803921597,
+    "r5": -0.4799666110183676,
+    "r20": 9.859479382630742,
+    "from_high": -20.818841299811176,
+    "from_low": 35.441101478837346,
+    "streak": -4
+   },
+   {
+    "ticker": "HLIO",
+    "market_cap": 1560570000.0,
+    "industry": "Metal Fabrications",
+    "shortable": true,
+    "vs_industry": -22.961167599121246,
+    "pre": 0.8010118043844994,
+    "pre_volume": 371.0,
+    "stories": 1,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -21.05175569978367,
+    "sd": 2.316274649564712,
+    "z": -9.088626732473127,
+    "vol_x": 6.650448883332285,
+    "close": 47.44,
+    "gap": -14.977533699450818,
+    "range_pos": 0.06179066834804475,
+    "r5": -11.96894227951949,
+    "r20": -11.567328918322294,
+    "from_high": -50.0894266175697,
+    "from_low": 1.0436634717784665,
+    "streak": -3
+   },
+   {
+    "ticker": "TILE",
+    "market_cap": 1776786140.0,
+    "industry": "Home Furnishings",
+    "shortable": true,
+    "vs_industry": -16.9608477785,
+    "pre": null,
+    "pre_volume": null,
+    "stories": 0,
+    "earnings": [
+     "2026-11-06 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -18.720253833950295,
+    "sd": 1.9438027105425324,
+    "z": -9.630737591020905,
+    "vol_x": 4.543357091506874,
+    "close": 30.74,
+    "gap": -20.756213643574828,
+    "range_pos": 0.4218181818181814,
+    "r5": 2.576620558719833,
+    "r20": 8.58455354579386,
+    "from_high": -24.730656219392767,
+    "from_low": 25.98360655737706,
+    "streak": -2
+   },
+   {
+    "ticker": "AMN",
+    "market_cap": 1396990775.0,
+    "industry": "Professional Services",
+    "shortable": true,
+    "vs_industry": -21.29006048764875,
+    "pre": 0.5802707930367523,
+    "pre_volume": 101.0,
+    "stories": 1,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -23.681990721214685,
+    "sd": 2.448967002481535,
+    "z": -9.670195922287949,
+    "vol_x": 1.9802119330723627,
+    "close": 36.19,
+    "gap": -9.595107549557158,
+    "range_pos": 0.07065386139037895,
+    "r5": 1.022582019599505,
+    "r20": 33.80361173814901,
+    "from_high": -27.065699314792425,
+    "from_low": 141.75016700066797,
+    "streak": -2
+   },
+   {
+    "ticker": "HALO",
+    "market_cap": 11814856300.0,
+    "industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+    "shortable": true,
+    "vs_industry": -19.471300378473067,
+    "pre": 0.8491749493390044,
+    "pre_volume": 949.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -15.72055953155498,
+    "sd": 1.9619913634673996,
+    "z": -8.012552870657013,
+    "vol_x": 2.8467245352216914,
+    "close": 103.63,
+    "gap": -4.822706571242675,
+    "range_pos": 0.0705209656925031,
+    "r5": -6.266199115718873,
+    "r20": 11.944646758922062,
+    "from_high": -22.66417910447761,
+    "from_low": 69.2609228256431,
+    "streak": -2
+   },
+   {
+    "ticker": "AGCC",
+    "market_cap": 803729595.0,
+    "industry": "Beverages (Production/Distribution)",
+    "shortable": false,
+    "vs_industry": -0.4857174812071485,
+    "pre": null,
+    "pre_volume": null,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-06",
+    "r1": -1.4747191011236005,
+    "sd": 2.9477221122833384,
+    "z": -0.5002910874733937,
+    "vol_x": 9.234876160921493,
+    "close": 14.03,
+    "gap": -0.98314606741573,
+    "range_pos": 0.0,
+    "r5": -6.5310141122415395,
+    "r20": -3.686168413933044,
+    "from_high": -45.46161321671526,
+    "from_low": 197.24576271186442,
+    "streak": -1
+   },
+   {
+    "ticker": "GMED",
+    "market_cap": 9408139637.0,
+    "industry": "Medical/Dental Instruments",
+    "shortable": true,
+    "vs_industry": -11.96791324460522,
+    "pre": 2.9556650246305605,
+    "pre_volume": 494.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -12.757858546168965,
+    "sd": 2.3737870093911977,
+    "z": -5.374474835230039,
+    "vol_x": 6.535521268667183,
+    "close": 71.05,
+    "gap": -9.012770137524562,
+    "range_pos": 0.12523900573613778,
+    "r5": -1.7730068749246208,
+    "r20": 11.059593617891728,
+    "from_high": -29.929238886560317,
+    "from_low": 17.915525682515955,
+    "streak": -2
+   },
+   {
+    "ticker": "AORT",
+    "market_cap": 985119445.0,
+    "industry": "Medical/Dental Instruments",
+    "shortable": true,
+    "vs_industry": -19.423240643955396,
+    "pre": 0.49480455220187736,
+    "pre_volume": 506.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -20.21318594551914,
+    "sd": 2.68700133491522,
+    "z": -7.522581281544807,
+    "vol_x": 5.832309199458409,
+    "close": 20.21,
+    "gap": -12.396367943150398,
+    "range_pos": 0.1437308868501535,
+    "r5": 8.063139931740594,
+    "r20": 19.42479962281942,
+    "from_high": -58.11398963730569,
+    "from_low": 5.480167014613779,
+    "streak": -2
+   },
+   {
+    "ticker": "ARDT",
+    "market_cap": 2436790235.0,
+    "industry": "Hospital/Nursing Management",
+    "shortable": true,
+    "vs_industry": 10.36100103211921,
+    "pre": 2.543352601156057,
+    "pre_volume": 1808.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-06",
+    "r1": 8.805031446540879,
+    "sd": 3.7195521031751917,
+    "z": 2.3672289572243046,
+    "vol_x": 5.811815625288997,
+    "close": 17.3,
+    "gap": -0.37735849056603765,
+    "range_pos": 0.8210023866348449,
+    "r5": 29.268292682926834,
+    "r20": 43.63143631436315,
+    "from_high": -2.121640735502117,
+    "from_low": 124.38391699092088,
+    "streak": 3
+   },
+   {
+    "ticker": "DKNG",
+    "market_cap": 9189364428.0,
+    "industry": "Services-Misc. Amusement & Recreation",
+    "shortable": true,
+    "vs_industry": -21.056571436886006,
+    "pre": -2.9535386277687814,
+    "pre_volume": 182314.0,
+    "stories": 2,
+    "earnings": [
+     "2026-11-05 time not given"
+    ],
+    "date": "2026-11-06",
+    "r1": -21.30102040816326,
+    "sd": 3.0814108147170782,
+    "z": -6.91274928562845,
+    "vol_x": 5.677312671503757,
+    "close": 18.51,
+    "gap": -26.27551020408163,
+    "range_pos": 0.875000000000001,
+    "r5": 13.513513513513509,
+    "r20": 18.36940110719678,
+    "from_high": -49.94591671173606,
+    "from_low": 11.842900302114812,
+    "streak": -1
+   },
+   {
+    "ticker": "CEG",
+    "market_cap": 88559129381.0,
+    "industry": "Electric Utilities: Central",
+    "shortable": true,
+    "vs_industry": 4.430296871713047,
+    "pre": 1.7523504700940329,
+    "pre_volume": 128180.0,
+    "stories": 1,
+    "earnings": [
+     "2026-11-09 before open"
+    ],
+    "date": "2026-11-06",
+    "r1": 4.297934487794697,
+    "sd": 3.1007711219368446,
+    "z": 1.3860856924873786,
+    "vol_x": 1.531744385819038,
+    "close": 249.95,
+    "gap": 2.670561235134583,
+    "range_pos": 0.7034336556065903,
+    "r5": -9.422480913145359,
+    "r20": -15.932928754341036,
+    "from_high": -34.358422186039185,
+    "from_low": 9.325110440449635,
+    "streak": 1
+   },
+   {
+    "ticker": "KKR",
+    "market_cap": 86618244954.0,
+    "industry": "Investment Managers",
+    "shortable": true,
+    "vs_industry": -1.967754146064471,
+    "pre": 1.4199834162520686,
+    "pre_volume": 12554.0,
+    "stories": 1,
+    "earnings": [
+     "2026-11-09 before open"
+    ],
+    "date": "2026-11-06",
+    "r1": -1.8514750762970378,
+    "sd": 2.1936661072968757,
+    "z": -0.8440095191052116,
+    "vol_x": 1.0086403568483764,
+    "close": 96.48,
+    "gap": -0.8341810783316306,
+    "range_pos": 0.23446893787575426,
+    "r5": 2.5881861824253782,
+    "r20": 9.75882090218847,
+    "from_high": -33.38856669428335,
+    "from_low": 16.70497157372688,
+    "streak": -2
+   },
+   {
+    "ticker": "B",
+    "market_cap": 66781760301.0,
+    "industry": "Precious Metals",
+    "shortable": true,
+    "vs_industry": -2.293345274841263,
+    "pre": 2.2103057199210907,
+    "pre_volume": 93862.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-09 before open"
+    ],
+    "date": "2026-11-06",
+    "r1": 0.5453644025780857,
+    "sd": 2.6776011581473735,
+    "z": 0.20367648890450218,
+    "vol_x": 1.259321387017771,
+    "close": 40.56,
+    "gap": -1.586514625681712,
+    "range_pos": 0.7730496453900713,
+    "r5": 4.318593224722012,
+    "r20": 0.8752188047011833,
+    "from_high": -25.8365331870543,
+    "from_low": 26.355140186915893,
+    "streak": 3
+   },
+   {
+    "ticker": "FERG",
+    "market_cap": 45199260063.0,
+    "industry": "Miscellaneous",
+    "shortable": true,
+    "vs_industry": -1.2318397578801377,
+    "pre": null,
+    "pre_volume": null,
+    "stories": 1,
+    "earnings": [
+     "2026-11-09 before open"
+    ],
+    "date": "2026-11-06",
+    "r1": -0.8274984086569126,
+    "sd": 1.6182949464683607,
+    "z": -0.511339672945763,
+    "vol_x": 1.6029736611464853,
+    "close": 233.7,
+    "gap": -1.277318056439647,
+    "range_pos": 0.4261501210653736,
+    "r5": -1.9962570180910744,
+    "r20": 8.729755917501048,
+    "from_high": -13.967015167132967,
+    "from_low": 10.168293027860265,
+    "streak": -2
+   },
+   {
+    "ticker": "IX",
+    "market_cap": 37918107179.0,
+    "industry": "Diversified Financial Services",
+    "shortable": true,
+    "vs_industry": -2.5176543656547645,
+    "pre": null,
+    "pre_volume": null,
+    "stories": 0,
+    "earnings": [
+     "2026-11-09 before open"
+    ],
+    "date": "2026-11-06",
+    "r1": -2.7622767857142905,
+    "sd": 1.4497211242652848,
+    "z": -1.905384931956624,
+    "vol_x": 2.1047996071326414,
+    "close": 34.85,
+    "gap": -3.0970982142857317,
+    "range_pos": 0.4776119402985067,
+    "r5": -4.042838018741623,
+    "r20": -2.3167075497410594,
+    "from_high": -17.787213965557914,
+    "from_low": 42.65247646336472,
+    "streak": -2
+   }
+  ],
+  "industry_moves": {
+   "AGCC": -0.989,
+   "AMN": -2.392,
+   "AORT": -0.79,
+   "ARDT": -1.556,
+   "B": 2.839,
+   "CCSI": -0.332,
+   "CEG": -0.132,
+   "DKNG": -0.244,
+   "EVC": -0.995,
+   "FERG": 0.404,
+   "FLGT": 0.349,
+   "FLY": 3.165,
+   "FROG": -0.332,
+   "GMED": -0.79,
+   "HALO": 3.751,
+   "HLIO": 1.909,
+   "IBEX": -0.582,
+   "ICFI": -2.392,
+   "IRTC": -0.79,
+   "IX": -0.245,
+   "KKR": 0.116,
+   "KOP": -2.18,
+   "KRMN": 3.165,
+   "KRT": -0.364,
+   "LASR": 6.327,
+   "NRDS": -0.582,
+   "PRAA": 0.333,
+   "SLVM": 1.266,
+   "TILE": -1.759,
+   "TMDX": -0.15
+  },
+  "mentions": {
+   "CON": 1,
+   "BKD": 1,
+   "DVN": 2,
+   "NVDA": 1,
+   "SKM": 1,
+   "HUM": 2,
+   "COP": 1,
+   "BKV": 1,
+   "ASIX": 1,
+   "DASH": 1,
+   "MCD": 1,
+   "UBER": 2,
+   "APA": 1,
+   "AMN": 1,
+   "SOHU": 1,
+   "SMA": 1,
+   "HUN": 1,
+   "COAG": 1,
+   "OLLI": 1,
+   "LHX": 1,
+   "SON": 1,
+   "VSAT": 1,
+   "LKQ": 1,
+   "FERG": 1,
+   "GHM": 1,
+   "LUNR": 1,
+   "BNY": 1,
+   "TW": 1,
+   "AMD": 2,
+   "IAM": 2,
+   "KTOS": 1,
+   "GCMG": 1,
+   "CRWV": 1,
+   "LMT": 1,
+   "TDY": 1,
+   "RY": 1,
+   "AKAM": 3,
+   "IBM": 1,
+   "ASST": 1,
+   "DCTH": 2,
+   "MTD": 3,
+   "ENPH": 1,
+   "VMC": 1,
+   "O": 1,
+   "ALL": 2,
+   "MET": 1,
+   "KSPI": 2,
+   "ADSK": 1,
+   "LINC": 2,
+   "CBK": 1,
+   "CAH": 1,
+   "DB": 1,
+   "KMI": 1,
+   "HLT": 1,
+   "E": 1,
+   "TS": 1,
+   "EBS": 1,
+   "RACE": 1,
+   "APTV": 1,
+   "HOOD": 1,
+   "AIR": 1,
+   "SIRI": 2,
+   "NTRA": 1,
+   "SNY": 2,
+   "KKR": 1,
+   "CEG": 1,
+   "OR": 1,
+   "G": 1,
+   "AI": 1,
+   "DAL": 1,
+   "UCB": 2,
+   "AMAT": 1,
+   "WFC": 1,
+   "GS": 2,
+   "ROP": 1,
+   "ING": 1,
+   "UBS": 2,
+   "DIS": 1,
+   "ABNB": 1,
+   "CE": 1,
+   "TRUP": 1,
+   "MA": 1,
+   "IBRX": 4,
+   "ANET": 1,
+   "GSL": 1,
+   "MAIR": 1,
+   "GEV": 1,
+   "NGNE": 1,
+   "ITT": 1,
+   "HRB": 1,
+   "HLIO": 1,
+   "IMVT": 2,
+   "CW": 1,
+   "AESI": 1,
+   "SBET": 1,
+   "IRTC": 1,
+   "PRIM": 1,
+   "OKLO": 1,
+   "BNTX": 1,
+   "AURA": 1,
+   "ASTS": 1,
+   "ZG": 1,
+   "TNGX": 2,
+   "UNIT": 8,
+   "AMZN": 2,
+   "CLX": 1,
+   "TTWO": 2,
+   "XOM": 1,
+   "ICE": 1,
+   "MS": 1,
+   "WELL": 1,
+   "MUR": 1,
+   "BCAX": 1,
+   "CYTK": 1,
+   "DKNG": 2,
+   "FSLR": 1,
+   "CPNG": 1,
+   "SN": 1,
+   "Z": 1,
+   "FLR": 2,
+   "VST": 1,
+   "AMKR": 1,
+   "GNRC": 1,
+   "VCEL": 1,
+   "SOBO": 1,
+   "FRVO": 1,
+   "DK": 1,
+   "EXR": 1,
+   "PRAX": 1,
+   "VIA": 1,
+   "DBX": 1,
+   "JBL": 1,
+   "TTAM": 1,
+   "TER": 1,
+   "NESR": 1,
+   "ARW": 2,
+   "WTTR": 1,
+   "ASH": 1,
+   "PIPR": 2,
+   "BETA": 1,
+   "IONS": 1,
+   "VRDN": 1,
+   "CELC": 1,
+   "CF": 1,
+   "IBP": 1,
+   "MC": 1,
+   "MGNI": 1,
+   "BLSH": 1,
+   "QXO": 2,
+   "SMTC": 1,
+   "VKTX": 1,
+   "BEN": 1,
+   "BOOT": 1,
+   "CHTR": 2,
+   "BRC": 1,
+   "KGS": 1,
+   "AMG": 1,
+   "TFX": 1,
+   "SBUX": 1,
+   "NRG": 2,
+   "AMRZ": 1,
+   "CRL": 1,
+   "CHH": 1,
+   "MANE": 1,
+   "AIZ": 1,
+   "ZBH": 1,
+   "OCTV": 1,
+   "WULF": 1,
+   "BRO": 1,
+   "EVRG": 1,
+   "MORN": 1,
+   "TRMB": 1,
+   "SYK": 2,
+   "ELF": 1,
+   "WMG": 1,
+   "CRCL": 1,
+   "ZBRA": 1,
+   "UI": 1,
+   "PLD": 1,
+   "NTSK": 1,
+   "PODD": 1,
+   "KMB": 1,
+   "NTNX": 1,
+   "SARO": 1,
+   "TPB": 1,
+   "PRU": 1,
+   "ARES": 2,
+   "EXPE": 1,
+   "LDOS": 2,
+   "KR": 1,
+   "ALB": 1,
+   "GPN": 1,
+   "JEF": 1,
+   "SLF": 1,
+   "SBAC": 1,
+   "SGI": 2,
+   "TGTX": 1,
+   "NXT": 1,
+   "AXON": 1,
+   "SWK": 1,
+   "EC": 1,
+   "MDT": 1,
+   "AU": 1,
+   "AIG": 1,
+   "RGLD": 1,
+   "MTZ": 1,
+   "UNM": 1,
+   "AFRM": 1,
+   "PNFP": 1,
+   "COIN": 1,
+   "FISV": 1,
+   "SO": 1,
+   "BLK": 1,
+   "FTAI": 1,
+   "IT": 1,
+   "ABBV": 1,
+   "GLW": 1,
+   "UTHR": 1,
+   "NTR": 1,
+   "PANW": 1,
+   "CBRS": 1,
+   "PPL": 1,
+   "SPCX": 1,
+   "LLY": 1,
+   "TAP": 1,
+   "KDP": 1,
+   "FMS": 1,
+   "BMY": 1,
+   "GSK": 1,
+   "PRGO": 1,
+   "QNT": 1,
+   "GLUE": 1
+  },
+  "earnings": {
+   "TM": [
+    "2026-11-05 time not given"
+   ],
+   "COP": [
+    "2026-11-05 time not given"
+   ],
+   "SONY": [
+    "2026-11-05 time not given"
+   ],
+   "MNST": [
+    "2026-11-05 time not given"
+   ],
+   "PH": [
+    "2026-11-05 time not given"
+   ],
+   "ABNB": [
+    "2026-11-05 time not given"
+   ],
+   "SO": [
+    "2026-11-05 time not given"
+   ],
+   "DUK": [
+    "2026-11-05 time not given"
+   ],
+   "CNQ": [
+    "2026-11-05 time not given"
+   ],
+   "NET": [
+    "2026-11-05 time not given"
+   ],
+   "CI": [
+    "2026-11-05 time not given"
+   ],
+   "EOG": [
+    "2026-11-05 time not given"
+   ],
+   "SPG": [
+    "2026-11-05 time not given"
+   ],
+   "APD": [
+    "2026-11-05 time not given"
+   ],
+   "KMB": [
+    "2026-11-05 time not given"
+   ],
+   "CAH": [
+    "2026-11-05 time not given"
+   ],
+   "TRP": [
+    "2026-11-05 time not given"
+   ],
+   "WPM": [
+    "2026-11-05 time not given"
+   ],
+   "CMI": [
+    "2026-11-05 time not given"
+   ],
+   "BDX": [
+    "2026-11-05 time not given"
+   ],
+   "TRGP": [
+    "2026-11-05 time not given"
+   ],
+   "VMRK": [
+    "2026-11-05 time not given"
+   ],
+   "SRE": [
+    "2026-11-05 time not given"
+   ],
+   "AU": [
+    "2026-11-05 time not given"
+   ],
+   "ONC": [
+    "2026-11-05 time not given"
+   ],
+   "DVN": [
+    "2026-11-05 time not given"
+   ],
+   "MT": [
+    "2026-11-05 time not given"
+   ],
+   "NTRA": [
+    "2026-11-05 time not given"
+   ],
+   "ED": [
+    "2026-11-05 time not given"
+   ],
+   "ROK": [
+    "2026-11-05 time not given"
+   ],
+   "LYV": [
+    "2026-11-05 time not given"
+   ],
+   "TEAM": [
+    "2026-11-05 time not given"
+   ],
+   "MTD": [
+    "2026-11-05 time not given"
+   ],
+   "GMAB": [
+    "2026-11-05 time not given"
+   ],
+   "ZTS": [
+    "2026-11-05 time not given"
+   ],
+   "MCHP": [
+    "2026-11-05 time not given"
+   ],
+   "IRM": [
+    "2026-11-05 time not given"
+   ],
+   "AEE": [
+    "2026-11-05 time not given"
+   ],
+   "DTE": [
+    "2026-11-05 time not given"
+   ],
+   "PBA": [
+    "2026-11-05 time not given"
+   ],
+   "VRSK": [
+    "2026-11-05 time not given"
+   ],
+   "TPR": [
+    "2026-11-05 time not given"
+   ],
+   "GPN": [
+    "2026-11-05 time not given"
+   ],
+   "AXON": [
+    "2026-11-05 time not given"
+   ],
+   "FWONA": [
+    "2026-11-05 time not given"
+   ],
+   "FWONK": [
+    "2026-11-05 time not given"
+   ],
+   "AFRM": [
+    "2026-11-05 time not given"
+   ],
+   "USFD": [
+    "2026-11-05 time not given"
+   ],
+   "U": [
+    "2026-11-05 time not given"
+   ],
+   "VTRS": [
+    "2026-11-05 time not given"
+   ],
+   "RL": [
+    "2026-11-05 time not given"
+   ],
+   "EVRG": [
+    "2026-11-05 time not given"
+   ],
+   "GH": [
+    "2026-11-05 time not given"
+   ],
+   "BCE": [
+    "2026-11-05 time not given"
+   ],
+   "RGA": [
+    "2026-11-05 time not given"
+   ],
+   "SBS": [
+    "2026-11-05 time not given"
+   ],
+   "JHX": [
+    "2026-11-05 time not given"
+   ],
+   "MTSI": [
+    "2026-11-05 time not given"
+   ],
+   "LAMR": [
+    "2026-11-05 time not given"
+   ],
+   "SOLV": [
+    "2026-11-05 time not given"
+   ],
+   "IONQ": [
+    "2026-11-05 time not given"
+   ],
+   "TIGO": [
+    "2026-11-05 time not given"
+   ],
+   "REG": [
+    "2026-11-05 time not given"
+   ],
+   "MAIR": [
+    "2026-11-05 time not given"
+   ],
+   "BSY": [
+    "2026-11-05 time not given"
+   ],
+   "AHR": [
+    "2026-11-05 time not given"
+   ],
+   "FROG": [
+    "2026-11-05 time not given"
+   ],
+   "SUZ": [
+    "2026-11-05 time not given"
+   ],
+   "TXRH": [
+    "2026-11-05 time not given"
+   ],
+   "QXO": [
+    "2026-11-05 time not given"
+   ],
+   "AKAM": [
+    "2026-11-05 time not given"
+   ],
+   "HALO": [
+    "2026-11-05 time not given"
+   ],
+   "FNF": [
+    "2026-11-05 time not given"
+   ],
+   "GSAT": [
+    "2026-11-05 time not given"
+   ],
+   "IAG": [
+    "2026-11-05 time not given"
+   ],
+   "CPT": [
+    "2026-11-05 time not given"
+   ],
+   "QNT": [
+    "2026-11-05 time not given"
+   ],
+   "NVMI": [
+    "2026-11-05 time not given"
+   ],
+   "CTRE": [
+    "2026-11-05 time not given"
+   ],
+   "OSCR": [
+    "2026-11-05 time not given"
+   ],
+   "GMED": [
+    "2026-11-05 time not given"
+   ],
+   "LLYVA": [
+    "2026-11-05 time not given"
+   ],
+   "LLYVK": [
+    "2026-11-05 time not given"
+   ],
+   "DKNG": [
+    "2026-11-05 time not given"
+   ],
+   "IREN": [
+    "2026-11-05 time not given"
+   ],
+   "WMS": [
+    "2026-11-05 time not given"
+   ],
+   "ARW": [
+    "2026-11-05 time not given"
+   ],
+   "SARO": [
+    "2026-11-05 time not given"
+   ],
+   "PCTY": [
+    "2026-11-05 time not given"
+   ],
+   "VSAT": [
+    "2026-11-05 time not given"
+   ],
+   "PTGX": [
+    "2026-11-05 time not given"
+   ],
+   "WYNN": [
+    "2026-11-05 time not given"
+   ],
+   "VIRT": [
+    "2026-11-05 time not given"
+   ],
+   "EPAM": [
+    "2026-11-05 time not given"
+   ],
+   "PRMB": [
+    "2026-11-05 time not given"
+   ],
+   "CELH": [
+    "2026-11-05 time not given"
+   ],
+   "DBX": [
+    "2026-11-05 time not given"
+   ],
+   "COMP": [
+    "2026-11-05 time not given"
+   ],
+   "TXG": [
+    "2026-11-05 time not given"
+   ],
+   "LNC": [
+    "2026-11-05 time not given"
+   ],
+   "TAP": [
+    "2026-11-05 time not given"
+   ],
+   "AG": [
+    "2026-11-05 time not given"
+   ],
+   "G": [
+    "2026-11-05 time not given"
+   ],
+   "LOAR": [
+    "2026-11-05 time not given"
+   ],
+   "KTOS": [
+    "2026-11-05 time not given"
+   ],
+   "LNTH": [
+    "2026-11-05 time not given"
+   ],
+   "FTDR": [
+    "2026-11-05 time not given"
+   ],
+   "AUGO": [
+    "2026-11-05 time not given"
+   ],
+   "LYFT": [
+    "2026-11-05 time not given"
+   ],
+   "GIL": [
+    "2026-11-05 time not given"
+   ],
+   "MP": [
+    "2026-11-05 time not given"
+   ],
+   "MIDD": [
+    "2026-11-05 time not given"
+   ],
+   "BBUC": [
+    "2026-11-05 time not given"
+   ],
+   "KRMN": [
+    "2026-11-05 time not given"
+   ],
+   "OTEX": [
+    "2026-11-05 time not given"
+   ],
+   "ACIW": [
+    "2026-11-05 time not given"
+   ],
+   "TFX": [
+    "2026-11-05 time not given"
+   ],
+   "NXST": [
+    "2026-11-05 time not given"
+   ],
+   "IBP": [
+    "2026-11-05 time not given"
+   ],
+   "DOCS": [
+    "2026-11-05 time not given"
+   ],
+   "INGR": [
+    "2026-11-05 time not given"
+   ],
+   "STEP": [
+    "2026-11-05 time not given"
+   ],
+   "VNT": [
+    "2026-11-05 time not given"
+   ],
+   "COGT": [
+    "2026-11-05 time not given"
+   ],
+   "HAE": [
+    "2026-11-05 time not given"
+   ],
+   "OUT": [
+    "2026-11-05 time not given"
+   ],
+   "WTM": [
+    "2026-11-05 time not given"
+   ],
+   "CON": [
+    "2026-11-05 time not given"
+   ],
+   "MAIN": [
+    "2026-11-05 time not given"
+   ],
+   "LFST": [
+    "2026-11-05 time not given"
+   ],
+   "INSW": [
+    "2026-11-05 time not given"
+   ],
+   "HASI": [
+    "2026-11-05 time not given"
+   ],
+   "MRX": [
+    "2026-11-05 time not given"
+   ],
+   "BGC": [
+    "2026-11-05 time not given"
+   ],
+   "PRM": [
+    "2026-11-05 time not given"
+   ],
+   "HHH": [
+    "2026-11-05 time not given"
+   ],
+   "SYNA": [
+    "2026-11-05 time not given"
+   ],
+   "MDA": [
+    "2026-11-05 time not given"
+   ],
+   "NNI": [
+    "2026-11-05 time not given"
+   ],
+   "COLD": [
+    "2026-11-05 time not given"
+   ],
+   "NSIT": [
+    "2026-11-05 time not given"
+   ],
+   "AAOI": [
+    "2026-11-05 time not given"
+   ],
+   "BILL": [
+    "2026-11-05 time not given"
+   ],
+   "PLNT": [
+    "2026-11-05 time not given"
+   ],
+   "APLE": [
+    "2026-11-05 time not given"
+   ],
+   "MC": [
+    "2026-11-05 time not given"
+   ],
+   "MAT": [
+    "2026-11-05 time not given"
+   ],
+   "SPHR": [
+    "2026-11-05 time not given"
+   ],
+   "ICUI": [
+    "2026-11-05 time not given"
+   ],
+   "LION": [
+    "2026-11-05 time not given"
+   ],
+   "KTB": [
+    "2026-11-05 time not given"
+   ],
+   "GPGI": [
+    "2026-11-05 time not given"
+   ],
+   "FA": [
+    "2026-11-05 time not given"
+   ],
+   "WK": [
+    "2026-11-05 time not given"
+   ],
+   "PLSE": [
+    "2026-11-05 time not given"
+   ],
+   "MDU": [
+    "2026-11-05 time not given"
+   ],
+   "CNR": [
+    "2026-11-05 time not given"
+   ],
+   "AMLX": [
+    "2026-11-05 time not given"
+   ],
+   "CORZ": [
+    "2026-11-05 time not given"
+   ],
+   "IOVA": [
+    "2026-11-05 time not given"
+   ],
+   "APPN": [
+    "2026-11-05 time not given"
+   ],
+   "GEO": [
+    "2026-11-05 time not given"
+   ],
+   "ELVN": [
+    "2026-11-05 time not given"
+   ],
+   "IRON": [
+    "2026-11-05 time not given"
+   ],
+   "DIOD": [
+    "2026-11-05 time not given"
+   ],
+   "AVPT": [
+    "2026-11-05 time not given"
+   ],
+   "CPK": [
+    "2026-11-05 time not given"
+   ],
+   "WSC": [
+    "2026-11-05 time not given"
+   ],
+   "DYN": [
+    "2026-11-05 time not given"
+   ],
+   "CENX": [
+    "2026-11-05 time not given"
+   ],
+   "FOUR": [
+    "2026-11-05 time not given"
+   ],
+   "FIGS": [
+    "2026-11-05 time not given"
+   ],
+   "CELC": [
+    "2026-11-05 time not given"
+   ],
+   "AGO": [
+    "2026-11-05 time not given"
+   ],
+   "ALRM": [
+    "2026-11-05 time not given"
+   ],
+   "FSK": [
+    "2026-11-05 time not given"
+   ],
+   "WRBY": [
+    "2026-11-05 time not given"
+   ],
+   "PRVA": [
+    "2026-11-05 time not given"
+   ],
+   "ACMR": [
+    "2026-11-05 time not given"
+   ],
+   "LMND": [
+    "2026-11-05 time not given"
+   ],
+   "SHAK": [
+    "2026-11-05 time not given"
+   ],
+   "TMDX": [
+    "2026-11-05 time not given"
+   ],
+   "ACLS": [
+    "2026-11-05 time not given"
+   ],
+   "FG": [
+    "2026-11-05 time not given"
+   ],
+   "IRTC": [
+    "2026-11-05 time not given"
+   ],
+   "SPNT": [
+    "2026-11-05 time not given"
+   ],
+   "CARG": [
+    "2026-11-05 time not given"
+   ],
+   "TDC": [
+    "2026-11-05 time not given"
+   ],
+   "CALY": [
+    "2026-11-05 time not given"
+   ],
+   "NMIH": [
+    "2026-11-05 time not given"
+   ],
+   "SHOO": [
+    "2026-11-05 time not given"
+   ],
+   "BTE": [
+    "2026-11-05 time not given"
+   ],
+   "ZLAB": [
+    "2026-11-05 time not given"
+   ],
+   "VCEL": [
+    "2026-11-05 time not given"
+   ],
+   "XERS": [
+    "2026-11-05 time not given"
+   ],
+   "AAP": [
+    "2026-11-05 time not given"
+   ],
+   "LCLN": [
+    "2026-11-05 time not given"
+   ],
+   "GRDN": [
+    "2026-11-05 time not given"
+   ],
+   "SKWD": [
+    "2026-11-05 time not given"
+   ],
+   "IMAX": [
+    "2026-11-05 time not given"
+   ],
+   "PVLA": [
+    "2026-11-05 time not given"
+   ],
+   "BOBS": [
+    "2026-11-05 time not given"
+   ],
+   "PTON": [
+    "2026-11-05 time not given"
+   ],
+   "MBX": [
+    "2026-11-05 time not given"
+   ],
+   "BHF": [
+    "2026-11-05 time not given"
+   ],
+   "PURR": [
+    "2026-11-05 time not given"
+   ],
+   "PAYO": [
+    "2026-11-05 time not given"
+   ],
+   "NOG": [
+    "2026-11-05 time not given"
+   ],
+   "PLUS": [
+    "2026-11-05 time not given"
+   ],
+   "DNOW": [
+    "2026-11-05 time not given"
+   ],
+   "LCII": [
+    "2026-11-05 time not given"
+   ],
+   "CLDX": [
+    "2026-11-05 time not given"
+   ],
+   "PENN": [
+    "2026-11-05 time not given"
+   ],
+   "TIC": [
+    "2026-11-05 time not given"
+   ],
+   "NTCT": [
+    "2026-11-05 time not given"
+   ],
+   "TRLV": [
+    "2026-11-05 time not given"
+   ],
+   "IMNM": [
+    "2026-11-05 time not given"
+   ],
+   "LASR": [
+    "2026-11-05 time not given"
+   ],
+   "SMR": [
+    "2026-11-05 time not given"
+   ],
+   "NWN": [
+    "2026-11-05 time not given"
+   ],
+   "DXPE": [
+    "2026-11-05 time not given"
+   ],
+   "VERA": [
+    "2026-11-05 time not given"
+   ],
+   "FIVN": [
+    "2026-11-05 time not given"
+   ],
+   "GCT": [
+    "2026-11-05 time not given"
+   ],
+   "MH": [
+    "2026-11-05 time not given"
+   ],
+   "CTRI": [
+    "2026-11-05 time not given"
+   ],
+   "DCO": [
+    "2026-11-05 time not given"
+   ],
+   "PBH": [
+    "2026-11-05 time not given"
+   ],
+   "ARHS": [
+    "2026-11-05 time not given"
+   ],
+   "LPG": [
+    "2026-11-05 time not given"
+   ],
+   "SOUN": [
+    "2026-11-05 time not given"
+   ],
+   "SVM": [
+    "2026-11-05 time not given"
+   ],
+   "AGM": [
+    "2026-11-05 time not given"
+   ],
+   "TGLS": [
+    "2026-11-05 time not given"
+   ],
+   "ZBIO": [
+    "2026-11-05 time not given"
+   ],
+   "SRPT": [
+    "2026-11-05 time not given"
+   ],
+   "MAZE": [
+    "2026-11-05 time not given"
+   ],
+   "BKV": [
+    "2026-11-05 time not given"
+   ],
+   "KRP": [
+    "2026-11-05 time not given"
+   ],
+   "XRAY": [
+    "2026-11-05 time not given"
+   ],
+   "NGL": [
+    "2026-11-05 time not given"
+   ],
+   "CERT": [
+    "2026-11-05 time not given"
+   ],
+   "PRKS": [
+    "2026-11-05 time not given"
+   ],
+   "ATEN": [
+    "2026-11-05 time not given"
+   ],
+   "NVAX": [
+    "2026-11-05 time not given"
+   ],
+   "AGIO": [
+    "2026-11-05 time not given"
+   ],
+   "ASTH": [
+    "2026-11-05 time not given"
+   ],
+   "ZD": [
+    "2026-11-05 time not given"
+   ],
+   "GENB": [
+    "2026-11-05 time not given"
+   ],
+   "PRDO": [
+    "2026-11-05 time not given"
+   ],
+   "RZC": [
+    "2026-11-05 time not given"
+   ],
+   "ETON": [
+    "2026-11-05 time not given"
+   ],
+   "DSGR": [
+    "2026-11-05 time not given"
+   ],
+   "SNDA": [
+    "2026-11-05 time not given"
+   ],
+   "GENI": [
+    "2026-11-05 time not given"
+   ],
+   "NTLA": [
+    "2026-11-05 time not given"
+   ],
+   "TRUP": [
+    "2026-11-05 time not given"
+   ],
+   "PDFS": [
+    "2026-11-05 time not given"
+   ],
+   "GEL": [
+    "2026-11-05 time not given"
+   ],
+   "ENOV": [
+    "2026-11-05 time not given"
+   ],
+   "HLIO": [
+    "2026-11-05 time not given"
+   ],
+   "WEN": [
+    "2026-11-05 time not given"
+   ],
+   "MNR": [
+    "2026-11-05 time not given"
+   ],
+   "ANIP": [
+    "2026-11-05 time not given"
+   ],
+   "SVV": [
+    "2026-11-05 time not given"
+   ],
+   "BL": [
+    "2026-11-05 time not given"
+   ],
+   "IQMX": [
+    "2026-11-05 time not given"
+   ],
+   "HIMX": [
+    "2026-11-05 time not given"
+   ],
+   "CBL": [
+    "2026-11-05 time not given"
+   ],
+   "PCRX": [
+    "2026-11-05 before open"
+   ],
+   "GPCR": [
+    "2026-11-05 time not given"
+   ],
+   "EVCM": [
+    "2026-11-05 time not given"
+   ],
+   "SG": [
+    "2026-11-05 time not given"
+   ],
+   "ICFI": [
+    "2026-11-05 time not given"
+   ],
+   "KRSA": [
+    "2026-11-05 time not given"
+   ],
+   "AMN": [
+    "2026-11-05 time not given"
+   ],
+   "ATLC": [
+    "2026-11-05 time not given"
+   ],
+   "DMLP": [
+    "2026-11-05 time not given"
+   ],
+   "MBC": [
+    "2026-11-05 time not given"
+   ],
+   "LBRX": [
+    "2026-11-05 time not given"
+   ],
+   "WD": [
+    "2026-11-05 time not given"
+   ],
+   "LSPD": [
+    "2026-11-05 time not given"
+   ],
+   "ARLO": [
+    "2026-11-05 time not given"
+   ],
+   "VYX": [
+    "2026-11-05 time not given"
+   ],
+   "CRON": [
+    "2026-11-05 time not given"
+   ],
+   "OPEN": [
+    "2026-11-05 time not given"
+   ],
+   "CRSR": [
+    "2026-11-05 time not given"
+   ],
+   "GHRS": [
+    "2026-11-05 time not given"
+   ],
+   "INOD": [
+    "2026-11-05 time not given"
+   ],
+   "MNKD": [
+    "2026-11-05 time not given"
+   ],
+   "CRAI": [
+    "2026-11-05 time not given"
+   ],
+   "NUTX": [
+    "2026-11-05 time not given"
+   ],
+   "SGP": [
+    "2026-11-05 time not given"
+   ],
+   "SLN": [
+    "2026-11-05 time not given"
+   ],
+   "IE": [
+    "2026-11-05 time not given"
+   ],
+   "AMPH": [
+    "2026-11-05 time not given"
+   ],
+   "MSDL": [
+    "2026-11-05 time not given"
+   ],
+   "RHLD": [
+    "2026-11-05 time not given"
+   ],
+   "BJRI": [
+    "2026-11-05 time not given"
+   ],
+   "TNDM": [
+    "2026-11-05 time not given"
+   ],
+   "HEPS": [
+    "2026-11-05 time not given"
+   ],
+   "KEEL": [
+    "2026-11-05 time not given"
+   ],
+   "STRA": [
+    "2026-11-05 time not given"
+   ],
+   "ECVT": [
+    "2026-11-05 time not given"
+   ],
+   "VISN": [
+    "2026-11-05 time not given"
+   ],
+   "JANX": [
+    "2026-11-05 time not given"
+   ],
+   "REF": [
+    "2026-11-05 time not given"
+   ],
+   "VSTM": [
+    "2026-11-05 time not given"
+   ],
+   "YELP": [
+    "2026-11-05 time not given"
+   ],
+   "MMI": [
+    "2026-11-05 time not given"
+   ],
+   "GLIBA": [
+    "2026-11-05 time not given"
+   ],
+   "GLIBK": [
+    "2026-11-05 time not given"
+   ],
+   "FUN": [
+    "2026-11-05 time not given"
+   ],
+   "LOMA": [
+    "2026-11-05 time not given"
+   ],
+   "WLDN": [
+    "2026-11-05 time not given"
+   ],
+   "CSTL": [
+    "2026-11-05 time not given"
+   ],
+   "AORT": [
+    "2026-11-05 time not given"
+   ],
+   "TDAY": [
+    "2026-11-05 time not given"
+   ],
+   "CYRX": [
+    "2026-11-05 time not given"
+   ],
+   "ROCK": [
+    "2026-11-05 time not given"
+   ],
+   "GSBD": [
+    "2026-11-05 time not given"
+   ],
+   "PLTK": [
+    "2026-11-05 time not given"
+   ],
+   "GPRE": [
+    "2026-11-05 time not given"
+   ],
+   "OMDA": [
+    "2026-11-05 time not given"
+   ],
+   "GHM": [
+    "2026-11-05 time not given"
+   ],
+   "BBDC": [
+    "2026-11-05 time not given"
+   ],
+   "PSIX": [
+    "2026-11-05 time not given"
+   ],
+   "GLUE": [
+    "2026-11-05 time not given"
+   ],
+   "WEST": [
+    "2026-11-05 time not given"
+   ],
+   "CRVS": [
+    "2026-11-05 time not given"
+   ],
+   "AIP": [
+    "2026-11-05 time not given"
+   ],
+   "BKSY": [
+    "2026-11-05 time not given"
+   ],
+   "SCSC": [
+    "2026-11-05 time not given"
+   ],
+   "KRO": [
+    "2026-11-05 time not given"
+   ],
+   "ABX": [
+    "2026-11-05 time not given"
+   ],
+   "NABL": [
+    "2026-11-05 time not given"
+   ],
+   "OXLC": [
+    "2026-11-05 time not given"
+   ],
+   "PAR": [
+    "2026-11-05 time not given"
+   ],
+   "MFIC": [
+    "2026-11-05 time not given"
+   ],
+   "GOOS": [
+    "2026-11-05 time not given"
+   ],
+   "LTGO": [
+    "2026-11-05 time not given"
+   ],
+   "EVC": [
+    "2026-11-05 time not given"
+   ],
+   "TRIP": [
+    "2026-11-05 time not given"
+   ],
+   "ASTE": [
+    "2026-11-05 time not given"
+   ],
+   "KBDC": [
+    "2026-11-05 time not given"
+   ],
+   "LXRX": [
+    "2026-11-05 time not given"
+   ],
+   "CCSI": [
+    "2026-11-05 time not given"
+   ],
+   "FDUS": [
+    "2026-11-05 time not given"
+   ],
+   "CGBD": [
+    "2026-11-05 time not given"
+   ],
+   "NXDR": [
+    "2026-11-05 time not given"
+   ],
+   "COLL": [
+    "2026-11-05 time not given"
+   ],
+   "FOXF": [
+    "2026-11-05 time not given"
+   ],
+   "RIGL": [
+    "2026-11-05 time not given"
+   ],
+   "CGEM": [
+    "2026-11-05 time not given"
+   ],
+   "IRWD": [
+    "2026-11-05 time not given"
+   ],
+   "DNA": [
+    "2026-11-05 time not given"
+   ],
+   "DNUT": [
+    "2026-11-05 time not given"
+   ],
+   "CLDT": [
+    "2026-11-05 time not given"
+   ],
+   "HSHP": [
+    "2026-11-05 time not given"
+   ],
+   "AOSL": [
+    "2026-11-05 time not given"
+   ],
+   "SANA": [
+    "2026-11-05 time not given"
+   ],
+   "BFS": [
+    "2026-11-05 time not given"
+   ],
+   "GRNT": [
+    "2026-11-05 time not given"
+   ],
+   "CARS": [
+    "2026-11-05 time not given"
+   ],
+   "ACHV": [
+    "2026-11-05 time not given"
+   ],
+   "VTEX": [
+    "2026-11-05 time not given"
+   ],
+   "SABR": [
+    "2026-11-05 time not given"
+   ],
+   "AURA": [
+    "2026-11-05 after close"
+   ],
+   "NVRI": [
+    "2026-11-05 time not given"
+   ],
+   "KRT": [
+    "2026-11-05 time not given"
+   ],
+   "FLGT": [
+    "2026-11-05 time not given"
+   ],
+   "IBEX": [
+    "2026-11-05 time not given"
+   ],
+   "PRTH": [
+    "2026-11-05 time not given"
+   ],
+   "PZZA": [
+    "2026-11-05 time not given"
+   ],
+   "GAU": [
+    "2026-11-05 time not given"
+   ],
+   "EVEX": [
+    "2026-11-05 time not given"
+   ],
+   "LYTS": [
+    "2026-11-05 time not given"
+   ],
+   "OBE": [
+    "2026-11-05 time not given"
+   ],
+   "EOSE": [
+    "2026-11-05 time not given"
+   ],
+   "EDN": [
+    "2026-11-05 time not given"
+   ],
+   "ACRS": [
+    "2026-11-05 time not given"
+   ],
+   "UMAC": [
+    "2026-11-05 time not given"
+   ],
+   "CIM": [
+    "2026-11-05 time not given"
+   ],
+   "CLYM": [
+    "2026-11-05 time not given"
+   ],
+   "EVO": [
+    "2026-11-05 before open"
+   ],
+   "HTZ": [
+    "2026-11-05 time not given"
+   ],
+   "MSIF": [
+    "2026-11-05 time not given"
+   ],
+   "EGY": [
+    "2026-11-05 time not given"
+   ],
+   "ACDC": [
+    "2026-11-05 time not given"
+   ],
+   "GYRE": [
+    "2026-11-05 time not given"
+   ],
+   "RCEL": [
+    "2026-11-05 time not given"
+   ],
+   "LUCK": [
+    "2026-11-05 time not given"
+   ],
+   "EVH": [
+    "2026-11-05 time not given"
+   ],
+   "AGNT": [
+    "2026-11-05 time not given"
+   ],
+   "HY": [
+    "2026-11-05 time not given"
+   ],
+   "HNST": [
+    "2026-11-05 time not given"
+   ],
+   "PTLO": [
+    "2026-11-05 time not given"
+   ],
+   "RGNX": [
+    "2026-11-05 time not given"
+   ],
+   "CBIO": [
+    "2026-11-05 time not given"
+   ],
+   "NRDS": [
+    "2026-11-05 time not given"
+   ],
+   "PANL": [
+    "2026-11-05 time not given"
+   ],
+   "PRAA": [
+    "2026-11-05 time not given"
+   ],
+   "ITIC": [
+    "2026-11-05 time not given"
+   ],
+   "KELYA": [
+    "2026-11-05 time not given"
+   ],
+   "KELYB": [
+    "2026-11-05 time not given"
+   ],
+   "REAX": [
+    "2026-11-05 time not given"
+   ],
+   "CTMX": [
+    "2026-11-05 time not given"
+   ],
+   "STTK": [
+    "2026-11-05 time not given"
+   ],
+   "GNE": [
+    "2026-11-05 time not given"
+   ],
+   "HPP": [
+    "2026-11-05 time not given"
+   ],
+   "TRC": [
+    "2026-11-05 time not given"
+   ],
+   "VHI": [
+    "2026-11-05 time not given"
+   ],
+   "LOCO": [
+    "2026-11-05 time not given"
+   ],
+   "ARKO": [
+    "2026-11-05 time not given"
+   ],
+   "TCI": [
+    "2026-11-05 time not given"
+   ],
+   "SI": [
+    "2026-11-05 time not given"
+   ],
+   "PBYI": [
+    "2026-11-05 time not given"
+   ],
+   "NB": [
+    "2026-11-05 time not given"
+   ],
+   "CLNE": [
+    "2026-11-05 time not given"
+   ],
+   "INDI": [
+    "2026-11-05 time not given"
+   ],
+   "ACTG": [
+    "2026-11-05 time not given"
+   ],
+   "TECX": [
+    "2026-11-05 time not given"
+   ],
+   "FIP": [
+    "2026-11-05 time not given"
+   ],
+   "PRTA": [
+    "2026-11-05 time not given"
+   ],
+   "ASPN": [
+    "2026-11-05 time not given"
+   ],
+   "CCCC": [
+    "2026-11-05 time not given"
+   ],
+   "AVTX": [
+    "2026-11-05 time not given"
+   ],
+   "MBUU": [
+    "2026-11-05 time not given"
+   ],
+   "FNKO": [
+    "2026-11-05 time not given"
+   ],
+   "RZLT": [
+    "2026-11-05 time not given"
+   ],
+   "MOBI": [
+    "2026-11-05 time not given"
+   ],
+   "STLN": [
+    "2026-11-05 time not given"
+   ],
+   "BRBI": [
+    "2026-11-05 time not given"
+   ],
+   "ARL": [
+    "2026-11-05 time not given"
+   ],
+   "TCPC": [
+    "2026-11-05 time not given"
+   ],
+   "ALLO": [
+    "2026-11-05 time not given"
+   ],
+   "NL": [
+    "2026-11-05 time not given"
+   ],
+   "ACB": [
+    "2026-11-05 time not given"
+   ],
+   "ALEC": [
+    "2026-11-05 time not given"
+   ],
+   "MKTW": [
+    "2026-11-05 time not given"
+   ],
+   "WRN": [
+    "2026-11-05 time not given"
+   ],
+   "KRUS": [
+    "2026-11-05 time not given"
+   ],
+   "GTE": [
+    "2026-11-05 time not given"
+   ],
+   "AGEN": [
+    "2026-11-05 time not given"
+   ],
+   "CION": [
+    "2026-11-05 time not given"
+   ],
+   "CMRC": [
+    "2026-11-05 time not given"
+   ],
+   "PESI": [
+    "2026-11-05 time not given"
+   ],
+   "ARCT": [
+    "2026-11-05 time not given"
+   ],
+   "KINS": [
+    "2026-11-05 time not given"
+   ],
+   "QSI": [
+    "2026-11-05 time not given"
+   ],
+   "REI": [
+    "2026-11-05 time not given"
+   ],
+   "SERV": [
+    "2026-11-05 time not given"
+   ],
+   "SSP": [
+    "2026-11-05 time not given"
+   ],
+   "SPRY": [
+    "2026-11-05 time not given"
+   ],
+   "CABA": [
+    "2026-11-05 time not given"
+   ],
+   "RWAY": [
+    "2026-11-05 time not given"
+   ],
+   "SABS": [
+    "2026-11-05 time not given"
+   ],
+   "INFU": [
+    "2026-11-05 time not given"
+   ],
+   "TBCH": [
+    "2026-11-05 time not given"
+   ],
+   "PROF": [
+    "2026-11-05 time not given"
+   ],
+   "RCKT": [
+    "2026-11-05 time not given"
+   ],
+   "NNDM": [
+    "2026-11-05 time not given"
+   ],
+   "ULBI": [
+    "2026-11-05 time not given"
+   ],
+   "FRD": [
+    "2026-11-05 time not given"
+   ],
+   "HRZN": [
+    "2026-11-05 time not given"
+   ],
+   "KDK": [
+    "2026-11-05 time not given"
+   ],
+   "HLLY": [
+    "2026-11-05 time not given"
+   ],
+   "CAMP": [
+    "2026-11-05 time not given"
+   ],
+   "ONIT": [
+    "2026-11-05 time not given"
+   ],
+   "NREF": [
+    "2026-11-05 time not given"
+   ],
+   "BIOA": [
+    "2026-11-05 time not given"
+   ],
+   "BLND": [
+    "2026-11-05 time not given"
+   ],
+   "KWY": [
+    "2026-11-05 time not given"
+   ],
+   "BRT": [
+    "2026-11-05 time not given"
+   ],
+   "RNAC": [
+    "2026-11-05 time not given"
+   ],
+   "XPOF": [
+    "2026-11-05 time not given"
+   ],
+   "FATE": [
+    "2026-11-05 time not given"
+   ],
+   "CNDT": [
+    "2026-11-05 time not given"
+   ],
+   "ASLE": [
+    "2026-11-05 time not given"
+   ],
+   "CIA": [
+    "2026-11-05 time not given"
+   ],
+   "CRNT": [
+    "2026-11-05 time not given"
+   ],
+   "DIBS": [
+    "2026-11-05 time not given"
+   ],
+   "CCOI": [
+    "2026-11-05 time not given"
+   ],
+   "KRRO": [
+    "2026-11-05 time not given"
+   ],
+   "NUS": [
+    "2026-11-05 time not given"
+   ],
+   "PYXS": [
+    "2026-11-05 time not given"
+   ],
+   "GPRO": [
+    "2026-11-05 time not given"
+   ],
+   "CLAR": [
+    "2026-11-05 time not given"
+   ],
+   "TRDA": [
+    "2026-11-05 time not given"
+   ],
+   "FIRY": [
+    "2026-11-05 time not given"
+   ],
+   "PRQR": [
+    "2026-11-05 time not given"
+   ],
+   "ABAT": [
+    "2026-11-05 time not given"
+   ],
+   "EXFY": [
+    "2026-11-05 time not given"
+   ],
+   "TSSI": [
+    "2026-11-05 time not given"
+   ],
+   "CHCI": [
+    "2026-11-05 time not given"
+   ],
+   "KROS": [
+    "2026-11-05 time not given"
+   ],
+   "NXH": [
+    "2026-11-05 time not given"
+   ],
+   "WHWK": [
+    "2026-11-05 time not given"
+   ],
+   "WHG": [
+    "2026-11-05 time not given"
+   ],
+   "STRW": [
+    "2026-11-05 time not given"
+   ],
+   "LCUT": [
+    "2026-11-05 time not given"
+   ],
+   "DH": [
+    "2026-11-05 time not given"
+   ],
+   "IVVD": [
+    "2026-11-05 time not given"
+   ],
+   "FLWS": [
+    "2026-11-05 time not given"
+   ],
+   "IPHA": [
+    "2026-11-05 before open"
+   ],
+   "INGN": [
+    "2026-11-05 time not given"
+   ],
+   "STRO": [
+    "2026-11-05 time not given"
+   ],
+   "FOCL": [
+    "2026-11-05 time not given"
+   ],
+   "ONL": [
+    "2026-11-05 time not given"
+   ],
+   "SANG": [
+    "2026-11-05 time not given"
+   ],
+   "PLBY": [
+    "2026-11-05 time not given"
+   ],
+   "EGAN": [
+    "2026-11-05 time not given"
+   ],
+   "BRLT": [
+    "2026-11-05 time not given"
+   ],
+   "RILY": [
+    "2026-11-05 time not given"
+   ],
+   "YARW": [
+    "2026-11-05 time not given"
+   ],
+   "TCX": [
+    "2026-11-05 time not given"
+   ],
+   "RC": [
+    "2026-11-05 time not given"
+   ],
+   "NKTX": [
+    "2026-11-05 time not given"
+   ],
+   "APYX": [
+    "2026-11-05 time not given"
+   ],
+   "AMTX": [
+    "2026-11-05 time not given"
+   ],
+   "KVHI": [
+    "2026-11-05 time not given"
+   ],
+   "VYGR": [
+    "2026-11-05 time not given"
+   ],
+   "GSIT": [
+    "2026-11-05 time not given"
+   ],
+   "WW": [
+    "2026-11-05 time not given"
+   ],
+   "MCN": [
+    "2026-11-05 before open"
+   ],
+   "AKBA": [
+    "2026-11-05 time not given"
+   ],
+   "HCAT": [
+    "2026-11-05 time not given"
+   ],
+   "SSTK": [
+    "2026-11-05 time not given"
+   ],
+   "KLXE": [
+    "2026-11-05 time not given"
+   ],
+   "ORGO": [
+    "2026-11-05 time not given"
+   ],
+   "UP": [
+    "2026-11-05 time not given"
+   ],
+   "SKIN": [
+    "2026-11-05 time not given"
+   ],
+   "NTHI": [
+    "2026-11-05 time not given"
+   ],
+   "BDTX": [
+    "2026-11-05 time not given"
+   ],
+   "CCLD": [
+    "2026-11-05 time not given"
+   ],
+   "INSE": [
+    "2026-11-05 time not given"
+   ],
+   "JYNT": [
+    "2026-11-05 time not given"
+   ],
+   "SRFM": [
+    "2026-11-05 time not given"
+   ],
+   "BDSX": [
+    "2026-11-05 time not given"
+   ],
+   "NMRA": [
+    "2026-11-05 time not given"
+   ],
+   "NYXH": [
+    "2026-11-05 time not given"
+   ],
+   "VTVT": [
+    "2026-11-05 time not given"
+   ],
+   "BARK": [
+    "2026-11-05 time not given"
+   ],
+   "UBCP": [
+    "2026-11-05 time not given"
+   ],
+   "TENX": [
+    "2026-11-05 time not given"
+   ],
+   "BCIC": [
+    "2026-11-05 after close"
+   ],
+   "RANI": [
+    "2026-11-05 time not given"
+   ],
+   "SUIG": [
+    "2026-11-05 time not given"
+   ],
+   "IOR": [
+    "2026-11-05 time not given"
+   ],
+   "BLNK": [
+    "2026-11-05 time not given"
+   ],
+   "HMR": [
+    "2026-11-05 time not given"
+   ],
+   "NFE": [
+    "2026-11-05 time not given"
+   ],
+   "UEIC": [
+    "2026-11-05 time not given"
+   ],
+   "AFCG": [
+    "2026-11-05 time not given"
+   ],
+   "CGTX": [
+    "2026-11-05 time not given"
+   ],
+   "CRDF": [
+    "2026-11-05 time not given"
+   ],
+   "AISP": [
+    "2026-11-05 time not given"
+   ],
+   "RGS": [
+    "2026-11-05 time not given"
+   ],
+   "COCH": [
+    "2026-11-05 time not given"
+   ],
+   "MYPS": [
+    "2026-11-05 time not given"
+   ],
+   "RNXT": [
+    "2026-11-05 time not given"
+   ],
+   "OESX": [
+    "2026-11-05 time not given"
+   ],
+   "DTI": [
+    "2026-11-05 time not given"
+   ],
+   "PLRX": [
+    "2026-11-05 time not given"
+   ],
+   "DWTX": [
+    "2026-11-05 time not given"
+   ],
+   "CRBU": [
+    "2026-11-05 time not given"
+   ],
+   "HGBL": [
+    "2026-11-05 time not given"
+   ],
+   "ELTX": [
+    "2026-11-05 time not given"
+   ],
+   "LONA": [
+    "2026-11-05 time not given"
+   ],
+   "LIDR": [
+    "2026-11-05 time not given"
+   ],
+   "MLCI": [
+    "2026-11-05 time not given"
+   ],
+   "ELUT": [
+    "2026-11-05 time not given"
+   ],
+   "ACFN": [
+    "2026-11-05 time not given"
+   ],
+   "NTIP": [
+    "2026-11-05 time not given"
+   ],
+   "PHUN": [
+    "2026-11-05 time not given"
+   ],
+   "CTM": [
+    "2026-11-05 time not given"
+   ],
+   "INMB": [
+    "2026-11-05 time not given"
+   ],
+   "SCYX": [
+    "2026-11-05 time not given"
+   ],
+   "UG": [
+    "2026-11-05 time not given"
+   ],
+   "NEPH": [
+    "2026-11-05 time not given"
+   ],
+   "RAVE": [
+    "2026-11-05 time not given"
+   ],
+   "BHM": [
+    "2026-11-05 time not given"
+   ],
+   "ACET": [
+    "2026-11-05 time not given"
+   ],
+   "CVV": [
+    "2026-11-05 time not given"
+   ],
+   "ORIO": [
+    "2026-11-05 time not given"
+   ],
+   "CVRX": [
+    "2026-11-05 time not given"
+   ],
+   "CABO": [
+    "2026-11-05 time not given"
+   ],
+   "QRHC": [
+    "2026-11-05 time not given"
+   ],
+   "FLL": [
+    "2026-11-05 time not given"
+   ],
+   "FLNA": [
+    "2026-11-05 time not given"
+   ],
+   "MSGM": [
+    "2026-11-05 time not given"
+   ],
+   "BGDE": [
+    "2026-11-05 after close"
+   ],
+   "TEAD": [
+    "2026-11-05 time not given"
+   ],
+   "QNRX": [
+    "2026-11-05 time not given"
+   ],
+   "MERC": [
+    "2026-11-05 time not given"
+   ],
+   "LPCN": [
+    "2026-11-05 time not given"
+   ],
+   "MDRR": [
+    "2026-11-05 time not given"
+   ],
+   "ATYR": [
+    "2026-11-05 time not given"
+   ],
+   "ACH": [
+    "2026-11-05 time not given"
+   ],
+   "BIRD": [
+    "2026-11-05 time not given"
+   ],
+   "REFR": [
+    "2026-11-05 after close"
+   ],
+   "CDLX": [
+    "2026-11-05 time not given"
+   ],
+   "SINT": [
+    "2026-11-05 time not given"
+   ],
+   "LSTA": [
+    "2026-11-05 time not given"
+   ],
+   "NEON": [
+    "2026-11-05 time not given"
+   ],
+   "INAB": [
+    "2026-11-05 time not given"
+   ],
+   "INTS": [
+    "2026-11-05 time not given"
+   ],
+   "PHIO": [
+    "2026-11-05 time not given"
+   ],
+   "MTVA": [
+    "2026-11-05 time not given"
+   ],
+   "PCSA": [
+    "2026-11-05 time not given"
+   ],
+   "VEEE": [
+    "2026-11-05 time not given"
+   ],
+   "APVO": [
+    "2026-11-05 time not given"
+   ],
+   "AUUD": [
+    "2026-11-05 time not given"
+   ],
+   "REVB": [
+    "2026-11-05 time not given"
+   ],
+   "VIVS": [
+    "2026-11-05 time not given"
+   ],
+   "SCNI": [
+    "2026-11-05 time not given"
+   ],
+   "WHLR": [
+    "2026-11-05 time not given"
+   ],
+   "ENB": [
+    "2026-11-06 time not given"
+   ],
+   "MRNA": [
+    "2026-11-06 time not given"
+   ],
+   "BAM": [
+    "2026-11-06 time not given"
+   ],
+   "HUM": [
+    "2026-11-06 time not given"
+   ],
+   "HMC": [
+    "2026-11-06 time not given"
+   ],
+   "VST": [
+    "2026-11-06 before open"
+   ],
+   "UI": [
+    "2026-11-06 time not given"
+   ],
+   "PPL": [
+    "2026-11-06 time not given"
+   ],
+   "BIP": [
+    "2026-11-06 time not given"
+   ],
+   "BEN": [
+    "2026-11-06 time not given"
+   ],
+   "PAA": [
+    "2026-11-06 time not given"
+   ],
+   "EMA": [
+    "2026-11-06 time not given"
+   ],
+   "TU": [
+    "2026-11-06 time not given"
+   ],
+   "CHTR": [
+    "2026-11-06 time not given"
+   ],
+   "ELAN": [
+    "2026-11-06 time not given"
+   ],
+   "FRHC": [
+    "2026-11-06 time not given"
+   ],
+   "KT": [
+    "2026-11-06 time not given"
+   ],
+   "MSGK": [
+    "2026-11-06 time not given"
+   ],
+   "CGON": [
+    "2026-11-06 time not given"
+   ],
+   "FLR": [
+    "2026-11-06 time not given"
+   ],
+   "ESNT": [
+    "2026-11-06 time not given"
+   ],
+   "WULF": [
+    "2026-11-06 time not given"
+   ],
+   "VEON": [
+    "2026-11-06 time not given"
+   ],
+   "PAGP": [
+    "2026-11-06 time not given"
+   ],
+   "STWD": [
+    "2026-11-06 time not given"
+   ],
+   "OKLO": [
+    "2026-11-06 time not given"
+   ],
+   "AQN": [
+    "2026-11-06 time not given"
+   ],
+   "ATMU": [
+    "2026-11-06 time not given"
+   ],
+   "DK": [
+    "2026-11-06 time not given"
+   ],
+   "TDS": [
+    "2026-11-06 time not given"
+   ],
+   "BH": [
+    "2026-11-06 time not given"
+   ],
+   "CLMT": [
+    "2026-11-06 time not given"
+   ],
+   "NHC": [
+    "2026-11-06 time not given"
+   ],
+   "DKL": [
+    "2026-11-06 time not given"
+   ],
+   "KYIV": [
+    "2026-11-06 time not given"
+   ],
+   "TR": [
+    "2026-11-06 time not given"
+   ],
+   "MSGR": [
+    "2026-11-06 time not given"
+   ],
+   "ASST": [
+    "2026-11-06 time not given"
+   ],
+   "AD": [
+    "2026-11-06 time not given"
+   ],
+   "GRND": [
+    "2026-11-06 time not given"
+   ],
+   "SHO": [
+    "2026-11-06 time not given"
+   ],
+   "UA": [
+    "2026-11-06 time not given"
+   ],
+   "UAA": [
+    "2026-11-06 time not given"
+   ],
+   "BKD": [
+    "2026-11-06 time not given"
+   ],
+   "UTZ": [
+    "2026-11-06 time not given"
+   ],
+   "AMR": [
+    "2026-11-06 time not given"
+   ],
+   "TILE": [
+    "2026-11-06 time not given"
+   ],
+   "IMCR": [
+    "2026-11-06 time not given"
+   ],
+   "SLVM": [
+    "2026-11-06 time not given"
+   ],
+   "GLP": [
+    "2026-11-06 time not given"
+   ],
+   "HE": [
+    "2026-11-06 time not given"
+   ],
+   "SBET": [
+    "2026-11-06 time not given"
+   ],
+   "DCH": [
+    "2026-11-06 time not given"
+   ],
+   "SBR": [
+    "2026-11-06 time not given"
+   ],
+   "JBGS": [
+    "2026-11-06 time not given"
+   ],
+   "PRME": [
+    "2026-11-06 time not given"
+   ],
+   "BLMN": [
+    "2026-11-06 time not given"
+   ],
+   "OGG": [
+    "2026-11-06 time not given"
+   ],
+   "DCBO": [
+    "2026-11-06 time not given"
+   ],
+   "IMMX": [
+    "2026-11-06 time not given"
+   ],
+   "NFGC": [
+    "2026-11-06 time not given"
+   ],
+   "KOP": [
+    "2026-11-06 time not given"
+   ],
+   "SRZN": [
+    "2026-11-06 time not given"
+   ],
+   "ENTX": [
+    "2026-11-06 time not given"
+   ],
+   "YORW": [
+    "2026-11-06 time not given"
+   ],
+   "GOGO": [
+    "2026-11-06 time not given"
+   ],
+   "GTN": [
+    "2026-11-06 time not given"
+   ],
+   "GRVY": [
+    "2026-11-06 time not given"
+   ],
+   "PBFS": [
+    "2026-11-06 time not given"
+   ],
+   "THM": [
+    "2026-11-06 time not given"
+   ],
+   "OPTU": [
+    "2026-11-06 before open"
+   ],
+   "NODK": [
+    "2026-11-06 time not given"
+   ],
+   "CGC": [
+    "2026-11-06 time not given"
+   ],
+   "TMCI": [
+    "2026-11-06 time not given"
+   ],
+   "VOGX": [
+    "2026-11-06 time not given"
+   ],
+   "ACRE": [
+    "2026-11-06 time not given"
+   ],
+   "ANIK": [
+    "2026-11-06 time not given"
+   ],
+   "TTGT": [
+    "2026-11-06 time not given"
+   ],
+   "TG": [
+    "2026-11-06 time not given"
+   ],
+   "ECBK": [
+    "2026-11-06 time not given"
+   ],
+   "INTT": [
+    "2026-11-06 time not given"
+   ],
+   "ALXO": [
+    "2026-11-06 time not given"
+   ],
+   "NLOP": [
+    "2026-11-06 time not given"
+   ],
+   "TARA": [
+    "2026-11-06 time not given"
+   ],
+   "SKYA": [
+    "2026-11-06 time not given"
+   ],
+   "NEN": [
+    "2026-11-06 time not given"
+   ],
+   "NERV": [
+    "2026-11-06 time not given"
+   ],
+   "CLLS": [
+    "2026-11-06 time not given"
+   ],
+   "STHO": [
+    "2026-11-06 time not given"
+   ],
+   "CPHC": [
+    "2026-11-06 time not given"
+   ],
+   "MAIA": [
+    "2026-11-06 time not given"
+   ],
+   "DIT": [
+    "2026-11-06 time not given"
+   ],
+   "EMPD": [
+    "2026-11-06 time not given"
+   ],
+   "SELF": [
+    "2026-11-06 time not given"
+   ],
+   "TELO": [
+    "2026-11-06 time not given"
+   ],
+   "ATLX": [
+    "2026-11-06 time not given"
+   ],
+   "TCBS": [
+    "2026-11-06 time not given"
+   ],
+   "SNT": [
+    "2026-11-06 time not given"
+   ],
+   "MAMO": [
+    "2026-11-06 time not given"
+   ],
+   "AIRS": [
+    "2026-11-06 time not given"
+   ],
+   "AGIG": [
+    "2026-11-06 time not given"
+   ],
+   "IBO": [
+    "2026-11-06 time not given"
+   ],
+   "KG": [
+    "2026-11-06 time not given"
+   ],
+   "RPID": [
+    "2026-11-06 time not given"
+   ],
+   "ALGS": [
+    "2026-11-06 time not given"
+   ],
+   "IGC": [
+    "2026-11-06 time not given"
+   ],
+   "FGC": [
+    "2026-11-06 time not given"
+   ],
+   "CRVO": [
+    "2026-11-06 time not given"
+   ],
+   "TOMZ": [
+    "2026-11-06 after close"
+   ],
+   "SNWV": [
+    "2026-11-06 time not given"
+   ],
+   "QNTM": [
+    "2026-11-06 time not given"
+   ],
+   "DRK": [
+    "2026-11-06 time not given"
+   ],
+   "ASTI": [
+    "2026-11-06 time not given"
+   ],
+   "GTEC": [
+    "2026-11-06 time not given"
+   ],
+   "SUNE": [
+    "2026-11-06 time not given"
+   ],
+   "AQB": [
+    "2026-11-06 time not given"
+   ],
+   "BIVI": [
+    "2026-11-06 time not given"
+   ],
+   "CVR": [
+    "2026-11-06 time not given"
+   ],
+   "AWX": [
+    "2026-11-06 time not given"
+   ],
+   "SNGX": [
+    "2026-11-06 time not given"
+   ],
+   "PSQH": [
+    "2026-11-06 time not given"
+   ],
+   "XHLD": [
+    "2026-11-06 time not given"
+   ],
+   "NXTT": [
+    "2026-11-06 time not given"
+   ],
+   "KPRX": [
+    "2026-11-06 time not given"
+   ],
+   "XCUR": [
+    "2026-11-06 time not given"
+   ],
+   "BIAF": [
+    "2026-11-06 time not given"
+   ],
+   "CDIO": [
+    "2026-11-06 time not given"
+   ],
+   "CELZ": [
+    "2026-11-06 time not given"
+   ],
+   "MDCX": [
+    "2026-11-06 time not given"
+   ],
+   "ERNA": [
+    "2026-11-06 time not given"
+   ],
+   "MBIO": [
+    "2026-11-06 time not given"
+   ],
+   "BJDX": [
+    "2026-11-06 time not given"
+   ],
+   "PW": [
+    "2026-11-06 time not given"
+   ],
+   "CTNT": [
+    "2026-11-06 time not given"
+   ],
+   "OGEN": [
+    "2026-11-06 time not given"
+   ],
+   "RKDA": [
+    "2026-11-06 time not given"
+   ],
+   "DNMX": [
+    "2026-11-06 time not given"
+   ],
+   "KKR": [
+    "2026-11-09 before open"
+   ],
+   "CEG": [
+    "2026-11-09 before open"
+   ],
+   "B": [
+    "2026-11-09 before open"
+   ],
+   "OXY": [
+    "2026-11-09 after close"
+   ],
+   "FERG": [
+    "2026-11-09 before open"
+   ],
+   "SKYD": [
+    "2026-11-09 after close"
+   ],
+   "TTWO": [
+    "2026-11-09 after close"
+   ],
+   "IX": [
+    "2026-11-09 before open"
+   ],
+   "RKLB": [
+    "2026-11-09 after close"
+   ],
+   "BAP": [
+    "2026-11-09 after close"
+   ],
+   "ROIV": [
+    "2026-11-09 before open"
+   ],
+   "CIB": [
+    "2026-11-09 after close"
+   ],
+   "KSPI": [
+    "2026-11-09 before open"
+   ],
+   "RBA": [
+    "2026-11-09 before open"
+   ],
+   "NRG": [
+    "2026-11-09 before open"
+   ],
+   "SGI": [
+    "2026-11-09 before open"
+   ],
+   "CNH": [
+    "2026-11-09 before open"
+   ],
+   "JBS": [
+    "2026-11-09 after close"
+   ],
+   "EQX": [
+    "2026-11-09 after close"
+   ],
+   "ASTS": [
+    "2026-11-09 after close"
+   ],
+   "AMG": [
+    "2026-11-09 before open"
+   ],
+   "LINE": [
+    "2026-11-09 after close"
+   ],
+   "TGTX": [
+    "2026-11-09 before open"
+   ],
+   "TIMB": [
+    "2026-11-09 after close"
+   ],
+   "ONTO": [
+    "2026-11-09 after close"
+   ],
+   "ZETA": [
+    "2026-11-09 after close"
+   ],
+   "PRAX": [
+    "2026-11-09 before open"
+   ],
+   "SANM": [
+    "2026-11-09 after close"
+   ],
+   "QLYS": [
+    "2026-11-09 after close"
+   ],
+   "HRB": [
+    "2026-11-09 after close"
+   ],
+   "IONS": [
+    "2026-11-09 before open"
+   ],
+   "CWST": [
+    "2026-11-09 after close"
+   ],
+   "RDNT": [
+    "2026-11-09 before open"
+   ],
+   "TTD": [
+    "2026-11-09 after close"
+   ],
+   "IMVT": [
+    "2026-11-09 before open"
+   ],
+   "CWEN": [
+    "2026-11-09 after close"
+   ],
+   "HIMS": [
+    "2026-11-09 after close"
+   ],
+   "NXE": [
+    "2026-11-09 after close"
+   ],
+   "IFS": [
+    "2026-11-09 after close"
+   ],
+   "NOVT": [
+    "2026-11-09 after close"
+   ],
+   "AAON": [
+    "2026-11-09 after close"
+   ],
+   "TEO": [
+    "2026-11-09 time not given"
+   ],
+   "DFTX": [
+    "2026-11-09 after close"
+   ],
+   "TKC": [
+    "2026-11-09 before open"
+   ],
+   "MNDY": [
+    "2026-11-09 before open"
+   ],
+   "KGS": [
+    "2026-11-09 before open"
+   ],
+   "XENE": [
+    "2026-11-09 after close"
+   ],
+   "ABCL": [
+    "2026-11-09 after close"
+   ],
+   "NHI": [
+    "2026-11-09 after close"
+   ],
+   "EQPT": [
+    "2026-11-09 after close"
+   ],
+   "TDW": [
+    "2026-11-09 after close"
+   ],
+   "DHT": [
+    "2026-11-09 after close"
+   ],
+   "VIA": [
+    "2026-11-09 before open"
+   ],
+   "SGRY": [
+    "2026-11-09 time not given"
+   ],
+   "ACHR": [
+    "2026-11-09 after close"
+   ],
+   "USAR": [
+    "2026-11-09 after close"
+   ],
+   "GCMG": [
+    "2026-11-09 before open"
+   ],
+   "FRVO": [
+    "2026-11-09 before open"
+   ],
+   "ALM": [
+    "2026-11-09 time not given"
+   ],
+   "CSQR": [
+    "2026-11-09 after close"
+   ],
+   "MARA": [
+    "2026-11-09 after close"
+   ],
+   "WTTR": [
+    "2026-11-09 before open"
+   ],
+   "SEPN": [
+    "2026-11-09 time not given"
+   ],
+   "KMPR": [
+    "2026-11-09 after close"
+   ],
+   "ZYME": [
+    "2026-11-09 after close"
+   ],
+   "GSHD": [
+    "2026-11-09 after close"
+   ],
+   "NESR": [
+    "2026-11-09 before open"
+   ],
+   "WGS": [
+    "2026-11-09 after close"
+   ],
+   "PLUG": [
+    "2026-11-09 after close"
+   ],
+   "TRVI": [
+    "2026-11-09 after close"
+   ],
+   "OCUL": [
+    "2026-11-09 before open"
+   ],
+   "GSL": [
+    "2026-11-09 before open"
+   ],
+   "TPB": [
+    "2026-11-09 before open"
+   ],
+   "GFR": [
+    "2026-11-09 after close"
+   ],
+   "DOLE": [
+    "2026-11-09 before open"
+   ],
+   "UNIT": [
+    "2026-11-09 before open"
+   ],
+   "WBTN": [
+    "2026-11-09 after close"
+   ],
+   "QUBT": [
+    "2026-11-09 after close"
+   ],
+   "SECZ": [
+    "2026-11-09 after close"
+   ],
+   "APPS": [
+    "2026-11-09 after close"
+   ],
+   "LCID": [
+    "2026-11-09 after close"
+   ],
+   "TH": [
+    "2026-11-09 before open"
+   ],
+   "AMRC": [
+    "2026-11-09 after close"
+   ],
+   "NPK": [
+    "2026-11-09 time not given"
+   ],
+   "HROW": [
+    "2026-11-09 after close"
+   ],
+   "LIF": [
+    "2026-11-09 after close"
+   ],
+   "MUX": [
+    "2026-11-09 before open"
+   ],
+   "HPK": [
+    "2026-11-09 after close"
+   ],
+   "DSP": [
+    "2026-11-09 after close"
+   ],
+   "VRTS": [
+    "2026-11-09 before open"
+   ],
+   "PAYS": [
+    "2026-11-09 after close"
+   ],
+   "SB": [
+    "2026-11-09 after close"
+   ],
+   "INR": [
+    "2026-11-09 after close"
+   ],
+   "PUBM": [
+    "2026-11-09 after close"
+   ],
+   "ANNX": [
+    "2026-11-09 time not given"
+   ],
+   "BCSF": [
+    "2026-11-09 after close"
+   ],
+   "GDOT": [
+    "2026-11-09 time not given"
+   ],
+   "CNNE": [
+    "2026-11-09 after close"
+   ],
+   "APEI": [
+    "2026-11-09 after close"
+   ],
+   "CEVA": [
+    "2026-11-09 before open"
+   ],
+   "GMRS": [
+    "2026-11-09 after close"
+   ],
+   "MLAB": [
+    "2026-11-09 after close"
+   ],
+   "CRESY": [
+    "2026-11-09 time not given"
+   ],
+   "TRON": [
+    "2026-11-09 time not given"
+   ],
+   "GRPN": [
+    "2026-11-09 after close"
+   ],
+   "FDMT": [
+    "2026-11-09 time not given"
+   ],
+   "RXT": [
+    "2026-11-09 after close"
+   ],
+   "AVBP": [
+    "2026-11-09 time not given"
+   ],
+   "GAIN": [
+    "2026-11-09 after close"
+   ],
+   "OLMA": [
+    "2026-11-09 time not given"
+   ],
+   "FWRD": [
+    "2026-11-09 after close"
+   ],
+   "BTGO": [
+    "2026-11-09 after close"
+   ],
+   "LINC": [
+    "2026-11-09 before open"
+   ],
+   "EVGO": [
+    "2026-11-09 before open"
+   ],
+   "SMC": [
+    "2026-11-09 after close"
+   ],
+   "BCAX": [
+    "2026-11-09 before open"
+   ],
+   "QMCO": [
+    "2026-11-09 after close"
+   ],
+   "ETD": [
+    "2026-11-09 after close"
+   ],
+   "DCTH": [
+    "2026-11-09 before open"
+   ],
+   "BW": [
+    "2026-11-09 after close"
+   ],
+   "HIVE": [
+    "2026-11-09 after close"
+   ],
+   "HNRG": [
+    "2026-11-09 after close"
+   ],
+   "CWCO": [
+    "2026-11-09 after close"
+   ],
+   "RLGT": [
+    "2026-11-09 after close"
+   ],
+   "SENS": [
+    "2026-11-09 after close"
+   ],
+   "RPAY": [
+    "2026-11-09 after close"
+   ],
+   "ASMB": [
+    "2026-11-09 time not given"
+   ],
+   "KMDA": [
+    "2026-11-09 before open"
+   ],
+   "EDIT": [
+    "2026-11-09 time not given"
+   ],
+   "ALTI": [
+    "2026-11-09 after close"
+   ],
+   "PPHC": [
+    "2026-11-09 after close"
+   ],
+   "OFIX": [
+    "2026-11-09 before open"
+   ],
+   "BETR": [
+    "2026-11-09 after close"
+   ],
+   "TLS": [
+    "2026-11-09 before open"
+   ],
+   "SOHU": [
+    "2026-11-09 before open"
+   ],
+   "SOC": [
+    "2026-11-09 before open"
+   ],
+   "CCAP": [
+    "2026-11-09 after close"
+   ],
+   "AMCX": [
+    "2026-11-09 after close"
+   ],
+   "AIOT": [
+    "2026-11-09 before open"
+   ],
+   "NGS": [
+    "2026-11-09 after close"
+   ],
+   "MNTK": [
+    "2026-11-09 after close"
+   ],
+   "CTEV": [
+    "2026-11-09 before open"
+   ],
+   "VFF": [
+    "2026-11-09 before open"
+   ],
+   "AVIR": [
+    "2026-11-09 after close"
+   ],
+   "OBIO": [
+    "2026-11-09 time not given"
+   ],
+   "PROK": [
+    "2026-11-09 time not given"
+   ],
+   "ZIP": [
+    "2026-11-09 after close"
+   ],
+   "RNGR": [
+    "2026-11-09 after close"
+   ],
+   "OPI": [
+    "2026-11-09 after close"
+   ],
+   "URG": [
+    "2026-11-09 time not given"
+   ],
+   "EVI": [
+    "2026-11-09 time not given"
+   ],
+   "IHRT": [
+    "2026-11-09 after close"
+   ],
+   "CNCK": [
+    "2026-11-09 after close"
+   ],
+   "OPAL": [
+    "2026-11-09 before open"
+   ],
+   "FF": [
+    "2026-11-09 after close"
+   ],
+   "LTRX": [
+    "2026-11-09 after close"
+   ],
+   "OSUR": [
+    "2026-11-09 after close"
+   ],
+   "OSG": [
+    "2026-11-09 after close"
+   ],
+   "AIV": [
+    "2026-11-09 time not given"
+   ],
+   "KLTR": [
+    "2026-11-09 after close"
+   ],
+   "MVST": [
+    "2026-11-09 after close"
+   ],
+   "IMXI": [
+    "2026-11-09 time not given"
+   ],
+   "SIGA": [
+    "2026-11-09 after close"
+   ],
+   "SGC": [
+    "2026-11-09 before open"
+   ],
+   "LDI": [
+    "2026-11-09 before open"
+   ],
+   "ADCT": [
+    "2026-11-09 before open"
+   ],
+   "CURR": [
+    "2026-11-09 time not given"
+   ],
+   "SCM": [
+    "2026-11-09 after close"
+   ],
+   "PALI": [
+    "2026-11-09 time not given"
+   ],
+   "MPAA": [
+    "2026-11-09 before open"
+   ],
+   "ALTG": [
+    "2026-11-09 after close"
+   ],
+   "BKKT": [
+    "2026-11-09 after close"
+   ],
+   "JRVR": [
+    "2026-11-09 after close"
+   ],
+   "CGEN": [
+    "2026-11-09 before open"
+   ],
+   "WHF": [
+    "2026-11-09 before open"
+   ],
+   "MRT": [
+    "2026-11-09 before open"
+   ],
+   "ZNTL": [
+    "2026-11-09 time not given"
+   ],
+   "RAIL": [
+    "2026-11-09 after close"
+   ],
+   "QTRX": [
+    "2026-11-09 before open"
+   ],
+   "AMRO": [
+    "2026-11-09 after close"
+   ],
+   "SPRB": [
+    "2026-11-09 time not given"
+   ],
+   "EU": [
+    "2026-11-09 time not given"
+   ],
+   "TMCR": [
+    "2026-11-09 time not given"
+   ],
+   "EXOD": [
+    "2026-11-09 after close"
+   ],
+   "CHRS": [
+    "2026-11-09 after close"
+   ],
+   "LFMD": [
+    "2026-11-09 before open"
+   ],
+   "GHI": [
+    "2026-11-09 after close"
+   ],
+   "NINE": [
+    "2026-11-09 after close"
+   ],
+   "FDSB": [
+    "2026-11-09 time not given"
+   ],
+   "CBAT": [
+    "2026-11-09 time not given"
+   ],
+   "CATX": [
+    "2026-11-09 time not given"
+   ],
+   "ISPR": [
+    "2026-11-09 before open"
+   ],
+   "HFFG": [
+    "2026-11-09 after close"
+   ],
+   "TNXP": [
+    "2026-11-09 before open"
+   ],
+   "NRXS": [
+    "2026-11-09 before open"
+   ],
+   "NRDY": [
+    "2026-11-09 after close"
+   ],
+   "TTEC": [
+    "2026-11-09 after close"
+   ],
+   "HYPR": [
+    "2026-11-09 after close"
+   ],
+   "LFVN": [
+    "2026-11-09 after close"
+   ],
+   "ANTA": [
+    "2026-11-09 time not given"
+   ],
+   "HRTX": [
+    "2026-11-09 before open"
+   ],
+   "THRY": [
+    "2026-11-09 after close"
+   ],
+   "VOC": [
+    "2026-11-09 time not given"
+   ],
+   "HDRN": [
+    "2026-11-09 after close"
+   ],
+   "MYO": [
+    "2026-11-09 after close"
+   ],
+   "MREO": [
+    "2026-11-09 time not given"
+   ],
+   "XTNT": [
+    "2026-11-09 time not given"
+   ],
+   "PAAI": [
+    "2026-11-09 after close"
+   ],
+   "DOMH": [
+    "2026-11-09 time not given"
+   ],
+   "VRM": [
+    "2026-11-09 time not given"
+   ],
+   "SEAT": [
+    "2026-11-09 before open"
+   ],
+   "HHS": [
+    "2026-11-09 time not given"
+   ],
+   "AVD": [
+    "2026-11-09 after close"
+   ],
+   "PIII": [
+    "2026-11-09 after close"
+   ],
+   "DCGO": [
+    "2026-11-09 after close"
+   ],
+   "CKX": [
+    "2026-11-09 time not given"
+   ],
+   "TLF": [
+    "2026-11-09 time not given"
+   ],
+   "KYNB": [
+    "2026-11-09 time not given"
+   ],
+   "HAIN": [
+    "2026-11-09 before open"
+   ],
+   "BBGI": [
+    "2026-11-09 time not given"
+   ],
+   "TULP": [
+    "2026-11-09 time not given"
+   ],
+   "PASG": [
+    "2026-11-09 time not given"
+   ],
+   "PRSO": [
+    "2026-11-09 time not given"
+   ],
+   "OXBR": [
+    "2026-11-09 after close"
+   ],
+   "SKYE": [
+    "2026-11-09 time not given"
+   ],
+   "GDC": [
+    "2026-11-09 time not given"
+   ],
+   "CVKD": [
+    "2026-11-09 time not given"
+   ],
+   "FCUV": [
+    "2026-11-09 time not given"
+   ],
+   "KPTI": [
+    "2026-11-09 time not given"
+   ],
+   "MTNB": [
+    "2026-11-09 time not given"
+   ],
+   "BDCI": [
+    "2026-11-09 time not given"
+   ],
+   "SVCC": [
+    "2026-11-09 time not given"
+   ],
+   "PBR": [
+    "2026-11-10 after close"
+   ],
+   "TDG": [
+    "2026-11-10 before open"
+   ],
+   "SE": [
+    "2026-11-10 before open"
+   ],
+   "ALC": [
+    "2026-11-10 after close"
+   ],
+   "VOD": [
+    "2026-11-10 before open"
+   ],
+   "EC": [
+    "2026-11-10 after close"
+   ],
+   "VG": [
+    "2026-11-10 before open"
+   ],
+   "CRWV": [
+    "2026-11-10 after close"
+   ],
+   "ONON": [
+    "2026-11-10 before open"
+   ],
+   "VIV": [
+    "2026-11-10 after close"
+   ],
+   "EMBJ": [
+    "2026-11-10 time not given"
+   ],
+   "IBRX": [
+    "2026-11-10 time not given"
+   ],
+   "SLAB": [
+    "2026-11-10 time not given"
+   ],
+   "SRRK": [
+    "2026-11-10 before open"
+   ],
+   "MANE": [
+    "2026-11-10 time not given"
+   ],
+   "ATAT": [
+    "2026-11-10 before open"
+   ],
+   "ALH": [
+    "2026-11-10 before open"
+   ],
+   "BWIN": [
+    "2026-11-10 time not given"
+   ],
+   "LEGN": [
+    "2026-11-10 before open"
+   ],
+   "MRCY": [
+    "2026-11-10 after close"
+   ],
+   "LQDA": [
+    "2026-11-10 before open"
+   ],
+   "PHI": [
+    "2026-11-10 time not given"
+   ],
+   "TNGX": [
+    "2026-11-10 time not given"
+   ],
+   "QBTS": [
+    "2026-11-10 before open"
+   ],
+   "RGTI": [
+    "2026-11-10 after close"
+   ],
+   "WIX": [
+    "2026-11-10 before open"
+   ],
+   "REZI": [
+    "2026-11-10 after close"
+   ],
+   "FLY": [
+    "2026-11-10 after close"
+   ],
+   "STUB": [
+    "2026-11-10 after close"
+   ],
+   "ATRO": [
+    "2026-11-10 after close"
+   ],
+   "EXK": [
+    "2026-11-10 before open"
+   ],
+   "COAG": [
+    "2026-11-10 before open"
+   ],
+   "HSAI": [
+    "2026-11-10 before open"
+   ],
+   "DRVN": [
+    "2026-11-10 time not given"
+   ],
+   "SONO": [
+    "2026-11-10 after close"
+   ],
+   "BRSL": [
+    "2026-11-10 before open"
+   ],
+   "ETOR": [
+    "2026-11-10 before open"
+   ],
+   "SBH": [
+    "2026-11-10 before open"
+   ],
+   "AZTA": [
+    "2026-11-10 after close"
+   ],
+   "IMOS": [
+    "2026-11-10 time not given"
+   ],
+   "BTDR": [
+    "2026-11-10 before open"
+   ],
+   "NN": [
+    "2026-11-10 after close"
+   ],
+   "ANAB": [
+    "2026-11-10 time not given"
+   ],
+   "ATEX": [
+    "2026-11-10 after close"
+   ],
+   "GO": [
+    "2026-11-10 after close"
+   ],
+   "KARD": [
+    "2026-11-10 time not given"
+   ],
+   "LMRI": [
+    "2026-11-10 after close"
+   ],
+   "GDRX": [
+    "2026-11-10 time not given"
+   ],
+   "ELE": [
+    "2026-11-10 after close"
+   ],
+   "FRNM": [
+    "2026-11-10 after close"
+   ],
+   "AMPX": [
+    "2026-11-10 after close"
+   ],
+   "BV": [
+    "2026-11-10 after close"
+   ],
+   "OIG": [
+    "2026-11-10 after close"
+   ],
+   "AMBQ": [
+    "2026-11-10 before open"
+   ],
+   "EVLV": [
+    "2026-11-10 after close"
+   ],
+   "SKYH": [
+    "2026-11-10 after close"
+   ],
+   "LAR": [
+    "2026-11-10 before open"
+   ],
+   "JBI": [
+    "2026-11-10 before open"
+   ],
+   "MG": [
+    "2026-11-10 time not given"
+   ],
+   "ANGX": [
+    "2026-11-10 after close"
+   ],
+   "KURA": [
+    "2026-11-10 after close"
+   ],
+   "LWLG": [
+    "2026-11-10 after close"
+   ],
+   "HQ": [
+    "2026-11-10 before open"
+   ],
+   "AII": [
+    "2026-11-10 after close"
+   ],
+   "BRCB": [
+    "2026-11-10 after close"
+   ],
+   "ITG": [
+    "2026-11-10 after close"
+   ],
+   "ELMT": [
+    "2026-11-10 before open"
+   ],
+   "KOPN": [
+    "2026-11-10 after close"
+   ],
+   "NRGV": [
+    "2026-11-10 after close"
+   ],
+   "GILT": [
+    "2026-11-10 before open"
+   ],
+   "MCFT": [
+    "2026-11-10 before open"
+   ],
+   "CAPR": [
+    "2026-11-10 after close"
+   ],
+   "HYLN": [
+    "2026-11-10 after close"
+   ],
+   "FOSL": [
+    "2026-11-10 after close"
+   ],
+   "SATL": [
+    "2026-11-10 after close"
+   ],
+   "EPRX": [
+    "2026-11-10 time not given"
+   ],
+   "LPTH": [
+    "2026-11-10 after close"
+   ],
+   "BWAY": [
+    "2026-11-10 before open"
+   ],
+   "FAC": [
+    "2026-11-10 after close"
+   ],
+   "BAK": [
+    "2026-11-10 time not given"
+   ],
+   "MASS": [
+    "2026-11-10 before open"
+   ],
+   "CARL": [
+    "2026-11-10 after close"
+   ],
+   "SUJA": [
+    "2026-11-10 after close"
+   ],
+   "CLFD": [
+    "2026-11-10 after close"
+   ],
+   "SSII": [
+    "2026-11-10 time not given"
+   ],
+   "WYFI": [
+    "2026-11-10 before open"
+   ],
+   "AUTL": [
+    "2026-11-10 before open"
+   ],
+   "SPIR": [
+    "2026-11-10 after close"
+   ],
+   "LAND": [
+    "2026-11-10 after close"
+   ],
+   "GEVO": [
+    "2026-11-10 after close"
+   ],
+   "LAB": [
+    "2026-11-10 time not given"
+   ],
+   "REFI": [
+    "2026-11-10 before open"
+   ],
+   "ELMD": [
+    "2026-11-10 after close"
+   ],
+   "AVNW": [
+    "2026-11-10 before open"
+   ],
+   "TLSI": [
+    "2026-11-10 before open"
+   ],
+   "IMSR": [
+    "2026-11-10 before open"
+   ],
+   "RDNW": [
+    "2026-11-10 after close"
+   ],
+   "PLX": [
+    "2026-11-10 before open"
+   ],
+   "BGS": [
+    "2026-11-10 after close"
+   ],
+   "XGN": [
+    "2026-11-10 before open"
+   ],
+   "EML": [
+    "2026-11-10 after close"
+   ],
+   "TONX": [
+    "2026-11-10 before open"
+   ],
+   "VELO": [
+    "2026-11-10 after close"
+   ],
+   "NCMI": [
+    "2026-11-10 after close"
+   ],
+   "HYNE": [
+    "2026-11-10 time not given"
+   ],
+   "INO": [
+    "2026-11-10 after close"
+   ],
+   "REA": [
+    "2026-11-10 time not given"
+   ],
+   "DOUG": [
+    "2026-11-10 time not given"
+   ],
+   "EPM": [
+    "2026-11-10 after close"
+   ],
+   "KRMD": [
+    "2026-11-10 after close"
+   ],
+   "MXCT": [
+    "2026-11-10 after close"
+   ],
+   "QUIK": [
+    "2026-11-10 after close"
+   ],
+   "PDYN": [
+    "2026-11-10 before open"
+   ],
+   "ZENA": [
+    "2026-11-10 time not given"
+   ],
+   "CAN": [
+    "2026-11-10 before open"
+   ],
+   "AP": [
+    "2026-11-10 before open"
+   ],
+   "SWMR": [
+    "2026-11-10 after close"
+   ],
+   "DPRO": [
+    "2026-11-10 after close"
+   ],
+   "HUMA": [
+    "2026-11-10 before open"
+   ],
+   "STXS": [
+    "2026-11-10 after close"
+   ],
+   "BEEP": [
+    "2026-11-10 after close"
+   ],
+   "DAVA": [
+    "2026-11-10 time not given"
+   ],
+   "SUNS": [
+    "2026-11-10 after close"
+   ],
+   "SEER": [
+    "2026-11-10 after close"
+   ],
+   "GRWG": [
+    "2026-11-10 after close"
+   ],
+   "USIO": [
+    "2026-11-10 after close"
+   ],
+   "CPIX": [
+    "2026-11-10 time not given"
+   ],
+   "JRSH": [
+    "2026-11-10 before open"
+   ],
+   "LPA": [
+    "2026-11-10 after close"
+   ],
+   "EVTL": [
+    "2026-11-10 time not given"
+   ],
+   "LNSR": [
+    "2026-11-10 before open"
+   ],
+   "KULR": [
+    "2026-11-10 before open"
+   ],
+   "MWC": [
+    "2026-11-10 after close"
+   ],
+   "UPXI": [
+    "2026-11-10 time not given"
+   ],
+   "MCHX": [
+    "2026-11-10 after close"
+   ],
+   "PODC": [
+    "2026-11-10 time not given"
+   ],
+   "AIRG": [
+    "2026-11-10 after close"
+   ],
+   "ELOX": [
+    "2026-11-10 time not given"
+   ],
+   "HOWL": [
+    "2026-11-10 time not given"
+   ],
+   "GENK": [
+    "2026-11-10 after close"
+   ],
+   "ESYN": [
+    "2026-11-10 time not given"
+   ],
+   "GROV": [
+    "2026-11-10 after close"
+   ],
+   "MDAI": [
+    "2026-11-10 after close"
+   ],
+   "BMEA": [
+    "2026-11-10 time not given"
+   ],
+   "HBIO": [
+    "2026-11-10 before open"
+   ],
+   "TELA": [
+    "2026-11-10 after close"
+   ],
+   "PRPO": [
+    "2026-11-10 after close"
+   ],
+   "ROLR": [
+    "2026-11-10 time not given"
+   ],
+   "ZEPP": [
+    "2026-11-10 time not given"
+   ],
+   "COHN": [
+    "2026-11-10 time not given"
+   ],
+   "BODI": [
+    "2026-11-10 after close"
+   ],
+   "QTI": [
+    "2026-11-10 after close"
+   ],
+   "REED": [
+    "2026-11-10 after close"
+   ],
+   "MGX": [
+    "2026-11-10 time not given"
+   ],
+   "PETS": [
+    "2026-11-10 after close"
+   ],
+   "FLD": [
+    "2026-11-10 after close"
+   ],
+   "SWAG": [
+    "2026-11-10 after close"
+   ],
+   "UONE": [
+    "2026-11-10 before open"
+   ],
+   "UONEK": [
+    "2026-11-10 before open"
+   ],
+   "AHT": [
+    "2026-11-10 time not given"
+   ],
+   "BNGO": [
+    "2026-11-10 after close"
+   ],
+   "IPM": [
+    "2026-11-10 after close"
+   ],
+   "ACCS": [
+    "2026-11-10 before open"
+   ],
+   "DLPN": [
+    "2026-11-10 after close"
+   ],
+   "CLRB": [
+    "2026-11-10 before open"
+   ],
+   "SNES": [
+    "2026-11-10 after close"
+   ],
+   "LGVN": [
+    "2026-11-10 time not given"
+   ],
+   "FTHM": [
+    "2026-11-10 time not given"
+   ],
+   "SNOA": [
+    "2026-11-10 time not given"
+   ],
+   "NXGL": [
+    "2026-11-10 time not given"
+   ],
+   "GP": [
+    "2026-11-10 time not given"
+   ],
+   "WENC": [
+    "2026-11-10 time not given"
+   ],
+   "FNV": [
+    "2026-11-11 after close"
+   ],
+   "VYLR": [
+    "2026-11-11 after close"
+   ],
+   "GIB": [
+    "2026-11-11 before open"
+   ],
+   "TECH": [
+    "2026-11-11 time not given"
+   ],
+   "TTEK": [
+    "2026-11-11 after close"
+   ],
+   "CAE": [
+    "2026-11-11 after close"
+   ],
+   "CTVA": [
+    "2026-11-11 after close"
+   ],
+   "OR": [
+    "2026-11-11 after close"
+   ],
+   "ORKA": [
+    "2026-11-11 time not given"
+   ],
+   "UGP": [
+    "2026-11-11 time not given"
+   ],
+   "ICL": [
+    "2026-11-11 before open"
+   ],
+   "ENS": [
+    "2026-11-11 after close"
+   ],
+   "ERAS": [
+    "2026-11-11 time not given"
+   ],
+   "AYA": [
+    "2026-11-11 before open"
+   ],
+   "ECO": [
+    "2026-11-11 after close"
+   ],
+   "TNK": [
+    "2026-11-11 after close"
+   ],
+   "IHS": [
+    "2026-11-11 time not given"
+   ],
+   "SA": [
+    "2026-11-11 time not given"
+   ],
+   "BGSI": [
+    "2026-11-11 before open"
+   ],
+   "PLGO": [
+    "2026-11-11 after close"
+   ],
+   "DGII": [
+    "2026-11-11 after close"
+   ],
+   "RUM": [
+    "2026-11-11 before open"
+   ],
+   "PHVS": [
+    "2026-11-11 time not given"
+   ],
+   "ALVO": [
+    "2026-11-11 after close"
+   ],
+   "EZPW": [
+    "2026-11-11 after close"
+   ],
+   "SSMR": [
+    "2026-11-11 time not given"
+   ],
+   "NYAX": [
+    "2026-11-11 before open"
+   ],
+   "SLS": [
+    "2026-11-11 time not given"
+   ],
+   "CEPU": [
+    "2026-11-11 after close"
+   ],
+   "AADX": [
+    "2026-11-11 before open"
+   ],
+   "TYRA": [
+    "2026-11-11 time not given"
+   ],
+   "FLNG": [
+    "2026-11-11 before open"
+   ],
+   "NWCL": [
+    "2026-11-11 time not given"
+   ],
+   "AGRO": [
+    "2026-11-11 after close"
+   ],
+   "AVLN": [
+    "2026-11-11 time not given"
+   ],
+   "SLSR": [
+    "2026-11-11 time not given"
+   ],
+   "AVEX": [
+    "2026-11-11 after close"
+   ],
+   "CNL": [
+    "2026-11-11 time not given"
+   ],
+   "ODD": [
+    "2026-11-11 before open"
+   ],
+   "RSKD": [
+    "2026-11-11 before open"
+   ],
+   "TK": [
+    "2026-11-11 after close"
+   ],
+   "VMET": [
+    "2026-11-11 time not given"
+   ],
+   "BORR": [
+    "2026-11-11 time not given"
+   ],
+   "AFYA": [
+    "2026-11-11 time not given"
+   ],
+   "BMBL": [
+    "2026-11-11 time not given"
+   ],
+   "SVRA": [
+    "2026-11-11 time not given"
+   ],
+   "HSLV": [
+    "2026-11-11 time not given"
+   ],
+   "AEBI": [
+    "2026-11-11 before open"
+   ],
+   "ANRO": [
+    "2026-11-11 time not given"
+   ],
+   "AGBK": [
+    "2026-11-11 after close"
+   ],
+   "INMD": [
+    "2026-11-11 before open"
+   ],
+   "XNDU": [
+    "2026-11-11 after close"
+   ],
+   "DDI": [
+    "2026-11-11 after close"
+   ],
+   "BALY": [
+    "2026-11-11 time not given"
+   ],
+   "AVR": [
+    "2026-11-11 time not given"
+   ],
+   "OVID": [
+    "2026-11-11 time not given"
+   ],
+   "INDP": [
+    "2026-11-11 time not given"
+   ],
+   "MAGN": [
+    "2026-11-11 time not given"
+   ],
+   "ITRG": [
+    "2026-11-11 after close"
+   ],
+   "DDL": [
+    "2026-11-11 time not given"
+   ],
+   "CINT": [
+    "2026-11-11 after close"
+   ],
+   "BSRT": [
+    "2026-11-11 after close"
+   ],
+   "VGZ": [
+    "2026-11-11 time not given"
+   ],
+   "UAMY": [
+    "2026-11-11 time not given"
+   ],
+   "CUB": [
+    "2026-11-11 time not given"
+   ],
+   "VOXR": [
+    "2026-11-11 time not given"
+   ],
+   "IRD": [
+    "2026-11-11 time not given"
+   ],
+   "IRLA": [
+    "2026-11-11 time not given"
+   ],
+   "IDR": [
+    "2026-11-11 time not given"
+   ],
+   "SMTI": [
+    "2026-11-11 time not given"
+   ],
+   "KYTX": [
+    "2026-11-11 time not given"
+   ],
+   "PRLD": [
+    "2026-11-11 time not given"
+   ],
+   "FULC": [
+    "2026-11-11 time not given"
+   ],
+   "ELA": [
+    "2026-11-11 time not given"
+   ],
+   "FBLA": [
+    "2026-11-11 time not given"
+   ],
+   "NMG": [
+    "2026-11-11 time not given"
+   ],
+   "CYPH": [
+    "2026-11-11 time not given"
+   ],
+   "AZ": [
+    "2026-11-11 after close"
+   ],
+   "PCYO": [
+    "2026-11-11 time not given"
+   ],
+   "LRMR": [
+    "2026-11-11 time not given"
+   ],
+   "LXEO": [
+    "2026-11-11 time not given"
+   ],
+   "RCMT": [
+    "2026-11-11 time not given"
+   ],
+   "ABEO": [
+    "2026-11-11 time not given"
+   ],
+   "ARTV": [
+    "2026-11-11 time not given"
+   ],
+   "GLAS": [
+    "2026-11-11 time not given"
+   ],
+   "ACOG": [
+    "2026-11-11 after close"
+   ],
+   "UPB": [
+    "2026-11-11 time not given"
+   ],
+   "BBOT": [
+    "2026-11-11 time not given"
+   ],
+   "MINE": [
+    "2026-11-11 time not given"
+   ],
+   "SND": [
+    "2026-11-11 time not given"
+   ],
+   "RDCM": [
+    "2026-11-11 before open"
+   ],
+   "OPRX": [
+    "2026-11-11 after close"
+   ],
+   "PEPG": [
+    "2026-11-11 time not given"
+   ],
+   "EPSN": [
+    "2026-11-11 time not given"
+   ],
+   "CNTN": [
+    "2026-11-11 time not given"
+   ],
+   "FUFU": [
+    "2026-11-11 time not given"
+   ],
+   "CURI": [
+    "2026-11-11 after close"
+   ],
+   "ANTX": [
+    "2026-11-11 time not given"
+   ],
+   "DUOT": [
+    "2026-11-11 time not given"
+   ],
+   "SION": [
+    "2026-11-11 time not given"
+   ],
+   "VLN": [
+    "2026-11-11 before open"
+   ],
+   "MGNX": [
+    "2026-11-11 time not given"
+   ],
+   "ESP": [
+    "2026-11-11 time not given"
+   ],
+   "AMPY": [
+    "2026-11-11 time not given"
+   ],
+   "CUE": [
+    "2026-11-11 time not given"
+   ],
+   "ANNA": [
+    "2026-11-11 time not given"
+   ],
+   "CAAS": [
+    "2026-11-11 time not given"
+   ],
+   "CMPX": [
+    "2026-11-11 time not given"
+   ],
+   "PYPD": [
+    "2026-11-11 before open"
+   ],
+   "FHTX": [
+    "2026-11-11 time not given"
+   ],
+   "ARMP": [
+    "2026-11-11 time not given"
+   ],
+   "SSTI": [
+    "2026-11-11 time not given"
+   ],
+   "FLYX": [
+    "2026-11-11 time not given"
+   ],
+   "TISI": [
+    "2026-11-11 after close"
+   ],
+   "EDRY": [
+    "2026-11-11 before open"
+   ],
+   "UNCY": [
+    "2026-11-11 time not given"
+   ],
+   "PMVP": [
+    "2026-11-11 time not given"
+   ],
+   "SKYX": [
+    "2026-11-11 time not given"
+   ],
+   "INTG": [
+    "2026-11-11 time not given"
+   ],
+   "GNLX": [
+    "2026-11-11 time not given"
+   ],
+   "ATRA": [
+    "2026-11-11 time not given"
+   ],
+   "SIEB": [
+    "2026-11-11 time not given"
+   ],
+   "AIRT": [
+    "2026-11-11 time not given"
+   ],
+   "MBOT": [
+    "2026-11-11 time not given"
+   ],
+   "MNOV": [
+    "2026-11-11 time not given"
+   ],
+   "BSIN": [
+    "2026-11-11 before open"
+   ],
+   "COYA": [
+    "2026-11-11 time not given"
+   ],
+   "WRAP": [
+    "2026-11-11 time not given"
+   ],
+   "ONCY": [
+    "2026-11-11 time not given"
+   ],
+   "CITR": [
+    "2026-11-11 before open"
+   ],
+   "GOSS": [
+    "2026-11-11 time not given"
+   ],
+   "XBIT": [
+    "2026-11-11 time not given"
+   ],
+   "INVZ": [
+    "2026-11-11 before open"
+   ],
+   "GGR": [
+    "2026-11-11 before open"
+   ],
+   "NMAD": [
+    "2026-11-11 time not given"
+   ],
+   "KLRS": [
+    "2026-11-11 time not given"
+   ],
+   "ZSTK": [
+    "2026-11-11 time not given"
+   ],
+   "APT": [
+    "2026-11-11 time not given"
+   ],
+   "BOLD": [
+    "2026-11-11 time not given"
+   ],
+   "CRBP": [
+    "2026-11-11 time not given"
+   ],
+   "HOUR": [
+    "2026-11-11 time not given"
+   ],
+   "LITB": [
+    "2026-11-11 time not given"
+   ],
+   "AIB": [
+    "2026-11-11 time not given"
+   ],
+   "DWSN": [
+    "2026-11-11 time not given"
+   ],
+   "WWR": [
+    "2026-11-11 time not given"
+   ],
+   "IMA": [
+    "2026-11-11 time not given"
+   ],
+   "IBIO": [
+    "2026-11-11 time not given"
+   ],
+   "TGEN": [
+    "2026-11-11 after close"
+   ],
+   "CNTB": [
+    "2026-11-11 time not given"
+   ],
+   "LINK": [
+    "2026-11-11 time not given"
+   ],
+   "CSTE": [
+    "2026-11-11 before open"
+   ],
+   "XPL": [
+    "2026-11-11 time not given"
+   ],
+   "SCWO": [
+    "2026-11-11 time not given"
+   ],
+   "AACG": [
+    "2026-11-11 time not given"
+   ],
+   "GANX": [
+    "2026-11-11 time not given"
+   ],
+   "SACH": [
+    "2026-11-11 time not given"
+   ],
+   "WATT": [
+    "2026-11-11 time not given"
+   ],
+   "IZEA": [
+    "2026-11-11 time not given"
+   ],
+   "ALDX": [
+    "2026-11-11 time not given"
+   ],
+   "LGO": [
+    "2026-11-11 time not given"
+   ],
+   "STRR": [
+    "2026-11-11 after close"
+   ],
+   "BOF": [
+    "2026-11-11 time not given"
+   ],
+   "LVO": [
+    "2026-11-11 time not given"
+   ],
+   "GROW": [
+    "2026-11-11 time not given"
+   ],
+   "PXLW": [
+    "2026-11-11 after close"
+   ],
+   "ANVS": [
+    "2026-11-11 time not given"
+   ],
+   "SYPR": [
+    "2026-11-11 time not given"
+   ],
+   "BYSI": [
+    "2026-11-11 time not given"
+   ],
+   "PRHI": [
+    "2026-11-11 time not given"
+   ],
+   "EFOI": [
+    "2026-11-11 time not given"
+   ],
+   "NXTC": [
+    "2026-11-11 time not given"
+   ],
+   "CPHI": [
+    "2026-11-11 time not given"
+   ],
+   "VHUB": [
+    "2026-11-11 time not given"
+   ],
+   "LFT": [
+    "2026-11-11 time not given"
+   ],
+   "LOCL": [
+    "2026-11-11 time not given"
+   ],
+   "NXPL": [
+    "2026-11-11 time not given"
+   ],
+   "ATOS": [
+    "2026-11-11 time not given"
+   ],
+   "TXMD": [
+    "2026-11-11 time not given"
+   ],
+   "SST": [
+    "2026-11-11 time not given"
+   ],
+   "MXC": [
+    "2026-11-11 time not given"
+   ],
+   "MNDO": [
+    "2026-11-11 time not given"
+   ],
+   "CNTX": [
+    "2026-11-11 time not given"
+   ],
+   "PLUR": [
+    "2026-11-11 time not given"
+   ],
+   "SNAL": [
+    "2026-11-11 time not given"
+   ],
+   "MTEX": [
+    "2026-11-11 time not given"
+   ],
+   "AIFF": [
+    "2026-11-11 time not given"
+   ],
+   "BIOX": [
+    "2026-11-11 time not given"
+   ],
+   "BCDA": [
+    "2026-11-11 time not given"
+   ],
+   "BOLT": [
+    "2026-11-11 time not given"
+   ],
+   "BFRI": [
+    "2026-11-11 time not given"
+   ],
+   "TCRX": [
+    "2026-11-11 time not given"
+   ],
+   "ICU": [
+    "2026-11-11 after close"
+   ],
+   "WETH": [
+    "2026-11-11 time not given"
+   ],
+   "SURG": [
+    "2026-11-11 time not given"
+   ],
+   "RKTO": [
+    "2026-11-11 time not given"
+   ],
+   "CALC": [
+    "2026-11-11 time not given"
+   ],
+   "AEMD": [
+    "2026-11-11 time not given"
+   ],
+   "UCL": [
+    "2026-11-11 before open"
+   ],
+   "LTRN": [
+    "2026-11-11 time not given"
+   ],
+   "TOVX": [
+    "2026-11-11 time not given"
+   ],
+   "TPST": [
+    "2026-11-11 time not given"
+   ],
+   "NAII": [
+    "2026-11-11 time not given"
+   ],
+   "GITS": [
+    "2026-11-11 time not given"
+   ],
+   "INBS": [
+    "2026-11-11 time not given"
+   ],
+   "SCNX": [
+    "2026-11-11 time not given"
+   ],
+   "ACON": [
+    "2026-11-11 time not given"
+   ],
+   "AZTR": [
+    "2026-11-11 time not given"
+   ],
+   "XBIO": [
+    "2026-11-11 time not given"
+   ],
+   "GBR": [
+    "2026-11-11 time not given"
+   ],
+   "APUS": [
+    "2026-11-11 time not given"
+   ],
+   "AQMS": [
+    "2026-11-11 time not given"
+   ],
+   "XAIR": [
+    "2026-11-11 after close"
+   ],
+   "AUID": [
+    "2026-11-11 time not given"
+   ],
+   "HYFM": [
+    "2026-11-11 time not given"
+   ],
+   "HLSQ": [
+    "2026-11-11 time not given"
+   ],
+   "AMIX": [
+    "2026-11-11 time not given"
+   ],
+   "AIRE": [
+    "2026-11-11 time not given"
+   ],
+   "CENN": [
+    "2026-11-11 time not given"
+   ],
+   "SLXN": [
+    "2026-11-11 time not given"
+   ],
+   "BRTX": [
+    "2026-11-11 time not given"
+   ],
+   "KUST": [
+    "2026-11-11 time not given"
+   ],
+   "WORX": [
+    "2026-11-11 time not given"
+   ],
+   "ADGM": [
+    "2026-11-11 time not given"
+   ],
+   "SQFT": [
+    "2026-11-11 time not given"
+   ],
+   "ARTL": [
+    "2026-11-11 time not given"
+   ],
+   "SHFS": [
+    "2026-11-11 time not given"
+   ],
+   "AEXA": [
+    "2026-11-11 time not given"
+   ],
+   "CXII": [
+    "2026-11-11 time not given"
+   ],
+   "KRAQ": [
+    "2026-11-11 time not given"
+   ],
+   "SBXE": [
+    "2026-11-11 time not given"
+   ],
+   "CSCO": [
+    "2026-11-12 after close"
+   ],
+   "AMAT": [
+    "2026-11-12 after close"
+   ],
+   "BN": [
+    "2026-11-12 before open"
+   ],
+   "NU": [
+    "2026-11-12 after close"
+   ],
+   "NBIS": [
+    "2026-11-12 before open"
+   ],
+   "CBRS": [
+    "2026-11-12 after close"
+   ],
+   "ASND": [
+    "2026-11-12 before open"
+   ],
+   "BNT": [
+    "2026-11-12 time not given"
+   ],
+   "HBM": [
+    "2026-11-12 before open"
+   ],
+   "STN": [
+    "2026-11-12 after close"
+   ],
+   "ARWR": [
+    "2026-11-12 after close"
+   ],
+   "TWST": [
+    "2026-11-12 before open"
+   ],
+   "ELPC": [
+    "2026-11-12 after close"
+   ],
+   "ANDG": [
+    "2026-11-12 after close"
+   ],
+   "NIQ": [
+    "2026-11-12 before open"
+   ],
+   "MBGL": [
+    "2026-11-12 before open"
+   ],
+   "BLTE": [
+    "2026-11-12 after close"
+   ],
+   "KOD": [
+    "2026-11-12 time not given"
+   ],
+   "OCTV": [
+    "2026-11-12 before open"
+   ],
+   "FPS": [
+    "2026-11-12 before open"
+   ],
+   "AVAL": [
+    "2026-11-12 time not given"
+   ],
+   "MWH": [
+    "2026-11-12 before open"
+   ],
+   "FIGR": [
+    "2026-11-12 before open"
+   ],
+   "HTFL": [
+    "2026-11-12 after close"
+   ],
+   "ARX": [
+    "2026-11-12 before open"
+   ],
+   "DPC": [
+    "2026-11-12 before open"
+   ],
+   "DLO": [
+    "2026-11-12 after close"
+   ],
+   "SKE": [
+    "2026-11-12 time not given"
+   ],
+   "XE": [
+    "2026-11-12 before open"
+   ],
+   "YETI": [
+    "2026-11-12 before open"
+   ],
+   "PBLS": [
+    "2026-11-12 time not given"
+   ],
+   "ENHA": [
+    "2026-11-12 after close"
+   ],
+   "CLBT": [
+    "2026-11-12 before open"
+   ],
+   "AVAH": [
+    "2026-11-12 before open"
+   ],
+   "LFTO": [
+    "2026-11-12 after close"
+   ],
+   "LGN": [
+    "2026-11-12 before open"
+   ],
+   "ONDS": [
+    "2026-11-12 before open"
+   ],
+   "ACCV": [
+    "2026-11-12 after close"
+   ],
+   "SPB": [
+    "2026-11-12 before open"
+   ],
+   "LUNR": [
+    "2026-11-12 before open"
+   ],
+   "STNE": [
+    "2026-11-12 after close"
+   ],
+   "STDN": [
+    "2026-11-12 before open"
+   ],
+   "WWW": [
+    "2026-11-12 before open"
+   ],
+   "INTR": [
+    "2026-11-12 after close"
+   ],
+   "ABSI": [
+    "2026-11-12 before open"
+   ],
+   "YSWY": [
+    "2026-11-12 before open"
+   ],
+   "HUBG": [
+    "2026-11-12 time not given"
+   ],
+   "FLO": [
+    "2026-11-12 after close"
+   ],
+   "ARCO": [
+    "2026-11-12 before open"
+   ],
+   "EROC": [
+    "2026-11-12 before open"
+   ],
+   "EYE": [
+    "2026-11-12 before open"
+   ],
+   "ADIG": [
+    "2026-11-12 before open"
+   ],
+   "TSHA": [
+    "2026-11-12 before open"
+   ],
+   "PBT": [
+    "2026-11-12 time not given"
+   ],
+   "EPC": [
+    "2026-11-12 before open"
+   ],
+   "HAWK": [
+    "2026-11-12 after close"
+   ],
+   "OMER": [
+    "2026-11-12 time not given"
+   ],
+   "NKTR": [
+    "2026-11-12 after close"
+   ],
+   "JCAP": [
+    "2026-11-12 after close"
+   ],
+   "AIIR": [
+    "2026-11-12 before open"
+   ],
+   "SPH": [
+    "2026-11-12 before open"
+   ],
+   "SID": [
+    "2026-11-12 after close"
+   ],
+   "TBN": [
+    "2026-11-12 after close"
+   ],
+   "FRMI": [
+    "2026-11-12 before open"
+   ],
+   "NMAX": [
+    "2026-11-12 after close"
+   ],
+   "TMC": [
+    "2026-11-12 after close"
+   ],
+   "JBIO": [
+    "2026-11-12 time not given"
+   ],
+   "ORIC": [
+    "2026-11-12 time not given"
+   ],
+   "KPLT": [
+    "2026-11-12 before open"
+   ],
+   "AKTS": [
+    "2026-11-12 time not given"
+   ],
+   "MGTX": [
+    "2026-11-12 time not given"
+   ],
+   "ALMS": [
+    "2026-11-12 time not given"
+   ],
+   "YSS": [
+    "2026-11-12 after close"
+   ],
+   "DC": [
+    "2026-11-12 time not given"
+   ],
+   "WHK": [
+    "2026-11-12 after close"
+   ],
+   "MTA": [
+    "2026-11-12 time not given"
+   ],
+   "CSIQ": [
+    "2026-11-12 time not given"
+   ],
+   "MAKO": [
+    "2026-11-12 time not given"
+   ],
+   "TE": [
+    "2026-11-12 before open"
+   ],
+   "LAC": [
+    "2026-11-12 time not given"
+   ],
+   "SGMT": [
+    "2026-11-12 time not given"
+   ],
+   "CADL": [
+    "2026-11-12 time not given"
+   ],
+   "HELP": [
+    "2026-11-12 time not given"
+   ],
+   "CDNL": [
+    "2026-11-12 before open"
+   ],
+   "VINP": [
+    "2026-11-12 after close"
+   ],
+   "ABUS": [
+    "2026-11-12 time not given"
+   ],
+   "SSYS": [
+    "2026-11-12 before open"
+   ],
+   "ENVX": [
+    "2026-11-12 after close"
+   ],
+   "NGNE": [
+    "2026-11-12 time not given"
+   ],
+   "RMR": [
+    "2026-11-12 after close"
+   ],
+   "NEXN": [
+    "2026-11-12 before open"
+   ],
+   "CZNC": [
+    "2026-11-12 time not given"
+   ],
+   "CTGO": [
+    "2026-11-12 time not given"
+   ],
+   "DMAC": [
+    "2026-11-12 after close"
+   ],
+   "MNPR": [
+    "2026-11-12 time not given"
+   ],
+   "BRUN": [
+    "2026-11-12 before open"
+   ],
+   "NPCE": [
+    "2026-11-12 after close"
+   ],
+   "BOC": [
+    "2026-11-12 time not given"
+   ],
+   "CMCL": [
+    "2026-11-12 before open"
+   ],
+   "ALOY": [
+    "2026-11-12 time not given"
+   ],
+   "CRMD": [
+    "2026-11-12 before open"
+   ],
+   "RLMD": [
+    "2026-11-12 after close"
+   ],
+   "ALLT": [
+    "2026-11-12 before open"
+   ],
+   "CDRO": [
+    "2026-11-12 before open"
+   ],
+   "OFRM": [
+    "2026-11-12 after close"
+   ],
+   "ALT": [
+    "2026-11-12 before open"
+   ],
+   "SPCE": [
+    "2026-11-12 after close"
+   ],
+   "WSBF": [
+    "2026-11-12 time not given"
+   ],
+   "PSFE": [
+    "2026-11-12 before open"
+   ],
+   "ARTNA": [
+    "2026-11-12 time not given"
+   ],
+   "LWAY": [
+    "2026-11-12 after close"
+   ],
+   "FENC": [
+    "2026-11-12 before open"
+   ],
+   "CV": [
+    "2026-11-12 after close"
+   ],
+   "NAK": [
+    "2026-11-12 time not given"
+   ],
+   "EIKN": [
+    "2026-11-12 time not given"
+   ],
+   "GEMI": [
+    "2026-11-12 after close"
+   ],
+   "FTW": [
+    "2026-11-12 after close"
+   ],
+   "CDZI": [
+    "2026-11-12 time not given"
+   ],
+   "SHIP": [
+    "2026-11-12 before open"
+   ],
+   "IPSC": [
+    "2026-11-12 time not given"
+   ],
+   "TTRX": [
+    "2026-11-12 time not given"
+   ],
+   "SNFCA": [
+    "2026-11-12 before open"
+   ],
+   "BTBT": [
+    "2026-11-12 before open"
+   ],
+   "MPTI": [
+    "2026-11-12 before open"
+   ],
+   "LCTX": [
+    "2026-11-12 after close"
+   ],
+   "BKTI": [
+    "2026-11-12 before open"
+   ],
+   "SES": [
+    "2026-11-12 before open"
+   ],
+   "HQI": [
+    "2026-11-12 after close"
+   ],
+   "NSTR": [
+    "2026-11-12 after close"
+   ],
+   "KLC": [
+    "2026-11-12 after close"
+   ],
+   "SVIA": [
+    "2026-11-12 time not given"
+   ],
+   "NUAI": [
+    "2026-11-12 before open"
+   ],
+   "ATER": [
+    "2026-11-12 time not given"
+   ],
+   "AENT": [
+    "2026-11-12 after close"
+   ],
+   "LIEN": [
+    "2026-11-12 before open"
+   ],
+   "XNET": [
+    "2026-11-12 before open"
+   ],
+   "DMRC": [
+    "2026-11-12 after close"
+   ],
+   "TONT": [
+    "2026-11-12 time not given"
+   ],
+   "PED": [
+    "2026-11-12 after close"
+   ],
+   "TII": [
+    "2026-11-12 before open"
+   ],
+   "ZSQR": [
+    "2026-11-12 time not given"
+   ],
+   "MDWD": [
+    "2026-11-12 before open"
+   ],
+   "NPWR": [
+    "2026-11-12 after close"
+   ],
+   "ICG": [
+    "2026-11-12 time not given"
+   ],
+   "MOVE": [
+    "2026-11-12 before open"
+   ],
+   "ORMP": [
+    "2026-11-12 time not given"
+   ],
+   "ONEW": [
+    "2026-11-12 time not given"
+   ],
+   "AIRJ": [
+    "2026-11-12 time not given"
+   ],
+   "SBMT": [
+    "2026-11-12 time not given"
+   ],
+   "VUZI": [
+    "2026-11-12 after close"
+   ],
+   "OPTX": [
+    "2026-11-12 time not given"
+   ],
+   "AIRO": [
+    "2026-11-12 before open"
+   ],
+   "RNA": [
+    "2026-11-12 time not given"
+   ],
+   "NGEN": [
+    "2026-11-12 time not given"
+   ],
+   "SJT": [
+    "2026-11-12 time not given"
+   ],
+   "SMID": [
+    "2026-11-12 time not given"
+   ],
+   "DEFT": [
+    "2026-11-12 after close"
+   ],
+   "NEOV": [
+    "2026-11-12 after close"
+   ],
+   "PDSB": [
+    "2026-11-12 time not given"
+   ],
+   "DERM": [
+    "2026-11-12 after close"
+   ],
+   "MRDN": [
+    "2026-11-12 time not given"
+   ],
+   "ALMU": [
+    "2026-11-12 after close"
+   ],
+   "CRDL": [
+    "2026-11-12 time not given"
+   ],
+   "FLNT": [
+    "2026-11-12 after close"
+   ],
+   "LGCY": [
+    "2026-11-12 after close"
+   ],
+   "CDXS": [
+    "2026-11-12 after close"
+   ],
+   "EQ": [
+    "2026-11-12 time not given"
+   ],
+   "DFDV": [
+    "2026-11-12 before open"
+   ],
+   "NICM": [
+    "2026-11-12 time not given"
+   ],
+   "IMUX": [
+    "2026-11-12 time not given"
+   ],
+   "PARK": [
+    "2026-11-12 after close"
+   ],
+   "GCTS": [
+    "2026-11-12 after close"
+   ],
+   "FURY": [
+    "2026-11-12 time not given"
+   ],
+   "SHIM": [
+    "2026-11-12 after close"
+   ],
+   "VANI": [
+    "2026-11-12 time not given"
+   ],
+   "FEAM": [
+    "2026-11-12 time not given"
+   ],
+   "GLND": [
+    "2026-11-12 time not given"
+   ],
+   "ICCC": [
+    "2026-11-12 after close"
+   ],
+   "CBUS": [
+    "2026-11-12 after close"
+   ],
+   "PLYX": [
+    "2026-11-12 time not given"
+   ],
+   "CPBI": [
+    "2026-11-12 time not given"
+   ],
+   "CEPL": [
+    "2026-11-12 after close"
+   ],
+   "LGL": [
+    "2026-11-12 time not given"
+   ],
+   "BUDA": [
+    "2026-11-12 after close"
+   ],
+   "LUCD": [
+    "2026-11-12 before open"
+   ],
+   "MRLN": [
+    "2026-11-12 after close"
+   ],
+   "NTWK": [
+    "2026-11-12 before open"
+   ],
+   "WFCF": [
+    "2026-11-12 time not given"
+   ],
+   "PAL": [
+    "2026-11-12 after close"
+   ],
+   "CRT": [
+    "2026-11-12 time not given"
+   ],
+   "USGO": [
+    "2026-11-12 time not given"
+   ],
+   "VATE": [
+    "2026-11-12 after close"
+   ],
+   "ACRV": [
+    "2026-11-12 time not given"
+   ],
+   "BWEN": [
+    "2026-11-12 before open"
+   ],
+   "ROC": [
+    "2026-11-12 after close"
+   ],
+   "INVE": [
+    "2026-11-12 after close"
+   ],
+   "WYY": [
+    "2026-11-12 after close"
+   ],
+   "CING": [
+    "2026-11-12 time not given"
+   ],
+   "RSSS": [
+    "2026-11-12 after close"
+   ],
+   "SLSN": [
+    "2026-11-12 after close"
+   ],
+   "SPRO": [
+    "2026-11-12 time not given"
+   ],
+   "CVU": [
+    "2026-11-12 time not given"
+   ],
+   "VERI": [
+    "2026-11-12 after close"
+   ],
+   "XLO": [
+    "2026-11-12 time not given"
+   ],
+   "PEW": [
+    "2026-11-12 after close"
+   ],
+   "POCI": [
+    "2026-11-12 time not given"
+   ],
+   "VRCA": [
+    "2026-11-12 after close"
+   ],
+   "TLPH": [
+    "2026-11-12 after close"
+   ],
+   "SPCB": [
+    "2026-11-12 time not given"
+   ],
+   "TACT": [
+    "2026-11-12 after close"
+   ],
+   "YTRA": [
+    "2026-11-12 after close"
+   ],
+   "TPCS": [
+    "2026-11-12 time not given"
+   ],
+   "GRML": [
+    "2026-11-12 time not given"
+   ],
+   "SGA": [
+    "2026-11-12 before open"
+   ],
+   "SRTS": [
+    "2026-11-12 after close"
+   ],
+   "TIL": [
+    "2026-11-12 time not given"
+   ],
+   "ELBM": [
+    "2026-11-12 time not given"
+   ],
+   "BTCS": [
+    "2026-11-12 time not given"
+   ],
+   "REKR": [
+    "2026-11-12 time not given"
+   ],
+   "NEXM": [
+    "2026-11-12 time not given"
+   ],
+   "VGAS": [
+    "2026-11-12 time not given"
+   ],
+   "AVX": [
+    "2026-11-12 after close"
+   ],
+   "SER": [
+    "2026-11-12 time not given"
+   ],
+   "BATL": [
+    "2026-11-12 time not given"
+   ],
+   "IDN": [
+    "2026-11-12 after close"
+   ],
+   "FRMM": [
+    "2026-11-12 before open"
+   ],
+   "HYPD": [
+    "2026-11-12 before open"
+   ],
+   "VIP": [
+    "2026-11-12 time not given"
+   ],
+   "EXOZ": [
+    "2026-11-12 time not given"
+   ],
+   "LASE": [
+    "2026-11-12 before open"
+   ],
+   "STEX": [
+    "2026-11-12 after close"
+   ],
+   "HIT": [
+    "2026-11-12 after close"
+   ],
+   "GRCE": [
+    "2026-11-12 time not given"
+   ],
+   "SLND": [
+    "2026-11-12 after close"
+   ],
+   "PTHS": [
+    "2026-11-12 before open"
+   ],
+   "ODYS": [
+    "2026-11-12 time not given"
+   ],
+   "AETR": [
+    "2026-11-12 after close"
+   ],
+   "IPWR": [
+    "2026-11-12 before open"
+   ],
+   "WKHS": [
+    "2026-11-12 after close"
+   ],
+   "XOS": [
+    "2026-11-12 after close"
+   ],
+   "BHST": [
+    "2026-11-12 before open"
+   ],
+   "PMN": [
+    "2026-11-12 after close"
+   ],
+   "RMCO": [
+    "2026-11-12 time not given"
+   ],
+   "ZONE": [
+    "2026-11-12 time not given"
+   ],
+   "EYPT": [
+    "2026-11-12 before open"
+   ],
+   "RMTI": [
+    "2026-11-12 before open"
+   ],
+   "VTSI": [
+    "2026-11-12 after close"
+   ],
+   "LVLU": [
+    "2026-11-12 after close"
+   ],
+   "NSYS": [
+    "2026-11-12 after close"
+   ],
+   "NSPR": [
+    "2026-11-12 before open"
+   ],
+   "AERT": [
+    "2026-11-12 before open"
+   ],
+   "JG": [
+    "2026-11-12 before open"
+   ],
+   "BZAI": [
+    "2026-11-12 time not given"
+   ],
+   "CRWS": [
+    "2026-11-12 after close"
+   ],
+   "MLSS": [
+    "2026-11-12 time not given"
+   ],
+   "BCHT": [
+    "2026-11-12 after close"
+   ],
+   "DRIO": [
+    "2026-11-12 before open"
+   ],
+   "LSF": [
+    "2026-11-12 after close"
+   ],
+   "PPSI": [
+    "2026-11-12 time not given"
+   ],
+   "DAIO": [
+    "2026-11-12 before open"
+   ],
+   "SPRU": [
+    "2026-11-12 after close"
+   ],
+   "AARD": [
+    "2026-11-12 time not given"
+   ],
+   "SHPH": [
+    "2026-11-12 time not given"
+   ],
+   "USEA": [
+    "2026-11-12 before open"
+   ],
+   "MIRA": [
+    "2026-11-12 time not given"
+   ],
+   "BEAT": [
+    "2026-11-12 after close"
+   ],
+   "BLNE": [
+    "2026-11-12 before open"
+   ],
+   "FMST": [
+    "2026-11-12 time not given"
+   ],
+   "ATCH": [
+    "2026-11-12 time not given"
+   ],
+   "AYTU": [
+    "2026-11-12 time not given"
+   ],
+   "BSEM": [
+    "2026-11-12 after close"
+   ],
+   "BCG": [
+    "2026-11-12 time not given"
+   ],
+   "INLX": [
+    "2026-11-12 after close"
+   ],
+   "ACTU": [
+    "2026-11-12 time not given"
+   ],
+   "AKTX": [
+    "2026-11-12 time not given"
+   ],
+   "KTTA": [
+    "2026-11-12 time not given"
+   ],
+   "PRT": [
+    "2026-11-12 time not given"
+   ],
+   "FENG": [
+    "2026-11-12 time not given"
+   ],
+   "LHAI": [
+    "2026-11-12 time not given"
+   ],
+   "INTZ": [
+    "2026-11-12 after close"
+   ],
+   "MRKR": [
+    "2026-11-12 time not given"
+   ],
+   "CTSO": [
+    "2026-11-12 after close"
+   ],
+   "MDXH": [
+    "2026-11-12 after close"
+   ],
+   "SLE": [
+    "2026-11-12 time not given"
+   ],
+   "INV": [
+    "2026-11-12 after close"
+   ],
+   "DYAI": [
+    "2026-11-12 after close"
+   ],
+   "SMSI": [
+    "2026-11-12 after close"
+   ],
+   "GRNQ": [
+    "2026-11-12 time not given"
+   ],
+   "DARE": [
+    "2026-11-12 time not given"
+   ],
+   "GUTS": [
+    "2026-11-12 after close"
+   ],
+   "TVRD": [
+    "2026-11-12 time not given"
+   ],
+   "CMMB": [
+    "2026-11-12 time not given"
+   ],
+   "SOAR": [
+    "2026-11-12 time not given"
+   ],
+   "LIQT": [
+    "2026-11-12 before open"
+   ],
+   "KSCP": [
+    "2026-11-12 after close"
+   ],
+   "AZR": [
+    "2026-11-12 time not given"
+   ],
+   "BTLN": [
+    "2026-11-12 time not given"
+   ],
+   "MBRX": [
+    "2026-11-12 time not given"
+   ],
+   "WVVI": [
+    "2026-11-12 time not given"
+   ],
+   "OPNW": [
+    "2026-11-12 after close"
+   ],
+   "MARPS": [
+    "2026-11-12 time not given"
+   ],
+   "ASTC": [
+    "2026-11-12 time not given"
+   ],
+   "MDBH": [
+    "2026-11-12 time not given"
+   ],
+   "YHGJ": [
+    "2026-11-12 time not given"
+   ],
+   "DTSS": [
+    "2026-11-12 time not given"
+   ],
+   "AMS": [
+    "2026-11-12 time not given"
+   ],
+   "VTGN": [
+    "2026-11-12 time not given"
+   ],
+   "CISO": [
+    "2026-11-12 time not given"
+   ],
+   "LUCY": [
+    "2026-11-12 time not given"
+   ],
+   "INUV": [
+    "2026-11-12 after close"
+   ],
+   "MSAI": [
+    "2026-11-12 after close"
+   ],
+   "RBNE": [
+    "2026-11-12 time not given"
+   ],
+   "MYSE": [
+    "2026-11-12 time not given"
+   ],
+   "FRTT": [
+    "2026-11-12 time not given"
+   ],
+   "SNTI": [
+    "2026-11-12 time not given"
+   ],
+   "RAIN": [
+    "2026-11-12 time not given"
+   ],
+   "NIXX": [
+    "2026-11-12 time not given"
+   ],
+   "BGMS": [
+    "2026-11-12 time not given"
+   ],
+   "VNRX": [
+    "2026-11-12 time not given"
+   ],
+   "CRIS": [
+    "2026-11-12 after close"
+   ],
+   "AIMD": [
+    "2026-11-12 time not given"
+   ],
+   "WKSP": [
+    "2026-11-12 time not given"
+   ],
+   "BTOC": [
+    "2026-11-12 time not given"
+   ],
+   "ACXP": [
+    "2026-11-12 before open"
+   ],
+   "PULM": [
+    "2026-11-12 time not given"
+   ],
+   "CNSY": [
+    "2026-11-12 time not given"
+   ],
+   "IMNN": [
+    "2026-11-12 before open"
+   ],
+   "TWAV": [
+    "2026-11-12 time not given"
+   ],
+   "TNON": [
+    "2026-11-12 after close"
+   ],
+   "CWD": [
+    "2026-11-12 after close"
+   ],
+   "NWTG": [
+    "2026-11-12 time not given"
+   ],
+   "GXAI": [
+    "2026-11-12 time not given"
+   ],
+   "NCNA": [
+    "2026-11-12 time not given"
+   ],
+   "MTR": [
+    "2026-11-12 time not given"
+   ],
+   "LIMN": [
+    "2026-11-12 time not given"
+   ],
+   "TRAW": [
+    "2026-11-12 time not given"
+   ],
+   "DFLI": [
+    "2026-11-12 after close"
+   ],
+   "SXTP": [
+    "2026-11-12 time not given"
+   ],
+   "HCTI": [
+    "2026-11-12 time not given"
+   ],
+   "CYAB": [
+    "2026-11-12 time not given"
+   ],
+   "XPON": [
+    "2026-11-12 time not given"
+   ],
+   "CLDI": [
+    "2026-11-12 time not given"
+   ],
+   "SILO": [
+    "2026-11-12 time not given"
+   ],
+   "CODX": [
+    "2026-11-12 after close"
+   ],
+   "SBFM": [
+    "2026-11-12 time not given"
+   ],
+   "ITP": [
+    "2026-11-12 time not given"
+   ],
+   "GOVX": [
+    "2026-11-12 time not given"
+   ],
+   "NUWE": [
+    "2026-11-12 before open"
+   ],
+   "CSAI": [
+    "2026-11-12 time not given"
+   ],
+   "NXTS": [
+    "2026-11-12 time not given"
+   ],
+   "ATPC": [
+    "2026-11-12 time not given"
+   ],
+   "LABT": [
+    "2026-11-12 time not given"
+   ],
+   "VJET": [
+    "2026-11-12 time not given"
+   ],
+   "OLOX": [
+    "2026-11-12 time not given"
+   ],
+   "IMCC": [
+    "2026-11-12 time not given"
+   ],
+   "KIDZ": [
+    "2026-11-12 time not given"
+   ],
+   "SMTK": [
+    "2026-11-12 time not given"
+   ],
+   "BCSS": [
+    "2026-11-12 time not given"
+   ],
+   "NOEM": [
+    "2026-11-12 time not given"
+   ],
+   "KPET": [
+    "2026-11-12 time not given"
+   ],
+   "SPMC": [
+    "2026-11-12 before open"
+   ],
+   "MUFG": [
+    "2026-11-13 time not given"
+   ],
+   "SMFG": [
+    "2026-11-13 time not given"
+   ],
+   "MFG": [
+    "2026-11-13 time not given"
+   ],
+   "KB": [
+    "2026-11-13 time not given"
+   ],
+   "WF": [
+    "2026-11-13 time not given"
+   ],
+   "CIG": [
+    "2026-11-13 time not given"
+   ],
+   "XXI": [
+    "2026-11-13 before open"
+   ],
+   "LPL": [
+    "2026-11-13 time not given"
+   ],
+   "PPTA": [
+    "2026-11-13 time not given"
+   ],
+   "RLX": [
+    "2026-11-13 time not given"
+   ],
+   "INBX": [
+    "2026-11-13 time not given"
+   ],
+   "USAS": [
+    "2026-11-13 before open"
+   ],
+   "FBYD": [
+    "2026-11-13 time not given"
+   ],
+   "RMIX": [
+    "2026-11-13 before open"
+   ],
+   "SCZM": [
+    "2026-11-13 time not given"
+   ],
+   "SGML": [
+    "2026-11-13 time not given"
+   ],
+   "SBC": [
+    "2026-11-13 before open"
+   ],
+   "CMDB": [
+    "2026-11-13 time not given"
+   ],
+   "TVGN": [
+    "2026-11-13 time not given"
+   ],
+   "XMAX": [
+    "2026-11-13 time not given"
+   ],
+   "GALT": [
+    "2026-11-13 time not given"
+   ],
+   "BNTC": [
+    "2026-11-13 time not given"
+   ],
+   "ORBS": [
+    "2026-11-13 time not given"
+   ],
+   "MLP": [
+    "2026-11-13 time not given"
+   ],
+   "XTND": [
+    "2026-11-13 time not given"
+   ],
+   "PUSA": [
+    "2026-11-13 time not given"
+   ],
+   "RDI": [
+    "2026-11-13 time not given"
+   ],
+   "NKLR": [
+    "2026-11-13 time not given"
+   ],
+   "GLSI": [
+    "2026-11-13 time not given"
+   ],
+   "IKT": [
+    "2026-11-13 time not given"
+   ],
+   "ELDN": [
+    "2026-11-13 time not given"
+   ],
+   "KGEI": [
+    "2026-11-13 before open"
+   ],
+   "DGXX": [
+    "2026-11-13 before open"
+   ],
+   "USDE": [
+    "2026-11-13 time not given"
+   ],
+   "AIBZ": [
+    "2026-11-13 time not given"
+   ],
+   "ECC": [
+    "2026-11-13 before open"
+   ],
+   "MSLE": [
+    "2026-11-13 time not given"
+   ],
+   "EVAC": [
+    "2026-11-13 time not given"
+   ],
+   "BEBE": [
+    "2026-11-13 time not given"
+   ],
+   "OWLT": [
+    "2026-11-13 before open"
+   ],
+   "SLNH": [
+    "2026-11-13 time not given"
+   ],
+   "OPHC": [
+    "2026-11-13 before open"
+   ],
+   "HURA": [
+    "2026-11-13 time not given"
+   ],
+   "AREC": [
+    "2026-11-13 time not given"
+   ],
+   "NRXP": [
+    "2026-11-13 time not given"
+   ],
+   "PNBK": [
+    "2026-11-13 time not given"
+   ],
+   "SRG": [
+    "2026-11-13 time not given"
+   ],
+   "RDZN": [
+    "2026-11-13 time not given"
+   ],
+   "SIDU": [
+    "2026-11-13 time not given"
+   ],
+   "NDLS": [
+    "2026-11-13 before open"
+   ],
+   "RTB": [
+    "2026-11-13 time not given"
+   ],
+   "MIST": [
+    "2026-11-13 before open"
+   ],
+   "PZG": [
+    "2026-11-13 time not given"
+   ],
+   "SEV": [
+    "2026-11-13 time not given"
+   ],
+   "FSI": [
+    "2026-11-13 time not given"
+   ],
+   "EIC": [
+    "2026-11-13 before open"
+   ],
+   "QXL": [
+    "2026-11-13 time not given"
+   ],
+   "AGPU": [
+    "2026-11-13 time not given"
+   ],
+   "AMPG": [
+    "2026-11-13 time not given"
+   ],
+   "NORD": [
+    "2026-11-13 time not given"
+   ],
+   "FBIO": [
+    "2026-11-13 time not given"
+   ],
+   "DVLT": [
+    "2026-11-13 time not given"
+   ],
+   "QUCY": [
+    "2026-11-13 time not given"
+   ],
+   "AMOD": [
+    "2026-11-13 time not given"
+   ],
+   "PVL": [
+    "2026-11-13 time not given"
+   ],
+   "OBAI": [
+    "2026-11-13 time not given"
+   ],
+   "SPAI": [
+    "2026-11-13 time not given"
+   ],
+   "HOST": [
+    "2026-11-13 time not given"
+   ],
+   "RNTX": [
+    "2026-11-13 time not given"
+   ],
+   "SAFX": [
+    "2026-11-13 time not given"
+   ],
+   "INKT": [
+    "2026-11-13 time not given"
+   ],
+   "OSTX": [
+    "2026-11-13 time not given"
+   ],
+   "TRT": [
+    "2026-11-13 time not given"
+   ],
+   "DTCX": [
+    "2026-11-13 time not given"
+   ],
+   "PROP": [
+    "2026-11-13 time not given"
+   ],
+   "APWC": [
+    "2026-11-13 time not given"
+   ],
+   "SOWG": [
+    "2026-11-13 time not given"
+   ],
+   "ATNM": [
+    "2026-11-13 time not given"
+   ],
+   "CNVS": [
+    "2026-11-13 before open"
+   ],
+   "VHC": [
+    "2026-11-13 time not given"
+   ],
+   "NNVC": [
+    "2026-11-13 time not given"
+   ],
+   "FTFT": [
+    "2026-11-13 time not given"
+   ],
+   "TOON": [
+    "2026-11-13 time not given"
+   ],
+   "LITS": [
+    "2026-11-13 time not given"
+   ],
+   "COSM": [
+    "2026-11-13 time not given"
+   ],
+   "IXHL": [
+    "2026-11-13 time not given"
+   ],
+   "FKWL": [
+    "2026-11-13 time not given"
+   ],
+   "BRAG": [
+    "2026-11-13 before open"
+   ],
+   "ABVC": [
+    "2026-11-13 time not given"
+   ],
+   "RNAZ": [
+    "2026-11-13 time not given"
+   ],
+   "ONMD": [
+    "2026-11-13 time not given"
+   ],
+   "CIRC": [
+    "2026-11-13 time not given"
+   ],
+   "CELU": [
+    "2026-11-13 time not given"
+   ],
+   "AAME": [
+    "2026-11-13 time not given"
+   ],
+   "UAVS": [
+    "2026-11-13 time not given"
+   ],
+   "AEI": [
+    "2026-11-13 time not given"
+   ],
+   "PMI": [
+    "2026-11-13 time not given"
+   ],
+   "COCP": [
+    "2026-11-13 time not given"
+   ],
+   "TAOX": [
+    "2026-11-13 time not given"
+   ],
+   "NYC": [
+    "2026-11-13 before open"
+   ],
+   "BESS": [
+    "2026-11-13 time not given"
+   ],
+   "SMXT": [
+    "2026-11-13 time not given"
+   ],
+   "FFR": [
+    "2026-11-13 time not given"
+   ],
+   "RVP": [
+    "2026-11-13 time not given"
+   ],
+   "SKYQ": [
+    "2026-11-13 time not given"
+   ],
+   "LFWD": [
+    "2026-11-13 time not given"
+   ],
+   "CNTY": [
+    "2026-11-13 before open"
+   ],
+   "BEEM": [
+    "2026-11-13 time not given"
+   ],
+   "ALLR": [
+    "2026-11-13 time not given"
+   ],
+   "NEUP": [
+    "2026-11-13 time not given"
+   ],
+   "SCLX": [
+    "2026-11-13 time not given"
+   ],
+   "FGI": [
+    "2026-11-13 time not given"
+   ],
+   "ZEO": [
+    "2026-11-13 time not given"
+   ],
+   "VEEA": [
+    "2026-11-13 time not given"
+   ],
+   "BENF": [
+    "2026-11-13 time not given"
+   ],
+   "AIRI": [
+    "2026-11-13 time not given"
+   ],
+   "OPTH": [
+    "2026-11-13 time not given"
+   ],
+   "PAVM": [
+    "2026-11-13 before open"
+   ],
+   "IDAI": [
+    "2026-11-13 time not given"
+   ],
+   "MODD": [
+    "2026-11-13 time not given"
+   ],
+   "CLRO": [
+    "2026-11-13 time not given"
+   ],
+   "CMCT": [
+    "2026-11-13 time not given"
+   ],
+   "HIND": [
+    "2026-11-13 time not given"
+   ],
+   "AEON": [
+    "2026-11-13 time not given"
+   ],
+   "FEMY": [
+    "2026-11-13 time not given"
+   ],
+   "FABC": [
+    "2026-11-13 time not given"
+   ],
+   "PTN": [
+    "2026-11-13 time not given"
+   ],
+   "DUKR": [
+    "2026-11-13 time not given"
+   ],
+   "ASBP": [
+    "2026-11-13 time not given"
+   ],
+   "GTBP": [
+    "2026-11-13 time not given"
+   ],
+   "BFRG": [
+    "2026-11-13 time not given"
+   ],
+   "CURX": [
+    "2026-11-13 time not given"
+   ],
+   "PBK": [
+    "2026-11-13 time not given"
+   ],
+   "IQST": [
+    "2026-11-13 time not given"
+   ],
+   "CABR": [
+    "2026-11-13 time not given"
+   ],
+   "TCRT": [
+    "2026-11-13 time not given"
+   ],
+   "NDRA": [
+    "2026-11-13 time not given"
+   ],
+   "DETX": [
+    "2026-11-13 time not given"
+   ],
+   "ENSC": [
+    "2026-11-13 time not given"
+   ],
+   "FBLG": [
+    "2026-11-13 time not given"
+   ],
+   "ENVB": [
+    "2026-11-13 time not given"
+   ],
+   "MSN": [
+    "2026-11-13 time not given"
+   ],
+   "CNSP": [
+    "2026-11-13 time not given"
+   ],
+   "XWEL": [
+    "2026-11-13 time not given"
+   ],
+   "JAGX": [
+    "2026-11-13 time not given"
+   ],
+   "OLB": [
+    "2026-11-13 time not given"
+   ],
+   "ATXG": [
+    "2026-11-13 time not given"
+   ],
+   "VS": [
+    "2026-11-13 time not given"
+   ],
+   "PLAG": [
+    "2026-11-13 time not given"
+   ],
+   "BKYI": [
+    "2026-11-13 time not given"
+   ],
+   "MITQ": [
+    "2026-11-13 time not given"
+   ],
+   "ARAI": [
+    "2026-11-13 before open"
+   ],
+   "DSS": [
+    "2026-11-13 time not given"
+   ],
+   "CHAI": [
+    "2026-11-13 time not given"
+   ],
+   "MGRX": [
+    "2026-11-13 time not given"
+   ],
+   "NXXT": [
+    "2026-11-13 time not given"
+   ],
+   "DRMA": [
+    "2026-11-13 time not given"
+   ],
+   "ICON": [
+    "2026-11-13 time not given"
+   ],
+   "AMST": [
+    "2026-11-13 time not given"
+   ],
+   "SONM": [
+    "2026-11-13 time not given"
+   ],
+   "NCRA": [
+    "2026-11-13 time not given"
+   ],
+   "GRI": [
+    "2026-11-13 time not given"
+   ],
+   "CNET": [
+    "2026-11-13 time not given"
+   ],
+   "JTAI": [
+    "2026-11-13 time not given"
+   ],
+   "CJMB": [
+    "2026-11-13 time not given"
+   ],
+   "RENX": [
+    "2026-11-13 time not given"
+   ],
+   "TOPP": [
+    "2026-11-13 time not given"
+   ],
+   "JUNS": [
+    "2026-11-13 time not given"
+   ],
+   "AMSS": [
+    "2026-11-13 time not given"
+   ],
+   "DCOY": [
+    "2026-11-13 time not given"
+   ],
+   "BGLC": [
+    "2026-11-13 time not given"
+   ],
+   "AIDX": [
+    "2026-11-13 time not given"
+   ],
+   "IVDA": [
+    "2026-11-13 time not given"
+   ],
+   "HCWB": [
+    "2026-11-13 time not given"
+   ],
+   "TGL": [
+    "2026-11-13 time not given"
+   ],
+   "SGLY": [
+    "2026-11-13 time not given"
+   ],
+   "YHC": [
+    "2026-11-13 time not given"
+   ],
+   "PPBT": [
+    "2026-11-13 time not given"
+   ],
+   "ENLV": [
+    "2026-11-13 time not given"
+   ],
+   "GIPR": [
+    "2026-11-13 time not given"
+   ],
+   "BURU": [
+    "2026-11-13 time not given"
+   ],
+   "GNPX": [
+    "2026-11-13 time not given"
+   ],
+   "PPCB": [
+    "2026-11-13 time not given"
+   ],
+   "XRTX": [
+    "2026-11-13 time not given"
+   ],
+   "BOXL": [
+    "2026-11-13 time not given"
+   ],
+   "NXL": [
+    "2026-11-13 time not given"
+   ],
+   "KAPA": [
+    "2026-11-13 time not given"
+   ],
+   "KITT": [
+    "2026-11-13 time not given"
+   ],
+   "EDBL": [
+    "2026-11-13 time not given"
+   ],
+   "ELAB": [
+    "2026-11-13 time not given"
+   ],
+   "TRUG": [
+    "2026-11-13 time not given"
+   ],
+   "PWCM": [
+    "2026-11-13 time not given"
+   ],
+   "VBIO": [
+    "2026-11-13 time not given"
+   ],
+   "CHGA": [
+    "2026-11-13 time not given"
+   ],
+   "MYSZ": [
+    "2026-11-13 time not given"
+   ],
+   "IPDN": [
+    "2026-11-13 time not given"
+   ],
+   "ONFO": [
+    "2026-11-13 time not given"
+   ],
+   "GNLN": [
+    "2026-11-13 time not given"
+   ],
+   "IPW": [
+    "2026-11-13 time not given"
+   ],
+   "DBGI": [
+    "2026-11-13 time not given"
+   ],
+   "CEPO": [
+    "2026-11-13 time not given"
+   ],
+   "CEPF": [
+    "2026-11-13 time not given"
+   ],
+   "CEPV": [
+    "2026-11-13 time not given"
+   ],
+   "CEPS": [
+    "2026-11-13 time not given"
+   ],
+   "TLNC": [
+    "2026-11-13 time not given"
+   ],
+   "XSLL": [
+    "2026-11-13 time not given"
+   ],
+   "TCOM": [
+    "2026-11-16 time not given"
+   ],
+   "BIDU": [
+    "2026-11-16 before open"
+   ],
+   "BEKE": [
+    "2026-11-16 before open"
+   ],
+   "TSN": [
+    "2026-11-16 before open"
+   ],
+   "HTHT": [
+    "2026-11-16 before open"
+   ],
+   "ARMK": [
+    "2026-11-16 before open"
+   ],
+   "XPEV": [
+    "2026-11-16 before open"
+   ],
+   "ACM": [
+    "2026-11-16 after close"
+   ],
+   "XP": [
+    "2026-11-16 time not given"
+   ],
+   "POWL": [
+    "2026-11-16 after close"
+   ],
+   "BRC": [
+    "2026-11-16 time not given"
+   ],
+   "DAC": [
+    "2026-11-16 time not given"
+   ],
+   "PAGS": [
+    "2026-11-16 after close"
+   ],
+   "INFQ": [
+    "2026-11-16 after close"
+   ],
+   "BXDC": [
+    "2026-11-16 before open"
+   ],
+   "EMAT": [
+    "2026-11-16 time not given"
+   ],
+   "IMTX": [
+    "2026-11-16 time not given"
+   ],
+   "IQ": [
+    "2026-11-16 before open"
+   ],
+   "YALA": [
+    "2026-11-16 after close"
+   ],
+   "POET": [
+    "2026-11-16 before open"
+   ],
+   "SHAZ": [
+    "2026-11-16 after close"
+   ],
+   "RCAT": [
+    "2026-11-16 after close"
+   ],
+   "BLDP": [
+    "2026-11-16 before open"
+   ],
+   "PERI": [
+    "2026-11-16 before open"
+   ],
+   "GLAD": [
+    "2026-11-16 time not given"
+   ],
+   "API": [
+    "2026-11-16 after close"
+   ],
+   "TMS": [
+    "2026-11-16 after close"
+   ],
+   "GFUZ": [
+    "2026-11-16 after close"
+   ],
+   "ENTA": [
+    "2026-11-16 time not given"
+   ],
+   "POWW": [
+    "2026-11-16 before open"
+   ],
+   "SY": [
+    "2026-11-16 time not given"
+   ],
+   "GRRR": [
+    "2026-11-16 time not given"
+   ],
+   "YSG": [
+    "2026-11-16 time not given"
+   ],
+   "NIU": [
+    "2026-11-16 before open"
+   ],
+   "TRAK": [
+    "2026-11-16 after close"
+   ],
+   "HTLM": [
+    "2026-11-16 time not given"
+   ],
+   "EP": [
+    "2026-11-16 time not given"
+   ],
+   "IMDX": [
+    "2026-11-16 after close"
+   ],
+   "VENU": [
+    "2026-11-16 before open"
+   ],
+   "FTLF": [
+    "2026-11-16 after close"
+   ],
+   "LNZA": [
+    "2026-11-16 before open"
+   ],
+   "GPUS": [
+    "2026-11-16 time not given"
+   ],
+   "GAME": [
+    "2026-11-16 before open"
+   ],
+   "XBP": [
+    "2026-11-16 after close"
+   ],
+   "EHLD": [
+    "2026-11-16 time not given"
+   ],
+   "CRGO": [
+    "2026-11-16 time not given"
+   ],
+   "CREX": [
+    "2026-11-16 before open"
+   ],
+   "AMCI": [
+    "2026-11-16 time not given"
+   ],
+   "AIFC": [
+    "2026-11-16 time not given"
+   ],
+   "STEM": [
+    "2026-11-16 after close"
+   ],
+   "EONR": [
+    "2026-11-16 time not given"
+   ],
+   "BAER": [
+    "2026-11-16 after close"
+   ],
+   "VIDA": [
+    "2026-11-16 before open"
+   ],
+   "BTBD": [
+    "2026-11-16 time not given"
+   ],
+   "BRFH": [
+    "2026-11-16 after close"
+   ],
+   "CYCU": [
+    "2026-11-16 before open"
+   ],
+   "AIM": [
+    "2026-11-16 time not given"
+   ],
+   "DTST": [
+    "2026-11-16 before open"
+   ],
+   "IVF": [
+    "2026-11-16 time not given"
+   ],
+   "IPST": [
+    "2026-11-16 time not given"
+   ],
+   "ISPC": [
+    "2026-11-16 time not given"
+   ],
+   "TRNR": [
+    "2026-11-16 before open"
+   ],
+   "XXII": [
+    "2026-11-16 before open"
+   ],
+   "PARA": [
+    "2026-11-16 after close"
+   ],
+   "TWLV": [
+    "2026-11-16 time not given"
+   ]
+  }
+ },
+ "summary": "**Market summary: session of 2026-11-06**\n\nU.S. equities were mixed in the latest session. The Nasdaq 100 (QQQ) rose 1.40% and the Russell 2000 (IWM) gained 0.99%, while the Dow (DIA) fell 0.40% and the S&P 500 (SPY) edged up 0.31%. Over five sessions, however, SPY fell 2.70%, QQQ 4.98%, and the Technology sector (XLK) 8.23%. Energy (XLE) led five-day declines at -12.00%, with oil (USO) down 12.10%. Gold (GLD) rose 4.71% over the same period, and the U.S. dollar (UUP) gained 0.73% on the day. Consumer staples (XLP) was the weakest sector on the day at -1.28%.\n\nAmong eligible stocks, OBX (+44.4%) led gainers, while PRAA (-36.7%) led losers. Uniti Group (UNIT) was the most-mentioned ticker in the day's news. It reported a Q3 net loss of $244.5M and an EPS miss, but raised its FY2026 sales guidance. KeyBanc downgraded Zillow Group (ZG) to Sector Weight, and Dropbox announced a $1 billion convertible notes offering.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2965,
+   "output_tokens": 818,
+   "output_tokens_details": {
+    "thinking_tokens": 382
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0007055
+ }
+}
