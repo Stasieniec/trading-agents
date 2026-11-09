@@ -8,3 +8,4 @@
 {"cash": 95000.0, "date": "2026-11-05", "equity": 99589.66527189148, "gross": 4589.665271891484, "invested": 4589.665271891484, "prices": {"NOW": 102.36}, "qty": {"NOW": 44.83846494618488}, "type": "mark"}
 {"date": "2026-11-06", "order_id": "", "price": 101.272626, "qty": 44.83846494618488, "reason": "stop", "ref_price": 101.37400000000001, "side": "sell", "slippage_bp": 10, "ticker": "NOW", "type": "fill"}
 {"cash": 99540.90909090909, "date": "2026-11-06", "equity": 99540.90909090909, "gross": 0, "invested": 0, "prices": {}, "qty": {}, "type": "mark"}
+{"cash": 99540.90909090909, "date": "2026-11-09", "equity": 99540.90909090909, "gross": 0, "invested": 0, "prices": {}, "qty": {}, "type": "mark"}
