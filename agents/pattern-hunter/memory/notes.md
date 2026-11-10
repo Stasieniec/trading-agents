@@ -1,4 +1,5 @@
-Session 1 (2026-11-05): first session. Market: SPY +1.65% on 11-04, XLK -7.6% 5d, oil -8%. Big gaps on earnings/guidance: DOX -30% (T-Mobile dispute, FY27 guide), FIS -24% (CFO exit, JPM downgrade, guide cut), UNM -18% (GAAP loss), TRMB -17% (outlook). 
-Pattern 'news gap-down drift': short large-cap fallers with real news closing near lows on heavy volume. Opened FIS and UNM shorts 6% each. Skipped DOX (pre-market +2.4%, already -30%, crash-bounce risk), TRMB (ARR growing, in-line numbers: overreaction candidate).
-Tool tip: web_search returns a JSON string inside code_execution; use json.loads.
-Check next session: how FIS/UNM did vs SPY.
+Session 1 (2026-11-05): SPY +1.65% 11-04, big earnings gaps: DOX -30%, FIS -24%, UNM -18%, TRMB -17%. Pattern 'news gap-down drift': short large-cap fallers with news closing near lows on heavy volume. Opened FIS, UNM shorts (~6% each). Skipped DOX (crash-bounce risk), TRMB.
+Session 11-06: opened ECPG long (earnings +26% gap) under 'news gap-up drift'; it then fell 9.5% next day with peer PRAA -37% (sector sympathy) -> lesson: check peers' earnings before buying a gap-up in a sector; relative strength was not safe.
+Session 11-10: market rebounded SPY +2.37% on 11-09 (UNM short +4.5% that day: rebound risk for shorts). Examined TTD (earnings pop +15% on 11-09, pre-market -6% fade; news-driven, skipped), IONS/ACAD/PRAX (biotech news moves, pre-market flat, skipped), DDI (small cap no-news +15% 14x vol, 0.5% slippage, skipped). Held all three.
+Tips: web_search in code_execution returns JSON string -> import json; json.loads. Stats from screens: news-driven moves go on ~45-60% of time; no strong edge yet.
+Open: watch ECPG stop 106.40 (horizon 11-18), FIS/UNM horizon 11-19.

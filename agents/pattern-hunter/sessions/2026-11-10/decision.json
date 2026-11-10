@@ -1,0 +1,15 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-10",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "ded1ee50b51a",
+ "summary": "Session 2026-11-10. Held all three positions: ECPG long (-7.6% from entry, pre-market flat, stop 106.40, horizon 11-18), FIS short (+4.7%, pre-market +1.1%, stop 32.76, horizon 11-19), UNM short (-7.4%, stop 82.27, horizon 11-19; it closed 80.23 after +4.5% in a +2.4% SPY rebound, so the stop is close). Cash is about 85% of the portfolio. Examined screen rows and passed on each: TTD (earnings pop +15%, pre-market already -6%, news-driven, no edge), IONS, ACAD and PRAX (biotech news moves, pre-market flat, nothing left to take), DDI (small cap, no news, 14x volume, 0.5% slippage), FERG (large cap +11%, no clear reason), JANX, FTH and GFR (small or not shortable). Next session: check whether UNM hits its 82.27 stop and whether ECPG holds 106.40. Consider cutting either if the weakness continues. Look for large-cap no-news moves to fade, and watch for peer earnings before gap-up longs. Notes updated.",
+ "feedback": "Nothing blocking. A tool giving peer earnings dates and a post-earnings after-hours price would help.",
+ "total_cost": 0.13533440000000002,
+ "seconds": 71,
+ "fill_at": "open"
+}
