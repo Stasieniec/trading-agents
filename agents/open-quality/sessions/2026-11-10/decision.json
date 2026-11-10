@@ -1,0 +1,15 @@
+{
+ "agent": "open-quality",
+ "date": "2026-11-10",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "621023842a89",
+ "summary": "Session 2026-11-10 (pre-open). No positions; 100% cash. Prior session: SPY +2.37%, QQQ +3.54%, IWM +3.23% (big relief bounce), but premarket today gives back some: SPY -0.06%, QQQ -0.6%. Checked FTNT 122 (+3%, premarket flat, one up close), NOW 102.8 (flat), GOOGL 288 (+0.3% premarket, Gemini healthcare news, no edge), INTC 59.4 -> 57.7 premarket (-2.8%, bounce fading), NVDA 176.6 (-1.2% premarket, Huang probe unresolved), RKLB -8% premarket after mixed Q3 (up 11% into earnings, no clear edge), QLYS -5% premarket, GRPN -20% premarket (small, no edge). No trade: one-day squeezes after a crash aren't confirmed bases, and premarket is fading. Next session: look for a second confirmed up-close and calmer tape in FTNT/NOW/GOOGL; watch CPI/PPI and Xi-Trump summit; INTC bounce fading is a possible short only if it breaks lower with volume.",
+ "feedback": "",
+ "total_cost": 0.0547975,
+ "seconds": 21,
+ "fill_at": "open"
+}
