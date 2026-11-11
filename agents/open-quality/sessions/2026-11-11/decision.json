@@ -1,0 +1,15 @@
+{
+ "agent": "open-quality",
+ "date": "2026-11-11",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "621023842a89",
+ "summary": "Session 2026-11-11 (pre-open). 100% cash, no positions. Premarket: SPY +1%, QQQ +2% on CoreWeave earnings beat ($133B backlog, Chanos ROIC critique) and NVDA rebound, after a hot CPI sell-off yesterday (SPY -0.37%, QQQ -0.68%, XLK -1.15%). 10y yield near 5%, Fed hike bets rising. Looked at CRWV +15%, NBIS +13%, BE +7.5% premarket (chasing gap-ups with no edge, news priced at open), MRCY (JPM upgrade, +5% yesterday, +2.7% pre), FTNT (123.6, two up closes, +2% pre), NOW (99.6), GOOGL, INTC (+6% pre after a -2% close), APPS (-36%, small, no edge). No trade: no verified catalyst left unpriced, whipsaw macro tape. Next: see whether AI-infra gap-ups hold after open (fade candidates CRWV/NBIS if they fail), whether FTNT builds a base, PPI/Fed commentary, Xi-Trump summit.",
+ "feedback": "No blocking issues. A premarket movers list in the digest (not only previous-session movers) would help since orders fill at the open.",
+ "total_cost": 0.0823554,
+ "seconds": 35,
+ "fill_at": "open"
+}
