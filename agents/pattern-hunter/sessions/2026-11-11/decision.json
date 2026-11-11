@@ -1,0 +1,15 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-11",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "ded1ee50b51a",
+ "summary": "Session 2026-11-11. Held all three positions. ECPG long closed 108.02 (stop 106.40, horizon 11-18), no pre-market yet. FIS short 28.31 (pre-market -0.4%, +4.8% P&L, stop 32.76). UNM short 81.24 (stop 82.27, close, horizon 11-19). Screen was quiet: SPY -0.37%, with the AI-infrastructure bounce led by CRWV earnings. Examined and passed on: LINE (REIT, -12% on 3.6x volume with earnings news, closed near lows; the drop is already large and the news is unverified, so no edge); AAON (+19% earnings gap, pre-market +2%, chasing a gap-up); NOVT and LEGN (news-driven drops, no pre-market confirmation); TTWO (+8% large-cap news pop, pre-market +1.6%, poor entry); CCAP, CBL, AMRC, CTEV, APPS, GRPN, PAYS and GILT (small caps, high slippage, or not shortable). Next session: check whether UNM hits its 82.27 stop and whether ECPG holds 106.40. Their horizons end 11-18 and 11-19, so decide on close or extend then.",
+ "feedback": "",
+ "total_cost": 0.0657414,
+ "seconds": 20,
+ "fill_at": "open"
+}

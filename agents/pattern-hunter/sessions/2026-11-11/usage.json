@@ -1,0 +1,50 @@
+{
+ "total_cost": 0.0657414,
+ "calls": [
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0530305,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 20369
+    },
+    "cache_creation_input_tokens": 20369,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 4,
+    "output_tokens": 210,
+    "output_tokens_details": {
+     "thinking_tokens": 62
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.012710899999999999,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 1512
+    },
+    "cache_creation_input_tokens": 1512,
+    "cache_read_input_tokens": 20369,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 689,
+    "output_tokens_details": {
+     "thinking_tokens": 177
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  }
+ ],
+ "prompt_hash": "ded1ee50b51a"
+}
