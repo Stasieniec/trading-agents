@@ -1,0 +1,15 @@
+{
+ "agent": "no-news",
+ "date": "2026-11-12",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "a2024048ae51",
+ "summary": "Session 2026-11-12. Held CROX (159.98, +10.3%) and GKOS (247.16, +8.1%). Pre-market is flat for both. Both are well above their stops, and the 11/19 horizons have not expired. No new leads in the digest, since the most-active names are large caps with no catalyst I can verify. No trades. Next session: decide whether to extend or close both at the 11/19 horizon. CROX is near its 170.75 target and GKOS near 269.44.",
+ "feedback": "",
+ "total_cost": 0.0204533,
+ "seconds": 13,
+ "fill_at": "open"
+}
