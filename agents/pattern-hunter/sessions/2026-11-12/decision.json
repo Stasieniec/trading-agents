@@ -1,0 +1,15 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-12",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "ded1ee50b51a",
+ "summary": "Session 2026-11-12. Held all three positions. ECPG long closed 112.35, pre-market -1.2%, stop 106.40, horizon 11-18. FIS short closed 30.21, pre-market +0.6%, stop 32.76, horizon 11-19. UNM short closed 81.37, flat pre-market, stop 82.27 (close, only 1.1% away), horizon 11-19. SPY +1.32%, QQQ +2.31% on a tech rebound. Screen rows examined and passed: TTEK (-7.5% on 5x volume, but the earnings reaction after the close is +10.4% pre-market, so the drop is already reversing and there is no edge); KBR (sympathy fall, pre-market +1%, little left); REZI, FOSL, CARL, RSKD, SONO, AZTA, LMRI (earnings gap-ups that are small caps with slippage, or chasing gap-ups); CRWV (+25% then -10.7% pre-market, a news-driven large-cap with no clear edge); DJT (no news, but small cap and meme); BV, BRCB, NAVI, AADX (small caps with news or bad earnings, high slippage). Next session: decide on close or extend for ECPG (horizon 11-18) and for FIS and UNM (11-19). Check whether UNM hit its stop. Code records for my patterns are still empty because no trades have closed.",
+ "feedback": "",
+ "total_cost": 0.0667617,
+ "seconds": 22,
+ "fill_at": "open"
+}
