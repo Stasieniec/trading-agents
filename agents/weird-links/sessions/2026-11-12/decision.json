@@ -1,0 +1,15 @@
+{
+ "agent": "weird-links",
+ "date": "2026-11-12",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "e847a6b8b3c1",
+ "summary": "Session 2026-11-12. PUBM closed 18.31 on 11-11 (+8%), about +8.8% from my 16.82 cost. Stop is 14.73, target 20.09, and the horizon ends 11-13. There is no pre-market trade yet. I'm holding, since exiting today would cost slippage and the horizon doesn't force a decision until tomorrow. Next session (11-13): the PUBM horizon expires, so close it, or extend it only if a fresh thesis appears. The default is to close and bank the gain. The digest has nothing with a second-order chain: the HWC/TRMK bank merger (both named in the headlines), the KDP $2B equity offering, IonQ and quantum weakness after the Rigetti miss, and Trump's comment on Iran with oil flat. Cash is about 96%. Open ideas: JBS and China beef quotas, Boost/SpaceX towers, MOD data-center cooling, the oil and Iran/Hormuz path, and a KDP offering read-through (the coffee/JDE Peet's deal funding).",
+ "feedback": "",
+ "total_cost": 0.0492974,
+ "seconds": 20,
+ "fill_at": "open"
+}
