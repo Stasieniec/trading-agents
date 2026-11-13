@@ -17,3 +17,4 @@
 {"cash": 96206.29490491608, "date": "2026-11-11", "equity": 100569.03234205589, "gross": 4362.737437139804, "invested": 4362.737437139804, "prices": {"PUBM": 18.31}, "qty": {"PUBM": 238.27075025340272}, "type": "mark"}
 {"cash": 96206.29490491608, "date": "2026-11-12", "equity": 100738.2045747358, "gross": 4531.90966981972, "invested": 4531.90966981972, "prices": {"PUBM": 19.02}, "qty": {"PUBM": 238.27075025340272}, "type": "mark"}
 {"at": "open", "date": "2026-11-13", "order_id": "weird-links-2026-11-13-01", "price": 18.93485, "qty": 238.27075025340272, "reason": "close", "ref_price": 19.03, "side": "sell", "slippage_bp": 50, "ticker": "PUBM", "type": "fill"}
+{"cash": 100717.91582035173, "date": "2026-11-13", "equity": 100717.91582035173, "gross": 0, "invested": 0, "prices": {}, "qty": {}, "type": "mark"}
