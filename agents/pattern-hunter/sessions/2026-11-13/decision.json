@@ -1,0 +1,15 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-13",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "ded1ee50b51a",
+ "summary": "Session 2026-11-13. Held all three positions; no orders. Closes on 11-12: ECPG 109.86 (stop 106.40, horizon 11-18), FIS 28.36 short (pre-market +0.85%, stop 32.76, horizon 11-19), UNM 79.09 short (stop 82.27, horizon 11-19). All three are still inside their stops and horizons, so nothing needs a decision yet. Screen rows examined and passed: GPN (-12%, a news round trip, because the CD&R/GTCR buyout talks collapsed and it simply gave back the Oct 30 rumor pop, so no edge); HWC (-10% gap down on 8x volume with news, a small bank where I can't tell the cause, so no trade); KDP (-7% large cap, news/sympathy, pre-market flat); MBGL, PLBL, SENEB, NEXN, CHA, MFI, HPK, ADIG, BZ, CLBT, ALLT, DGII, YETI (small caps or news/earnings moves with slippage, or chasing gap-ups). Market SPY -0.35%, IWM -1.64%. Next session (Mon 11-16): ECPG horizon ends 11-18 and FIS/UNM end 11-19, so decide on close or extend for each. Check the stops, especially UNM (82.27, about 4% away). The code records for my patterns are still empty because no trades have closed.",
+ "feedback": "",
+ "total_cost": 0.0929622,
+ "seconds": 30,
+ "fill_at": "open"
+}
