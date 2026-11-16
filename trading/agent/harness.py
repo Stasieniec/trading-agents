@@ -24,7 +24,7 @@ from .urls import norm
 from .validate import Context, validate
 
 
-RESEARCH_TOOLS = {"get_quotes", "get_history", "search_symbols", "read_page", "scan"}
+RESEARCH_TOOLS = {"get_quotes", "get_history", "search_symbols", "read_page", "scan", "news", "economic_calendar"}
 
 
 def system_prompt(agent: AgentConfig) -> str:
@@ -282,7 +282,8 @@ class Session:
                 u, n = submitted
                 ctx = Context(agent=self.agent, universe=self.universe, state=self.state, closes=self.closes,
                               session_date=self.day.isoformat(), expired=expired_positions(self.state, self.day),
-                              read_ok_urls=self.tools.read_ok_urls | searched_urls, seen_urls=seen_urls,
+                              read_ok_urls=self.tools.read_ok_urls | searched_urls,
+                              seen_urls=seen_urls | self.tools.news_urls,
                               headline_text=_headline_text(self.digest), headline_symbols=_headline_symbols(self.digest))
                 orders = list(u.input.get("orders") or [])
                 ok, errors = validate(orders, ctx)

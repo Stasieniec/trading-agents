@@ -425,3 +425,46 @@ def test_a_page_from_a_web_search_counts_as_a_source(agents_dir):
         msg("tool_use", tool("submit_decision", {"orders": [order(sources=["https://reuters.com/markets/big-corp-wins-contract"])],
                                                  "session_summary": "x", "feedback": ""}, "t2"))], agent="open-quality")
     assert res["status"] == "decided" and [o["ticker"] for o in res["orders"]] == ["BIG"] and not res["rejected"]
+
+
+def test_news_tool_returns_tagged_stories_and_makes_them_citable(agents_dir):
+    class News(FakeAlpaca):
+        def news(self, start, end, pages=8, include_content=False, symbols=None):
+            assert symbols == ["BIG"] and include_content
+            return [{"created_at": "2026-11-13T21:05:00Z", "source": "benzinga", "symbols": ["BIG"],
+                     "headline": "Big Corp raises guidance", "url": "https://www.benzinga.com/news/big-raises",
+                     "content": "<p>Big Corp raised its full-year revenue guide to $12B.</p>"},
+                    {"created_at": "2026-11-12T10:00:00Z", "source": "benzinga", "symbols": ["BIG"],
+                     "headline": "Big Corp to present", "url": "https://www.benzinga.com/news/big-present",
+                     "content": "", "summary": "Investor day."}]
+
+    res, _, out = run(agents_dir, [
+        msg("tool_use", tool("news", {"tickers": ["big"], "days": 3})),
+        msg("tool_use", tool("submit_decision", {"orders": [order(sources=["https://benzinga.com/news/big-raises"])],
+                                                 "session_summary": "x", "feedback": ""}, "t2"))],
+        agent="open-quality", alpaca=News())
+    rows = [json.loads(line) for line in (out / "transcript.jsonl").read_text().splitlines()]
+    text = next(r for r in rows if r["kind"] == "tool")["output"]
+    assert "raised its full-year revenue guide" in text and "<p>" not in text and "Investor day." in text
+    assert [o["ticker"] for o in res["orders"]] == ["BIG"] and not res["rejected"]
+
+
+def test_economic_releases_render_with_actuals():
+    from trading.economy import render
+    text = render([{"date": "2026-11-13", "time": "13:30", "event": "CPI", "actual": "0.3%", "consensus": "0.2%",
+                    "previous": "0.4%"}, {"date": "2026-11-16", "time": "15:00", "event": "Retail Sales",
+                                          "actual": "", "consensus": "0.5%", "previous": "0.6%"}])
+    assert "CPI | 0.3% | 0.2% | 0.4%" in text and "Retail Sales | not out yet" in text
+
+
+def test_digest_shows_pre_market_movers_to_all_and_releases_to_news_agents():
+    from trading.digest import render
+    d = json.loads((ROOT / "data" / "digest" / "2026-11-04.json").read_text())
+    d["etfs"][0]["pre_pct"], d["etfs"][0]["pre_time"] = 0.42, "2026-11-04T13:16:00Z"
+    d["screen"] = {"premarket_movers": [{"ticker": "BIG", "pct": 6.0, "z": 3.1, "volume": 41000.0,
+                                         "volume_pct": 0.8, "time": "2026-11-04T13:00:00Z"}]}
+    d["economy"] = [{"date": "2026-11-04", "time": "13:30", "event": "CPI", "actual": "0.3%", "consensus": "0.2%",
+                     "previous": "0.4%"}]
+    news, price_only = render(d, news=True), render(d, news=False)
+    assert "pre-market +0.42%" in news and "BIG | +6.0 | +3.1 | 41,000 | 0.8%" in price_only
+    assert "CPI" in news and "CPI" not in price_only

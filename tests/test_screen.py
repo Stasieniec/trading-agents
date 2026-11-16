@@ -73,8 +73,14 @@ class FakeAlpaca:
         self.calls.append(len(symbols))
         return {s: self.b[s] for s in symbols if s in self.b}
 
-    def premarket(self, symbols, day):
-        return {"SPIKE": {"price": 57.0, "time": "2026-11-05T13:00:00Z", "volume": 120000.0}}
+    def premarket(self, symbols, day, timeframe="1Min"):
+        out = {"SPIKE": {"price": 57.0, "time": "2026-11-05T13:00:00Z", "volume": 120000.0}}
+        if timeframe == "1Hour":  # the whole-universe pass: one calm stock also trades pre-market
+            out["C1"] = {"price": 50.2, "time": "2026-11-05T13:00:00Z", "volume": 500.0}
+        return {s: v for s, v in out.items() if s in symbols}
+
+    def afterhours(self, symbols, day):
+        return {"DROP": {"price": 42.0, "time": "2026-11-04T22:00:00Z", "volume": 3000.0}}
 
 
 def uni():
@@ -93,7 +99,14 @@ def test_build_ranks_moves_by_their_own_volatility_and_adds_context(monkeypatch)
     spike = out["rows"][0]
     assert spike["pre"] == pytest.approx(57 / 60 * 100 - 100) and spike["pre_volume"] == 120000
     assert spike["vs_industry"] == pytest.approx(spike["r1"] - out["industry_moves"]["SPIKE"], abs=1e-3)
+    assert spike["pre_volume_pct"] == pytest.approx(120000 / 1e6 * 100)
     drop = out["rows"][1]
+    assert drop["after_hours"] == pytest.approx(42 / 44 * 100 - 100)
+    # Pre-market movers across everything measured, biggest in units of volatility first.
+    pm = out["premarket_movers"]
+    assert {r["ticker"] for r in pm} == {"SPIKE", "C1"}
+    c1 = next(r for r in pm if r["ticker"] == "C1")
+    assert c1["volume_pct"] == pytest.approx(0.05) and c1["pct"] == pytest.approx(50.2 / 50.1 * 100 - 100)
     assert drop["stories"] == 4 and drop["earnings"] == ["2026-11-04 before open"] and not drop["shortable"]
     text = render(out["rows"])
     assert "SPIKE" in text and "DROP (not shortable)" in text and "2026-11-04 before open" in text

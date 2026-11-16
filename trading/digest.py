@@ -25,6 +25,7 @@ ETFS = [
     ("XLP", "Consumer staples"), ("XLF", "Financials"), ("XLV", "Health care"), ("XLI", "Industrials"),
     ("XLE", "Energy"), ("XLB", "Materials"), ("XLU", "Utilities"), ("XLRE", "Real estate"),
     ("TLT", "Long Treasuries"), ("GLD", "Gold"), ("USO", "Oil"), ("UUP", "US dollar"),
+    ("VIXY", "VIX short-term futures"),
 ]
 RSS = [
     ("CNBC", "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114"),
@@ -118,6 +119,24 @@ def build(day: date, alpaca: Alpaca, universe: Universe, anthropic_client=None, 
         status["index moves"] = "ok"
     except DataError as e:
         status["index moves"] = f"failed: {e}"
+    try:  # where the ETFs trade this morning, the closest thing to futures on the free feed
+        pre = alpaca.premarket([s for s, _ in ETFS], day)
+        for e in etfs:
+            p = pre.get(e["symbol"])
+            if p and e["close"]:
+                e["pre_pct"] = 100 * (p["price"] / e["close"] - 1)
+                e["pre_time"] = p["time"]
+    except DataError:
+        pass
+
+    economy = []
+    try:
+        from . import economy as econ
+        for d_ in (prev, day):
+            economy += econ.fetch(d_)
+        status["economic calendar"] = "ok"
+    except Exception as e:  # nice to have
+        status["economic calendar"] = f"failed: {type(e).__name__}"
 
     def eligible(sym: str) -> bool:
         r = universe.get(sym)
@@ -194,7 +213,7 @@ def build(day: date, alpaca: Alpaca, universe: Universe, anthropic_client=None, 
     d = {"date": day.isoformat(), "built_at": built_at.isoformat(), "previous_session": prev.isoformat(),
          "intraday": intraday,
          "sources": status, "etfs": etfs, "movers": movers, "most_actives": actives, "headlines": headlines,
-         "news_mentions": top_mentions, "screen": screen,
+         "news_mentions": top_mentions, "screen": screen, "economy": economy,
          "summary": "", "usage": None}
     if anthropic_client is not None and (headlines or etfs):
         try:
@@ -222,9 +241,16 @@ def render(d: dict, news: bool, include_summary: bool = True) -> str:
     lines = [f"Daily digest for {d['date']}, built {d['built_at'][:16]} UTC. Moves are for the previous "
              f"session, {d['previous_session']}."]
     if d["etfs"]:
-        lines.append("\nIndex, sector and asset ETFs (close, 1-day %, 5-day %):")
+        lines.append("\nIndex, sector and asset ETFs (close, 1-day %, 5-day %, pre-market today vs close):")
         for e in d["etfs"]:
-            lines.append(f"- {e['symbol']} ({e['name']}): {e['close']:.2f}, {e['day_pct']:+.2f}%, {e['week_pct']:+.2f}%")
+            pre = f", pre-market {e['pre_pct']:+.2f}% ({e['pre_time'][11:16]} UTC)" if e.get("pre_pct") is not None else ""
+            lines.append(f"- {e['symbol']} ({e['name']}): {e['close']:.2f}, {e['day_pct']:+.2f}%, {e['week_pct']:+.2f}%{pre}")
+    pm = ((d.get("screen") or {}).get("premarket_movers")) or []
+    if pm:
+        from .screen import render_premarket
+        lines.append("\nBiggest pre-market moves this morning among eligible stocks, by the move in units of each "
+                     "stock's daily volatility (shares traded so far; a thin print can sit far from the real price):\n"
+                     + render_premarket(pm))
     for side, label in (("gainers", "Top gainers"), ("losers", "Top losers")):
         rows = d["movers"].get(side) or []
         if rows:
@@ -238,6 +264,10 @@ def render(d: dict, news: bool, include_summary: bool = True) -> str:
         if d.get("news_mentions"):
             lines.append("\nMost mentioned eligible tickers in the last day's news (stories): " +
                          ", ".join(f"{m['symbol']} {m['stories']}" for m in d["news_mentions"]))
+        if d.get("economy"):
+            from .economy import render as render_economy
+            lines.append("\nUS economic releases yesterday and today (the economic_calendar tool refreshes today's):\n"
+                         + render_economy(d["economy"]))
         if include_summary and d.get("summary"):
             lines.append("\nMarket summary (written by a helper model from this digest):\n" + d["summary"])
         if d["headlines"]:

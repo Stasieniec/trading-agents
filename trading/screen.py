@@ -22,12 +22,14 @@ from .timeutil import add_trading_days, previous_trading_day
 EARNINGS_URL = "https://api.nasdaq.com/api/calendar/earnings"
 COLUMNS = ("ticker | cap | industry | last close (date) | 1d % | 1d in sd | 1d vs industry % | vol x avg | "
            "gap % | close in range | 5d % before | 20d % before | from 52w high | from 52w low | streak | "
-           "pre-market % (vol) | stories | earnings")
+           "after hours % | pre-market % (shares, % of an average day) | stories | earnings")
 NOTE = ("1d in sd: the last session's move divided by the stock's daily volatility over the 60 sessions "
         "before it. 1d vs industry: the move minus the median move of stocks in the same industry that day. "
         "close in range: 0 = closed at the day's low, 1 = at its high. streak: consecutive up (+) or down (-) "
-        "closes. pre-market: the last one-minute price before the open against the last close, with shares "
-        "traded so far. stories: news stories in the last day naming the ticker (roundups excluded). "
+        "closes. after hours: the last price between 16:00 and 20:00 New York after the last session, against "
+        "its close. pre-market: the last one-minute price before the open against the last close, with shares "
+        "traded so far and those as a share of an average day's volume (a thin print can sit far from the real "
+        "price). stories: news stories in the last day naming the ticker (roundups excluded). "
         "earnings: a report in the last two sessions, or one due in the next five.")
 
 
@@ -46,7 +48,7 @@ def quick(bars: list[dict]) -> dict | None:
     avg_v = sum(vols) / len(vols) if vols else 0.0
     r1 = c[-1] / c[-2] - 1
     return {"date": bars[-1]["date"], "r1": r1 * 100, "sd": sd * 100, "z": r1 / sd if sd else None,
-            "vol_x": float(bars[-1]["v"]) / avg_v if avg_v else None}
+            "vol_x": float(bars[-1]["v"]) / avg_v if avg_v else None, "close": c[-1], "avg_volume": avg_v}
 
 
 def stats(bars: list[dict]) -> dict | None:
@@ -123,6 +125,10 @@ def _rows(universe, alpaca: Alpaca, day: date, syms: list[str], ind: dict[str, f
         pre = alpaca.premarket(syms, day)
     except DataError:
         pre = {}
+    try:
+        after = alpaca.afterhours(syms, previous_trading_day(day))
+    except DataError:
+        after = {}
     out = []
     for t in syms:
         done = [b for b in bars.get(t) or [] if b["date"] < day.isoformat()]  # finished sessions only
@@ -131,11 +137,14 @@ def _rows(universe, alpaca: Alpaca, day: date, syms: list[str], ind: dict[str, f
             out.append({"ticker": t, "missing": True})
             continue
         p = pre.get(t)
+        ah = after.get(t)
         row = universe.get(t) or {}
         out.append({"ticker": t, "market_cap": row.get("market_cap"), "industry": row.get("industry") or "",
                     "shortable": bool(row.get("shortable")),
                     "vs_industry": s["r1"] - ind[t] if t in ind else None,
                     "pre": _pct(p["price"], s["close"]) if p else None, "pre_volume": p["volume"] if p else None,
+                    "pre_volume_pct": p["volume"] / s["avg_volume"] * 100 if p and s.get("avg_volume") else None,
+                    "after_hours": _pct(ah["price"], s["close"]) if ah else None,
                     "stories": mentions.get(t, 0), "earnings": earnings.get(t, []), **s})
     return out
 
@@ -183,7 +192,39 @@ def build(universe, alpaca: Alpaca, day: date, mentions: dict[str, int], log=pri
     log(f"screen: {len(moves)} stocks measured, {len(rows)} rows")
     return {"day": day.isoformat(), "measured": len(moves), "built_at": datetime.now().astimezone().isoformat(),
             "rows": rows, "industry_moves": {s: round(v, 3) for s, v in ind.items() if s in pick},
-            "mentions": mentions, "earnings": earnings}
+            "mentions": mentions, "earnings": earnings,
+            "premarket_movers": premarket_movers(alpaca, day, moves, log)}
+
+
+def premarket_movers(alpaca: Alpaca, day: date, moves: dict[str, dict], log=print, per_side: int = 10) -> list[dict]:
+    """Today's biggest pre-market moves among the measured stocks, ranked by the move in units of the stock's
+    own daily volatility, each with its shares traded and those as a share of an average day."""
+    try:
+        pm = alpaca.premarket(sorted(moves), day, timeframe="1Hour")
+    except DataError as e:
+        log(f"screen: pre-market movers unavailable: {e}")
+        return []
+    rows = []
+    for s, p in pm.items():
+        q = moves.get(s)
+        if not q or not q.get("close") or not q.get("sd"):
+            continue
+        pct = (p["price"] / q["close"] - 1) * 100
+        rows.append({"ticker": s, "pct": pct, "z": pct / q["sd"], "volume": p["volume"], "time": p["time"],
+                     "volume_pct": p["volume"] / q["avg_volume"] * 100 if q.get("avg_volume") else None})
+    rows.sort(key=lambda r: r["z"])
+    return rows[-per_side:][::-1] + rows[:per_side]
+
+
+def render_premarket(rows: list[dict]) -> str:
+    if not rows:
+        return ""
+    lines = ["ticker | pre-market % vs last close | in sd | shares | % of an average day | as of (UTC)"]
+    for r in rows:
+        share = f"{r['volume_pct']:.1f}%" if r.get("volume_pct") is not None else "n/a"
+        lines.append(f"{r['ticker']} | {r['pct']:+.1f} | {r['z']:+.1f} | {int(r['volume']):,} | {share} | "
+                     f"{str(r['time'])[11:16]}")
+    return "\n".join(lines)
 
 
 def scan(universe, alpaca: Alpaca, day: date, tickers: list[str], screen: dict | None, limit: int = 20) -> list[dict]:
@@ -213,12 +254,13 @@ def render(rows: list[dict], news: bool = True) -> str:
             continue
         cap = f"${r['market_cap'] / 1e9:.1f}B" if r.get("market_cap") else "n/a"
         short = "" if r.get("shortable") else " (not shortable)"
-        pre = f"{_f(r['pre'])} ({int(r['pre_volume']):,})" if r.get("pre") is not None else "none"
+        share = f", {r['pre_volume_pct']:.1f}%" if r.get("pre_volume_pct") is not None else ""
+        pre = f"{_f(r['pre'])} ({int(r['pre_volume']):,}{share})" if r.get("pre") is not None else "none"
         lines.append(" | ".join([
             r["ticker"] + short, cap, (r.get("industry") or "")[:28], f"{r['close']:.2f} ({r['date']})",
             _f(r["r1"]), _f(r["z"]), _f(r.get("vs_industry")), _f(r["vol_x"], "{:.1f}"), _f(r["gap"]),
             _f(r["range_pos"], "{:.2f}"), _f(r["r5"]), _f(r["r20"]), _f(r["from_high"]), _f(r["from_low"]),
-            f"{r['streak']:+d}", pre] + ([str(r.get("stories", 0)), "; ".join(r.get("earnings") or []) or "none"]
+            f"{r['streak']:+d}", _f(r.get("after_hours")), pre] + ([str(r.get("stories", 0)), "; ".join(r.get("earnings") or []) or "none"]
                                           if news else [])))
     note = NOTE if news else NOTE.split(" stories:", 1)[0]
     lines.append(note)

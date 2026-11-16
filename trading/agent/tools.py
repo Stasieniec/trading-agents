@@ -92,6 +92,15 @@ def definitions(agent: AgentConfig) -> list[dict]:
                                                  "pre-market" + (", news stories and earnings dates." if agent.news else "."),
                   "input_schema": _obj({"tickers": {"type": "array", "items": S}})})
     if agent.news:
+        tools.append({"name": "news", "description": "Recent news stories tagged with these tickers (up to 10 tickers), "
+                                                     "newest first, with the story text where the feed has it. Stories "
+                                                     "that come with their text count as sources you have read.",
+                      "input_schema": _obj({"tickers": {"type": "array", "items": S},
+                                            "days": {"type": "integer", "description": "How far back, 1 to 30"}})})
+        tools.append({"name": "economic_calendar", "description": "US economic releases for a date (YYYY-MM-DD; empty "
+                                                                  "for today) with actual, consensus and previous figures. "
+                                                                  "Actuals appear once released.",
+                      "input_schema": _obj({"date": S})})
         tools.append({"name": "read_page",
                       "description": "A helper model fetches the page and answers your question in under 300 words, "
                                      "with the date printed on the page. Use it on URLs from the digest or search results. "
@@ -121,6 +130,7 @@ class ToolBox:
         self.read_calls = 0
         self.deadline = None
         self.screen = screen
+        self.news_urls: set[str] = set()  # every story URL the news tool returned, citable as seen
 
     def run(self, name: str, args: dict) -> tuple[str, bool]:
         try:
@@ -155,7 +165,7 @@ class ToolBox:
         except Exception:  # quotes still work without it
             pre = {}
         lines = ["ticker | last close (date) | change vs prior close | pre-market today vs last close (time UTC, "
-                 "shares) | latest IEX trade (time UTC)"]
+                 "shares, % of an average day's volume) | latest IEX trade (time UTC)"]
         for t in tickers:
             bl = bars.get(t) or []
             if not bl:
@@ -166,7 +176,10 @@ class ToolBox:
             tr = trades.get(t)
             iex = f"{tr['p']:.2f} ({tr['t'][:16]})" if tr else "none"
             p = pre.get(t)
-            pm = (f"{p['price']:.2f} {(p['price'] / c - 1) * 100:+.2f}% ({p['time'][11:16]}, {int(p['volume']):,})"
+            vols = [float(b["v"]) for b in bl if b.get("v")]
+            avg_v = sum(vols) / len(vols) if vols else 0
+            share = f", {p['volume'] / avg_v * 100:.1f}%" if p and avg_v else ""
+            pm = (f"{p['price']:.2f} {(p['price'] / c - 1) * 100:+.2f}% ({p['time'][11:16]}, {int(p['volume']):,}{share})"
                   if p else "none yet")
             lines.append(f"{t} | {c:.2f} ({bl[-1]['date']}) | {chg} | {pm} | {iex}")
         return "\n".join(lines)
@@ -218,6 +231,41 @@ class ToolBox:
         if not rows:
             raise ValueError("no tickers given")
         return render(rows, news=self.agent.news)
+
+    def t_news(self, tickers: list[str], days: int) -> str:
+        import html as _html
+        import re as _re
+        syms = [t.strip().upper().replace("/", ".") for t in tickers if t.strip()][:10]
+        if not syms:
+            raise ValueError("no tickers given")
+        days = max(1, min(int(days), 30))
+        end = datetime.now(timezone.utc)
+        items = self.alpaca.news(end - timedelta(days=days), end, pages=1, include_content=True, symbols=syms)
+        if not items:
+            return f"No stories tagged {', '.join(syms)} in the last {days} days."
+        out = []
+        for n in items[:12]:
+            body = _re.sub(r"<[^>]+>", " ", n.get("content") or "")
+            body = _re.sub(r"\s+", " ", _html.unescape(body)).strip()
+            url = n.get("url") or ""
+            if url:
+                self.news_urls.add(norm(url))
+            if url and body:
+                self.read_ok_urls.add(norm(url))  # the agent has the story's text
+            tags = ", ".join((n.get("symbols") or [])[:6])
+            out.append(f"- {str(n.get('created_at', ''))[:16]} UTC, {n.get('source') or 'unknown'} [{tags}]: "
+                       f"{n.get('headline', '')}\n  {url}\n  " + (body[:1500] if body else (n.get("summary") or "")[:400]))
+        return "\n".join(out)
+
+    def t_economic_calendar(self, date: str) -> str:
+        from datetime import date as _date
+
+        from ..economy import fetch, render
+        d = _date.fromisoformat(date) if date.strip() else self.day
+        try:
+            return render(fetch(d))
+        except Exception as e:
+            raise ValueError(f"economic calendar unavailable ({type(e).__name__})")
 
     # --- portfolio and memory
 

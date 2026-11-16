@@ -127,19 +127,16 @@ class Alpaca:
                     out[sym] = float(bars[0]["o"])
         return out
 
-    def premarket(self, symbols: list[str], day: date) -> dict[str, dict]:
-        """Latest pre-market price and volume so far today, from SIP one-minute bars (which include
-        extended hours) between 04:00 New York and 16 minutes ago."""
-        from .timeutil import NY
-        start = datetime(day.year, day.month, day.day, 4, 0, tzinfo=NY).astimezone(UTC)
-        open_at = datetime(day.year, day.month, day.day, 9, 30, tzinfo=NY).astimezone(UTC)
-        end = min(open_at, datetime.now(UTC) - timedelta(minutes=16))
+    def extended(self, symbols: list[str], start: datetime, end: datetime, timeframe: str = "1Min") -> dict[str, dict]:
+        """Last price and total volume per symbol between two moments, from SIP bars (which include
+        extended-hours trading). The end is clipped to 16 minutes ago; the free plan hides the rest."""
+        end = min(end, datetime.now(UTC) - timedelta(minutes=16))
         out: dict[str, dict] = {}
         if end <= start:
             return out
         for chunk in self._chunks(symbols):
             res = self._paged(f"{DATA}/v2/stocks/bars", {
-                "symbols": ",".join(chunk), "timeframe": "1Min", "feed": "sip", "adjustment": "raw",
+                "symbols": ",".join(chunk), "timeframe": timeframe, "feed": "sip", "adjustment": "raw",
                 "start": start.strftime("%Y-%m-%dT%H:%M:%SZ"), "end": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "limit": 10000,
             }, "bars")
@@ -149,6 +146,20 @@ class Alpaca:
                     out[sym] = {"price": float(bars[-1]["c"]), "time": bars[-1]["t"],
                                 "volume": sum(float(b.get("v") or 0) for b in bars)}
         return out
+
+    def premarket(self, symbols: list[str], day: date, timeframe: str = "1Min") -> dict[str, dict]:
+        """Latest pre-market price and volume so far today, from 04:00 New York to the open."""
+        from .timeutil import NY
+        start = datetime(day.year, day.month, day.day, 4, 0, tzinfo=NY).astimezone(UTC)
+        open_at = datetime(day.year, day.month, day.day, 9, 30, tzinfo=NY).astimezone(UTC)
+        return self.extended(symbols, start, open_at, timeframe)
+
+    def afterhours(self, symbols: list[str], day: date) -> dict[str, dict]:
+        """Last after-hours price and volume on a day, 16:00 to 20:00 New York."""
+        from .timeutil import NY
+        start = datetime(day.year, day.month, day.day, 16, 0, tzinfo=NY).astimezone(UTC)
+        end = datetime(day.year, day.month, day.day, 20, 0, tzinfo=NY).astimezone(UTC)
+        return self.extended(symbols, start, end, "5Min")
 
     def corporate_actions(self, symbols: list[str], start: date, end: date) -> list[dict]:
         """Flattened corporate actions, each with 'kind' and 'id'."""
@@ -170,10 +181,13 @@ class Alpaca:
         uniq = {a.get("id") or f"{a['kind']}:{a.get('symbol')}:{a.get('ex_date')}": a for a in out}
         return list(uniq.values())
 
-    def news(self, start: datetime, end: datetime, pages: int = 8, include_content: bool = False) -> list[dict]:
-        """Up to pages x 50 stories in the window, newest first."""
+    def news(self, start: datetime, end: datetime, pages: int = 8, include_content: bool = False,
+             symbols: list[str] | None = None) -> list[dict]:
+        """Up to pages x 50 stories in the window, newest first, optionally only those tagged with symbols."""
         params = {"start": start.strftime("%Y-%m-%dT%H:%M:%SZ"), "end": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
                   "limit": 50, "sort": "desc", "include_content": "true" if include_content else "false"}
+        if symbols:
+            params["symbols"] = ",".join(symbols)
         out = []
         for _ in range(pages):
             j = self._get(f"{DATA}/v1beta1/news", params)
