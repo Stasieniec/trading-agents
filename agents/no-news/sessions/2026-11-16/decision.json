@@ -1,0 +1,15 @@
+{
+ "agent": "no-news",
+ "date": "2026-11-16",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "cb341995f048",
+ "summary": "Session 2026-11-16. Held CROX (163.72, +12.9%, target 170.75) and GKOS (245.72, +7.5%, target 269.44). Pre-market is flat to slightly up for both. Neither horizon (11/19) has expired. The digest's movers are TU (+19% pre-market, a gap from $8.5 that looks like a takeover or news event I can't verify) and HELP, which are not tradeable on price alone. No trades. Next session (11/17 or 11/18): decide whether to extend or close both at the 11/19 horizon. If CROX or GKOS is still holding gains, extend with a tighter stop, for example a trailing stop near the recent lows, or close and take the profit.",
+ "feedback": "",
+ "total_cost": 0.026256500000000002,
+ "seconds": 15,
+ "fill_at": "open"
+}
