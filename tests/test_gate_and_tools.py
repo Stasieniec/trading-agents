@@ -186,3 +186,14 @@ def test_read_page_without_a_page_date_line_is_not_trusted(monkeypatch):
     tb, _ = toolbox(HaikuFake([O(type="text", text="I think the company is doing well.")], inp=900))
     out, err = tb.run("read_page", {"url": "https://www.cnbc.com/y", "question": "what?"})
     assert "Could not" in out and not tb.read_ok_urls
+
+
+def test_read_page_answers_from_news_tool_text_when_the_site_blocks_fetchers(monkeypatch):
+    import trading.digest as digest
+    monkeypatch.setattr(digest, "article_text", lambda url: "")
+    tb, _ = toolbox(HaikuFake([O(type="text", text="FETCH FAILED")], fetches=1))
+    tb.news_text["https://benzinga.com/news/x"] = "Big Corp raised its guide to $12B."
+    calls = []
+    tb._answer_from_text = lambda url, q, text: calls.append(text) or "PAGE DATE: 13 Nov 2026\nGuide raised to $12B."
+    out, err = tb.run("read_page", {"url": "https://www.benzinga.com/news/x", "question": "what?"})
+    assert not err and "Guide raised" in out and calls == ["Big Corp raised its guide to $12B."]

@@ -30,7 +30,9 @@ ORDER_PROPS = {
     "action": {"type": "string", "enum": ["set_weight", "close", "extend"],
                "description": "set_weight opens, adds to, trims or flips a position to a target weight of equity; "
                               "close exits all of it (sells a long, buys back a short); extend keeps the shares and "
-                              "replaces thesis, horizon, stop and target."},
+                              "replaces thesis, horizon, stop and target. For extend, and for set_weight on a position "
+                              "you hold, stop_pct and target_pct are measured from today's fill price, so extend also "
+                              "moves a stop up behind a winner."},
     "ticker": S,
     "target_weight": {"type": "number", "description": "Fraction of total equity, -1 to 1: positive is long, negative "
                                                      "is short. Ignored for close and extend."},
@@ -131,6 +133,7 @@ class ToolBox:
         self.deadline = None
         self.screen = screen
         self.news_urls: set[str] = set()  # every story URL the news tool returned, citable as seen
+        self.news_text: dict[str, str] = {}  # full story text from the news tool, by URL
 
     def run(self, name: str, args: dict) -> tuple[str, bool]:
         try:
@@ -252,6 +255,7 @@ class ToolBox:
                 self.news_urls.add(norm(url))
             if url and body:
                 self.read_ok_urls.add(norm(url))  # the agent has the story's text
+                self.news_text[norm(url)] = body  # and read_page can answer from it when the site blocks fetchers
             tags = ", ".join((n.get("symbols") or [])[:6])
             out.append(f"- {str(n.get('created_at', ''))[:16]} UTC, {n.get('source') or 'unknown'} [{tags}]: "
                        f"{n.get('headline', '')}\n  {url}\n  " + (body[:1500] if body else (n.get("summary") or "")[:400]))
@@ -315,7 +319,8 @@ class ToolBox:
             self.log(f"read_page: no answer from the page reader for {url[:120]} "
                      f"(fetch ran: {ok}; blocks: {', '.join(getattr(self, 'last_fetch_debug', [])[:12])})")
             from ..digest import article_text
-            text = article_text(url)  # Benzinga stories that block fetchers come with Alpaca's news feed
+            # Benzinga stories that block fetchers come with Alpaca's news feed, from the digest or the news tool.
+            text = self.news_text.get(norm(url)) or article_text(url)
             if not text:
                 return f"Could not fetch {url}. Try another source."
             answer = self._answer_from_text(url, question, text[:40_000])
