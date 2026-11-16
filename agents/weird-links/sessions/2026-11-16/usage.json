@@ -1,0 +1,185 @@
+{
+ "total_cost": 0.19579029999999994,
+ "calls": [
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0490405,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 18525
+    },
+    "cache_creation_input_tokens": 18525,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 4,
+    "output_tokens": 272,
+    "output_tokens_details": {
+     "thinking_tokens": 116
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.019684,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 4419
+    },
+    "cache_creation_input_tokens": 4419,
+    "cache_read_input_tokens": 18525,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 678,
+    "output_tokens_details": {
+     "thinking_tokens": 511
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0334309,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 7361
+    },
+    "cache_creation_input_tokens": 7361,
+    "cache_read_input_tokens": 22944,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 1273,
+    "output_tokens_details": {
+     "thinking_tokens": 1103
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.027592,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 7383
+    },
+    "cache_creation_input_tokens": 7383,
+    "cache_read_input_tokens": 30305,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 610,
+    "output_tokens_details": {
+     "thinking_tokens": 412
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "what": "read_page",
+   "cost": 0.0005065,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 4810,
+    "output_tokens": 51,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.027780599999999996,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 2238
+    },
+    "cache_creation_input_tokens": 2238,
+    "cache_read_input_tokens": 76076,
+    "inference_geo": "global",
+    "input_tokens": 4,
+    "output_tokens": 457,
+    "output_tokens_details": {
+     "thinking_tokens": 231
+    },
+    "server_tool_use": {
+     "web_fetch_requests": 0,
+     "web_search_requests": 1
+    },
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0225316,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 2126
+    },
+    "cache_creation_input_tokens": 2126,
+    "cache_read_input_tokens": 39926,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 1322,
+    "output_tokens_details": {
+     "thinking_tokens": 44
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "what": "turn",
+   "cost": 0.0152242,
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 1402
+    },
+    "cache_creation_input_tokens": 1402,
+    "cache_read_input_tokens": 42052,
+    "inference_geo": "global",
+    "input_tokens": 2,
+    "output_tokens": 751,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  }
+ ],
+ "prompt_hash": "5bd7c7e75c5c"
+}
