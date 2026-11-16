@@ -1,7 +1,8 @@
 """US economic releases with their actual, consensus and previous figures, from Nasdaq's public calendar.
 
 A release appears before it happens with its consensus and the previous figure; the actual fills in
-once it is out. Times are as Nasdaq gives them (GMT)."""
+once it is out. Nasdaq labels its time field "gmt", but the times are New York time (jobless claims show
+as 08:30)."""
 
 import html
 import re
@@ -36,7 +37,7 @@ def fetch(day: date) -> list[dict]:
 def render(rows: list[dict]) -> str:
     if not rows:
         return "No US releases listed."
-    lines = ["date | time (GMT) | release | actual | consensus | previous"]
+    lines = ["date | time (New York) | release | actual | consensus | previous"]
     for r in rows:
         lines.append(" | ".join([r["date"], r["time"] or "n/a", r["event"], r["actual"] or "not out yet",
                                  r["consensus"] or "n/a", r["previous"] or "n/a"]))
