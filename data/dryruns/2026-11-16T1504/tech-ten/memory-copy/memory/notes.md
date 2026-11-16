@@ -1,0 +1,11 @@
+Session 1 (2026-10-29): Started 100% cash. Bought MSFT, NVDA, META, AVGO, AAPL, PLTR. Skipped AMZN/GOOGL/TSLA/AMD.
+Session 2 (10-30): AMZN missed Q3, capex funding worry overrode capex plans. Held all.
+Session 3 (11-02): Oct 30 QQQ -3.5%, SOX -7%. Held everything.
+Session 11-06/09: NVDA stopped out -9.6% (gap through stop at open on CEO Huang affair / Megaspeed spy investigation headline). Lesson: stops don't protect against overnight gaps; key-man headline risk gaps. Small sizing (6.8%) limited damage.
+Session 11-10: Mon 11-09 big rebound (SPY +2.4%, QQQ +3.5%). Did not chase after a big up day before CPI.
+Session 11-11: QQQ +2.3%, XLK +3.2% (CoreWeave rebound). Held.
+Session 11-12: NVDA -8% premarket on report board weighing ouster of Huang. Did not trade (not holding, headline unresolved, no short chase after gap).
+Session 11-16 (ran late, 15:04 UTC, mid-session): QQQ ~-1.5%, SPY ~-1.2% intraday. Huang resigned 11-12, Kress interim CEO. Bessent (Sun 11-15) wants outside CEO + answers in 10 days (~Nov 25) on China sales routed via Singapore; he questioned whether NVDA earnings were inflated by illicit sales. Commerce interim rule (Nov 15/16) requires licenses for Blackwell-class chip re-exports to Singapore, Malaysia, Thailand, Indonesia, Brazil, ends AI Diffusion rule. NVDA reports Tue 11-17 after close (consensus rev ~$109B, EPS ~$2.47; 10 bank downgrades, targets cut to ~$185-200; stock 159, down 6 straight weeks, -32% from Oct 6 high). Pre-earnings binary, with new Singapore licensing risk to guide -> I stayed out. AMD -14% in two days, AVGO -4.8% Fri and ~-5% today. Held META/MSFT/PLTR, cash ~71%, no orders.
+Lessons: don't buy/short after a gap on a single unresolved headline; NVDA swings +/-5-8% a day; do not make revenge trades in NVDA after the 11-06 stop-out. Prefer trading AFTER the NVDA print on facts (Wed 11-18 pre-open) rather than guessing the binary. Macro is hawkish (10y 5.13%, Dec Fed hike priced) which hits long-duration tech (PLTR -14% vs cost).
+Tools: web_search returns JSON string; read_page often fails on benzinga/invezz (use web_search content instead). Pre-open IEX in get_quotes shows gaps.
+Next: NVDA print reaction + guide (Singapore/China), spillover to AMD/AVGO; PLTR horizon ends 11-24, META/MSFT 11-27 -> decide close/extend. Stops: META 571.8, MSFT 483.6, PLTR 143.
