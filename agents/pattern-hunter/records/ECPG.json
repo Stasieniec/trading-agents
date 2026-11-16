@@ -6,7 +6,7 @@
    "side": "long",
    "opened": "2026-11-06",
    "bought_value": 4009.9080576511533,
-   "sold_value": 0.0,
+   "sold_value": 3511.1194942705065,
    "entry_qty": 33.08169950321577,
    "dividends": 0.0,
    "fees": 0.0,
@@ -34,8 +34,12 @@
    "target_pct": 15,
    "pattern": "news gap-up drift",
    "wrong_if": "The stock gives back the gap within days, closing below ~115, showing the earnings pop was overdone.",
-   "closed": null,
-   "open_qty": 33.08169950321577
+   "closed": "2026-11-16",
+   "exit_reason": "stop",
+   "return": -0.12438902743142133,
+   "spy_return": 0.006981301543235174,
+   "excess": -0.1313703289746565,
+   "beat_spy": false
   }
  ]
 }

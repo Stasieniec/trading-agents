@@ -26,3 +26,7 @@
 {"amount": 0.24773748749571453, "date": "2026-11-13", "days": 3, "rate": 0.005, "ticker": "FIS", "type": "borrow_fee", "value": 5945.699699897148}
 {"amount": 0.22217832085461445, "date": "2026-11-13", "days": 3, "rate": 0.005, "ticker": "UNM", "type": "borrow_fee", "value": 5332.279700510747}
 {"cash": 106966.41800537883, "date": "2026-11-13", "equity": 99310.55388357803, "gross": 14900.09467901499, "invested": -7655.8641218008, "prices": {"ECPG": 109.49, "FIS": 29.54, "UNM": 79.84}, "qty": {"ECPG": 33.08169950321577, "FIS": -201.27622545352568, "UNM": -66.7870703971787}, "type": "mark"}
+{"date": "2026-11-16", "order_id": "", "price": 106.134798, "qty": 33.08169950321577, "reason": "stop", "ref_price": 106.4008, "side": "sell", "slippage_bp": 25, "ticker": "ECPG", "type": "fill"}
+{"amount": 0.07911273861576079, "date": "2026-11-16", "days": 1, "rate": 0.005, "ticker": "FIS", "type": "borrow_fee", "value": 5696.117180334777}
+{"amount": 0.07298342637291695, "date": "2026-11-16", "days": 1, "rate": 0.005, "ticker": "UNM", "type": "borrow_fee", "value": 5254.80669885002}
+{"cash": 110477.38540348434, "date": "2026-11-16", "equity": 99526.46152429955, "gross": 10950.923879184797, "invested": -10950.923879184797, "prices": {"FIS": 28.3, "UNM": 78.68}, "qty": {"FIS": -201.27622545352568, "UNM": -66.7870703971787}, "type": "mark"}
