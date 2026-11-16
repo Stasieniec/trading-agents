@@ -1,0 +1,15 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-16",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "d3cd0059db46",
+ "summary": "Session 2026-11-16. Held all three positions, no orders. Prices as of the last close: ECPG 109.49 (stop 106.40, horizon 11-18, pre-market -1.7% on thin volume), FIS short 29.54 (pre-market +1%, stop 32.76, horizon 11-19), UNM short 79.84 (stop 82.27, horizon 11-19). Futures are weak: SPY pre-market -0.6%, QQQ -1.2%. That should help the shorts a little and hurt ECPG. Nothing is expiring today. Screen rows examined and passed: SBC, NMAX, LFTO, HAWK, MOD, STN, TNDM (news or earnings gap-ups, small or mid caps, chasing the gap, pre-market fading); RMIX, CADL, ZVRA, HTFL, VIR (small-cap biotech or news-driven drops, costly slippage, no clear edge); KEP, CVLT, ANDG (moderate drops, no catalyst checked). Pre-market movers TU (+19%) and HELP (+18% to +20% on heavy volume) look like deal or news events, so I did not chase them. PERI is the most-mentioned name: Q3 revenue missed, guidance withdrawn, Affle deal pending, so it trades on deal terms and I did not trade it. Next session (Tue 11-17): ECPG's horizon ends 11-18 and FIS/UNM end 11-19. Decide whether to close or extend each. Check stops, especially ECPG (about 3% above its stop) and UNM (about 3% below its stop). The code records for my patterns are still empty because no trades have closed.",
+ "feedback": "",
+ "total_cost": 0.07356080000000001,
+ "seconds": 10,
+ "fill_at": "open"
+}
