@@ -1,0 +1,52 @@
+{
+ "agent": "no-news",
+ "date": "2026-11-17",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "extend",
+   "ticker": "CROX",
+   "target_weight": 0,
+   "thesis": "Post-earnings gap (+21% on 4x volume) has held for 2.5 weeks and the stock stayed near highs (160 vs 164 peak) while SPY fell 1.9% on 11/16, which is relative strength. Drift thesis intact; consolidating above the gap. Stop sits below the 11/6 consolidation low. Price/volume only.",
+   "horizon_days": 10,
+   "stop_pct": 8,
+   "target_pct": 14,
+   "probability": 0.55,
+   "sources": [],
+   "causal_chain": [],
+   "slippage_bp": 25,
+   "id": "no-news-2026-11-17-01",
+   "session_date": "2026-11-17",
+   "fill_at": "open",
+   "decided_at": "2026-11-17T13:34:03.452209+00:00",
+   "prompt_hash": "b62304cb7ebc"
+  },
+  {
+   "action": "extend",
+   "ticker": "GKOS",
+   "target_weight": 0,
+   "thesis": "Post-earnings gap (+25% on 5M shares) holding for 2.5 weeks; 245 vs 255 peak, and it fell only 0.3% on a -1.9% SPY day. Drift thesis intact but volume is fading, so stop is trailed to just above the 11/5 reversal low. Price/volume only.",
+   "horizon_days": 10,
+   "stop_pct": 9,
+   "target_pct": 15,
+   "probability": 0.55,
+   "sources": [],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "no-news-2026-11-17-02",
+   "session_date": "2026-11-17",
+   "fill_at": "open",
+   "decided_at": "2026-11-17T13:34:03.452215+00:00",
+   "prompt_hash": "b62304cb7ebc"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "b62304cb7ebc",
+ "summary": "Session 2026-11-17. Both positions are still open. Pre-market was flat, and SPY is -0.02%. SPY fell 1.9% on 11/16 (QQQ -2.7%, XLK -3.2%), but CROX closed at 160.01 (-2.3%) and GKOS at 244.88 (-0.3%), so both are holding up well. CROX is +10.3% and GKOS is +7.1% versus cost. Both are consolidating after their October 29 post-earnings gaps, and volume is fading (0.5-1.0x average). Their horizons end 11/19, so I extended both for 10 trading days. Stops are now trailing: CROX 8% below, near 147 and under the 11/6 low of 149.5. GKOS is 9% below, near 223 and above the 11/5 low of 219. Targets are +14% for CROX (about 182) and +15% for GKOS (about 282). I scanned the new pre-market movers and found no tradeable edge without news. SLS is +308% pre-market, a biotech catalyst I can't verify, and it isn't shortable. AS is +4.8% after 5 down days, probably on earnings. DRTS, SMWB, BGIN and OFRM are thin small caps. Cash is 84%. Next session: check whether CROX or GKOS broke below their consolidation lows (CROX 149.5, GKOS 219). If one did, close it. Look for new gap-on-heavy-volume setups after a decline. Watch the market's reaction after the sharp 11/16 selloff (VIXY +9%).",
+ "feedback": "No news access made unusual pre-market movers (SLS +308%, AS +4.8%, TU last session) impossible to judge, so I skipped them. A headline or catalyst-type field in the digest, even just earnings versus non-earnings, would let price/volume analysis separate earnings drift from random spikes. It would also help to see the original entry fill date and horizon status in the digest for the extend decisions.",
+ "total_cost": 0.0860484,
+ "seconds": 42,
+ "fill_at": "open"
+}
