@@ -32,9 +32,9 @@
    "closed": "2026-11-17",
    "exit_reason": "close",
    "return": -0.04973881080498115,
-   "spy_return": null,
-   "excess": null,
-   "beat_spy": null
+   "spy_return": -0.043149960155198674,
+   "excess": -0.09288877096017983,
+   "beat_spy": false
   }
  ]
 }
