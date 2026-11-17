@@ -1,14 +1,18 @@
-Session 2026-11-16.
+Session 2026-11-17.
 
-Session 2026-11-16 pre-open. Held META, MSFT and PLTR (about 28% invested, cash about 72%). No orders.
+Session 2026-11-17 pre-open. Held META (10.5%), MSFT (13.4%) and PLTR (4.3%); cash is about 72%. No orders.
 
-Premarket: SPY -0.6%, QQQ -1.2%. NVDA -3% (~158) after Bessent pressed the board for an external CEO following Huang's resignation and gave it 10 days to answer on China chip export compliance and Singapore sales. AMD -5% (after -8.75% Friday) and AVGO -3.3% (after -4.8%). Macro backdrop is hawkish: 10-year yield 5.13%, markets price a Fed hike in December. My holdings: MSFT +0.3%, META -0.6%, PLTR -1.2% (Phillip Securities upgraded PLTR to Buy). No fresh fundamental news on my names.
+Context: Monday 11-16, SPY -1.9%, QQQ -2.7%, XLK -3.2%. The AI complex sold off on the NVDA fallout (Huang resigned, new export rules, board won't take him back). 10-year yield is about 5.1%, and a December Fed hike is about 91-100% priced. Premarket today is a mild bounce: QQQ +0.4%, NVDA +1.2%, AMD +2%, AVGO +1.1%, MSFT -0.4%, META -0.8%, PLTR +0.5%.
 
-Not traded: NVDA, AMD and AVGO (a sentiment-driven semiconductor selloff after big gaps; I don't chase gaps on an unresolved headline; the NVDA 10-day deadline is about Nov 26). AAPL, GOOGL, AMZN and TSLA (no edge; the TSLA/SpaceX merger talk is speculation, with 'more on Dec 3').
+Key events:
+- NVDA reports Q3 FY27 tonight after the close. Guide is $108B ±2%, consensus about $109.3B revenue and EPS 2.47, options imply about an 8% move. It is the first report since Huang left (interim CEO Kress). Risks: Q4 margin guide, China and export compliance, DOJ probes.
+- Anthropic IPO prices Wed 11-18 evening (range $70-78, about $1.4T valuation, 6x oversubscribed) and debuts 11-19. AMZN and GOOGL hold large stakes in it. The new supply may be draining cash from the megacaps this week.
+
+Decision: no trades. I have no edge over the options market on the NVDA binary. I don't pre-position on a gap or an unresolved headline (lesson from the NVDA stop-out). My three holdings show no fresh negative news (MSFT 365 outage and the META/Amazon/Google China data-center lobbying loss are noise). Candidates not traded: NVDA, AMD and AVGO (wait for the print), GOOGL and AMZN (no catalyst beyond the Anthropic stake; they fell on the sector selloff), AAPL and TSLA (no edge).
 
 Next session:
-- Watch the NVDA response to Bessent (deadline about Nov 26) and spillover to AMD and AVGO.
-- Watch the rate-hike pricing and the long-end yield.
-- Stops: META 571.8, MSFT 483.6, PLTR 143.
-- Horizons: PLTR ends 11-24, META and MSFT end 11-27. Decide then whether to close or extend.
-- Cash stays high until a clearer entry appears.
+1. Read the NVDA print, guide and market reaction. Then decide on NVDA, AMD and AVGO with the outcome known. Consider deploying cash if the AI complex stabilises, and AMZN/GOOGL around the Anthropic debut.
+2. Check retail sales (11-18), the Anthropic pricing and 11-19 debut, and yields.
+3. PLTR horizon ends 11-24, so close or extend it then. META and MSFT end 11-27.
+4. Stops: META 571.8, MSFT 483.6, PLTR 143.
+5. The Bessent deadline for NVDA is about 11-26.
