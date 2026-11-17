@@ -1,0 +1,4156 @@
+{
+ "date": "2026-11-17",
+ "built_at": "2026-11-17T13:33:08.837934+00:00",
+ "previous_session": "2026-11-16",
+ "intraday": false,
+ "sources": {
+  "index moves": "ok",
+  "economic calendar": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok",
+  "screen": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 739.95,
+   "day_pct": -1.911528825377462,
+   "week_pct": -1.6925958894099868,
+   "pre_pct": -0.017568754645580498,
+   "pre_time": "2026-11-17T13:17:00Z"
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 661.75,
+   "day_pct": -2.668078659783202,
+   "week_pct": -2.5907117097225374,
+   "pre_pct": 0.38836418587080423,
+   "pre_time": "2026-11-17T13:17:00Z"
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 272.94,
+   "day_pct": -1.65741875045039,
+   "week_pct": -3.3874907082935057,
+   "pre_pct": -0.27478566717960007,
+   "pre_time": "2026-11-17T13:16:00Z"
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 515.68,
+   "day_pct": -1.4278887508362814,
+   "week_pct": -1.4617927502723171,
+   "pre_pct": -0.5798169407384202,
+   "pre_time": "2026-11-17T13:17:00Z"
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 164.76,
+   "day_pct": -3.241719520789299,
+   "week_pct": -3.5814606741573107,
+   "pre_pct": 0.8072347657198442,
+   "pre_time": "2026-11-17T13:10:00Z"
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 106.82,
+   "day_pct": -1.720489465452213,
+   "week_pct": -0.5029806259314484,
+   "pre_pct": -0.0842538850402419,
+   "pre_time": "2026-11-17T11:45:00Z"
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 118.15,
+   "day_pct": -1.525254209034843,
+   "week_pct": -2.363441037930747,
+   "pre_pct": -0.5078290308929367,
+   "pre_time": "2026-11-17T09:01:00Z"
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 92.6,
+   "day_pct": 0.2707092582566295,
+   "week_pct": 1.8813950929695178,
+   "pre_pct": -0.7235421166306599,
+   "pre_time": "2026-11-17T13:09:00Z"
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 58.18,
+   "day_pct": -0.8520790729379724,
+   "week_pct": 0.3276426970167279,
+   "pre_pct": -0.4812650395324858,
+   "pre_time": "2026-11-17T13:15:00Z"
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 187.88,
+   "day_pct": -0.5136351601800371,
+   "week_pct": -0.23894228216430058,
+   "pre_pct": -0.9367681498828939,
+   "pre_time": "2026-11-17T13:13:00Z"
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 165.66,
+   "day_pct": -1.8485602559545011,
+   "week_pct": -1.9124874178459317,
+   "pre_pct": 0.1810938065918144,
+   "pre_time": "2026-11-17T12:00:00Z"
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 63.69,
+   "day_pct": -1.955049261083741,
+   "week_pct": 2.8253148207943113,
+   "pre_pct": 0.23551577955724934,
+   "pre_time": "2026-11-17T13:12:00Z"
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 51.47,
+   "day_pct": -1.455102431552746,
+   "week_pct": -2.776728371741588
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 44.12,
+   "day_pct": 0.18165304268846771,
+   "week_pct": 0.7535967115779751,
+   "pre_pct": -0.14845874886673105,
+   "pre_time": "2026-11-17T13:08:00Z"
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 44.25,
+   "day_pct": -0.27045300878971723,
+   "week_pct": -0.8736559139784994,
+   "pre_pct": -0.2485875706214724,
+   "pre_time": "2026-11-17T13:09:00Z"
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 79.38,
+   "day_pct": 0.0,
+   "week_pct": -3.1478770131771583,
+   "pre_pct": 0.08818342151677427,
+   "pre_time": "2026-11-17T13:15:00Z"
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 352.93,
+   "day_pct": -0.7089604726403076,
+   "week_pct": -7.008668616446645,
+   "pre_pct": 0.15300484515343715,
+   "pre_time": "2026-11-17T13:16:00Z"
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 140.03,
+   "day_pct": -3.8123368594587204,
+   "week_pct": -1.8435440908453615,
+   "pre_pct": 0.9426551453259879,
+   "pre_time": "2026-11-17T13:17:00Z"
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.56,
+   "day_pct": 0.20338983050847137,
+   "week_pct": 2.0365895754228536,
+   "pre_pct": 0.10148849797022574,
+   "pre_time": "2026-11-17T12:08:00Z"
+  },
+  {
+   "symbol": "VIXY",
+   "name": "VIX short-term futures",
+   "close": 19.56,
+   "day_pct": 9.030100334448154,
+   "week_pct": 7.413509060955503,
+   "pre_pct": -1.5337423312883236,
+   "pre_time": "2026-11-17T13:17:00Z"
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "HZN",
+    "pct": 4753.41,
+    "price": 85.42
+   },
+   {
+    "symbol": "BGIN",
+    "pct": 35.05,
+    "price": 5.24
+   },
+   {
+    "symbol": "OFRM",
+    "pct": 21.24,
+    "price": 11.7
+   }
+  ],
+  "losers": [],
+  "as_of": "2026-11-17T00:59:00.076736267Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "NVDA",
+   "volume": 334732242
+  },
+  {
+   "symbol": "INTC",
+   "volume": 105977962
+  },
+  {
+   "symbol": "SPCX",
+   "volume": 101738509
+  },
+  {
+   "symbol": "NU",
+   "volume": 89795594
+  },
+  {
+   "symbol": "IREN",
+   "volume": 80865776
+  },
+  {
+   "symbol": "AAL",
+   "volume": 61959721
+  },
+  {
+   "symbol": "NOK",
+   "volume": 61858980
+  },
+  {
+   "symbol": "CRWV",
+   "volume": 53709710
+  },
+  {
+   "symbol": "SNAP",
+   "volume": 53689173
+  },
+  {
+   "symbol": "AAPL",
+   "volume": 50475880
+  }
+ ],
+ "headlines": [
+  {
+   "title": "BlackRock, Inc. Reports Change in Voting Rights in Mercedes-Benz Group AG",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T13:01:53Z",
+   "url": "https://www.finanzen.ch/nachrichten/aktien/eqs-pvr-mercedes-benz-group-ag-release-according-to-article-40-section-1-of-the-wphg-[the-german-securities-trading-act]-with-the-objective-of-europe-wide-distribution-1036772877",
+   "line": "BlackRock, Inc. has filed a regulatory notification regarding its voting rights in Mercedes-Benz Group AG, disclosing a total position of 5.98% as of November 11, 2026.",
+   "symbols": [
+    "BLK"
+   ]
+  },
+  {
+   "title": "Klarna Reports Third Quarter 2026 Financial Results",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T13:01:44Z",
+   "url": "https://www.businesswire.com/newsroom/subject/earnings",
+   "line": "Klarna Group plc announced its financial results for the third quarter of 2026, reporting $1.0 billion in revenue and positive adjusted operating income.",
+   "symbols": [
+    "HD",
+    "KLAR",
+    "ESLT",
+    "XP",
+    "WB",
+    "PICS"
+   ]
+  },
+  {
+   "title": "Bank of America Reports Normal Operations Amid Industry-Wide Banking Disruptions",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T12:31:37Z",
+   "url": "https://cybermagazine.com/news/us-bank-outages-why-critical-infrastructure-keeps-failing",
+   "line": "Bank of America confirmed its systems were operating normally on November 17, 2026, following reports of technical issues at other major financial institutions.",
+   "symbols": [
+    "BAC"
+   ]
+  },
+  {
+   "title": "The Home Depot Reports Third Quarter Fiscal 2026 Results and Updates Guidance",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T12:31:22Z",
+   "url": "https://www.newswire.ca/news-releases/the-home-depot-announces-third-quarter-fiscal-2026-results-updates-fiscal-2026-guidance-846132573.html",
+   "line": "The Home Depot reported Q3 2026 sales of $43.4 billion and updated its full-year fiscal 2026 financial guidance.",
+   "symbols": [
+    "HD"
+   ]
+  },
+  {
+   "title": "Goldman Sachs Issues Gold Price Forecast for 2027",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T11:32:02Z",
+   "url": "https://www.morningstar.com/news/dow-jones/202611172056/goldman-sees-gold-rising-above-4600-an-ounce-by-end-2027-on-central-bank-buying",
+   "line": "Goldman Sachs analysts project gold prices to reach $4,650 per troy ounce by the end of 2027.",
+   "symbols": [
+    "GS"
+   ]
+  },
+  {
+   "title": "Goldman Sachs Participates in Bajaj Finance Share Offering",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T11:32:02Z",
+   "url": "https://www.marketscreener.com/news/blackrock-goldman-sachs-nomura-buy-into-bajaj-finance-share-offering-ce785edfd089f42c",
+   "line": "Goldman Sachs, alongside BlackRock and Nomura, has invested in a share offering by Bajaj Finance.",
+   "symbols": [
+    "GS",
+    "BLK"
+   ]
+  },
+  {
+   "title": "The Home Depot Announces Executive Leadership Changes",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T11:31:56Z",
+   "url": "https://www.prnewswire.com/news-releases/the-home-depot-names-richard-mcphail-as-ceo-effective-november-23-2026-302941068.html",
+   "line": "The Home Depot has appointed Richard McPhail as CEO, Ann-Marie Campbell as President and COO, and Jordan Broggi as CFO, effective November 23, 2026.",
+   "symbols": [
+    "HD"
+   ]
+  },
+  {
+   "title": "Bank of America Customers Affected by Technical Disruption",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T11:31:24Z",
+   "url": "https://www.newswire.lk/2026/11/17/why-us-banks-faced-widespread-outages-on-monday/",
+   "line": "Bank of America customers experienced service disruptions on Monday due to a software bug originating at JPMorgan Chase.",
+   "symbols": [
+    "BAC"
+   ]
+  },
+  {
+   "title": "Berkshire Hathaway Reduces Stake in Bank of America",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T11:31:24Z",
+   "url": "https://www.moomoo.com/community/feed/berkshire-s-q3-a-surprise-software-bet-and-a-longer-117630967218582",
+   "line": "Berkshire Hathaway disclosed a reduction in its Bank of America position, selling 27.53 million shares during the third quarter.",
+   "symbols": [
+    "BAC"
+   ]
+  },
+  {
+   "title": "YouGov Survey Data Cited in Chipotle Consumer Behavior Report",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T09:01:54Z",
+   "url": "https://www.prnewswire.com/news-releases/chipotle-debuts-the-sneak-it-in-hoodie-designed-to-discreetly-bring-burritos-to-the-movies-302936051.html",
+   "line": "Chipotle Mexican Grill utilized YouGov survey data to support the launch of a new consumer product related to movie theater dining habits.",
+   "symbols": [
+    "YOU"
+   ]
+  },
+  {
+   "title": "YouGov and Prospa Release Research on Australian SME Payment Preferences",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T09:01:54Z",
+   "url": "https://vir.com.vn/prospa-survey-shows-8-of-australian-small-businesses-earn-payment-rewards-165256.html",
+   "line": "YouGov and fintech company Prospa published joint research regarding the payment habits and rewards preferences of Australian small and medium-sized enterprises.",
+   "symbols": [
+    "YOU"
+   ]
+  },
+  {
+   "title": "YouGov and ESA Publish 2026 Holiday Video Game Survey",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T09:01:54Z",
+   "url": "https://www.prnewswire.com/news-releases/this-holiday-season-kids-want-video-games-and-a-parent-as-their-player-two-302939417.html",
+   "line": "YouGov and the Entertainment Software Association (ESA) released findings from a survey regarding holiday gift preferences for video games among children and teens.",
+   "symbols": [
+    "YOU"
+   ]
+  },
+  {
+   "title": "UBS Downgrades Shoals Technologies Group to Neutral",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T13:02:24Z",
+   "url": "https://www.marketscreener.com/news/ubs-downgrades-shoals-technologies-group-to-neutral-from-buy-9-price-target-ce785edcd888f125",
+   "line": "UBS downgraded Shoals Technologies Group from \"Buy\" to \"Neutral\" with a price target of $9.",
+   "symbols": [
+    "UBS"
+   ]
+  },
+  {
+   "title": "Morgan Stanley and Jefferies Update Nucor Analyst Ratings and Price Targets",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T13:02:22Z",
+   "url": "https://www.marketscreener.com/news/morgan-stanley-upgrades-nucor-to-overweight-from-neutral-price-target-is-310-ce785edfd08ef022",
+   "line": "Financial analysts at Morgan Stanley and Jefferies issued updated ratings and price targets for Nucor Corporation on November 17, 2026.",
+   "symbols": [
+    "NUE"
+   ]
+  },
+  {
+   "title": "Pizza Hut Partners with Pepsi and Josh Allen for Marketing Campaign",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-17T13:02:07Z",
+   "url": "https://www.prnewswire.com/news-releases/pizza-hut-brings-back-the-triple-treat-box-holiday-edition-turning-holiday-dinner-into-the-easiest-part-of-the-season-302941226.html",
+   "line": "Pizza Hut has launched a new marketing campaign featuring Pepsi and NFL player Josh Allen to promote its 'Triple Treat Box' holiday offering.",
+   "symbols": [
+    "PEP"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "BLK",
+   "stories": 3
+  },
+  {
+   "symbol": "MFG",
+   "stories": 3
+  },
+  {
+   "symbol": "BAC",
+   "stories": 3
+  },
+  {
+   "symbol": "HD",
+   "stories": 3
+  },
+  {
+   "symbol": "GS",
+   "stories": 3
+  },
+  {
+   "symbol": "YOU",
+   "stories": 3
+  },
+  {
+   "symbol": "UBS",
+   "stories": 2
+  },
+  {
+   "symbol": "NUE",
+   "stories": 2
+  },
+  {
+   "symbol": "BX",
+   "stories": 2
+  },
+  {
+   "symbol": "PEP",
+   "stories": 2
+  }
+ ],
+ "screen": {
+  "day": "2026-11-17",
+  "measured": 3040,
+  "built_at": "2026-11-17T13:33:14.678335+00:00",
+  "rows": [
+   {
+    "ticker": "TU",
+    "market_cap": 15251360000.0,
+    "industry": "Telecommunications Equipment",
+    "shortable": true,
+    "vs_industry": 13.309547909736676,
+    "pre": 0.7314524555903867,
+    "pre_volume": 5734.0,
+    "pre_volume_pct": 0.08920736224906851,
+    "after_hours": -0.4179728317659448,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 12.192262602579152,
+    "sd": 1.8614871597171119,
+    "z": 6.549743058357703,
+    "vol_x": 7.351179981282946,
+    "close": 9.57,
+    "avg_volume": 6427720.6,
+    "gap": 12.602579132473647,
+    "range_pos": 0.7460317460317462,
+    "r5": -6.366630076838642,
+    "r20": 1.0663507109004655,
+    "from_high": -35.140630294815324,
+    "from_low": 25.261780104712052,
+    "streak": 2
+   },
+   {
+    "ticker": "HTHT",
+    "market_cap": 16876907187.0,
+    "industry": "Hotels/Resorts",
+    "shortable": true,
+    "vs_industry": 8.492138627239232,
+    "pre": -0.01822157434403504,
+    "pre_volume": 7234.0,
+    "pre_volume_pct": 0.4349314136789056,
+    "after_hours": -0.6924198250728875,
+    "stories": 0,
+    "earnings": [
+     "2026-11-16 time not given"
+    ],
+    "date": "2026-11-16",
+    "r1": 8.910498114705302,
+    "sd": 1.609934384698836,
+    "z": 5.534696444397112,
+    "vol_x": 2.2473725023121136,
+    "close": 54.88,
+    "avg_volume": 1663250.75,
+    "gap": 3.353840047628487,
+    "range_pos": 0.7583892617449669,
+    "r5": -1.2735109717868287,
+    "r20": 8.365591397849471,
+    "from_high": -3.0987905005738448,
+    "from_low": 37.68188660311089,
+    "streak": 3
+   },
+   {
+    "ticker": "MOH",
+    "market_cap": 12175650000.0,
+    "industry": "Medical Specialities",
+    "shortable": true,
+    "vs_industry": 11.990600475023372,
+    "pre": -1.26131537174482,
+    "pre_volume": 2990.0,
+    "pre_volume_pct": 0.3043586448263382,
+    "after_hours": -0.06006263674975809,
+    "stories": 1,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 11.265454198291081,
+    "sd": 2.470556727607511,
+    "z": 4.559884852027079,
+    "vol_x": 1.8069426649897422,
+    "close": 233.09,
+    "avg_volume": 982393.65,
+    "gap": 1.7566470953267466,
+    "range_pos": 0.9788745890643196,
+    "r5": 0.23924589693287146,
+    "r20": 1.02719907407407,
+    "from_high": -4.818489934256187,
+    "from_low": 92.5408888154634,
+    "streak": 1
+   },
+   {
+    "ticker": "CGON",
+    "market_cap": 7572457698.0,
+    "industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+    "shortable": true,
+    "vs_industry": 16.705236091631605,
+    "pre": -1.5923566878980777,
+    "pre_volume": 1033.0,
+    "pre_volume_pct": 0.08554533869825998,
+    "after_hours": -0.35385704175512345,
+    "stories": 1,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 13.951612903225797,
+    "sd": 3.5359186159757487,
+    "z": 3.9456826976137296,
+    "vol_x": 8.18558419433516,
+    "close": 84.78,
+    "avg_volume": 1207546.8,
+    "gap": 23.655913978494624,
+    "range_pos": 0.41517857142857156,
+    "r5": -2.092380576391617,
+    "r20": 24.310776942355904,
+    "from_high": -9.760510910058539,
+    "from_low": 129.0732234531208,
+    "streak": 2
+   },
+   {
+    "ticker": "OFRM",
+    "market_cap": 494991025.0,
+    "industry": "Packaged Foods",
+    "shortable": true,
+    "vs_industry": 21.243523316062163,
+    "pre": 0.0,
+    "pre_volume": 1219.0,
+    "pre_volume_pct": 0.11588895024528005,
+    "after_hours": -0.08547008547008517,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 21.243523316062163,
+    "sd": 5.5962935529362605,
+    "z": 3.7959987472272823,
+    "vol_x": 2.1831900082999876,
+    "close": 11.7,
+    "avg_volume": 1051869.05,
+    "gap": -0.5181347150259086,
+    "range_pos": 0.9547511312217188,
+    "r5": 4.211663066954641,
+    "r20": -44.41244239631336,
+    "from_high": -56.666666666666664,
+    "from_low": 32.502831257078135,
+    "streak": 1
+   },
+   {
+    "ticker": "TSN",
+    "market_cap": 22501224708.0,
+    "industry": "Meat/Poultry/Fish",
+    "shortable": true,
+    "vs_industry": 5.914823427205529,
+    "pre": -1.2509773260359736,
+    "pre_volume": 7302.0,
+    "pre_volume_pct": 0.19398218488016458,
+    "after_hours": -0.2705238467552773,
+    "stories": 0,
+    "earnings": [
+     "2026-11-16 time not given"
+    ],
+    "date": "2026-11-16",
+    "r1": 8.721523291397482,
+    "sd": 1.577336469518623,
+    "z": 5.529272580668312,
+    "vol_x": 2.22389151746881,
+    "close": 63.95,
+    "avg_volume": 3764263.2,
+    "gap": 3.5362121727303686,
+    "range_pos": 0.7151639344262295,
+    "r5": -1.4410187667560304,
+    "r20": 7.140255009107466,
+    "from_high": -7.964688375198959,
+    "from_low": 28.002401921537224,
+    "streak": 1
+   },
+   {
+    "ticker": "CRTO",
+    "market_cap": 963126571.0,
+    "industry": "Advertising",
+    "shortable": true,
+    "vs_industry": 8.408404922575984,
+    "pre": 0.0,
+    "pre_volume": 328.0,
+    "pre_volume_pct": 0.07101225589266412,
+    "after_hours": 0.4598875830352567,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 8.54132002218524,
+    "sd": 2.286626515271095,
+    "z": 3.7353367352047027,
+    "vol_x": 4.447904608024255,
+    "close": 19.57,
+    "avg_volume": 461892.1,
+    "gap": 0.33277870216306127,
+    "range_pos": 0.9884393063583817,
+    "r5": 16.926070038910513,
+    "r20": 17.535853976531946,
+    "from_high": -22.61763542902333,
+    "from_low": 40.28673835125449,
+    "streak": 2
+   },
+   {
+    "ticker": "BGIN",
+    "market_cap": 592832331.0,
+    "industry": "Finance: Consumer Services",
+    "shortable": false,
+    "vs_industry": 36.63875748000623,
+    "pre": -7.061068702290074,
+    "pre_volume": 11584.0,
+    "pre_volume_pct": 16.70790517283033,
+    "after_hours": -7.25190839694656,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 35.05154639175259,
+    "sd": 10.460459442814663,
+    "z": 3.3508610767407214,
+    "vol_x": 14.583921381690681,
+    "close": 5.24,
+    "avg_volume": 69332.45,
+    "gap": -3.350515463917525,
+    "range_pos": 0.8666666666666668,
+    "r5": 135.15151515151516,
+    "r20": 103.14136125654451,
+    "from_high": -4.727272727272725,
+    "from_low": 238.06451612903228,
+    "streak": 4
+   },
+   {
+    "ticker": "MGRT",
+    "market_cap": 1760000000.0,
+    "industry": "EDP Services",
+    "shortable": false,
+    "vs_industry": 10.801297945477405,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": null,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 10.169491525423723,
+    "sd": 3.429271979647529,
+    "z": 2.9654957628846272,
+    "vol_x": 2.172459237798569,
+    "close": 130.0,
+    "avg_volume": 4590.65,
+    "gap": 1.6949152542372836,
+    "range_pos": 1.0,
+    "r5": -1.9118869492934287,
+    "r20": 9.71641097164111,
+    "from_high": -23.529411764705888,
+    "from_low": 3117.8217821782177,
+    "streak": 2
+   },
+   {
+    "ticker": "FENC",
+    "market_cap": 450493293.0,
+    "industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+    "shortable": true,
+    "vs_industry": 12.564294444860192,
+    "pre": -1.7633228840125414,
+    "pre_volume": 264.0,
+    "pre_volume_pct": 0.1538026391717262,
+    "after_hours": -0.4702194357366851,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 9.810671256454384,
+    "sd": 3.3271148287738486,
+    "z": 2.948702332606278,
+    "vol_x": 4.621291586791733,
+    "close": 12.76,
+    "avg_volume": 171648.55,
+    "gap": 2.5645438898451056,
+    "range_pos": 0.8959276018099546,
+    "r5": 18.4505606523955,
+    "r20": 16.43286573146292,
+    "from_high": -3.698113207547171,
+    "from_low": 125.84070796460173,
+    "streak": 4
+   },
+   {
+    "ticker": "GAM",
+    "market_cap": 1372483794.0,
+    "industry": "Investment Managers",
+    "shortable": true,
+    "vs_industry": -10.401040145835228,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -12.331701346389234,
+    "sd": 1.0080070307429083,
+    "z": -12.23374537110191,
+    "vol_x": 1.761896004095814,
+    "close": 57.3,
+    "avg_volume": 30177.15,
+    "gap": -11.214810281517751,
+    "range_pos": 0.18518518518518212,
+    "r5": 2.9940119760478945,
+    "r20": 1.8703241895261957,
+    "from_high": -16.435637211079502,
+    "from_low": 1.884779516358459,
+    "streak": -3
+   },
+   {
+    "ticker": "CET",
+    "market_cap": 12722054638.0,
+    "industry": "Finance/Investors Services",
+    "shortable": true,
+    "vs_industry": -5.059627624117691,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -6.554472984942428,
+    "sd": 1.024450541229573,
+    "z": -6.398037505134775,
+    "vol_x": 1.3090370395742439,
+    "close": 52.75,
+    "avg_volume": 35034.15,
+    "gap": -4.960141718334821,
+    "range_pos": 0.14811849479583822,
+    "r5": 2.3943406493742048,
+    "r20": 1.895306859205781,
+    "from_high": -8.244912158636286,
+    "from_low": 10.309493935591796,
+    "streak": -3
+   },
+   {
+    "ticker": "TRXB",
+    "market_cap": 310053804.0,
+    "industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+    "shortable": false,
+    "vs_industry": -18.460714777943863,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-13 time not given"
+    ],
+    "date": "2026-11-16",
+    "r1": -21.21433796634967,
+    "sd": 4.072270678893503,
+    "z": -5.209461658897863,
+    "vol_x": 1.3804375833211968,
+    "close": 10.77,
+    "avg_volume": 89263.0,
+    "gap": 1.975128017556682,
+    "range_pos": 0.003144654088050248,
+    "r5": 3.092006033182515,
+    "r20": -2.4268379728765166,
+    "from_high": -34.96690981112024,
+    "from_low": 0.09293680297397522,
+    "streak": -3
+   },
+   {
+    "ticker": "CDZIP",
+    "market_cap": 1678870389.0,
+    "industry": "Water Supply",
+    "shortable": false,
+    "vs_industry": -5.055274264330533,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -5.3587739774688,
+    "sd": 1.367972548353752,
+    "z": -3.9173110483230573,
+    "vol_x": 2.216822958703955,
+    "close": 18.65,
+    "avg_volume": 6009.05,
+    "gap": -0.8931289962447853,
+    "range_pos": 0.04807692307692038,
+    "r5": 0.33604887983706977,
+    "r20": -0.5144412078009308,
+    "from_high": -24.737691686844244,
+    "from_low": 0.2688172043010528,
+    "streak": -1
+   },
+   {
+    "ticker": "TPB",
+    "market_cap": 987328251.0,
+    "industry": "Tobacco",
+    "shortable": true,
+    "vs_industry": -9.863998821813874,
+    "pre": 0.20132876988121495,
+    "pre_volume": 2474.0,
+    "pre_volume_pct": 0.6317296830218434,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -10.585058505850576,
+    "sd": 3.0468877885133723,
+    "z": -3.4740559024706332,
+    "vol_x": 1.3543120019447263,
+    "close": 49.67,
+    "avg_volume": 391623.2,
+    "gap": 0.5670567056705655,
+    "range_pos": 0.04287901990811655,
+    "r5": -15.680024286581663,
+    "r20": -11.332801276935356,
+    "from_high": -66.18788291354663,
+    "from_low": 0.5669163798339705,
+    "streak": -8
+   },
+   {
+    "ticker": "DRTS",
+    "market_cap": 1106963503.0,
+    "industry": "Medical/Dental Instruments",
+    "shortable": false,
+    "vs_industry": -8.863096879842729,
+    "pre": 1.0860484544694904,
+    "pre_volume": 22264.0,
+    "pre_volume_pct": 4.3044305822600775,
+    "after_hours": -1.3366750208855471,
+    "stories": 0,
+    "earnings": [
+     "2026-11-19 time not given"
+    ],
+    "date": "2026-11-16",
+    "r1": -10.538116591928247,
+    "sd": 2.7572528642077065,
+    "z": -3.8219623338595623,
+    "vol_x": 4.424525046183114,
+    "close": 11.97,
+    "avg_volume": 517234.5,
+    "gap": 6.128550074738404,
+    "range_pos": 0.06333973128598883,
+    "r5": -2.478134110787167,
+    "r20": 8.868999186330374,
+    "from_high": -24.192526915769463,
+    "from_low": 248.9795918367347,
+    "streak": -1
+   },
+   {
+    "ticker": "AADX",
+    "market_cap": 1173137890.0,
+    "industry": "Military/Government/Technical",
+    "shortable": true,
+    "vs_industry": -16.876153601528365,
+    "pre": 1.90895741556536,
+    "pre_volume": 11184.0,
+    "pre_volume_pct": 0.550697180463919,
+    "after_hours": 0.5873715124816492,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -18.735083532219587,
+    "sd": 5.254641302676563,
+    "z": -3.5654352891179224,
+    "vol_x": 1.836059556836489,
+    "close": 6.81,
+    "avg_volume": 2030880.2,
+    "gap": -4.534606205250602,
+    "range_pos": 0.03200000000000003,
+    "r5": -13.340227507755941,
+    "r20": -26.29727352682497,
+    "from_high": -71.9059405940594,
+    "from_low": 0.5908419497784312,
+    "streak": -5
+   },
+   {
+    "ticker": "AI",
+    "market_cap": 1717932761.0,
+    "industry": "Computer Software: Prepackaged Software",
+    "shortable": true,
+    "vs_industry": -8.957170050761432,
+    "pre": -0.9756554307116194,
+    "pre_volume": 4713.0,
+    "pre_volume_pct": 0.11779997781221298,
+    "after_hours": -0.11610486891385774,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -9.644670050761428,
+    "sd": 2.812876024306428,
+    "z": -3.4287576016221752,
+    "vol_x": 0.9927083863298887,
+    "close": 10.68,
+    "avg_volume": 4000849.65,
+    "gap": -1.6497461928934087,
+    "range_pos": 0.03414634146341476,
+    "r5": 1.112061591103508,
+    "r20": 4.416961130742059,
+    "from_high": -34.8780487804878,
+    "from_low": 39.153094462540714,
+    "streak": -3
+   },
+   {
+    "ticker": "PAM",
+    "market_cap": 3327262419.0,
+    "industry": "Electric Utilities: Central",
+    "shortable": true,
+    "vs_industry": -5.9494788108398815,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.7056120774532326,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -6.5480754485508275,
+    "sd": 1.8841366242742987,
+    "z": -3.4753718834338296,
+    "vol_x": 1.4092483976505492,
+    "close": 60.94,
+    "avg_volume": 239281.45,
+    "gap": -1.2114706333384295,
+    "range_pos": 0.01385041551246459,
+    "r5": 2.5636992765020405,
+    "r20": -19.593094944512945,
+    "from_high": -35.51322751322752,
+    "from_low": 0.08211528986696859,
+    "streak": -1
+   },
+   {
+    "ticker": "LOMA",
+    "market_cap": 938240905.0,
+    "industry": "Building Materials",
+    "shortable": false,
+    "vs_industry": -6.184389011952208,
+    "pre": 1.1152416356877248,
+    "pre_volume": 200.0,
+    "pre_volume_pct": 0.04657906464347394,
+    "after_hours": 6.31970260223047,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -7.1346375143843455,
+    "sd": 1.9926384502454537,
+    "z": -3.5804977634078567,
+    "vol_x": 1.2806052111027255,
+    "close": 8.07,
+    "avg_volume": 429377.45,
+    "gap": -1.1507479861910253,
+    "range_pos": 0.0483870967741953,
+    "r5": -0.45819014891180787,
+    "r20": -13.359920239282152,
+    "from_high": -38.86317320585761,
+    "from_low": 0.3731343283582156,
+    "streak": -1
+   },
+   {
+    "ticker": "HELP",
+    "market_cap": 560383139.0,
+    "industry": "Biotechnology: Pharmaceutical Preparations",
+    "shortable": true,
+    "vs_industry": -10.896069944704367,
+    "pre": 4.563233376792697,
+    "pre_volume": 57766.0,
+    "pre_volume_pct": 4.055163590884355,
+    "after_hours": -0.26075619295957697,
+    "stories": 0,
+    "earnings": [
+     "2026-11-13 time not given"
+    ],
+    "date": "2026-11-16",
+    "r1": -13.528748590755345,
+    "sd": 4.954180326421904,
+    "z": -2.730774356073211,
+    "vol_x": 9.005707106076441,
+    "close": 7.67,
+    "avg_volume": 1424504.8,
+    "gap": 1.4656144306651742,
+    "range_pos": 0.2883895131086141,
+    "r5": -1.0044642857143016,
+    "r20": -15.924170616113752,
+    "from_high": -49.37293729372938,
+    "from_low": 103.98936170212765,
+    "streak": -1
+   },
+   {
+    "ticker": "SIND",
+    "market_cap": 1894375258.0,
+    "industry": "Precious Metals",
+    "shortable": false,
+    "vs_industry": 4.40971040831416,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 0.6756756756756799,
+    "sd": 3.4662156136583424,
+    "z": 0.19493180776557423,
+    "vol_x": 8.40540565834667,
+    "close": 11.92,
+    "avg_volume": 106851.0,
+    "gap": 0.6756756756756799,
+    "range_pos": 0.5343511450381679,
+    "r5": -3.583061889250816,
+    "r20": 1.7182130584192379,
+    "from_high": -37.0976253298153,
+    "from_low": 18.831621971887145,
+    "streak": 2
+   },
+   {
+    "ticker": "MFI",
+    "market_cap": 424994828.0,
+    "industry": "EDP Services",
+    "shortable": false,
+    "vs_industry": 12.299571746355596,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.35419126328215533,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": 11.667765326301915,
+    "sd": 5.491703920800036,
+    "z": 2.124616602528372,
+    "vol_x": 7.828676361109733,
+    "close": 8.47,
+    "avg_volume": 3022.35,
+    "gap": 3.0982201713908974,
+    "range_pos": 0.32019704433497564,
+    "r5": 48.72549019607844,
+    "r20": -3.2525510204081565,
+    "from_high": -68.46612062546538,
+    "from_low": 84.13043478260873,
+    "streak": 6
+   },
+   {
+    "ticker": "SMMT",
+    "market_cap": 9453209511.0,
+    "industry": "Biotechnology: Pharmaceutical Preparations",
+    "shortable": true,
+    "vs_industry": -13.833752449355385,
+    "pre": 1.522842639593902,
+    "pre_volume": 22755.0,
+    "pre_volume_pct": 0.46967710045074246,
+    "after_hours": 0.2538071065989689,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-16",
+    "r1": -16.466431095406364,
+    "sd": 5.374387105920788,
+    "z": -3.0638714277328165,
+    "vol_x": 5.045824994225532,
+    "close": 11.82,
+    "avg_volume": 4844817.85,
+    "gap": -10.212014134275616,
+    "range_pos": 0.168100746481281,
+    "r5": -13.349663196570717,
+    "r20": -3.2809295967190732,
+    "from_high": -59.56209373930893,
+    "from_low": 2.5596529284164893,
+    "streak": -5
+   },
+   {
+    "ticker": "BXDC",
+    "market_cap": 1686892408.0,
+    "industry": "Real Estate",
+    "shortable": true,
+    "vs_industry": 0.734451289728344,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 3.16606929510157,
+    "stories": 0,
+    "earnings": [
+     "2026-11-16 time not given"
+    ],
+    "date": "2026-11-16",
+    "r1": 0.2995805871779389,
+    "sd": 1.860526985648577,
+    "z": 0.16101921094872243,
+    "vol_x": 4.3844265583590945,
+    "close": 16.74,
+    "avg_volume": 1874759.65,
+    "gap": 3.295386458957439,
+    "range_pos": 0.06748466257668666,
+    "r5": 4.2473454091193075,
+    "r20": 6.713554987212289,
+    "from_high": -26.899563318777297,
+    "from_low": 9.090909090909083,
+    "streak": 2
+   },
+   {
+    "ticker": "HD",
+    "market_cap": 346926613649.0,
+    "industry": "RETAIL: Building Materials",
+    "shortable": true,
+    "vs_industry": 0.2675124672772311,
+    "pre": -1.873327386262258,
+    "pre_volume": 79471.0,
+    "pre_volume_pct": 1.7997435369423003,
+    "after_hours": -0.90929757417052,
+    "stories": 3,
+    "earnings": [
+     "2026-11-17 before open"
+    ],
+    "date": "2026-11-16",
+    "r1": -0.33840947546531774,
+    "sd": 1.8499543663892721,
+    "z": -0.18292855305713457,
+    "vol_x": 1.407385133272763,
+    "close": 347.51,
+    "avg_volume": 4415684.7,
+    "gap": -0.04875390748229069,
+    "range_pos": 0.38333333333332964,
+    "r5": 1.5197833871953836,
+    "r20": 12.615056680554204,
+    "from_high": -12.604682745265706,
+    "from_low": 25.386974562511288,
+    "streak": -1
+   },
+   {
+    "ticker": "DIS",
+    "market_cap": 204983635571.0,
+    "industry": "Services-Misc. Amusement & Recreation",
+    "shortable": true,
+    "vs_industry": -0.0774853993202762,
+    "pre": -1.415332771693345,
+    "pre_volume": 541643.0,
+    "pre_volume_pct": 6.9871184778738815,
+    "after_hours": -0.9218197135636097,
+    "stories": 2,
+    "earnings": [
+     "2026-11-17 before open"
+    ],
+    "date": "2026-11-16",
+    "r1": -0.22694797007648537,
+    "sd": 1.4210753726266805,
+    "z": -0.15970157139307845,
+    "vol_x": 1.640942982035056,
+    "close": 118.7,
+    "avg_volume": 7752022.55,
+    "gap": 0.5295452635118103,
+    "range_pos": 0.5054945054945084,
+    "r5": 1.9014989293361984,
+    "r20": 7.577538656298044,
+    "from_high": -1.738410596026485,
+    "from_low": 28.762813906817808,
+    "streak": -1
+   },
+   {
+    "ticker": "VIK",
+    "market_cap": 40263395042.0,
+    "industry": "Marine Transportation",
+    "shortable": true,
+    "vs_industry": 2.4935698222031233,
+    "pre": -0.3101462117855558,
+    "pre_volume": 40489.0,
+    "pre_volume_pct": 1.0832226774910814,
+    "after_hours": -0.8639787328311943,
+    "stories": 1,
+    "earnings": [
+     "2026-11-17 before open"
+    ],
+    "date": "2026-11-16",
+    "r1": 0.4562145321019173,
+    "sd": 2.0668616297972275,
+    "z": 0.22072814431543483,
+    "vol_x": 1.9005093586503894,
+    "close": 90.28,
+    "avg_volume": 3737827.95,
+    "gap": 1.2573717592077482,
+    "range_pos": 0.5427807486631027,
+    "r5": 2.732053040695015,
+    "r20": 7.731958762886593,
+    "from_high": -17.994368244163873,
+    "from_low": 59.30827598376567,
+    "streak": 2
+   },
+   {
+    "ticker": "JD",
+    "market_cap": 37013760000.0,
+    "industry": "Other Specialty Stores",
+    "shortable": true,
+    "vs_industry": 0.5528101745476965,
+    "pre": -3.9578794480755297,
+    "pre_volume": 391692.0,
+    "pre_volume_pct": 4.363002615120445,
+    "after_hours": -0.4720406681191003,
+    "stories": 1,
+    "earnings": [
+     "2026-11-17 before open"
+    ],
+    "date": "2026-11-16",
+    "r1": -1.3256897169473314,
+    "sd": 1.4652766714622816,
+    "z": -0.9047367932394306,
+    "vol_x": 1.0306362277174541,
+    "close": 27.54,
+    "avg_volume": 8977578.85,
+    "gap": -1.2182013615191667,
+    "range_pos": 0.08860759493670932,
+    "r5": -4.122294744074195,
+    "r20": 3.3320992225101653,
+    "from_high": -19.708454810495624,
+    "from_low": 12.371470540231755,
+    "streak": -1
+   },
+   {
+    "ticker": "ESLT",
+    "market_cap": 31660491050.0,
+    "industry": "Military/Government/Technical",
+    "shortable": true,
+    "vs_industry": -1.803576083856906,
+    "pre": 7.969268736962709,
+    "pre_volume": 605.0,
+    "pre_volume_pct": 0.683526227070802,
+    "after_hours": 0.21447248582424638,
+    "stories": 1,
+    "earnings": [
+     "2026-11-17 before open"
+    ],
+    "date": "2026-11-16",
+    "r1": -3.662506014548128,
+    "sd": 2.6148023455418534,
+    "z": -1.4006817841480725,
+    "vol_x": 0.9524966219117041,
+    "close": 680.74,
+    "avg_volume": 88511.6,
+    "gap": -2.141886728368858,
+    "range_pos": 0.16933402168301354,
+    "r5": 3.520414890344137,
+    "r20": -6.461220761685393,
+    "from_high": -33.00198807157058,
+    "from_low": 50.27373068432672,
+    "streak": -4
+   }
+  ],
+  "industry_moves": {
+   "AADX": -1.859,
+   "AI": -0.687,
+   "BGIN": -1.587,
+   "BXDC": -0.435,
+   "CDZIP": -0.303,
+   "CET": -1.495,
+   "CGON": -2.754,
+   "CRTO": 0.133,
+   "DIS": -0.149,
+   "DRTS": -1.675,
+   "ESLT": -1.859,
+   "FENC": -2.754,
+   "GAM": -1.931,
+   "HD": -0.606,
+   "HELP": -2.633,
+   "HTHT": 0.418,
+   "JD": -1.878,
+   "LOMA": -0.95,
+   "MFI": -0.632,
+   "MGRT": -0.632,
+   "MOH": -0.725,
+   "OFRM": 0.0,
+   "PAM": -0.599,
+   "SIND": -3.734,
+   "SMMT": -2.633,
+   "TPB": -0.721,
+   "TRXB": -2.754,
+   "TSN": 2.807,
+   "TU": -1.117,
+   "VIK": -2.037
+  },
+  "mentions": {
+   "EG": 1,
+   "ACGL": 1,
+   "MCO": 1,
+   "GM": 1,
+   "APO": 1,
+   "AZO": 1,
+   "SONY": 1,
+   "UBS": 2,
+   "NUE": 2,
+   "NBIS": 1,
+   "BX": 2,
+   "LITE": 1,
+   "PEP": 2,
+   "G": 1,
+   "GD": 1,
+   "L": 1,
+   "BLK": 3,
+   "GOOG": 1,
+   "MFG": 3,
+   "AIR": 1,
+   "META": 1,
+   "FBK": 1,
+   "PWR": 1,
+   "FRHC": 1,
+   "REGN": 2,
+   "NOW": 1,
+   "STM": 1,
+   "ERIC": 1,
+   "QCOM": 2,
+   "SPG": 1,
+   "ATS": 1,
+   "KLAR": 1,
+   "GEV": 1,
+   "D": 1,
+   "TFC": 1,
+   "SU": 1,
+   "USB": 1,
+   "ECL": 1,
+   "V": 2,
+   "IVZ": 1,
+   "UNFI": 1,
+   "TSLA": 1,
+   "HTGC": 1,
+   "CIGI": 1,
+   "IDA": 1,
+   "DCO": 1,
+   "DG": 1,
+   "CHD": 1,
+   "HALO": 1,
+   "UNH": 1,
+   "PAGS": 1,
+   "ALGT": 1,
+   "KR": 1,
+   "PPTA": 1,
+   "PRAX": 1,
+   "PIPR": 2,
+   "CHWY": 1,
+   "M": 1,
+   "CGON": 1,
+   "APPN": 2,
+   "Z": 1,
+   "BEN": 1,
+   "ALNY": 1,
+   "VIK": 1,
+   "NVDA": 2,
+   "GPC": 1,
+   "BR": 2,
+   "CG": 1,
+   "IRDM": 1,
+   "RHI": 1,
+   "VIRT": 1,
+   "SWK": 1,
+   "HSIC": 1,
+   "IONS": 1,
+   "TSCO": 1,
+   "POWL": 1,
+   "HIG": 1,
+   "VFC": 1,
+   "STLD": 2,
+   "OGC": 1,
+   "PRU": 1,
+   "F": 1,
+   "SJM": 1,
+   "ITT": 1,
+   "NXT": 1,
+   "CASY": 1,
+   "TPL": 1,
+   "J": 1,
+   "CTVA": 1,
+   "ZM": 1,
+   "EXPD": 2,
+   "BG": 1,
+   "TROW": 1,
+   "MOH": 1,
+   "IT": 1,
+   "AIG": 1,
+   "DVA": 1,
+   "CSCO": 2,
+   "TRI": 2,
+   "CART": 1,
+   "NRG": 1,
+   "FTS": 1,
+   "AU": 1,
+   "BKR": 1,
+   "TRU": 1,
+   "AXP": 1,
+   "RJF": 1,
+   "BAC": 3,
+   "DIS": 2,
+   "ANET": 1,
+   "APG": 1,
+   "SPGI": 1,
+   "MAR": 1,
+   "NFLX": 1,
+   "EFX": 1,
+   "AMD": 1,
+   "WFC": 2,
+   "WMT": 1,
+   "BMO": 1,
+   "YUM": 1,
+   "CVX": 1,
+   "HD": 3,
+   "FNV": 1,
+   "AS": 1,
+   "NEXA": 1,
+   "CHKP": 1,
+   "PICS": 1,
+   "ESLT": 1,
+   "TSM": 1,
+   "PH": 1,
+   "MDLZ": 1,
+   "COST": 1,
+   "MDT": 2,
+   "APD": 1,
+   "GS": 3,
+   "TMUS": 1,
+   "ALL": 1,
+   "CEG": 1,
+   "NEM": 1,
+   "WM": 1,
+   "INTC": 1,
+   "DAL": 1,
+   "MRNA": 2,
+   "AFL": 1,
+   "ADSK": 1,
+   "DASH": 1,
+   "HPE": 1,
+   "PLD": 1,
+   "NKE": 1,
+   "CAH": 1,
+   "INTU": 1,
+   "DLR": 2,
+   "MU": 1,
+   "COR": 1,
+   "KKR": 2,
+   "LHX": 1,
+   "PM": 1,
+   "LMT": 1,
+   "SPCX": 2,
+   "CAT": 1,
+   "JPM": 2,
+   "SNOW": 1,
+   "UBER": 1,
+   "MSFT": 1,
+   "COF": 1,
+   "TGT": 1,
+   "RTX": 1,
+   "MS": 1,
+   "DE": 1,
+   "KO": 1,
+   "LLY": 1,
+   "AAPL": 1,
+   "BHP": 1,
+   "XP": 1,
+   "ING": 1,
+   "ALV": 1,
+   "NVS": 1,
+   "JD": 1,
+   "SIMO": 1,
+   "MRK": 1,
+   "EQNR": 2,
+   "CPRI": 1,
+   "HSBC": 1,
+   "SHEL": 1,
+   "BP": 1,
+   "WB": 1,
+   "RELX": 1,
+   "ACN": 1,
+   "SNX": 1,
+   "ASIC": 1,
+   "RRR": 1,
+   "DOCS": 1,
+   "YOU": 3,
+   "NVGS": 1,
+   "SBC": 1,
+   "CMBT": 1,
+   "DB": 2
+  },
+  "earnings": {
+   "MUFG": [
+    "2026-11-13 time not given"
+   ],
+   "SMFG": [
+    "2026-11-13 time not given"
+   ],
+   "MFG": [
+    "2026-11-13 time not given"
+   ],
+   "CIG": [
+    "2026-11-13 time not given"
+   ],
+   "AVAL": [
+    "2026-11-13 time not given"
+   ],
+   "XXI": [
+    "2026-11-13 time not given"
+   ],
+   "PPTA": [
+    "2026-11-13 time not given"
+   ],
+   "GHRS": [
+    "2026-11-13 time not given"
+   ],
+   "INBX": [
+    "2026-11-13 time not given"
+   ],
+   "JBIO": [
+    "2026-11-13 time not given"
+   ],
+   "SLSR": [
+    "2026-11-13 time not given"
+   ],
+   "NPK": [
+    "2026-11-13 time not given"
+   ],
+   "USAS": [
+    "2026-11-13 time not given"
+   ],
+   "SBC": [
+    "2026-11-13 time not given"
+   ],
+   "HELP": [
+    "2026-11-13 time not given"
+   ],
+   "INDP": [
+    "2026-11-13 time not given"
+   ],
+   "GRVY": [
+    "2026-11-13 time not given"
+   ],
+   "SGML": [
+    "2026-11-13 time not given"
+   ],
+   "LWLG": [
+    "2026-11-13 time not given"
+   ],
+   "BOC": [
+    "2026-11-13 time not given"
+   ],
+   "CD": [
+    "2026-11-13 time not given"
+   ],
+   "IRLA": [
+    "2026-11-13 time not given"
+   ],
+   "RMIX": [
+    "2026-11-13 time not given"
+   ],
+   "XMAX": [
+    "2026-11-13 time not given"
+   ],
+   "BAK": [
+    "2026-11-13 time not given"
+   ],
+   "CTGO": [
+    "2026-11-13 time not given"
+   ],
+   "WSBF": [
+    "2026-11-13 time not given"
+   ],
+   "AUXX": [
+    "2026-11-13 time not given"
+   ],
+   "TRXB": [
+    "2026-11-13 time not given"
+   ],
+   "BNTC": [
+    "2026-11-13 time not given"
+   ],
+   "FBLA": [
+    "2026-11-13 time not given"
+   ],
+   "PUSA": [
+    "2026-11-13 time not given"
+   ],
+   "ORBS": [
+    "2026-11-13 time not given"
+   ],
+   "OPTX": [
+    "2026-11-13 time not given"
+   ],
+   "SJT": [
+    "2026-11-13 time not given"
+   ],
+   "DGXX": [
+    "2026-11-13 time not given"
+   ],
+   "TONT": [
+    "2026-11-13 time not given"
+   ],
+   "CNCK": [
+    "2026-11-13 time not given"
+   ],
+   "QNC": [
+    "2026-11-13 time not given"
+   ],
+   "KGEI": [
+    "2026-11-13 time not given"
+   ],
+   "SVIA": [
+    "2026-11-13 time not given"
+   ],
+   "AIBZ": [
+    "2026-11-13 time not given"
+   ],
+   "ECC": [
+    "2026-11-13 time not given"
+   ],
+   "ESP": [
+    "2026-11-13 time not given"
+   ],
+   "IMUX": [
+    "2026-11-13 time not given"
+   ],
+   "PDSB": [
+    "2026-11-13 time not given"
+   ],
+   "BYFC": [
+    "2026-11-13 time not given"
+   ],
+   "EP": [
+    "2026-11-13 time not given"
+   ],
+   "OWLT": [
+    "2026-11-13 time not given"
+   ],
+   "HURA": [
+    "2026-11-13 time not given"
+   ],
+   "SRG": [
+    "2026-11-13 time not given"
+   ],
+   "CPBI": [
+    "2026-11-13 time not given"
+   ],
+   "FURY": [
+    "2026-11-13 time not given"
+   ],
+   "EIC": [
+    "2026-11-13 time not given"
+   ],
+   "PZG": [
+    "2026-11-13 time not given"
+   ],
+   "AIRT": [
+    "2026-11-13 time not given"
+   ],
+   "CRT": [
+    "2026-11-13 time not given"
+   ],
+   "SEV": [
+    "2026-11-13 time not given"
+   ],
+   "SIEB": [
+    "2026-11-13 time not given"
+   ],
+   "RTB": [
+    "2026-11-13 time not given"
+   ],
+   "FBIO": [
+    "2026-11-13 time not given"
+   ],
+   "CNVS": [
+    "2026-11-13 time not given"
+   ],
+   "NDLS": [
+    "2026-11-13 time not given"
+   ],
+   "CING": [
+    "2026-11-13 time not given"
+   ],
+   "ELOX": [
+    "2026-11-13 time not given"
+   ],
+   "HOWL": [
+    "2026-11-13 time not given"
+   ],
+   "ANVS": [
+    "2026-11-13 time not given"
+   ],
+   "ONCY": [
+    "2026-11-13 time not given"
+   ],
+   "MIST": [
+    "2026-11-13 time not given"
+   ],
+   "VAI": [
+    "2026-11-13 time not given"
+   ],
+   "MBOT": [
+    "2026-11-13 time not given"
+   ],
+   "ESYN": [
+    "2026-11-13 time not given"
+   ],
+   "EXOZ": [
+    "2026-11-13 time not given"
+   ],
+   "RMCO": [
+    "2026-11-13 time not given"
+   ],
+   "CKX": [
+    "2026-11-13 time not given"
+   ],
+   "HHS": [
+    "2026-11-13 time not given"
+   ],
+   "ROLR": [
+    "2026-11-13 time not given"
+   ],
+   "MLSS": [
+    "2026-11-13 time not given"
+   ],
+   "BYSI": [
+    "2026-11-13 time not given"
+   ],
+   "TXMD": [
+    "2026-11-13 time not given"
+   ],
+   "AEI": [
+    "2026-11-13 time not given"
+   ],
+   "NYC": [
+    "2026-11-13 time not given"
+   ],
+   "KTTA": [
+    "2026-11-13 time not given"
+   ],
+   "BRAG": [
+    "2026-11-13 time not given"
+   ],
+   "FMST": [
+    "2026-11-13 time not given"
+   ],
+   "MDRR": [
+    "2026-11-13 time not given"
+   ],
+   "ESLA": [
+    "2026-11-13 time not given"
+   ],
+   "ACTU": [
+    "2026-11-13 time not given"
+   ],
+   "AHT": [
+    "2026-11-13 time not given"
+   ],
+   "TVRD": [
+    "2026-11-13 time not given"
+   ],
+   "ALLR": [
+    "2026-11-13 time not given"
+   ],
+   "PAVM": [
+    "2026-11-13 time not given"
+   ],
+   "OPTH": [
+    "2026-11-13 time not given"
+   ],
+   "FABC": [
+    "2026-11-13 time not given"
+   ],
+   "LSTA": [
+    "2026-11-13 time not given"
+   ],
+   "FEMY": [
+    "2026-11-13 time not given"
+   ],
+   "BBGI": [
+    "2026-11-13 time not given"
+   ],
+   "LFWD": [
+    "2026-11-13 time not given"
+   ],
+   "BFRI": [
+    "2026-11-13 time not given"
+   ],
+   "BFRG": [
+    "2026-11-13 time not given"
+   ],
+   "MDBH": [
+    "2026-11-13 time not given"
+   ],
+   "CABR": [
+    "2026-11-13 time not given"
+   ],
+   "CNTY": [
+    "2026-11-13 before open"
+   ],
+   "FOXX": [
+    "2026-11-13 time not given"
+   ],
+   "SKYQ": [
+    "2026-11-13 time not given"
+   ],
+   "YHGJ": [
+    "2026-11-13 time not given"
+   ],
+   "VTGN": [
+    "2026-11-13 time not given"
+   ],
+   "MARPS": [
+    "2026-11-13 time not given"
+   ],
+   "MTVA": [
+    "2026-11-13 time not given"
+   ],
+   "ASTC": [
+    "2026-11-13 time not given"
+   ],
+   "RKTO": [
+    "2026-11-13 time not given"
+   ],
+   "CISO": [
+    "2026-11-13 time not given"
+   ],
+   "MBRX": [
+    "2026-11-13 time not given"
+   ],
+   "CURX": [
+    "2026-11-13 time not given"
+   ],
+   "CNSY": [
+    "2026-11-13 time not given"
+   ],
+   "TPST": [
+    "2026-11-13 time not given"
+   ],
+   "ENVB": [
+    "2026-11-13 time not given"
+   ],
+   "NAII": [
+    "2026-11-13 time not given"
+   ],
+   "MITQ": [
+    "2026-11-13 time not given"
+   ],
+   "DETX": [
+    "2026-11-13 time not given"
+   ],
+   "PLAG": [
+    "2026-11-13 time not given"
+   ],
+   "DSS": [
+    "2026-11-13 time not given"
+   ],
+   "SCNX": [
+    "2026-11-13 time not given"
+   ],
+   "CJMB": [
+    "2026-11-13 time not given"
+   ],
+   "PCSA": [
+    "2026-11-13 time not given"
+   ],
+   "SKYE": [
+    "2026-11-13 time not given"
+   ],
+   "VS": [
+    "2026-11-13 time not given"
+   ],
+   "TWAV": [
+    "2026-11-13 time not given"
+   ],
+   "BKYI": [
+    "2026-11-13 time not given"
+   ],
+   "MEDS": [
+    "2026-11-13 time not given"
+   ],
+   "AMST": [
+    "2026-11-13 time not given"
+   ],
+   "SILO": [
+    "2026-11-13 time not given"
+   ],
+   "FLYE": [
+    "2026-11-13 time not given"
+   ],
+   "GRI": [
+    "2026-11-13 time not given"
+   ],
+   "HCTI": [
+    "2026-11-13 time not given"
+   ],
+   "FTHM": [
+    "2026-11-13 time not given"
+   ],
+   "OBAI": [
+    "2026-11-13 time not given"
+   ],
+   "GP": [
+    "2026-11-13 time not given"
+   ],
+   "ARAI": [
+    "2026-11-13 time not given"
+   ],
+   "GNPX": [
+    "2026-11-13 time not given"
+   ],
+   "PFSA": [
+    "2026-11-13 time not given"
+   ],
+   "AUUD": [
+    "2026-11-13 time not given"
+   ],
+   "CTNT": [
+    "2026-11-13 time not given"
+   ],
+   "CLDI": [
+    "2026-11-13 time not given"
+   ],
+   "PPCB": [
+    "2026-11-13 time not given"
+   ],
+   "ELAB": [
+    "2026-11-13 time not given"
+   ],
+   "NXGL": [
+    "2026-11-13 time not given"
+   ],
+   "KAPA": [
+    "2026-11-13 time not given"
+   ],
+   "XRTX": [
+    "2026-11-13 time not given"
+   ],
+   "SQFT": [
+    "2026-11-13 time not given"
+   ],
+   "PWCM": [
+    "2026-11-13 time not given"
+   ],
+   "IMCC": [
+    "2026-11-13 time not given"
+   ],
+   "SMTK": [
+    "2026-11-13 time not given"
+   ],
+   "BCSS": [
+    "2026-11-13 time not given"
+   ],
+   "CXII": [
+    "2026-11-13 time not given"
+   ],
+   "NOEM": [
+    "2026-11-13 time not given"
+   ],
+   "KPET": [
+    "2026-11-13 time not given"
+   ],
+   "RACC": [
+    "2026-11-13 time not given"
+   ],
+   "RACD": [
+    "2026-11-13 time not given"
+   ],
+   "TLNC": [
+    "2026-11-13 time not given"
+   ],
+   "TWLV": [
+    "2026-11-13 time not given"
+   ],
+   "KB": [
+    "2026-11-16 time not given"
+   ],
+   "TCOM": [
+    "2026-11-16 time not given"
+   ],
+   "BIDU": [
+    "2026-11-16 time not given"
+   ],
+   "TSN": [
+    "2026-11-16 time not given"
+   ],
+   "BEKE": [
+    "2026-11-16 time not given"
+   ],
+   "WF": [
+    "2026-11-16 time not given"
+   ],
+   "HTHT": [
+    "2026-11-16 time not given"
+   ],
+   "ARMK": [
+    "2026-11-16 time not given"
+   ],
+   "FRHC": [
+    "2026-11-16 time not given"
+   ],
+   "ACM": [
+    "2026-11-16 time not given"
+   ],
+   "XPEV": [
+    "2026-11-16 time not given"
+   ],
+   "XP": [
+    "2026-11-16 time not given"
+   ],
+   "POWL": [
+    "2026-11-16 time not given"
+   ],
+   "BRC": [
+    "2026-11-16 time not given"
+   ],
+   "SKE": [
+    "2026-11-16 time not given"
+   ],
+   "PAGS": [
+    "2026-11-16 time not given"
+   ],
+   "INFQ": [
+    "2026-11-16 time not given"
+   ],
+   "BXDC": [
+    "2026-11-16 time not given"
+   ],
+   "OMER": [
+    "2026-11-16 time not given"
+   ],
+   "PICS": [
+    "2026-11-16 time not given"
+   ],
+   "YALA": [
+    "2026-11-16 time not given"
+   ],
+   "NANO": [
+    "2026-11-16 time not given"
+   ],
+   "POET": [
+    "2026-11-16 time not given"
+   ],
+   "ORIC": [
+    "2026-11-16 time not given"
+   ],
+   "SHAZ": [
+    "2026-11-16 time not given"
+   ],
+   "APMD": [
+    "2026-11-16 time not given"
+   ],
+   "IQ": [
+    "2026-11-16 time not given"
+   ],
+   "SCZM": [
+    "2026-11-16 time not given"
+   ],
+   "IAM": [
+    "2026-11-16 time not given"
+   ],
+   "BALY": [
+    "2026-11-16 time not given"
+   ],
+   "RCAT": [
+    "2026-11-16 time not given"
+   ],
+   "SUPV": [
+    "2026-11-16 time not given"
+   ],
+   "MPLT": [
+    "2026-11-16 time not given"
+   ],
+   "EMAT": [
+    "2026-11-16 time not given"
+   ],
+   "BLDP": [
+    "2026-11-16 time not given"
+   ],
+   "PERI": [
+    "2026-11-16 time not given"
+   ],
+   "TVGN": [
+    "2026-11-16 time not given"
+   ],
+   "XTND": [
+    "2026-11-16 time not given"
+   ],
+   "QVCG": [
+    "2026-11-16 before open"
+   ],
+   "CUB": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "API": [
+    "2026-11-16 time not given"
+   ],
+   "GFUZ": [
+    "2026-11-16 time not given"
+   ],
+   "TMS": [
+    "2026-11-16 time not given"
+   ],
+   "LRMR": [
+    "2026-11-16 time not given"
+   ],
+   "ENTA": [
+    "2026-11-16 time not given"
+   ],
+   "NAK": [
+    "2026-11-16 time not given"
+   ],
+   "GALT": [
+    "2026-11-16 time not given"
+   ],
+   "PNRG": [
+    "2026-11-16 time not given"
+   ],
+   "MLP": [
+    "2026-11-16 time not given"
+   ],
+   "CDZI": [
+    "2026-11-16 time not given"
+   ],
+   "RDI": [
+    "2026-11-16 time not given"
+   ],
+   "POWW": [
+    "2026-11-16 time not given"
+   ],
+   "PRLD": [
+    "2026-11-16 time not given"
+   ],
+   "SSII": [
+    "2026-11-16 time not given",
+    "2026-11-17 time not given"
+   ],
+   "IDR": [
+    "2026-11-16 time not given"
+   ],
+   "LXEO": [
+    "2026-11-16 time not given"
+   ],
+   "ELA": [
+    "2026-11-16 time not given"
+   ],
+   "ASPI": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "ATER": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "NKLR": [
+    "2026-11-16 time not given"
+   ],
+   "CYPH": [
+    "2026-11-16 time not given"
+   ],
+   "SY": [
+    "2026-11-16 time not given"
+   ],
+   "NGEN": [
+    "2026-11-16 time not given"
+   ],
+   "YSG": [
+    "2026-11-16 time not given"
+   ],
+   "TOYO": [
+    "2026-11-16 time not given"
+   ],
+   "GRRR": [
+    "2026-11-16 time not given"
+   ],
+   "FIRY": [
+    "2026-11-16 time not given"
+   ],
+   "MNTK": [
+    "2026-11-16 time not given"
+   ],
+   "IVVD": [
+    "2026-11-16 time not given"
+   ],
+   "AIRJ": [
+    "2026-11-16 time not given"
+   ],
+   "SWMR": [
+    "2026-11-16 time not given"
+   ],
+   "DUOT": [
+    "2026-11-16 time not given"
+   ],
+   "TRAK": [
+    "2026-11-16 time not given"
+   ],
+   "GPRO": [
+    "2026-11-16 time not given"
+   ],
+   "ONEN": [
+    "2026-11-16 time not given"
+   ],
+   "CNTN": [
+    "2026-11-16 time not given"
+   ],
+   "BEBE": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "NIU": [
+    "2026-11-16 time not given"
+   ],
+   "ALXO": [
+    "2026-11-16 time not given"
+   ],
+   "GLAS": [
+    "2026-11-16 time not given"
+   ],
+   "SLNH": [
+    "2026-11-16 time not given"
+   ],
+   "USDE": [
+    "2026-11-16 time not given"
+   ],
+   "SMID": [
+    "2026-11-16 time not given"
+   ],
+   "UNCY": [
+    "2026-11-16 time not given"
+   ],
+   "CUE": [
+    "2026-11-16 time not given"
+   ],
+   "HTLM": [
+    "2026-11-16 time not given"
+   ],
+   "NRXP": [
+    "2026-11-16 time not given"
+   ],
+   "RDZN": [
+    "2026-11-16 time not given"
+   ],
+   "INTG": [
+    "2026-11-16 time not given"
+   ],
+   "GLND": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "GNLX": [
+    "2026-11-16 time not given"
+   ],
+   "CEPL": [
+    "2026-11-16 time not given"
+   ],
+   "WRAP": [
+    "2026-11-16 time not given"
+   ],
+   "MDIA": [
+    "2026-11-16 time not given"
+   ],
+   "NMRA": [
+    "2026-11-16 time not given"
+   ],
+   "VENU": [
+    "2026-11-16 time not given"
+   ],
+   "FTLF": [
+    "2026-11-16 time not given"
+   ],
+   "RSSS": [
+    "2026-11-16 time not given"
+   ],
+   "ACRV": [
+    "2026-11-16 time not given"
+   ],
+   "IMDX": [
+    "2026-11-16 time not given"
+   ],
+   "GLBS": [
+    "2026-11-16 time not given"
+   ],
+   "CVU": [
+    "2026-11-16 time not given"
+   ],
+   "POCI": [
+    "2026-11-16 time not given"
+   ],
+   "HOST": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "AMOD": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "AEC": [
+    "2026-11-16 time not given"
+   ],
+   "CAST": [
+    "2026-11-16 time not given"
+   ],
+   "AIB": [
+    "2026-11-16 time not given"
+   ],
+   "BXBL": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "GRML": [
+    "2026-11-16 time not given"
+   ],
+   "DWSN": [
+    "2026-11-16 time not given"
+   ],
+   "SPAI": [
+    "2026-11-16 time not given"
+   ],
+   "FBDT": [
+    "2026-11-16 time not given"
+   ],
+   "NFE": [
+    "2026-11-16 time not given"
+   ],
+   "ATNM": [
+    "2026-11-16 time not given"
+   ],
+   "SAFX": [
+    "2026-11-16 time not given"
+   ],
+   "NMAD": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "VERI": [
+    "2026-11-16 time not given"
+   ],
+   "FJET": [
+    "2026-11-16 time not given"
+   ],
+   "GPUS": [
+    "2026-11-16 time not given"
+   ],
+   "CNTB": [
+    "2026-11-16 time not given"
+   ],
+   "BOF": [
+    "2026-11-16 time not given"
+   ],
+   "XBP": [
+    "2026-11-16 time not given"
+   ],
+   "TIL": [
+    "2026-11-16 time not given"
+   ],
+   "MAMO": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "VHC": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "RPID": [
+    "2026-11-16 time not given"
+   ],
+   "SCWO": [
+    "2026-11-16 time not given"
+   ],
+   "LNZA": [
+    "2026-11-16 time not given"
+   ],
+   "WETH": [
+    "2026-11-16 time not given"
+   ],
+   "ODYS": [
+    "2026-11-16 time not given"
+   ],
+   "OSTX": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "NEXM": [
+    "2026-11-16 time not given"
+   ],
+   "RNTX": [
+    "2026-11-16 time not given"
+   ],
+   "NXB": [
+    "2026-11-16 time not given"
+   ],
+   "PHUN": [
+    "2026-11-16 time not given"
+   ],
+   "LGO": [
+    "2026-11-16 time not given"
+   ],
+   "GAME": [
+    "2026-11-16 time not given"
+   ],
+   "VIP": [
+    "2026-11-16 time not given"
+   ],
+   "EHLD": [
+    "2026-11-16 time not given"
+   ],
+   "FTFT": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "SACH": [
+    "2026-11-16 time not given"
+   ],
+   "LONA": [
+    "2026-11-16 time not given"
+   ],
+   "TOON": [
+    "2026-11-16 time not given"
+   ],
+   "XTNT": [
+    "2026-11-16 time not given"
+   ],
+   "ONMD": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "WKHS": [
+    "2026-11-16 time not given"
+   ],
+   "PPSI": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "TOMZ": [
+    "2026-11-16 time not given"
+   ],
+   "CREX": [
+    "2026-11-16 time not given"
+   ],
+   "GRDX": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "RNAZ": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "FKWL": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "AIFA": [
+    "2026-11-16 time not given"
+   ],
+   "MDRN": [
+    "2026-11-16 time not given"
+   ],
+   "UAVS": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "AMCI": [
+    "2026-11-16 time not given"
+   ],
+   "VHUB": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "AYTU": [
+    "2026-11-16 time not given"
+   ],
+   "BESS": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "STEM": [
+    "2026-11-16 time not given"
+   ],
+   "COCP": [
+    "2026-11-16 time not given"
+   ],
+   "SMXT": [
+    "2026-11-16 time not given"
+   ],
+   "ELWT": [
+    "2026-11-16 time not given"
+   ],
+   "MODD": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "PMI": [
+    "2026-11-16 time not given"
+   ],
+   "CMCT": [
+    "2026-11-16 time not given"
+   ],
+   "RVP": [
+    "2026-11-16 time not given"
+   ],
+   "VTIX": [
+    "2026-11-16 time not given"
+   ],
+   "NOMA": [
+    "2026-11-16 time not given"
+   ],
+   "TAOX": [
+    "2026-11-16 time not given"
+   ],
+   "ZEO": [
+    "2026-11-16 time not given"
+   ],
+   "CLIR": [
+    "2026-11-16 time not given",
+    "2026-11-19 after close"
+   ],
+   "BAER": [
+    "2026-11-16 time not given"
+   ],
+   "SDOT": [
+    "2026-11-16 time not given"
+   ],
+   "MRKR": [
+    "2026-11-16 time not given"
+   ],
+   "LHAI": [
+    "2026-11-16 time not given"
+   ],
+   "EONR": [
+    "2026-11-16 time not given"
+   ],
+   "SLE": [
+    "2026-11-16 time not given"
+   ],
+   "JSPR": [
+    "2026-11-16 time not given"
+   ],
+   "KYNB": [
+    "2026-11-16 time not given"
+   ],
+   "IDAI": [
+    "2026-11-16 time not given"
+   ],
+   "BENF": [
+    "2026-11-16 time not given"
+   ],
+   "DARE": [
+    "2026-11-16 time not given"
+   ],
+   "QNME": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "PTN": [
+    "2026-11-16 time not given",
+    "2026-11-17 before open"
+   ],
+   "AEON": [
+    "2026-11-16 time not given"
+   ],
+   "RAIN": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "AIMD": [
+    "2026-11-16 time not given"
+   ],
+   "VIDA": [
+    "2026-11-16 time not given"
+   ],
+   "HYFM": [
+    "2026-11-16 time not given"
+   ],
+   "BRFH": [
+    "2026-11-16 time not given"
+   ],
+   "CYCU": [
+    "2026-11-16 time not given"
+   ],
+   "IQST": [
+    "2026-11-16 time not given"
+   ],
+   "PBK": [
+    "2026-11-16 time not given"
+   ],
+   "GTBP": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "NDRA": [
+    "2026-11-16 time not given"
+   ],
+   "BNKK": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "DUKR": [
+    "2026-11-16 time not given"
+   ],
+   "FBLG": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "DTST": [
+    "2026-11-16 time not given"
+   ],
+   "MSN": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "GWAV": [
+    "2026-11-16 time not given"
+   ],
+   "FRTT": [
+    "2026-11-16 time not given"
+   ],
+   "MYSE": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "SNTI": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "JAGX": [
+    "2026-11-16 time not given"
+   ],
+   "CNSP": [
+    "2026-11-16 time not given"
+   ],
+   "CVKD": [
+    "2026-11-16 time not given",
+    "2026-11-23 time not given"
+   ],
+   "BTOC": [
+    "2026-11-16 time not given"
+   ],
+   "NIXX": [
+    "2026-11-16 time not given"
+   ],
+   "CYAB": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "CHAI": [
+    "2026-11-16 time not given"
+   ],
+   "RENX": [
+    "2026-11-16 time not given"
+   ],
+   "TRAW": [
+    "2026-11-16 time not given"
+   ],
+   "AQMS": [
+    "2026-11-16 time not given"
+   ],
+   "MGRX": [
+    "2026-11-16 time not given"
+   ],
+   "NCRA": [
+    "2026-11-16 time not given"
+   ],
+   "APUS": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "KITT": [
+    "2026-11-16 time not given"
+   ],
+   "SGLY": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "JTAI": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "CNET": [
+    "2026-11-16 time not given"
+   ],
+   "VVOS": [
+    "2026-11-16 time not given"
+   ],
+   "IVF": [
+    "2026-11-16 time not given"
+   ],
+   "TOPP": [
+    "2026-11-16 time not given"
+   ],
+   "FFAI": [
+    "2026-11-16 time not given"
+   ],
+   "QCLS": [
+    "2026-11-16 time not given"
+   ],
+   "AIDX": [
+    "2026-11-16 time not given"
+   ],
+   "IVDA": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "YHC": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "XPON": [
+    "2026-11-16 time not given"
+   ],
+   "JUNS": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "TGL": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "XELB": [
+    "2026-11-16 time not given"
+   ],
+   "HTCR": [
+    "2026-11-16 time not given"
+   ],
+   "ONFO": [
+    "2026-11-16 time not given",
+    "2026-11-17 before open"
+   ],
+   "ONCO": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "IPST": [
+    "2026-11-16 time not given"
+   ],
+   "RIME": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "GIPR": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "HCWB": [
+    "2026-11-16 time not given"
+   ],
+   "TRNR": [
+    "2026-11-16 before open"
+   ],
+   "SXTP": [
+    "2026-11-16 time not given"
+   ],
+   "LCFY": [
+    "2026-11-16 time not given"
+   ],
+   "ADGM": [
+    "2026-11-16 time not given"
+   ],
+   "APVO": [
+    "2026-11-16 time not given"
+   ],
+   "NXTS": [
+    "2026-11-16 time not given"
+   ],
+   "ATPC": [
+    "2026-11-16 time not given"
+   ],
+   "CSAI": [
+    "2026-11-16 time not given"
+   ],
+   "CHGA": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "TRUG": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "VJET": [
+    "2026-11-16 time not given"
+   ],
+   "MTNB": [
+    "2026-11-16 time not given",
+    "2026-11-23 time not given"
+   ],
+   "IPW": [
+    "2026-11-16 time not given"
+   ],
+   "GNLN": [
+    "2026-11-16 time not given"
+   ],
+   "LABT": [
+    "2026-11-16 time not given"
+   ],
+   "IPDN": [
+    "2026-11-16 time not given"
+   ],
+   "CDT": [
+    "2026-11-16 time not given",
+    "2026-11-19 time not given"
+   ],
+   "XXII": [
+    "2026-11-16 time not given"
+   ],
+   "PARA": [
+    "2026-11-16 time not given"
+   ],
+   "CEPO": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "CEPF": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "CEPV": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "CEPS": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "CAES": [
+    "2026-11-16 time not given"
+   ],
+   "KRAQ": [
+    "2026-11-16 time not given",
+    "2026-11-18 time not given"
+   ],
+   "PDCC": [
+    "2026-11-16 before open"
+   ],
+   "XGPU": [
+    "2026-11-16 time not given"
+   ],
+   "WENC": [
+    "2026-11-16 time not given",
+    "2026-11-17 time not given"
+   ],
+   "XSLL": [
+    "2026-11-16 time not given",
+    "2026-11-20 time not given"
+   ],
+   "NVDA": [
+    "2026-11-17 after close"
+   ],
+   "HD": [
+    "2026-11-17 before open"
+   ],
+   "DIS": [
+    "2026-11-17 before open"
+   ],
+   "BHP": [
+    "2026-11-17 time not given"
+   ],
+   "VIK": [
+    "2026-11-17 before open"
+   ],
+   "JD": [
+    "2026-11-17 before open"
+   ],
+   "ESLT": [
+    "2026-11-17 before open"
+   ],
+   "AS": [
+    "2026-11-17 before open"
+   ],
+   "ZTO": [
+    "2026-11-17 after close"
+   ],
+   "SQM": [
+    "2026-11-17 after close"
+   ],
+   "TME": [
+    "2026-11-17 before open"
+   ],
+   "KLAR": [
+    "2026-11-17 before open"
+   ],
+   "DLB": [
+    "2026-11-17 after close"
+   ],
+   "SR": [
+    "2026-11-17 before open"
+   ],
+   "GFF": [
+    "2026-11-17 before open"
+   ],
+   "CAAP": [
+    "2026-11-17 after close"
+   ],
+   "MNSO": [
+    "2026-11-17 before open"
+   ],
+   "GBDC": [
+    "2026-11-17 after close"
+   ],
+   "DRVN": [
+    "2026-11-17 time not given"
+   ],
+   "ENR": [
+    "2026-11-17 before open"
+   ],
+   "LUXE": [
+    "2026-11-17 before open"
+   ],
+   "WB": [
+    "2026-11-17 before open"
+   ],
+   "OPRA": [
+    "2026-11-17 before open"
+   ],
+   "LZB": [
+    "2026-11-17 after close"
+   ],
+   "GDRX": [
+    "2026-11-17 time not given"
+   ],
+   "OCSL": [
+    "2026-11-17 before open"
+   ],
+   "FUBO": [
+    "2026-11-17 before open"
+   ],
+   "VREX": [
+    "2026-11-17 time not given"
+   ],
+   "SMWB": [
+    "2026-11-17 before open"
+   ],
+   "IIIV": [
+    "2026-11-17 after close"
+   ],
+   "HUYA": [
+    "2026-11-17 before open"
+   ],
+   "ESEA": [
+    "2026-11-17 before open"
+   ],
+   "GLAD": [
+    "2026-11-17 after close"
+   ],
+   "AUNA": [
+    "2026-11-17 after close"
+   ],
+   "ONEW": [
+    "2026-11-17 before open"
+   ],
+   "ZENA": [
+    "2026-11-17 time not given"
+   ],
+   "AGPU": [
+    "2026-11-17 before open"
+   ],
+   "FEAM": [
+    "2026-11-17 after close"
+   ],
+   "AFJK": [
+    "2026-11-17 time not given"
+   ],
+   "DAVA": [
+    "2026-11-17 time not given"
+   ],
+   "NTIC": [
+    "2026-11-17 time not given"
+   ],
+   "EVTL": [
+    "2026-11-17 time not given"
+   ],
+   "IRIX": [
+    "2026-11-17 after close"
+   ],
+   "PANW": [
+    "2026-11-18 after close"
+   ],
+   "TJX": [
+    "2026-11-18 before open"
+   ],
+   "LOW": [
+    "2026-11-18 before open"
+   ],
+   "TGT": [
+    "2026-11-18 before open"
+   ],
+   "P": [
+    "2026-11-18 after close"
+   ],
+   "WWD": [
+    "2026-11-18 after close"
+   ],
+   "UGI": [
+    "2026-11-18 after close"
+   ],
+   "GLBE": [
+    "2026-11-18 before open"
+   ],
+   "SNEX": [
+    "2026-11-18 after close"
+   ],
+   "NJR": [
+    "2026-11-18 after close"
+   ],
+   "CPA": [
+    "2026-11-18 after close"
+   ],
+   "HAFN": [
+    "2026-11-18 before open"
+   ],
+   "GLNG": [
+    "2026-11-18 before open"
+   ],
+   "JOYY": [
+    "2026-11-18 after close"
+   ],
+   "HP": [
+    "2026-11-18 after close"
+   ],
+   "ZIM": [
+    "2026-11-18 before open"
+   ],
+   "KLIC": [
+    "2026-11-18 after close"
+   ],
+   "BLSH": [
+    "2026-11-18 before open"
+   ],
+   "SBLK": [
+    "2026-11-18 after close"
+   ],
+   "PONY": [
+    "2026-11-18 before open"
+   ],
+   "JJSF": [
+    "2026-11-18 before open"
+   ],
+   "UTI": [
+    "2026-11-18 after close"
+   ],
+   "BRBR": [
+    "2026-11-18 before open"
+   ],
+   "NWCL": [
+    "2026-11-18 time not given"
+   ],
+   "BORR": [
+    "2026-11-18 after close"
+   ],
+   "KRNT": [
+    "2026-11-18 before open"
+   ],
+   "JMIA": [
+    "2026-11-18 before open"
+   ],
+   "CSHR": [
+    "2026-11-18 before open"
+   ],
+   "CRNC": [
+    "2026-11-18 time not given"
+   ],
+   "ENRD": [
+    "2026-11-18 before open"
+   ],
+   "PRE": [
+    "2026-11-18 before open"
+   ],
+   "PCYO": [
+    "2026-11-18 after close"
+   ],
+   "RGCO": [
+    "2026-11-18 time not given"
+   ],
+   "ZKH": [
+    "2026-11-18 before open"
+   ],
+   "RRGB": [
+    "2026-11-18 after close"
+   ],
+   "FUFU": [
+    "2026-11-18 time not given"
+   ],
+   "CAAS": [
+    "2026-11-18 time not given"
+   ],
+   "FLX": [
+    "2026-11-18 time not given"
+   ],
+   "ZSTK": [
+    "2026-11-18 time not given"
+   ],
+   "LITB": [
+    "2026-11-18 time not given"
+   ],
+   "AACG": [
+    "2026-11-18 time not given"
+   ],
+   "MNTS": [
+    "2026-11-18 time not given"
+   ],
+   "KNDI": [
+    "2026-11-18 before open"
+   ],
+   "SYPR": [
+    "2026-11-18 time not given"
+   ],
+   "BRLS": [
+    "2026-11-18 time not given"
+   ],
+   "CPHI": [
+    "2026-11-18 time not given"
+   ],
+   "CCIF": [
+    "2026-11-18 after close"
+   ],
+   "LOCL": [
+    "2026-11-18 time not given"
+   ],
+   "CETY": [
+    "2026-11-18 time not given"
+   ],
+   "DCM": [
+    "2026-11-18 time not given"
+   ],
+   "SURG": [
+    "2026-11-18 time not given"
+   ],
+   "REBN": [
+    "2026-11-18 time not given"
+   ],
+   "AZIO": [
+    "2026-11-18 time not given"
+   ],
+   "LTRN": [
+    "2026-11-18 time not given"
+   ],
+   "GITS": [
+    "2026-11-18 time not given"
+   ],
+   "CENN": [
+    "2026-11-18 time not given"
+   ],
+   "GURE": [
+    "2026-11-18 time not given"
+   ],
+   "AIRE": [
+    "2026-11-18 time not given"
+   ],
+   "ICCM": [
+    "2026-11-18 before open"
+   ],
+   "VIVK": [
+    "2026-11-18 time not given"
+   ],
+   "KALA": [
+    "2026-11-18 time not given"
+   ],
+   "BRTX": [
+    "2026-11-18 time not given"
+   ],
+   "EDVA": [
+    "2026-11-18 time not given"
+   ],
+   "POLA": [
+    "2026-11-18 time not given"
+   ],
+   "WORX": [
+    "2026-11-18 time not given"
+   ],
+   "CISS": [
+    "2026-11-18 before open"
+   ],
+   "SRTM": [
+    "2026-11-18 time not given"
+   ],
+   "AEXA": [
+    "2026-11-18 time not given"
+   ],
+   "WMT": [
+    "2026-11-19 before open"
+   ],
+   "BABA": [
+    "2026-11-19 before open"
+   ],
+   "PDD": [
+    "2026-11-19 before open"
+   ],
+   "INTU": [
+    "2026-11-19 after close"
+   ],
+   "NTES": [
+    "2026-11-19 before open"
+   ],
+   "ROST": [
+    "2026-11-19 after close"
+   ],
+   "KEYS": [
+    "2026-11-19 after close"
+   ],
+   "CPRT": [
+    "2026-11-19 time not given"
+   ],
+   "WSM": [
+    "2026-11-19 before open"
+   ],
+   "WMG": [
+    "2026-11-19 before open"
+   ],
+   "FUTU": [
+    "2026-11-19 before open"
+   ],
+   "ESTC": [
+    "2026-11-19 after close"
+   ],
+   "YMM": [
+    "2026-11-19 before open"
+   ],
+   "ESE": [
+    "2026-11-19 after close"
+   ],
+   "GAP": [
+    "2026-11-19 after close"
+   ],
+   "ROAD": [
+    "2026-11-19 before open"
+   ],
+   "VVV": [
+    "2026-11-19 before open"
+   ],
+   "BBWI": [
+    "2026-11-19 before open"
+   ],
+   "MANU": [
+    "2026-11-19 before open"
+   ],
+   "POST": [
+    "2026-11-19 after close"
+   ],
+   "MMS": [
+    "2026-11-19 before open"
+   ],
+   "BULL": [
+    "2026-11-19 after close"
+   ],
+   "DAO": [
+    "2026-11-19 before open"
+   ],
+   "GLOB": [
+    "2026-11-19 after close"
+   ],
+   "FORTY": [
+    "2026-11-19 time not given"
+   ],
+   "HUBG": [
+    "2026-11-19 time not given"
+   ],
+   "TEN": [
+    "2026-11-19 before open"
+   ],
+   "LQDT": [
+    "2026-11-19 before open"
+   ],
+   "DRTS": [
+    "2026-11-19 time not given"
+   ],
+   "RERE": [
+    "2026-11-19 before open"
+   ],
+   "QUIT": [
+    "2026-11-19 time not given"
+   ],
+   "NGVC": [
+    "2026-11-19 after close"
+   ],
+   "MATW": [
+    "2026-11-19 after close"
+   ],
+   "MAGN": [
+    "2026-11-19 before open"
+   ],
+   "XYF": [
+    "2026-11-19 time not given"
+   ],
+   "ICG": [
+    "2026-11-19 time not given"
+   ],
+   "BNR": [
+    "2026-11-19 time not given"
+   ],
+   "EARN": [
+    "2026-11-19 after close"
+   ],
+   "ZSQR": [
+    "2026-11-19 time not given"
+   ],
+   "DOYU": [
+    "2026-11-19 time not given"
+   ],
+   "ARBE": [
+    "2026-11-19 before open"
+   ],
+   "TPCS": [
+    "2026-11-19 time not given"
+   ],
+   "GEOS": [
+    "2026-11-19 after close"
+   ],
+   "CATO": [
+    "2026-11-19 time not given"
+   ],
+   "SER": [
+    "2026-11-19 time not given"
+   ],
+   "GRSD": [
+    "2026-11-19 after close"
+   ],
+   "ZONE": [
+    "2026-11-19 time not given"
+   ],
+   "MIRA": [
+    "2026-11-19 time not given"
+   ],
+   "EVAX": [
+    "2026-11-19 before open"
+   ],
+   "NNOX": [
+    "2026-11-19 time not given"
+   ],
+   "STG": [
+    "2026-11-19 time not given"
+   ],
+   "BZAI": [
+    "2026-11-19 time not given"
+   ],
+   "SHPH": [
+    "2026-11-19 time not given"
+   ],
+   "PRT": [
+    "2026-11-19 time not given"
+   ],
+   "CMMB": [
+    "2026-11-19 time not given"
+   ],
+   "SOAR": [
+    "2026-11-19 time not given"
+   ],
+   "DTSS": [
+    "2026-11-19 time not given"
+   ],
+   "RBNE": [
+    "2026-11-19 time not given"
+   ],
+   "EVGN": [
+    "2026-11-19 before open"
+   ],
+   "PULM": [
+    "2026-11-19 time not given"
+   ],
+   "LIMN": [
+    "2026-11-19 time not given"
+   ],
+   "SEGG": [
+    "2026-11-19 time not given"
+   ],
+   "MTR": [
+    "2026-11-19 time not given"
+   ],
+   "ITP": [
+    "2026-11-19 time not given"
+   ],
+   "OLOX": [
+    "2026-11-19 time not given"
+   ],
+   "BSP": [
+    "2026-11-20 before open"
+   ],
+   "BJ": [
+    "2026-11-20 before open"
+   ],
+   "MOG.B": [
+    "2026-11-20 before open"
+   ],
+   "FRO": [
+    "2026-11-20 before open"
+   ],
+   "KT": [
+    "2026-11-20 time not given"
+   ],
+   "IESC": [
+    "2026-11-20 time not given"
+   ],
+   "LPL": [
+    "2026-11-20 time not given"
+   ],
+   "BKE": [
+    "2026-11-20 before open"
+   ],
+   "RLX": [
+    "2026-11-20 before open"
+   ],
+   "WRD": [
+    "2026-11-20 before open"
+   ],
+   "GLSI": [
+    "2026-11-20 time not given"
+   ],
+   "DLNG": [
+    "2026-11-20 after close"
+   ],
+   "AREC": [
+    "2026-11-20 time not given"
+   ],
+   "SIDU": [
+    "2026-11-20 time not given"
+   ],
+   "FSI": [
+    "2026-11-20 time not given"
+   ],
+   "SOWG": [
+    "2026-11-20 time not given"
+   ],
+   "QXL": [
+    "2026-11-20 time not given"
+   ],
+   "PVL": [
+    "2026-11-20 time not given"
+   ],
+   "NORD": [
+    "2026-11-20 time not given"
+   ],
+   "NNVC": [
+    "2026-11-20 time not given"
+   ],
+   "AAME": [
+    "2026-11-20 time not given"
+   ],
+   "CELU": [
+    "2026-11-20 time not given"
+   ],
+   "CIRC": [
+    "2026-11-20 time not given"
+   ],
+   "BEEM": [
+    "2026-11-20 time not given"
+   ],
+   "NEUP": [
+    "2026-11-20 time not given"
+   ],
+   "COSM": [
+    "2026-11-20 time not given"
+   ],
+   "SUNE": [
+    "2026-11-20 time not given"
+   ],
+   "ASBP": [
+    "2026-11-20 time not given"
+   ],
+   "SCLX": [
+    "2026-11-20 time not given"
+   ],
+   "XCUR": [
+    "2026-11-20 time not given"
+   ],
+   "TCRT": [
+    "2026-11-20 time not given"
+   ],
+   "ATXG": [
+    "2026-11-20 time not given"
+   ],
+   "GYGY": [
+    "2026-11-20 time not given"
+   ],
+   "OLB": [
+    "2026-11-20 time not given"
+   ],
+   "XWEL": [
+    "2026-11-20 time not given"
+   ],
+   "ICON": [
+    "2026-11-20 time not given"
+   ],
+   "SONM": [
+    "2026-11-20 time not given"
+   ],
+   "PPBT": [
+    "2026-11-20 time not given"
+   ],
+   "AMSS": [
+    "2026-11-20 time not given"
+   ],
+   "BGLC": [
+    "2026-11-20 time not given"
+   ],
+   "BURU": [
+    "2026-11-20 time not given"
+   ],
+   "ENLV": [
+    "2026-11-20 time not given"
+   ],
+   "BOXL": [
+    "2026-11-20 time not given"
+   ],
+   "VBIO": [
+    "2026-11-20 time not given"
+   ],
+   "MYSZ": [
+    "2026-11-20 time not given"
+   ],
+   "DBGI": [
+    "2026-11-20 time not given"
+   ],
+   "HPE": [
+    "2026-11-23 after close"
+   ],
+   "A": [
+    "2026-11-23 after close"
+   ],
+   "ZM": [
+    "2026-11-23 after close"
+   ],
+   "SYM": [
+    "2026-11-23 after close"
+   ],
+   "J": [
+    "2026-11-23 after close"
+   ],
+   "SMTC": [
+    "2026-11-23 after close"
+   ],
+   "AMTM": [
+    "2026-11-23 after close"
+   ],
+   "TEO": [
+    "2026-11-23 time not given"
+   ],
+   "CENT": [
+    "2026-11-23 time not given"
+   ],
+   "CENTA": [
+    "2026-11-23 time not given"
+   ],
+   "DAC": [
+    "2026-11-23 after close"
+   ],
+   "BLBD": [
+    "2026-11-23 time not given"
+   ],
+   "FSCO": [
+    "2026-11-23 after close"
+   ],
+   "TUYA": [
+    "2026-11-23 after close"
+   ],
+   "CMP": [
+    "2026-11-23 after close"
+   ],
+   "FLNC": [
+    "2026-11-23 after close"
+   ],
+   "VNET": [
+    "2026-11-23 before open"
+   ],
+   "TRON": [
+    "2026-11-23 time not given"
+   ],
+   "PFLT": [
+    "2026-11-23 after close"
+   ],
+   "ALCO": [
+    "2026-11-23 after close"
+   ],
+   "HTT": [
+    "2026-11-23 time not given"
+   ],
+   "CURR": [
+    "2026-11-23 time not given"
+   ],
+   "PNNT": [
+    "2026-11-23 after close"
+   ],
+   "AIV": [
+    "2026-11-23 time not given"
+   ],
+   "GDEV": [
+    "2026-11-23 time not given"
+   ],
+   "EPSN": [
+    "2026-11-23 after close"
+   ],
+   "LOT": [
+    "2026-11-23 time not given"
+   ],
+   "LX": [
+    "2026-11-23 time not given"
+   ],
+   "CBAT": [
+    "2026-11-23 time not given"
+   ],
+   "ANTA": [
+    "2026-11-23 time not given"
+   ],
+   "CRGO": [
+    "2026-11-23 before open"
+   ],
+   "THCH": [
+    "2026-11-23 before open"
+   ],
+   "ADXN": [
+    "2026-11-23 before open"
+   ],
+   "BLRX": [
+    "2026-11-23 time not given"
+   ],
+   "GDC": [
+    "2026-11-23 time not given"
+   ],
+   "DELL": [
+    "2026-11-24 after close"
+   ],
+   "ADI": [
+    "2026-11-24 before open"
+   ],
+   "MDT": [
+    "2026-11-24 before open"
+   ],
+   "ADSK": [
+    "2026-11-24 after close"
+   ],
+   "WDAY": [
+    "2026-11-24 after close"
+   ],
+   "DLTR": [
+    "2026-11-24 before open"
+   ],
+   "HPQ": [
+    "2026-11-24 after close"
+   ],
+   "BBY": [
+    "2026-11-24 before open"
+   ],
+   "NTNX": [
+    "2026-11-24 after close"
+   ],
+   "BURL": [
+    "2026-11-24 before open"
+   ],
+   "SJM": [
+    "2026-11-24 before open"
+   ],
+   "DKS": [
+    "2026-11-24 before open"
+   ],
+   "URBN": [
+    "2026-11-24 after close"
+   ],
+   "NIO": [
+    "2026-11-24 time not given"
+   ],
+   "DY": [
+    "2026-11-24 before open"
+   ],
+   "VIPS": [
+    "2026-11-24 before open"
+   ],
+   "ANF": [
+    "2026-11-24 before open"
+   ],
+   "BILI": [
+    "2026-11-24 before open"
+   ],
+   "MMED": [
+    "2026-11-24 before open"
+   ],
+   "GGAL": [
+    "2026-11-24 time not given"
+   ],
+   "BWLP": [
+    "2026-11-24 before open"
+   ],
+   "KSS": [
+    "2026-11-24 before open"
+   ],
+   "AMBA": [
+    "2026-11-24 after close"
+   ],
+   "KC": [
+    "2026-11-24 before open"
+   ],
+   "BBAR": [
+    "2026-11-24 after close"
+   ],
+   "CLSK": [
+    "2026-11-24 time not given"
+   ],
+   "PD": [
+    "2026-11-24 time not given"
+   ],
+   "ITRN": [
+    "2026-11-24 before open"
+   ],
+   "WOOF": [
+    "2026-11-24 time not given"
+   ],
+   "TIGR": [
+    "2026-11-24 before open"
+   ],
+   "MOV": [
+    "2026-11-24 time not given"
+   ],
+   "QFIN": [
+    "2026-11-24 after close"
+   ],
+   "VALN": [
+    "2026-11-24 before open"
+   ],
+   "TITN": [
+    "2026-11-24 before open"
+   ],
+   "NOAH": [
+    "2026-11-24 after close"
+   ],
+   "EMBC": [
+    "2026-11-24 before open"
+   ],
+   "GASS": [
+    "2026-11-24 time not given"
+   ],
+   "ZH": [
+    "2026-11-24 before open"
+   ],
+   "BZUN": [
+    "2026-11-24 before open"
+   ],
+   "AVXL": [
+    "2026-11-24 time not given"
+   ],
+   "JFIN": [
+    "2026-11-24 time not given"
+   ],
+   "BNAI": [
+    "2026-11-24 time not given"
+   ],
+   "YRD": [
+    "2026-11-24 time not given"
+   ],
+   "PSHG": [
+    "2026-11-24 time not given"
+   ]
+  },
+  "premarket_movers": [
+   {
+    "ticker": "SLS",
+    "pct": 308.1512717536814,
+    "z": 49.43157414956475,
+    "volume": 4644986.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 61.693848157142426
+   },
+   {
+    "ticker": "HG",
+    "pct": 8.723789800673053,
+    "z": 6.455494943899454,
+    "volume": 390.0,
+    "time": "2026-11-17T12:00:00Z",
+    "volume_pct": 0.08337687459006371
+   },
+   {
+    "ticker": "SMWB",
+    "pct": 15.089514066496168,
+    "z": 4.496769967300043,
+    "volume": 22787.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 6.366629218097914
+   },
+   {
+    "ticker": "ACM",
+    "pct": 7.517241379310358,
+    "z": 3.8157306562751576,
+    "volume": 6453.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 0.5161179071478851
+   },
+   {
+    "ticker": "ESLT",
+    "pct": 7.969268736962709,
+    "z": 3.0477518694864387,
+    "volume": 605.0,
+    "time": "2026-11-17T12:00:00Z",
+    "volume_pct": 0.683526227070802
+   },
+   {
+    "ticker": "TEL",
+    "pct": 5.170438041695946,
+    "z": 2.4764286946598415,
+    "volume": 425.0,
+    "time": "2026-11-17T12:00:00Z",
+    "volume_pct": 0.02004142113764443
+   },
+   {
+    "ticker": "TAC",
+    "pct": 5.449654112221358,
+    "z": 2.3820344477222193,
+    "volume": 500.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 0.035670701213217616
+   },
+   {
+    "ticker": "ETW",
+    "pct": 2.128820960698685,
+    "z": 2.3513422345172965,
+    "volume": 500.0,
+    "time": "2026-11-17T12:00:00Z",
+    "volume_pct": 0.22605976251517707
+   },
+   {
+    "ticker": "AS",
+    "pct": 5.223367697594505,
+    "z": 2.2995060250624695,
+    "volume": 650410.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 11.813627596391402
+   },
+   {
+    "ticker": "DRTS",
+    "pct": 6.015037593984962,
+    "z": 2.1815328119038426,
+    "volume": 59269.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 11.458825735715617
+   },
+   {
+    "ticker": "KNX",
+    "pct": -8.478294938097486,
+    "z": -3.981937458972058,
+    "volume": 396.0,
+    "time": "2026-11-17T12:00:00Z",
+    "volume_pct": 0.0103909480043653
+   },
+   {
+    "ticker": "SR",
+    "pct": -4.365436543654355,
+    "z": -3.620633200024654,
+    "volume": 1818.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 0.3434525902238431
+   },
+   {
+    "ticker": "WB",
+    "pct": -4.0000000000000036,
+    "z": -3.106848636396083,
+    "volume": 65506.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 7.105076627469398
+   },
+   {
+    "ticker": "JD",
+    "pct": -4.175744371822798,
+    "z": -2.8497992584947043,
+    "volume": 405369.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 4.515348812558745
+   },
+   {
+    "ticker": "OMER",
+    "pct": -10.67146282973621,
+    "z": -2.7628929791457013,
+    "volume": 5900.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 0.6041919245345853
+   },
+   {
+    "ticker": "YMM",
+    "pct": -4.672897196261683,
+    "z": -2.3699852355604167,
+    "volume": 780.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 0.009792162050941727
+   },
+   {
+    "ticker": "HTLD",
+    "pct": -4.2893982808023035,
+    "z": -2.104487111984931,
+    "volume": 380.0,
+    "time": "2026-11-17T12:00:00Z",
+    "volume_pct": 0.05963267839390366
+   },
+   {
+    "ticker": "GSAT",
+    "pct": -1.3018845974871907,
+    "z": -2.066561865556587,
+    "volume": 100.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 0.009590155130349389
+   },
+   {
+    "ticker": "UNH",
+    "pct": -2.6746274452696395,
+    "z": -1.7993246313665054,
+    "volume": 50829.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 1.0291701992570816
+   },
+   {
+    "ticker": "SAP",
+    "pct": -3.0449471838515207,
+    "z": -1.723747649947175,
+    "volume": 20365.0,
+    "time": "2026-11-17T13:00:00Z",
+    "volume_pct": 0.8244705114953921
+   }
+  ]
+ },
+ "economy": [
+  {
+   "date": "2026-11-17",
+   "time": "05:00",
+   "event": "Fed Vice Chair for Supervision Barr Speaks",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-17",
+   "time": "08:30",
+   "event": "NY Empire State Manufacturing Index",
+   "actual": "7.80",
+   "consensus": "17.60",
+   "previous": "25.50"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "09:05",
+   "event": "FOMC Member Williams Speaks",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-17",
+   "time": "11:30",
+   "event": "3-Month Bill Auction",
+   "actual": "4.155%",
+   "consensus": "4.099%",
+   "previous": "4.060%"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "11:30",
+   "event": "6-Month Bill Auction",
+   "actual": "4.310%",
+   "consensus": "",
+   "previous": "4.145%"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "12:00",
+   "event": "Fed Chair Warsh Speaks",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Aluminium speculative net positions",
+   "actual": "-1.8K",
+   "consensus": "",
+   "previous": "-1.4K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Copper speculative net positions",
+   "actual": "28.9K",
+   "consensus": "",
+   "previous": "37.7K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Corn speculative net positions",
+   "actual": "109.1K",
+   "consensus": "",
+   "previous": "137.6K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Crude Oil speculative net positions",
+   "actual": "74.0K",
+   "consensus": "",
+   "previous": "80.3K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Gold speculative net positions",
+   "actual": "190.1K",
+   "consensus": "",
+   "previous": "179.5K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Nasdaq 100 speculative net positions",
+   "actual": "29.1K",
+   "consensus": "",
+   "previous": "42.9K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Natural Gas speculative net positions",
+   "actual": "-270.0K",
+   "consensus": "",
+   "previous": "-258.9K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC S&P 500 speculative net positions",
+   "actual": "-138.6K",
+   "consensus": "",
+   "previous": "-129.4K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Silver speculative net positions",
+   "actual": "19.4K",
+   "consensus": "",
+   "previous": "21.3K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Soybeans speculative net positions",
+   "actual": "146.6K",
+   "consensus": "",
+   "previous": "163.6K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "15:30",
+   "event": "CFTC Wheat speculative net positions",
+   "actual": "-60.0K",
+   "consensus": "",
+   "previous": "-62.5K"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "18:10",
+   "event": "FOMC Member Barkin Speaks",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-17",
+   "time": "18:30",
+   "event": "Fed Goolsbee Speaks",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  }
+ ],
+ "summary": "**Market summary, 2026-11-17 (data as of 13:33 UTC)**\n\nIn the previous session (2026-11-16), U.S. equities fell broadly. SPY dropped 1.91% and QQQ 2.67%, with XLK down 3.24%. IWM fell 1.66% and DIA 1.43%. Energy (XLE, -1.96%) and industrials (XLI, -1.85%) also declined, while staples (XLP, +0.27%) and utilities (XLU, +0.18%) edged higher. VIXY rose 9.03%. Gold (GLD) fell 0.71% and oil (USO) fell 3.81%.\n\nPre-market ETF moves were small, ranging from -0.94% (XLV) to +0.39% (QQQ). Individual pre-market moves are on thin volume and may not reflect real prices.\n\nEconomic data: the Empire State Manufacturing Index printed 7.80 against a 17.60 consensus. The 3-month bill auction yielded 4.155%, above the 4.099% consensus. Several Fed speakers are scheduled today.\n\nCompany headlines include Home Depot's Q3 sales of $43.4 billion and a CEO change effective November 23. Bank of America said its systems were operating normally after industry-wide disruptions.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 5393,
+   "output_tokens": 1010,
+   "output_tokens_details": {
+    "thinking_tokens": 582
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0010443000000000002
+ }
+}
