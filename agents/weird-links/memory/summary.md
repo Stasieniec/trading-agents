@@ -1,3 +1,23 @@
-Session 2026-11-16.
+Session 2026-11-17.
 
-Session 2026-11-16. Portfolio stays 100% cash; no trades. Pre-market SPY -0.6%, QQQ -1.2%, so cash is not a drag today. I looked at Telus (TU +19% pre-market on an unsolicited Quebecor bid; BCE +3.5%, RCI no print; antitrust risk, no defensible chain, already priced). Perion (PERI) reported Q3 revenue -18% and withdrew guidance. It is a pending $420M cash deal with Affle, go-shop to 12-11, so it is merger arb with no edge. SMMT fell 15% after the FDA complete response letter on ivonescimab, and HELP fell about 40% on Ph3 data; both are binary biotech with no clean second-order read. MOD +28% on Friday is data-center cooling, and VRT/NVT had already run. NX -19% pre-market has no known cause. CTVA at 9.43 is a spin-off artifact. Macro is odd: 10-year yield 5.13%, PPI 6.5% y/y, Fed hike priced for December, chip rebound unwinding (AMD -9% Friday). Nvidia is in a Huang resignation/China-diversion scandal (Dell and SMCI servers named) and reports 11-17 after close, implied move about 9%. Next session: read the NVDA earnings and Bessent response, and look for lagging peers with a dated catalyst (the PUBM pattern). Also check Telus/Quebecor development for RCI/BCE, what caused NX's drop (and its peers), and Boost/SpaceX tower plays.
+Session 2026-11-17. Portfolio stays 100% cash and I placed no trades. SPY fell 1.9% and QQQ 2.7% on 11-16. Pre-market is flat to slightly up, with NVDA earnings after the close and an Anthropic IPO to follow. Cash is a sound default into those binary events.
+
+I checked these leads:
+- Nvidia scandal and the 11-16 Commerce chip rule. It needs licenses for advanced chips to Singapore, Malaysia, Thailand, Indonesia and Brazil, and for data centers giving China-HQ firms large remote access, with a 90-day clock. US-HQ buyers are exempt. The first-order reaction is already priced: GDS fell 14.7% in the US, Malaysian data-center stocks fell about 20% in Asia, and the NVDA customer exposure is at most 1.3% of revenue.
+- Home Depot. Revenue and comps beat (2.2% vs 1.8%), but LOW has already run 15% in 20 days.
+- TJX. It reports 11-18 BMO and has sold off into the print. I judged it a coin flip with no edge.
+- AECOM. It is up about 6.5% pre-market on record backlog, and its peers are not laggards.
+- Amer Sports. It raised guidance, and I found no peer catalyst.
+- TU, BCE and RCI. All priced.
+- JPM bank outages. A JPM internal bug, with no vendor named.
+- Berkshire 13F. The only new name is Bending Spoons.
+- Oil and tankers. Brent is about $92 as Hormuz flows normalize, but the direction for tankers is unclear.
+- Thin pre-market prints. The KNX, NX, HTLD and SR moves are noise, since they came on a few hundred shares.
+
+Next session (11-18):
+- Read the NVDA print and its reaction.
+- Look for a PUBM-style trade: a lagging peer with a dated catalyst.
+- Check how the TJX, LOW and TGT results move ROST and BURL.
+- Check how Anthropic (ANT) prices on the evening of 11-18, and how AMZN and GOOGL trade on it.
+- Check Warsh's comments.
+- Upcoming dates: PANW 11-18 AMC; WMT, KEYS and INTU 11-19; BSP and FRO 11-20; DELL and BURL 11-24.
