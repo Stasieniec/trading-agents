@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "Post-earnings gap of about +25% to a new high (227 vs prior 192 range top) on heavy volume. Post-earnings drift tends to continue after big upside surprises. The July gap held and drifted higher for weeks. Price/volume only, no news access.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-17",
+     "thesis": "Post-earnings gap (+25% on 5M shares) holding for 2.5 weeks; 245 vs 255 peak, and it fell only 0.3% on a -1.9% SPY day. Drift thesis intact but volume is fading, so stop is trailed to just above the 11/5 reversal low. Price/volume only.",
+     "horizon_end": "2026-12-02"
+    }
+   ],
    "order_id": "no-news-2026-10-29-01",
    "at": "after:2026-10-29T14:13:48Z",
-   "horizon_end": "2026-11-19",
+   "horizon_end": "2026-12-02",
    "probability": 0.55,
    "horizon_days": 15,
    "sources": [],

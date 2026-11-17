@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.972052348815277,
    "thesis": "Q3 beat but guidance cut, CFO departure and JPM downgrade; news-backed gap down -24% on 6x volume, closed near lows (0.19). Post-earnings drift after bad news tends to continue as analysts cut estimates.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-17",
+     "thesis": "Post-earnings bad-news drift (guidance cut, CFO exit, downgrades) is slow but intact: stock holds near its 52w low after a 24% gap, analysts cutting estimates. Extend 5 trading days; squeeze risk if market rebounds after NVDA earnings, so stop sits above the 30.5 spike high.",
+     "horizon_end": "2026-11-24"
+    }
+   ],
    "order_id": "pattern-hunter-2026-11-05-01",
    "at": "open",
-   "horizon_end": "2026-11-19",
+   "horizon_end": "2026-11-24",
    "probability": 0.55,
    "horizon_days": 10,
    "sources": [

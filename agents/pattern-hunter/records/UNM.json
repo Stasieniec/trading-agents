@@ -5,7 +5,7 @@
    "ticker": "UNM",
    "side": "short",
    "opened": "2026-11-05",
-   "bought_value": 0.0,
+   "bought_value": 5237.331194009894,
    "sold_value": 4990.00999000999,
    "entry_qty": 66.7870703971787,
    "dividends": 0.0,
@@ -29,8 +29,12 @@
    "target_pct": 12,
    "pattern": "news gap-down drift",
    "wrong_if": "Charge proves one-off and analysts defend the stock, driving a retrace above ~$82.",
-   "closed": null,
-   "open_qty": -66.7870703971787
+   "closed": "2026-11-17",
+   "exit_reason": "close",
+   "return": -0.04973881080498115,
+   "spy_return": null,
+   "excess": null,
+   "beat_spy": null
   }
  ]
 }

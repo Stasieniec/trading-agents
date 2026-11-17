@@ -1,0 +1,39 @@
+{
+ "ticker": "ESLT",
+ "trades": [
+  {
+   "ticker": "ESLT",
+   "side": "long",
+   "opened": "2026-11-17",
+   "bought_value": 4977.045454545455,
+   "sold_value": 0.0,
+   "entry_qty": 6.838977443762608,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Q3 beat: revenue $2.25B +17% ($40M above forecast), non-GAAP EPS 4.36 vs about 3.94 expected, operating margin 10.8% vs 9.7%, record $33B backlog (74% non-Israel, Europe-led, recent NATO PULS orders), FCF $276M, 2027 guide of high-teens revenue growth plus margin expansion. Stock had slid four sessions and sits 33% below its high; low beta to US tech selloff. Risks: Middle East flare-ups, gap fade, rich multiple.",
+   "extensions": [],
+   "order_id": "open-quality-2026-11-17-02",
+   "at": "open",
+   "horizon_end": "2026-12-02",
+   "probability": 0.55,
+   "horizon_days": 10,
+   "sources": [
+    {
+     "answer": "PAGE DATE: 2026-11-17 (meta-date and dateline \"Nov. 17, 2026\")\n\n**Q3 2026 results (three months ended Sept 30, 2026)**\n- **Revenue:** $2,252.1M, up from $1,921.6M (about 17%).\n- **Operating margin:** GAAP operating income $232.5M (10.3% of revenue) vs $171.4M (8.9%) a year earlier. Non-GAAP operating income $244.1M (10.8%) vs $186.7M (9.7%).\n- **EPS:** GAAP diluted $3.70 (vs $2.80). Non-GAAP diluted $4.36 (vs $3.35). Non-GAAP net income $210.0M. GAAP net income $177.9M.\n- **Backlog:** $33.0B at Sept 30, 2026, a record. About 74% is from outside Israel, and about 35% is scheduled for the rest o",
+     "read": true,
+     "url": "https://www.prnewswire.com/il/news-releases/elbit-systems-reports-third-quarter-2026-results-302941770.html"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.gurufocus.com/news/9204439/elbit-systems-eslt-q3-earnings-beat-expectations-highlights-strong-backlog"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 10,
+   "target_pct": 15,
+   "closed": null,
+   "open_qty": 6.838977443762608
+  }
+ ]
+}
