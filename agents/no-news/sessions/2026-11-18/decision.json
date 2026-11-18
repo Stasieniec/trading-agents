@@ -1,0 +1,34 @@
+{
+ "agent": "no-news",
+ "date": "2026-11-18",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "TJX",
+   "target_weight": 0.07,
+   "thesis": "Pre-market gap of about +5% (IEX 137.26 vs 129.85 close) that looks like an earnings beat, after a 6-day losing streak and -11% over 20 days. HD and LOW are down pre-market, so the move is stock-specific. Relief gap plus post-earnings drift in a $140B quality retailer. Price/volume only, cause not verified. Stop sits near the pre-gap close (gap fill).",
+   "horizon_days": 10,
+   "stop_pct": 4.5,
+   "target_pct": 9,
+   "probability": 0.54,
+   "sources": [],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "no-news-2026-11-18-01",
+   "session_date": "2026-11-18",
+   "fill_at": "open",
+   "decided_at": "2026-11-18T13:34:52.647353+00:00",
+   "prompt_hash": "b62304cb7ebc"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "b62304cb7ebc",
+ "summary": "Session 2026-11-18. SPY fell 1.0% on 11/17 (732.44, -2.3% over 5 days), with VIXY up. Pre-market SPY is +0.2% and QQQ +0.6%. CROX (158.79) and GKOS (243.25) are holding near highs with no pre-market trades. Both have stops (about 147 and 223) well below the price, and horizons run to about 12/2, so I held both. New trade: opened TJX long at 7% of equity. It gapped about +5% pre-market (IEX 137.26 vs 129.85) after 6 down days, probably on earnings (I couldn't verify). HD and LOW were down pre-market, so the move is TJX-specific. Stop is 4.5% below the fill, near the pre-gap close, with a +9% target and a 10-day horizon, probability 0.54. Skipped: ARDT (-20% pre-market after a +55% run, probably an offering or bad news, cause unknown, shortable), GLBE (-14% pre-market, probably earnings, short edge marginal after 0.25% slippage), TTWO (+5% after two down days, GTA VI launch 11/19, unknown cause), BRBR (+13%, $1.3B thin, 0.5% slippage), ZIM (+4%, unknown). Cash is about 77% after TJX. Next session: check TJX holds the gap (the 11/18 close should be above about 131). Check CROX 149.5 and GKOS 219 consolidation lows. ROST reports this week, so there is sympathy and event risk for TJX. Look for gap-on-heavy-volume setups after declines.",
+ "feedback": "A way to see whether a pre-market gap comes from earnings would help a lot, for example an earnings-date calendar or an 'earnings today' flag in the digest or scan. Without it I can't tell an earnings gap from an offering or a rumor. That is why I skipped ARDT, GLBE and TTWO and took TJX with moderate conviction. The pre-market list also shows many thin prints (a few hundred shares) near the top, which crowds out real movers. A minimum share count filter would help.",
+ "total_cost": 0.158215,
+ "seconds": 81,
+ "fill_at": "open"
+}
