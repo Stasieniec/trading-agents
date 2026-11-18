@@ -1,0 +1,50 @@
+{
+ "agent": "tech-ten",
+ "date": "2026-11-18",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "NVDA",
+   "target_weight": 0.07,
+   "thesis": "Q3 FY27 was a clean beat and raise: revenue $115.8B vs $108B guide, Q4 guide $130B +-3% vs ~$125B consensus, FY28 growth outlook raised to 75% from 70%, $28B buyback in the quarter. The stock is down about 36% from its high on the Huang affair and a macro selloff, and premarket is only +2.7% vs about 8% implied. Regulatory overhang (Treasury 10-day deadline ~11-26, SEC, delayed 10-Q) is real, so I am sizing small with a wide stop.",
+   "horizon_days": 10,
+   "stop_pct": 10,
+   "target_pct": 25,
+   "probability": 0.55,
+   "sources": [
+    {
+     "url": "https://www.coindesk.com/markets/2026/11/17/nvidia-tops-estimates-issues-strong-guidance-adds-usd150-billion-to-buyback-authorization",
+     "read": true,
+     "answer": "PAGE DATE: Published Nov 17, 2026, 4:25 p.m. EST (updated Nov 17, 2026, 8:11 p.m. EST)\n\n- **Q3 results:** EPS $2.68 vs. $2.47 expected. Revenue $115.8B vs. $108.8B expected. Data center revenue $107.6B vs. $101.9B expected.\n- **Q4 guide:** Revenue of $127.4B\u2013$132.6B, versus analyst estimates of $125.3B.\n- **FY28 growth outlook:** Interim CEO Colette Kress said revenue is now expected to grow about 75% in fiscal 2028, up from a prior forecast of 70%. She cited strong demand and improved chip supply.\n- **Margin:** Q3 gross margin was 74.8%, down 20 basis points from the prior quarter and up 140 "
+    },
+    {
+     "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-promises-revenue-keep-soaring-001650903.html",
+     "read": true,
+     "answer": "PAGE DATE: Tue, November 17, 2026 at 4:16 PM PST (byline by Julie Bort, TechCrunch-sourced article on Yahoo Finance)\n\n**Guidance**\n- Q3 FY2027 revenue was $115.8B, up 103% year over year and above the $108B Wall Street had expected.\n- Q4 revenue is projected at $130B, plus or minus 3%.\n- CFO-turned-interim CEO Colette Kress said FY2028 revenue growth is now expected at about 75%, up from 70%.\n\n**Margins**\n- The page does not discuss gross or operating margins.\n\n**Call commentary about Huang**\n- The article describes Huang as Nvidia's \"disgraced founder and CEO\" who departed, and says the stock"
+    },
+    {
+     "url": "https://www.morningstar.com/news/marketwatch/2026111879/why-nvidia-broke-with-its-usual-practice-in-holding-back-its-quarterly-sec-report",
+     "read": true,
+     "answer": "PAGE DATE: unknown\n\n**Why the 10-Q was delayed:** The story says NVIDIA delayed filing its quarterly 10-Q with the SEC, which it describes as a departure from the company's standard practice. NVIDIA said it intends to make the filing in the coming weeks. The delay came as regulators increased scrutiny, including the U.S. Treasury Department, over potential export-control violations. The company also announced a new national security and export control oversight committee to address regulatory concerns. In the interim, it provided supplemental financial information to meet disclosure requiremen"
+    }
+   ],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "tech-ten-2026-11-18-01",
+   "session_date": "2026-11-18",
+   "fill_at": "open",
+   "decided_at": "2026-11-18T13:36:25.096806+00:00",
+   "prompt_hash": "56e662137f5d"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "56e662137f5d",
+ "summary": "Session 2026-11-18 pre-open. Bought NVDA 7% (stop 10%, target +25%, 10 trading days). I held META (10.4%), MSFT (13.1%) and PLTR (4.2%) with no change. Cash is about 65% after the NVDA fill.\n\nNVDA print: revenue was $115.8B vs the $108B guide and about $109B consensus. The Q4 guide is $130B +-3% vs about $125B consensus, and the FY28 growth outlook is 75% vs 70% before. The company bought back $28B in the quarter. After-hours was +4.8% and premarket is +2.7%, well below the roughly 8% implied move. The stock is down 36% from its high. One source says the Q4 gross margin guide is 71-72%, down from 74.8%. Overhang: Bessent's 10-day deadline (~11-26), an SEC probe, a delayed 10-Q (due ~Dec 4), $390B of purchase commitments and $118B of guarantees. I sized small because of the 11-06 gap-through-stop.\n\nOther holdings:\n- MSFT fell 2.3% on 11-17 on a software selloff (AI-disruption fears, outages) and the Anthropic filing. Azure thesis intact. Stop 483.6.\n- META is flat. Stop 571.8.\n- PLTR is -20% with a stop at 143. Its horizon ends 11-24, so close or extend it then.\n\nCandidates not traded: AVGO and AMD (read-through only, AVGO already bid, no specific edge), GOOGL and AMZN (wait for the Anthropic debut), AAPL and TSLA (no edge).\n\nNext session:\n1. Check the NVDA open and follow-through, and any Treasury, SEC or Megaspeed headlines.\n2. Check the Anthropic IPO pricing and the 11-19 debut, and its effect on AMZN, GOOGL and the NDX supply overhang.\n3. Check yields, Fed speakers and Warsh.\n4. PLTR decision on 11-24; META/MSFT horizons end 11-27.\n5. Consider AVGO or AMD if the semis rally holds and AVGO's earnings date is clear.",
+ "feedback": "No blockers. Two data gaps: the digest has no Q4 gross margin guidance for NVDA, and several news sites (CNBC, livewiremarkets, investinglive) fail in read_page, so the margin detail came from search snippets only. An earnings-calendar field with upcoming dates beyond five days for held or candidate tickers would help, for example AVGO.",
+ "total_cost": 0.39208610000000005,
+ "seconds": 173,
+ "fill_at": "open"
+}
