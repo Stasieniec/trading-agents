@@ -1,0 +1,46 @@
+{
+ "ticker": "WCN",
+ "trades": [
+  {
+   "ticker": "WCN",
+   "side": "long",
+   "opened": "2026-11-18",
+   "bought_value": 6981.736872275101,
+   "sold_value": 0.0,
+   "entry_qty": 38.81120755753679,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "WCN fell 8% (2.4x volume, closed near low, WM/RSG only -1%) on a methane eruption at the Chiquita Canyon landfill (6 workers treated, LA County health order, leak capped, evacuation lifted). No earnings or guidance change; Citi sees no change to 2027-28 cash remediation costs. A single-site headline shock in a $45B diversified compounder looks over-discounted and should partially retrace.",
+   "extensions": [],
+   "order_id": "pattern-hunter-2026-11-18-01",
+   "at": "open",
+   "horizon_end": "2026-11-27",
+   "probability": 0.54,
+   "horizon_days": 6,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.tipranks.com/news/the-fly/waste-connections-incident-may-not-change-long-term-outlook-says-citi-thefly-news"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://finimize.com/content/energy-stocks-slid-as-landfill-methane-leak-hit-waste-connections"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://ktla.com/news/local-news/massive-geyser-of-rotting-trash-prompts-emergency-health-order-in-l-a-county/"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 6.0,
+   "target_pct": 6.5,
+   "pattern": "headline overreaction (non-earnings incident)",
+   "wrong_if": "New regulatory, closure or liability disclosures at Chiquita Canyon, or the stock breaks below about 171 on rising volume.",
+   "closed": null,
+   "open_qty": 38.81120755753679
+  }
+ ]
+}

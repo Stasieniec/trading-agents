@@ -1,0 +1,44 @@
+{
+ "ticker": "NVDA",
+ "trades": [
+  {
+   "ticker": "NVDA",
+   "side": "long",
+   "opened": "2026-11-18",
+   "bought_value": 5961.649515422792,
+   "sold_value": 0.0,
+   "entry_qty": 37.40778733497388,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Q3 FY27 blowout (rev $115.8B vs ~$109B est, EPS 2.68 vs 2.48) and Q4 guide $130B vs ~$125B consensus excluding any China, plus a $150B buyback add-on ($227B remaining, ~6% of cap). Stock is 36% off its high on Huang resignation, SEC/DOJ and Bessent headlines, with support at 149-150 held twice; at ~13x run-rate earnings the governance discount looks large. Oversold post-earnings rebound; headline risk (Bessent ~11-26, Congress 12-01) is why the size is only 6%.",
+   "extensions": [],
+   "order_id": "open-quality-2026-11-18-01",
+   "at": "open",
+   "horizon_end": "2026-12-03",
+   "probability": 0.55,
+   "horizon_days": 10,
+   "sources": [
+    {
+     "answer": "PAGE DATE: November 17, 2026\n\n**Q4 FY2027 outlook (quarter includes an additional week):**\n- **Revenue:** $130.0 billion, plus or minus 3%. The page says NVIDIA is not assuming any Data Center compute revenue from China in this outlook.\n- **Gross margin:** GAAP and non-GAAP both expected between 71.0% and 72.0%.\n- **Operating expenses:** GAAP about $11.0 billion; non-GAAP about $10.7 billion.\n- **Full-year FY2027 tax rate:** GAAP and non-GAAP between 16.0% and 18.0%.\n\n**Comparison to previous guidance:** The release does not state any prior Q4 guidance, so I can't make a comparison from this p",
+     "read": true,
+     "url": "https://www.globenewswire.com/news-release/2026/11/17/3405200/0/en/nvidia-announces-financial-results-for-third-quarter-fiscal-2027.html"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.tipranks.com/news/nvidia-stock-rises-after-earnings-smash-estimates"
+    },
+    {
+     "answer": "PAGE DATE: 2026-11-18 (published 09:39:05 KST; updated 10:30 PM KST, Wed Nov 18, 2026)\n\n**SEC probe:** The U.S. Securities and Exchange Commission is reportedly conducting a civil probe into whether Nvidia's disclosures provided incorrect information and misled investors. The specific scope has not been confirmed. The probe is tied to controversy after former CEO Jensen Huang resigned. The page also covers related matters: claims about his relationship with Alice Huang, a former executive at Singapore data centre firm Megaspeed International, who faces allegations of links to Chinese intellige",
+     "read": true,
+     "url": "https://www.digitaltoday.co.kr/en/view/127176/nvidia-sec-probe-investor-disclosures"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 9,
+   "target_pct": 16,
+   "closed": null,
+   "open_qty": 37.40778733497388
+  }
+ ]
+}

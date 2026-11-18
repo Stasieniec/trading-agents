@@ -1,0 +1,57 @@
+{
+ "ticker": "ROST",
+ "trades": [
+  {
+   "ticker": "ROST",
+   "side": "long",
+   "opened": "2026-11-18",
+   "bought_value": 4028.7166328140693,
+   "sold_value": 0.0,
+   "entry_qty": 17.808371419792905,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "TJX beat and raised on 11-18 (comps +4% vs plan 2-3%, FY comp now 4%, Marmaxx improved) and Target posted +5.6% comps on +5% traffic. US control retail sales came in at +0.6% vs 0.4%. Ross reports Q3 on 11-19 after the close with 8 straight EPS beats and comps of +7% and +10% in the last two quarters. It fell 4 days into the print and has lagged TJX's rebound. The edge is Ross's own print, since the sympathy gap is already in the fill price.",
+   "extensions": [],
+   "order_id": "weird-links-2026-11-18-01",
+   "at": "open",
+   "horizon_end": "2026-11-23",
+   "probability": 0.56,
+   "horizon_days": 3,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.investing.com/news/stock-market-news/why-is-tjx-companies-stock-surging-today-93CH-5035973"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.marketbeat.com/earnings/reports/2026-11-19-ross-stores-inc-stock/"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.prnewswire.com/news-releases/target-corporation-reports-third-quarter-earnings-302942872.html"
+    }
+   ],
+   "causal_chain": [
+    {
+     "source_url": "https://www.investing.com/news/stock-market-news/why-is-tjx-companies-stock-surging-today-93CH-5035973",
+     "step": "TJX Q3 FY27 (11-18 BMO): comps +4% vs 2-3% plan and 3.8% consensus, FY comp raised to 4%, Marmaxx improved. Target comps +5.6% on +5.0% traffic. Both show strong off-price and value traffic in the Aug-Oct quarter."
+    },
+    {
+     "source_url": "https://www.marketbeat.com/earnings/reports/2026-11-19-ross-stores-inc-stock/",
+     "step": "Ross competes for the same shopper as Marmaxx, and its quarter ended around Oct 31. Core retail sales beat (+0.6% vs 0.4%), so the same demand should show in Ross's Q3 comps. Ross has beaten EPS 8 of 8 quarters, with consensus EPS about $1.85 on $6.2B revenue."
+    },
+    {
+     "source_url": "https://www.prnewswire.com/news-releases/target-corporation-reports-third-quarter-earnings-302942872.html",
+     "step": "ROST reports 11-19 after the close, and the reaction lands in my 3-day horizon. Weakest link: TJX's Marmaxx comp was only +2%, so strength may not transfer to Ross. The sympathy gap at today's open is already in my fill price."
+    }
+   ],
+   "stop_pct": 6,
+   "target_pct": 10,
+   "closed": null,
+   "open_qty": 17.808371419792905
+  }
+ ]
+}

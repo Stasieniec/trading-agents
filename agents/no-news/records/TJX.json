@@ -1,0 +1,28 @@
+{
+ "ticker": "TJX",
+ "trades": [
+  {
+   "ticker": "TJX",
+   "side": "long",
+   "opened": "2026-11-18",
+   "bought_value": 7084.758915508901,
+   "sold_value": 0.0,
+   "entry_qty": 51.65813615265038,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Pre-market gap of about +5% (IEX 137.26 vs 129.85 close) that looks like an earnings beat, after a 6-day losing streak and -11% over 20 days. HD and LOW are down pre-market, so the move is stock-specific. Relief gap plus post-earnings drift in a $140B quality retailer. Price/volume only, cause not verified. Stop sits near the pre-gap close (gap fill).",
+   "extensions": [],
+   "order_id": "no-news-2026-11-18-01",
+   "at": "open",
+   "horizon_end": "2026-12-03",
+   "probability": 0.54,
+   "horizon_days": 10,
+   "sources": [],
+   "causal_chain": [],
+   "stop_pct": 4.5,
+   "target_pct": 9,
+   "closed": null,
+   "open_qty": 51.65813615265038
+  }
+ ]
+}

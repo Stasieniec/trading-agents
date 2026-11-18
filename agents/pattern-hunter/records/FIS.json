@@ -16,11 +16,16 @@
      "date": "2026-11-17",
      "thesis": "Post-earnings bad-news drift (guidance cut, CFO exit, downgrades) is slow but intact: stock holds near its 52w low after a 24% gap, analysts cutting estimates. Extend 5 trading days; squeeze risk if market rebounds after NVDA earnings, so stop sits above the 30.5 spike high.",
      "horizon_end": "2026-11-24"
+    },
+    {
+     "date": "2026-11-18",
+     "thesis": "Post-earnings bad-news drift (guidance cut, CFO exit, downgrades) continues: stock made a new 52w low at 27.47, +7.7% on the short. Market rebound risk after the NVDA beat, so the stop is tightened to about 7% above the fill, still above the 28-29 range.",
+     "horizon_end": "2026-11-25"
     }
    ],
    "order_id": "pattern-hunter-2026-11-05-01",
    "at": "open",
-   "horizon_end": "2026-11-24",
+   "horizon_end": "2026-11-25",
    "probability": 0.55,
    "horizon_days": 10,
    "sources": [

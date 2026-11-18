@@ -71,6 +71,45 @@
    "spy_return": 0.024318880814349075,
    "excess": -0.12059757595763188,
    "beat_spy": false
+  },
+  {
+   "ticker": "NVDA",
+   "side": "long",
+   "opened": "2026-11-18",
+   "bought_value": 6675.706049442247,
+   "sold_value": 0.0,
+   "entry_qty": 41.888304832798305,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Q3 FY27 was a clean beat and raise: revenue $115.8B vs $108B guide, Q4 guide $130B +-3% vs ~$125B consensus, FY28 growth outlook raised to 75% from 70%, $28B buyback in the quarter. The stock is down about 36% from its high on the Huang affair and a macro selloff, and premarket is only +2.7% vs about 8% implied. Regulatory overhang (Treasury 10-day deadline ~11-26, SEC, delayed 10-Q) is real, so I am sizing small with a wide stop.",
+   "extensions": [],
+   "order_id": "tech-ten-2026-11-18-01",
+   "at": "open",
+   "horizon_end": "2026-12-03",
+   "probability": 0.55,
+   "horizon_days": 10,
+   "sources": [
+    {
+     "answer": "PAGE DATE: Published Nov 17, 2026, 4:25 p.m. EST (updated Nov 17, 2026, 8:11 p.m. EST)\n\n- **Q3 results:** EPS $2.68 vs. $2.47 expected. Revenue $115.8B vs. $108.8B expected. Data center revenue $107.6B vs. $101.9B expected.\n- **Q4 guide:** Revenue of $127.4B\u2013$132.6B, versus analyst estimates of $125.3B.\n- **FY28 growth outlook:** Interim CEO Colette Kress said revenue is now expected to grow about 75% in fiscal 2028, up from a prior forecast of 70%. She cited strong demand and improved chip supply.\n- **Margin:** Q3 gross margin was 74.8%, down 20 basis points from the prior quarter and up 140 ",
+     "read": true,
+     "url": "https://www.coindesk.com/markets/2026/11/17/nvidia-tops-estimates-issues-strong-guidance-adds-usd150-billion-to-buyback-authorization"
+    },
+    {
+     "answer": "PAGE DATE: Tue, November 17, 2026 at 4:16 PM PST (byline by Julie Bort, TechCrunch-sourced article on Yahoo Finance)\n\n**Guidance**\n- Q3 FY2027 revenue was $115.8B, up 103% year over year and above the $108B Wall Street had expected.\n- Q4 revenue is projected at $130B, plus or minus 3%.\n- CFO-turned-interim CEO Colette Kress said FY2028 revenue growth is now expected at about 75%, up from 70%.\n\n**Margins**\n- The page does not discuss gross or operating margins.\n\n**Call commentary about Huang**\n- The article describes Huang as Nvidia's \"disgraced founder and CEO\" who departed, and says the stock",
+     "read": true,
+     "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-promises-revenue-keep-soaring-001650903.html"
+    },
+    {
+     "answer": "PAGE DATE: unknown\n\n**Why the 10-Q was delayed:** The story says NVIDIA delayed filing its quarterly 10-Q with the SEC, which it describes as a departure from the company's standard practice. NVIDIA said it intends to make the filing in the coming weeks. The delay came as regulators increased scrutiny, including the U.S. Treasury Department, over potential export-control violations. The company also announced a new national security and export control oversight committee to address regulatory concerns. In the interim, it provided supplemental financial information to meet disclosure requiremen",
+     "read": true,
+     "url": "https://www.morningstar.com/news/marketwatch/2026111879/why-nvidia-broke-with-its-usual-practice-in-holding-back-its-quarterly-sec-report"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 10,
+   "target_pct": 25,
+   "closed": null,
+   "open_qty": 41.888304832798305
   }
  ]
 }
