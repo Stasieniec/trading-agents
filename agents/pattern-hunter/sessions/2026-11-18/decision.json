@@ -1,0 +1,78 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-18",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "WCN",
+   "target_weight": 0.07,
+   "thesis": "WCN fell 8% (2.4x volume, closed near low, WM/RSG only -1%) on a methane eruption at the Chiquita Canyon landfill (6 workers treated, LA County health order, leak capped, evacuation lifted). No earnings or guidance change; Citi sees no change to 2027-28 cash remediation costs. A single-site headline shock in a $45B diversified compounder looks over-discounted and should partially retrace.",
+   "horizon_days": 6,
+   "stop_pct": 6.0,
+   "target_pct": 6.5,
+   "probability": 0.54,
+   "sources": [
+    {
+     "url": "https://www.tipranks.com/news/the-fly/waste-connections-incident-may-not-change-long-term-outlook-says-citi-thefly-news",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://finimize.com/content/energy-stocks-slid-as-landfill-methane-leak-hit-waste-connections",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://ktla.com/news/local-news/massive-geyser-of-rotting-trash-prompts-emergency-health-order-in-l-a-county/",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "pattern": "headline overreaction (non-earnings incident)",
+   "wrong_if": "New regulatory, closure or liability disclosures at Chiquita Canyon, or the stock breaks below about 171 on rising volume.",
+   "slippage_bp": 10,
+   "id": "pattern-hunter-2026-11-18-01",
+   "session_date": "2026-11-18",
+   "fill_at": "open",
+   "decided_at": "2026-11-18T13:35:38.801548+00:00",
+   "prompt_hash": "1df1f18d5f11"
+  },
+  {
+   "action": "extend",
+   "ticker": "FIS",
+   "target_weight": -0.055,
+   "thesis": "Post-earnings bad-news drift (guidance cut, CFO exit, downgrades) continues: stock made a new 52w low at 27.47, +7.7% on the short. Market rebound risk after the NVDA beat, so the stop is tightened to about 7% above the fill, still above the 28-29 range.",
+   "horizon_days": 5,
+   "stop_pct": 7.0,
+   "target_pct": 10.0,
+   "probability": 0.54,
+   "sources": [
+    {
+     "url": "https://www.placera.se/pressmeddelanden/fidelity-national-information-services-splitit-and-fis-bring-bank-issued-credit-to-the-point-of-purchase-20261117",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "pattern": "news gap-down drift",
+   "wrong_if": "FIS closes back above about 29.3 on a market-wide rebound or positive analyst or company news.",
+   "slippage_bp": 10,
+   "id": "pattern-hunter-2026-11-18-02",
+   "session_date": "2026-11-18",
+   "fill_at": "open",
+   "decided_at": "2026-11-18T13:35:38.801572+00:00",
+   "prompt_hash": "1df1f18d5f11"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "1df1f18d5f11",
+ "summary": "Session 2026-11-18. Market: SPY 732.44 (-1.0% on 11-17), pre-market +0.2-0.4% after the NVDA beat (rev 115.8B vs 109.1B est, Q4 guide 130B; AH +5% faded to ~+2.8% pre-market; SEC probe and 10-Q delay headlines). FOMC minutes at 2pm ET today. BABA/PDD report 11-19 pre-open.\n\nDecisions:\n1) Opened WCN long 7% (pattern 'headline overreaction (non-earnings incident)'). It fell 8% on 11-17 on 2.4x volume after a methane eruption at the Chiquita Canyon landfill (6 workers treated, LA County health order, leak capped, evacuation lifted). WM/RSG fell only about 1%. Citi (Neutral, PT 192) sees no change to 2027-28 cash remediation costs. Stop -6%, target +6.5%, 6 days, p=0.54. Risks: the 10-Q says CARB penalties could be substantial, civil suits are ongoing, and the stock had run +27% in 6 weeks. The stock closed near its low.\n2) FIS short (+7.7%, new 52w low 27.47): re-extended with the stop tightened to +7% and target -10%, 5 days. Thesis unchanged; the main risk is a market rebound.\n\nPassed: JD (in-line Q3, -7.7%, China tape weak, drift record poor), BILL (TPG buyout talks, merger-arb), ACM/ENR (earnings gap-up chasing), TJX/LOW/TGT/GLBE (earnings gaps already in the pre-market), UNH (CRUSH Medicare Advantage audit rule, sector news), HZN, and small caps ABX/OMER/CSIQ (slippage).\n\nNext session: check WCN for any Chiquita Canyon follow-up (LA County, CARB, lawsuits). Check whether the FIS short held through the rebound. Look at BABA/PDD earnings reactions and post-NVDA/FOMC-minutes moves. Check the code-written pattern record for WCN.",
+ "feedback": "Nothing blocked me. Two things would have helped: (1) the screen's 1d % is not dividend-adjusted, which was the cause of the GAM/CET false signals earlier. An ex-dividend flag, or an adjusted return, would save research calls. (2) Price levels in the news (for example JD at about $105 in articles against $25 in the scan) and some company names look inconsistent with real-world data. I only used news for narrative and took prices from the tools.",
+ "total_cost": 0.3551356,
+ "seconds": 127,
+ "fill_at": "open"
+}

@@ -1,11 +1,11 @@
-Session 2026-11-17.
+Session 2026-11-18.
 
-Session 2026-11-17. ECPG settled earlier (stopped out, -12.4%). Market: SPY -1.9%, Nasdaq -2.5% on 11-16 (AI/chip selloff, NVDA leadership turmoil, new chip-export rule, yields >5%). NVDA reports after the close today, a binary event. Pre-market is flat to slightly up, and China ADRs are weak (BABA -3%).
+Session 2026-11-18. Market: SPY 732.44 (-1.0% on 11-17), pre-market +0.2-0.4% after the NVDA beat (rev 115.8B vs 109.1B est, Q4 guide 130B; AH +5% faded to ~+2.8% pre-market; SEC probe and 10-Q delay headlines). FOMC minutes at 2pm ET today. BABA/PDD report 11-19 pre-open.
 
 Decisions:
-1) Closed UNM short (-5.3%). The bad-news drift failed: the stock bounced about 5% off its post-gap close and held up as a defensive name in the selloff, and analyst targets (MS 85, WF 91) sit above the price.
-2) Extended FIS short 5 more trading days (stop +10%, target -12%, p=0.52). It sits near its 52w low and the drift is slow, with squeeze risk if the market rebounds on NVDA.
+1) Opened WCN long 7% (pattern 'headline overreaction (non-earnings incident)'). It fell 8% on 11-17 on 2.4x volume after a methane eruption at the Chiquita Canyon landfill (6 workers treated, LA County health order, leak capped, evacuation lifted). WM/RSG fell only about 1%. Citi (Neutral, PT 192) sees no change to 2027-28 cash remediation costs. Stop -6%, target +6.5%, 6 days, p=0.54. Risks: the 10-Q says CARB penalties could be substantial, civil suits are ongoing, and the stock had run +27% in 6 weeks. The stock closed near its low.
+2) FIS short (+7.7%, new 52w low 27.47): re-extended with the stop tightened to +7% and target -10%, 5 days. Thesis unchanged; the main risk is a market rebound.
 
-Passed: HTHT (beat and raise +8.9%, but the China ADR tape is weak and the August pop faded), TSN (earnings gap-up fading pre-market), MOH/CNC/ELV (defensive rotation, giving back pre-market), TU (Quebecor takeover proposal, deal-driven), CRTO (MSCI inclusion run-up already +17%), small caps OFRM/BGIN/MFI (costly slippage). GAM and CET looked like -12% and -6.6% drops, but they were closed-end fund ex-dividend dates (screen not dividend-adjusted). HD/VIK/JD/DIS report this morning with moderate pre-market moves and no consensus figures in hand. Book is about 5.7% short, about 94% cash.
+Passed: JD (in-line Q3, -7.7%, China tape weak, drift record poor), BILL (TPG buyout talks, merger-arb), ACM/ENR (earnings gap-up chasing), TJX/LOW/TGT/GLBE (earnings gaps already in the pre-market), UNH (CRUSH Medicare Advantage audit rule, sector news), HZN, and small caps ABX/OMER/CSIQ (slippage).
 
-Next session: FIS horizon is now about 11-24. Watch the NVDA reaction, since a rebound hurts the short. BABA/PDD earnings are 11-19. Look for post-NVDA overreaction setups, and check ex-dividend dates before trusting any no-news drop.
+Next session: check WCN for any Chiquita Canyon follow-up (LA County, CARB, lawsuits). Check whether the FIS short held through the rebound. Look at BABA/PDD earnings reactions and post-NVDA/FOMC-minutes moves. Check the code-written pattern record for WCN.
