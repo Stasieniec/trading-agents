@@ -1,0 +1,28 @@
+{
+ "ticker": "PDD",
+ "trades": [
+  {
+   "ticker": "PDD",
+   "side": "long",
+   "opened": "2026-11-19",
+   "bought_value": 6061.783085226593,
+   "sold_value": 0.0,
+   "entry_qty": 73.5141409149466,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Pre-market gap of +5.8% (81.94 vs 77.45 close) on 1.55M shares, 27% of an average day by 9am ET, while BABA, JD and BIDU were flat to down, so the move is stock-specific and probably earnings. The stock was 41% below its 52w high and down 12% over 60 days, daily vol 1.74%, so the gap is about 3.3 sd. Post-earnings drift after a gap in a $110B stock. Price/volume only, cause not verified.",
+   "extensions": [],
+   "order_id": "no-news-2026-11-19-01",
+   "at": "open",
+   "horizon_end": "2026-12-04",
+   "probability": 0.54,
+   "horizon_days": 10,
+   "sources": [],
+   "causal_chain": [],
+   "stop_pct": 5.5,
+   "target_pct": 11,
+   "closed": null,
+   "open_qty": 73.5141409149466
+  }
+ ]
+}

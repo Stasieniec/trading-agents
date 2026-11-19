@@ -1,0 +1,44 @@
+{
+ "ticker": "P",
+ "trades": [
+  {
+   "ticker": "P",
+   "side": "long",
+   "opened": "2026-11-19",
+   "bought_value": 3967.0074495181047,
+   "sold_value": 0.0,
+   "entry_qty": 37.380158508894475,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Everpure (ex-Pure Storage) Q3 FY27 blowout: revenue $1.459B +51% vs ~$1.33B consensus, non-GAAP op income $345M vs $265-275M guide, FY27 revenue guide raised to $5.20-5.21B (from $5.03-5.07B) and op income to $1.08-1.09B (from $940-960M), Q4 guide above consensus, RPO +44%, hyperscale ramp. Stock was 36% below its October high after four down days into the print, so positioning was washed out. Risks: gross margin 68% with price cuts, FY28 outlook unchanged, +7% gap, 6% daily vol, AI-tape reversal after Anthropic debut.",
+   "extensions": [],
+   "order_id": "open-quality-2026-11-19-01",
+   "at": "open",
+   "horizon_end": "2026-12-04",
+   "probability": 0.54,
+   "horizon_days": 10,
+   "sources": [
+    {
+     "answer": "PAGE DATE: Nov 19, 2026 (published 7:44 AM EST)\n\n**Barclays' reason:** Barclays cut its price target on Everpure (ticker P) to $115 from $132 and kept an \"Equal Weight\" rating, per The Fly. The cut follows the company's decision to lower prices on most products at the start of Q4. CEO Charles Giancarlo said the cuts reflect \"value engineering and data reduction improvements.\" Barclays also pointed to stronger product sales and growing hyperscaler revenue.\n\n**Pricing decision:** The page says Everpure began lowering prices for most of its products at the start of Q4. It does not give the size o",
+     "read": true,
+     "url": "https://stocktwits.com/news-articles/markets/equity/everpure-raises-fy27-revenue-outlook-after-q3-beat-but-barclays-cuts-target-on-pricing-concerns/cNbi7NjR90c"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://uk.investing.com/news/earnings/everpure-climbs-on-earnings-beat-and-raised-guidance-4991576"
+    },
+    {
+     "answer": "PAGE DATE: unknown\n\nThe story does not print a publication date.\n\n**Reported in the story:**\n- **Quarter:** Q3 fiscal 2027, ending November 1, 2026.\n- **Revenue:** $1.459 billion, up 51.3% year-over-year.\n- **Adjusted EPS:** $0.86.\n- **Full-year revenue guidance:** raised to $5.20 billion to $5.21 billion. The story does not give the prior range, so the size of the raise can't be determined.\n- **Commentary:** Management highlighted strong performance across core and AI-focused storage offerings. CEO Charles Giancarlo attributed the results to the company's role as a critical partner for data i",
+     "read": true,
+     "url": "https://www.prnewswire.com/news-releases/everpure-announces-third-quarter-fiscal-2027-financial-results-302944321.html"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 12,
+   "target_pct": 22,
+   "closed": null,
+   "open_qty": 37.380158508894475
+  }
+ ]
+}
