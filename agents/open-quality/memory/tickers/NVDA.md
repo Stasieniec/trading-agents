@@ -2,8 +2,9 @@
 
 ## Current view
 
-2026-11-18: Q3 FY27 blowout: rev $115.8B (+103% y/y) vs ~$109B est, EPS 2.68 vs 2.48, Q4 guide $130B +/-3% vs ~$125B consensus (ex-China), GM guide 71-72%, +$150B buyback ($227B left). Stock down 36% from 243 high (Huang resigned 11-12, Bessent demands outside CEO, SEC civil probe on disclosures reported 11-17, DOJ/Megaspeed probe, 10-Q delayed, Huang meets Congress Dec 1, Bessent answers ~11-26). Closed 155.46, pre ~160 (+3%; AH peaked +4.8%, faded). Long 6% as an earnings-drift/oversold rebound; support 148.8-150.3 (11-12, 11-17 lows). Headline risk is two-sided and large (vol 3.6%/day).
+Held 5.7% (cost 159.37, stop 144.88, target 184.68, ends 12-03). 11-19 pre +1.5% (~153) in Anthropic-IPO AI rebound (QQQ pre +2%). New: Senate Banking hearings are public: Huang Dec 3, Lutnick Dec 10 (earlier note said 12-01); Commerce reportedly rushed H200 China export approvals (feeds hearing narrative); 10-Q delayed 'coming weeks'; Bessent answer ~11-26. Daiwa PT 245->185, Cantor 250 maintained. 5 straight down closes through 11-18. Review at 12-02/12-03: decide whether to hold through the 12-03 hearing.
 
 ## Log
 
 - 2026-11-18: 2026-11-18: Opened long 6% at open (~160). Stop 9%, target 16%, 10 trading days. Sources: GlobeNewswire Q3 release, TipRanks/CNBC consensus comparison, digitaltoday SEC probe.
+- 2026-11-19: 2026-11-19: Held. Pre +1.5%, support 149-150 intact. No trade.
