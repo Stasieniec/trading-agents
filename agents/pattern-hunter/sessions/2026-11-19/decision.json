@@ -1,0 +1,52 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-19",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "ARDT",
+   "target_weight": 0.035,
+   "thesis": "Insiders (EGI/Ventas) sold 8M shares at 14.50, an 18% discount to the 17.75 close. The stock gapped down 22.5% on supply, not on company news, and closed 14.40 (0.88 of range) on 8.9x volume. Q3 beat, FY EBITDA guide raised and PTs of 18-22 are intact. Company is buying back 1.5M shares at the offer price and underwriters hold a 30-day greenshoe, so 14.50 should act as support. Overhang is cleared and the supply-driven gap should partly retrace.",
+   "horizon_days": 8,
+   "stop_pct": 10.0,
+   "target_pct": 12.0,
+   "probability": 0.55,
+   "sources": [
+    {
+     "url": "https://www.investing.com/news/stock-market-news/why-is-ardent-health-stock-plunging-today-93CH-5036100",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://newsfilter.io/articles/ardent-health-announces-proposed-secondary-offering-of-common-stock-and-8b611f3e60c25d519202074df6a863ac",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://www.tradingview.com/news/tradingview:151a8b3879b8f:0",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "pattern": "secondary offering overhang reversal",
+   "wrong_if": "ARDT closes below the 13.46 offering-day low, or hospital-sector selling from the CRUSH rule drags it down despite the cleared overhang.",
+   "slippage_bp": 25,
+   "id": "pattern-hunter-2026-11-19-01",
+   "session_date": "2026-11-19",
+   "fill_at": "open",
+   "decided_at": "2026-11-19T13:38:51.976099+00:00",
+   "prompt_hash": "1df1f18d5f11"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "1df1f18d5f11",
+ "summary": "Session 2026-11-19. Market: SPY closed 730.20 on 11-18 (5d -3.9%) and is +1.2% pre-market, QQQ +2.1%. Drivers: Anthropic IPO priced at $83 (above range), debut today; PANW +9-10% after earnings; AI rout relief rally.\n\nHolds: FIS short (+10%, 26.73, still at lows; stop 29.24, target 24.60, horizon 11-25) and WCN long (182.00, flat, thesis intact, no Chiquita follow-up news, horizon 11-27). Both unchanged.\n\nNew trade: ARDT long 3.5% at the open (pattern 'secondary offering overhang reversal'). Insiders sold 8M shares at 14.50, an 18% discount. The stock gapped -22.5% and closed 14.40. Q3 beat, FY guide raised, PTs 18-22, buyback and greenshoe support at 14.50. Stop -10%, target +12%, 8 days, p=0.55. Risk: hospital-sector sympathy with the CRUSH rule.\n\nPassed and why:\n- UNH/HUM/ELV/AGL/hospitals: CMS CRUSH proposed rule (retroactive extrapolated MA audits to 2018, ~$90B/10y). UNH -15% over 2 days on heavy volume. Not clearly overdone, and the Jan-2026 CMS shock drifted sideways with no bounce.\n- TENB/QLYS/RPD/OKTA/CRWD: whole cyber sector rallied on 'Java4Shell' warnings plus PANW read-through, so it is not a stock-specific reversal and squeeze risk is high.\n- KRNT (-23% on call reversal, small cap), ACIW (CEO leaving, interim CFO; watch for a bounce), BRBR/JJSF (earnings gap-ups, small caps), YSWY (secondary, pricing unknown, thin), WSM/NTES/PDD/BABA (earnings gaps already in pre-market).\n\nNext session: check ARDT held 14.0-14.5 after the offering closed 11-19, and the UNH/HUM stabilization. Check whether the FIS short survived the rebound, and WCN versus WM/RSG. Check the Anthropic debut fallout in AI stocks, and the code record for the new pattern. YSWY offering price and ACIW are watch items.",
+ "feedback": "The screen's 'vs industry' column was misleading for TENB: the industry bucket 'Computer Software: Prepackaged' is broad, so a cybersecurity sector move looked like a stock-specific +15.6% outlier. A finer industry or peer-group field would help. The digest's 'stories' and news timestamps are often mislabeled (articles dated 11-19 describe 11-18 moves). In code_execution, helper functions and imports are lost between cells, which cost me two failed runs. It would help if the first-line summary of offering news included the offering price, because YSWY's pricing could not be found. Otherwise no blockers.",
+ "total_cost": 0.7521398000000001,
+ "seconds": 330,
+ "fill_at": "open"
+}

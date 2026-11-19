@@ -1,11 +1,14 @@
-Session 2026-11-18.
+Session 2026-11-19.
 
-Session 2026-11-18. Market: SPY 732.44 (-1.0% on 11-17), pre-market +0.2-0.4% after the NVDA beat (rev 115.8B vs 109.1B est, Q4 guide 130B; AH +5% faded to ~+2.8% pre-market; SEC probe and 10-Q delay headlines). FOMC minutes at 2pm ET today. BABA/PDD report 11-19 pre-open.
+Session 2026-11-19. Market: SPY closed 730.20 on 11-18 (5d -3.9%) and is +1.2% pre-market, QQQ +2.1%. Drivers: Anthropic IPO priced at $83 (above range), debut today; PANW +9-10% after earnings; AI rout relief rally.
 
-Decisions:
-1) Opened WCN long 7% (pattern 'headline overreaction (non-earnings incident)'). It fell 8% on 11-17 on 2.4x volume after a methane eruption at the Chiquita Canyon landfill (6 workers treated, LA County health order, leak capped, evacuation lifted). WM/RSG fell only about 1%. Citi (Neutral, PT 192) sees no change to 2027-28 cash remediation costs. Stop -6%, target +6.5%, 6 days, p=0.54. Risks: the 10-Q says CARB penalties could be substantial, civil suits are ongoing, and the stock had run +27% in 6 weeks. The stock closed near its low.
-2) FIS short (+7.7%, new 52w low 27.47): re-extended with the stop tightened to +7% and target -10%, 5 days. Thesis unchanged; the main risk is a market rebound.
+Holds: FIS short (+10%, 26.73, still at lows; stop 29.24, target 24.60, horizon 11-25) and WCN long (182.00, flat, thesis intact, no Chiquita follow-up news, horizon 11-27). Both unchanged.
 
-Passed: JD (in-line Q3, -7.7%, China tape weak, drift record poor), BILL (TPG buyout talks, merger-arb), ACM/ENR (earnings gap-up chasing), TJX/LOW/TGT/GLBE (earnings gaps already in the pre-market), UNH (CRUSH Medicare Advantage audit rule, sector news), HZN, and small caps ABX/OMER/CSIQ (slippage).
+New trade: ARDT long 3.5% at the open (pattern 'secondary offering overhang reversal'). Insiders sold 8M shares at 14.50, an 18% discount. The stock gapped -22.5% and closed 14.40. Q3 beat, FY guide raised, PTs 18-22, buyback and greenshoe support at 14.50. Stop -10%, target +12%, 8 days, p=0.55. Risk: hospital-sector sympathy with the CRUSH rule.
 
-Next session: check WCN for any Chiquita Canyon follow-up (LA County, CARB, lawsuits). Check whether the FIS short held through the rebound. Look at BABA/PDD earnings reactions and post-NVDA/FOMC-minutes moves. Check the code-written pattern record for WCN.
+Passed and why:
+- UNH/HUM/ELV/AGL/hospitals: CMS CRUSH proposed rule (retroactive extrapolated MA audits to 2018, ~$90B/10y). UNH -15% over 2 days on heavy volume. Not clearly overdone, and the Jan-2026 CMS shock drifted sideways with no bounce.
+- TENB/QLYS/RPD/OKTA/CRWD: whole cyber sector rallied on 'Java4Shell' warnings plus PANW read-through, so it is not a stock-specific reversal and squeeze risk is high.
+- KRNT (-23% on call reversal, small cap), ACIW (CEO leaving, interim CFO; watch for a bounce), BRBR/JJSF (earnings gap-ups, small caps), YSWY (secondary, pricing unknown, thin), WSM/NTES/PDD/BABA (earnings gaps already in pre-market).
+
+Next session: check ARDT held 14.0-14.5 after the offering closed 11-19, and the UNH/HUM stabilization. Check whether the FIS short survived the rebound, and WCN versus WM/RSG. Check the Anthropic debut fallout in AI stocks, and the code record for the new pattern. YSWY offering price and ACIW are watch items.
