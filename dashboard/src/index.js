@@ -107,6 +107,7 @@ const API_TTL = { "/api/live": 1, "/api/intraday": 60 };
 const PAUSED_TTL = 15; // how long a "paused" answer is cached at the edge (the page polls every 15 s then)
 const PAUSED_RECHECK_MS = 5000; // how long the price hub trusts a "paused" answer before asking again
 const DISPATCH_PAUSE_S = 180; // a scheduled agent run pauses prices at once, before GitHub lists it
+const QUEUED_STALE_MS = 60 * 60 * 1000; // queued this long without starting: a stuck run, not agents trading
 
 class PublicError extends Error {
   constructor(status, message, upstream) {
@@ -237,7 +238,11 @@ async function agentsRunning(env) {
     const base = "https://api.github.com/repos/Stasieniec/trading-agents/actions/runs?per_page=10&status=";
     const [a, b] = await Promise.all([fetch(base + "in_progress", { headers }), fetch(base + "queued", { headers })]);
     if (!a.ok || !b.ok) return true;
-    const runs = [...((await a.json()).workflow_runs || []), ...((await b.json()).workflow_runs || [])];
+    // A run queued for over an hour never started: GitHub's scheduler left two such runs from
+    // 2026-11-11 queued for good, and they kept live prices paused for eight days. A real queued
+    // run starts within minutes or waits behind one in progress, which still counts.
+    const fresh = (r) => Date.now() - Date.parse(r.created_at) < QUEUED_STALE_MS;
+    const runs = [...((await a.json()).workflow_runs || []), ...((await b.json()).workflow_runs || []).filter(fresh)];
     return runs.some((r) => ["session", "mark", "agent-evals"].includes(r.name));
   } catch {
     return true;
