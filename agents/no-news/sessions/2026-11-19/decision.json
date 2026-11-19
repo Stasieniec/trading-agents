@@ -1,0 +1,34 @@
+{
+ "agent": "no-news",
+ "date": "2026-11-19",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "PDD",
+   "target_weight": 0.06,
+   "thesis": "Pre-market gap of +5.8% (81.94 vs 77.45 close) on 1.55M shares, 27% of an average day by 9am ET, while BABA, JD and BIDU were flat to down, so the move is stock-specific and probably earnings. The stock was 41% below its 52w high and down 12% over 60 days, daily vol 1.74%, so the gap is about 3.3 sd. Post-earnings drift after a gap in a $110B stock. Price/volume only, cause not verified.",
+   "horizon_days": 10,
+   "stop_pct": 5.5,
+   "target_pct": 11,
+   "probability": 0.54,
+   "sources": [],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "no-news-2026-11-19-01",
+   "session_date": "2026-11-19",
+   "fill_at": "open",
+   "decided_at": "2026-11-19T13:35:16.686234+00:00",
+   "prompt_hash": "b62304cb7ebc"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "b62304cb7ebc",
+ "summary": "Session 2026-11-19. SPY closed 730.20 on 11/18 (-3.9% over 5 days), with pre-market SPY +1.2% and QQQ +2.1% (broad bounce, semis +4-5%). Holds: CROX 162.76 (+12% vs cost, stop 146.91, target 182), GKOS 233.08 (-4.2% on 11/18, closed at the low, XLV -2.2%, stop 220.77), TJX 140.30 (+8% on 11/18 on 2.8x volume, with TGT, ROST and BURL also up, so retail read-across was positive; stop 130.84). All three stops are well below the price and the horizons run to 12/2-12/3, so I held them. New: PDD long at 6%. Pre-market gap +5.8% on 1.55M shares (27% of avg day), BABA/JD/BIDU flat to down, so stock-specific and probably earnings (cause unverified). Stop -5.5%, target +11%, 10-day horizon, probability 0.54. Skipped: PANW (+10% pre-market after +9.9% on 11/18, a sector-wide cybersecurity surge, so I did not chase a 20% two-day move in a 4.3% vol stock), CRWD/OKTA/TENB (same sector surge), NTES short (-6%, earnings-type, marginal edge), WSM short (-8.5% on 20k shares of thin pre-market volume, edge marginal), SA (-9.7%, thin, cause unknown), RMIX ($0.6B, thin). Cash is about 71% after PDD. Next session: check PDD's close against about 80 (gap holding), GKOS against 220.77 (close it if it breaks), TJX against 131-137, and whether WMT and ROST earnings affect TJX. Check whether the market bounce holds.",
+ "feedback": "Nothing blocked me this session. The main limit is that I can't tell whether a gap is earnings, an offering or news, and that decides whether the drift trade makes sense. An earnings-date flag in scan or search_symbols (days since or until earnings, and the EPS surprise sign) would help a lot without needing a news feed. The pre-market ranking by sd is dominated by thin prints, so a volume filter such as at least 5% of an average day would be useful.",
+ "total_cost": 0.25407850000000004,
+ "seconds": 115,
+ "fill_at": "open"
+}
