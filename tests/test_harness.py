@@ -468,3 +468,22 @@ def test_digest_shows_pre_market_movers_to_all_and_releases_to_news_agents():
     news, price_only = render(d, news=True), render(d, news=False)
     assert "pre-market +0.42%" in news and "BIG | +6.0 | +3.1 | 41,000 | 0.8%" in price_only
     assert "CPI" in news and "CPI" not in price_only
+
+
+def test_economic_calendar_asks_nasdaq_for_the_next_day(monkeypatch):
+    import trading.economy as econ
+    seen = []
+
+    class R:
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {"data": {"rows": [{"country": "United States", "gmt": "08:30", "eventName": "Initial Jobless Claims",
+                                       "actual": "203K", "consensus": "198K", "previous": "200K"},
+                                      {"country": "Japan", "gmt": "19:50", "eventName": "Trade Balance",
+                                       "actual": "", "consensus": "", "previous": ""}]}}
+
+    monkeypatch.setattr(econ.httpx, "get", lambda url, params, **kw: seen.append(params["date"]) or R())
+    rows = econ.fetch(date(2026, 11, 19))
+    assert seen == ["2026-11-20"] and [r["date"] for r in rows] == ["2026-11-19"] and rows[0]["actual"] == "203K"

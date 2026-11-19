@@ -6,7 +6,7 @@ as 08:30)."""
 
 import html
 import re
-from datetime import date
+from datetime import date, timedelta
 
 import httpx
 
@@ -20,7 +20,10 @@ def _clean(x) -> str:
 
 
 def fetch(day: date) -> list[dict]:
-    r = httpx.get(URL, params={"date": day.isoformat()}, timeout=20.0,
+    # The calendar's date is one day off: asking for 2026-11-20 returned Thursday 19 Nov's releases
+    # (jobless claims, already with actuals), asking for 2026-11-19 returned Wednesday's (MBA mortgage
+    # data). Checked 2026-11-19, when tech-ten reported yesterday's releases listed under today.
+    r = httpx.get(URL, params={"date": (day + timedelta(days=1)).isoformat()}, timeout=20.0,
                   headers={"User-Agent": "Mozilla/5.0 (research project)", "Accept": "application/json"})
     r.raise_for_status()
     rows = (r.json().get("data") or {}).get("rows") or []
