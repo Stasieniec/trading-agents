@@ -1,0 +1,41 @@
+{
+ "ticker": "TEVA",
+ "trades": [
+  {
+   "ticker": "TEVA",
+   "side": "long",
+   "opened": "2026-11-20",
+   "bought_value": 3005.0843383093174,
+   "sold_value": 0.0,
+   "entry_qty": 78.0572609478228,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "TEVA fell 8.7% (closed at the low, 1.4x volume) after the R&D head/CMO resigned one week after its first R&D Day, plus a settlement in the generics price-fixing case. The company says strategy and expectations are unchanged, 9 buy ratings with a median PT of 50, and the stock has round-tripped the entire R&D Day rally (39 to 44.5 and back to 38.5). A single executive exit with no change to guidance or pipeline looks over-discounted and should partly retrace.",
+   "extensions": [],
+   "order_id": "pattern-hunter-2026-11-20-01",
+   "at": "open",
+   "horizon_end": "2026-12-03",
+   "probability": 0.54,
+   "horizon_days": 8,
+   "sources": [
+    {
+     "answer": "PAGE DATE: Nov. 19, 2026 (5:35 p.m. UTC, per the \"Posted\" line; the page was retrieved Nov. 20, 2026)\n\n**Why shares fell:** The page says Teva (TEVA) was down 6.7% on the day. It attributes the move mainly to Teva's disclosure that its head of global R&D and chief medical officer is stepping down immediately, an unexpected change that came one week after the company's R&D Day. Per the page's AI-generated analysis, the company filed an 8-K saying Dr. Eric Hughes notified it on Nov. 17, 2026 of his intention to resign and left his executive role immediately. David Gardiner, head of innovative me",
+     "read": true,
+     "url": "https://www.quiverquant.com/news/Teva+shares+fall+as+R&D+leadership+change+and+legal+overhang+unsettle+investors"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://seekingalpha.com/news/4674839-teva-stock-falls-rd-head-exits"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 7.0,
+   "target_pct": 8.0,
+   "pattern": "headline overreaction (non-earnings incident)",
+   "wrong_if": "Further disclosures show the exit is tied to a pipeline setback or the market-stress selloff drags TEVA below about 36 without a bounce.",
+   "closed": null,
+   "open_qty": 78.0572609478228
+  }
+ ]
+}

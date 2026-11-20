@@ -21,11 +21,16 @@
      "date": "2026-11-18",
      "thesis": "Post-earnings bad-news drift (guidance cut, CFO exit, downgrades) continues: stock made a new 52w low at 27.47, +7.7% on the short. Market rebound risk after the NVDA beat, so the stop is tightened to about 7% above the fill, still above the 28-29 range.",
      "horizon_end": "2026-11-25"
+    },
+    {
+     "date": "2026-11-20",
+     "thesis": "Post-earnings bad-news drift (guidance cut, CFO exit, downgrades) is still running: new 52w lows, short +12.8%. The market is in an AI-bubble stress regime but rebound days (11-11 +6.6%) are a squeeze risk, so the stop is tightened to about 8% above the current price (locks roughly +5.5%) and the horizon is extended a few days to let the drift finish.",
+     "horizon_end": "2026-11-30"
     }
    ],
    "order_id": "pattern-hunter-2026-11-05-01",
    "at": "open",
-   "horizon_end": "2026-11-25",
+   "horizon_end": "2026-11-30",
    "probability": 0.55,
    "horizon_days": 10,
    "sources": [

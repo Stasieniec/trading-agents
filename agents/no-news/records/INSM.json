@@ -1,0 +1,28 @@
+{
+ "ticker": "INSM",
+ "trades": [
+  {
+   "ticker": "INSM",
+   "side": "long",
+   "opened": "2026-11-20",
+   "bought_value": 5068.511476219709,
+   "sold_value": 0.0,
+   "entry_qty": 35.34199782363034,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Mid-session surge of +20.6% on 11/19 on about 7x normal volume (14.4M shares), closed near the high (0.85 of range) on a day SPY fell 2% and XLV fell 2%. Peers (VRTX, REGN) fell, so the move is stock-specific. Pre-market 11/20 is only -0.7%, so the surge is holding. $31.7B cap with low slippage. Expect post-news drift; cause not verified (no news access).",
+   "extensions": [],
+   "order_id": "no-news-2026-11-20-01",
+   "at": "open",
+   "horizon_end": "2026-12-03",
+   "probability": 0.52,
+   "horizon_days": 8,
+   "sources": [],
+   "causal_chain": [],
+   "stop_pct": 7,
+   "target_pct": 15,
+   "closed": null,
+   "open_qty": 35.34199782363034
+  }
+ ]
+}
