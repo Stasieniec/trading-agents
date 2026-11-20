@@ -1,0 +1,52 @@
+{
+ "agent": "no-news",
+ "date": "2026-11-20",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "INSM",
+   "target_weight": 0.05,
+   "thesis": "Mid-session surge of +20.6% on 11/19 on about 7x normal volume (14.4M shares), closed near the high (0.85 of range) on a day SPY fell 2% and XLV fell 2%. Peers (VRTX, REGN) fell, so the move is stock-specific. Pre-market 11/20 is only -0.7%, so the surge is holding. $31.7B cap with low slippage. Expect post-news drift; cause not verified (no news access).",
+   "horizon_days": 8,
+   "stop_pct": 7,
+   "target_pct": 15,
+   "probability": 0.52,
+   "sources": [],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "no-news-2026-11-20-01",
+   "session_date": "2026-11-20",
+   "fill_at": "open",
+   "decided_at": "2026-11-20T13:34:53.472435+00:00",
+   "prompt_hash": "b62304cb7ebc"
+  },
+  {
+   "action": "extend",
+   "ticker": "PDD",
+   "target_weight": 0,
+   "thesis": "Gap +6.5% then close +11% on 4.1x volume (6.7 sd), stock-specific versus BABA/JD/BIDU. Pre-market is only -1.1% on 427k shares, so the gap is holding. Stop raised to below the 11/19 gap range to protect the gain in a falling market. Post-earnings drift thesis, price/volume only.",
+   "horizon_days": 10,
+   "stop_pct": 6.5,
+   "target_pct": 8,
+   "probability": 0.55,
+   "sources": [],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "no-news-2026-11-20-02",
+   "session_date": "2026-11-20",
+   "fill_at": "open",
+   "decided_at": "2026-11-20T13:34:53.472442+00:00",
+   "prompt_hash": "b62304cb7ebc"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "b62304cb7ebc",
+ "summary": "Session 2026-11-20. Market is in a correction: SPY closed 715.87 on 11/19 (-1.96%, -5.5% over 5 days, -8.4% from the 10/6 high of 781), with pre-market SPY -0.84% and QQQ -1.65%. Semis, AI and crypto miners are being sold (AMD -7.7%, NVDA 6-day losing streak). Defensives and TLT are up pre-market. Holds: CROX 157.31 (-3.3%, closed at the low, stop 146.91), GKOS 238.10 (+2.2%, stop 220.77), TJX 139.41 (-0.6%, stop 130.84; ROST -5.4% pre-market after earnings and BURL -3.8% after hours are a mild read-across risk, but TJX is +0.5% pre-market), PDD 86.00 (+11% on 4.1x volume, pre-market -1.1%). I extended PDD with a tighter stop (-6.5% from 86, about 80.4) and target +8%. New: INSM long 5%. It surged +20.6% mid-session on 7x volume while SPY and XLV fell 2%, closed at 0.85 of the range, and is -0.7% pre-market. Cause unknown. Stop -7%, target +15%, 8-day horizon, probability 0.52. Skipped: INTU (-9% pre-market on earnings, coin-flip short), ROST (-5% earnings gap, same), SVRA/BLTE/NGVC/SKM (thin or unknown cause), HDB (+4.2% on thin pre-market volume), SA/SNEX/LQDT (-25 to -29% crashes, small and unknown). Cash is about 66% after INSM. Next session: check INSM holds above about 140 (stop 134), PDD above 81, TJX above 131, GKOS 220.77, CROX 146.91, and whether SPY breaks 700 or bounces. Horizons on CROX, GKOS, TJX end 12/2-12/3.",
+ "feedback": "No problems this session. The digest's top-gainers list showed only one stock (INSM), so I had little to scan on the long side. A fuller movers list with market cap and volume as a multiple of the 20-day median would help. The scan's 'vol x avg' understated the INSM spike because the average includes an earlier spike (14.4M shares showed as 3.9x).",
+ "total_cost": 0.1840502,
+ "seconds": 88,
+ "fill_at": "open"
+}
