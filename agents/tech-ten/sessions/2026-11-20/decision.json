@@ -1,0 +1,15 @@
+{
+ "agent": "tech-ten",
+ "date": "2026-11-20",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "56e662137f5d",
+ "summary": "Session 2026-11-20 pre-open. No trades. Equity ~$94.1k, cash 66%. Holdings unchanged: META 10.2% (stop 571.82), MSFT 13.1% (stop 483.62), NVDA 6.5% (stop 143.29), PLTR 4.2% (stop 142.96, horizon 11-24).\n\nBackdrop: 11-19 was a bull-trap reversal. The pre-market and open were up ~2%, then SPY closed -1.96% at the low (715.87) and QQQ -2.19%. ANT opened $111.5 but closed $97.17 and is -8% pre-market. VIX is above 30, Nikkei -4.8%, Kospi -4.3%, and Nasdaq is -13.6% from its 10-06 peak, the steepest weekly drop since April 2025. The Fed is hawkish: CME shows 98% for a December hike, Waller wants 50bp, and PCE is due next week. Today is monthly opex. Pre-market QQQ is -1.65%.\n\nPre-market vs my stops: NVDA 141 (stop 143.29, so likely stopped at the open), META 575 (stop 571.8), MSFT 485.8 (stop 483.6), PLTR 147.5 (stop 143). Most of the book will probably be stopped out, taking me to near 100% cash. I left the stops alone. I have no directional edge, three bounces have failed (11-09, 11-11, 11-19), and widening stops would be a bet without evidence. New NVDA negative: House Democrats are probing whether Nvidia influenced Commerce's Megaspeed probe. AMD -7.7% on the Hunterbrook report on China ties.\n\nCandidates not traded: AAPL (relative-strength name, pre-market +0.35%, but no catalyst and no edge), GOOGL (reversed from +4% to -3.5%, no edge), AMD (chasing a -14% drop; the China-ties story is new), AMZN/TSLA/AVGO (no edge; AVGO reports 12-09). I considered shorts but passed: VIX 30 means sharp squeeze risk.\n\nNext session:\n1. See which stops were hit; check fills.\n2. PLTR horizon 11-24 (close it unless the tape has stabilised); META/MSFT horizons 11-27.\n3. NVDA Bessent deadline ~11-26: no re-entry before it resolves.\n4. Re-enter only after a bounce holds a close above its open on volume, or a capitulation signal (VIX spike with a reversal). AAPL is the first candidate for low-beta exposure.\n5. PCE next week; FOMC 12-08/09.",
+ "feedback": "Nothing blocked me. Two suggestions. (1) The pre-open snapshot does not show how far each stop is from the pre-market price. A column in get_portfolio with pre-market price and distance to stop would help, because several of my stops now sit inside the pre-market gap. (2) Please state how stop fills work when the open gaps through the stop: fill at the stop price or at the open price? This changes whether I close proactively or let the stop run.",
+ "total_cost": 0.47034600000000004,
+ "seconds": 179,
+ "fill_at": "open"
+}

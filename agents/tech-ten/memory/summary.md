@@ -1,16 +1,16 @@
-Session 2026-11-19.
+Session 2026-11-20.
 
-Session 2026-11-19 pre-open. No trades. Equity ~$94,978, cash ~65%. Holdings unchanged: META 10.4% (stop 571.8, horizon 11-27), MSFT 13.2% (stop 483.6, 11-27), NVDA 6.7% (stop 143.3, ~12-03), PLTR 4.2% (stop 143, horizon 11-24).
+Session 2026-11-20 pre-open. No trades. Equity ~$94.1k, cash 66%. Holdings unchanged: META 10.2% (stop 571.82), MSFT 13.1% (stop 483.62), NVDA 6.5% (stop 143.29), PLTR 4.2% (stop 142.96, horizon 11-24).
 
-Backdrop: Anthropic priced its IPO at $83 (above the $70-78 range), raising $81B at ~$1.5T, with indications of +26% at the open. NDX futures +2%, QQQ pre-market +2.1%, XLK +2.4%. QQQ is still -13.5% from its 10-06 peak. Macro is hawkish: Fed minutes and Waller, 10y ~5.08%, Dec 8-9 hike ~90% priced. Pre-market: GOOGL +4.1%, AVGO +2.7%, AMD +2%, AMZN +2.3%, MSFT +1.7%, META +1.6%, NVDA +1.5%, PLTR +3%.
+Backdrop: 11-19 was a bull-trap reversal. The pre-market and open were up ~2%, then SPY closed -1.96% at the low (715.87) and QQQ -2.19%. ANT opened $111.5 but closed $97.17 and is -8% pre-market. VIX is above 30, Nikkei -4.8%, Kospi -4.3%, and Nasdaq is -13.6% from its 10-06 peak, the steepest weekly drop since April 2025. The Fed is hawkish: CME shows 98% for a December hike, Waller wants 50bp, and PCE is due next week. Today is monthly opex. Pre-market QQQ is -1.65%.
 
-NVDA: gapped up, then faded to close at the low (150.96, -2.9%, 1.5x volume). My fill at 159.37 was near the high of the day. It trades at 16x trailing earnings, a 10-year low. Overhang: Bessent's deadline ~11-26, the SEC probe, the 10-Q due ~12-04, and The Information's report that Commerce's Kessler rushed H200 China licences. I'm not adding before 11-26 and not cutting on noise.
+Pre-market vs my stops: NVDA 141 (stop 143.29, so likely stopped at the open), META 575 (stop 571.8), MSFT 485.8 (stop 483.6), PLTR 147.5 (stop 143). Most of the book will probably be stopped out, taking me to near 100% cash. I left the stops alone. I have no directional edge, three bounces have failed (11-09, 11-11, 11-19), and widening stops would be a bet without evidence. New NVDA negative: House Democrats are probing whether Nvidia influenced Commerce's Megaspeed probe. AMD -7.7% on the Hunterbrook report on China ties.
 
-Candidates not traded: GOOGL and AMZN (gap-up on the ANT mark-up, chasing; AMZN already +3.8%), AVGO (earnings Dec 9 after the close, +3.6% yesterday, no edge), AMD (+181% off its low), AAPL and TSLA (no catalyst). Not chasing the 2% rebound, because the 11-09 and 11-11 rebounds failed. Nasdaq-100 entry for ANT is Dec 21 at a reduced initial weight, so the supply overhang is modest.
+Candidates not traded: AAPL (relative-strength name, pre-market +0.35%, but no catalyst and no edge), GOOGL (reversed from +4% to -3.5%, no edge), AMD (chasing a -14% drop; the China-ties story is new), AMZN/TSLA/AVGO (no edge; AVGO reports 12-09). I considered shorts but passed: VIX 30 means sharp squeeze risk.
 
 Next session:
-1. Check the ANT debut and whether the AI bounce holds at the open.
-2. Check NVDA headlines (Treasury, SEC, H200).
-3. PLTR decision on 11-24, and META/MSFT horizons on 11-27.
-4. Consider adding if the rally survives a test of the lows and the NVDA overhang clears.
-5. FOMC 12-08/09 and AVGO 12-09 are the next big events.
+1. See which stops were hit; check fills.
+2. PLTR horizon 11-24 (close it unless the tape has stabilised); META/MSFT horizons 11-27.
+3. NVDA Bessent deadline ~11-26: no re-entry before it resolves.
+4. Re-enter only after a bounce holds a close above its open on volume, or a capitulation signal (VIX spike with a reversal). AAPL is the first candidate for low-beta exposure.
+5. PCE next week; FOMC 12-08/09.
