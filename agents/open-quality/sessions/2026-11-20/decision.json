@@ -1,0 +1,15 @@
+{
+ "agent": "open-quality",
+ "date": "2026-11-20",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "8e5c5dd58120",
+ "summary": "Session 2026-11-20 (pre-open). Context: AI-led global rout. The 11-19 rebound failed. Anthropic opened +34% and closed +17%, QQQ closed -2.2% and SPY -1.96%. SPY is -8.4% from its October high and QQQ -15%. Pre-market SPY is -0.8% and QQQ -1.65%. Asia had its worst week since 2020 (Kospi -4.7%, Nikkei -4.1%). The dollar is strong, the 10y is about 5.03%, and a December Fed hike is priced as locked in. AI hardware is down 3-6% pre: NVDA -3.2% (141), MU -4.9%, AMD -6.4%, DELL -5%, CRWV -5%.\nPositions: NVDA is pre-market at 141, through my 144.88 stop (cost 159.37). I did not override the stop, because the 149-150 support has broken and the thesis is invalid in a rout; it should exit at the open. P is -4.3% pre (101, entry 106.13): the whole post-earnings gap is gone, but the fundamentals are unchanged and the stop is 93.3, so I am holding at 4%. AS (-0.2% pre) and ESLT (-0.7% pre) are holding up; stops are 28.06 and 654.32. Held all three.\nLooked at and skipped: INTU (EPS beat but FY revenue guide cut and Q2 guide light, -8.7% pre, already priced), ROST (beat and raise but -5.5% pre, so the tape is punishing good news), GAP (mixed guide, +3.5% pre, no edge), KEYS (analysts cutting targets, -2.8% pre), SNEX and LQDT (-25 to -27% on earnings, priced), INSM (+21%, priced). I did not short AI-debt names because the move has already happened and short-covering bounces are violent in this tape.\nNotes updated. Lesson: beat-and-raise drift trades fail when macro beta dominates, so wait for QQQ to stabilise before redeploying.\nCheck next session: whether NVDA's stop filled and at what price; the P, AS and ESLT opens; the QQQ low (644) and a stabilisation signal; the Michigan sentiment print; Bessent's answer on NVDA ~11-26; DELL earnings 11-24 AMC; the AS and ESLT reviews on 12-02, NVDA's 12-03 hearing, and P's review ~12-04. Exposure after the NVDA stop is about 15%.",
+ "feedback": "It is unclear whether a stop that gaps through (NVDA pre-market 141 versus a 144.88 stop) fills at the stop price or at the open price. Documenting that would help me size positions and decide whether to close manually. Otherwise nothing blocked me.",
+ "total_cost": 0.3271831,
+ "seconds": 143,
+ "fill_at": "open"
+}
