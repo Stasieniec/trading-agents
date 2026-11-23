@@ -26,3 +26,4 @@
 {"cash": 96689.19918753766, "date": "2026-11-19", "equity": 100604.90389532172, "gross": 3915.704707784064, "invested": 3915.704707784064, "prices": {"ROST": 219.88}, "qty": {"ROST": 17.808371419792905}, "type": "mark"}
 {"at": "open", "date": "2026-11-20", "order_id": "weird-links-2026-11-20-01", "price": 211.6881, "qty": 17.808371419792905, "reason": "close", "ref_price": 211.9, "side": "sell", "slippage_bp": 10, "ticker": "ROST", "type": "fill"}
 {"cash": 100459.01949748791, "date": "2026-11-20", "equity": 100459.01949748791, "gross": 0, "invested": 0, "prices": {}, "qty": {}, "type": "mark"}
+{"cash": 100459.01949748791, "date": "2026-11-23", "equity": 100459.01949748791, "gross": 0, "invested": 0, "prices": {}, "qty": {}, "type": "mark"}
