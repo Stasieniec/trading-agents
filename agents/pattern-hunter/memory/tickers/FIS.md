@@ -2,10 +2,11 @@
 
 ## Current view
 
-11-20: Short +12.8% (25.94 close vs 29.75 avg). Market in AI-bubble selloff (SPY -1.96% 11-19, pre -0.84%). Tightened stop to ~+8% above price (~28.1, locks ~+5.5%), target ~24.4, horizon extended to 11-27. Drift now 11 sessions old; squeeze risk rising on rebound days (11-11: +6.6%). Decide at 11-27: close unless new lows keep coming.
+11-23: Short +13.2% (25.83 vs 29.75). Held. Stop 28.18 (+9% above close, +6.3% above pre 26.50), target 24.52, horizon 11-30. Market rebound day (SPY pre +2.7%) is the risk; FIS 20d vol 6.4%/day. GPN takeover chatter (GTCR) = PE-bid tail risk for beaten-down payments names. Consider covering on a squeeze toward 27.5+ or on a market that stabilizes.
 
 ## Log
 
 - 2026-11-17: 2026-11-17: extended 5 more trading days; pre-market -0.4%. p=0.52.
 - 2026-11-18: 2026-11-18: Re-extended with tighter stop (+7%) to protect gain given rebound risk; thesis unchanged (drift near 52w low).
 - 2026-11-20: 2026-11-20: extended w/ tighter stop; no new FIS news.
+- 2026-11-23: 2026-11-23: Held through crash (SPY -3.64% 11-20, pre +2.7%). FIS -0.4% 11-20, closed 0.03 of range, 5 down closes. No new news.

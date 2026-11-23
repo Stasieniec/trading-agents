@@ -1,0 +1,15 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-23",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [],
+ "rejected": [],
+ "prompt_hash": "1df1f18d5f11",
+ "summary": "Session 2026-11-23. Market: panic regime. 11-20 SPY -3.64% (689.81, 5d -8.6%), QQQ -5.7%, XLK -7.3%, VIX >40, Nasdaq -10% on the week. AI names closed at their lows (NVDA -14%, AVGO -12%, MU -14%). Pre-market is a sharp relief bounce: SPY +2.7%, QQQ +3.6%, NVDA +8.7% (Trump admin pushes Huang reinstatement), AI names +5-8%. Analysts doubt it lasts. 11-19's relief gap faded into -2%/-3.6% closes, so I did not chase gap-ups at the open.\n\nHolds, no orders (all pre-market quotes are at or above my entries): ARDT long 3.7% (15.08, +5%, horizon 12-02), TEVA long 3.1% (39.23, pre +2%, 12-03), WCN long 7% (179.58, flat, horizon 11-27), FIS short 5.2% (25.83, +13%, stop 28.18, horizon 11-30). FIS risks: a rebound-day squeeze (daily vol 6.4%) and PE-takeover chatter in payments (GTCR/GPN).\n\nExamined and passed:\n- CRWD/ZS: all-stock 1.135x, ~3% spread to close in H2 FY28. No edge; the acquirer is -7% pre.\n- UNH/HUM/CVS/ELV: second CMS shock (Star Ratings overhaul, impact from 2031), -3% to -6% pre while the market is up. Fresh policy overhang, no edge.\n- ABVX: -9% on a Scorpion short report, intraday low -22% then a close at 0.62 of range. Binary, p~0.5.\n- WSC and ROOT: pure-beta drops.\n- SKM: Korea crash (KOSPI -48% from its high), local shares -7.3% Monday, so the ADR likely opens lower.\n- GPN: +9.9% on a GTCR rumor.\n- GAP: earnings gap-up, price targets cut.\n- KYMR/CAPR: binary biotech gaps.\n- AI gap-ups (AVGO, TSM, ARM, etc.): a gap-up open entry has p~0.5 and it is a poor entry.\n\nNext session: check whether the rebound held or faded (SPY vs 689.81/708), VIX, ANT vs the 83 IPO price, and the FIS stop. Check TEVA/WCN/ARDT against their targets (WCN horizon 11-27). If the market stabilizes, look for idiosyncratic losers to buy at better entries. Check how ABVX and managed care trade after the gap. Only trade at p>=0.55; cash is ~91%.",
+ "feedback": "read_page failed on investing.com and aol.com URLs that came from web_search, so I fell back to the search-result content field. It would help if read_page could say why a fetch failed, or if the digest listed a few key market stories with text. A tool for the previous session's intraday path (e.g. the SPY open-to-close move) would help judge whether pre-market relief rallies fade. Nothing else held me back.",
+ "total_cost": 0.6082274999999999,
+ "seconds": 262,
+ "fill_at": "open"
+}
