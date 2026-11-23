@@ -33,6 +33,40 @@
    "spy_return": -0.10273286593217912,
    "excess": 0.020894704094017502,
    "beat_spy": true
+  },
+  {
+   "ticker": "META",
+   "side": "long",
+   "opened": "2026-11-23",
+   "bought_value": 3718.9635501612206,
+   "sold_value": 0.0,
+   "entry_qty": 6.284355794007613,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "28% off its high after the AI-capex selloff; analysts cut targets but they remain far above the price (MS 720, Loop 890). Small starter in the capitulation bounce, wide 11% stop for a 2.5% daily-vol name.",
+   "extensions": [],
+   "order_id": "tech-ten-2026-11-23-03",
+   "at": "open",
+   "horizon_end": "2026-12-04",
+   "probability": 0.5,
+   "horizon_days": 8,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.marketscreener.com/news/morgan-stanley-adjusts-price-target-on-meta-platforms-to-720-from-820-ce7851dad88af427"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://lufkindailynews.com/news_reuters/business/wall-street-futures-rebound-as-battered-ai-stocks-gain-ground/article_e6d9ac41-7498-5fb0-ad1e-4379284b6679.html"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 11,
+   "target_pct": 16,
+   "closed": null,
+   "open_qty": 6.284355794007613
   }
  ]
 }

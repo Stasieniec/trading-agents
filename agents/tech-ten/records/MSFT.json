@@ -33,6 +33,45 @@
    "spy_return": -0.10273286593217912,
    "excess": 0.022757129149700628,
    "beat_spy": true
+  },
+  {
+   "ticker": "MSFT",
+   "side": "long",
+   "opened": "2026-11-23",
+   "bought_value": 5578.44532524183,
+   "sold_value": 0.0,
+   "entry_qty": 11.013581922507987,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Quality large cap (Azure +48%, RPO +73%) after a capitulation week: SPY -3.6% on 3x volume, VIX >30, 7 straight down days, strategists calling buy, holiday-week seasonality. Starter only because earlier bounces failed and PCE on 11-25 is a binary. Stop 9% (about 4+ daily sd) caps loss near 0.5% of equity.",
+   "extensions": [],
+   "order_id": "tech-ten-2026-11-23-01",
+   "at": "open",
+   "horizon_end": "2026-12-04",
+   "probability": 0.5,
+   "horizon_days": 8,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://lufkindailynews.com/news_reuters/business/wall-street-futures-rebound-as-battered-ai-stocks-gain-ground/article_e6d9ac41-7498-5fb0-ad1e-4379284b6679.html"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://247wallst.com/investing/2026/11/18/microsoft-price-prediction-analysts-target-clears-the-52-week-high/"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://seekingalpha.com/news/4675412-goldman-watching-for-3-conditions-that-could-support-a-stock-correction-bottom"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 9,
+   "target_pct": 14,
+   "closed": null,
+   "open_qty": 11.013581922507987
   }
  ]
 }

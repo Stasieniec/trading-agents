@@ -33,6 +33,40 @@
    "spy_return": -0.018782762522925545,
    "excess": -0.05326722056930133,
    "beat_spy": false
+  },
+  {
+   "ticker": "AAPL",
+   "side": "long",
+   "opened": "2026-11-23",
+   "bought_value": 4648.704437701525,
+   "sold_value": 0.0,
+   "entry_qty": 13.348453270455582,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Defensive leg of the starter basket. AAPL fell only 1.9% on a -5.7% QQQ day, with low vol (1.7%) and a smaller premarket gap (+1.4%) than the rest. It balances the basket if the bounce fails again and still participates if it holds. No company catalyst; this is a risk-balance trade.",
+   "extensions": [],
+   "order_id": "tech-ten-2026-11-23-04",
+   "at": "open",
+   "horizon_end": "2026-12-04",
+   "probability": 0.5,
+   "horizon_days": 8,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://lufkindailynews.com/news_reuters/business/wall-street-futures-rebound-as-battered-ai-stocks-gain-ground/article_e6d9ac41-7498-5fb0-ad1e-4379284b6679.html"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.cnbc.com/2026/11/20/sp-500-correction-market-sell-off.html"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 7,
+   "target_pct": 11,
+   "closed": null,
+   "open_qty": 13.348453270455582
   }
  ]
 }

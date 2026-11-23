@@ -1,0 +1,28 @@
+{
+ "ticker": "ZS",
+ "trades": [
+  {
+   "ticker": "ZS",
+   "side": "long",
+   "opened": "2026-11-23",
+   "bought_value": 5083.7341737597335,
+   "sold_value": 0.0,
+   "entry_qty": 21.314708180809554,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Earnings-type gap of +20% pre-market (234 vs 194.82 close) on 30% of an average day's volume, while security peers (PANW, FTNT, OKTA, NET) are up only 1.5-5% with SPY +2.7%, so the move is stock-specific. Post-earnings drift after a gap in a $32B software name that was -35% from its high. The Sep 14 gap drifted up 12% over 8 days. Price/volume only, cause not verified.",
+   "extensions": [],
+   "order_id": "no-news-2026-11-23-01",
+   "at": "open",
+   "horizon_end": "2026-12-04",
+   "probability": 0.53,
+   "horizon_days": 8,
+   "sources": [],
+   "causal_chain": [],
+   "stop_pct": 8.0,
+   "target_pct": 14.0,
+   "closed": null,
+   "open_qty": 21.314708180809554
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "ticker": "AMZN",
+ "trades": [
+  {
+   "ticker": "AMZN",
+   "side": "long",
+   "opened": "2026-11-23",
+   "bought_value": 4648.704437701525,
+   "sold_value": 0.0,
+   "entry_qty": 17.851814862189173,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Down 14% from its high and hit by the Anthropic IPO flop (owns about 14.6% of ANT). Rebound candidate in a capitulation bounce, with a gap of +3.4% premarket, smaller than GOOGL or NVDA. Starter size, wide stop, 8-day horizon through PCE and Thanksgiving.",
+   "extensions": [],
+   "order_id": "tech-ten-2026-11-23-02",
+   "at": "open",
+   "horizon_end": "2026-12-04",
+   "probability": 0.5,
+   "horizon_days": 8,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://lufkindailynews.com/news_reuters/business/wall-street-futures-rebound-as-battered-ai-stocks-gain-ground/article_e6d9ac41-7498-5fb0-ad1e-4379284b6679.html"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.tradingview.com/news/gurufocus:004938fe3094b:0-amazon-stocks-fall-3-87-as-its-188-billion-anthropic-stake-starts-trading-daily/"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://seekingalpha.com/news/4675412-goldman-watching-for-3-conditions-that-could-support-a-stock-correction-bottom"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 10,
+   "target_pct": 15,
+   "closed": null,
+   "open_qty": 17.851814862189173
+  }
+ ]
+}

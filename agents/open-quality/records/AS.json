@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "Q3 beat and raise: revenue +24% with all regions and segments double-digit (Greater China +30%), adjusted gross margin +150bp, adj EPS 0.42 vs ~0.34-0.35 consensus, FY26 EPS guide 1.32-1.35 above 1.31 consensus, $1B buyback authorised (about 6% of cap). The stock fell five straight sessions into the print (32.46 to 29.10), so positioning was bearish; post-earnings drift from an oversold base. Risk: gap fade, tariffs, macro/NVDA tonight.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-23",
+     "thesis": "Q3 beat and raise (rev +24%, all regions double-digit, adj GM +150bp, FY26 EPS guide above consensus) plus a $1B buyback (~6% of cap) is intact; the stock fell in line with the tape (-4.2% vs SPY -3.6% on 11-20) with no company-specific news. The old stop (28.06) sat 0.7% under the close, inside a normal daily move with SPY moving 3%/day, so I widened it to 10% below today's fill (about 26, below the pre-earnings lows) at the same 6.6% size, which caps the loss at ~0.7% of equity. Drift thesis continues over the next 10 trading days.",
+     "horizon_end": "2026-12-08"
+    }
+   ],
    "order_id": "open-quality-2026-11-17-01",
    "at": "open",
-   "horizon_end": "2026-12-02",
+   "horizon_end": "2026-12-08",
    "probability": 0.55,
    "horizon_days": 10,
    "sources": [
