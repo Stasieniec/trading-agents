@@ -1,22 +1,19 @@
-Session 1 (2026-10-29): Stayed cash. Looked at GOOGL (-12% EPS miss/capex), NOW (-27%), FTNT (-20% despite beat/raise), ADT (take-private, pinned), CROX (+21% priced in).
-Session 2 (10-30): Premarket tech selloff: INTC -25%, AMZN -6%, AMD -9%, DELL -8%. Cash.
-Session 3 (11-02): SPY -1.77%, QQQ -3.47%, INTC -28.6%, RDDT -29%. Cash.
-Session 4 (11-03): Falling knives kept falling: FTNT 126 (-7%), INTC 60 (-8.8%). Lesson: buying rebounds right after a crash would have lost; wait for stabilisation.
-Sessions 5-6 (11-10, 11-11): Cash. Hot CPI, 10y near 5%, Fed hike bets. CRWV +24.7% on beat.
-Session 7 (11-12): Cash. WSJ: Nvidia board weighed removing Huang. NVDA -8% pre.
-Session 8 (11-13): Cash. NVDA closed 166, Huang exit headlines, House subpoena threat.
-Session 9 (11-16): Cash. Huang resigned; Bessent demands external CEO, answers ~11-26. TU, CGON, SMMT, PERI priced/pinned.
-Session 10 (11-17): First trades: long AS (Q3 beat/raise/$1B buyback, 5 down days into print) 7% and long ESLT (Elbit Q3 beat, record backlog, 4-day slide) 5%. 10-day drift trades, stops 8%/10%, targets 15%.
-Session 11 (11-18): NVDA blowout (rev 115.8B vs 109B, guide 130B vs 125B, +$150B buyback). Opened long NVDA 6% (stop 9%, target 16%, 10 days) after 2 days of stabilisation at 149-150. Skipped TJX, LOW, TGT, GLBE, TTWO, BRBR, ARDT.
-Session 12 (11-19): Anthropic IPO priced $83; pre QQQ +2.1%. Opened long P (Everpure) 4% after +51% rev beat, FY guide raised, stock -36% from high. Skipped PANW (chasing), WSM, BBWI, BABA, PDD, NTES, WMT, KLIC.
-Session 13 (11-20): No new trades. 11-19 reversed: Anthropic opened $111.5 (+34%) then closed +17%; Nasdaq -2.2%, SPY -1.96% (-5.5% over 5d, -8.4% from Oct high), QQQ -15% from high. 11-20 pre: SPY -0.8%, QQQ -1.65%, XLK -2.35%, NVDA -3.2% (141, through my 144.88 stop), MU -4.9%, AMD -6.4%, DELL -5%, CRWV -5%, P -4.3% (gap-up fully gone). Asia worst week since 2020 (Kospi -7.5% wk, Nikkei -6.8%), dollar strong, 10y 5.03%, Dec Fed hike "essentially locked in", Democratic midterm sweep fuelling anti-data-center sentiment, AI-debt worries. Even beat-and-raise reports sold off: ROST (EPS beat, comp +8%, guide raised) -5.5% pre; INTU (EPS 2.91 vs 2.46, but FY rev guide cut/Credit Karma, Q2 guide light) -8.7% pre. SNEX -27%, LQDT -25% on earnings (priced). Left NVDA to its stop; held P, AS, ESLT (AS -0.2%, ESLT -0.7% pre = holding up).
-Lessons:
-- Catalyst moves in biotech/M&A are priced by open (TU, CGON, SMMT, SLS).
-- Whipsaw tape: gap-ups reversed (CRWV 11-11; QQQ +2.1% pre then -2.2% close on 11-19). Pre-market strength in a bear tape is not tradable.
-- Earnings beats where the stock slid into the print and guidance was raised were the best pre-open candidates in a calm tape; in the 11-19/20 rout they failed (NVDA, P, ROST). Macro beta overwhelmed post-earnings drift. Do not add beat-and-raise longs while QQQ makes new lows; wait for stabilisation (higher low on QQQ, VIX falling).
-- Fade risk: AS fell 10% after Aug 18 beat/raise; FTNT -20% on beat/raise 10-29; P fell 9% the day after its Aug 26 beat.
-- Retail earnings include IEEPA tariff-refund benefits - use adjusted numbers (LOW 34c, WSM $29M, TGT).
-- NVDA stop gap risk: I sized 6% with a 9% stop; the stop is below a gap, so true loss is bigger than 9% x size when pre-market already trades through. Prefer smaller size in names with 3% pre-market swings.
-- Sympathy gap-ups (cyber peers after PANW) are not trades.
-Open ideas / calendar: NVDA: Bessent answer ~11-26, UBS conf 12-01, Senate Banking hearing 12-03, Lutnick 12-10, 10-Q delayed. AS/ESLT review 12-02, P ~12-04. DELL reports 11-24 AMC, ADI 11-24, ZM 11-23. Macro: FOMC Dec hike priced; Michigan sentiment 11-20; Thanksgiving 11-26. After a stop-out my exposure is ~15% (P, AS, ESLT). Look for a stabilisation signal to redeploy; capitulation (Asia -5% two days, Friday opex) could mean a sharp bounce - cash costs vs SPY if so.
-Tooling tips: in code_execution re-import json every cell; web_search returns a JSON string (json.loads it).
+Session log (condensed)
+S1-S9 (10-29 to 11-16): all cash through an AI/tech rout and hot-CPI/Fed-hike repricing (INTC -25%, NOW -27%, FTNT -20% on a beat/raise, RDDT -29%, Huang resignation at NVDA). Falling knives kept falling (FTNT, INTC 11-03). Catalyst moves in biotech/M&A are priced by the open (TU, CGON, SMMT, SLS, ADT).
+S10 (11-17): long AS 7% (beat/raise/$1B buyback, 5 down days into print) and long ESLT 5% (beat, record backlog), stops 8%/10%.
+S11 (11-18): long NVDA 6% after blowout (rev 115.8B vs 109B, guide 130B, +$150B buyback), stop 9%.
+S12 (11-19): long P 4% after +51% revenue beat/raise. Same day: Anthropic IPO, QQQ +2.1% pre then -2.2% close (whipsaw).
+S13 (11-20): held all; NVDA gapped through stop.
+Outcomes: NVDA stop -10.0% (filled ~143; it closed 11-20 at 125.5, -14% on the day, so honouring the stop saved ~11 points), ESLT stop -10.2%, P stop -12.2%. All three beat-and-raise drift longs lost 10-12% within 1-3 days. AS is open, -7%.
+S14 (11-23): 11-20 was a capitulation day: SPY -3.64% (7th straight loss, 151M shares, -10% from high), QQQ -5.67% (briefly -20% from the Oct 6 high), XLK -7.3%, VIX 35.9 (highest since March). NVDA -14%. Pre-market 11-23: SPY +2.7%, QQQ +3.6%, NVDA +8.5% on Trump pushing Huang's reinstatement, Asian state support (Korea stabilisation fund, China ETF buying), Bessent warning the Fed on over-tightening. Fed hike Dec 9 (25bp ~90%+, 50bp possible; Waller backs 50). Michigan 1y inflation expectations fell to 3.7% from 4.7%. Held AS only (6.6% of equity, cash 93%). Skipped: CRWD/ZS (CRWD buys ZS all-stock, 1.135 CRWD per ZS; the arb spread is only ~1.3%, no edge), UNH (-6% pre on the CMS Star Ratings proposal that hits 2031 payments; priced roughly fairly, low beta, no edge), NVDA re-entry (binary political events), P/ESLT re-entry (no stabilisation, gap-up in a whipsaw tape), INTU (-12.8%, FY guide cut, software de-rating), DELL (earnings 11-24 AMC, binary).
+Lessons (cite trades):
+1. Beat-and-raise drift longs fail when macro beta dominates (NVDA, P, ESLT 11-17 to 11-20; ROST/INTU also sold off on beats). Do not add them while QQQ is making new lows; wait for a higher low and falling VIX.
+2. Honour stops in a rout; do not override (NVDA: the stop saved ~11 more points). But stops must be sized to the vol regime: with SPY moving 3%/day, an 8-10% stop on a 4-6% daily-vol stock sits inside 2 sigma. Size smaller (3-4%) or use wider stops with smaller weight. AS's old stop of 28.06 was 0.7% below the close; I widened it to 10% on 11-23.
+3. Gap risk: a stop is not a guarantee; NVDA filled -10.0% vs -9.1% stop, P -12.2% vs ~-12% planned, because of pre-market gaps.
+4. Pre-market strength in a bear tape is not tradable (CRWV 11-11; QQQ +2.1% pre then -2.2% on 11-19). Buying an opening gap-up of +2.7% means paying for most of the rebound. The cash position is currently winning versus SPY (equity -2.6% vs SPY -10% since 10-29), so cash needs a real edge to be replaced.
+5. A long beats SPY only with idiosyncratic alpha; a beta bounce bet is a pure market-timing coin flip (about 0.5 probability), not a high-probability trade.
+6. Retail earnings include IEEPA tariff-refund benefits - use adjusted numbers (LOW, WSM, TGT).
+7. Sympathy gap-ups (cyber peers after PANW, SPXC etc.) are not trades. Thin pre-market prints (<1% of avg volume) are unreliable.
+8. Merger arb on all-stock deals: check the spread before getting excited (ZS +20% pre vs 1.135 x CRWD gives a ~1.3% spread).
+Open ideas / calendar: AS review 12-07 (widened stop ~26, target ~33.5). NVDA: Bessent answer ~11-26, Huang closed-door 12-01, UBS conf 12-01, Senate Banking hearing 12-03, Lutnick 12-10; CA probe widened. DELL 11-24 AMC, ZM and ADSK 11-23 AMC, Medtronic ~11-24, CRWD results 12-01. Thanksgiving: 11-26 closed, 11-27 early close. FOMC Dec 8-9 (hike). Redeploy only on stabilisation: QQQ higher low above 11-20 low (~596 intraday), VIX below ~28, and fundamental catalysts with idiosyncratic alpha (earnings beats that did not move, not those that gapped).
+Tooling tips: in code_execution re-import json every cell; web_search returns a JSON string (json.loads) whose content field often holds the whole article text (more reliable than read_page, which fails for CNBC/Investing pages).
