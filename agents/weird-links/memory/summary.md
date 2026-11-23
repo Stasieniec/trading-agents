@@ -1,15 +1,14 @@
-Session 2026-11-20.
+Session 2026-11-23.
 
-Session 2026-11-20. Closed ROST (bought 11-18 at 226.23, about -8% at the pre-market ~208). Q3 beat (comps +8%, EPS 1.91 vs 1.87, FY EPS raised) but Q4 comp guide only maintained at 4-5% and Q4 EPS cut 1c to 2.16-2.25 vs street 2.27, so the stock fell about 5% AH and pre-market; the thesis needed a forward raise and did not get one. Lesson recorded: retail reactions are driven by the next-quarter guide, not the FY raise.
+Session 2026-11-23. No trades. I held 100% cash (equity about $100.5k).
 
-Market: capitulation-style AI bust. SPY has had 6 straight down closes (-5.5% in 5d), SMH is -35% from its high, AMD -14% in 2 days, Taiex -6.2% on 11-20 (-17.5% in a week), KOSPI -5%. The 11-19 pre-market AI bounce fully reversed. ANT closed day one at 97.17 (+17%) and is -9.8% pre-market. Cash is beating SPY.
+Market: SPY closed 689.81 on 11-20 (-3.64%, 7th straight loss, correction, volume 151M, VIX 35.9 at the close). Pre-market is SPY +2.7%, QQQ +3.6%, SMH +6%. Friday's drivers were a Reuters report that the SEC is examining Nvidia's accounting, a California AG subpoena with criminal exposure, and the H200 China halt. The new rule barring advanced chips from foreign data centers that serve Chinese customers remotely also matters. Today's NVDA +8.5% pop comes from Trump pushing for Huang's reinstatement (Kalshi odds only 16%). The bounce is large, but the last two bounces (11-19, 11-20) faded. Defensives and health insurers lag today: UNH -6%, HUM -3 to -5%.
 
-Looked at and rejected:
-- ANT Nasdaq-100 fast entry (announcement Dec 11, entry Dec 21): the SpaceX precedent had no pre-inclusion run-up and fell 15% after joining, so no clean long.
-- INTU read-through (Credit Karma guide cut, tighter lending) to TREE, NRDS, UPST, SOFI: weak chain, names already -50 to -67%, TREE costs 1% round trip.
-- AI-capex chain (VRT, GEV, ORCL, DELL, FCX, EQIX, DLR): already -30 to -55%.
-- Tankers and Hormuz: oil is flat.
-- INSM (Sanofi takeover report), SNEX, LQDT, SVRA: first-order moves already priced.
-- UNH (TD Cowen upgrade): CRUSH is still unresolved.
+Leads examined and rejected:
+- CRWD buys ZS: all-stock, 1.135 shares, 3% spread. Both names are in the headlines, so I can't trade them. Cyber peers (NTSK, S, OKTA, PANW) are rising only in line with the market, so there is no sympathy gap.
+- Kymera (KYMR) KT-621 phase 2b: at least comparable to Dupixent, +30% pre-market. REGN and SNY didn't move, and the Phase 3 read-through is years away. A follow-on offering is likely, so I'm not chasing.
+- CMS Star Ratings proposal: targets 2030 ratings and 2031 bonuses, and UNH and HUM already priced it in. It is stacked on CRUSH, and the Jan-2026 analog stayed down for months, so there is no clean short.
+- ANT: stabilization bid appears to sit at the $83 IPO price (day-2 low was 83.05). It lags the bounce, shortable, 8.5% daily volatility. Short has limited room to the $83 floor. Long has an uncertain edge. The next catalysts are quiet-period expiry around Dec 14, the NDX announcement Dec 11 and inclusion Dec 21.
+- CAPR CRL, GPN/GTCR $50B buyout interest, TU/BCE (Quebecor C$31B bid for Telus, BCE in preliminary talks with Telus), HPE/ZM prints: no edge.
 
-Next session: stay mostly cash unless the tape stabilises. Check whether Friday's gap-down held, and how the Michigan sentiment/inflation expectations and Fed speakers landed. Dates: HPE and ZM 11-23 AMC; BURL, BBY, DLTR 11-24 BMO; DELL 11-24 AMC. Look for an ANT fade setup after NDX inclusion in mid-Dec (check borrow), and watch neocloud shorts (CRWV, NBIS) on any bounce.
+Next session: check whether the gap-up held at the close and what Williams said (4pm ET). Check the HPE and ZM reactions. Prints due 11-24: BURL, BBY, DLTR, ANF BMO; DELL and URBN AMC. Re-enter only on stabilization (a hold of the gap-up, VIX below 30). If the bounce fades again, look at shorts in neoclouds (CRWV, NBIS, APLD). Revisit ANT around Dec 11 to 18.
