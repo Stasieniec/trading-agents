@@ -1,0 +1,142 @@
+{
+ "agent": "tech-ten",
+ "date": "2026-11-23",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "MSFT",
+   "target_weight": 0.06,
+   "thesis": "Quality large cap (Azure +48%, RPO +73%) after a capitulation week: SPY -3.6% on 3x volume, VIX >30, 7 straight down days, strategists calling buy, holiday-week seasonality. Starter only because earlier bounces failed and PCE on 11-25 is a binary. Stop 9% (about 4+ daily sd) caps loss near 0.5% of equity.",
+   "horizon_days": 8,
+   "stop_pct": 9,
+   "target_pct": 14,
+   "probability": 0.5,
+   "sources": [
+    {
+     "url": "https://lufkindailynews.com/news_reuters/business/wall-street-futures-rebound-as-battered-ai-stocks-gain-ground/article_e6d9ac41-7498-5fb0-ad1e-4379284b6679.html",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://247wallst.com/investing/2026/11/18/microsoft-price-prediction-analysts-target-clears-the-52-week-high/",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://seekingalpha.com/news/4675412-goldman-watching-for-3-conditions-that-could-support-a-stock-correction-bottom",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "tech-ten-2026-11-23-01",
+   "session_date": "2026-11-23",
+   "fill_at": "open",
+   "decided_at": "2026-11-23T13:37:08.077396+00:00",
+   "prompt_hash": "56e662137f5d"
+  },
+  {
+   "action": "set_weight",
+   "ticker": "AMZN",
+   "target_weight": 0.05,
+   "thesis": "Down 14% from its high and hit by the Anthropic IPO flop (owns about 14.6% of ANT). Rebound candidate in a capitulation bounce, with a gap of +3.4% premarket, smaller than GOOGL or NVDA. Starter size, wide stop, 8-day horizon through PCE and Thanksgiving.",
+   "horizon_days": 8,
+   "stop_pct": 10,
+   "target_pct": 15,
+   "probability": 0.5,
+   "sources": [
+    {
+     "url": "https://lufkindailynews.com/news_reuters/business/wall-street-futures-rebound-as-battered-ai-stocks-gain-ground/article_e6d9ac41-7498-5fb0-ad1e-4379284b6679.html",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://www.tradingview.com/news/gurufocus:004938fe3094b:0-amazon-stocks-fall-3-87-as-its-188-billion-anthropic-stake-starts-trading-daily/",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://seekingalpha.com/news/4675412-goldman-watching-for-3-conditions-that-could-support-a-stock-correction-bottom",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "tech-ten-2026-11-23-02",
+   "session_date": "2026-11-23",
+   "fill_at": "open",
+   "decided_at": "2026-11-23T13:37:08.077411+00:00",
+   "prompt_hash": "56e662137f5d"
+  },
+  {
+   "action": "set_weight",
+   "ticker": "META",
+   "target_weight": 0.04,
+   "thesis": "28% off its high after the AI-capex selloff; analysts cut targets but they remain far above the price (MS 720, Loop 890). Small starter in the capitulation bounce, wide 11% stop for a 2.5% daily-vol name.",
+   "horizon_days": 8,
+   "stop_pct": 11,
+   "target_pct": 16,
+   "probability": 0.5,
+   "sources": [
+    {
+     "url": "https://www.marketscreener.com/news/morgan-stanley-adjusts-price-target-on-meta-platforms-to-720-from-820-ce7851dad88af427",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://lufkindailynews.com/news_reuters/business/wall-street-futures-rebound-as-battered-ai-stocks-gain-ground/article_e6d9ac41-7498-5fb0-ad1e-4379284b6679.html",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "tech-ten-2026-11-23-03",
+   "session_date": "2026-11-23",
+   "fill_at": "open",
+   "decided_at": "2026-11-23T13:37:08.077421+00:00",
+   "prompt_hash": "56e662137f5d"
+  },
+  {
+   "action": "set_weight",
+   "ticker": "AAPL",
+   "target_weight": 0.05,
+   "thesis": "Defensive leg of the starter basket. AAPL fell only 1.9% on a -5.7% QQQ day, with low vol (1.7%) and a smaller premarket gap (+1.4%) than the rest. It balances the basket if the bounce fails again and still participates if it holds. No company catalyst; this is a risk-balance trade.",
+   "horizon_days": 8,
+   "stop_pct": 7,
+   "target_pct": 11,
+   "probability": 0.5,
+   "sources": [
+    {
+     "url": "https://lufkindailynews.com/news_reuters/business/wall-street-futures-rebound-as-battered-ai-stocks-gain-ground/article_e6d9ac41-7498-5fb0-ad1e-4379284b6679.html",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://www.cnbc.com/2026/11/20/sp-500-correction-market-sell-off.html",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "tech-ten-2026-11-23-04",
+   "session_date": "2026-11-23",
+   "fill_at": "open",
+   "decided_at": "2026-11-23T13:37:08.077430+00:00",
+   "prompt_hash": "56e662137f5d"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "56e662137f5d",
+ "summary": "Session 2026-11-23 pre-open. I started at 100% cash, equity $93.0k. All four holdings were stopped out on 11-20: META -8.2%, MSFT -8.0%, NVDA -10.2%, PLTR -26.9%.\n\nBackdrop: Friday 11-20 was a capitulation day. SPY -3.64% on 151M shares (3x average), closing at the low. QQQ -5.67%, XLK -7.27%, SOX -10%+, NVDA -14%, AVGO -12% (unconfirmed report that Google is cutting chip orders), AMD -13%, and VIXY +13%. It was the 7th straight S&P down day and the steepest week since March 2020. Drivers were AI-spend doubts, the Anthropic IPO flop (ANT 88.9 vs IPO price 83), the Nvidia scandal (SEC, California AG and Congress probes) and a hawkish Fed (December hike ~98% priced).\n\nPremarket 11-23: SPY +2.7%, QQQ +3.6%, NVDA +8.5% (Trump and Bessent pushing to rehire Huang). Strategists are calling it a buy.\n\nDecision: bought a ~20% starter at the open. MSFT 6%, AMZN 5%, AAPL 5%, META 4%. Stops 7-11%, targets +11-16%, horizon 8 trading days (to ~12-04), p=0.5 each. The starter is small because three earlier bounces failed (11-09, 11-11, 11-19) and PCE on Wed 11-25 pre-open (core 3.2% expected) is a binary.\n\nNot traded:\n- NVDA: +8.5% gap, governance binary, Bessent deadline ~11-26.\n- AVGO and AMD: headline risk (Google order report, Hunterbrook China story).\n- GOOGL: +5.5% gap, a chase.\n- TSLA: no edge.\n- PLTR: wide stop and weak tape.\n\nNext session:\n1. Check whether the bounce closed above its open. If so, consider adding to MSFT and AMZN. If it reversed, hold stops and don't add.\n2. Watch the PCE reaction on 11-25; Thursday is closed and Friday is a half day.\n3. Re-check NVDA after the Bessent deadline (~11-26) and the Huang session on 12-01.\n4. FOMC 12-08/09 and AVGO earnings 12-09 come after the horizon.",
+ "feedback": "Nothing blocked me. Three things would help. (1) The digest shows the premarket move but not a live read of IEX trades after the open, so a gap-up chase decision relies on stale 13:17 UTC prints. (2) read_page fails on Yahoo live blogs and CNBC, but web_search content works as a substitute. (3) A tool that returns realized volatility and beta of each name versus SPY would help with stop sizing.",
+ "total_cost": 0.5814083999999999,
+ "seconds": 222,
+ "fill_at": "open"
+}
