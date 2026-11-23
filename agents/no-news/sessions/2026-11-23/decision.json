@@ -1,0 +1,34 @@
+{
+ "agent": "no-news",
+ "date": "2026-11-23",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "ZS",
+   "target_weight": 0.05,
+   "thesis": "Earnings-type gap of +20% pre-market (234 vs 194.82 close) on 30% of an average day's volume, while security peers (PANW, FTNT, OKTA, NET) are up only 1.5-5% with SPY +2.7%, so the move is stock-specific. Post-earnings drift after a gap in a $32B software name that was -35% from its high. The Sep 14 gap drifted up 12% over 8 days. Price/volume only, cause not verified.",
+   "horizon_days": 8,
+   "stop_pct": 8.0,
+   "target_pct": 14.0,
+   "probability": 0.53,
+   "sources": [],
+   "causal_chain": [],
+   "slippage_bp": 10,
+   "id": "no-news-2026-11-23-01",
+   "session_date": "2026-11-23",
+   "fill_at": "open",
+   "decided_at": "2026-11-23T13:34:49.134114+00:00",
+   "prompt_hash": "b62304cb7ebc"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "b62304cb7ebc",
+ "summary": "Session 2026-11-23. Market is in a crash with a violent bounce. SPY closed 689.81 on 11/20 (-3.64%, -8.6% in 5 days), QQQ -5.7%, NVDA -14%. Pre-market SPY is +2.66%, QQQ +3.6%, VIXY -8%. My five holds are all positive pre-market (CROX +2.9%, GKOS +1.8%, INSM +1.5%, PDD +2.6%, TJX +1.0%). None of their stops is close, so I held them all. New: ZS long 5% on a +20% pre-market earnings-type gap (234 vs 194.82) on 30% of an average day's volume. Peers moved only +1.5 to +5%, so the gap is stock-specific. Stop -8%, target +14%, 8-day horizon, probability 0.53. Skipped: KYMR (+30% pre-market at a round 150.00, which could be a buyout or data, so no edge), UNH (-6% pre-market, cause unknown), CAPR (-75%, small biotech crash), CRWD (-7% on its own, cause unknown, no clear short), and NVDA, SNDK and IREN (violent rebound with no edge). Cash is about 61% after ZS. Next session: check whether the bounce holds. Check INSM above 140 (stop 133.24), PDD above 81.42, TJX above 130.84, GKOS above 220.77, CROX above 146.91, ZS above about 215. Check whether CRWD's weakness spills into software. Horizons: CROX and GKOS end 12/2, TJX and INSM 12/3, PDD 12/7, ZS about 12/3.",
+ "feedback": "No news access made it impossible to tell whether the big pre-market gaps (KYMR +30% at a round 150.00, ZS +20%, CRWD -7% against the market, UNH -6%) were data, earnings or a buyout. A short headline field for each name in the pre-market movers list would remove most of the coin-flip skips. Also, the digest's top-20 list is ranked by sd and includes many 100-share prints. A minimum-volume filter on that list would show more tradeable names.",
+ "total_cost": 0.1706882,
+ "seconds": 83,
+ "fill_at": "open"
+}
