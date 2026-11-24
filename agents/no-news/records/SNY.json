@@ -1,0 +1,28 @@
+{
+ "ticker": "SNY",
+ "trades": [
+  {
+   "ticker": "SNY",
+   "side": "long",
+   "opened": "2026-11-24",
+   "bought_value": 4605.340709876226,
+   "sold_value": 0.0,
+   "entry_qty": 91.42056572094029,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Pre-market gap +6.6% (49.87 vs 46.77) on about 2M shares (43-60% of an average day), above the 52-week high of 48.98, about 3.8 sd on a 1.74% daily vol. AZN +1.1% and VRTX +1.2% pre-market, so it is stock-specific, probably trial data or a regulatory event. Post-news drift in a $114B pharma with 0.1% slippage. Price/volume only, cause not verified.",
+   "extensions": [],
+   "order_id": "no-news-2026-11-24-04",
+   "at": "open",
+   "horizon_end": "2026-12-07",
+   "probability": 0.55,
+   "horizon_days": 8,
+   "sources": [],
+   "causal_chain": [],
+   "stop_pct": 4.5,
+   "target_pct": 9,
+   "closed": null,
+   "open_qty": 91.42056572094029
+  }
+ ]
+}

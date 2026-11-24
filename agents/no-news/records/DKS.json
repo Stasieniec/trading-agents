@@ -1,0 +1,28 @@
+{
+ "ticker": "DKS",
+ "trades": [
+  {
+   "ticker": "DKS",
+   "side": "long",
+   "opened": "2026-11-24",
+   "bought_value": 4093.636186556646,
+   "sold_value": 0.0,
+   "entry_qty": 27.492750520448602,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Pre-market gap of +16.4% (155.63 vs 133.67) on 247k shares (12% of an average day) through the 3-month range top of 150.35, after a -45% slide from the high. NKE, ONON and DECK are flat pre-market, so it is stock-specific and probably earnings. Post-earnings drift setup in an $11.9B stock. Price/volume only, cause not verified. Stop is wide because the market swings 2-5% a day.",
+   "extensions": [],
+   "order_id": "no-news-2026-11-24-03",
+   "at": "open",
+   "horizon_end": "2026-12-07",
+   "probability": 0.54,
+   "horizon_days": 8,
+   "sources": [],
+   "causal_chain": [],
+   "stop_pct": 9,
+   "target_pct": 15,
+   "closed": null,
+   "open_qty": 27.492750520448602
+  }
+ ]
+}

@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "Insiders (EGI/Ventas) sold 8M shares at 14.50, an 18% discount to the 17.75 close. The stock gapped down 22.5% on supply, not on company news, and closed 14.40 (0.88 of range) on 8.9x volume. Q3 beat, FY EBITDA guide raised and PTs of 18-22 are intact. Company is buying back 1.5M shares at the offer price and underwriters hold a 30-day greenshoe, so 14.50 should act as support. Overhang is cleared and the supply-driven gap should partly retrace.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-24",
+     "thesis": "Supply-driven gap (insiders sold 8M shares at 14.50, 18% below the prior close) has retraced from 14.40 to 15.59 with no company news; the 14.50 offering price, company buyback at that price and greenshoe act as support. Analyst PTs 18-22 intact. Stop moved up under the offering price (14.40) so the loss is bounded at the thesis line; target raised to 17 as the retrace continues.",
+     "horizon_end": "2026-12-03"
+    }
+   ],
    "order_id": "pattern-hunter-2026-11-19-01",
    "at": "open",
-   "horizon_end": "2026-12-02",
+   "horizon_end": "2026-12-03",
    "probability": 0.55,
    "horizon_days": 8,
    "sources": [

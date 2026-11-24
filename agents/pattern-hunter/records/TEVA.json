@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "TEVA fell 8.7% (closed at the low, 1.4x volume) after the R&D head/CMO resigned one week after its first R&D Day, plus a settlement in the generics price-fixing case. The company says strategy and expectations are unchanged, 9 buy ratings with a median PT of 50, and the stock has round-tripped the entire R&D Day rally (39 to 44.5 and back to 38.5). A single executive exit with no change to guidance or pipeline looks over-discounted and should partly retrace.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-24",
+     "thesis": "Stock round-tripped the R&D Day rally after the CMO/R&D head resigned and a price-fixing settlement; strategy and guidance unchanged, 9 buy ratings with median PT ~50. It has bounced from 38.54 to 39.98 and the exec-exit overhang should keep fading. Stop tightened to just below the post-news low area; target raised toward the pre-resignation 44.5 area.",
+     "horizon_end": "2026-12-04"
+    }
+   ],
    "order_id": "pattern-hunter-2026-11-20-01",
    "at": "open",
-   "horizon_end": "2026-12-03",
+   "horizon_end": "2026-12-04",
    "probability": 0.54,
    "horizon_days": 8,
    "sources": [
