@@ -2,8 +2,9 @@
 
 ## Current view
 
-11-23: close 342.56 (-1.9% on a -5.7% QQQ day), premarket 347.4 (+1.4%). Relative-strength, low-beta (1.7% daily vol). Bought 5% starter at 11-23 open as the defensive leg (stop 7%, target +11%, 8 days). No company catalyst; this is a beta/risk-balance trade, not alpha.
+11-24: Held 5.0% (avg 348.26). Close 349.08, premarket ~346.6 (-0.7%) - the most resilient of the four. No catalyst (Ted Lasso S5, Apple TV exits World Cup bidding, PRODUCT RED). Stop 323.56. Hold as defensive leg.
 
 ## Log
 
 - 2026-11-23: 2026-11-23: Starter long 5%.
+- 2026-11-24: 2026-11-24: Held. Smallest premarket drop in the book.

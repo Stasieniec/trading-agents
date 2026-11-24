@@ -1,22 +1,23 @@
-Session 2026-11-23.
+Session 2026-11-24.
 
-Session 2026-11-23 pre-open. I started at 100% cash, equity $93.0k. All four holdings were stopped out on 11-20: META -8.2%, MSFT -8.0%, NVDA -10.2%, PLTR -26.9%.
+Session 2026-11-24 pre-open. Held all four starters (MSFT 5.8%, AAPL 5.0%, AMZN 4.9%, META 4.0%, about 20% invested, 80% cash). No trades.
 
-Backdrop: Friday 11-20 was a capitulation day. SPY -3.64% on 151M shares (3x average), closing at the low. QQQ -5.67%, XLK -7.27%, SOX -10%+, NVDA -14%, AVGO -12% (unconfirmed report that Google is cutting chip orders), AMD -13%, and VIXY +13%. It was the 7th straight S&P down day and the steepest week since March 2020. Drivers were AI-spend doubts, the Anthropic IPO flop (ANT 88.9 vs IPO price 83), the Nvidia scandal (SEC, California AG and Congress probes) and a hawkish Fed (December hike ~98% priced).
+What happened 11-23: Huang was reinstated as NVDA CEO at 14:31 UTC. NVDA +31.5% to 165.05, SMH +15%, QQQ +7.0%, SPY +4.71% (best day since April 2025). But SPY open to close was -0.3% (724.33 to 722.29). The whole gain was the gap, and my fills were at the open. MSFT closed at its day low (gap +4.4%, close +1.6%). AMZN closed 0.37 in range.
 
-Premarket 11-23: SPY +2.7%, QQQ +3.6%, NVDA +8.5% (Trump and Bessent pushing to rehire Huang). Strategists are calling it a buy.
+Premarket 11-24: SPY -1.5%, QQQ -2.4%, SMH -5.3%, NVDA -6%, AVGO -4.5%, AMD -5.3%, PLTR -3%, META -2.3%, AMZN -2%, MSFT -1%, AAPL -0.7%. ANT is -5.7% to 82.65, below its $83 IPO price. Williams (NY Fed) said inflation is too high and did not rule out consecutive hikes. The Dec 25bp hike is about 91-97% priced. 10y is about 4.91%.
 
-Decision: bought a ~20% starter at the open. MSFT 6%, AMZN 5%, AAPL 5%, META 4%. Stops 7-11%, targets +11-16%, horizon 8 trading days (to ~12-04), p=0.5 each. The starter is small because three earlier bounces failed (11-09, 11-11, 11-19) and PCE on Wed 11-25 pre-open (core 3.2% expected) is a binary.
+Why hold: no new news changes any thesis. Stops sit 5-9% below premarket, so a stop-out costs about 0.5% of equity per name. The gap-up-then-fade pattern has now shown in 5 of 5 recent bounces, so I'm not adding at the gap. Cutting would only crystallise small losses plus slippage ahead of a binary PCE print.
 
-Not traded:
-- NVDA: +8.5% gap, governance binary, Bessent deadline ~11-26.
-- AVGO and AMD: headline risk (Google order report, Hunterbrook China story).
-- GOOGL: +5.5% gap, a chase.
-- TSLA: no edge.
-- PLTR: wide stop and weak tape.
+Candidates not traded:
+- NVDA: 10-sd move, governance and probe overhang, no edge either way.
+- AVGO and AMD: semis whipsaw, AVGO earnings 12-09, BNP cut AMD PT 960 to 650.
+- GOOGL: no edge.
+- TSLA: FSD V15 news priced in after +11.5%.
+- PLTR: weak tape.
 
 Next session:
-1. Check whether the bounce closed above its open. If so, consider adding to MSFT and AMZN. If it reversed, hold stops and don't add.
-2. Watch the PCE reaction on 11-25; Thursday is closed and Friday is a half day.
-3. Re-check NVDA after the Bessent deadline (~11-26) and the Huang session on 12-01.
-4. FOMC 12-08/09 and AVGO earnings 12-09 come after the horizon.
+1. Check the PCE 11-25 08:30 ET reaction (core 0.3% m/m expected). Thu closed, Fri half day.
+2. Retest plan: if SPY revisits ~686-695 (11-20 low 686.75) on lower volume than 151M and holds, add to MSFT/AMZN/META/AAPL toward 35-40% invested. If it breaks on rising volume, let the stops work.
+3. Watch ANT vs its $83 IPO price (AMZN/GOOGL sentiment).
+4. NVDA: Huang congressional session 12-01, 10-Q ~12-04.
+5. All four horizons end 12-04.
