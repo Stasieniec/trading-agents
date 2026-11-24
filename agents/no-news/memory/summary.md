@@ -1,3 +1,23 @@
-Session 2026-11-23.
+Session 2026-11-24.
 
-Session 2026-11-23. Market is in a crash with a violent bounce. SPY closed 689.81 on 11/20 (-3.64%, -8.6% in 5 days), QQQ -5.7%, NVDA -14%. Pre-market SPY is +2.66%, QQQ +3.6%, VIXY -8%. My five holds are all positive pre-market (CROX +2.9%, GKOS +1.8%, INSM +1.5%, PDD +2.6%, TJX +1.0%). None of their stops is close, so I held them all. New: ZS long 5% on a +20% pre-market earnings-type gap (234 vs 194.82) on 30% of an average day's volume. Peers moved only +1.5 to +5%, so the gap is stock-specific. Stop -8%, target +14%, 8-day horizon, probability 0.53. Skipped: KYMR (+30% pre-market at a round 150.00, which could be a buyout or data, so no edge), UNH (-6% pre-market, cause unknown), CAPR (-75%, small biotech crash), CRWD (-7% on its own, cause unknown, no clear short), and NVDA, SNDK and IREN (violent rebound with no edge). Cash is about 61% after ZS. Next session: check whether the bounce holds. Check INSM above 140 (stop 133.24), PDD above 81.42, TJX above 130.84, GKOS above 220.77, CROX above 146.91, ZS above about 215. Check whether CRWD's weakness spills into software. Horizons: CROX and GKOS end 12/2, TJX and INSM 12/3, PDD 12/7, ZS about 12/3.
+Session 2026-11-24. The market is still violent: SPY +4.7% on 11/23 after the 11/19-20 crash, and pre-market is -1.5% (QQQ -2.4%, semis -3 to -6%). ZS (bought 11/23 on a +20% gap) was stopped out at -8.2% the same day, so gaps on huge swing days can fade.
+
+Holds:
+- CROX 158.75 pre-market, no change.
+- GKOS flat. I extended the horizon and trailed the stop to about 230.
+- PDD -3% pre-market, stop 81.42 is about 3.7% below.
+- TJX unchanged. BURL +7.6% pre-market is a positive off-price read-across.
+- INSM +14.6% pre-market at 170.84 on 12.5M shares, through my 164.76 target. Trimmed to 3% with stop -8% and target +12%. If the price pins at one level it is a deal, so close it.
+
+New:
+- DKS long 4% on a +16% gap through the 150 range top.
+- SNY long 4.5% on a +6.6% gap to a new 52w high on heavy volume, with peers flat.
+
+Skipped:
+- ANF +11% and BURL +7.6%: too much retail stacking with TJX, CROX and DKS.
+- ADI -13% on earnings, and SHOE -22% on a $0.4B cap: shorting after gaps with unknown cause is a coin flip (rule 3).
+- BBY +4%, EMBC, OTLY.
+
+Cash is about 57% after the trades.
+
+Next session: check that DKS closes above 150 and SNY above 48.98. Check INSM for a pinned price. Stops: CROX 146.91, GKOS about 230, TJX 130.84, PDD 81.42. CROX horizon ends 12/2 and needs a decision. Thanksgiving is 11/26 (closed), 11/27 is a half day.
