@@ -1,0 +1,2591 @@
+{
+ "date": "2026-11-24",
+ "built_at": "2026-11-24T13:33:16.835373+00:00",
+ "previous_session": "2026-11-23",
+ "intraday": false,
+ "sources": {
+  "index moves": "ok",
+  "economic calendar": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok",
+  "screen": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 722.29,
+   "day_pct": 4.708542932111737,
+   "week_pct": -2.3866477464693725,
+   "pre_pct": -1.4634011269711533,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 651.03,
+   "day_pct": 6.998109951516129,
+   "week_pct": -1.619947109935782,
+   "pre_pct": -2.4346036280970207,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 265.74,
+   "day_pct": 3.5579283737968037,
+   "week_pct": -2.637942404924154,
+   "pre_pct": -1.0574245503123358,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 495.8,
+   "day_pct": 3.0597821568138395,
+   "week_pct": -3.8551039404281617,
+   "pre_pct": -0.7845905607099635,
+   "pre_time": "2026-11-24T13:16:00Z"
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 162.38,
+   "day_pct": 8.972552177706206,
+   "week_pct": -1.4445253702354943,
+   "pre_pct": -3.442542184998154,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 103.6,
+   "day_pct": 3.568929321203629,
+   "week_pct": -3.014416775884665,
+   "pre_pct": 0.0,
+   "pre_time": "2026-11-24T12:51:00Z"
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 116.93,
+   "day_pct": 3.9747465765605616,
+   "week_pct": -1.0325856961489577,
+   "pre_pct": -0.3506371333276359,
+   "pre_time": "2026-11-24T13:08:00Z"
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 90.38,
+   "day_pct": -0.08843687817819967,
+   "week_pct": -2.39740820734341,
+   "pre_pct": 0.6417348971011316,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 55.65,
+   "day_pct": 1.9791094007696408,
+   "week_pct": -4.3485733929185315,
+   "pre_pct": -0.35902964959567685,
+   "pre_time": "2026-11-24T13:15:00Z"
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 179.42,
+   "day_pct": 1.2299706612502792,
+   "week_pct": -4.5028741750053225,
+   "pre_pct": 0.39014602608404836,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 162.47,
+   "day_pct": 3.9010040289057857,
+   "week_pct": -1.9256308100929598,
+   "pre_pct": -1.1230380993414224,
+   "pre_time": "2026-11-24T13:11:00Z"
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 59.87,
+   "day_pct": -1.057676417121134,
+   "week_pct": -5.997801852724138,
+   "pre_pct": 0.46767997327543664,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 49.9,
+   "day_pct": 3.227141083988405,
+   "week_pct": -3.0503205750922913,
+   "pre_pct": -0.7815631262525047,
+   "pre_time": "2026-11-24T13:08:00Z"
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 43.32,
+   "day_pct": 1.4757554462403455,
+   "week_pct": -1.8132366273798661,
+   "pre_pct": -0.023084025854103185,
+   "pre_time": "2026-11-24T13:14:00Z"
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 42.9,
+   "day_pct": 1.0362694300518172,
+   "week_pct": -3.050847457627126,
+   "pre_pct": 0.39627039627039284,
+   "pre_time": "2026-11-24T09:05:00Z"
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 81.69,
+   "day_pct": 0.29465930018415243,
+   "week_pct": 2.910052910052907,
+   "pre_pct": 0.25706940874037354,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 333.02,
+   "day_pct": 3.143680118933312,
+   "week_pct": -5.6413453092681305,
+   "pre_pct": -0.15614677797128884,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 133.36,
+   "day_pct": -4.490439017403125,
+   "week_pct": -4.763265014639706,
+   "pre_pct": 0.38242351529693686,
+   "pre_time": "2026-11-24T13:17:00Z"
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.78,
+   "day_pct": 0.5401755570560329,
+   "week_pct": 0.7442489851150258
+  },
+  {
+   "symbol": "VIXY",
+   "name": "VIX short-term futures",
+   "close": 22.58,
+   "day_pct": -12.98651252408478,
+   "week_pct": 15.439672801635984,
+   "pre_pct": 5.491585473870697,
+   "pre_time": "2026-11-24T13:17:00Z"
+  }
+ ],
+ "movers": {
+  "gainers": [
+   {
+    "symbol": "OTLY",
+    "pct": 109.08,
+    "price": 14.5
+   }
+  ],
+  "losers": [],
+  "as_of": "2026-11-24T00:59:00.062556784Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "NVDA",
+   "volume": 784107821
+  },
+  {
+   "symbol": "ANT",
+   "volume": 254167014
+  },
+  {
+   "symbol": "INTC",
+   "volume": 165258822
+  },
+  {
+   "symbol": "IREN",
+   "volume": 125888598
+  },
+  {
+   "symbol": "SNDK",
+   "volume": 114063948
+  },
+  {
+   "symbol": "SPCX",
+   "volume": 96247036
+  },
+  {
+   "symbol": "CRWV",
+   "volume": 96001443
+  },
+  {
+   "symbol": "IBIT",
+   "volume": 76524583
+  },
+  {
+   "symbol": "NOK",
+   "volume": 76332723
+  },
+  {
+   "symbol": "AAL",
+   "volume": 67317065
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Morgan Stanley Expects Elia Group to Raise FY26 Net Income Guidance",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T13:03:29Z",
+   "url": "https://www.marketscreener.com/news/morgan-stanley-expects-elia-group-to-raise-fy26-net-income-guidance-ce7851dbd889f22d",
+   "line": "Morgan Stanley analysts have projected that Elia Group is likely to increase its net income guidance for the 2026 fiscal year.",
+   "symbols": [
+    "MS"
+   ]
+  },
+  {
+   "title": "Meta Abandons 2030 Net-Zero Emissions Goal",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T13:03:23Z",
+   "url": "https://wjno.iheart.com/content/2026-11-24-meta-drops-2030-net-zero-goal-amid-ai-expansion/",
+   "line": "Meta has officially moved away from its commitment to reach net-zero emissions by 2030, citing the energy-intensive infrastructure requirements of its AI expansion.",
+   "symbols": [
+    "META"
+   ]
+  },
+  {
+   "title": "JPMorgan Chase Increases Stake in Intertek Group PLC",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T13:01:32Z",
+   "url": "https://www.investegate.co.uk/announcement/rns/intertek-group--itrk/holding-s-in-company/9891107",
+   "line": "JPMorgan Chase & Co. reported an increase in its voting rights stake in Intertek Group PLC to 7.779964% as of November 19, 2026.",
+   "symbols": [
+    "JPM"
+   ]
+  },
+  {
+   "title": "Morgan Stanley Upgrades Millicom International Cellular to Overweight",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T12:33:37Z",
+   "url": "https://www.marketscreener.com/news/morgan-stanley-upgrades-millicom-international-cellular-to-overweight-from-equalweight-100-price-t-ce7851dbd88cf52d",
+   "line": "Morgan Stanley has upgraded Millicom International Cellular to Overweight from Equalweight, setting a price target of $100.",
+   "symbols": [
+    "MS",
+    "TIGO"
+   ]
+  },
+  {
+   "title": "Fairness Hearing Held for Hormel Turkey Price-Fixing Settlement",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T12:33:05Z",
+   "url": "https://settlementinsight.com/news/hormel-turkey-settlement-hearing-november-24-2026-compass-group-lawsuit",
+   "line": "A fairness hearing was scheduled for November 24, 2026, regarding the $37.5 million settlement involving Hormel Foods and its Jennie-O Turkey Store unit in the turkey antitrust litigation.",
+   "symbols": [
+    "HRL"
+   ]
+  },
+  {
+   "title": "Hormel Foods Increases Quarterly Dividend",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T12:33:05Z",
+   "url": "https://www.prnewswire.com/news-releases/news-releases-list/?page=5",
+   "line": "Hormel Foods Corporation announced a 1% increase to its quarterly dividend, raising it to $0.295 per share.",
+   "symbols": [
+    "HRL"
+   ]
+  },
+  {
+   "title": "StoneX Completes First Legally Binding Digital Gold Transactions",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T12:32:47Z",
+   "url": "https://www.moomoo.com/hans/news/post/1005604174/hsbc-jpmorgan-chase-and-stonex-complete-first-legally-binding-digital",
+   "line": "StoneX, alongside HSBC and JPMorgan Chase, has completed the first live, legally binding wholesale-market transactions using Pooled Gold Interests (PGIs).",
+   "symbols": [
+    "JPM",
+    "SNEX",
+    "HSBC"
+   ]
+  },
+  {
+   "title": "J.P. Morgan Asset Management Announces November 2026 ETF Distributions",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T12:31:32Z",
+   "url": "https://www.globenewswire.com/news-release/2026/11/24/3409109/0/fr/jpmorgan-annonce-des-distributions-en-esp%C3%A8ces-pour-les-fnb-jpmorgan.html",
+   "line": "J.P. Morgan Asset Management has declared the final cash distributions for its suite of ETFs listed on the Toronto Stock Exchange for November 2026.",
+   "symbols": [
+    "JPM"
+   ]
+  },
+  {
+   "title": "Analysts Adjust Price Targets for Meta Platforms",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T11:33:16Z",
+   "url": "https://www.marketscreener.com/news/jpmorgan-adjusts-price-target-on-meta-platforms-to-775-from-940-ce7851dbd988fe2c",
+   "line": "Morgan Stanley and JPMorgan have adjusted their price targets for Meta Platforms, reflecting updated market expectations.",
+   "symbols": [
+    "META"
+   ]
+  },
+  {
+   "title": "Meta Launches Muse AI in the UK",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T11:33:16Z",
+   "url": "https://retailtechinnovationhub.com/home/2026/11/24/ico-fires-warning-to-meta-as-muse-ai-product-launches-in-uk-with-argos-and-debenhams-onboard",
+   "line": "Meta has launched its personal AI agent, Muse, in the UK, with initial retail partnerships including Argos and Debenhams. The UK's Information Commissioner's Office (ICO) is monitoring the rollout to ensure compliance wi",
+   "symbols": [
+    "META"
+   ]
+  },
+  {
+   "title": "TrendForce Reports Growing Demand for AMD Helios AI Server Systems",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T11:31:38Z",
+   "url": "https://sme.asia/global-ai-server-shipments-expected-to-jump-36/",
+   "line": "Market research firm TrendForce reports increasing demand from cloud service providers for AMD's Helios AI server systems, while noting potential deployment and delivery challenges.",
+   "symbols": [
+    "AMD"
+   ]
+  },
+  {
+   "title": "Clapp Finance Launches Crypto Card on Visa Network",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T13:03:22Z",
+   "url": "https://www.newswire.ca/news-releases/clapp-finance-launches-crypto-card-with-0-transaction-fees-and-credit-line-spendings-867053021.html",
+   "line": "Clapp Finance has introduced a new crypto-linked card that allows users to spend stablecoins or borrow against crypto collateral using the Visa payment network.",
+   "symbols": [
+    "V"
+   ]
+  },
+  {
+   "title": "Odola Fintech Platform to Offer Visa Debit Card for Migrant Workers",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T13:03:22Z",
+   "url": "https://www.pymnts.com/money-mobility/2026/worldremit-founder-launching-migrant-focused-fintech-odola/",
+   "line": "WorldRemit founder Ismail Ahmed is launching a new fintech platform called Odola, which will provide migrant workers with a Visa debit card for salary deposits and international remittances.",
+   "symbols": [
+    "V"
+   ]
+  },
+  {
+   "title": "Boeing Secures Order for 50 737-8 Aircraft from China Southern Airlines Unit",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T13:02:50Z",
+   "url": "https://www.marketscreener.com/news/boeing-wins-order-for-50-737-8-jets-from-china-southern-airlines-unit-ce7851dbd98cfe20",
+   "line": "Boeing has received an order for 50 737-8 jets from a unit of China Southern Airlines.",
+   "symbols": [
+    "BA"
+   ]
+  },
+  {
+   "title": "The Cigna Group Foundation Expands Support for Youth Mental Health and Veterans",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-24T13:02:37Z",
+   "url": "https://kalkinemedia.com/us/stocks/technical-analysis/what-does-a-new-complex-care-grant-add-to-cignas-nyseci-strategy",
+   "line": "The Cigna Group Foundation has announced an extension of its national partnership with the Boys and Girls Clubs of America, focusing on adolescent mental health and veteran support.",
+   "symbols": [
+    "CI"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "MFG",
+   "stories": 5
+  },
+  {
+   "symbol": "META",
+   "stories": 3
+  },
+  {
+   "symbol": "AMD",
+   "stories": 3
+  },
+  {
+   "symbol": "JPM",
+   "stories": 3
+  },
+  {
+   "symbol": "HRL",
+   "stories": 3
+  },
+  {
+   "symbol": "MS",
+   "stories": 3
+  },
+  {
+   "symbol": "V",
+   "stories": 2
+  },
+  {
+   "symbol": "BA",
+   "stories": 2
+  },
+  {
+   "symbol": "CI",
+   "stories": 2
+  },
+  {
+   "symbol": "NBIS",
+   "stories": 2
+  }
+ ],
+ "screen": {
+  "day": "2026-11-24",
+  "measured": 3005,
+  "built_at": "2026-11-24T13:33:23.885823+00:00",
+  "rows": [
+   {
+    "ticker": "OTLY",
+    "market_cap": 462727741.0,
+    "industry": "Packaged Foods",
+    "shortable": true,
+    "vs_industry": 108.45596283439052,
+    "pre": -5.1724137931034475,
+    "pre_volume": 60932.0,
+    "pre_volume_pct": 34.39587488847675,
+    "after_hours": 1.379310344827589,
+    "stories": 1,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 109.0843547224225,
+    "sd": 4.581960747173054,
+    "z": 23.807352515999753,
+    "vol_x": 71.39437586914755,
+    "close": 14.5,
+    "avg_volume": 177149.15,
+    "gap": -0.9372746935832676,
+    "range_pos": 0.9621689785624211,
+    "r5": -9.464751958224548,
+    "r20": -42.63854425144748,
+    "from_high": -10.493827160493819,
+    "from_low": 111.06259097525472,
+    "streak": 1
+   },
+   {
+    "ticker": "KYMR",
+    "market_cap": 12837296967.0,
+    "industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+    "shortable": true,
+    "vs_industry": 26.458964571478237,
+    "pre": 4.981046751346674,
+    "pre_volume": 37739.0,
+    "pre_volume_pct": 3.687815146641197,
+    "after_hours": 2.7465584890603134,
+    "stories": 1,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 30.404995230248886,
+    "sd": 2.6811310599303817,
+    "z": 11.34036141860159,
+    "vol_x": 7.693616524781206,
+    "close": 150.37,
+    "avg_volume": 1023343.05,
+    "gap": 19.6773913797589,
+    "range_pos": 0.5646045418950667,
+    "r5": -9.610409970996315,
+    "r20": 4.107981220657275,
+    "from_high": -6.885875286395448,
+    "from_low": 136.09671848013818,
+    "streak": 1
+   },
+   {
+    "ticker": "NVDA",
+    "market_cap": 3977705000000.0,
+    "industry": "Semiconductors",
+    "shortable": true,
+    "vs_industry": 18.309107697277206,
+    "pre": -6.028476219327484,
+    "pre_volume": 20266109.0,
+    "pre_volume_pct": 7.025706348214363,
+    "after_hours": 1.054225992123592,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 31.482514140046213,
+    "sd": 3.1467656756007094,
+    "z": 10.004721477723722,
+    "vol_x": 2.716912392128631,
+    "close": 165.05,
+    "avg_volume": 288456533.7,
+    "gap": 33.06380944794072,
+    "range_pos": 0.5573095401509958,
+    "r5": -22.91679459625422,
+    "r20": -40.49582859309822,
+    "from_high": -32.181452109956034,
+    "from_low": 32.570281124498,
+    "streak": 1
+   },
+   {
+    "ticker": "AEF",
+    "market_cap": 798777000.0,
+    "industry": "Finance/Investors Services",
+    "shortable": true,
+    "vs_industry": 9.17671541829743,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.6729475100942128,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 11.061285500747363,
+    "sd": 2.2352087369479983,
+    "z": 4.948658851365568,
+    "vol_x": 2.0473044957134796,
+    "close": 7.43,
+    "avg_volume": 123713.4,
+    "gap": 5.979073243647237,
+    "range_pos": 0.7570093457943924,
+    "r5": -16.374999999999996,
+    "r20": -19.68787515006002,
+    "from_high": -26.725115632304075,
+    "from_low": 15.91263650546022,
+    "streak": 1
+   },
+   {
+    "ticker": "AVR",
+    "market_cap": 573261363.0,
+    "industry": "Industrial Specialties",
+    "shortable": true,
+    "vs_industry": 14.70812170983249,
+    "pre": -0.5102040816326592,
+    "pre_volume": 2213.0,
+    "pre_volume_pct": 0.15448549471606204,
+    "after_hours": -0.170068027210879,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 17.835671342685355,
+    "sd": 3.7257426884607368,
+    "z": 4.787145230916103,
+    "vol_x": 1.4851647677155613,
+    "close": 5.88,
+    "avg_volume": 1432496.95,
+    "gap": 8.21643286573146,
+    "range_pos": 0.7283950617283952,
+    "r5": -7.93357933579335,
+    "r20": -14.991482112436117,
+    "from_high": -46.81139755766621,
+    "from_low": 78.1818181818182,
+    "streak": 1
+   },
+   {
+    "ticker": "CTRI",
+    "market_cap": 2232393525.0,
+    "industry": "Oil & Gas Production",
+    "shortable": true,
+    "vs_industry": 13.081017244076097,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 12.119675456389455,
+    "sd": 3.150811958087205,
+    "z": 3.846524520538848,
+    "vol_x": 1.0897389315727133,
+    "close": 22.11,
+    "avg_volume": 1930024.65,
+    "gap": 4.9695740365111485,
+    "range_pos": 0.9615384615384613,
+    "r5": -9.624197983501382,
+    "r20": 1.9648397104446769,
+    "from_high": -48.56345236710481,
+    "from_low": 19.481221291542838,
+    "streak": 1
+   },
+   {
+    "ticker": "GCT",
+    "market_cap": 2356885428.0,
+    "industry": "Catalog/Specialty Distribution",
+    "shortable": true,
+    "vs_industry": 11.01343994635522,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": -0.22385126964933333,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 14.424074714631608,
+    "sd": 3.1712614711208715,
+    "z": 4.548371317213862,
+    "vol_x": 1.417865337280981,
+    "close": 66.16,
+    "avg_volume": 664868.5,
+    "gap": 6.883431338637136,
+    "range_pos": 0.8887122416534177,
+    "r5": -13.222272249737355,
+    "r20": -0.7211538461538436,
+    "from_high": -1.8397626112759746,
+    "from_low": 112.87001287001286,
+    "streak": 1
+   },
+   {
+    "ticker": "ECAT",
+    "market_cap": 1320328350.0,
+    "industry": "Finance/Investors Services",
+    "shortable": false,
+    "vs_industry": 5.591243461965201,
+    "pre": -0.7364975450081857,
+    "pre_volume": 800.0,
+    "pre_volume_pct": 0.09858372768364779,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 7.475813544415133,
+    "sd": 1.6104891512666357,
+    "z": 4.641952128976138,
+    "vol_x": 1.4712968239588526,
+    "close": 12.22,
+    "avg_volume": 811492.95,
+    "gap": 3.518029903254183,
+    "range_pos": 0.9443413729128026,
+    "r5": -8.674698795180724,
+    "r20": -13.272311212814646,
+    "from_high": -24.052206339341197,
+    "from_low": 8.237378210806035,
+    "streak": 1
+   },
+   {
+    "ticker": "ZS",
+    "market_cap": 37624560820.0,
+    "industry": "EDP Services",
+    "shortable": true,
+    "vs_industry": 14.28373463340653,
+    "pre": -1.5006107136625313,
+    "pre_volume": 20641.0,
+    "pre_volume_pct": 0.8768536176127227,
+    "after_hours": 0.20066306054788985,
+    "stories": 1,
+    "earnings": [
+     "2026-11-23 time not given"
+    ],
+    "date": "2026-11-23",
+    "r1": 17.667590596448,
+    "sd": 4.262492259917252,
+    "z": 4.144896816021664,
+    "vol_x": 8.178855622978347,
+    "close": 229.24,
+    "avg_volume": 2353984.7,
+    "gap": 22.169181808849192,
+    "range_pos": 0.3569951757408687,
+    "r5": 1.220969501740532,
+    "r20": -23.64491475602587,
+    "from_high": -23.198820711258527,
+    "from_low": 99.99127589967284,
+    "streak": 1
+   },
+   {
+    "ticker": "FWRD",
+    "market_cap": 636572735.0,
+    "industry": "Integrated Freight & Logistics",
+    "shortable": true,
+    "vs_industry": 12.533682485786713,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 15.847665847665837,
+    "sd": 3.9830903356842633,
+    "z": 3.9787362354520472,
+    "vol_x": 1.1807184017168266,
+    "close": 18.86,
+    "avg_volume": 514950.05,
+    "gap": 4.729729729729737,
+    "range_pos": 0.963265306122449,
+    "r5": -6.382978723404253,
+    "r20": 6.405228758169934,
+    "from_high": -39.502806736166804,
+    "from_low": 140.10184595798853,
+    "streak": 1
+   },
+   {
+    "ticker": "CHA",
+    "market_cap": 2109842386.0,
+    "industry": "Restaurants",
+    "shortable": true,
+    "vs_industry": -17.922858038156665,
+    "pre": 1.1754068716093968,
+    "pre_volume": 13305.0,
+    "pre_volume_pct": 1.5431219066886186,
+    "after_hours": 1.4466546112115841,
+    "stories": 0,
+    "earnings": [
+     "2026-11-30 before open"
+    ],
+    "date": "2026-11-23",
+    "r1": -15.765422696115772,
+    "sd": 3.1786190557551066,
+    "z": -4.959833946622638,
+    "vol_x": 1.400549272531972,
+    "close": 11.06,
+    "avg_volume": 862213.15,
+    "gap": -8.68240670220869,
+    "range_pos": 0.00917431192660531,
+    "r5": -8.629088378566452,
+    "r20": 6.2297734627831725,
+    "from_high": -33.21256038647342,
+    "from_low": 23.16258351893097,
+    "streak": -2
+   },
+   {
+    "ticker": "SIND",
+    "market_cap": 1201253045.0,
+    "industry": "Precious Metals",
+    "shortable": false,
+    "vs_industry": -23.180378508850985,
+    "pre": 1.055408970976246,
+    "pre_volume": 659.0,
+    "pre_volume_pct": 0.15653256845360428,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": -16.61166116611661,
+    "sd": 4.056305511859925,
+    "z": -4.09526874086457,
+    "vol_x": 1.6171999601423899,
+    "close": 7.58,
+    "avg_volume": 420998.65,
+    "gap": 3.630363036303641,
+    "range_pos": 0.11958820063087104,
+    "r5": -23.226351351351347,
+    "r20": -22.76975361087511,
+    "from_high": -60.0,
+    "from_low": 4.76848652384243,
+    "streak": -4
+   },
+   {
+    "ticker": "PLBL",
+    "market_cap": 2916444261.0,
+    "industry": "Consumer Electronics/Appliances",
+    "shortable": false,
+    "vs_industry": -22.88493968950913,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": -0.6834170854271404,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": -18.275154004106774,
+    "sd": 5.62110446093787,
+    "z": -3.25116783207007,
+    "vol_x": 1.4013809148838372,
+    "close": 7.96,
+    "avg_volume": 202872.75,
+    "gap": -6.776180698151957,
+    "range_pos": 0.4343434343434344,
+    "r5": 34.53038674033149,
+    "r20": 78.22506861848126,
+    "from_high": -32.25531914893617,
+    "from_low": 56.07843137254902,
+    "streak": -1
+   },
+   {
+    "ticker": "HDL",
+    "market_cap": 648348103.0,
+    "industry": "Restaurants",
+    "shortable": false,
+    "vs_industry": -10.474335499986285,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": null,
+    "stories": 0,
+    "earnings": [
+     "2026-11-25 before open"
+    ],
+    "date": "2026-11-23",
+    "r1": -8.316900157945394,
+    "sd": 2.624484174519817,
+    "z": -3.1689656347297572,
+    "vol_x": 19.486581096849473,
+    "close": 9.81,
+    "avg_volume": 42.85,
+    "gap": -4.391629828316146,
+    "range_pos": 0.0,
+    "r5": 0.092609915809172,
+    "r20": 3.2659363991700108,
+    "from_high": -46.48117839607201,
+    "from_low": 0.6825062862421349,
+    "streak": -1
+   },
+   {
+    "ticker": "CPAC",
+    "market_cap": 1074930389.0,
+    "industry": "Building Materials",
+    "shortable": true,
+    "vs_industry": -7.128932883540596,
+    "pre": 0.1577287066246047,
+    "pre_volume": 4222.0,
+    "pre_volume_pct": 6.0036616363604045,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": -2.7607361963190136,
+    "sd": 0.9387137810811333,
+    "z": -2.940977592913811,
+    "vol_x": 1.139799854245543,
+    "close": 12.68,
+    "avg_volume": 70323.75,
+    "gap": 0.23006134969325576,
+    "range_pos": 0.12727272727272762,
+    "r5": 1.0852713178294504,
+    "r20": 2.435192458758828,
+    "from_high": -3.9393939393939315,
+    "from_low": 102.87675397193645,
+    "streak": -2
+   },
+   {
+    "ticker": "VOD",
+    "market_cap": 31001460000.0,
+    "industry": "Telecommunications Equipment",
+    "shortable": true,
+    "vs_industry": -6.719471188829019,
+    "pre": 0.8968609865470878,
+    "pre_volume": 29884.0,
+    "pre_volume_pct": 0.7750762211885568,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": -4.564907275320962,
+    "sd": 1.734887374029749,
+    "z": -2.6312412803591507,
+    "vol_x": 2.0866445164939456,
+    "close": 13.38,
+    "avg_volume": 3855620.8,
+    "gap": -3.2453637660485035,
+    "range_pos": 0.42105263157894884,
+    "r5": -8.783344176968122,
+    "r20": -10.927573062261754,
+    "from_high": -24.449463579898367,
+    "from_low": 14.261315115286077,
+    "streak": -8
+   },
+   {
+    "ticker": "ASH",
+    "market_cap": 3192788986.0,
+    "industry": "Specialty Chemicals",
+    "shortable": true,
+    "vs_industry": -6.316513975492565,
+    "pre": 0.8469710020097665,
+    "pre_volume": 600.0,
+    "pre_volume_pct": 0.07579893019916548,
+    "after_hours": 0.07177720356015271,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": -3.784530386740348,
+    "sd": 1.4875419073676956,
+    "z": -2.544150432331232,
+    "vol_x": 1.7399619160908368,
+    "close": 69.66,
+    "avg_volume": 791567.9,
+    "gap": 0.8425414364640949,
+    "range_pos": 0.23681377825618843,
+    "r5": -5.322348633451012,
+    "r20": -0.8083299082065842,
+    "from_high": -12.377358490566037,
+    "from_low": 45.12499999999999,
+    "streak": -3
+   },
+   {
+    "ticker": "PXED",
+    "market_cap": 678517914.0,
+    "industry": "Other Consumer Services",
+    "shortable": true,
+    "vs_industry": -7.159522533964979,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 6.085313174946005,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": -5.798575788402848,
+    "sd": 2.4464093503771656,
+    "z": -2.3702393826727635,
+    "vol_x": 1.019004139308585,
+    "close": 18.52,
+    "avg_volume": 160304.55,
+    "gap": -11.037639877924732,
+    "range_pos": 0.9416666666666664,
+    "r5": 2.878074306645728,
+    "r20": -20.789685737308627,
+    "from_high": -48.41225626740947,
+    "from_low": 6.497987349051182,
+    "streak": -3
+   },
+   {
+    "ticker": "VXX",
+    "market_cap": 577512500.0,
+    "industry": "Commercial Banks",
+    "shortable": false,
+    "vs_industry": -16.213701029326455,
+    "pre": 5.338983050847457,
+    "pre_volume": 858789.0,
+    "pre_volume_pct": 4.085738930954904,
+    "after_hours": -1.5677966101694918,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": -13.58476748443792,
+    "sd": 5.9506042963337915,
+    "z": -2.282922339972697,
+    "vol_x": 1.2390859466459603,
+    "close": 23.6,
+    "avg_volume": 21019184.4,
+    "gap": -14.921274258513362,
+    "range_pos": 0.5864197530864211,
+    "r5": 45.80886278697276,
+    "r20": 45.88675213675213,
+    "from_high": -41.757156959526164,
+    "from_low": 42.68440145102783,
+    "streak": -1
+   },
+   {
+    "ticker": "CRWD",
+    "market_cap": 213971663933.0,
+    "industry": "Computer Software: Prepackaged Software",
+    "shortable": true,
+    "vs_industry": -12.804193059382595,
+    "pre": -1.306407618318417,
+    "pre_volume": 247879.0,
+    "pre_volume_pct": 2.687122106684913,
+    "after_hours": 1.4833708187778072,
+    "stories": 1,
+    "earnings": [
+     "2026-11-23 time not given"
+    ],
+    "date": "2026-11-23",
+    "r1": -8.921722454672242,
+    "sd": 4.038874466384972,
+    "z": -2.208962553534798,
+    "vol_x": 4.60283466617227,
+    "close": 208.97,
+    "avg_volume": 9224701.75,
+    "gap": -5.147315202231518,
+    "range_pos": 0.33787029623698966,
+    "r5": 1.2488416221702492,
+    "r20": -10.92130294677175,
+    "from_high": -27.185590851803486,
+    "from_low": 143.8958916900093,
+    "streak": -2
+   },
+   {
+    "ticker": "EROK",
+    "market_cap": 2789530080.0,
+    "industry": "Oil & Gas Production",
+    "shortable": false,
+    "vs_industry": 8.677077828295776,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 1,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 7.7157360406091335,
+    "sd": 3.3476320618177646,
+    "z": 2.3048339537109968,
+    "vol_x": 16.99106360196479,
+    "close": 21.22,
+    "avg_volume": 245898.85,
+    "gap": 12.791878172588822,
+    "range_pos": 0.22222222222222163,
+    "r5": -6.81173131504258,
+    "r20": 8.004385964912286,
+    "from_high": -22.611232676878203,
+    "from_low": 24.89699823425544,
+    "streak": 1
+   },
+   {
+    "ticker": "MIN",
+    "market_cap": 1578695374.0,
+    "industry": "Trusts Except Educational Religious and Charitable",
+    "shortable": false,
+    "vs_industry": -1.073970989669748,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 0.8823529411764675,
+    "sd": 0.7844125181890174,
+    "z": 1.1248583120697337,
+    "vol_x": 10.840715522525027,
+    "close": 13.72,
+    "avg_volume": 29857.9,
+    "gap": 0.5147058823529393,
+    "range_pos": 0.5997998999499754,
+    "r5": -2.3689877961234784,
+    "r20": -2.7181688125894166,
+    "from_high": -14.357053682896371,
+    "from_low": 1.7789053574872815,
+    "streak": 1
+   },
+   {
+    "ticker": "SIM",
+    "market_cap": 3721205883.0,
+    "industry": "Steel/Iron Ore",
+    "shortable": false,
+    "vs_industry": -0.6908329573435568,
+    "pre": 3.5839160839160833,
+    "pre_volume": 301.0,
+    "pre_volume_pct": 57.817902420284284,
+    "after_hours": 0.08741258741258306,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 3.857903504750304,
+    "sd": 2.7979837067609434,
+    "z": 1.3788155718806403,
+    "vol_x": 6.892047637341529,
+    "close": 22.88,
+    "avg_volume": 520.6,
+    "gap": 6.445272604300478,
+    "range_pos": 0.017241379310341448,
+    "r5": -9.55145443721388,
+    "r20": -14.678156467854375,
+    "from_high": -33.39155749636099,
+    "from_low": 3.857903504750304,
+    "streak": 1
+   },
+   {
+    "ticker": "BIP",
+    "market_cap": 20510186611.0,
+    "industry": "Marine Transportation",
+    "shortable": false,
+    "vs_industry": 2.507333930493083,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 1.0167992926613634,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": 5.676243868255071,
+    "sd": 1.6541997447276457,
+    "z": 3.431413821907965,
+    "vol_x": 5.330848210717912,
+    "close": 45.24,
+    "avg_volume": 1775552.9,
+    "gap": 2.7797243634664737,
+    "range_pos": 0.3502923811407105,
+    "r5": 8.40719169409978,
+    "r20": 15.577753779697634,
+    "from_high": -4.837830958836687,
+    "from_low": 36.22402890695573,
+    "streak": 2
+   },
+   {
+    "ticker": "WAFDP",
+    "market_cap": 1022033742.0,
+    "industry": "Major Banks",
+    "shortable": false,
+    "vs_industry": -2.396257770530752,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-23",
+    "r1": -0.9325681492108995,
+    "sd": 0.8467962605424089,
+    "z": -1.1012898765206522,
+    "vol_x": 4.924219139872366,
+    "close": 13.81,
+    "avg_volume": 60516.6,
+    "gap": 0.2869440459110528,
+    "range_pos": 0.14067995310668321,
+    "r5": -2.5174825174825277,
+    "r20": -8.108108108108114,
+    "from_high": -21.040594625500276,
+    "from_low": 0.43636363636363473,
+    "streak": -8
+   },
+   {
+    "ticker": "ADI",
+    "market_cap": 183529169869.0,
+    "industry": "Semiconductors",
+    "shortable": true,
+    "vs_industry": -3.682772770243581,
+    "pre": -13.135313531353132,
+    "pre_volume": 91879.0,
+    "pre_volume_pct": 1.7514034039757234,
+    "after_hours": -0.3036303630363002,
+    "stories": 1,
+    "earnings": [
+     "2026-11-24 before open"
+    ],
+    "date": "2026-11-23",
+    "r1": 9.490633672525428,
+    "sd": 3.001363213960679,
+    "z": 3.1621076810631443,
+    "vol_x": 1.6972679039032923,
+    "close": 378.75,
+    "avg_volume": 5246021.55,
+    "gap": 11.563367252543944,
+    "range_pos": 0.4165571616294345,
+    "r5": -13.078875292107451,
+    "r20": -11.545247653872703,
+    "from_high": -15.061335247022944,
+    "from_low": 68.89632107023411,
+    "streak": 1
+   },
+   {
+    "ticker": "MDT",
+    "market_cap": 128975473449.0,
+    "industry": "Biotechnology: Electromedical & Electrotherapeutic Apparatus",
+    "shortable": true,
+    "vs_industry": -1.6541337908477338,
+    "pre": -3.6934074662430483,
+    "pre_volume": 97817.0,
+    "pre_volume_pct": 1.319315537744864,
+    "after_hours": -0.4169976171564782,
+    "stories": 1,
+    "earnings": [
+     "2026-11-24 before open"
+    ],
+    "date": "2026-11-23",
+    "r1": 0.7804682809685826,
+    "sd": 1.6952621291154033,
+    "z": 0.4603820657374297,
+    "vol_x": 1.2751775361284303,
+    "close": 100.72,
+    "avg_volume": 7414223.3,
+    "gap": 0.6603962377426331,
+    "range_pos": 0.6289926289926306,
+    "r5": -2.8388100330546395,
+    "r20": 4.747929986374588,
+    "from_high": -5.276027461675914,
+    "from_low": 37.38916928113489,
+    "streak": 1
+   },
+   {
+    "ticker": "DLTR",
+    "market_cap": 26099374591.0,
+    "industry": "Department/Specialty Retail Stores",
+    "shortable": true,
+    "vs_industry": 1.3207925884084704,
+    "pre": 8.375269590222857,
+    "pre_volume": 123445.0,
+    "pre_volume_pct": 5.577443030290379,
+    "after_hours": 0.22940330697338585,
+    "stories": 1,
+    "earnings": [
+     "2026-11-24 before open"
+    ],
+    "date": "2026-11-23",
+    "r1": 0.8263264714409857,
+    "sd": 2.7826645495341187,
+    "z": 0.29695511504587624,
+    "vol_x": 1.689655066470723,
+    "close": 139.1,
+    "avg_volume": 2213290.2,
+    "gap": 0.0942302116555549,
+    "range_pos": 0.8312342569269481,
+    "r5": -0.08690614136732666,
+    "r20": 10.094964488069591,
+    "from_high": -6.3520382401454185,
+    "from_low": 61.96792778861961,
+    "streak": 1
+   },
+   {
+    "ticker": "BBY",
+    "market_cap": 20349878537.0,
+    "industry": "Consumer Electronics/Video Chains",
+    "shortable": true,
+    "vs_industry": -3.5018661819119945,
+    "pre": 4.123711340206193,
+    "pre_volume": 133440.0,
+    "pre_volume_pct": 4.844334108539332,
+    "after_hours": -0.44896907216495086,
+    "stories": 2,
+    "earnings": [
+     "2026-11-24 before open"
+    ],
+    "date": "2026-11-23",
+    "r1": -0.9698825931597765,
+    "sd": 2.714481638072188,
+    "z": -0.35729937515752824,
+    "vol_x": 2.7477426824334787,
+    "close": 97.0,
+    "avg_volume": 2754558.15,
+    "gap": 2.5523226135783617,
+    "range_pos": 0.21590909090909127,
+    "r5": -5.880657249927923,
+    "r20": -1.9224992490237347,
+    "from_high": -9.20153514930263,
+    "from_low": 76.04355716878402,
+    "streak": -3
+   },
+   {
+    "ticker": "BURL",
+    "market_cap": 14748191188.0,
+    "industry": "Department/Specialty Retail Stores",
+    "shortable": true,
+    "vs_industry": -3.6548776508649183,
+    "pre": 7.756421160061233,
+    "pre_volume": 191693.0,
+    "pre_volume_pct": 15.143646923209308,
+    "after_hours": -0.1318251403299886,
+    "stories": 1,
+    "earnings": [
+     "2026-11-24 before open"
+    ],
+    "date": "2026-11-23",
+    "r1": -4.149343767832403,
+    "sd": 2.7871161754387233,
+    "z": -1.4887588125669897,
+    "vol_x": 3.148714581719687,
+    "close": 235.16,
+    "avg_volume": 1265831.15,
+    "gap": 1.5244150974158321,
+    "range_pos": 0.19630484988452665,
+    "r5": 1.0211644568887346,
+    "r20": -0.9247667891612465,
+    "from_high": -37.84262416408954,
+    "from_low": 3.663213577253699,
+    "streak": -3
+   }
+  ],
+  "industry_moves": {
+   "ADI": 13.173,
+   "AEF": 1.885,
+   "ASH": 2.532,
+   "AVR": 3.128,
+   "BBY": 2.532,
+   "BIP": 3.169,
+   "BURL": -0.494,
+   "CHA": 2.157,
+   "CPAC": 4.368,
+   "CRWD": 3.882,
+   "CTRI": -0.961,
+   "DLTR": -0.494,
+   "ECAT": 1.885,
+   "EROK": -0.961,
+   "FWRD": 3.314,
+   "GCT": 3.411,
+   "HDL": 2.157,
+   "KYMR": 3.946,
+   "MDT": 2.435,
+   "MIN": 1.956,
+   "NVDA": 13.173,
+   "OTLY": 0.628,
+   "PLBL": 4.61,
+   "PXED": 1.361,
+   "SIM": 4.549,
+   "SIND": 6.569,
+   "VOD": 2.155,
+   "VXX": 2.629,
+   "WAFDP": 1.464,
+   "ZS": 3.384
+  },
+  "mentions": {
+   "META": 3,
+   "V": 2,
+   "CDNS": 1,
+   "MFG": 5,
+   "BA": 2,
+   "INTU": 1,
+   "HSHP": 1,
+   "CI": 2,
+   "APTV": 1,
+   "CMBT": 1,
+   "AMGN": 1,
+   "HON": 1,
+   "SAP": 1,
+   "KLAR": 1,
+   "DAN": 1,
+   "QGEN": 1,
+   "MT": 1,
+   "NOC": 1,
+   "CM": 1,
+   "AMD": 3,
+   "SPG": 1,
+   "LOGI": 1,
+   "MPC": 1,
+   "NBIS": 2,
+   "DIS": 1,
+   "FTK": 1,
+   "RCL": 1,
+   "HEI": 1,
+   "FTNT": 1,
+   "ING": 1,
+   "JPM": 3,
+   "CBK": 2,
+   "KO": 1,
+   "PNC": 1,
+   "AAPL": 1,
+   "BLTE": 1,
+   "VYLR": 1,
+   "EROK": 1,
+   "SII": 1,
+   "TIGO": 1,
+   "ZS": 1,
+   "MC": 1,
+   "J": 2,
+   "VC": 1,
+   "AQN": 1,
+   "KSS": 1,
+   "AAOI": 1,
+   "KYMR": 1,
+   "ESE": 1,
+   "IRON": 1,
+   "PVH": 1,
+   "HRL": 3,
+   "HIMS": 1,
+   "WMS": 1,
+   "RGEN": 1,
+   "DY": 1,
+   "CCC": 1,
+   "NXE": 1,
+   "DPZ": 1,
+   "MDT": 1,
+   "ACIW": 1,
+   "MMED": 1,
+   "SNEX": 2,
+   "AGI": 1,
+   "UGI": 1,
+   "FIS": 1,
+   "MDLN": 1,
+   "OLLI": 1,
+   "HUM": 1,
+   "SJM": 1,
+   "PODD": 1,
+   "COIN": 2,
+   "CBOE": 1,
+   "RJF": 1,
+   "INSM": 1,
+   "BBY": 2,
+   "SYM": 1,
+   "SRE": 1,
+   "DLTR": 1,
+   "FSLR": 1,
+   "CRCL": 1,
+   "VSXY": 1,
+   "BE": 1,
+   "EPAM": 1,
+   "DRI": 1,
+   "YUM": 1,
+   "BURL": 1,
+   "ADI": 1,
+   "LHX": 1,
+   "MS": 3,
+   "IBKR": 1,
+   "IT": 1,
+   "TD": 1,
+   "DKS": 1,
+   "GH": 1,
+   "GME": 1,
+   "EFX": 1,
+   "TSLA": 1,
+   "SHOP": 1,
+   "CME": 1,
+   "RY": 1,
+   "MRK": 1,
+   "AMZN": 2,
+   "GLOB": 1,
+   "NOK": 1,
+   "EOG": 1,
+   "INTC": 1,
+   "GEV": 1,
+   "GM": 1,
+   "HPE": 1,
+   "HOOD": 1,
+   "WDC": 1,
+   "MU": 1,
+   "GOOG": 1,
+   "ANT": 1,
+   "GS": 2,
+   "MRNA": 1,
+   "RTX": 1,
+   "CRWD": 1,
+   "PGR": 1,
+   "APP": 1,
+   "BAC": 1,
+   "CSCO": 1,
+   "BLK": 1,
+   "TXN": 1,
+   "WMT": 1,
+   "MSFT": 1,
+   "TSM": 2,
+   "HSBC": 1,
+   "BCS": 1,
+   "TCOM": 1,
+   "EQNR": 1,
+   "BWLP": 1,
+   "BIDU": 1,
+   "SU": 1,
+   "JD": 2,
+   "AZN": 1,
+   "RYAAY": 1,
+   "RIO": 1,
+   "CLX": 1,
+   "AXS": 1,
+   "SHOE": 1,
+   "AEP": 1,
+   "PAX": 1,
+   "PAY": 1,
+   "TRN": 1,
+   "STM": 1,
+   "SNY": 1,
+   "ERIC": 1,
+   "TM": 1,
+   "OTLY": 1,
+   "VALN": 1,
+   "GAM": 1,
+   "GDS": 1
+  },
+  "earnings": {
+   "BJ": [
+    "2026-11-20 time not given"
+   ],
+   "MOG.B": [
+    "2026-11-20 time not given"
+   ],
+   "FRO": [
+    "2026-11-20 time not given"
+   ],
+   "IESC": [
+    "2026-11-20 time not given"
+   ],
+   "BKE": [
+    "2026-11-20 time not given"
+   ],
+   "RLX": [
+    "2026-11-20 time not given"
+   ],
+   "WRD": [
+    "2026-11-20 time not given"
+   ],
+   "FUFU": [
+    "2026-11-20 time not given"
+   ],
+   "DLNG": [
+    "2026-11-20 time not given"
+   ],
+   "GHG": [
+    "2026-11-20 time not given"
+   ],
+   "MNTS": [
+    "2026-11-20 time not given"
+   ],
+   "SUNE": [
+    "2026-11-20 time not given"
+   ],
+   "EQS": [
+    "2026-11-20 time not given"
+   ],
+   "XCUR": [
+    "2026-11-20 time not given"
+   ],
+   "GITS": [
+    "2026-11-20 time not given"
+   ],
+   "OLOX": [
+    "2026-11-20 time not given"
+   ],
+   "AMSS": [
+    "2026-11-20 time not given"
+   ],
+   "VIVK": [
+    "2026-11-20 time not given"
+   ],
+   "CRWD": [
+    "2026-11-23 time not given"
+   ],
+   "HPE": [
+    "2026-11-23 time not given"
+   ],
+   "A": [
+    "2026-11-23 time not given"
+   ],
+   "ZS": [
+    "2026-11-23 time not given"
+   ],
+   "ZM": [
+    "2026-11-23 time not given"
+   ],
+   "SYM": [
+    "2026-11-23 time not given"
+   ],
+   "J": [
+    "2026-11-23 time not given"
+   ],
+   "SMTC": [
+    "2026-11-23 time not given"
+   ],
+   "AMTM": [
+    "2026-11-23 time not given"
+   ],
+   "CENT": [
+    "2026-11-23 time not given"
+   ],
+   "CENTA": [
+    "2026-11-23 time not given"
+   ],
+   "DAC": [
+    "2026-11-23 time not given"
+   ],
+   "FSCO": [
+    "2026-11-23 after close"
+   ],
+   "CTY": [
+    "2026-11-23 time not given"
+   ],
+   "TUYA": [
+    "2026-11-23 time not given"
+   ],
+   "CMP": [
+    "2026-11-23 time not given"
+   ],
+   "VREX": [
+    "2026-11-23 time not given"
+   ],
+   "FLNC": [
+    "2026-11-23 time not given"
+   ],
+   "VNET": [
+    "2026-11-23 time not given"
+   ],
+   "PFLT": [
+    "2026-11-23 time not given"
+   ],
+   "ALCO": [
+    "2026-11-23 time not given"
+   ],
+   "HTT": [
+    "2026-11-23 time not given"
+   ],
+   "PNNT": [
+    "2026-11-23 time not given"
+   ],
+   "EPSN": [
+    "2026-11-23 time not given"
+   ],
+   "GDEV": [
+    "2026-11-23 time not given"
+   ],
+   "LOT": [
+    "2026-11-23 time not given"
+   ],
+   "SOWG": [
+    "2026-11-23 time not given"
+   ],
+   "ZSQR": [
+    "2026-11-23 time not given"
+   ],
+   "HTLM": [
+    "2026-11-23 time not given"
+   ],
+   "LX": [
+    "2026-11-23 time not given"
+   ],
+   "FSI": [
+    "2026-11-23 time not given"
+   ],
+   "ZSTK": [
+    "2026-11-23 time not given"
+   ],
+   "OFAL": [
+    "2026-11-23 time not given"
+   ],
+   "CRGO": [
+    "2026-11-23 time not given"
+   ],
+   "THCH": [
+    "2026-11-23 time not given"
+   ],
+   "BNAI": [
+    "2026-11-23 time not given"
+   ],
+   "CIRC": [
+    "2026-11-23 time not given"
+   ],
+   "LOCL": [
+    "2026-11-23 time not given"
+   ],
+   "COSM": [
+    "2026-11-23 time not given"
+   ],
+   "EONR": [
+    "2026-11-23 time not given"
+   ],
+   "SOAR": [
+    "2026-11-23 time not given"
+   ],
+   "DCM": [
+    "2026-11-23 time not given"
+   ],
+   "SURG": [
+    "2026-11-23 time not given"
+   ],
+   "DFNS": [
+    "2026-11-23 time not given"
+   ],
+   "ATXG": [
+    "2026-11-23 time not given"
+   ],
+   "BLRX": [
+    "2026-11-23 time not given"
+   ],
+   "NIKI": [
+    "2026-11-23 time not given"
+   ],
+   "CENN": [
+    "2026-11-23 time not given"
+   ],
+   "XWEL": [
+    "2026-11-23 time not given"
+   ],
+   "OLB": [
+    "2026-11-23 time not given"
+   ],
+   "LIMN": [
+    "2026-11-23 time not given"
+   ],
+   "SONM": [
+    "2026-11-23 time not given"
+   ],
+   "BURU": [
+    "2026-11-23 time not given"
+   ],
+   "KALA": [
+    "2026-11-23 time not given"
+   ],
+   "WORX": [
+    "2026-11-23 time not given"
+   ],
+   "POLA": [
+    "2026-11-23 time not given"
+   ],
+   "DBGI": [
+    "2026-11-23 time not given"
+   ],
+   "DELL": [
+    "2026-11-24 after close"
+   ],
+   "BHP": [
+    "2026-11-24 time not given"
+   ],
+   "ADI": [
+    "2026-11-24 before open"
+   ],
+   "MDT": [
+    "2026-11-24 before open"
+   ],
+   "ADSK": [
+    "2026-11-24 after close"
+   ],
+   "WDAY": [
+    "2026-11-24 after close"
+   ],
+   "DLTR": [
+    "2026-11-24 before open"
+   ],
+   "HPQ": [
+    "2026-11-24 after close"
+   ],
+   "BBY": [
+    "2026-11-24 before open"
+   ],
+   "BURL": [
+    "2026-11-24 before open"
+   ],
+   "NTNX": [
+    "2026-11-24 after close"
+   ],
+   "SJM": [
+    "2026-11-24 before open"
+   ],
+   "DKS": [
+    "2026-11-24 before open"
+   ],
+   "URBN": [
+    "2026-11-24 after close"
+   ],
+   "DY": [
+    "2026-11-24 before open"
+   ],
+   "VIPS": [
+    "2026-11-24 before open"
+   ],
+   "ANF": [
+    "2026-11-24 before open"
+   ],
+   "CMBT": [
+    "2026-11-24 before open"
+   ],
+   "MMED": [
+    "2026-11-24 before open"
+   ],
+   "BILI": [
+    "2026-11-24 before open"
+   ],
+   "GGAL": [
+    "2026-11-24 time not given"
+   ],
+   "BWLP": [
+    "2026-11-24 before open"
+   ],
+   "KSS": [
+    "2026-11-24 before open"
+   ],
+   "AMBA": [
+    "2026-11-24 after close"
+   ],
+   "BBAR": [
+    "2026-11-24 after close"
+   ],
+   "DRVN": [
+    "2026-11-24 time not given"
+   ],
+   "KC": [
+    "2026-11-24 before open"
+   ],
+   "CLSK": [
+    "2026-11-24 after close"
+   ],
+   "GDRX": [
+    "2026-11-24 time not given"
+   ],
+   "ITRN": [
+    "2026-11-24 before open"
+   ],
+   "TIGR": [
+    "2026-11-24 before open"
+   ],
+   "MOV": [
+    "2026-11-24 before open"
+   ],
+   "QFIN": [
+    "2026-11-24 after close"
+   ],
+   "VALN": [
+    "2026-11-24 before open"
+   ],
+   "TITN": [
+    "2026-11-24 before open"
+   ],
+   "NOAH": [
+    "2026-11-24 after close"
+   ],
+   "EMBC": [
+    "2026-11-24 before open"
+   ],
+   "ZH": [
+    "2026-11-24 before open"
+   ],
+   "BZUN": [
+    "2026-11-24 before open"
+   ],
+   "FLX": [
+    "2026-11-24 before open"
+   ],
+   "ZENA": [
+    "2026-11-24 time not given"
+   ],
+   "AFJK": [
+    "2026-11-24 time not given"
+   ],
+   "DAVA": [
+    "2026-11-24 time not given"
+   ],
+   "JFIN": [
+    "2026-11-24 time not given"
+   ],
+   "AVXL": [
+    "2026-11-24 time not given"
+   ],
+   "EVTL": [
+    "2026-11-24 time not given"
+   ],
+   "YRD": [
+    "2026-11-24 time not given"
+   ],
+   "PSHG": [
+    "2026-11-24 time not given"
+   ],
+   "DE": [
+    "2026-11-25 before open"
+   ],
+   "LI": [
+    "2026-11-25 before open"
+   ],
+   "BZ": [
+    "2026-11-25 before open"
+   ],
+   "BMA": [
+    "2026-11-25 time not given"
+   ],
+   "GDS": [
+    "2026-11-25 before open"
+   ],
+   "IMKTA": [
+    "2026-11-25 time not given"
+   ],
+   "NWCL": [
+    "2026-11-25 time not given"
+   ],
+   "HDL": [
+    "2026-11-25 before open"
+   ],
+   "FINV": [
+    "2026-11-25 after close"
+   ],
+   "GOTU": [
+    "2026-11-25 before open"
+   ],
+   "PSNY": [
+    "2026-11-25 before open"
+   ],
+   "DSX": [
+    "2026-11-25 before open"
+   ],
+   "GASS": [
+    "2026-11-25 before open"
+   ],
+   "EH": [
+    "2026-11-25 time not given"
+   ],
+   "OMSE": [
+    "2026-11-25 before open"
+   ],
+   "YSG": [
+    "2026-11-25 before open"
+   ],
+   "LEE": [
+    "2026-11-25 time not given"
+   ],
+   "CAAS": [
+    "2026-11-25 time not given"
+   ],
+   "PLG": [
+    "2026-11-25 time not given"
+   ],
+   "DSC": [
+    "2026-11-25 time not given"
+   ],
+   "AMBR": [
+    "2026-11-25 time not given"
+   ],
+   "CMCM": [
+    "2026-11-25 time not given"
+   ],
+   "LITB": [
+    "2026-11-25 time not given"
+   ],
+   "SJ": [
+    "2026-11-25 time not given"
+   ],
+   "AACG": [
+    "2026-11-25 time not given"
+   ],
+   "NNOX": [
+    "2026-11-25 before open"
+   ],
+   "BRLS": [
+    "2026-11-25 time not given"
+   ],
+   "CETY": [
+    "2026-11-25 time not given"
+   ],
+   "OPHI": [
+    "2026-11-25 time not given"
+   ],
+   "LEXX": [
+    "2026-11-25 time not given"
+   ],
+   "REBN": [
+    "2026-11-25 time not given"
+   ],
+   "ALAR": [
+    "2026-11-25 time not given"
+   ],
+   "ADXN": [
+    "2026-11-25 before open"
+   ],
+   "EOCN": [
+    "2026-11-25 time not given"
+   ],
+   "EDVA": [
+    "2026-11-25 time not given"
+   ],
+   "BRTX": [
+    "2026-11-25 time not given"
+   ],
+   "SRTM": [
+    "2026-11-25 time not given"
+   ],
+   "AEXA": [
+    "2026-11-25 time not given"
+   ],
+   "KT": [
+    "2026-11-27 time not given"
+   ],
+   "NAT": [
+    "2026-11-27 time not given"
+   ],
+   "XYF": [
+    "2026-11-27 before open"
+   ],
+   "AREC": [
+    "2026-11-27 time not given"
+   ],
+   "SIDU": [
+    "2026-11-27 time not given"
+   ],
+   "PVL": [
+    "2026-11-27 time not given"
+   ],
+   "NORD": [
+    "2026-11-27 time not given"
+   ],
+   "AAME": [
+    "2026-11-27 time not given"
+   ],
+   "LEDS": [
+    "2026-11-27 time not given"
+   ],
+   "CELU": [
+    "2026-11-27 time not given"
+   ],
+   "ASBP": [
+    "2026-11-27 time not given"
+   ],
+   "SCLX": [
+    "2026-11-27 time not given"
+   ],
+   "ICON": [
+    "2026-11-27 time not given"
+   ],
+   "ENLV": [
+    "2026-11-27 time not given"
+   ],
+   "VBIO": [
+    "2026-11-27 time not given"
+   ],
+   "RBRK": [
+    "2026-11-30 after close"
+   ],
+   "CHA": [
+    "2026-11-30 before open"
+   ],
+   "NNE": [
+    "2026-11-30 after close"
+   ],
+   "CURR": [
+    "2026-11-30 time not given"
+   ],
+   "AIV": [
+    "2026-11-30 time not given"
+   ],
+   "CBAT": [
+    "2026-11-30 time not given"
+   ],
+   "HMR": [
+    "2026-11-30 before open"
+   ],
+   "ANTA": [
+    "2026-11-30 time not given"
+   ],
+   "PXS": [
+    "2026-11-30 after close"
+   ],
+   "BOSC": [
+    "2026-11-30 before open"
+   ],
+   "MOB": [
+    "2026-11-30 after close"
+   ],
+   "GDC": [
+    "2026-11-30 time not given"
+   ],
+   "IPST": [
+    "2026-11-30 time not given"
+   ],
+   "MRVL": [
+    "2026-12-01 after close"
+   ],
+   "OKTA": [
+    "2026-12-01 after close"
+   ],
+   "NTAP": [
+    "2026-12-01 after close"
+   ],
+   "CPRT": [
+    "2026-12-01 before open"
+   ],
+   "TCOM": [
+    "2026-12-01 after close"
+   ],
+   "MDB": [
+    "2026-12-01 after close"
+   ],
+   "CRDO": [
+    "2026-12-01 after close"
+   ],
+   "HQY": [
+    "2026-12-01 after close"
+   ],
+   "GTLB": [
+    "2026-12-01 after close"
+   ],
+   "NIO": [
+    "2026-12-01 before open"
+   ],
+   "BOX": [
+    "2026-12-01 after close"
+   ],
+   "NCNO": [
+    "2026-12-01 after close"
+   ],
+   "ASAN": [
+    "2026-12-01 after close"
+   ],
+   "VSTS": [
+    "2026-12-01 before open"
+   ],
+   "VLGEA": [
+    "2026-12-01 time not given"
+   ],
+   "OOMA": [
+    "2026-12-01 after close"
+   ],
+   "CTRN": [
+    "2026-12-01 before open"
+   ],
+   "CRNC": [
+    "2026-12-01 after close"
+   ],
+   "RGCO": [
+    "2026-12-01 after close"
+   ],
+   "HERE": [
+    "2026-12-01 time not given"
+   ],
+   "CRM": [
+    "2026-12-02 after close"
+   ],
+   "BMO": [
+    "2026-12-02 before open"
+   ],
+   "BNS": [
+    "2026-12-02 before open"
+   ],
+   "SNOW": [
+    "2026-12-02 after close"
+   ],
+   "FIVE": [
+    "2026-12-02 after close"
+   ],
+   "NTSK": [
+    "2026-12-02 after close"
+   ],
+   "DCI": [
+    "2026-12-02 before open"
+   ],
+   "DSGX": [
+    "2026-12-02 after close"
+   ],
+   "VFS": [
+    "2026-12-02 before open"
+   ],
+   "M": [
+    "2026-12-02 before open"
+   ],
+   "THO": [
+    "2026-12-02 time not given"
+   ],
+   "SIG": [
+    "2026-12-02 before open"
+   ],
+   "AEO": [
+    "2026-12-02 after close"
+   ],
+   "KEN": [
+    "2026-12-02 time not given"
+   ],
+   "BLBD": [
+    "2026-12-02 after close"
+   ],
+   "CBRL": [
+    "2026-12-02 before open"
+   ],
+   "AI": [
+    "2026-12-02 time not given"
+   ],
+   "CXM": [
+    "2026-12-02 before open"
+   ],
+   "PHR": [
+    "2026-12-02 after close"
+   ],
+   "YB": [
+    "2026-12-02 time not given"
+   ],
+   "MEI": [
+    "2026-12-02 time not given"
+   ],
+   "WDH": [
+    "2026-12-02 before open"
+   ],
+   "AOUT": [
+    "2026-12-02 after close"
+   ],
+   "SY": [
+    "2026-12-02 before open"
+   ],
+   "TLYS": [
+    "2026-12-02 after close"
+   ],
+   "HNNA": [
+    "2026-12-02 time not given"
+   ],
+   "PTIV": [
+    "2026-12-02 time not given"
+   ],
+   "CTRM": [
+    "2026-12-02 time not given"
+   ]
+  },
+  "premarket_movers": [
+   {
+    "ticker": "ETR",
+    "pct": 7.196122296793428,
+    "z": 6.5862854877040435,
+    "volume": 1310.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 0.0361150251420537
+   },
+   {
+    "ticker": "AMH",
+    "pct": 5.919003115264787,
+    "z": 5.648401379199617,
+    "volume": 120.0,
+    "time": "2026-11-24T12:00:00Z",
+    "volume_pct": 0.004645826842484112
+   },
+   {
+    "ticker": "DKS",
+    "pct": 12.964763970973303,
+    "z": 4.51184546203553,
+    "volume": 290988.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 15.34651000697003
+   },
+   {
+    "ticker": "SNY",
+    "pct": 6.735086593970485,
+    "z": 4.388942086379178,
+    "volume": 2006590.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 44.62872561834285
+   },
+   {
+    "ticker": "MCHB",
+    "pct": 4.895104895104896,
+    "z": 4.064008200475291,
+    "volume": 500.0,
+    "time": "2026-11-24T12:00:00Z",
+    "volume_pct": 0.10607245724696575
+   },
+   {
+    "ticker": "EMBC",
+    "pct": 12.445604873803306,
+    "z": 3.9272229891121335,
+    "volume": 31837.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 3.8275695372255996
+   },
+   {
+    "ticker": "ZION",
+    "pct": 4.7755134788189935,
+    "z": 3.6434910227549997,
+    "volume": 1480.0,
+    "time": "2026-11-24T12:00:00Z",
+    "volume_pct": 0.0990033937092374
+   },
+   {
+    "ticker": "INSM",
+    "pct": 14.494600576832784,
+    "z": 3.533575059006371,
+    "volume": 13828816.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 314.8958656325631
+   },
+   {
+    "ticker": "ANF",
+    "pct": 10.651477394090424,
+    "z": 3.5067466252552597,
+    "volume": 170133.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 17.127948492426327
+   },
+   {
+    "ticker": "A",
+    "pct": 6.225857759600095,
+    "z": 3.3000192438019345,
+    "volume": 2515.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 0.12388470210864325
+   },
+   {
+    "ticker": "RNW",
+    "pct": -1.7341040462427793,
+    "z": -7.255186432196334,
+    "volume": 1000.0,
+    "time": "2026-11-24T09:00:00Z",
+    "volume_pct": 0.05849325926604881
+   },
+   {
+    "ticker": "SHOE",
+    "pct": -22.83298097251586,
+    "z": -6.67204496643244,
+    "volume": 290325.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 40.088017586947814
+   },
+   {
+    "ticker": "FCF",
+    "pct": -7.001972386587784,
+    "z": -6.599034701750446,
+    "volume": 427.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 0.05241622212104513
+   },
+   {
+    "ticker": "INN",
+    "pct": -10.666666666666668,
+    "z": -6.343271203832554,
+    "volume": 649.0,
+    "time": "2026-11-24T12:00:00Z",
+    "volume_pct": 0.06115788941013923
+   },
+   {
+    "ticker": "VREX",
+    "pct": -0.8264462809917328,
+    "z": -3.618883540479331,
+    "volume": 1911.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 0.27391409045041737
+   },
+   {
+    "ticker": "ADI",
+    "pct": -10.759075907590754,
+    "z": -3.584729717997973,
+    "volume": 112332.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 2.141279804693139
+   },
+   {
+    "ticker": "FRT",
+    "pct": -3.632259815451422,
+    "z": -3.583494304994107,
+    "volume": 737.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 0.0785695815999208
+   },
+   {
+    "ticker": "CENT",
+    "pct": -5.4917848300697685,
+    "z": -3.5189322369334697,
+    "volume": 603.0,
+    "time": "2026-11-24T13:00:00Z",
+    "volume_pct": 0.6612317003030371
+   },
+   {
+    "ticker": "LIF",
+    "pct": -9.420289855072461,
+    "z": -3.17891904353302,
+    "volume": 301.0,
+    "time": "2026-11-24T12:00:00Z",
+    "volume_pct": 0.035089868826259626
+   },
+   {
+    "ticker": "BVN",
+    "pct": -9.046927914852443,
+    "z": -2.9939327220953595,
+    "volume": 243.0,
+    "time": "2026-11-24T09:00:00Z",
+    "volume_pct": 0.017286949814810885
+   }
+  ]
+ },
+ "economy": [
+  {
+   "date": "2026-11-23",
+   "time": "08:30",
+   "event": "Chicago Fed National Activity",
+   "actual": "-0.06",
+   "consensus": "0.20",
+   "previous": "0.05"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "09:45",
+   "event": "S&P Global Manufacturing PMI",
+   "actual": "54.5",
+   "consensus": "54.5",
+   "previous": "54.9"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "09:45",
+   "event": "S&P Global Composite PMI",
+   "actual": "54.6",
+   "consensus": "55.6",
+   "previous": "55.9"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "09:45",
+   "event": "S&P Global Services PMI",
+   "actual": "54.7",
+   "consensus": "55.6",
+   "previous": "56.1"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "11:30",
+   "event": "3-Month Bill Auction",
+   "actual": "4.180%",
+   "consensus": "4.111%",
+   "previous": "4.155%"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "11:30",
+   "event": "6-Month Bill Auction",
+   "actual": "4.340%",
+   "consensus": "",
+   "previous": "4.310%"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "13:00",
+   "event": "2-Year Note Auction",
+   "actual": "4.700%",
+   "consensus": "",
+   "previous": "4.708%"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "16:00",
+   "event": "FOMC Member Williams Speaks",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-24",
+   "time": "08:15",
+   "event": "ADP Employment Change Weekly",
+   "actual": "",
+   "consensus": "",
+   "previous": "23.80K"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "08:55",
+   "event": "Redbook",
+   "actual": "",
+   "consensus": "",
+   "previous": "9.5%"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "09:00",
+   "event": "House Price Index",
+   "actual": "",
+   "consensus": "0.2%",
+   "previous": "0.3%"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "09:00",
+   "event": "House Price Index",
+   "actual": "",
+   "consensus": "",
+   "previous": "2.4%"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "09:00",
+   "event": "House Price Index",
+   "actual": "",
+   "consensus": "",
+   "previous": "444.6"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "09:00",
+   "event": "S&P/CS HPI Composite - 20 s.a.",
+   "actual": "",
+   "consensus": "",
+   "previous": "0.3%"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "09:00",
+   "event": "S&P/CS HPI Composite - 20 n.s.a.",
+   "actual": "",
+   "consensus": "2.7%",
+   "previous": "2.7%"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "09:00",
+   "event": "S&P/CS HPI Composite - 20 n.s.a.",
+   "actual": "",
+   "consensus": "",
+   "previous": "-0.4%"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "10:00",
+   "event": "CB Consumer Confidence",
+   "actual": "",
+   "consensus": "92.4",
+   "previous": "91.7"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "10:00",
+   "event": "Richmond Manufacturing Index",
+   "actual": "",
+   "consensus": "-2",
+   "previous": "-2"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "10:00",
+   "event": "Richmond Manufacturing Shipments",
+   "actual": "",
+   "consensus": "",
+   "previous": "0"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "10:00",
+   "event": "Richmond Services Index",
+   "actual": "",
+   "consensus": "",
+   "previous": "2"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "11:30",
+   "event": "52-Week Bill Auction",
+   "actual": "",
+   "consensus": "",
+   "previous": "3.980%"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "13:00",
+   "event": "5-Year Note Auction",
+   "actual": "",
+   "consensus": "",
+   "previous": "4.708%"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "13:00",
+   "event": "M2 Money Supply",
+   "actual": "",
+   "consensus": "",
+   "previous": "23.41T"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "16:30",
+   "event": "API Weekly Crude Oil Stock",
+   "actual": "",
+   "consensus": "",
+   "previous": "5.300M"
+  }
+ ],
+ "summary": "US equities rallied sharply in the 2026-11-23 session. The Nasdaq 100 (QQQ) rose 7.00%, the S&P 500 (SPY) gained 4.71%, and the Dow (DIA) added 3.06%. Technology led, with XLK up 8.97%. Energy lagged: XLE fell 1.06% on the day and 6.00% over five days, and oil (USO) dropped 4.49%. Gold (GLD) rose 3.14%, and the VIX short-term futures proxy (VIXY) fell 12.99%. Economic data were mixed. The Chicago Fed National Activity Index printed -0.06 against a 0.20 consensus, and the S&P Global Composite PMI came in at 54.6 against 55.6 expected.\n\nPre-market, as of about 13:17 UTC, SPY was down 1.46%, QQQ down 2.43%, and XLK down 3.44%. Individual pre-market moves rest on thin volume and may not reflect real prices; SHOE, for instance, is down 22.8% on about 40% of an average day's volume. Today's calendar includes ADP employment, Consumer Confidence (consensus 92.4), house price indices, and a 5-year note auction.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 5520,
+   "output_tokens": 1329,
+   "output_tokens_details": {
+    "thinking_tokens": 915
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0012165
+ }
+}
