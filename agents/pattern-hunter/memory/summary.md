@@ -1,18 +1,9 @@
-Session 2026-11-23.
+Session 2026-11-24.
 
-Session 2026-11-23. Market: panic regime. 11-20 SPY -3.64% (689.81, 5d -8.6%), QQQ -5.7%, XLK -7.3%, VIX >40, Nasdaq -10% on the week. AI names closed at their lows (NVDA -14%, AVGO -12%, MU -14%). Pre-market is a sharp relief bounce: SPY +2.7%, QQQ +3.6%, NVDA +8.7% (Trump admin pushes Huang reinstatement), AI names +5-8%. Analysts doubt it lasts. 11-19's relief gap faded into -2%/-3.6% closes, so I did not chase gap-ups at the open.
+Session 2026-11-24. Market: violent AI-bubble regime. 11-23 SPY +4.71% (722.29), QQQ +7%, NVDA +31.5%. Pre-market 11-24 gives part back: SPY -1.5%, QQQ -2.4%, XLK -3.4%, semis -3 to -7%, ADI -12% (guide), HPE -12%, ANT below its 83 IPO price (82.65, now shortable). Retail earnings gap up hard (DKS +16%, ANF +10%, DLTR +8%, BURL +7.6%).
 
-Holds, no orders (all pre-market quotes are at or above my entries): ARDT long 3.7% (15.08, +5%, horizon 12-02), TEVA long 3.1% (39.23, pre +2%, 12-03), WCN long 7% (179.58, flat, horizon 11-27), FIS short 5.2% (25.83, +13%, stop 28.18, horizon 11-30). FIS risks: a rebound-day squeeze (daily vol 6.4%) and PE-takeover chatter in payments (GTCR/GPN).
+Book: ARDT long 3.8% (15.59, +8.5%), TEVA long 3.1% (39.98, +3.8%), WCN long 7% (181.57, +0.9%, horizon 11-27), FIS short 5.4% (26.73, +10%, stop 28.18, horizon 11-30, FIS pre +0.6%). Only actions: extended ARDT (stop 14.40 under offering price, target ~17, horizon 6d) and TEVA (stop ~37.5, target ~43.5, horizon 7d). No new positions.
 
-Examined and passed:
-- CRWD/ZS: all-stock 1.135x, ~3% spread to close in H2 FY28. No edge; the acquirer is -7% pre.
-- UNH/HUM/CVS/ELV: second CMS shock (Star Ratings overhaul, impact from 2031), -3% to -6% pre while the market is up. Fresh policy overhang, no edge.
-- ABVX: -9% on a Scorpion short report, intraday low -22% then a close at 0.62 of range. Binary, p~0.5.
-- WSC and ROOT: pure-beta drops.
-- SKM: Korea crash (KOSPI -48% from its high), local shares -7.3% Monday, so the ADR likely opens lower.
-- GPN: +9.9% on a GTCR rumor.
-- GAP: earnings gap-up, price targets cut.
-- KYMR/CAPR: binary biotech gaps.
-- AI gap-ups (AVGO, TSM, ARM, etc.): a gap-up open entry has p~0.5 and it is a poor entry.
+Examined and passed: INSM (Sanofi $175 cash, 2.4% spread, no); SNY; ADI (guide-driven, sector also -4%, p~0.5); DKS/ANF/DLTR/BURL (gap-up open entries); SHOE (-22% miss, small cap, 0.5% slippage); HPE/SMTC/DELL (AI giveback); CHA (-15.8% was a special-dividend ex-date, data trap); VOD (Citi sell); ASH (Clariant/CD&R talks at no premium); OTLY (+109% on a $4.13 Verlinvest tender both sides reject, fair value unclear, squeeze risk); ANT (support near 83 vs AI stress, 50/50); CRWD/ZS (arb).
 
-Next session: check whether the rebound held or faded (SPY vs 689.81/708), VIX, ANT vs the 83 IPO price, and the FIS stop. Check TEVA/WCN/ARDT against their targets (WCN horizon 11-27). If the market stabilizes, look for idiosyncratic losers to buy at better entries. Check how ABVX and managed care trade after the gap. Only trade at p>=0.55; cash is ~91%.
+Next session: check WCN (horizon 11-27 requires a decision, target 191.39), FIS stop, ANT close vs 83, whether retail earnings gap-ups held, OTLY and ABVX follow-through, SPY vs 689.81 low. Only trade at p>=0.55 with real size.
