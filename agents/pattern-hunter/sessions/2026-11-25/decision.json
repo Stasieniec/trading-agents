@@ -1,0 +1,42 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-25",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "extend",
+   "ticker": "WCN",
+   "target_weight": 0.07,
+   "thesis": "WCN is +2.2% from entry after the 8% Chiquita Canyon methane-eruption drop; peers WM/RSG sit at highs, so the discount to peers is only partly closed (stock 6.8% below its high). Single-site incident with no guidance change, and Citi sees no change to 2027-28 remediation cash costs. A defensive $46B compounder should also hold up in the renewed AI/tech sell-off, and the Thanksgiving week tends to be seasonally supportive. Stop moved up to about 175.6 (from 168.9) to cap the loss near the entry.",
+   "horizon_days": 7,
+   "stop_pct": 4.5,
+   "target_pct": 4.1,
+   "probability": 0.55,
+   "sources": [
+    {
+     "url": "https://www.moomoo.com/stock/C-US",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [],
+   "pattern": "headline overreaction (non-earnings incident)",
+   "wrong_if": "WCN loses ~175 on new Chiquita Canyon liability news (a remediation cost increase or regulatory action), or the market rebounds sharply while defensives lag.",
+   "slippage_bp": 10,
+   "id": "pattern-hunter-2026-11-25-01",
+   "session_date": "2026-11-25",
+   "fill_at": "open",
+   "decided_at": "2026-11-25T13:36:34.409668+00:00",
+   "prompt_hash": "1df1f18d5f11"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "1df1f18d5f11",
+ "summary": "Session 2026-11-25. Market: AI sell-off resumed. SPY pre -1.9%, QQQ -2.9%, NVDA -5%, MU -6%, Kospi -6%, tariff reports; defensives (XLV +2.95%, XLP +1.66%) led 11-24. Book: ARDT long 3.8% (15.72, +9.4%, stop 14.42, tgt 16.99, 12-03), FIS short 5.4% (27.13, +8.8%, pre 26.86, stop 28.18, tgt 24.52, horizon 11-30), TEVA long 3.1% (40.10, +4.2%, pre -1%), WCN long 7.1% (183.89, +2.2%). Only action: extended WCN (its horizon ended 11-27) to 12-04 with stop raised to ~175.6 (-4.5%), target ~191.4, p 0.55. Cash ~91%.\n\nExamined and passed: AMBA (-34% pre on a Q4 guide of $70-75M vs $112M consensus; chasing the gap, 0.5% slippage), NTNX (-12% pre; beat and unchanged guide, CEO exit, BofA downgrade; info-driven drops keep drifting, p~0.45 long), URBN (-12% pre despite a record quarter), BG (-8.6%, no company news but soyoil at 9-month lows, biofuel/ag sector move, ADM/DAR also down), DY (-18% on a weak guide despite a record backlog and $200M buyback; relentless downtrend 566 -> 179), CELC (+18.5% no news but PTs 150-190, small edge vs slippage), IMTX, KSS/ANF/DKS (gap-up chase), EMBC, ANT (81.91, first close below the 83 IPO price; pre 78.14; 50/50).\n\nNext session (11-26 is a holiday, so next is Fri 11-27 half-day): check FIS (horizon 11-30, stop 28.18), ARDT, TEVA, WCN vs 175.6 stop; watch NTNX as a CEO-exit-reversion test; ANT vs 78; SPY vs the 689.81 low; the PCE/GDP reaction. Only trade at p>=0.55 with real size.",
+ "feedback": "Nothing blocked me this session. Two small requests. (1) The scan/digest pre-market column for thin prints is noisy, so a field showing the pre-market price along with the IEX last trade time would help. (2) For 'extend' orders it is unclear whether stop_pct/target_pct are measured from the last close or from a fill; I assumed the last close. A one-line note in the tool description would help.",
+ "total_cost": 0.5989933000000001,
+ "seconds": 190,
+ "fill_at": "open"
+}
