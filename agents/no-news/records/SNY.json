@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "Pre-market gap +6.6% (49.87 vs 46.77) on about 2M shares (43-60% of an average day), above the 52-week high of 48.98, about 3.8 sd on a 1.74% daily vol. AZN +1.1% and VRTX +1.2% pre-market, so it is stock-specific, probably trial data or a regulatory event. Post-news drift in a $114B pharma with 0.1% slippage. Price/volume only, cause not verified.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-25",
+     "thesis": "Gap +11% on 3.1x volume (13.8M shares, close in range 0.97) and pre-market a further +3.3% to 53.60 on 11% of an avg day while AZN is +0.4%. The health sector was up broadly, but the stock-specific part is about +7%. A large-cap pharma re-rating on probable trial or regulatory news tends to drift. Stop moved up to about 50.3, below the 11/24 low of 50.29. Price/volume only, cause not verified.",
+     "horizon_end": "2026-12-09"
+    }
+   ],
    "order_id": "no-news-2026-11-24-04",
    "at": "open",
-   "horizon_end": "2026-12-07",
+   "horizon_end": "2026-12-09",
    "probability": 0.55,
    "horizon_days": 8,
    "sources": [],

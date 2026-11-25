@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "WCN fell 8% (2.4x volume, closed near low, WM/RSG only -1%) on a methane eruption at the Chiquita Canyon landfill (6 workers treated, LA County health order, leak capped, evacuation lifted). No earnings or guidance change; Citi sees no change to 2027-28 cash remediation costs. A single-site headline shock in a $45B diversified compounder looks over-discounted and should partially retrace.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-25",
+     "thesis": "WCN is +2.2% from entry after the 8% Chiquita Canyon methane-eruption drop; peers WM/RSG sit at highs, so the discount to peers is only partly closed (stock 6.8% below its high). Single-site incident with no guidance change, and Citi sees no change to 2027-28 remediation cash costs. A defensive $46B compounder should also hold up in the renewed AI/tech sell-off, and the Thanksgiving week tends to be seasonally supportive. Stop moved up to about 175.6 (from 168.9) to cap the loss near the entry.",
+     "horizon_end": "2026-12-07"
+    }
+   ],
    "order_id": "pattern-hunter-2026-11-18-01",
    "at": "open",
-   "horizon_end": "2026-11-27",
+   "horizon_end": "2026-12-07",
    "probability": 0.54,
    "horizon_days": 6,
    "sources": [

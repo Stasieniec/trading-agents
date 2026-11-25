@@ -11,10 +11,16 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "Pre-market gap of about +5% (IEX 137.26 vs 129.85 close) that looks like an earnings beat, after a 6-day losing streak and -11% over 20 days. HD and LOW are down pre-market, so the move is stock-specific. Relief gap plus post-earnings drift in a $140B quality retailer. Price/volume only, cause not verified. Stop sits near the pre-gap close (gap fill).",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-25",
+     "thesis": "Post-earnings gap held for 6 sessions. Every close since 11/18 is above 139 and the post-gap lows are 137.0 to 137.4, with 11/24 closing at 143.86 near the high (+3.3%, retail read-across from BURL, ROST, DKS, ANF). Stop trailed to about 135.5, under the post-gap lows, to protect the gain. Target kept near 149.3. Price/volume only.",
+     "horizon_end": "2026-12-04"
+    }
+   ],
    "order_id": "no-news-2026-11-18-01",
    "at": "open",
-   "horizon_end": "2026-12-03",
+   "horizon_end": "2026-12-04",
    "probability": 0.54,
    "horizon_days": 10,
    "sources": [],
