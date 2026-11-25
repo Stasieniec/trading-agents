@@ -1,23 +1,26 @@
-Session 2026-11-24.
+Session 2026-11-25.
 
-Session 2026-11-24 pre-open. Held all four starters (MSFT 5.8%, AAPL 5.0%, AMZN 4.9%, META 4.0%, about 20% invested, 80% cash). No trades.
+Session 2026-11-25 pre-open. Held all four starters (MSFT 5.9%, AAPL 5.1%, AMZN 4.9%, META 4.0%; about 20% invested, 80% cash). No trades.
 
-What happened 11-23: Huang was reinstated as NVDA CEO at 14:31 UTC. NVDA +31.5% to 165.05, SMH +15%, QQQ +7.0%, SPY +4.71% (best day since April 2025). But SPY open to close was -0.3% (724.33 to 722.29). The whole gain was the gap, and my fills were at the open. MSFT closed at its day low (gap +4.4%, close +1.6%). AMZN closed 0.37 in range.
+Tape: the Nasdaq/AI selloff resumed. Premarket SPY -1.9% (705), QQQ -2.9% (620; the 11-20 close was 608 and the low 606), SMH -4.7%, NVDA -5.4%, MSFT -3.2%, GOOGL -4.2%, AMZN -2.9%, META -2.0%, AAPL -0.8%. On 11-24 SMH fell 7.3% and AMD 8.9%, while health care and staples rose 1.7-3.0%, so money is rotating out of AI.
+Drivers:
+- ANT is 78.3 premarket, below its $83 IPO price. OpenAI's IPO is at risk (MSFT owns about 23%), SoftBank is -15% and the Kospi -6%.
+- Dell beat and raised (revenue +103%, AI orders $132B) and was still sold, -5.7% premarket. Good AI news is being sold.
+- Trump is expected to announce Section 301 tariffs on 16 economies.
+- October core PCE was 3.3% against 3.2% expected. Bowman had flagged 3.3%, so it was no surprise. The Dec 25bp hike is about 96% priced.
 
-Premarket 11-24: SPY -1.5%, QQQ -2.4%, SMH -5.3%, NVDA -6%, AVGO -4.5%, AMD -5.3%, PLTR -3%, META -2.3%, AMZN -2%, MSFT -1%, AAPL -0.7%. ANT is -5.7% to 82.65, below its $83 IPO price. Williams (NY Fed) said inflation is too high and did not rule out consecutive hikes. The Dec 25bp hike is about 91-97% priced. 10y is about 4.91%.
-
-Why hold: no new news changes any thesis. Stops sit 5-9% below premarket, so a stop-out costs about 0.5% of equity per name. The gap-up-then-fade pattern has now shown in 5 of 5 recent bounces, so I'm not adding at the gap. Cutting would only crystallise small losses plus slippage ahead of a binary PCE print.
+Why hold: no thesis-changing news. SPY has not reached the retest zone (686-695, 11-20 low 686.75). Stops sit 4-9% below premarket, and a stop-out costs about 0.5% of equity per name. Adding at a gap-down open before the retest is unproven, since gap-down days have been mixed (11-24 SPY +0.5% open-to-close, 11-20 -3.3%). Cutting would only crystallise small losses plus slippage.
 
 Candidates not traded:
-- NVDA: 10-sd move, governance and probe overhang, no edge either way.
-- AVGO and AMD: semis whipsaw, AVGO earnings 12-09, BNP cut AMD PT 960 to 650.
-- GOOGL: no edge.
-- TSLA: FSD V15 news priced in after +11.5%.
+- NVDA: governance, probe and pardon-talk overhang, a 5-sd daily range, no edge.
+- AMD, AVGO: semis whipsaw, AVGO earnings 12-09.
+- GOOGL: -4.2% premarket on ANT and TPU-order worries, no clean edge.
+- TSLA: no catalyst until 12-03.
 - PLTR: weak tape.
 
-Next session:
-1. Check the PCE 11-25 08:30 ET reaction (core 0.3% m/m expected). Thu closed, Fri half day.
-2. Retest plan: if SPY revisits ~686-695 (11-20 low 686.75) on lower volume than 151M and holds, add to MSFT/AMZN/META/AAPL toward 35-40% invested. If it breaks on rising volume, let the stops work.
-3. Watch ANT vs its $83 IPO price (AMZN/GOOGL sentiment).
-4. NVDA: Huang congressional session 12-01, 10-Q ~12-04.
-5. All four horizons end 12-04.
+Next session (Fri 11-27, half day, Thu closed):
+1. Check the 11-25 close for the retest (SPY toward 686-695, QQQ toward 606-615) and the volume against 151M on 11-20.
+2. If it holds on lower volume, add to MSFT/AMZN/META/AAPL toward 35-40% invested. In thin half-day trading, add only if clear.
+3. If SPY breaks 686 on rising volume, let stops work.
+4. Watch ANT against $83 and tariff headlines.
+5. Horizons for all four end 12-04. Upcoming: NVDA Huang congressional session 12-01, FOMC 12-08/09.
