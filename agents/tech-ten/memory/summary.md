@@ -1,26 +1,15 @@
-Session 2026-11-25.
+Session 2026-11-27.
 
-Session 2026-11-25 pre-open. Held all four starters (MSFT 5.9%, AAPL 5.1%, AMZN 4.9%, META 4.0%; about 20% invested, 80% cash). No trades.
+Session 2026-11-27 (Fri half day, Thu closed). Held all four starters (MSFT 5.8%, AAPL 5.1%, AMZN 4.7%, META 4.1%; ~20% invested, 80% cash). No trades.
 
-Tape: the Nasdaq/AI selloff resumed. Premarket SPY -1.9% (705), QQQ -2.9% (620; the 11-20 close was 608 and the low 606), SMH -4.7%, NVDA -5.4%, MSFT -3.2%, GOOGL -4.2%, AMZN -2.9%, META -2.0%, AAPL -0.8%. On 11-24 SMH fell 7.3% and AMD 8.9%, while health care and staples rose 1.7-3.0%, so money is rotating out of AI.
-Drivers:
-- ANT is 78.3 premarket, below its $83 IPO price. OpenAI's IPO is at risk (MSFT owns about 23%), SoftBank is -15% and the Kospi -6%.
-- Dell beat and raised (revenue +103%, AI orders $132B) and was still sold, -5.7% premarket. Good AI news is being sold.
-- Trump is expected to announce Section 301 tariffs on 16 economies.
-- October core PCE was 3.3% against 3.2% expected. Bowman had flagged 3.3%, so it was no surprise. The Dec 25bp hike is about 96% priced.
+What I found: 11-25 was a reversal day. SPY opened 703.20 (-2.2% gap), made a higher low of 695.45 (vs 686.75 on 11-20), and closed 716.70 (+1.9% open-to-close) on 73M shares vs 151M on 11-20. QQQ closed 633.93. Today's premarket is SPY +1.7% (728, right at the 11-23 high of 727.98), QQQ +2.3-2.7%, NVDA +2.4%, AMD +4.8%, META +3.3%, AMZN +2.7%, MSFT +2.0%, AAPL +0.9%. The driver is a no-news 'buy the AI dip' after the holiday, in thin half-day trading. Analysts say the root causes are unresolved: Fed Dec 8-9 hike ~99% priced, Section 301 tariffs on 14-16 economies, ANT near its $83 IPO price, and the Huang Senate testimony on 12-03.
 
-Why hold: no thesis-changing news. SPY has not reached the retest zone (686-695, 11-20 low 686.75). Stops sit 4-9% below premarket, and a stop-out costs about 0.5% of equity per name. Adding at a gap-down open before the retest is unproven, since gap-down days have been mixed (11-24 SPY +0.5% open-to-close, 11-20 -3.3%). Cutting would only crystallise small losses plus slippage.
+Why no add: my plan was to add on a retest hold, but the hold happened at the 11-25 open and is already priced into today's +1.7% gap. Gap-ups in this regime have mostly been the whole move (5 prior gap-ups averaged about -0.2% open-to-close). SPY is at resistance, and half-day liquidity is thin. The four positions are already +2-3% on the gap and their stops are 4-9% below. Not trimming either: no thesis change, and stops are far.
 
-Candidates not traded:
-- NVDA: governance, probe and pardon-talk overhang, a 5-sd daily range, no edge.
-- AMD, AVGO: semis whipsaw, AVGO earnings 12-09.
-- GOOGL: -4.2% premarket on ANT and TPU-order worries, no clean edge.
-- TSLA: no catalyst until 12-03.
-- PLTR: weak tape.
+Candidates not traded: NVDA (governance/probe overhang, new ASEAN export-control rules, testimony 12-01/12-03), AMD/AVGO (semis whipsaw, AVGO reports 12-09), GOOGL (-33% from its high, ANT/TPU worries, no clean edge), TSLA (EU FSD vote moved to 12-15, no catalyst), PLTR (weak software tape).
 
-Next session (Fri 11-27, half day, Thu closed):
-1. Check the 11-25 close for the retest (SPY toward 686-695, QQQ toward 606-615) and the volume against 151M on 11-20.
-2. If it holds on lower volume, add to MSFT/AMZN/META/AAPL toward 35-40% invested. In thin half-day trading, add only if clear.
-3. If SPY breaks 686 on rising volume, let stops work.
-4. Watch ANT against $83 and tariff headlines.
-5. Horizons for all four end 12-04. Upcoming: NVDA Huang congressional session 12-01, FOMC 12-08/09.
+Next session (Mon 11-30, full volume):
+1. Check whether SPY closed above 728 and the half-day volume. If it holds above 728, add to the four toward 30-35%. If it fades under 716, wait for 695-700.
+2. A break of 695 means a likely retest of 686, so let stops work.
+3. All four horizons end 12-04 and must be closed, extended or resized that session.
+4. Events: ISM 12-01, Huang closed-door session 12-01, Senate testimony 12-03, payrolls 12-04 (expected +90k), FOMC 12-08/09.
