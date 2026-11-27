@@ -1,0 +1,49 @@
+{
+ "ticker": "VRTX",
+ "trades": [
+  {
+   "ticker": "VRTX",
+   "side": "long",
+   "opened": "2026-11-27",
+   "bought_value": 3923.501029346319,
+   "sold_value": 0.0,
+   "entry_qty": 7.594616252467391,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "FDA extended the povetacicept PDUFA to no later than 2027-02-28 (a major amendment after a late-cycle information request). VRTX fell about 8% pre-market, to the level of 11-20 before a 2-day, 10% run-up. JPM and Citi call it not thesis-changing, and a 3-month delay on a drug with about $3.4B of peak IgAN sales is worth far less than the ~$10B of market value lost. Small mean-reversion position. The risks are an unknown FDA concern and healthcare rotation unwinding into the AI rebound.",
+   "extensions": [],
+   "order_id": "open-quality-2026-11-27-01",
+   "at": "open",
+   "horizon_end": "2026-12-11",
+   "probability": 0.53,
+   "horizon_days": 10,
+   "sources": [
+    {
+     "answer": "PAGE DATE: unknown\n\n**What Vertex said:** Vertex announced that the FDA extended the PDUFA target action date for the Biologics License Application for povetacicept, which is intended to treat IgA nephropathy (IgAN). The original target date of November 30, 2026, is now no later than February 28, 2027.\n\n**Why the FDA asked for more time:** The story says the extension followed an FDA information request late in the review cycle, to which Vertex responded. The agency said it needed additional time to complete its review of the application. The story does not give a more specific reason.\n\n**Othe",
+     "read": true,
+     "url": "https://www.morningstar.com/news/dow-jones/202611257591/vertex-kidney-disease-treatment-license-extended-by-fda"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.investing.com/news/stock-market-news/why-is-vertex-pharmaceuticals-stock-sliding-today-93CH-5053216"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://tipranks.com/news/the-fly/vertex-fda-review-delay-not-thesis-changing-says-citi-thefly-news"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.fool.com/investing/2026/11/27/1-no-brainer-stock-to-buy-on-the-dip-and-hold-for-10-years/"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 7,
+   "target_pct": 7,
+   "closed": null,
+   "open_qty": 7.594616252467391
+  }
+ ]
+}

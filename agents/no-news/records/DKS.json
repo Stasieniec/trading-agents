@@ -11,7 +11,13 @@
    "dividends": 0.0,
    "fees": 0.0,
    "thesis": "Pre-market gap of +16.4% (155.63 vs 133.67) on 247k shares (12% of an average day) through the 3-month range top of 150.35, after a -45% slide from the high. NKE, ONON and DECK are flat pre-market, so it is stock-specific and probably earnings. Post-earnings drift setup in an $11.9B stock. Price/volume only, cause not verified. Stop is wide because the market swings 2-5% a day.",
-   "extensions": [],
+   "extensions": [
+    {
+     "date": "2026-11-27",
+     "thesis": "Gap-up drift: 11/24 +14.6% and 11/25 +3.5% to 158.59, holding above the 150 range top. Stop trailed from 135 to about 147.3, under the 11/24 low of 148.75 (about breakeven on cost). Price/volume only, cause not verified.",
+     "horizon_end": "2026-12-07"
+    }
+   ],
    "order_id": "no-news-2026-11-24-03",
    "at": "open",
    "horizon_end": "2026-12-07",

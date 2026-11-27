@@ -16,6 +16,11 @@
      "date": "2026-11-25",
      "thesis": "Post-earnings gap held for 6 sessions. Every close since 11/18 is above 139 and the post-gap lows are 137.0 to 137.4, with 11/24 closing at 143.86 near the high (+3.3%, retail read-across from BURL, ROST, DKS, ANF). Stop trailed to about 135.5, under the post-gap lows, to protect the gain. Target kept near 149.3. Price/volume only.",
      "horizon_end": "2026-12-04"
+    },
+    {
+     "date": "2026-11-27",
+     "thesis": "Post-earnings gap held for 7 sessions, 11/25 closed at 146.09 near the 147.44 high on a retail read-across. Stop trailed to about 139, under the 11/24 low of 139.20 and above the gap-base zone. Target raised to about 156 to let the drift run. Price/volume only.",
+     "horizon_end": "2026-12-04"
     }
    ],
    "order_id": "no-news-2026-11-18-01",

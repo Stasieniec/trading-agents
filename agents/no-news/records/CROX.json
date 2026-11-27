@@ -16,6 +16,11 @@
      "date": "2026-11-17",
      "thesis": "Post-earnings gap (+21% on 4x volume) has held for 2.5 weeks and the stock stayed near highs (160 vs 164 peak) while SPY fell 1.9% on 11/16, which is relative strength. Drift thesis intact; consolidating above the gap. Stop sits below the 11/6 consolidation low. Price/volume only.",
      "horizon_end": "2026-12-02"
+    },
+    {
+     "date": "2026-11-27",
+     "thesis": "Range-bound 154-164 for 4 weeks on falling volume. Drift is probably over. Stop trailed to about 153.3, under the 11/20 and 11/25 lows (153.91, 154.47), and I plan to close at the 12/2 horizon unless it breaks 164 on volume.",
+     "horizon_end": "2026-12-02"
     }
    ],
    "order_id": "no-news-2026-10-29-02",

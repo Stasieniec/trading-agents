@@ -5,7 +5,7 @@
    "ticker": "FIS",
    "side": "short",
    "opened": "2026-11-05",
-   "bought_value": 0.0,
+   "bought_value": 5570.852921423774,
    "sold_value": 5988.011988011989,
    "entry_qty": 201.27622545352568,
    "dividends": 0.0,
@@ -50,8 +50,12 @@
    "target_pct": 12,
    "pattern": "news gap-down drift",
    "wrong_if": "Stock rebounds above ~$32.5 with buyers stepping in on a dividend-yield/valuation bid.",
-   "closed": null,
-   "open_qty": -201.27622545352568
+   "closed": "2026-11-27",
+   "exit_reason": "close",
+   "return": 0.06937882868317177,
+   "spy_return": null,
+   "excess": null,
+   "beat_spy": null
   }
  ]
 }

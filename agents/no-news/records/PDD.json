@@ -16,6 +16,11 @@
      "date": "2026-11-20",
      "thesis": "Gap +6.5% then close +11% on 4.1x volume (6.7 sd), stock-specific versus BABA/JD/BIDU. Pre-market is only -1.1% on 427k shares, so the gap is holding. Stop raised to below the 11/19 gap range to protect the gain in a falling market. Post-earnings drift thesis, price/volume only.",
      "horizon_end": "2026-12-07"
+    },
+    {
+     "date": "2026-11-27",
+     "thesis": "Post-earnings gap held 6 sessions and pre-market +2.8% breaks above the 88.17 range high on a market bounce. Stop trailed to about 83.3, under the 11/20 and 11/23 lows (83.46, 83.58). Price/volume only.",
+     "horizon_end": "2026-12-07"
     }
    ],
    "order_id": "no-news-2026-11-19-01",

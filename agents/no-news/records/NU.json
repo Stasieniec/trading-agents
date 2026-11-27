@@ -1,0 +1,28 @@
+{
+ "ticker": "NU",
+ "trades": [
+  {
+   "ticker": "NU",
+   "side": "long",
+   "opened": "2026-11-27",
+   "bought_value": 5192.260796082975,
+   "sold_value": 0.0,
+   "entry_qty": 387.09505390750854,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "Brazil-wide pre-market surge (NU +11.7%, ITUB +17.7%, XP +19.5%, EWZ +14.3% on 14% of an average day), cause unknown. Brazilian banks fell 20% on 10/26 (probably the election result) and drifted down for 4 weeks, so this is a relief or regime re-rating. NU is a $60B eligible proxy with 0.1% slippage. Small test of continuation, price/volume only.",
+   "extensions": [],
+   "order_id": "no-news-2026-11-27-06",
+   "at": "open",
+   "horizon_end": "2026-12-09",
+   "probability": 0.52,
+   "horizon_days": 8,
+   "sources": [],
+   "causal_chain": [],
+   "stop_pct": 9.0,
+   "target_pct": 18.0,
+   "closed": null,
+   "open_qty": 387.09505390750854
+  }
+ ]
+}

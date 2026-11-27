@@ -21,6 +21,11 @@
      "date": "2026-11-24",
      "thesis": "Post-earnings gap (+25% on 5M shares) held for 3+ weeks and the stock closed 249.59 (+5.2%), 2% below its high. Drift thesis intact. Horizon extended and stop trailed to about 230, just above the gap base and the 11/18 close of 233, to protect profit in a violent market. Price/volume only.",
      "horizon_end": "2026-12-04"
+    },
+    {
+     "date": "2026-11-27",
+     "thesis": "Post-earnings gap drift: held 4 weeks and made new highs (263 high 11/25). Stop trailed to about 242, under the 11/23 low of 243.4, which locks in about +6% over cost. Price/volume only.",
+     "horizon_end": "2026-12-04"
     }
    ],
    "order_id": "no-news-2026-10-29-01",

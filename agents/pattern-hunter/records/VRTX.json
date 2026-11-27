@@ -1,0 +1,46 @@
+{
+ "ticker": "VRTX",
+ "trades": [
+  {
+   "ticker": "VRTX",
+   "side": "long",
+   "opened": "2026-11-27",
+   "bought_value": 5018.2780588480455,
+   "sold_value": 0.0,
+   "entry_qty": 9.713746936744801,
+   "dividends": 0.0,
+   "fees": 0.0,
+   "thesis": "FDA extended the povetacicept PDUFA by up to 3 months after a late-cycle information request (major amendment), and VRTX fell ~7.5% (a ~$10B market-cap loss) from a 52w-high close of 564 to ~523. Peak sales are $3.4-4B, so a 3-month delay plus a modest rise in CRL risk is worth far less than $10B; JPM (OW 570), Citi (Buy 585) and TD Cowen (575) all reiterated. The move also erases the whole 3-day run-up, so part of it is profit-taking.",
+   "extensions": [],
+   "order_id": "pattern-hunter-2026-11-27-02",
+   "at": "open",
+   "horizon_end": "2026-12-11",
+   "probability": 0.56,
+   "horizon_days": 10,
+   "sources": [
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.investing.com/news/analyst-ratings/vertex-stock-rating-reiterated-by-jpmorgan-after-povetacicept-pdufa-delay-93CH-5052108"
+    },
+    {
+     "answer": "",
+     "read": false,
+     "url": "https://www.tipranks.com/news/the-fly/vertex-fda-review-delay-not-thesis-changing-says-citi-thefly-news"
+    },
+    {
+     "answer": "PAGE DATE: 2026-11-27 (published 12:35 UTC; the article body says November 27, 2026, 07:35 AM ET)\n\n**Is it a CRL risk or a timing delay?** The page frames it as a timing issue, not a rejection risk. The FDA extended the povetacicept PDUFA date by three months after a late-cycle information request, which it classified as a \"major amendment.\" The page says the request was \"described as a procedural extension rather than a concern over safety or efficacy.\" Vertex said it responded \"promptly.\" The new date is February 28, 2027, versus the original November 30, 2026. JPMorgan (Overweight, $570 tar",
+     "read": true,
+     "url": "https://api.finexus.net/api/news/earnings/129951/html"
+    }
+   ],
+   "causal_chain": [],
+   "stop_pct": 7.0,
+   "target_pct": 7.0,
+   "pattern": "regulatory delay overreaction",
+   "wrong_if": "VRTX breaks below ~490 (the Oct lows), or the FDA request turns out to involve manufacturing or data-integrity problems.",
+   "closed": null,
+   "open_qty": 9.713746936744801
+  }
+ ]
+}
