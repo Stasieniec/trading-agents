@@ -1,0 +1,72 @@
+{
+ "agent": "pattern-hunter",
+ "date": "2026-11-27",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "close",
+   "ticker": "FIS",
+   "target_weight": 0,
+   "thesis": "",
+   "horizon_days": 0,
+   "stop_pct": 0,
+   "target_pct": 0,
+   "probability": 0.5,
+   "sources": [],
+   "causal_chain": [],
+   "pattern": "",
+   "wrong_if": "",
+   "slippage_bp": 10,
+   "id": "pattern-hunter-2026-11-27-01",
+   "session_date": "2026-11-27",
+   "fill_at": "open",
+   "decided_at": "2026-11-27T13:36:52.963506+00:00",
+   "prompt_hash": "1df1f18d5f11"
+  },
+  {
+   "action": "set_weight",
+   "ticker": "VRTX",
+   "target_weight": 0.05,
+   "thesis": "FDA extended the povetacicept PDUFA by up to 3 months after a late-cycle information request (major amendment), and VRTX fell ~7.5% (a ~$10B market-cap loss) from a 52w-high close of 564 to ~523. Peak sales are $3.4-4B, so a 3-month delay plus a modest rise in CRL risk is worth far less than $10B; JPM (OW 570), Citi (Buy 585) and TD Cowen (575) all reiterated. The move also erases the whole 3-day run-up, so part of it is profit-taking.",
+   "horizon_days": 10,
+   "stop_pct": 7.0,
+   "target_pct": 7.0,
+   "probability": 0.56,
+   "sources": [
+    {
+     "url": "https://www.investing.com/news/analyst-ratings/vertex-stock-rating-reiterated-by-jpmorgan-after-povetacicept-pdufa-delay-93CH-5052108",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://www.tipranks.com/news/the-fly/vertex-fda-review-delay-not-thesis-changing-says-citi-thefly-news",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://api.finexus.net/api/news/earnings/129951/html",
+     "read": true,
+     "answer": "PAGE DATE: 2026-11-27 (published 12:35 UTC; the article body says November 27, 2026, 07:35 AM ET)\n\n**Is it a CRL risk or a timing delay?** The page frames it as a timing issue, not a rejection risk. The FDA extended the povetacicept PDUFA date by three months after a late-cycle information request, which it classified as a \"major amendment.\" The page says the request was \"described as a procedural extension rather than a concern over safety or efficacy.\" Vertex said it responded \"promptly.\" The new date is February 28, 2027, versus the original November 30, 2026. JPMorgan (Overweight, $570 tar"
+    }
+   ],
+   "causal_chain": [],
+   "pattern": "regulatory delay overreaction",
+   "wrong_if": "VRTX breaks below ~490 (the Oct lows), or the FDA request turns out to involve manufacturing or data-integrity problems.",
+   "slippage_bp": 10,
+   "id": "pattern-hunter-2026-11-27-02",
+   "session_date": "2026-11-27",
+   "fill_at": "open",
+   "decided_at": "2026-11-27T13:36:52.963528+00:00",
+   "prompt_hash": "1df1f18d5f11"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "1df1f18d5f11",
+ "summary": "Session 2026-11-27 (half-day, close 13:00 ET). Market: risk-on rebound pre-market, SPY +1.7% (728), QQQ +2.3%, beaten AI names +5-10% pre, healthcare/staples flat to down. Book before: ARDT long 3.8% (15.85, +10%, stop 14.42, tgt 16.99, 12-03), FIS short 5.5% (27.64, pre 28.10, stop 28.18, horizon 11-30), TEVA long 3.1% (pre -1.8%), WCN long 7.2% (pre -1.2%, stop 176.86, horizon 12-07).\nActions: (1) CLOSED FIS short at the open (~+5.5%): drift ran ~3 weeks to the 25.64 low, then bounced 3 days; pre-market sat 0.3% under my stop; takeover tail risk; horizon ended 11-30 anyway. (2) Opened VRTX long 5% for 'regulatory delay overreaction': FDA moved the povetacicept PDUFA 11-30 -> <=2-28-27, stock -7.5% pre (~523, from a 52w-high close of 564) = ~$10B loss vs $3.4-4B peak sales drug; JPM/Citi/Cowen reiterate. Stop -7%, target +7%, 10d, p 0.56. Held ARDT, TEVA, WCN.\nExamined and passed: NTNX (CEO exit, +2.6% pre), HPQ (+11.5% earnings chase), IMKTA (-11% NI -28%; 0.5% slippage), PHAR/Pharming (-24% Ruconest manufacturing pause, not shortable), VERA (+16% sympathy), CENT/CENTA (weak guide then no-news slide), Brazil ADR holiday catch-up gaps (no edge), AI rebound names (SNDK/IREN/MU; no short after 11-23 showed rebounds can run).\nNext session (Mon 11-30): ARDT/TEVA/WCN vs stops (14.42 / 37.20 / 176.86); VRTX vs ~490 and whether it holds 510-520 (defensive rotation risk); CRTX MSCI index event 11-30; ANT vs 83 IPO floor; NTNX as CEO-exit test. Cash ~91%: defensive-long cluster (WCN/TEVA/VRTX) is correlated, do not add more; look for post-capitulation idiosyncratic losers.",
+ "feedback": "Digest labels the move as for 'the previous session 2026-11-25' with no flag that 11-26 was a holiday. The pre-market ADR gaps (Brazil +9-17%) are holiday catch-up and look like screen signals; flagging non-trading-day catch-up would help. Pre-market SPY/QQQ prints have proven unreliable predictors of the close (11-25 pre -1.9% -> -0.29%). Otherwise nothing blocked me.",
+ "total_cost": 0.5173409,
+ "seconds": 207,
+ "fill_at": "open"
+}
