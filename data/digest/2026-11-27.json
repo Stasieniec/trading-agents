@@ -1,0 +1,2614 @@
+{
+ "date": "2026-11-27",
+ "built_at": "2026-11-27T13:33:14.630939+00:00",
+ "previous_session": "2026-11-25",
+ "intraday": false,
+ "sources": {
+  "index moves": "ok",
+  "economic calendar": "ok",
+  "movers": "ok",
+  "most actives": "ok",
+  "Alpaca news": "ok",
+  "CNBC feed 1": "ok",
+  "CNBC feed 2": "ok",
+  "MarketWatch feed 3": "ok",
+  "screen": "ok"
+ },
+ "etfs": [
+  {
+   "symbol": "SPY",
+   "name": "S&P 500",
+   "close": 716.7,
+   "day_pct": -0.28937922591055765,
+   "week_pct": -1.8488085456039416,
+   "pre_pct": 1.6785265801590565,
+   "pre_time": "2026-11-27T13:17:00Z"
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Nasdaq 100",
+   "close": 633.93,
+   "day_pct": -0.653502585801613,
+   "week_pct": -3.8786371700201716,
+   "pre_pct": 2.3299102424558127,
+   "pre_time": "2026-11-27T13:17:00Z"
+  },
+  {
+   "symbol": "IWM",
+   "name": "Russell 2000",
+   "close": 268.87,
+   "day_pct": 0.6476005090963577,
+   "week_pct": -0.4627572930549384,
+   "pre_pct": 1.506304161862615,
+   "pre_time": "2026-11-27T13:17:00Z"
+  },
+  {
+   "symbol": "DIA",
+   "name": "Dow 30",
+   "close": 501.27,
+   "day_pct": 0.30615920278544984,
+   "week_pct": -0.09168277758955234,
+   "pre_pct": 1.4303668681548976,
+   "pre_time": "2026-11-27T13:15:00Z"
+  },
+  {
+   "symbol": "XLK",
+   "name": "Technology",
+   "close": 155.79,
+   "day_pct": -0.8275510853650858,
+   "week_pct": -4.895916000244194,
+   "pre_pct": 2.8243147827203385,
+   "pre_time": "2026-11-27T13:15:00Z"
+  },
+  {
+   "symbol": "XLC",
+   "name": "Communication",
+   "close": 105.38,
+   "day_pct": 0.8903781713738512,
+   "week_pct": -0.18942981625308386,
+   "pre_pct": 1.6891250711710049,
+   "pre_time": "2026-11-27T13:11:00Z"
+  },
+  {
+   "symbol": "XLY",
+   "name": "Consumer discretionary",
+   "close": 117.49,
+   "day_pct": -0.19537886510363478,
+   "week_pct": -1.4345637583892734,
+   "pre_pct": 1.3362839390586467,
+   "pre_time": "2026-11-27T13:06:00Z"
+  },
+  {
+   "symbol": "XLP",
+   "name": "Consumer staples",
+   "close": 92.3,
+   "day_pct": 0.4571179799738756,
+   "week_pct": 1.2283395481465176,
+   "pre_pct": -0.16251354279522845,
+   "pre_time": "2026-11-27T13:17:00Z"
+  },
+  {
+   "symbol": "XLF",
+   "name": "Financials",
+   "close": 56.51,
+   "day_pct": 0.7128854036713594,
+   "week_pct": 0.15951790145338762,
+   "pre_pct": 0.9732790656520995,
+   "pre_time": "2026-11-27T13:08:00Z"
+  },
+  {
+   "symbol": "XLV",
+   "name": "Health care",
+   "close": 183.68,
+   "day_pct": -0.5630142919012537,
+   "week_pct": 1.3854390903571323,
+   "pre_pct": 0.06533101045296252,
+   "pre_time": "2026-11-27T12:50:00Z"
+  },
+  {
+   "symbol": "XLI",
+   "name": "Industrials",
+   "close": 162.95,
+   "day_pct": 0.8291566115957938,
+   "week_pct": -1.038503583141026,
+   "pre_pct": 1.5035286897821631,
+   "pre_time": "2026-11-27T13:17:00Z"
+  },
+  {
+   "symbol": "XLE",
+   "name": "Energy",
+   "close": 60.9,
+   "day_pct": 0.7444168734491274,
+   "week_pct": -0.6363191385217792,
+   "pre_pct": 1.5599343185550119,
+   "pre_time": "2026-11-27T13:15:00Z"
+  },
+  {
+   "symbol": "XLB",
+   "name": "Materials",
+   "close": 51.21,
+   "day_pct": 2.0729519633246873,
+   "week_pct": 1.4863258026159398,
+   "pre_pct": 1.6403046280023315,
+   "pre_time": "2026-11-27T12:27:00Z"
+  },
+  {
+   "symbol": "XLU",
+   "name": "Utilities",
+   "close": 43.61,
+   "day_pct": 0.4838709677419395,
+   "week_pct": 0.137772675086123,
+   "pre_pct": 0.8713597798670092,
+   "pre_time": "2026-11-27T13:14:00Z"
+  },
+  {
+   "symbol": "XLRE",
+   "name": "Real estate",
+   "close": 43.86,
+   "day_pct": 0.9203865623561791,
+   "week_pct": 0.5502063273727709,
+   "pre_pct": 0.1367989056087593,
+   "pre_time": "2026-11-27T12:22:00Z"
+  },
+  {
+   "symbol": "TLT",
+   "name": "Long Treasuries",
+   "close": 82.24,
+   "day_pct": 0.9203583261749859,
+   "week_pct": 2.5180752929443884,
+   "pre_pct": -0.5603112840466773,
+   "pre_time": "2026-11-27T13:17:00Z"
+  },
+  {
+   "symbol": "GLD",
+   "name": "Gold",
+   "close": 327.45,
+   "day_pct": 0.6145337225380132,
+   "week_pct": -4.027081684691813,
+   "pre_pct": 2.153000458085197,
+   "pre_time": "2026-11-27T13:17:00Z"
+  },
+  {
+   "symbol": "USO",
+   "name": "Oil",
+   "close": 139.89,
+   "day_pct": 3.2932142066011805,
+   "week_pct": 2.777165527881831,
+   "pre_pct": 1.0007863321180865,
+   "pre_time": "2026-11-27T13:17:00Z"
+  },
+  {
+   "symbol": "UUP",
+   "name": "US dollar",
+   "close": 29.6,
+   "day_pct": -0.10124873439081306,
+   "week_pct": -0.06752194463199857,
+   "pre_pct": 0.16891891891890332,
+   "pre_time": "2026-11-27T11:34:00Z"
+  },
+  {
+   "symbol": "VIXY",
+   "name": "VIX short-term futures",
+   "close": 23.28,
+   "day_pct": 4.4414535666218224,
+   "week_pct": 14.117647058823547,
+   "pre_pct": -4.939862542955331,
+   "pre_time": "2026-11-27T13:13:00Z"
+  }
+ ],
+ "movers": {
+  "gainers": [],
+  "losers": [
+   {
+    "symbol": "PHAR",
+    "pct": -23.98,
+    "price": 10.05
+   },
+   {
+    "symbol": "AMBA",
+    "pct": -19.77,
+    "price": 35.68
+   }
+  ],
+  "as_of": "2026-11-26T00:59:00.059152412Z"
+ },
+ "most_actives": [
+  {
+   "symbol": "NVDA",
+   "volume": 369316875
+  },
+  {
+   "symbol": "ANT",
+   "volume": 293782335
+  },
+  {
+   "symbol": "SPCX",
+   "volume": 148412306
+  },
+  {
+   "symbol": "INTC",
+   "volume": 129295056
+  },
+  {
+   "symbol": "SNDK",
+   "volume": 124401509
+  },
+  {
+   "symbol": "RIG",
+   "volume": 89427581
+  },
+  {
+   "symbol": "IREN",
+   "volume": 83316598
+  },
+  {
+   "symbol": "CRWV",
+   "volume": 82509777
+  },
+  {
+   "symbol": "NOK",
+   "volume": 76017436
+  },
+  {
+   "symbol": "IBIT",
+   "volume": 70417972
+  }
+ ],
+ "headlines": [
+  {
+   "title": "Hackers breach U.S. Air Force flagship Cloud One computing platform",
+   "sources": [
+    "CNBC",
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T13:23:01+00:00",
+   "url": "https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html",
+   "line": "The intrusion was discovered within the past month or so during work to upgrade the system, people familiar with the matter told Reuters.",
+   "symbols": [
+    "ORCL"
+   ]
+  },
+  {
+   "title": "Deutsche Bank Analysts Assess New ECB Board Appointments",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T13:03:06Z",
+   "url": "https://www.finanznachrichten.de/nachrichten-2026-11/70243705-deutsche-bank-ezb-spitze-etwas-taubenhafter-aber-fit-015.htm",
+   "line": "Deutsche Bank research analysts provided an assessment of the new European Central Bank (ECB) board members, anticipating a shift in policy tone.",
+   "symbols": [
+    "DB"
+   ]
+  },
+  {
+   "title": "Zegna strengthens supply chain with new footwear and leather goods hub in Sala Baganza",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T13:02:32Z",
+   "url": "https://www.milanofinanza.it/fashion/moda-l-italia-guida-l-europa-con-il-30-della-produzione-202611271153449066",
+   "line": "Ermenegildo Zegna is expanding its production capabilities by establishing a new facility dedicated to footwear and leather goods in Sala Baganza.",
+   "symbols": [
+    "ZGN"
+   ]
+  },
+  {
+   "title": "CIBC Asset Management Announces 2026 Annual Reinvested Capital Gains Distributions",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T13:02:19Z",
+   "url": "https://www.newswire.ca/news-releases/cibc-asset-management-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-cibc-etfs-and-etf-series-851561139.html",
+   "line": "CIBC Asset Management has declared estimated annual reinvested capital gains distributions for its suite of ETFs and ETF Series.",
+   "symbols": [
+    "CM"
+   ]
+  },
+  {
+   "title": "CIBC Asset Management Completes Termination of Select ETF Series",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T13:02:19Z",
+   "url": "https://www.newswire.ca/news-releases/cibc-asset-management-announces-final-valuation-for-the-etf-series-of-cibc-2026-investment-grade-bond-fund-cibc-2026-u-s-investment-grade-bond-fund-and-the-cibc-sustainable-investment-strategies-887964144.html",
+   "line": "CIBC Asset Management has finalized the termination of several ETF Series, including the CIBC 2026 Investment Grade Bond Funds and Sustainable Investment Strategies.",
+   "symbols": [
+    "CM"
+   ]
+  },
+  {
+   "title": "Erste Group Downgrades Salesforce to Hold",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T13:01:51Z",
+   "url": "https://www.moomoo.com/hans/news/post/1006000527/erste-group-downgrades-salesforce-crmus-to-hold-rating",
+   "line": "Analyst Stephan Lingnau at Erste Group downgraded Salesforce (CRM) to a 'Hold' rating.",
+   "symbols": [
+    "CRM"
+   ]
+  },
+  {
+   "title": "Disney+ Series 'The Remarried Empress' Sets Viewership Record",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T13:01:32Z",
+   "url": "https://www.koreaherald.com/article/10952228",
+   "line": "The Disney+ original series 'The Remarried Empress' has become the most-watched Korean original title in the platform's history.",
+   "symbols": [
+    "DIS"
+   ]
+  },
+  {
+   "title": "SK hynix Doubles Daily Share Buyback Volume",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T13:01:23Z",
+   "url": "https://www.koreaherald.com/article/10952285",
+   "line": "SK hynix has increased its daily share buyback order volume to approximately 700,000 shares, up from 350,000, in an effort to support its stock price following a significant decline.",
+   "symbols": [
+    "SKHY"
+   ]
+  },
+  {
+   "title": "Disney Issues Cease-and-Desist to ByteDance Over AI Copyright Concerns",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T11:31:44Z",
+   "url": "https://stockanalysis.com/private/bytedance/",
+   "line": "The Walt Disney Company has reportedly sent a cease-and-desist letter to ByteDance, alleging the unauthorized use of Disney characters to train its Seedance 2.0 AI video generator.",
+   "symbols": [
+    "DIS"
+   ]
+  },
+  {
+   "title": "BlackRock Increases Voting Rights Stake in J Sainsbury PLC",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T11:31:39Z",
+   "url": "https://www.investegate.co.uk/announcement/rns/sainsbury-j---sbry/holding-s-in-company/9897626",
+   "line": "BlackRock, Inc. reported an increase in its total voting rights in J Sainsbury PLC to 9.57% as of November 25, 2026.",
+   "symbols": [
+    "BLK"
+   ]
+  },
+  {
+   "title": "BlackRock Files Major Holdings Notification for Adtran Holdings, Inc.",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T11:31:39Z",
+   "url": "https://www.finanzen.at/nachrichten/aktien/eqs-pvr-adtran-holdings-inc-release-according-to-article-40-section-1-of-the-wphg-[the-german-securities-trading-act]-with-the-objective-of-europe-wide-distribution-1036805081",
+   "line": "BlackRock, Inc. submitted a regulatory filing regarding its voting rights in Adtran Holdings, Inc., reporting a total position of 10.10%.",
+   "symbols": [
+    "BLK"
+   ]
+  },
+  {
+   "title": "Salesforce Releases Global Consumer Research on AI Adoption and Data Privacy",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T11:31:30Z",
+   "url": "https://www.euro2day.gr/news/world/article/2382230/salesforce-to-ai-kai-h-hrhsh-se-agores-758-dis-th.html",
+   "line": "Salesforce published new consumer research findings highlighting trends in AI-driven shopping behavior and evolving customer attitudes toward data privacy.",
+   "symbols": [
+    "CRM"
+   ]
+  },
+  {
+   "title": "SK Hynix Reports Near-Sold-Out Production Capacity for 2029",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T11:01:25Z",
+   "url": "https://www.moomoo.com/news/post/1005986341/where-is-the-memory-market-headed-analysts-debate-whether-dram",
+   "line": "SK Hynix has indicated that its production capacity for 2029 is nearly fully booked, with memory shortages expected to persist into 2030.",
+   "symbols": [
+    "SKHY"
+   ]
+  },
+  {
+   "title": "Toyota Reports Decline in October Group Production and Sales",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T10:01:21Z",
+   "url": "https://www.finanzen.ch/nachrichten/aktien/toyota-motor-worldwide-production-sales-drop-in-october-1036804796",
+   "line": "Toyota Motor Corporation reported a decline in its total group production and sales for the month of October 2026.",
+   "symbols": [
+    "TM"
+   ]
+  },
+  {
+   "title": "LVMH Announces Interim Dividend of \u20ac5.50 Per Share for 2026",
+   "sources": [
+    "fiscal.ai"
+   ],
+   "time": "2026-11-27T10:01:19Z",
+   "url": "https://newsfilter.io/articles/lvmh-2026-interim-dividend-267367f933da5db7b5c7527d0c028753",
+   "line": "LVMH has declared an interim dividend of \u20ac5.50 per share for the 2026 fiscal year, payable in December.",
+   "symbols": [
+    "MC"
+   ]
+  }
+ ],
+ "news_mentions": [
+  {
+   "symbol": "HBAN",
+   "stories": 3
+  },
+  {
+   "symbol": "DB",
+   "stories": 2
+  },
+  {
+   "symbol": "ZGN",
+   "stories": 2
+  },
+  {
+   "symbol": "CM",
+   "stories": 2
+  },
+  {
+   "symbol": "CRM",
+   "stories": 2
+  },
+  {
+   "symbol": "DIS",
+   "stories": 2
+  },
+  {
+   "symbol": "MC",
+   "stories": 2
+  },
+  {
+   "symbol": "SKHY",
+   "stories": 2
+  },
+  {
+   "symbol": "MDT",
+   "stories": 2
+  },
+  {
+   "symbol": "BLK",
+   "stories": 2
+  }
+ ],
+ "screen": {
+  "day": "2026-11-27",
+  "measured": 3022,
+  "built_at": "2026-11-27T13:33:18.469060+00:00",
+  "rows": [
+   {
+    "ticker": "NPK",
+    "market_cap": 1149375896.0,
+    "industry": "Ordnance And Accessories",
+    "shortable": true,
+    "vs_industry": 7.895444898160298,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 9.271073707072075,
+    "sd": 1.9001374703076452,
+    "z": 4.879159456589751,
+    "vol_x": 2.1659427873585573,
+    "close": 161.0,
+    "avg_volume": 102192.45,
+    "gap": -0.28505497488802156,
+    "range_pos": 0.9494268374915712,
+    "r5": 6.505710568165379,
+    "r20": -2.0736408347733604,
+    "from_high": -0.46367851622874934,
+    "from_low": 76.38036809815951,
+    "streak": 1
+   },
+   {
+    "ticker": "AGLT",
+    "market_cap": 1743157511.0,
+    "industry": "Industrial Machinery/Components",
+    "shortable": false,
+    "vs_industry": 19.608250133700487,
+    "pre": 8.47457627118644,
+    "pre_volume": 95526.0,
+    "pre_volume_pct": 2.65807861424856,
+    "after_hours": 5.546995377503849,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 20.408163265306122,
+    "sd": 5.807101118880104,
+    "z": 3.5143461165080976,
+    "vol_x": 0.9537038925578167,
+    "close": 6.49,
+    "avg_volume": 3593798.9,
+    "gap": -2.226345083487946,
+    "range_pos": 0.9120135363790187,
+    "r5": -24.82566248256626,
+    "r20": -47.36328125,
+    "from_high": -67.0391061452514,
+    "from_low": 26.203208556149725,
+    "streak": 1
+   },
+   {
+    "ticker": "LI",
+    "market_cap": 11610020739.0,
+    "industry": "Auto Manufacturing",
+    "shortable": true,
+    "vs_industry": 8.774857435346117,
+    "pre": 3.7878787878787845,
+    "pre_volume": 124141.0,
+    "pre_volume_pct": 4.166982681566693,
+    "after_hours": -0.33670033670034627,
+    "stories": 0,
+    "earnings": [
+     "2026-11-25 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": 11.02803738317759,
+    "sd": 2.6166150870593743,
+    "z": 4.214619657938001,
+    "vol_x": 3.5288604443124463,
+    "close": 11.88,
+    "avg_volume": 2979158.05,
+    "gap": 6.588785046728973,
+    "range_pos": 0.9722222222222228,
+    "r5": -7.519446845289545,
+    "r20": -4.9733570159857905,
+    "from_high": -40.8661025385764,
+    "from_low": 14.727184934814108,
+    "streak": 1
+   },
+   {
+    "ticker": "BZ",
+    "market_cap": 6765897739.0,
+    "industry": "Computer Software: Programming Data Processing",
+    "shortable": true,
+    "vs_industry": 12.377874226613717,
+    "pre": 2.231520223152028,
+    "pre_volume": 14643.0,
+    "pre_volume_pct": 0.222217731902084,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-25 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": 12.558869701726838,
+    "sd": 3.8666447261573227,
+    "z": 3.248001973589092,
+    "vol_x": 1.28952936164652,
+    "close": 14.34,
+    "avg_volume": 6589483.15,
+    "gap": 0.8634222919937207,
+    "range_pos": 0.9867549668874175,
+    "r5": -2.67379679144385,
+    "r20": -23.483483483483482,
+    "from_high": -36.2241494329553,
+    "from_low": 18.31683168316833,
+    "streak": 1
+   },
+   {
+    "ticker": "WAFDP",
+    "market_cap": 1024253946.0,
+    "industry": "Major Banks",
+    "shortable": false,
+    "vs_industry": 2.8926001321358807,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": -0.9393063583814976,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 2.823179791976216,
+    "sd": 0.9008877585146372,
+    "z": 3.1337752847602336,
+    "vol_x": 1.672634964591176,
+    "close": 13.84,
+    "avg_volume": 86666.25,
+    "gap": -0.22288261515602814,
+    "range_pos": 0.7916666666666664,
+    "r5": -4.5390070921985775,
+    "r20": -10.742705570291777,
+    "from_high": -20.869068038879355,
+    "from_low": 4.2954031650339175,
+    "streak": 1
+   },
+   {
+    "ticker": "HPQ",
+    "market_cap": 28063734955.0,
+    "industry": "Computer Manufacturing",
+    "shortable": true,
+    "vs_industry": 9.662297024704591,
+    "pre": -0.06420545746388395,
+    "pre_volume": 49644.0,
+    "pre_volume_pct": 0.3450096808803268,
+    "after_hours": 0.2712680577849236,
+    "stories": 0,
+    "earnings": [
+     "2026-11-24 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": 11.488904795991406,
+    "sd": 3.170248993932749,
+    "z": 3.623975535668957,
+    "vol_x": 2.717860532449582,
+    "close": 31.15,
+    "avg_volume": 14389161.45,
+    "gap": 7.193987115246947,
+    "range_pos": 0.6170212765957449,
+    "r5": -2.6819923371647514,
+    "r20": -16.7957117331745,
+    "from_high": -14.0096618357488,
+    "from_low": 77.39179954441914,
+    "streak": 1
+   },
+   {
+    "ticker": "SIND",
+    "market_cap": 1584733032.0,
+    "industry": "Precious Metals",
+    "shortable": false,
+    "vs_industry": 14.21545905740472,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": -1.4925373134328401,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 17.957746478873247,
+    "sd": 4.833241575063046,
+    "z": 3.71546635937373,
+    "vol_x": 0.7770997659001764,
+    "close": 10.05,
+    "avg_volume": 469329.7,
+    "gap": -2.464788732394352,
+    "range_pos": 0.8615038861316603,
+    "r5": -29.000000000000004,
+    "r20": -25.848563968668415,
+    "from_high": -46.96569920844327,
+    "from_low": 38.90808569454043,
+    "streak": 2
+   },
+   {
+    "ticker": "CAR",
+    "market_cap": 5011610058.0,
+    "industry": "Rental/Leasing Companies",
+    "shortable": true,
+    "vs_industry": 8.578971294622706,
+    "pre": 0.13397264137640086,
+    "pre_volume": 356.0,
+    "pre_volume_pct": 0.07521798690256239,
+    "after_hours": 0.08461429981667656,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 9.615087339619732,
+    "sd": 3.145458753394328,
+    "z": 3.056815585085609,
+    "vol_x": 1.2921837419068034,
+    "close": 141.82,
+    "avg_volume": 473291.05,
+    "gap": -0.29370845571184967,
+    "range_pos": 0.9705712637045575,
+    "r5": 3.8029525032092337,
+    "r20": 26.58252617160748,
+    "from_high": -83.27002279934209,
+    "from_low": 64.98371335504886,
+    "streak": 5
+   },
+   {
+    "ticker": "KT",
+    "market_cap": 8293670167.0,
+    "industry": "Telecommunications Equipment",
+    "shortable": true,
+    "vs_industry": 4.714497378618643,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 1.1627906976744207,
+    "stories": 0,
+    "earnings": [
+     "2026-11-27 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": 4.878048780487809,
+    "sd": 1.752095886921741,
+    "z": 2.7841220431480256,
+    "vol_x": 1.3669372553235972,
+    "close": 17.2,
+    "avg_volume": 2432166.5,
+    "gap": 0.7317073170731714,
+    "range_pos": 0.9577464788732379,
+    "r5": -11.39924365207997,
+    "r20": -2.6128266033254244,
+    "from_high": -30.02441008950366,
+    "from_low": 7.466416744767268,
+    "streak": 1
+   },
+   {
+    "ticker": "COGT",
+    "market_cap": 6277719828.0,
+    "industry": "Biotechnology: Pharmaceutical Preparations",
+    "shortable": true,
+    "vs_industry": 9.30021205695244,
+    "pre": 0.3603104212860364,
+    "pre_volume": 2483.0,
+    "pre_volume_pct": 0.10238451388663675,
+    "after_hours": 0.08314855875832805,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 9.30021205695244,
+    "sd": 3.7126842108282703,
+    "z": 2.504983329804297,
+    "vol_x": 2.527651395533293,
+    "close": 36.08,
+    "avg_volume": 2425171.45,
+    "gap": 1.2117540139351624,
+    "range_pos": 0.9176829268292673,
+    "r5": 18.527827648114894,
+    "r20": 3.1240237425804507,
+    "from_high": -17.49371141093071,
+    "from_low": 36.87405159332322,
+    "streak": 3
+   },
+   {
+    "ticker": "IMKTA",
+    "market_cap": 1416410618.0,
+    "industry": "Food Chains",
+    "shortable": true,
+    "vs_industry": -10.269820515068773,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [
+     "2026-11-25 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": -11.321203472469987,
+    "sd": 1.2917832280821964,
+    "z": -8.764011814333308,
+    "vol_x": 1.963146083640945,
+    "close": 74.57,
+    "avg_volume": 94179.95,
+    "gap": 0.15459626590557107,
+    "range_pos": 0.1822033898305078,
+    "r5": -0.8255690529543558,
+    "r20": -1.637618434904653,
+    "from_high": -22.014222965906725,
+    "from_low": 9.799013472723228,
+    "streak": -2
+   },
+   {
+    "ticker": "PHAR",
+    "market_cap": 709783562.0,
+    "industry": "Biotechnology: Pharmaceutical Preparations",
+    "shortable": false,
+    "vs_industry": -23.978819969742815,
+    "pre": 16.716417910447756,
+    "pre_volume": 9874.0,
+    "pre_volume_pct": 67.66373712973909,
+    "after_hours": 0.8855721393034699,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": -23.978819969742815,
+    "sd": 3.450143967162019,
+    "z": -6.950092575257677,
+    "vol_x": 10.284353531719518,
+    "close": 10.05,
+    "avg_volume": 14592.75,
+    "gap": -16.7927382753404,
+    "range_pos": 0.4477451874095129,
+    "r5": 9.618573797678277,
+    "r20": 11.37320977253582,
+    "from_high": -52.9053420805998,
+    "from_low": 10.318331503841938,
+    "streak": -1
+   },
+   {
+    "ticker": "CPAC",
+    "market_cap": 984222541.0,
+    "industry": "Building Materials",
+    "shortable": true,
+    "vs_industry": -10.64286853808909,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": -6.810897435897434,
+    "sd": 1.0183762853988407,
+    "z": -6.687996896186549,
+    "vol_x": 0.6155985042530169,
+    "close": 11.63,
+    "avg_volume": 73007.0,
+    "gap": -0.08012820512820484,
+    "range_pos": 0.23023181962527847,
+    "r5": -2.954898911353021,
+    "r20": -2.27094753328112,
+    "from_high": -11.893939393939378,
+    "from_low": 86.07702276763574,
+    "streak": -4
+   },
+   {
+    "ticker": "NTNX",
+    "market_cap": 12627504703.0,
+    "industry": "Computer Software: Prepackaged Software",
+    "shortable": true,
+    "vs_industry": -16.120537066142624,
+    "pre": 2.5814254859611196,
+    "pre_volume": 19115.0,
+    "pre_volume_pct": 0.7581894024557205,
+    "after_hours": 1.4598272138229174,
+    "stories": 0,
+    "earnings": [
+     "2026-11-24 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": -15.185931489283766,
+    "sd": 2.428224078467867,
+    "z": -6.253925090334172,
+    "vol_x": 5.39832203145893,
+    "close": 46.3,
+    "avg_volume": 2521137.85,
+    "gap": -16.202601209012645,
+    "range_pos": 0.8399098083427279,
+    "r5": -3.4147204529370145,
+    "r20": -24.951883420401423,
+    "from_high": -39.06291129244539,
+    "from_low": 36.13643046162893,
+    "streak": -2
+   },
+   {
+    "ticker": "NOAH",
+    "market_cap": 371466180.0,
+    "industry": "Investment Managers",
+    "shortable": true,
+    "vs_industry": -12.265428176979519,
+    "pre": 0.1808318264014508,
+    "pre_volume": 3157.0,
+    "pre_volume_pct": 0.5265449892414367,
+    "after_hours": 0.5424954792043302,
+    "stories": 0,
+    "earnings": [
+     "2026-11-24 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": -11.23595505617978,
+    "sd": 1.888302157836477,
+    "z": -5.950295088924424,
+    "vol_x": 1.3414221451446198,
+    "close": 5.53,
+    "avg_volume": 599568.9,
+    "gap": -2.0866773675762618,
+    "range_pos": 0.26086956521739135,
+    "r5": -1.7350157728706517,
+    "r20": -9.315866084425029,
+    "from_high": -55.56448372840498,
+    "from_low": 3.9473684210526327,
+    "streak": -2
+   },
+   {
+    "ticker": "AMBA",
+    "market_cap": 1574949845.0,
+    "industry": "Semiconductors",
+    "shortable": true,
+    "vs_industry": -20.141714226660866,
+    "pre": 3.363228699551568,
+    "pre_volume": 48075.0,
+    "pre_volume_pct": 2.6984349498263698,
+    "after_hours": 0.5969730941704166,
+    "stories": 0,
+    "earnings": [
+     "2026-11-24 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": -19.76613447267821,
+    "sd": 4.748715525250416,
+    "z": -4.162417051005781,
+    "vol_x": 8.293269783295887,
+    "close": 35.68,
+    "avg_volume": 1781588.25,
+    "gap": -24.319766134472676,
+    "range_pos": 0.8526748971193411,
+    "r5": -16.94060515502428,
+    "r20": -33.745530393325396,
+    "from_high": -62.971419083002964,
+    "from_low": 16.98360655737705,
+    "streak": -2
+   },
+   {
+    "ticker": "CENTA",
+    "market_cap": 2035511287.0,
+    "industry": "Consumer Specialties",
+    "shortable": true,
+    "vs_industry": -7.665684281936747,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": -8.161536289183823,
+    "sd": 1.8495134527525388,
+    "z": -4.412801797703832,
+    "vol_x": 1.8904887320240467,
+    "close": 32.52,
+    "avg_volume": 415134.45,
+    "gap": -0.45184975995480325,
+    "range_pos": 0.21288515406162528,
+    "r5": -11.297595190380772,
+    "r20": -8.737113402061858,
+    "from_high": -23.374175306314783,
+    "from_low": 14.386211748153377,
+    "streak": -3
+   },
+   {
+    "ticker": "URBN",
+    "market_cap": 6573562290.0,
+    "industry": "Clothing/Shoe/Accessory Stores",
+    "shortable": true,
+    "vs_industry": -9.038509079675638,
+    "pre": 1.1076361740943508,
+    "pre_volume": 326.0,
+    "pre_volume_pct": 0.028825105924527472,
+    "after_hours": 0.1368256450351879,
+    "stories": 0,
+    "earnings": [
+     "2026-11-24 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": -10.329516242112646,
+    "sd": 2.184825331023791,
+    "z": -4.727845331815299,
+    "vol_x": 5.7227340471496495,
+    "close": 76.74,
+    "avg_volume": 1130958.55,
+    "gap": -9.903014723066129,
+    "range_pos": 0.6352040816326515,
+    "r5": 3.6830627574509167,
+    "r20": -5.676182078695035,
+    "from_high": -18.043466652426986,
+    "from_low": 27.97465188026347,
+    "streak": -1
+   },
+   {
+    "ticker": "CENT",
+    "market_cap": 2390830135.0,
+    "industry": "Consumer Specialties",
+    "shortable": true,
+    "vs_industry": -7.092026780631722,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": -0.49842602308498574,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": -7.5878787878787985,
+    "sd": 1.834335154773735,
+    "z": -4.136582547705009,
+    "vol_x": 3.818121687210061,
+    "close": 38.12,
+    "avg_volume": 111877.0,
+    "gap": 0.1454545454545597,
+    "range_pos": 0.22946859903381536,
+    "r5": -11.34751773049646,
+    "r20": -8.496007098491564,
+    "from_high": -22.73234012364448,
+    "from_low": 23.786328949504764,
+    "streak": -3
+   },
+   {
+    "ticker": "SIFY",
+    "market_cap": 804748573.0,
+    "industry": "Computer Software: Programming Data Processing",
+    "shortable": true,
+    "vs_industry": -8.665344733762225,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.9135913591359124,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": -8.484349258649104,
+    "sd": 2.409194219268535,
+    "z": -3.521654331889054,
+    "vol_x": 5.611145475423998,
+    "close": 11.11,
+    "avg_volume": 33222.45,
+    "gap": -1.7298187808896248,
+    "range_pos": 0.12765957446808435,
+    "r5": -4.183109707971577,
+    "r20": -0.9787928221859588,
+    "from_high": -37.75910364145659,
+    "from_low": 5.7088487155090295,
+    "streak": -2
+   },
+   {
+    "ticker": "HDL",
+    "market_cap": 697120528.0,
+    "industry": "Restaurants",
+    "shortable": false,
+    "vs_industry": 5.713369333523377,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": null,
+    "stories": 0,
+    "earnings": [
+     "2026-11-25 time not given"
+    ],
+    "date": "2026-11-25",
+    "r1": 6.931702344546387,
+    "sd": 2.83562414991694,
+    "z": 2.4445067392832818,
+    "vol_x": 10.204081632653061,
+    "close": 10.49,
+    "avg_volume": 61.25,
+    "gap": 6.931702344546387,
+    "range_pos": null,
+    "r5": -8.231992516370434,
+    "r20": -0.9090909090909038,
+    "from_high": -42.77141298417894,
+    "from_low": 7.661517935033624,
+    "streak": 1
+   },
+   {
+    "ticker": "EROK",
+    "market_cap": 2818464385.0,
+    "industry": "Oil & Gas Production",
+    "shortable": false,
+    "vs_industry": 1.441022904772693,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 3.3783783783783994,
+    "sd": 3.482125208871429,
+    "z": 0.9702058874193514,
+    "vol_x": 6.6318025520351425,
+    "close": 21.42,
+    "avg_volume": 554055.85,
+    "gap": -2.0270270270270174,
+    "range_pos": 0.734426229508198,
+    "r5": 2.371541501976293,
+    "r20": 6.093189964157686,
+    "from_high": -21.881838074398253,
+    "from_low": 26.074161271336106,
+    "streak": 1
+   },
+   {
+    "ticker": "VAL",
+    "market_cap": 5316560520.0,
+    "industry": "Oil & Gas Production",
+    "shortable": true,
+    "vs_industry": 2.16702071557614,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": -0.013054830287195784,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 4.104376189181846,
+    "sd": 3.4540666037246517,
+    "z": 1.1882736090716783,
+    "vol_x": 4.306751821609553,
+    "close": 76.6,
+    "avg_volume": 767933.5,
+    "gap": -2.3511823865180803,
+    "range_pos": 0.9289883268482473,
+    "r5": -4.267499349466563,
+    "r20": -25.078912534365127,
+    "from_high": -32.8776726253067,
+    "from_low": 59.3012373921181,
+    "streak": 3
+   },
+   {
+    "ticker": "INSM",
+    "market_cap": 37362660426.0,
+    "industry": "Biotechnology: Pharmaceutical Preparations",
+    "shortable": true,
+    "vs_industry": 0.09403467528650289,
+    "pre": -0.01761493746696985,
+    "pre_volume": 16266.0,
+    "pre_volume_pct": 0.19755885584807645,
+    "after_hours": -0.005871645822319582,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": 0.09403467528650289,
+    "sd": 4.5204746750741185,
+    "z": 0.020801947150596762,
+    "vol_x": 3.812727540425341,
+    "close": 170.31,
+    "avg_volume": 8233495.75,
+    "gap": 0.0,
+    "range_pos": 0.6097560975609807,
+    "r5": 39.627441326111935,
+    "r20": 79.18070766638587,
+    "from_high": -19.948296122209165,
+    "from_low": 88.41686027215401,
+    "streak": 3
+   },
+   {
+    "ticker": "BOW",
+    "market_cap": 1126394952.0,
+    "industry": "Property-Casualty Insurers",
+    "shortable": true,
+    "vs_industry": -0.650862636405003,
+    "pre": null,
+    "pre_volume": null,
+    "pre_volume_pct": null,
+    "after_hours": 0.0,
+    "stories": 0,
+    "earnings": [],
+    "date": "2026-11-25",
+    "r1": -0.32032615026210687,
+    "sd": 0.2506552148493814,
+    "z": -1.2779552599956505,
+    "vol_x": 3.7427447286026987,
+    "close": 34.23,
+    "avg_volume": 180455.0,
+    "gap": 0.17472335468839972,
+    "range_pos": 0.492537313432832,
+    "r5": 0.4975124378109541,
+    "r20": 0.14581510644504636,
+    "from_high": -2.395209580838331,
+    "from_low": 61.38613861386138,
+    "streak": -1
+   }
+  ],
+  "industry_moves": {
+   "AGLT": 0.8,
+   "AMBA": 0.376,
+   "BOW": 0.331,
+   "BZ": 0.181,
+   "CAR": 1.036,
+   "CENT": -0.496,
+   "CENTA": -0.496,
+   "COGT": 0.0,
+   "CPAC": 3.832,
+   "EROK": 1.937,
+   "HDL": 1.218,
+   "HPQ": 1.827,
+   "IMKTA": -1.051,
+   "INSM": 0.0,
+   "KT": 0.164,
+   "LI": 2.253,
+   "NOAH": 1.029,
+   "NPK": 1.376,
+   "NTNX": 0.935,
+   "PHAR": 0.0,
+   "SIFY": 0.181,
+   "SIND": 3.742,
+   "URBN": -1.291,
+   "VAL": 1.937,
+   "WAFDP": -0.069
+  },
+  "mentions": {
+   "DB": 2,
+   "ZGN": 2,
+   "ATS": 1,
+   "CM": 2,
+   "BUD": 1,
+   "ORCL": 1,
+   "HBM": 1,
+   "SPOT": 1,
+   "CNQ": 1,
+   "CRM": 2,
+   "TKO": 1,
+   "NVO": 1,
+   "HON": 1,
+   "MUFG": 1,
+   "WFC": 1,
+   "BBVA": 1,
+   "ROP": 1,
+   "SAN": 1,
+   "TD": 1,
+   "DIS": 2,
+   "MA": 1,
+   "CBK": 1,
+   "NVDA": 1,
+   "MC": 2,
+   "SKHY": 2,
+   "ERO": 1,
+   "ADPT": 1,
+   "CF": 1,
+   "MDT": 2,
+   "MRVL": 1,
+   "HBAN": 3,
+   "LTC": 1,
+   "LIF": 1,
+   "DLTR": 1,
+   "ASTS": 1,
+   "SBRA": 1,
+   "MORN": 1,
+   "RKLB": 1,
+   "MAA": 1,
+   "PIPR": 1,
+   "ADM": 1,
+   "NRG": 1,
+   "BMNR": 1,
+   "OGC": 1,
+   "SMTC": 1,
+   "BBY": 1,
+   "OMC": 1,
+   "HIG": 1,
+   "SPGI": 1,
+   "MS": 1,
+   "GOOG": 1,
+   "SBLK": 1,
+   "WMT": 1,
+   "MRNA": 1,
+   "TJX": 1,
+   "SYK": 1,
+   "TSLA": 1,
+   "BMY": 1,
+   "PLTR": 1,
+   "UBER": 1,
+   "TGT": 1,
+   "EQIX": 1,
+   "LOW": 1,
+   "BLK": 2,
+   "GS": 1,
+   "C": 1,
+   "NET": 1,
+   "TMO": 1,
+   "MCO": 1,
+   "KO": 1,
+   "AMZN": 1,
+   "MU": 1,
+   "HSBC": 1,
+   "SONY": 1,
+   "SHEL": 1,
+   "UMC": 1,
+   "HCM": 1,
+   "SU": 1,
+   "TM": 2,
+   "BP": 1,
+   "AXS": 1,
+   "TRI": 1,
+   "ROCK": 1,
+   "KEN": 1,
+   "EMR": 1,
+   "ROAD": 1,
+   "HMC": 1,
+   "SAP": 1,
+   "DTE": 1,
+   "AEG": 1,
+   "INSP": 1,
+   "AERO": 1,
+   "AEF": 1,
+   "SHG": 1,
+   "ADV": 1
+  },
+  "earnings": {
+   "DELL": [
+    "2026-11-24 time not given"
+   ],
+   "ADI": [
+    "2026-11-24 time not given"
+   ],
+   "MDT": [
+    "2026-11-24 time not given"
+   ],
+   "ADSK": [
+    "2026-11-24 time not given"
+   ],
+   "WDAY": [
+    "2026-11-24 time not given"
+   ],
+   "DLTR": [
+    "2026-11-24 time not given"
+   ],
+   "HPQ": [
+    "2026-11-24 time not given"
+   ],
+   "BBY": [
+    "2026-11-24 time not given"
+   ],
+   "BURL": [
+    "2026-11-24 time not given"
+   ],
+   "NTNX": [
+    "2026-11-24 time not given"
+   ],
+   "SJM": [
+    "2026-11-24 time not given"
+   ],
+   "DKS": [
+    "2026-11-24 time not given"
+   ],
+   "URBN": [
+    "2026-11-24 time not given"
+   ],
+   "ANF": [
+    "2026-11-24 time not given"
+   ],
+   "VIPS": [
+    "2026-11-24 time not given"
+   ],
+   "DY": [
+    "2026-11-24 time not given"
+   ],
+   "MMED": [
+    "2026-11-24 time not given"
+   ],
+   "CMBT": [
+    "2026-11-24 time not given"
+   ],
+   "BILI": [
+    "2026-11-24 time not given"
+   ],
+   "GGAL": [
+    "2026-11-24 time not given"
+   ],
+   "BWLP": [
+    "2026-11-24 time not given"
+   ],
+   "KSS": [
+    "2026-11-24 time not given"
+   ],
+   "AMBA": [
+    "2026-11-24 time not given"
+   ],
+   "BBAR": [
+    "2026-11-24 time not given"
+   ],
+   "KC": [
+    "2026-11-24 time not given"
+   ],
+   "CLSK": [
+    "2026-11-24 time not given"
+   ],
+   "GDRX": [
+    "2026-11-24 time not given"
+   ],
+   "ITRN": [
+    "2026-11-24 time not given"
+   ],
+   "TIGR": [
+    "2026-11-24 time not given"
+   ],
+   "MOV": [
+    "2026-11-24 time not given"
+   ],
+   "QFIN": [
+    "2026-11-24 time not given"
+   ],
+   "TITN": [
+    "2026-11-24 time not given"
+   ],
+   "VALN": [
+    "2026-11-24 time not given"
+   ],
+   "EMBC": [
+    "2026-11-24 time not given"
+   ],
+   "NOAH": [
+    "2026-11-24 time not given"
+   ],
+   "SHOE": [
+    "2026-11-24 time not given"
+   ],
+   "ELLO": [
+    "2026-11-24 time not given"
+   ],
+   "ZH": [
+    "2026-11-24 time not given"
+   ],
+   "BZUN": [
+    "2026-11-24 time not given"
+   ],
+   "FLX": [
+    "2026-11-24 time not given"
+   ],
+   "PLG": [
+    "2026-11-24 time not given"
+   ],
+   "DE": [
+    "2026-11-25 time not given"
+   ],
+   "LI": [
+    "2026-11-25 time not given"
+   ],
+   "BZ": [
+    "2026-11-25 time not given"
+   ],
+   "BMA": [
+    "2026-11-25 time not given"
+   ],
+   "GDS": [
+    "2026-11-25 time not given"
+   ],
+   "FORTY": [
+    "2026-11-25 time not given"
+   ],
+   "IMKTA": [
+    "2026-11-25 time not given"
+   ],
+   "HDL": [
+    "2026-11-25 time not given"
+   ],
+   "FINV": [
+    "2026-11-25 time not given"
+   ],
+   "MAGN": [
+    "2026-11-25 time not given"
+   ],
+   "GOTU": [
+    "2026-11-25 time not given"
+   ],
+   "PSNY": [
+    "2026-11-25 before open"
+   ],
+   "DSX": [
+    "2026-11-25 time not given"
+   ],
+   "GASS": [
+    "2026-11-25 time not given"
+   ],
+   "EH": [
+    "2026-11-25 time not given"
+   ],
+   "OMSE": [
+    "2026-11-25 before open"
+   ],
+   "YSG": [
+    "2026-11-25 time not given"
+   ],
+   "LEE": [
+    "2026-11-25 time not given"
+   ],
+   "CMCM": [
+    "2026-11-25 time not given"
+   ],
+   "SJ": [
+    "2026-11-25 time not given"
+   ],
+   "NNOX": [
+    "2026-11-25 time not given"
+   ],
+   "OPHI": [
+    "2026-11-25 time not given"
+   ],
+   "ALAR": [
+    "2026-11-25 time not given"
+   ],
+   "ADXN": [
+    "2026-11-25 time not given"
+   ],
+   "EOCN": [
+    "2026-11-25 time not given"
+   ],
+   "KT": [
+    "2026-11-27 time not given"
+   ],
+   "NAT": [
+    "2026-11-27 time not given"
+   ],
+   "XYF": [
+    "2026-11-27 before open"
+   ],
+   "AREC": [
+    "2026-11-27 time not given"
+   ],
+   "SIDU": [
+    "2026-11-27 time not given"
+   ],
+   "PVL": [
+    "2026-11-27 time not given"
+   ],
+   "NORD": [
+    "2026-11-27 time not given"
+   ],
+   "AAME": [
+    "2026-11-27 time not given"
+   ],
+   "CELU": [
+    "2026-11-27 time not given"
+   ],
+   "LEDS": [
+    "2026-11-27 time not given"
+   ],
+   "SCLX": [
+    "2026-11-27 time not given"
+   ],
+   "ENLV": [
+    "2026-11-27 time not given"
+   ],
+   "RBRK": [
+    "2026-11-30 after close"
+   ],
+   "CHA": [
+    "2026-11-30 before open"
+   ],
+   "NNE": [
+    "2026-11-30 after close"
+   ],
+   "CURR": [
+    "2026-11-30 time not given"
+   ],
+   "AIV": [
+    "2026-11-30 time not given"
+   ],
+   "HTT": [
+    "2026-11-30 time not given"
+   ],
+   "GDEV": [
+    "2026-11-30 time not given"
+   ],
+   "LOT": [
+    "2026-11-30 time not given"
+   ],
+   "CBAT": [
+    "2026-11-30 time not given"
+   ],
+   "HMR": [
+    "2026-11-30 before open"
+   ],
+   "CANG": [
+    "2026-11-30 after close"
+   ],
+   "PXS": [
+    "2026-11-30 after close"
+   ],
+   "BOSC": [
+    "2026-11-30 before open"
+   ],
+   "MOB": [
+    "2026-11-30 after close"
+   ],
+   "GDC": [
+    "2026-11-30 time not given"
+   ],
+   "IPST": [
+    "2026-11-30 time not given"
+   ],
+   "PWRL": [
+    "2026-11-30 before open"
+   ],
+   "BHP": [
+    "2026-12-01 time not given"
+   ],
+   "MRVL": [
+    "2026-12-01 after close"
+   ],
+   "OKTA": [
+    "2026-12-01 after close"
+   ],
+   "NTAP": [
+    "2026-12-01 after close"
+   ],
+   "CPRT": [
+    "2026-12-01 before open"
+   ],
+   "TCOM": [
+    "2026-12-01 after close"
+   ],
+   "MDB": [
+    "2026-12-01 after close"
+   ],
+   "CRDO": [
+    "2026-12-01 after close"
+   ],
+   "HQY": [
+    "2026-12-01 after close"
+   ],
+   "GTLB": [
+    "2026-12-01 after close"
+   ],
+   "NIO": [
+    "2026-12-01 before open"
+   ],
+   "BOX": [
+    "2026-12-01 after close"
+   ],
+   "NCNO": [
+    "2026-12-01 after close"
+   ],
+   "ASAN": [
+    "2026-12-01 after close"
+   ],
+   "VSTS": [
+    "2026-12-01 before open"
+   ],
+   "DRVN": [
+    "2026-12-01 time not given"
+   ],
+   "VLGEA": [
+    "2026-12-01 time not given"
+   ],
+   "OOMA": [
+    "2026-12-01 after close"
+   ],
+   "CTRN": [
+    "2026-12-01 before open"
+   ],
+   "CRNC": [
+    "2026-12-01 after close"
+   ],
+   "RGCO": [
+    "2026-12-01 after close"
+   ],
+   "ZENA": [
+    "2026-12-01 time not given"
+   ],
+   "HERE": [
+    "2026-12-01 time not given"
+   ],
+   "AFJK": [
+    "2026-12-01 time not given"
+   ],
+   "AVXL": [
+    "2026-12-01 time not given"
+   ],
+   "JFIN": [
+    "2026-12-01 time not given"
+   ],
+   "AMBR": [
+    "2026-12-01 before open"
+   ],
+   "DAVA": [
+    "2026-12-01 time not given"
+   ],
+   "EVTL": [
+    "2026-12-01 time not given"
+   ],
+   "YRD": [
+    "2026-12-01 time not given"
+   ],
+   "PSHG": [
+    "2026-12-01 time not given"
+   ],
+   "CRM": [
+    "2026-12-02 after close"
+   ],
+   "BMO": [
+    "2026-12-02 before open"
+   ],
+   "BNS": [
+    "2026-12-02 before open"
+   ],
+   "SNOW": [
+    "2026-12-02 after close"
+   ],
+   "FIVE": [
+    "2026-12-02 after close"
+   ],
+   "NTSK": [
+    "2026-12-02 after close"
+   ],
+   "DCI": [
+    "2026-12-02 before open"
+   ],
+   "DSGX": [
+    "2026-12-02 after close"
+   ],
+   "VFS": [
+    "2026-12-02 before open"
+   ],
+   "M": [
+    "2026-12-02 before open"
+   ],
+   "SIG": [
+    "2026-12-02 before open"
+   ],
+   "AEO": [
+    "2026-12-02 after close"
+   ],
+   "KEN": [
+    "2026-12-02 time not given"
+   ],
+   "BLBD": [
+    "2026-12-02 after close"
+   ],
+   "CBRL": [
+    "2026-12-02 before open"
+   ],
+   "AI": [
+    "2026-12-02 after close"
+   ],
+   "CXM": [
+    "2026-12-02 before open"
+   ],
+   "NWCL": [
+    "2026-12-02 time not given"
+   ],
+   "PHR": [
+    "2026-12-02 after close"
+   ],
+   "YB": [
+    "2026-12-02 time not given"
+   ],
+   "WDH": [
+    "2026-12-02 before open"
+   ],
+   "MEI": [
+    "2026-12-02 time not given"
+   ],
+   "AOUT": [
+    "2026-12-02 after close"
+   ],
+   "SY": [
+    "2026-12-02 before open"
+   ],
+   "TLYS": [
+    "2026-12-02 after close"
+   ],
+   "CAAS": [
+    "2026-12-02 time not given"
+   ],
+   "HNNA": [
+    "2026-12-02 time not given"
+   ],
+   "LITB": [
+    "2026-12-02 time not given"
+   ],
+   "AACG": [
+    "2026-12-02 time not given"
+   ],
+   "BRLS": [
+    "2026-12-02 time not given"
+   ],
+   "PTIV": [
+    "2026-12-02 time not given"
+   ],
+   "CETY": [
+    "2026-12-02 time not given"
+   ],
+   "CTRM": [
+    "2026-12-02 time not given"
+   ],
+   "REBN": [
+    "2026-12-02 time not given"
+   ],
+   "EDVA": [
+    "2026-12-02 time not given"
+   ],
+   "BRTX": [
+    "2026-12-02 time not given"
+   ],
+   "SRTM": [
+    "2026-12-02 time not given"
+   ],
+   "AEXA": [
+    "2026-12-02 time not given"
+   ],
+   "RY": [
+    "2026-12-03 before open"
+   ],
+   "TD": [
+    "2026-12-03 before open"
+   ],
+   "CM": [
+    "2026-12-03 before open"
+   ],
+   "VEEV": [
+    "2026-12-03 after close"
+   ],
+   "KR": [
+    "2026-12-03 before open"
+   ],
+   "DG": [
+    "2026-12-03 before open"
+   ],
+   "ULTA": [
+    "2026-12-03 after close"
+   ],
+   "IOT": [
+    "2026-12-03 after close"
+   ],
+   "DOCU": [
+    "2026-12-03 after close"
+   ],
+   "BF.A": [
+    "2026-12-03 before open"
+   ],
+   "BF.B": [
+    "2026-12-03 before open"
+   ],
+   "HRL": [
+    "2026-12-03 before open"
+   ],
+   "GWRE": [
+    "2026-12-03 after close"
+   ],
+   "COO": [
+    "2026-12-03 after close"
+   ],
+   "S": [
+    "2026-12-03 after close"
+   ],
+   "TTAN": [
+    "2026-12-03 after close"
+   ],
+   "VSXY": [
+    "2026-12-03 before open"
+   ],
+   "PATH": [
+    "2026-12-03 after close"
+   ],
+   "SAIC": [
+    "2026-12-03 before open"
+   ],
+   "PVH": [
+    "2026-12-03 before open"
+   ],
+   "DOO": [
+    "2026-12-03 before open"
+   ],
+   "AGX": [
+    "2026-12-03 after close"
+   ],
+   "WLY": [
+    "2026-12-03 time not given"
+   ],
+   "WLYB": [
+    "2026-12-03 time not given"
+   ],
+   "IDT": [
+    "2026-12-03 after close"
+   ],
+   "WLTH": [
+    "2026-12-03 after close"
+   ],
+   "HUBG": [
+    "2026-12-03 time not given"
+   ],
+   "PD": [
+    "2026-12-03 after close"
+   ],
+   "REX": [
+    "2026-12-03 before open"
+   ],
+   "SWBI": [
+    "2026-12-03 after close"
+   ],
+   "QUIT": [
+    "2026-12-03 time not given"
+   ],
+   "HOV": [
+    "2026-12-03 before open"
+   ],
+   "CAL": [
+    "2026-12-03 before open"
+   ],
+   "CSIQ": [
+    "2026-12-03 before open"
+   ],
+   "BBW": [
+    "2026-12-03 before open"
+   ],
+   "GCO": [
+    "2026-12-03 before open"
+   ],
+   "LE": [
+    "2026-12-03 before open"
+   ],
+   "CHPT": [
+    "2026-12-03 after close"
+   ],
+   "CURV": [
+    "2026-12-03 after close"
+   ],
+   "ZUMZ": [
+    "2026-12-03 after close"
+   ],
+   "ICG": [
+    "2026-12-03 time not given"
+   ],
+   "HUCK": [
+    "2026-12-03 time not given"
+   ],
+   "BNR": [
+    "2026-12-03 time not given"
+   ],
+   "DOYU": [
+    "2026-12-03 time not given"
+   ],
+   "DSC": [
+    "2026-12-03 before open"
+   ],
+   "LX": [
+    "2026-12-03 after close"
+   ],
+   "SPWH": [
+    "2026-12-03 time not given"
+   ],
+   "TPCS": [
+    "2026-12-03 time not given"
+   ],
+   "MNY": [
+    "2026-12-03 before open"
+   ],
+   "DXLG": [
+    "2026-12-03 before open"
+   ],
+   "BZAI": [
+    "2026-12-03 time not given"
+   ],
+   "SHPH": [
+    "2026-12-03 time not given"
+   ],
+   "PRT": [
+    "2026-12-03 time not given"
+   ],
+   "DTSS": [
+    "2026-12-03 time not given"
+   ],
+   "MTR": [
+    "2026-12-03 time not given"
+   ],
+   "SEGG": [
+    "2026-12-03 time not given"
+   ],
+   "CRMT": [
+    "2026-12-03 time not given"
+   ],
+   "RBNE": [
+    "2026-12-03 time not given"
+   ],
+   "ITP": [
+    "2026-12-03 time not given"
+   ],
+   "KNOP": [
+    "2026-12-04 before open"
+   ],
+   "TORO": [
+    "2026-12-04 time not given"
+   ],
+   "TOUR": [
+    "2026-12-04 time not given"
+   ]
+  },
+  "premarket_movers": [
+   {
+    "ticker": "TFSL",
+    "pct": 6.019132653061221,
+    "z": 5.5572683386776465,
+    "volume": 500.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 0.06104912928679354
+   },
+   {
+    "ticker": "ELPC",
+    "pct": 16.84414327202324,
+    "z": 5.149589854178052,
+    "volume": 24812.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 3.993460009108089
+   },
+   {
+    "ticker": "PHAR",
+    "pct": 16.716417910447756,
+    "z": 4.845136339107078,
+    "volume": 9874.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 67.66373712973909
+   },
+   {
+    "ticker": "UGP",
+    "pct": 13.878326996197732,
+    "z": 4.823729478934452,
+    "volume": 65111.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 1.4721264120021293
+   },
+   {
+    "ticker": "PSNL",
+    "pct": 6.44932671863927,
+    "z": 4.59653384277451,
+    "volume": 16693.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 0.6703161343884866
+   },
+   {
+    "ticker": "TIMB",
+    "pct": 12.048832271762212,
+    "z": 4.54925194419274,
+    "volume": 23462.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 3.2124759410033765
+   },
+   {
+    "ticker": "IQMX",
+    "pct": 18.181818181818187,
+    "z": 4.250418591276575,
+    "volume": 23941.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 8.948498198975042
+   },
+   {
+    "ticker": "VERA",
+    "pct": 15.084745762711883,
+    "z": 3.961334494809365,
+    "volume": 36035.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 2.59936774806785
+   },
+   {
+    "ticker": "AFYA",
+    "pct": 17.51968503937007,
+    "z": 3.8127703067592984,
+    "volume": 35025.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 9.462403123498072
+   },
+   {
+    "ticker": "VIV",
+    "pct": 9.083333333333332,
+    "z": 3.5070708166476874,
+    "volume": 33182.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 2.0838401188081517
+   },
+   {
+    "ticker": "BGR",
+    "pct": -7.98035604665438,
+    "z": -5.69088766186073,
+    "volume": 2100.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 2.316305911212685
+   },
+   {
+    "ticker": "VRTX",
+    "pct": -8.175565482521453,
+    "z": -4.459171486053007,
+    "volume": 40186.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 2.487643417802671
+   },
+   {
+    "ticker": "CTRE",
+    "pct": -3.826673585884799,
+    "z": -2.644904096345771,
+    "volume": 1000.0,
+    "time": "2026-11-27T12:00:00Z",
+    "volume_pct": 0.02526839169681154
+   },
+   {
+    "ticker": "WLYB",
+    "pct": -4.218304077563628,
+    "z": -1.990508487083315,
+    "volume": 203.0,
+    "time": "2026-11-27T09:00:00Z",
+    "volume_pct": 99.33936873011989
+   },
+   {
+    "ticker": "CLBK",
+    "pct": -2.3875114784205675,
+    "z": -1.8859236453954245,
+    "volume": 20317.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 0.6552682290036838
+   },
+   {
+    "ticker": "IBN",
+    "pct": -2.876712328767117,
+    "z": -1.879005668355809,
+    "volume": 14804.0,
+    "time": "2026-11-27T12:00:00Z",
+    "volume_pct": 0.1729309857130433
+   },
+   {
+    "ticker": "MO",
+    "pct": -2.5170424750917686,
+    "z": -1.8114381179456387,
+    "volume": 112964.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 1.2646389637062645
+   },
+   {
+    "ticker": "SONY",
+    "pct": -2.7729027729027744,
+    "z": -1.7230647395088907,
+    "volume": 43461.0,
+    "time": "2026-11-27T13:00:00Z",
+    "volume_pct": 0.7677861582788489
+   },
+   {
+    "ticker": "ADC",
+    "pct": -2.0458265139116194,
+    "z": -1.654897537786309,
+    "volume": 816.0,
+    "time": "2026-11-27T12:00:00Z",
+    "volume_pct": 0.04756143738474111
+   },
+   {
+    "ticker": "DSGR",
+    "pct": -0.17142042213350583,
+    "z": -1.5232545879236086,
+    "volume": 2060.0,
+    "time": "2026-11-27T12:00:00Z",
+    "volume_pct": 0.764112811241509
+   }
+  ]
+ },
+ "economy": [
+  {
+   "date": "2026-11-25",
+   "time": "07:00",
+   "event": "MBA 30-Year Mortgage Rate",
+   "actual": "7.38%",
+   "consensus": "",
+   "previous": "7.35%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "07:00",
+   "event": "MBA Mortgage Applications",
+   "actual": "6.1%",
+   "consensus": "",
+   "previous": "-2.3%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "07:00",
+   "event": "MBA Purchase Index",
+   "actual": "151.6",
+   "consensus": "",
+   "previous": "137.6"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "07:00",
+   "event": "Mortgage Market Index",
+   "actual": "212.0",
+   "consensus": "",
+   "previous": "199.8"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "07:00",
+   "event": "Mortgage Refinance Index",
+   "actual": "535.5",
+   "consensus": "",
+   "previous": "532.8"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "07:25",
+   "event": "FOMC Member Bowman Speaks",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Building Permits",
+   "actual": "1.297M",
+   "consensus": "1.295M",
+   "previous": "1.398M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Building Permits",
+   "actual": "-7.2%",
+   "consensus": "-7.4%",
+   "previous": "-0.4%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Continuing Jobless Claims",
+   "actual": "1,697K",
+   "consensus": "",
+   "previous": "1,792K"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Core Durable Goods Orders",
+   "actual": "0.5%",
+   "consensus": "0.5%",
+   "previous": "0.5%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Core PCE Price Index",
+   "actual": "0.3%",
+   "consensus": "0.3%",
+   "previous": "0.3%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Core PCE Price Index",
+   "actual": "3.3%",
+   "consensus": "3.2%",
+   "previous": "3.1%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Core PCE Prices",
+   "actual": "2.50%",
+   "consensus": "2.50%",
+   "previous": "3.30%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Corporate Profits",
+   "actual": "3.8%",
+   "consensus": "",
+   "previous": "7.7%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Durable Goods Orders",
+   "actual": "0.2%",
+   "consensus": "0.7%",
+   "previous": "2.0%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Durables Excluding Defense",
+   "actual": "0.4%",
+   "consensus": "",
+   "previous": "2.4%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "GDP",
+   "actual": "4.3%",
+   "consensus": "3.4%",
+   "previous": "2.2%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "GDP Price Index",
+   "actual": "1.8%",
+   "consensus": "2.2%",
+   "previous": "6.1%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "GDP Sales",
+   "actual": "2.6%",
+   "consensus": "1.7%",
+   "previous": "2.8%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Goods Orders Non Defense Ex Air",
+   "actual": "1.2%",
+   "consensus": "",
+   "previous": "0.8%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Initial Jobless Claims",
+   "actual": "189K",
+   "consensus": "201K",
+   "previous": "202K"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Jobless Claims 4-Week Avg.",
+   "actual": "196.00K",
+   "consensus": "",
+   "previous": "197.50K"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "PCE price index",
+   "actual": "0.3%",
+   "consensus": "0.3%",
+   "previous": "0.5%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "PCE Price index",
+   "actual": "3.8%",
+   "consensus": "3.8%",
+   "previous": "3.7%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "PCE Prices",
+   "actual": "2.1%",
+   "consensus": "2.1%",
+   "previous": "5.0%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Personal Income",
+   "actual": "0.7%",
+   "consensus": "0.4%",
+   "previous": "0.3%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Personal Spending",
+   "actual": "0.3%",
+   "consensus": "0.4%",
+   "previous": "0.6%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Real Consumer Spending",
+   "actual": "4.2%",
+   "consensus": "3.8%",
+   "previous": "3.8%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "08:30",
+   "event": "Real Personal Consumption",
+   "actual": "0.0%",
+   "consensus": "",
+   "previous": "0.1%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:00",
+   "event": "4-Week Bill Auction",
+   "actual": "4.115%",
+   "consensus": "",
+   "previous": "4.050%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:00",
+   "event": "8-Week Bill Auction",
+   "actual": "4.120%",
+   "consensus": "",
+   "previous": "4.110%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:00",
+   "event": "New Home Sales",
+   "actual": "701K",
+   "consensus": "650K",
+   "previous": "614K"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:00",
+   "event": "New Home Sales",
+   "actual": "14.2%",
+   "consensus": "-3.8%",
+   "previous": "-9.7%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "Crude Oil Inventories",
+   "actual": "1.109M",
+   "consensus": "2.000M",
+   "previous": "3.380M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "EIA Refinery Crude Runs",
+   "actual": "0.428M",
+   "consensus": "",
+   "previous": "-0.129M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "Crude Oil Imports",
+   "actual": "1.893M",
+   "consensus": "",
+   "previous": "-2.155M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "Cushing Crude Oil Inventories",
+   "actual": "-0.534M",
+   "consensus": "",
+   "previous": "-1.209M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "Distillate Fuel Production",
+   "actual": "-0.012M",
+   "consensus": "",
+   "previous": "0.140M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "EIA Weekly Distillates Stocks",
+   "actual": "0.715M",
+   "consensus": "1.500M",
+   "previous": "1.571M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "Gasoline Production",
+   "actual": "0.258M",
+   "consensus": "",
+   "previous": "-0.202M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "Heating Oil Stockpiles",
+   "actual": "0.219M",
+   "consensus": "",
+   "previous": "-0.775M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "EIA Weekly Refinery Utilization Rates",
+   "actual": "1.8%",
+   "consensus": "",
+   "previous": "0.5%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "10:30",
+   "event": "Gasoline Inventories",
+   "actual": "1.733M",
+   "consensus": "1.700M",
+   "previous": "5.192M"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "11:30",
+   "event": "7-Year Note Auction",
+   "actual": "4.708%",
+   "consensus": "",
+   "previous": "4.894%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "11:40",
+   "event": "Atlanta Fed GDPNow",
+   "actual": "2.9%",
+   "consensus": "3.2%",
+   "previous": "3.2%"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "12:00",
+   "event": "Natural Gas Storage",
+   "actual": "-24B",
+   "consensus": "-19B",
+   "previous": "20B"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "13:00",
+   "event": "U.S. Baker Hughes Oil Rig Count",
+   "actual": "470",
+   "consensus": "",
+   "previous": "469"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "13:00",
+   "event": "U.S. Baker Hughes Total Rig Count",
+   "actual": "607",
+   "consensus": "",
+   "previous": "607"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "14:00",
+   "event": "Beige Book",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-27",
+   "time": "08:30",
+   "event": "Goods Trade Balance",
+   "actual": "",
+   "consensus": "-135.90B",
+   "previous": "-135.08B"
+  },
+  {
+   "date": "2026-11-27",
+   "time": "08:30",
+   "event": "Retail Inventories Ex Auto",
+   "actual": "",
+   "consensus": "",
+   "previous": "0.5%"
+  },
+  {
+   "date": "2026-11-27",
+   "time": "08:30",
+   "event": "Wholesale Inventories",
+   "actual": "",
+   "consensus": "0.5%",
+   "previous": "0.7%"
+  },
+  {
+   "date": "2026-11-27",
+   "time": "16:30",
+   "event": "Fed's Balance Sheet",
+   "actual": "",
+   "consensus": "",
+   "previous": "6,741B"
+  },
+  {
+   "date": "2026-11-27",
+   "time": "16:30",
+   "event": "Reserve Balances with Federal Reserve Banks",
+   "actual": "",
+   "consensus": "",
+   "previous": "3.001T"
+  },
+  {
+   "date": "2026-11-27",
+   "time": "All Day",
+   "event": "United States - Thanksgiving Day - Early close at 13:00",
+   "actual": "",
+   "consensus": "",
+   "previous": ""
+  }
+ ],
+ "summary": "**Market summary, 2026-11-27 (data as of 13:33 UTC)**\n\nUS equities were mixed in the 2026-11-25 session. SPY fell 0.29% and QQQ 0.65%, with technology (XLK, -0.83%) the weakest sector. The Russell 2000 rose 0.65%, and materials led sectors at +2.07%. USO gained 3.29%, gold rose 0.61%, and long Treasuries (TLT) rose 0.92%. The dollar index was roughly flat.\n\nEconomic data were mixed. GDP came in at 4.3% against 3.4% expected, and initial jobless claims were 189K against 201K expected. Durable goods orders rose 0.2% against 0.7% expected. Crude inventories rose 1.109M barrels against a 2.000M build expected.\n\nPre-market indications for today, a shortened Thanksgiving session, show SPY up 1.68% and QQQ up 2.33%. These thin prints may not reflect actual trading levels. Notable headlines include a reported breach of the U.S. Air Force Cloud One platform and a Disney cease-and-desist letter to ByteDance.",
+ "usage": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 6770,
+   "output_tokens": 1431,
+   "output_tokens_details": {
+    "thinking_tokens": 1044
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  },
+  "cost": 0.0013925
+ }
+}
