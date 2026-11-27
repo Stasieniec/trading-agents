@@ -1,0 +1,59 @@
+{
+ "agent": "weird-links",
+ "date": "2026-11-27",
+ "dry_run": false,
+ "status": "decided",
+ "reason": "",
+ "orders": [
+  {
+   "action": "set_weight",
+   "ticker": "VRTX",
+   "target_weight": 0.05,
+   "thesis": "FDA classed Vertex's reply to a late-cycle information request as a major amendment, so the povetacicept IgAN PDUFA moves from 11-30 to no later than 2-28-2027. VRTX fell about 7% (roughly $10B) for a drug JPM puts at $3.4B peak sales with 95% PoA. The core CF franchise is untouched, no safety or efficacy issue was cited, and Vera already has an approved rival, so the first-mover loss is not new. Citi (PT 585) and JPM (PT 570) reiterated. Expect a partial retrace of the overshoot.",
+   "horizon_days": 10,
+   "stop_pct": 6.0,
+   "target_pct": 7.0,
+   "probability": 0.55,
+   "sources": [
+    {
+     "url": "https://www.investing.com/news/stock-market-news/vertex-shares-drop-75-as-fda-extends-review-for-kidney-drug-povetacicept-5051552",
+     "read": true,
+     "answer": "PAGE DATE: Nov 25, 2026\n\n**Why the PDUFA date was extended:** The page says the extension was not a clear-cut \"major amendment\" from Vertex's side. The FDA issued a late-cycle information request, and Vertex responded promptly. Regulators then classified that response as a major amendment, which is what triggered the delay. The FDA said it needs more time to evaluate the newly submitted data. The article adds that standard PDUFA extensions are usually used when supplemental material could resolve open questions and still allow approval in the current cycle.\n\n**New date:** The Biologics License"
+    },
+    {
+     "url": "https://www.investing.com/news/analyst-ratings/vertex-stock-rating-reiterated-by-jpmorgan-after-povetacicept-pdufa-delay-93CH-5052108",
+     "read": false,
+     "answer": ""
+    },
+    {
+     "url": "https://www.ajmc.com/view/fda-approves-atacicept-for-iga-nephropathy",
+     "read": false,
+     "answer": ""
+    }
+   ],
+   "causal_chain": [
+    {
+     "step": "FDA sent a late-cycle information request; Vertex's response was classed a major amendment, so the povetacicept PDUFA moved from 11-30 to no later than 2-28-2027. No safety or efficacy issue was cited.",
+     "source_url": "https://www.investing.com/news/stock-market-news/vertex-shares-drop-75-as-fda-extends-review-for-kidney-drug-povetacicept-5051552"
+    },
+    {
+     "step": "The market cut about $10B from VRTX, while JPM values the asset at $3.4B peak sales with 95% PoA and Vera's competing drug has been approved since 7-7-26. Vera's gain is small next to Vertex's loss, so the move is not a competitor transfer. The sell-off looks larger than the delay justifies.",
+     "source_url": "https://www.investing.com/news/analyst-ratings/vertex-stock-rating-reiterated-by-jpmorgan-after-povetacicept-pdufa-delay-93CH-5052108"
+    }
+   ],
+   "slippage_bp": 10,
+   "id": "weird-links-2026-11-27-01",
+   "session_date": "2026-11-27",
+   "fill_at": "open",
+   "decided_at": "2026-11-27T13:40:59.979676+00:00",
+   "prompt_hash": "04802a99a89f"
+  }
+ ],
+ "rejected": [],
+ "prompt_hash": "04802a99a89f",
+ "summary": "Session 2026-11-27 (Black Friday half-day). Opened one trade: VRTX long 5% (stop -6%, target +7%, 10-day horizon, p=0.55). Equity about $100.5k, otherwise cash.\n\nTape: SPY pre-market +1.7% and QQQ +2.3%. 11-25 was a V-reversal: NDX fell 4.7% at the open, touched a bear market, and closed -0.65% with AI names closing near their highs. Today's driver is Beijing's national-team pledge (China CSI Semi +17.6%, a record), the SK Hynix buyback doubling and falling yields. I did not chase AI names at the gap-up open: the 11-23 relief rally faded, and tax-loss pressure on the -70% names runs to mid-Dec.\n\nResolved: the Section 301 text came out on 11-25. It covers 14 economies (Mexico and Norway deferred) with rates of 15-35% that mostly equal prior deals. Sec 232 goods including semis are exempt. Comments are due 1-5-27 and hearings start 1-25, with no effective date. The market shrugged (apparel up 3 days, TXN and ADI rebounded), so there is no near-term trade.\n\nExamined and rejected:\n- Altria/Imperial Brands (UK deadline Dec 24; MO -2%, BTI -1.6%; IMBBY ineligible).\n- Brazil ADRs (Trabuco finance-minister catch-up already priced).\n- Refiners (cracks collapsed, no catalyst).\n- Houthi/Hormuz oil.\n- DE peers (CNH, AGCO moved 11-25).\n- DELL/HPE (+4% pre-market, chase).\n- AI-credit and private-credit names (all bouncing, no dislocation).\n- Neocloud shorts (squeeze day).\n\nNext session (Mon 11-30):\n- Check whether VRTX held its fill (about 523) and what rotation does to defensives.\n- OPEC+ meets Sunday.\n- Check whether the Friday gap-up held. If AI names close in the upper half on a second day, consider DELL/HPE longs.\n- Dec 1: MRVL, NTAP, OKTA earnings; Huang House testimony.\n- Dec 2: AEO, FIVE, M.\n- Dec 3: Huang Senate testimony, S, PVH.\n- Dec 4: jobs report.\n- Dec 9: FOMC.\n- Dec 11: NDX announcement. Plan to short announced deletions on Dec 14, after checking the rules.\n- G20 Miami Dec 14-15 (Vietnam apparel short if no deal).\n- Notes updated (general plus VRTX).",
+ "feedback": "economic_calendar actuals still lag the actual release time, so I used web_search for them. The digest's pre-market mover table is dominated by thin prints; a liquidity filter, for example at least 5% of average daily volume, would make it far more useful. A tool that lists index-deletion candidates, or a pre-market read-across screen for peers of a fresh mover, would help this weird-links style. Some law-firm pages fail in read_page (kelleydrye) while others (hklaw, casrai) work. It would help to know ahead of time which ones fail.",
+ "total_cost": 0.9881757000000001,
+ "seconds": 454,
+ "fill_at": "open"
+}
